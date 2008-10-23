@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   <extension
+         name="New Connection Wizard"
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            canFinishEarly="false"
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.internal.wizards.NewConnectionWizard"
+            hasPages="true"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.internal.wizards.NewConnectionWizard"
+            name="New eXist connection">
+      </wizard>
+      <wizard
+            canFinishEarly="false"
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.internal.wizards.LocalConnectionWizard"
+            hasPages="true"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.internal.wizards.LocalConnectionWizard"
+            name="New eXist local connection">
+      </wizard>
+      <wizard
+            canFinishEarly="false"
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.internal.wizards.RemoteConnectionWizard"
+            hasPages="true"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.internal.wizards.RemoteConnectionWizard"
+            name="New eXist remote connection">
+      </wizard>
+      <category
+            id="org.exist.eclipse"
+            name="eXist">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.exist.eclipse.internal.preferences.DefaultExistPluginPreferencePage"
+            id="org.exist.eclipse.internal.preferences.DefaultExistPluginPreferencePage"
+            name="eXist">
+      </page>
+   </extension>
+   <extension
+         name="eXist Plugin Properties"
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.exist.eclipse.internal.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.exist.eclipse.internal.perspectives.ExistPerspective"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.ExistPerspective"
+            name="eXist">
+      </perspective>
+   </extension>
+
+</plugin>

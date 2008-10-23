@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="resultedit" size="1355,695" id="org.exist.eclipse.query.internal.edit" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E71756572792F736770">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.3/@sourceConnections.1" name="QueryResultStorage" location="630,225" size="213,67" id="org.exist.eclipse.query.internal.edit/QueryResultStorage" runTimeClassModel="isReadOnly(),getName(),equals(Ljava.lang.Object;),QueryResultStorage(Ljava.lang.String;Ljava.lang.String;),getFullPath(),getCharset(),getAdapter(Ljava.lang.Class;),getContents()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="190,18">
+      <children xsi:type="editmodel:MethodEditModel" name="QueryResultStorage" id="org.exist.eclipse.query.internal.edit/QueryResultStorage#QueryResultStorage(Ljava.lang.String;Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.core.resources/IEncodedStorage&lt;-org.exist.eclipse.query.internal.edit/QueryResultStorage" source="//@children.0" target="//@children.5" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="91,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="QueryResultStorageEditorInput" location="255,225" size="299,67" id="org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput" runTimeClassModel="getStorage(),exists(),getName(),equals(Ljava.lang.Object;),QueryResultStorageEditorInput(Lorg.exist.eclipse.query.internal.edit.QueryResultStorage;),getAdapter(Ljava.lang.Class;),getToolTipText(),getImageDescriptor(),getPersistable()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="276,18">
+      <children xsi:type="editmodel:MethodEditModel" name="QueryResultStorageEditorInput" id="org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput#QueryResultStorageEditorInput(Lorg.exist.eclipse.query.internal.edit.QueryResultStorage;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput-Standard::Call->org.exist.eclipse.query.internal.edit/QueryResultStorage*org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput-Soyatec::Import->org.exist.eclipse.query.internal.edit/QueryResultStorage" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="299,33" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,33"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui/IStorageEditorInput&lt;-org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="52,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="BodyContainer" location="553,135" size="204,43" id="org.exist.eclipse.query.internal.views/BodyContainer" runTimeClassModel="dispose(),BodyContainer(Lorg.eclipse.swt.widgets.Composite;ILorg.exist.eclipse.query.internal.views.QueryView;Lorg.exist.eclipse.query.internal.control.IQueryInit;),init(),end(Lorg.exist.eclipse.query.internal.proc.QueryEndEvent;),getQueryInput(),addResult(Lorg.exist.eclipse.query.internal.proc.QueryResultEvent;),start(Lorg.exist.eclipse.query.internal.proc.QueryStartEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.query.internal.views/BodyContainer-Standard::Instantiate->org.exist.eclipse.query.internal.views/ResultSelectionListener*org.exist.eclipse.query.internal.views/BodyContainer-Soyatec::Import->org.exist.eclipse.query.internal.views/ResultSelectionListener" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Instantiate»" size="96,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,21" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="204,21"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="ResultSelectionListener" location="210,135" size="204,43" id="org.exist.eclipse.query.internal.views/ResultSelectionListener" runTimeClassModel="ResultSelectionListener(Lorg.eclipse.ui.IWorkbenchWindow;),widgetSelected(Lorg.eclipse.swt.events.SelectionEvent;),widgetDefaultSelected(Lorg.eclipse.swt.events.SelectionEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.query.internal.views/ResultSelectionListener-Standard::Instantiate->org.exist.eclipse.query.internal.edit/QueryResultStorageEditorInput" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="124,43" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="79,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.query.internal.views/ResultSelectionListener-Standard::Instantiate->org.exist.eclipse.query.internal.edit/QueryResultStorage" source="//@children.3" target="//@children.0" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="193,43" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,8"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.exist.eclipse.query.internal.views/ResultSelectionListener-Soyatec::Import->org.eclipse.ui/IStorageEditorInput" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="181,247" size="41,14" automaticRelocationAllowed="false" locationOnWireFromSource="2.0" distanceFromWire="-25.000000000000004" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="18,43" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="31,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.1/@sourceConnections.1 //@children.3/@sourceConnections.2" name="IStorageEditorInput" location="195,330" size="165,95" id="org.eclipse.ui/IStorageEditorInput" runTimeClassModel="getStorage()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getStorage" id="org.eclipse.ui/IStorageEditorInput#getStorage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.0" name="IEncodedStorage" location="645,330" size="154,95" id="org.eclipse.core.resources/IEncodedStorage" runTimeClassModel="getCharset()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="117,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getCharset" id="org.eclipse.core.resources/IEncodedStorage#getCharset()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

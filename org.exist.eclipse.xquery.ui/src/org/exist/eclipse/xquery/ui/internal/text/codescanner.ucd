@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="codescanner" size="1301,820" id="org.exist.eclipse.xquery.ui.internal.text" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E7871756572792E75692F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="XQueryCodeScanner" location="495,314" size="175,103" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner" runTimeClassModel="XQueryCodeScanner(Lorg.eclipse.dltk.ui.text.IColorManager;Lorg.eclipse.jface.preference.IPreferenceStore;),getTokenProperties(),createRules()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="133,54">
+      <children xsi:type="editmodel:MethodEditModel" name="XQueryCodeScanner" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner#XQueryCodeScanner(Lorg.eclipse.dltk.ui.text.IColorManager;Lorg.eclipse.jface.preference.IPreferenceStore;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createRules" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner#createRules()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTokenProperties" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner#getTokenProperties()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner-Standard::Instantiate->org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,103" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="155,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner-Soyatec::Import->org.eclipse.jface.text.rules/IToken" source="//@children.0" target="//@children.5" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="109,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="64,57"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner->org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants" source="//@children.0" target="//@children.7" targetEnd="//@children.0/@sourceConnections.2/@children.2" label="//@children.0/@sourceConnections.2/@children.0" sourceEnd="//@children.0/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="11,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="221,143"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner-Standard::Call->org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer*org.exist.eclipse.xquery.ui.internal.text/XQueryCodeScanner-Soyatec::Import->org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer" source="//@children.0" target="//@children.8" targetEnd="//@children.0/@sourceConnections.3/@children.2" label="//@children.0/@sourceConnections.3/@children.0" sourceEnd="//@children.0/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,51" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="162,51"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="XQueryWordRule" location="749,285" size="152,121" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule" runTimeClassModel="evaluate(Lorg.eclipse.jface.text.rules.ICharacterScanner;),XQueryWordRule(Lorg.eclipse.jface.text.rules.IWordDetector;Lorg.eclipse.jface.text.rules.IToken;Lorg.eclipse.jface.text.rules.IToken;Lorg.eclipse.jface.text.rules.IToken;),addWord(Ljava.lang.String;Lorg.eclipse.jface.text.rules.IToken;),setColumnConstraint(I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,72">
+      <children xsi:type="editmodel:MethodEditModel" name="XQueryWordRule" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule#XQueryWordRule(Lorg.eclipse.jface.text.rules.IWordDetector;Lorg.eclipse.jface.text.rules.IToken;Lorg.eclipse.jface.text.rules.IToken;Lorg.eclipse.jface.text.rules.IToken;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addWord" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule#addWord(Ljava.lang.String;Lorg.eclipse.jface.text.rules.IToken;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="evaluate" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule#evaluate(Lorg.eclipse.jface.text.rules.ICharacterScanner;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setColumnConstraint" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule#setColumnConstraint(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.text.rules/IRule&lt;-org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="75,95"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule-Standard::Call->org.eclipse.jface.text.rules/IToken*org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule-Soyatec::Import->org.eclipse.jface.text.rules/IToken" source="//@children.1" target="//@children.5" targetEnd="//@children.1/@sourceConnections.1/@children.2" label="//@children.1/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,6" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="116,57"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule-Standard::Call->org.eclipse.jface.text.rules/IWordDetector*org.exist.eclipse.xquery.ui.internal.text/XQueryWordRule-Soyatec::Import->org.eclipse.jface.text.rules/IWordDetector" source="//@children.1" target="//@children.3" targetEnd="//@children.1/@sourceConnections.2/@children.2" label="//@children.1/@sourceConnections.2/@children.0" sourceEnd="//@children.1/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="4,121" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="141,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="XQueryWordDetector" location="360,540" size="176,85" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector" runTimeClassModel="isWordStart(C),isWordPart(C)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="87,36">
+      <children xsi:type="editmodel:MethodEditModel" name="isWordPart" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector#isWordPart(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isWordStart" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector#isWordStart(C)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.text.rules/IWordDetector&lt;-org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="176,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,112"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.ui.internal.text/XQueryWordDetector->org.exist.eclipse.xquery.ui.internal.text/XQuerySyntaxUtils" source="//@children.2" target="//@children.6" targetEnd="//@children.2/@sourceConnections.1/@children.1" label="//@children.2/@sourceConnections.1/@children.2" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="176,42" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,42"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.1/@sourceConnections.2" name="IWordDetector" location="585,428" size="151,113" id="org.eclipse.jface.text.rules/IWordDetector" runTimeClassModel="isWordStart(C),isWordPart(C)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="87,36">
+      <children xsi:type="editmodel:MethodEditModel" name="isWordPart" id="org.eclipse.jface.text.rules/IWordDetector#isWordPart(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isWordStart" id="org.eclipse.jface.text.rules/IWordDetector#isWordStart(C)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.1/@sourceConnections.0" name="IRule" location="750,159" size="151,95" id="org.eclipse.jface.text.rules/IRule" runTimeClassModel="evaluate(Lorg.eclipse.jface.text.rules.ICharacterScanner;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="71,18">
+      <children xsi:type="editmodel:MethodEditModel" name="evaluate" id="org.eclipse.jface.text.rules/IRule#evaluate(Lorg.eclipse.jface.text.rules.ICharacterScanner;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.1 //@children.1/@sourceConnections.1" name="IToken" location="540,168" size="151,57" id="org.eclipse.jface.text.rules/IToken" runTimeClassModel="isUndefined(),isEOF(),isWhitespace(),isOther(),getData()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1" name="XQuerySyntaxUtils" location="744,540" size="162,85" id="org.exist.eclipse.xquery.ui.internal.text/XQuerySyntaxUtils" runTimeClassModel="isXQueryIdentifierPart(C),isXQueryIdentifierStart(C)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="139,36">
+      <children xsi:type="editmodel:MethodEditModel" name="isXQueryIdentifierPart" id="org.exist.eclipse.xquery.ui.internal.text/XQuerySyntaxUtils#isXQueryIdentifierPart(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isXQueryIdentifierStart" id="org.exist.eclipse.xquery.ui.internal.text/XQuerySyntaxUtils#isXQueryIdentifierStart(C)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.2" name="IXQueryColorConstants" location="285,135" size="234,143" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants" runTimeClassModel="xQUERY_DEFAULT,xQUERY_STRING,xQUERY_KEYWORD,xQUERY_ARGUMENT,xQUERY_NUMBER,xQUERY_KEYWORD_RETURN,xQUERY_FUNCTION_DEFINITION,xQUERY_COMMENT">
+    <children xsi:type="editmodel:CompartmentEditModel" size="211,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="xQUERY_KEYWORD" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants#xQUERY_KEYWORD"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="xQUERY_DEFAULT" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants#xQUERY_DEFAULT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="xQUERY_KEYWORD_RETURN" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants#xQUERY_KEYWORD_RETURN"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="xQUERY_FUNCTION_DEFINITION" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants#xQUERY_FUNCTION_DEFINITION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="xQUERY_ARGUMENT" id="org.exist.eclipse.xquery.ui.internal.text/IXQueryColorConstants#xQUERY_ARGUMENT"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.3" name="KeyWordContainer" location="270,314" size="162,121" id="org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,72">
+      <children xsi:type="editmodel:MethodEditModel" name="KeyWordContainer" id="org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer#KeyWordContainer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getKeyWords" id="org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer#getKeyWords()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="load" id="org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer#load()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="reload" id="org.exist.eclipse.xquery.ui.internal.text/KeyWordContainer#reload()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

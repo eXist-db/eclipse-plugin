@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="902,711" id="org.exist.eclipse.auto.internal.editor" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E6175746F2F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="AutomationEditor" location="30,262" size="171,103" id="org.exist.eclipse.auto.internal.editor/AutomationEditor" runTimeClassModel="gotoMarker(Lorg.eclipse.core.resources.IMarker;),modificationCleared(Lorg.exist.eclipse.auto.internal.mod.AutoModEvent;),isDirty(),doSave(Lorg.eclipse.core.runtime.IProgressMonitor;),doSaveAs(),init(Lorg.eclipse.ui.IEditorSite;Lorg.eclipse.ui.IEditorInput;),AutomationEditor(),automationModified(Lorg.exist.eclipse.auto.internal.mod.AutoModEvent;),isSaveAsAllowed()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,162">
+      <children xsi:type="editmodel:MethodEditModel" name="AutomationEditor" id="org.exist.eclipse.auto.internal.editor/AutomationEditor#AutomationEditor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="doSave" id="org.exist.eclipse.auto.internal.editor/AutomationEditor#doSave(Lorg.eclipse.core.runtime.IProgressMonitor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isDirty" id="org.exist.eclipse.auto.internal.editor/AutomationEditor#isDirty()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.editor/AutomationEditor-Standard::Instantiate->org.exist.eclipse.auto.internal.editor/AutomationFormPage" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" location="179,373" size="61,14" automaticRelocationAllowed="false" locationOnWireFromSource="-32.23529411764706" distanceFromWire="-16.058823529411764" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="171,96" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="90,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.editor/AutomationEditor-Standard::Instantiate->org.exist.eclipse.auto.internal.editor/AutomationTextPage" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="171,47" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,74"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.forms.editor/FormEditor&lt;-org.exist.eclipse.auto.internal.editor/AutomationEditor" source="//@children.0" target="//@children.6" targetEnd="//@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="85,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="85,135"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="AutomationFormPage" location="201,405" size="341,85" id="org.exist.eclipse.auto.internal.editor/AutomationFormPage" runTimeClassModel="AutomationFormPage(Lorg.exist.eclipse.auto.internal.editor.AutomationEditor;Lorg.exist.eclipse.auto.internal.editor.AutomationTextPage;),getAutomationDataModel(),canLeaveThePage(),getAutomationData()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="318,54">
+      <children xsi:type="editmodel:MethodEditModel" name="AutomationFormPage" id="org.exist.eclipse.auto.internal.editor/AutomationFormPage#AutomationFormPage(Lorg.exist.eclipse.auto.internal.editor.AutomationEditor;Lorg.exist.eclipse.auto.internal.editor.AutomationTextPage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="canLeaveThePage" id="org.exist.eclipse.auto.internal.editor/AutomationFormPage#canLeaveThePage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.editor/AutomationFormPage-Soyatec::Import->org.exist.eclipse.auto.internal.editor/AutomationTextPage" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" location="458,207" size="41,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="170,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="116,121"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.forms.editor/FormPage&lt;-org.exist.eclipse.auto.internal.editor/AutomationFormPage" source="//@children.1" target="//@children.3" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="317,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="23,135"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1 //@children.1/@sourceConnections.0" name="AutomationTextPage" location="255,235" size="233,121" id="org.exist.eclipse.auto.internal.editor/AutomationTextPage" runTimeClassModel="index,getManagedForm(),isActive(),getId(),setIndex(I),AutomationTextPage(Lorg.exist.eclipse.auto.internal.editor.AutomationEditor;),getIndex(),setActive(Z),isEditor(),editor,getEditor(),createPartControl(Lorg.eclipse.swt.widgets.Composite;),selectReveal(Ljava.lang.Object;),doSave(Lorg.eclipse.core.runtime.IProgressMonitor;),partControl,initialize(Lorg.eclipse.ui.forms.editor.FormEditor;),getPartControl(),canLeaveThePage(),isEditable()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="210,72">
+      <children xsi:type="editmodel:MethodEditModel" name="AutomationTextPage" id="org.exist.eclipse.auto.internal.editor/AutomationTextPage#AutomationTextPage(Lorg.exist.eclipse.auto.internal.editor.AutomationEditor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setActive" id="org.exist.eclipse.auto.internal.editor/AutomationTextPage#setActive(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isEditable" id="org.exist.eclipse.auto.internal.editor/AutomationTextPage#isEditable()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="doSave" id="org.exist.eclipse.auto.internal.editor/AutomationTextPage#doSave(Lorg.eclipse.core.runtime.IProgressMonitor;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.forms.editor/IFormPage&lt;-org.exist.eclipse.auto.internal.editor/AutomationTextPage" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="33,113"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.editors.text/TextEditor&lt;-org.exist.eclipse.auto.internal.editor/AutomationTextPage" source="//@children.2" target="//@children.4" targetEnd="//@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="75,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="71,81"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.1" name="FormPage" location="495,228" size="220,135" id="org.eclipse.ui.forms.editor/FormPage" runTimeClassModel="index,isActive(),getId(),FormPage(Lorg.eclipse.ui.forms.editor.FormEditor;Ljava.lang.String;Ljava.lang.String;),setFocus(),getIndex(),id,isEditor(),createPartControl(Lorg.eclipse.swt.widgets.Composite;),selectReveal(Ljava.lang.Object;),dispose(),isDirty(),doSave(Lorg.eclipse.core.runtime.IProgressMonitor;),doSaveAs(),initialize(Lorg.eclipse.ui.forms.editor.FormEditor;),canLeaveThePage(),isSaveAsAllowed(),getManagedForm(),FormPage(Ljava.lang.String;Ljava.lang.String;),setIndex(I),setActive(Z),getEditor(),editor,getTitleImage(),init(Lorg.eclipse.ui.IEditorSite;Lorg.eclipse.ui.IEditorInput;),getPartControl()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="197,414">
+      <children xsi:type="editmodel:MethodEditModel" name="FormPage" id="org.eclipse.ui.forms.editor/FormPage#FormPage(Lorg.eclipse.ui.forms.editor.FormEditor;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="FormPage" id="org.eclipse.ui.forms.editor/FormPage#FormPage(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="canLeaveThePage" id="org.eclipse.ui.forms.editor/FormPage#canLeaveThePage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isActive" id="org.eclipse.ui.forms.editor/FormPage#isActive()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageAttributes="true" showPublicMethods="true" showStaticMethods="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1" name="TextEditor" location="259,102" size="144,81" id="org.eclipse.ui.editors.text/TextEditor" runTimeClassModel="createActions(),class$0,getAdapter(Ljava.lang.Class;),doSetInput(Lorg.eclipse.ui.IEditorInput;),initializeEditor(),getStatusMessage(Lorg.eclipse.core.runtime.IStatus;),updatePropertyDependentActions(),dispose(),handlePreferenceStoreChanged(Lorg.eclipse.jface.util.PropertyChangeEvent;),editorContextMenuAboutToShow(Lorg.eclipse.jface.action.IMenuManager;),getStatusBanner(Lorg.eclipse.core.runtime.IStatus;),TextEditor(),installEncodingSupport(),isSaveAsAllowed(),getStatusHeader(Lorg.eclipse.core.runtime.IStatus;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="139,72">
+      <children xsi:type="editmodel:MethodEditModel" name="TextEditor" id="org.eclipse.ui.editors.text/TextEditor#TextEditor()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageAttributes="true" showPublicMethods="true" showStaticMethods="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0" name="IFormPage" location="420,75" size="187,113" id="org.eclipse.ui.forms.editor/IFormPage" runTimeClassModel="selectReveal(Ljava.lang.Object;),isActive(),getManagedForm(),getId(),setIndex(I),initialize(Lorg.eclipse.ui.forms.editor.FormEditor;),getPartControl(),canLeaveThePage(),getIndex(),setActive(Z),isEditor(),getEditor()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,216">
+      <children xsi:type="editmodel:MethodEditModel" name="canLeaveThePage" id="org.eclipse.ui.forms.editor/IFormPage#canLeaveThePage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isActive" id="org.eclipse.ui.forms.editor/IFormPage#isActive()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.2" name="FormEditor" location="30,75" size="218,135" id="org.eclipse.ui.forms.editor/FormEditor" runTimeClassModel="editorDirtyStateChanged(),addPage(Lorg.eclipse.ui.IEditorPart;Lorg.eclipse.ui.IEditorInput;),addPageChangedListener(Lorg.eclipse.jface.dialogs.IPageChangedListener;),removePageChangedListener(Lorg.eclipse.jface.dialogs.IPageChangedListener;),toolkit,findPage(Ljava.lang.String;),getToolkit(),close(Z),setActivePage(Ljava.lang.String;),getActiveEditor(),addPage(ILorg.eclipse.swt.widgets.Control;),selectReveal(Ljava.lang.Object;),setActivePage(Ljava.lang.String;Ljava.lang.Object;),getActivePageInstance(),isDirty(),addPage(ILorg.eclipse.ui.IEditorPart;Lorg.eclipse.ui.IEditorInput;),addPage(ILorg.eclipse.ui.forms.editor.IFormPage;),dispose(),removePage(I),init(Lorg.eclipse.ui.IEditorSite;Lorg.eclipse.ui.IEditorInput;),FormEditor(),getSelectedPage(),addPage(Lorg.eclipse.swt.widgets.Control;),addPage(Lorg.eclipse.ui.forms.editor.IFormPage;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="216,414">
+      <children xsi:type="editmodel:MethodEditModel" name="FormEditor" id="org.eclipse.ui.forms.editor/FormEditor#FormEditor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPage" id="org.eclipse.ui.forms.editor/FormEditor#addPage(Lorg.eclipse.ui.IEditorPart;Lorg.eclipse.ui.IEditorInput;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addPage" id="org.eclipse.ui.forms.editor/FormEditor#addPage(ILorg.eclipse.ui.forms.editor.IFormPage;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setActivePage" id="org.eclipse.ui.forms.editor/FormEditor#setActivePage(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

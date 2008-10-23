@@ -1,0 +1,10 @@
+(:
+This is comment :)
+
+declare function local:correct ($words as xs:string*) {
+let $sign := '> '
+for $word in $words
+return concat($sign, $word)
+};
+
+local:correct(('hello','world'))

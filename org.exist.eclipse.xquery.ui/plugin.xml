@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.dltk.ui.language">
+      <language
+            class="org.exist.eclipse.xquery.ui.internal.XQueryUILanguageToolkit"
+            nature="org.exist.eclipse.xquery.core.nature"
+            priority="0">
+      </language>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.exist.eclipse.xquery.ui.internal.editor.XQueryEditor"
+            default="false"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.xquery.ui.editor.XQueryEditor"
+            name="XQuery Editor">
+         <contentTypeBinding
+               contentTypeId="org.exist.eclipse.xquery.core.content-type">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryUIPreferenceInitializer">
+      </initializer>
+   </extension>
+    <extension
+       point="org.eclipse.ui.editors.templates">
+       <contextType
+          class="org.exist.eclipse.xquery.ui.internal.templates.XQueryUniversalTemplateContextType"
+          id="xqueryUniversalTemplateContextType"
+          name="xquery">
+       </contextType> 
+       <include
+          file="templates/templates.xml">
+       </include>         
+    </extension>   
+	<extension
+	   point="org.eclipse.ui.preferencePages">
+	   <page	          
+	          class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryGlobalPreferencesPage"
+	          id="org.exist.eclipse.xquery.preferences"
+	          name="XQuery"/>       
+	    <page
+	          category="org.exist.eclipse.xquery.preferences"
+	          class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryEditorPreferencesPage"
+	          id="org.exist.eclipse.xquery.preferences.editor"
+	          name="Editor"/>
+        <page
+              category="org.exist.eclipse.xquery.preferences.editor"
+              class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryCodeTemplatesPreferencePage"
+              id="org.exist.eclipse.xquery.preferences.editor.Templates"
+              name="Templates"/>	          
+	    <page
+	          category="org.exist.eclipse.xquery.preferences.editor"
+	          class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryEditorSyntaxColoringPreferencePage"
+	          id="org.exist.eclipse.xquery.preferences.editor.SyntaxColoring"
+	          name="Syntax Coloring"/>
+	    <page
+	      category="org.exist.eclipse.xquery.preferences.editor"
+	      class="org.exist.eclipse.xquery.ui.internal.preferences.XQueryFoldingPreferencePage"
+	      id="org.exist.eclipse.xquery.preferences.editor.PythonFolding"
+	      name="Folding"/>	            	    
+	 </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">         
+      <wizard
+            canFinishEarly="false"
+            category="org.exist.eclipse.xquery.ui.category"
+            class="org.eclipse.dltk.ui.wizards.GenericDLTKProjectWizard:org.exist.eclipse.xquery.core.nature"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.xquery.core.wizard.project"
+            name="XQuery Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="org.exist.eclipse.xquery.ui.category"
+            class="org.exist.eclipse.xquery.ui.internal.wizards.XQueryNewWizard"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.xquery.ui.internal.wizards.XQueryNewWizard"
+            name="XQuery">
+      </wizard>
+      <wizard
+            category="org.exist.eclipse.xquery.ui.category"
+            class="org.exist.eclipse.xquery.ui.internal.wizards.SelectContextWizard"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.xquery.ui.internal.wizards.SelectContextWizard"
+            name="Select XQuery Context">
+      </wizard>      
+      <category
+            id="org.exist.eclipse.xquery.ui.category"
+            name="XQuery">
+      </category>
+   </extension>
+	<extension point="org.eclipse.dltk.core.completionEngine">
+	   <completionEngine
+	         class="org.exist.eclipse.xquery.ui.internal.completion.XQueryCompletionEngine"
+	         nature="org.exist.eclipse.xquery.core.nature"
+	         priority="0">
+	   </completionEngine>
+	</extension>   
+	<extension point="org.eclipse.dltk.ui.scriptCompletionProposalComputer"
+			id="XQueryTypeCompletionProposalComputer">
+			<scriptCompletionProposalComputer
+				class="org.exist.eclipse.xquery.ui.internal.completion.XQueryCompletionProposalComputer"
+				categoryId="org.eclipse.dltk.ui.scriptTypeProposalCategory"
+				toolkitId="org.exist.eclipse.xquery.core.nature">
+				<partition type="__dftl_partition_content_type"/>
+			</scriptCompletionProposalComputer>
+	</extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.exist.eclipse.xquery.ui"
+            name="XQuery">
+      </category>
+      <view
+            category="org.exist.eclipse.xquery.ui"
+            class="org.exist.eclipse.xquery.ui.internal.result.ResultView"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.xquery.ui.internal.result.ResultView"
+            name="Result View">
+      </view>
+   </extension>	
+	
+</plugin>

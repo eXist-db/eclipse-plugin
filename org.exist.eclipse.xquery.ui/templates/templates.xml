@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="declare a new function" 
+  id="org.exist.eclipse.xquery.ui.templates.function" 
+  name="function">declare function ${name}($$${param1} as ${type}) as ${returnVal}{
+${cursor}
+};</template>
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="let - define a variable" 
+  id="org.exist.eclipse.xquery.ui.templates.let" 
+  name="let">let $$${var} := ${value}
+${cursor}</template>
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="for - iterate over Collection" 
+  id="org.exist.eclipse.xquery.ui.templates.for1" 
+  name="for">for $$${obj} in $$${collection}
+${cursor}</template>    
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="for - iterate over Collection and return the values" 
+  id="org.exist.eclipse.xquery.ui.templates.for2" 
+  name="forAndReturn">for $$${obj} in $$${collection}
+  return $$${obj}${cursor}</template>
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="declare - declare a new varialbe" 
+  id="org.exist.eclipse.xquery.ui.templates.declare" 
+  name="declare">declare variable $$${var} := ${value};
+${cursor}</template>  
+</templates>

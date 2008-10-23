@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:SequenceDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="asynch" size="1341,1446" metadata="uml2-1.0" initialized="true" scrolledY="15" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E62726F7773652F736770">
+  <children xsi:type="editmodel:ActorEditModel" location="40,20" size="45,831" itemName="Eclipse">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.0" location="14,116" size="16,436" sequenceItemContainer="//@children.0" length="436">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="getChildren" id="org.eclipse.jface.viewers/ITreeContentProvider#getChildren(Ljava.lang.Object;)" source="//@children.0/@children.0" target="//@children.1/@children.0" targetEnd="//@children.0/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="getChildren(Object): Object" associatedSequenceNumber="1" associatedReturnArrow="//@children.1/@children.0/@sourceConnections.0" shouldShowReturnArrow="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getChildren(Object): Object" size="178,17" fontInfo="Arial-11-0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1" size="6,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="ViewContentProvider" location="135,20" size="152,831" id="org.exist.eclipse.browse.internal.views.browse/ViewContentProvider" itemName="">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.0/@children.0/@sourceConnections.0 //@children.2/@children.1/@sourceConnections.0" location="68,116" size="16,436" sequenceItemContainer="//@children.1" length="436">
+      <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.1/@children.0" target="//@children.0/@children.0" targetEnd="//@children.1/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,436" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,436" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="BrowseDeferredTree" id="org.exist.eclipse.browse.internal.views.browse.asynch/BrowseDeferredTree#BrowseDeferredTree(Lorg.eclipse.jface.viewers.ITreeContentProvider;Lorg.eclipse.jface.viewers.AbstractTreeViewer;)" source="//@children.1/@children.0" target="//@children.2" targetEnd="//@children.1/@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual" associatedMethod="BrowseDeferredTree(ITreeContentProvider,AbstractTreeViewer)" associatedSequenceNumber="1.1" creation="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="10,27" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="BrowseDeferredTree(ITreeContentProvider,AbstractTreeViewer)" location="279,182" size="316,14" automaticRelocationAllowed="false" locationOnWireFromSource="1.8020833333333333" distanceFromWire="26.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.1" size="15,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="getChildren" id="org.eclipse.ui.progress/DeferredTreeContentManager#getChildren(Ljava.lang.Object;)" source="//@children.1/@children.0" target="//@children.2/@children.1" targetEnd="//@children.1/@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual" associatedMethod="getChildren(Object): Object" associatedSequenceNumber="1.2" associatedReturnArrow="//@children.2/@children.1/@sourceConnections.0" shouldShowReturnArrow="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="11,134" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.2/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.2/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.2/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.2/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getChildren(Object): Object" location="270,247" size="178,17" fontInfo="Arial-11-0" automaticRelocationAllowed="false" locationOnWireFromSource="0.5792682926829268" distanceFromWire="-15.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2" size="15,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.0/@sourceConnections.2/@children.1/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.2/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.2/@children.1/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.2/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.1" name="BrowseDeferredTree" location="315,123" size="153,728" id="org.exist.eclipse.browse.internal.views.browse.asynch/BrowseDeferredTree" itemName="" creatingActivation="//@children.2/@children.0" creation="true">
+    <children xsi:type="editmodel:ActivationEditModel" location="68,80" size="16,40" sequenceItemContainer="//@children.2"/>
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.2" location="68,147" size="16,302" sequenceItemContainer="//@children.2" recursiveChildren="//@children.2/@children.2" length="302">
+      <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.2/@children.1" target="//@children.1/@children.0" targetEnd="//@children.2/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,302" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.2/@children.1/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.2/@children.1/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.2/@children.1/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.2/@children.1/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,436" anchorKind="FixedAtEdge" userLabel="//@children.2/@children.1/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.2/@children.1/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.2/@children.1/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.2/@children.1/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SelfSequenceMessageEditModel" name="getAdapter" id="org.eclipse.ui.progress/DeferredTreeContentManager#getAdapter(Ljava.lang.Object;)" source="//@children.2/@children.1" target="//@children.2/@children.2" targetEnd="//@children.2/@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" associatedMethod="getAdapter(Object): IDeferredWorkbenchAdapter" associatedSequenceNumber="1.2.1">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="16,0" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.2/@children.1/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.2/@children.1/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.2/@children.1/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.2/@children.1/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getAdapter(Object): IDeferredWorkbenchAdapter" size="316,17" fontInfo="Arial-11-0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1" size="24,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="16,0" anchorKind="FixedAtEdge" userLabel="//@children.2/@children.1/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.2/@children.1/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.2/@children.1/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.2/@children.1/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:RecursiveActivationEditModel" targetConnections="//@children.2/@children.1/@sourceConnections.1 //@children.5/@children.1/@sourceConnections.0" location="76,157" size="16,292" sequenceItemContainer="//@children.2" length="292" associatedActivation="//@children.2/@children.1" relativeLocation="8,10">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="fetchDeferredChildren" id="org.eclipse.ui.progress/IDeferredWorkbenchAdapter#fetchDeferredChildren(Ljava.lang.Object;Lorg.eclipse.ui.progress.IElementCollector;Lorg.eclipse.core.runtime.IProgressMonitor;)" source="//@children.2/@children.2" target="//@children.5/@children.1" targetEnd="//@children.2/@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="fetchDeferredChildren(Object,IElementCollector,IProgressMonitor)" associatedSequenceNumber="1.2.1.2" associatedReturnArrow="//@children.5/@children.1/@sourceConnections.0" shouldShowReturnArrow="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="16,143" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.2/@children.2/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.2/@children.2/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.2/@children.2/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.2/@children.2/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="fetchDeferredChildren(Object,IElementCollector,IProgressMonitor)" location="454,405" size="429,17" fontInfo="Arial-11-0" automaticRelocationAllowed="false" locationOnWireFromSource="1.4896551724137932" distanceFromWire="-10.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.2" size="33,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.2/@children.2/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.2/@children.2/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.2/@children.2/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.2/@children.2/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="BrowseDeferredAdapter" id="org.exist.eclipse.browse.internal.views.browse.asynch/BrowseDeferredAdapter#BrowseDeferredAdapter()" source="//@children.2/@children.2" target="//@children.5" targetEnd="//@children.2/@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manual" associatedMethod="BrowseDeferredAdapter()" associatedSequenceNumber="1.2.1.1" creation="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="9,39" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.2/@children.2/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.2/@children.2/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.2/@children.2/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.2/@children.2/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="BrowseDeferredAdapter()" location="462,337" size="167,17" fontInfo="Arial-11-0" automaticRelocationAllowed="false" locationOnWireFromSource="1.3676470588235294" distanceFromWire="26.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.1" size="33,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.2/@children.2/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.2/@children.2/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.2/@children.2/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.2/@children.2/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.5/@children.1/@sourceConnections.1" name="GetBrowseItemJob" location="652,402" size="141,449" id="org.exist.eclipse.browse.internal.views.browse.asynch/GetBrowseItemJob" itemName="" creatingActivation="//@children.3/@children.0" creation="true">
+    <children xsi:type="editmodel:ActivationEditModel" location="62,80" size="16,40" sequenceItemContainer="//@children.3"/>
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.5/@children.1/@sourceConnections.2" location="62,130" size="16,40" sequenceItemContainer="//@children.3"/>
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.4/@children.0/@sourceConnections.0 //@children.6/@children.0/@sourceConnections.0" location="62,237" size="16,102" sequenceItemContainer="//@children.3" length="102">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="getChild" id="org.exist.eclipse.browse.browse/IBrowseItem#getChild(Ljava.lang.String;)" source="//@children.3/@children.2" target="//@children.4/@children.0" targetEnd="//@children.3/@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.3/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="getChild(String): IBrowseItem" associatedSequenceNumber="2" associatedReturnArrow="//@children.4/@children.0/@sourceConnections.0" shouldShowReturnArrow="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getChild(String): IBrowseItem" location="796,621" size="190,17" fontInfo="Arial-11-0" automaticRelocationAllowed="false" locationOnWireFromSource="1.0" distanceFromWire="-10.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="2" size="6,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.3/@children.2/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.3/@children.2/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.3/@children.2/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.3/@children.2/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="add" id="org.eclipse.ui.progress/IElementCollector#add(Ljava.lang.Object;Lorg.eclipse.core.runtime.IProgressMonitor;)" source="//@children.3/@children.2" target="//@children.6/@children.0" targetEnd="//@children.3/@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.3/@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manual" associatedMethod="add(Object,IProgressMonitor)" associatedSequenceNumber="2" associatedReturnArrow="//@children.6/@children.0/@sourceConnections.0" shouldShowReturnArrow="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="16,62" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="add(Object,IProgressMonitor)" size="191,17" fontInfo="Arial-11-0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="2" size="6,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.3/@children.2/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.3/@children.2/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.3/@children.2/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.3/@children.2/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="IBrowseItem" location="800,20" size="109,831" id="org.exist.eclipse.browse.browse/IBrowseItem" itemName="">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.3/@children.2/@sourceConnections.0" location="46,619" size="16,40" sequenceItemContainer="//@children.4">
+      <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.4/@children.0" target="//@children.3/@children.2" targetEnd="//@children.4/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.2/@children.2/@sourceConnections.1" name="BrowseDeferredAdapter" location="475,279" size="170,572" id="org.exist.eclipse.browse.internal.views.browse.asynch/BrowseDeferredAdapter" itemName="" creatingActivation="//@children.5/@children.0" creation="true">
+    <children xsi:type="editmodel:ActivationEditModel" location="77,80" size="16,40" sequenceItemContainer="//@children.5"/>
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.2/@children.2/@sourceConnections.0" location="77,144" size="16,149" sequenceItemContainer="//@children.5" length="149">
+      <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.5/@children.1" target="//@children.2/@children.2" targetEnd="//@children.5/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,149" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.5/@children.1/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,292" anchorKind="FixedAtEdge" userLabel="//@children.5/@children.1/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="GetBrowseItemJob" id="org.exist.eclipse.browse.internal.views.browse.asynch/GetBrowseItemJob#GetBrowseItemJob(Ljava.lang.String;Lorg.eclipse.ui.progress.IElementCollector;Lorg.exist.eclipse.browse.browse.IBrowseItem;[Ljava.lang.String;)" source="//@children.5/@children.1" target="//@children.3" targetEnd="//@children.5/@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.5/@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual" associatedMethod="GetBrowseItemJob(String,IElementCollector,IBrowseItem,String)" associatedSequenceNumber="1.2.1.2.1" creation="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="7,19" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.5/@children.1/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="GetBrowseItemJob(String,IElementCollector,IBrowseItem,String)" location="616,458" size="418,17" fontInfo="Arial-11-0" automaticRelocationAllowed="false" locationOnWireFromSource="2.5238095238095237" distanceFromWire="24.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.2.1" size="42,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.5/@children.1/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="schedule" id="org.eclipse.core.runtime.jobs/Job#schedule()" source="//@children.5/@children.1" target="//@children.3/@children.1" targetEnd="//@children.5/@children.1/@sourceConnections.2/@children.1" sourceEnd="//@children.5/@children.1/@sourceConnections.2/@children.0" connectionRouterKind="Manual" associatedMethod="schedule()" associatedSequenceNumber="1.2.1.2.2">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="8,109" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.5/@children.1/@sourceConnections.2/@children.0/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.2/@children.0/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.2/@children.0/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.2/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="schedule()" size="69,17" fontInfo="Arial-11-0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.2.2" size="42,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.5/@children.1/@sourceConnections.2/@children.1/@children.0" methodLabel="//@children.5/@children.1/@sourceConnections.2/@children.1/@children.1" sequenceNumberLabel="//@children.5/@children.1/@sourceConnections.2/@children.1/@children.2" statementExpression="//@children.5/@children.1/@sourceConnections.2/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="IElementCollector" location="916,20" size="130,831" id="org.eclipse.ui.progress/IElementCollector" itemName="">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.3/@children.2/@sourceConnections.1" location="57,681" size="16,40" sequenceItemContainer="//@children.6">
+      <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.6/@children.0" target="//@children.3/@children.2" targetEnd="//@children.6/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.6/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.6/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.6/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.6/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.6/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,102" anchorKind="FixedAtEdge" userLabel="//@children.6/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.6/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.6/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.6/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:FrameEditModel" location="674,591" size="356,159" type="loop">
+    <children xsi:type="editmodel:FrameCompartmentEditModel" location="1,20" size="354,139" condition="hasNextChild"/>
+  </children>
+  <diagramOptions xsi:type="options:SequenceDiagramOptions" level="0" properties="Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <sequenceDiagramPreferences showPopupBars="true" showConnectionHandles="true"/>
+</editmodel:SequenceDiagramEditModel>

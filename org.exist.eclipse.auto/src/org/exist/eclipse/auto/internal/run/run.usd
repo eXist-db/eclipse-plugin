@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:SequenceDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="run" size="1345,834" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E6175746F2F736770">
+  <children xsi:type="editmodel:InstanceEditModel" name="AutomationHandler" location="70,20" size="140,794" id="org.exist.eclipse.auto.internal.run/AutomationHandler">
+    <children xsi:type="editmodel:ActivationEditModel" location="62,116" size="16,568" sequenceItemContainer="//@children.0" length="568">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="AutomationJob" source="//@children.0/@children.0" target="//@children.1" targetEnd="//@children.0/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="AutomationJob(int,ConnectionPool,ExecutorService,IAutoModel,String)" associatedSequenceNumber="1" creation="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.0/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" location="208,120" size="0,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.45390070921985815" distanceFromWire="-11.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="AutomationJob(int,ConnectionPool,ExecutorService,IAutoModel,String)" location="151,152" size="337,14" automaticRelocationAllowed="false" locationOnWireFromSource="2.671875" distanceFromWire="23.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1" size="6,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.0/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.0/@children.0/@sourceConnections.0" name="AutomationJob" location="212,96" size="114,718" id="org.exist.eclipse.auto.internal.run/AutomationJob" creatingActivation="//@children.1/@children.0" creation="true">
+    <children xsi:type="editmodel:ActivationEditModel" location="49,80" size="16,506" sequenceItemContainer="//@children.1" recursiveChildren="//@children.1/@children.1" length="506">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="getQueries" id="org.exist.eclipse.auto.internal.model/IAutoModel#getQueries()" source="//@children.1/@children.0" target="//@children.2/@children.0" targetEnd="//@children.1/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="getQueries(): ArrayList" associatedSequenceNumber="1.1">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="13,14" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getQueries(): ArrayList" location="283,171" size="112,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.638095238095238" distanceFromWire="-12.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.1" size="15,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SelfSequenceMessageEditModel" source="//@children.1/@children.0" target="//@children.1/@children.1" targetEnd="//@children.1/@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" associatedMethod="" associatedSequenceNumber="1.2">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="8,229" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="24,14" labelValue="run()"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2" size="15,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="16,0" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+    <children xsi:type="editmodel:RecursiveActivationEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.1" location="57,319" size="16,215" sequenceItemContainer="//@children.1" length="215" associatedActivation="//@children.1/@children.0" relativeLocation="8,239">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="QueryExecution" source="//@children.1/@children.1" target="//@children.4" targetEnd="//@children.1/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="QueryExecution(IQuery,IConnectionPool,AutomationResult)" associatedSequenceNumber="1.2.1" creation="true">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="9,18" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.1/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.1/@children.1/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.1/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.1/@children.1/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="QueryExecution(IQuery,IConnectionPool,AutomationResult)" location="285,446" size="283,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.9096774193548387" distanceFromWire="20.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1" size="24,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" location="0,40" anchorKind="FixedAtEdge" userLabel="//@children.1/@children.1/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.1/@children.1/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.1/@children.1/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.1/@children.1/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="AutoModel" location="325,20" size="100,794" id="org.exist.eclipse.auto.internal.model/AutoModel">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.0" location="42,170" size="16,40" sequenceItemContainer="//@children.2"/>
+  </children>
+  <children xsi:type="editmodel:FrameEditModel" location="173,309" size="659,338" type="loop">
+    <children xsi:type="editmodel:FrameCompartmentEditModel" location="1,20" size="657,318" condition="has query entity">
+      <children xsi:type="editmodel:FrameEditModel" location="47,28" size="563,282" type="loop">
+        <children xsi:type="editmodel:FrameCompartmentEditModel" location="1,20" size="561,262" condition="has query"/>
+      </children>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.1/@children.1/@sourceConnections.0" name="QueryExecution" location="440,393" size="111,421" id="org.exist.eclipse.auto.internal.run/QueryExecution" creatingActivation="//@children.4/@children.0" creation="true">
+    <children xsi:type="editmodel:ActivationEditModel" location="47,80" size="16,157" sequenceItemContainer="//@children.4" length="157">
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="getQueryRunner" id="org.exist.eclipse.auto.connection/IConnectionPool#getQueryRunner()" source="//@children.4/@children.0" target="//@children.5/@children.0" targetEnd="//@children.4/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="getQueryRunner(): IQueryRunner" associatedSequenceNumber="1.2.1.1">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="9,17" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.0/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="getQueryRunner(): IQueryRunner" location="517,472" size="161,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.8921568627450981" distanceFromWire="-11.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.1" size="33,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.0/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="runQuery" id="org.exist.eclipse.auto.connection/IQueryRunner#runQuery(Lorg.exist.eclipse.auto.query.IQueryResult;)" source="//@children.4/@children.0" target="//@children.6/@children.0" targetEnd="//@children.4/@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.4/@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual" associatedMethod="runQuery(IQueryResult): IQueryResult" associatedSequenceNumber="1.2.1.2">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="5,67" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.4/@children.0/@sourceConnections.1/@children.0/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.1/@children.0/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.1/@children.0/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.1/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="runQuery(IQueryResult): IQueryResult" location="521,527" size="184,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.4672489082969432" distanceFromWire="-6.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.2" size="33,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.4/@children.0/@sourceConnections.1/@children.1/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.1/@children.1/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.1/@children.1/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.1/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="putQueryRunner" id="org.exist.eclipse.auto.connection/IConnectionPool#putQueryRunner(Lorg.exist.eclipse.auto.connection.IQueryRunner;)" source="//@children.4/@children.0" target="//@children.5/@children.1" targetEnd="//@children.4/@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.4/@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual" associatedMethod="putQueryRunner(IQueryRunner)" associatedSequenceNumber="1.2.1.3">
+        <children xsi:type="editmodel:SequenceEndEditModel" location="4,117" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.4/@children.0/@sourceConnections.2/@children.0/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.2/@children.0/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.2/@children.0/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.2/@children.0/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" name="putQueryRunner(IQueryRunner)" location="512,574" size="155,14" automaticRelocationAllowed="false" locationOnWireFromSource="0.8137254901960784" distanceFromWire="-9.0"/>
+          <children xsi:type="editmodel:LabelEditModel" name="1.2.1.3" size="33,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+        <children xsi:type="editmodel:SequenceEndEditModel" anchorKind="FixedAtEdge" userLabel="//@children.4/@children.0/@sourceConnections.2/@children.1/@children.0" methodLabel="//@children.4/@children.0/@sourceConnections.2/@children.1/@children.1" sequenceNumberLabel="//@children.4/@children.0/@sourceConnections.2/@children.1/@children.2" statementExpression="//@children.4/@children.0/@sourceConnections.2/@children.1/@children.3">
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:LabelEditModel" size="0,14"/>
+          <children xsi:type="editmodel:MessageLabelEditModel" size="0,14"/>
+        </children>
+      </sourceConnections>
+    </children>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="ConnectionPool" location="555,20" size="123,794" id="org.exist.eclipse.auto.connection/ConnectionPool">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.4/@children.0/@sourceConnections.0" location="53,470" size="16,40" sequenceItemContainer="//@children.5"/>
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.4/@children.0/@sourceConnections.2" location="53,570" size="16,40" sequenceItemContainer="//@children.5"/>
+  </children>
+  <children xsi:type="editmodel:InstanceEditModel" name="IQueryRunner" location="677,20" size="116,794" id="org.exist.eclipse.auto.connection/IQueryRunner">
+    <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.4/@children.0/@sourceConnections.1" location="50,520" size="16,40" sequenceItemContainer="//@children.6"/>
+  </children>
+  <diagramOptions xsi:type="options:SequenceDiagramOptions" level="0" properties="Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <sequenceDiagramPreferences showPopupBars="true" showConnectionHandles="true"/>
+</editmodel:SequenceDiagramEditModel>

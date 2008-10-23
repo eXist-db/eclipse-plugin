@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.exist.eclipse.browse" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.exist.eclipse.browse" id="createdocument" name="createdocument"/>
+      </appinfo>
+      <documentation>
+         This extension will show in the &quot;Create Document&quot; wizard as a choice, which you can selected. If your choice will selected, then on your provider is going to called the create method. Their exist the two classes CreateXmlResource and CreateBinaryResource. This are standard implementations for creating the two different types of document in the xmldb.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="create" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="create">
+      <complexType>
+         <sequence>
+            <element ref="description" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Name of the document type.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.exist.eclipse.browse.create.ICreateDocument"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="default" type="string">
+            <annotation>
+               <documentation>
+                  The predefined document name.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="description" type="string">
+      <annotation>
+         <documentation>
+            an optional subelement whose body contains a short text describing what the wizard will do when started
+         </documentation>
+      </annotation>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         Release 0.4.4
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;create
+    class=&quot;org.exist.eclipse.browse.create.CreateXmlResource&quot;
+    name=&quot;XML Resource&quot;&gt;
+&lt;/create&gt;
+      </documentation>
+   </annotation>
+
+
+
+
+</schema>

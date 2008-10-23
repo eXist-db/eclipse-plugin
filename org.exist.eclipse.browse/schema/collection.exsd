@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.exist.eclipse.browse">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.exist.eclipse.browse" id="collection" name="Collection"/>
+      </appInfo>
+      <documentation>
+         On the browse view you could add an extension to the context menu on a browse item.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <complexType>
+         <sequence>
+            <element ref="browse" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="browse">
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of the context menu.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="showOn" use="required">
+            <annotation>
+               <documentation>
+                  On which grade the entry will show:
+ - root: Only on the root element
+ - collection: On all collections except the root element
+ - all: On all collections
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="root">
+                  </enumeration>
+                  <enumeration value="collection">
+                  </enumeration>
+                  <enumeration value="all">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class, which must implement for this extension.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.exist.eclipse.browse.browse.IBrowseListener"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="icon" type="string">
+            <annotation>
+               <documentation>
+                  Icon of the menu entry.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="resource"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="isMultiselect" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="false">
+                  </enumeration>
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         0.1
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;extension
+         point=&quot;org.exist.eclipse.browse.collection&quot;&gt;
+      &lt;browse
+            class=&quot;org.exist.eclipse.browse.internal.views.document.DocumentBrowseListener&quot;
+            id=&quot;org.exist.eclipse.browse.document&quot;
+            name=&quot;Show&quot;&gt;
+      &lt;/browse&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         The extension class must implement the interface org.exist.eclipse.browse.browse.IBrowseListener
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         See plug-in org.exist.eclipse.browse.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         
+      </documentation>
+   </annotation>
+
+</schema>

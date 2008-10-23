@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   <extension-point id="collection" name="Collection" schema="schema/collection.exsd"/>
+   <extension-point id="document" name="Document" schema="schema/document.exsd"/>
+   <extension-point id="connection" name="Connection" schema="schema/connection.exsd"/>
+   <extension-point id="createdocument" name="createdocument" schema="schema/createdocument.exsd"/>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.exist.eclipse"
+            name="eXist">
+      </category>
+      <view
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.browse.internal.views.browse.BrowseView"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.browse.internal.views.browse.BrowseView"
+            name="Browse View">
+      </view>
+      <view
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.browse.internal.views.document.DocumentView"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.browse.internal.views.document.DocumentView"
+            name="Document View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.documentProviders">
+      <provider
+            class="org.exist.eclipse.browse.internal.edit.StorageProvider"
+            id="org.exist.eclipse.browse.documentprovider"
+            inputTypes="org.exist.eclipse.browse.internal.edit.DocumentStorageEditorInput">
+      </provider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.exist.eclipse.ExistPerspective">
+         <view
+               id="org.exist.eclipse.browse.internal.views.browse.BrowseView"
+               ratio="0.2"
+               relationship="left"
+               relative="org.eclipse.ui.editorss">
+         </view>
+         <view
+               id="org.exist.eclipse.browse.internal.views.document.DocumentView"
+               ratio="0.5"
+               relationship="bottom"
+               relative="org.exist.eclipse.browse.internal.views.browse.BrowseView"
+               visible="true">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.collection">
+      <browse
+            class="org.exist.eclipse.browse.internal.refresh.RefreshCollectionListener"
+            icon="icons/refresh_icon.png"
+            isMultiselect="true"
+            name="refresh"
+            showOn="all">
+      </browse>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.collection">
+      <browse
+            class="org.exist.eclipse.browse.internal.create.CreateCollectionListener"
+            icon="icons/folder_new.png"
+            isMultiselect="false"
+            name="Create Collection"
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.browse.internal.delete.DeleteCollectionListener"
+            icon="icons/user-trash-full.png"
+            isMultiselect="true"
+            name="Delete"
+            showOn="collection">
+      </browse>
+      <browse
+            class="org.exist.eclipse.browse.internal.move.MoveCollectionListener"
+            icon="icons/move.png"
+            isMultiselect="false"
+            name="Rename/Move"
+            showOn="collection">
+      </browse>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.collection">
+      <browse
+            class="org.exist.eclipse.browse.internal.views.document.DocumentBrowseListener"
+            icon="icons/list_icon.png"
+            isMultiselect="false"
+            name="List Documents"
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.browse.internal.create.CreateDocumentListener"
+            icon="icons/document-new.png"
+            isMultiselect="false"
+            name="Create Document"
+            showOn="all">
+      </browse>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.document">
+      <document
+            class="org.exist.eclipse.browse.internal.delete.DeleteDocumentListener"
+            icon="icons/user-trash-full.png"
+            name="Delete">
+      </document>
+      <document
+            class="org.exist.eclipse.browse.internal.move.RenameDocumentListener"
+            icon="icons/move.png"
+            name="Rename">
+      </document>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.connection">
+      <connection
+            class="org.exist.eclipse.browse.internal.connection.OpenConnectionListener"
+            icon="icons/connection_open.png"
+            isMultiselect="true"
+            name="Open"
+            state="close">
+      </connection>
+      <connection
+            class="org.exist.eclipse.browse.internal.connection.CloseConnectionListener"
+            icon="icons/connection_close.png"
+            isMultiselect="true"
+            name="Close"
+            state="open">
+      </connection>
+      <connection
+            class="org.exist.eclipse.browse.internal.connection.RemoveConnectionListener"
+            icon="icons/user-trash-full.png"
+            isMultiselect="true"
+            name="Delete"
+            state="both">
+      </connection>
+      <connection
+            class="org.exist.eclipse.browse.internal.connection.ChangeConnectionListener"
+            icon="icons/move.png"
+            isMultiselect="false"
+            name="Edit"
+            state="both">
+      </connection>
+      <connection
+            class="org.exist.eclipse.browse.internal.connection.CopyConnectionListener"
+            icon="icons/edit-copy.png"
+            isMultiselect="false"
+            name="Copy"
+            state="both">
+      </connection>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.createdocument">
+      <create
+            class="org.exist.eclipse.browse.create.CreateXmlResource"
+            name="XML Resource">
+      </create>
+      <create
+            class="org.exist.eclipse.browse.create.CreateBinaryResource"
+            name="Binary Resource">
+      </create>
+   </extension>
+
+
+</plugin>

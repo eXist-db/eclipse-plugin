@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="project.structure" size="1091,748" id="" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652F736770">
+  <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse" location="95,35" size="617,259" id="org.exist.eclipse">
+    <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse.exception" location="10,42" size="206,60" id="org.exist.eclipse.exception"/>
+    <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse.listener" location="231,48" size="190,60" id="org.exist.eclipse.listener"/>
+    <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse.msg" location="432,56" size="169,60" id="org.exist.eclipse.msg"/>
+    <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse.internal" location="15,125" size="253,113" id="org.exist.eclipse.internal">
+      <children xsi:type="editmodel:PackageEditModel" name="org.exist.eclipse.internal.msg" location="15,32" size="222,60" id="org.exist.eclipse.internal.msg"/>
+    </children>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

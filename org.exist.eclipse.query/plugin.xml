@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.exist.eclipse"
+            name="eXist">
+      </category>
+      <view
+            category="org.exist.eclipse"
+            class="org.exist.eclipse.query.internal.views.QueryView"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.query.internal.views.QueryView"
+            name="Query View">
+      </view>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.collection">
+      <browse
+            class="org.exist.eclipse.query.internal.xquery.browse.RunQueryBrowseListener"
+            icon="icons/query_icon.png"
+            isMultiselect="false"
+            name="Run Query"
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.query.internal.listener.QueryBrowseListener"
+            icon="icons/query_icon.png"
+            isMultiselect="false"
+            name="Run Query (deprecated)"
+            showOn="all">
+      </browse>           
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.exist.eclipse.query.internal.Startup">
+      </startup>
+   </extension>
+   <extension
+         point="org.exist.eclipse.browse.createdocument">
+      <create
+            class="org.exist.eclipse.query.internal.auto.CreateAutoXmlResource"
+            default="automation.eqa"
+            name="Automation Resource">
+      </create>
+   </extension>
+
+</plugin>

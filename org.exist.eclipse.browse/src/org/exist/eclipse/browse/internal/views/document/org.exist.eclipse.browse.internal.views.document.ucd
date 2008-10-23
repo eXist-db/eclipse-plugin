@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1325,760" id="org.exist.eclipse.browse.internal.views.document" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E62726F7773652F736770">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="DocumentView" location="330,420" size="153,103" id="org.exist.eclipse.browse.internal.views.document/DocumentView" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="viewer" id="org.exist.eclipse.browse.internal.views.document/DocumentView#viewer"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="item" id="org.exist.eclipse.browse.internal.views.document/DocumentView#item"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="130,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getItem" id="org.exist.eclipse.browse.internal.views.document/DocumentView#getItem()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.browse.internal.views.document/DocumentView-Standard::Instantiate->org.exist.eclipse.browse.internal.views.document/ViewContentProvider" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,51" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="177,28"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.browse.internal.views.document/DocumentView-Standard::Instantiate->org.exist.eclipse.browse.internal.views.document/ViewLabelProvider" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="153,51" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,42"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.part/ViewPart&lt;-org.exist.eclipse.browse.internal.views.document/DocumentView" source="//@children.0" target="//@children.6" targetEnd="//@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="121,153"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="ViewContentProvider" location="71,443" size="177,57" id="org.exist.eclipse.browse.internal.views.document/ViewContentProvider" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="133,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="elements" id="org.exist.eclipse.browse.internal.views.document/ViewContentProvider#elements"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.browse.internal.views.document/ViewContentProvider-Standard::Call->org.exist.eclipse.browse.internal.views.document/DocumentView*org.exist.eclipse.browse.internal.views.document/ViewContentProvider-Soyatec::Import->org.exist.eclipse.browse.internal.views.document/DocumentView" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Call, Import»" size="64,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="177,8" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,31"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.viewers/ILazyContentProvider&lt;-org.exist.eclipse.browse.internal.views.document/ViewContentProvider" source="//@children.1" target="//@children.3" targetEnd="//@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="89,95"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1" name="ViewLabelProvider" location="540,429" size="164,85" id="org.exist.eclipse.browse.internal.views.document/ViewLabelProvider" runTimeClassModel="getImage(Ljava.lang.Object;),getText(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="138,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getImage" id="org.exist.eclipse.browse.internal.views.document/ViewLabelProvider#getImage(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getText" id="org.exist.eclipse.browse.internal.views.document/ViewLabelProvider#getText(Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.viewers/LabelProvider&lt;-org.exist.eclipse.browse.internal.views.document/ViewLabelProvider" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="80,117"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.1/@sourceConnections.1" name="ILazyContentProvider" location="70,251" size="179,95" id="org.eclipse.jface.viewers/ILazyContentProvider" runTimeClassModel="updateElement(I)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="111,18">
+      <children xsi:type="editmodel:MethodEditModel" name="updateElement" id="org.eclipse.jface.viewers/ILazyContentProvider#updateElement(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.viewers/IContentProvider&lt;-org.eclipse.jface.viewers/ILazyContentProvider" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="89,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="114,113"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@sourceConnections.0" name="IContentProvider" location="45,75" size="229,113" id="org.eclipse.jface.viewers/IContentProvider" runTimeClassModel="dispose(),inputChanged(Lorg.eclipse.jface.viewers.Viewer;Ljava.lang.Object;Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="206,36">
+      <children xsi:type="editmodel:MethodEditModel" name="dispose" id="org.eclipse.jface.viewers/IContentProvider#dispose()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="inputChanged" id="org.eclipse.jface.viewers/IContentProvider#inputChanged(Lorg.eclipse.jface.viewers.Viewer;Ljava.lang.Object;Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="LabelProvider" location="541,240" size="161,117" id="org.eclipse.jface.viewers/LabelProvider" runTimeClassModel="LabelProvider(),getImage(Ljava.lang.Object;),getText(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="138,54">
+      <children xsi:type="editmodel:MethodEditModel" name="LabelProvider" id="org.eclipse.jface.viewers/LabelProvider#LabelProvider()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getImage" id="org.eclipse.jface.viewers/LabelProvider#getImage(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getText" id="org.eclipse.jface.viewers/LabelProvider#getText(Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.2" name="ViewPart" location="285,75" size="318,153" id="org.eclipse.ui.part/ViewPart" runTimeClassModel="saveState(Lorg.eclipse.ui.IMemento;),init(Lorg.eclipse.ui.IViewSite;),init(Lorg.eclipse.ui.IViewSite;Lorg.eclipse.ui.IMemento;),setInitializationData(Lorg.eclipse.core.runtime.IConfigurationElement;Ljava.lang.String;Ljava.lang.Object;),getViewSite()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="295,90">
+      <children xsi:type="editmodel:MethodEditModel" name="getViewSite" id="org.eclipse.ui.part/ViewPart#getViewSite()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="org.eclipse.ui.part/ViewPart#init(Lorg.eclipse.ui.IViewSite;Lorg.eclipse.ui.IMemento;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="org.eclipse.ui.part/ViewPart#init(Lorg.eclipse.ui.IViewSite;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="saveState" id="org.eclipse.ui.part/ViewPart#saveState(Lorg.eclipse.ui.IMemento;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setInitializationData" id="org.eclipse.ui.part/ViewPart#setInitializationData(Lorg.eclipse.core.runtime.IConfigurationElement;Ljava.lang.String;Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

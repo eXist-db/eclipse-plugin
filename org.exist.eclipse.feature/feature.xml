@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.exist.eclipse.feature"
+      label="eXist Core Feature"
+      version="0.6.1"
+      provider-name="eXist"
+      plugin="org.exist.eclipse">
+
+   <description>
+      eXist Core Plugins for Eclipse
+   </description>
+
+   <copyright>
+      Copyright by Pascal Schmidiger &amp; Markus Tanner
+   </copyright>
+
+   <license>
+      The eXist Plugin is released to the public under the terms of
+the GNU LGPL license.
+   </license>
+
+   <url>
+      <update label="eXist Plugin Update Site" url="http://exist.sourceforge.net/plugin-update-site/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface.text" version="3.3.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.exist.eclipse"
+         download-size="11856"
+         install-size="0"
+         version="0.6.1"/>
+
+   <plugin
+         id="org.exist.eclipse.browse"
+         download-size="154"
+         install-size="0"
+         version="0.6.1"/>
+
+   <plugin
+         id="org.exist.eclipse.util"
+         download-size="31"
+         install-size="0"
+         version="0.6.1"/>
+
+</feature>

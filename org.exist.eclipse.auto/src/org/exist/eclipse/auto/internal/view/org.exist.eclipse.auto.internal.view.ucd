@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1118,617" id="org.exist.eclipse.auto.internal.view" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E6175746F2F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="AutomationBlock" location="330,333" size="400,67" id="org.exist.eclipse.auto.internal.view/AutomationBlock" runTimeClassModel="AutomationBlock(Lorg.exist.eclipse.auto.internal.editor.AutomationFormPage;Lorg.exist.eclipse.auto.internal.control.AutoContentProvider;Lorg.exist.eclipse.auto.internal.model.IAutoModel;),modificationCleared(Lorg.exist.eclipse.auto.internal.mod.AutoModEvent;),automationModified(Lorg.exist.eclipse.auto.internal.mod.AutoModEvent;),addModificationListener(Lorg.exist.eclipse.auto.internal.mod.IAutoModificationListener;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="377,72">
+      <children xsi:type="editmodel:MethodEditModel" name="AutomationBlock" id="org.exist.eclipse.auto.internal.view/AutomationBlock#AutomationBlock(Lorg.exist.eclipse.auto.internal.editor.AutomationFormPage;Lorg.exist.eclipse.auto.internal.control.AutoContentProvider;Lorg.exist.eclipse.auto.internal.model.IAutoModel;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.view/AutomationBlock-Standard::Instantiate->org.exist.eclipse.auto.internal.view/QueryDetailsSection" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,33" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="267,141"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.view/AutomationBlock-Standard::Instantiate->org.exist.eclipse.auto.internal.view/QueriesSection" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="214,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="184,103"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.view/AutomationBlock-Standard::Instantiate->org.exist.eclipse.auto.internal.view/AutomationSection" source="//@children.0" target="//@children.3" targetEnd="//@children.0/@sourceConnections.2/@children.2" label="//@children.0/@sourceConnections.2/@children.0" sourceEnd="//@children.0/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" location="332,404" size="61,14" automaticRelocationAllowed="false" locationOnWireFromSource="-5.999999999999999" distanceFromWire="-34.0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="66,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="366,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.auto.internal.view/AutomationBlock-Standard::Instantiate->org.exist.eclipse.auto.internal.view/ToolBarActions" source="//@children.0" target="//@children.6" targetEnd="//@children.0/@sourceConnections.3/@children.2" label="//@children.0/@sourceConnections.3/@children.0" sourceEnd="//@children.0/@sourceConnections.3/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="268,67" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="131,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="org.eclipse.ui.forms/MasterDetailsBlock&lt;-org.exist.eclipse.auto.internal.view/AutomationBlock" source="//@children.0" target="//@children.4" targetEnd="//@children.0/@sourceConnections.4/@children.1" sourceEnd="//@children.0/@sourceConnections.4/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="19,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="139,117"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="QueryDetailsSection" location="30,225" size="267,175" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection" runTimeClassModel="isStale(),commit(Z),setFocus(),focusLost(Lorg.eclipse.swt.events.FocusEvent;),createContents(Lorg.eclipse.swt.widgets.Composite;),setFormInput(Ljava.lang.Object;),dispose(),isDirty(),QueryDetailsSection(Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;),refresh(),initialize(Lorg.eclipse.ui.forms.IManagedForm;),selectionChanged(Lorg.eclipse.ui.forms.IFormPart;Lorg.eclipse.jface.viewers.ISelection;),focusGained(Lorg.eclipse.swt.events.FocusEvent;),modifyText(Lorg.eclipse.swt.events.ModifyEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="244,126">
+      <children xsi:type="editmodel:MethodEditModel" name="QueryDetailsSection" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#QueryDetailsSection(Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initialize" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#initialize(Lorg.eclipse.ui.forms.IManagedForm;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isDirty" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#isDirty()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="refresh" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#refresh()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="modifyText" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#modifyText(Lorg.eclipse.swt.events.ModifyEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="focusGained" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#focusGained(Lorg.eclipse.swt.events.FocusEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="focusLost" id="org.exist.eclipse.auto.internal.view/QueryDetailsSection#focusLost(Lorg.eclipse.swt.events.FocusEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.ui.forms/IDetailsPage&lt;-org.exist.eclipse.auto.internal.view/QueryDetailsSection" source="//@children.1" target="//@children.5" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,95"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1" name="QueriesSection" location="360,210" size="418,103" id="org.exist.eclipse.auto.internal.view/QueriesSection" runTimeClassModel="getTableViewer(),init(),QueriesSection(Lorg.eclipse.swt.widgets.Composite;Lorg.exist.eclipse.auto.internal.model.IAutoModel;Lorg.eclipse.ui.forms.widgets.FormToolkit;Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;),widgetSelected(Lorg.eclipse.swt.events.SelectionEvent;),widgetDefaultSelected(Lorg.eclipse.swt.events.SelectionEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="395,90">
+      <children xsi:type="editmodel:MethodEditModel" name="QueriesSection" id="org.exist.eclipse.auto.internal.view/QueriesSection#QueriesSection(Lorg.eclipse.swt.widgets.Composite;Lorg.exist.eclipse.auto.internal.model.IAutoModel;Lorg.eclipse.ui.forms.widgets.FormToolkit;Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTableViewer" id="org.exist.eclipse.auto.internal.view/QueriesSection#getTableViewer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="org.exist.eclipse.auto.internal.view/QueriesSection#init()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.2" name="AutomationSection" location="30,435" size="434,139" id="org.exist.eclipse.auto.internal.view/AutomationSection" runTimeClassModel="AutomationSection(Lorg.eclipse.swt.widgets.Composite;Lorg.exist.eclipse.auto.internal.model.IAutoModel;Lorg.eclipse.ui.forms.widgets.FormToolkit;Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;),init(),focusGained(Lorg.eclipse.swt.events.FocusEvent;),modifyText(Lorg.eclipse.swt.events.ModifyEvent;),focusLost(Lorg.eclipse.swt.events.FocusEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="411,90">
+      <children xsi:type="editmodel:MethodEditModel" name="AutomationSection" id="org.exist.eclipse.auto.internal.view/AutomationSection#AutomationSection(Lorg.eclipse.swt.widgets.Composite;Lorg.exist.eclipse.auto.internal.model.IAutoModel;Lorg.eclipse.ui.forms.widgets.FormToolkit;Lorg.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="org.exist.eclipse.auto.internal.view/AutomationSection#init()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="modifyText" id="org.exist.eclipse.auto.internal.view/AutomationSection#modifyText(Lorg.eclipse.swt.events.ModifyEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="focusGained" id="org.exist.eclipse.auto.internal.view/AutomationSection#focusGained(Lorg.eclipse.swt.events.FocusEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="focusLost" id="org.exist.eclipse.auto.internal.view/AutomationSection#focusLost(Lorg.eclipse.swt.events.FocusEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.4" name="MasterDetailsBlock" location="210,90" size="191,117" id="org.eclipse.ui.forms/MasterDetailsBlock" runTimeClassModel="createToolBarActions(Lorg.eclipse.ui.forms.IManagedForm;),registerPages(Lorg.eclipse.ui.forms.DetailsPart;),createContent(Lorg.eclipse.ui.forms.IManagedForm;),MasterDetailsBlock(),org.eclipse.ui.forms.MasterDetailsBlock.MDSashForm,dRAGGER_SIZE,createMasterPart(Lorg.eclipse.ui.forms.IManagedForm;Lorg.eclipse.swt.widgets.Composite;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="115,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="dRAGGER_SIZE" id="org.eclipse.ui.forms/MasterDetailsBlock#dRAGGER_SIZE"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="168,36">
+      <children xsi:type="editmodel:MethodEditModel" name="MasterDetailsBlock" id="org.eclipse.ui.forms/MasterDetailsBlock#MasterDetailsBlock()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createContent" id="org.eclipse.ui.forms/MasterDetailsBlock#createContent(Lorg.eclipse.ui.forms.IManagedForm;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="125,141"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.1/@sourceConnections.0" name="IDetailsPage" location="30,75" size="177,95" id="org.eclipse.ui.forms/IDetailsPage" runTimeClassModel="createContents(Lorg.eclipse.swt.widgets.Composite;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="154,18">
+      <children xsi:type="editmodel:MethodEditModel" name="createContents" id="org.eclipse.ui.forms/IDetailsPage#createContents(Lorg.eclipse.swt.widgets.Composite;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.3" name="ToolBarActions" location="467,435" size="311,67" id="org.exist.eclipse.auto.internal.view/ToolBarActions" runTimeClassModel="ToolBarActions(Lorg.eclipse.ui.forms.IManagedForm;Lorg.eclipse.swt.custom.SashForm;Lorg.exist.eclipse.auto.internal.model.IAutoModel;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="288,18">
+      <children xsi:type="editmodel:MethodEditModel" name="ToolBarActions" id="org.exist.eclipse.auto.internal.view/ToolBarActions#ToolBarActions(Lorg.eclipse.ui.forms.IManagedForm;Lorg.eclipse.swt.custom.SashForm;Lorg.exist.eclipse.auto.internal.model.IAutoModel;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

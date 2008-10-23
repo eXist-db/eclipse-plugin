@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="automationresult">
+        <xs:complexType> 
+            <xs:sequence>
+                <xs:element ref="threadcount" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="querycount" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="queries" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="queries">
+        <xs:complexType> 
+            <xs:sequence>
+                <xs:element ref="query" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="query">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="note" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="quantity" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="content" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="avgcompilation" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="avgexecution" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="runs" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="runs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="run" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="run">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="state" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="compilation" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="execution" minOccurs='1' maxOccurs='1'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="threadcount" type="xs:integer" />
+    <xs:element name="querycount" type="xs:integer" />
+    <xs:element name="note" type='xs:string'/>
+    <xs:element name="quantity" type='xs:integer'/> 
+    <xs:element name="content" type='xs:string'/>
+    <xs:element name="state" type='xs:string'/>
+    <xs:element name="compilation" type='xs:integer'/>
+    <xs:element name="execution" type='xs:integer'/>
+    <xs:element name="avgcompilation" type="xs:integer" />
+    <xs:element name="avgexecution" type="xs:integer" />
+    
+</xs:schema>

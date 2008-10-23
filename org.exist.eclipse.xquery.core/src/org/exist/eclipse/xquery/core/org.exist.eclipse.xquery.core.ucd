@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="922,659" id="org.exist.eclipse.xquery.core" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E7871756572792E636F72652F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="XQueryCorePlugin" location="195,378" size="196,139" id="org.exist.eclipse.xquery.core/XQueryCorePlugin" runTimeClassModel="stop(Lorg.osgi.framework.BundleContext;),start(Lorg.osgi.framework.BundleContext;),XQueryCorePlugin(),getDefault(),pLUGIN_ID">
+    <children xsi:type="editmodel:CompartmentEditModel" size="104,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="pLUGIN_ID" id="org.exist.eclipse.xquery.core/XQueryCorePlugin#pLUGIN_ID"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="173,72">
+      <children xsi:type="editmodel:MethodEditModel" name="XQueryCorePlugin" id="org.exist.eclipse.xquery.core/XQueryCorePlugin#XQueryCorePlugin()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDefault" id="org.exist.eclipse.xquery.core/XQueryCorePlugin#getDefault()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="start" id="org.exist.eclipse.xquery.core/XQueryCorePlugin#start(Lorg.osgi.framework.BundleContext;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stop" id="org.exist.eclipse.xquery.core/XQueryCorePlugin#stop(Lorg.osgi.framework.BundleContext;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="XQueryLanguageToolkit" location="593,396" size="214,121" id="org.exist.eclipse.xquery.core/XQueryLanguageToolkit" runTimeClassModel="getNatureId(),getDefault(),getLanguageContentType(),getLanguageName()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="191,72">
+      <children xsi:type="editmodel:MethodEditModel" name="getDefault" location="355,270" id="org.exist.eclipse.xquery.core/XQueryLanguageToolkit#getDefault()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguageContentType" id="org.exist.eclipse.xquery.core/XQueryLanguageToolkit#getLanguageContentType()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguageName" id="org.exist.eclipse.xquery.core/XQueryLanguageToolkit#getLanguageName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNatureId" id="org.exist.eclipse.xquery.core/XQueryLanguageToolkit#getNatureId()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.core/AbstractLanguageToolkit&lt;-org.exist.eclipse.xquery.core/XQueryLanguageToolkit" source="//@children.1" target="//@children.5" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="100,43"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="XQueryNature" location="401,428" size="132,57" id="org.exist.eclipse.xquery.core/XQueryNature" runTimeClassModel="nATURE_ID">
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="nATURE_ID" location="46,22" id="org.exist.eclipse.xquery.core/XQueryNature#nATURE_ID"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.core/ScriptNature&lt;-org.exist.eclipse.xquery.core/XQueryNature" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="65,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,43"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0" name="ScriptNature" location="406,315" size="121,43" id="org.eclipse.dltk.core/ScriptNature" runTimeClassModel="deconfigure(),project,setProject(Lorg.eclipse.core.resources.IProject;),ScriptNature(),configure(),getProject()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.core.resources/IProjectNature&lt;-org.eclipse.dltk.core/ScriptNature" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,149"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageAttributes="true" showStaticAttributes="true" showStaticMethods="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@sourceConnections.0" name="IProjectNature" location="390,107" size="154,149" id="org.eclipse.core.resources/IProjectNature" runTimeClassModel="deconfigure(),setProject(Lorg.eclipse.core.resources.IProject;),configure(),getProject()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="119,72">
+      <children xsi:type="editmodel:MethodEditModel" name="configure" id="org.eclipse.core.resources/IProjectNature#configure()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deconfigure" id="org.eclipse.core.resources/IProjectNature#deconfigure()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getProject" id="org.eclipse.core.resources/IProjectNature#getProject()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setProject" id="org.eclipse.core.resources/IProjectNature#setProject(Lorg.eclipse.core.resources.IProject;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="AbstractLanguageToolkit" location="600,315" size="200,43" id="org.eclipse.dltk.core/AbstractLanguageToolkit" runTimeClassModel="canValidateContent(Lorg.eclipse.core.resources.IResource;),getPreferenceQualifier(),validateSourcePackage(Lorg.eclipse.core.runtime.IPath;Lorg.eclipse.dltk.core.environment.IEnvironment;),canValidateContent(Lorg.eclipse.dltk.core.environment.IFileHandle;),validateSourceModule(Lorg.eclipse.core.resources.IResource;),AbstractLanguageToolkit(),canValidateContent(Ljava.io.File;),languageSupportZIPBuildpath()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.core/IDLTKLanguageToolkit&lt;-org.eclipse.dltk.core/AbstractLanguageToolkit" source="//@children.5" target="//@children.6" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="100,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="150,183"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showStaticMethods="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.5/@sourceConnections.0" name="IDLTKLanguageToolkit" location="550,90" size="300,183" id="org.eclipse.dltk.core/IDLTKLanguageToolkit" runTimeClassModel="canValidateContent(Lorg.eclipse.core.resources.IResource;),getNatureId(),getPreferenceQualifier(),validateSourcePackage(Lorg.eclipse.core.runtime.IPath;Lorg.eclipse.dltk.core.environment.IEnvironment;),canValidateContent(Lorg.eclipse.dltk.core.environment.IFileHandle;),getLanguageContentType(),validateSourceModule(Lorg.eclipse.core.resources.IResource;),canValidateContent(Ljava.io.File;),languageSupportZIPBuildpath(),getLanguageName()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="277,180">
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguageContentType" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#getLanguageContentType()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLanguageName" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#getLanguageName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNatureId" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#getNatureId()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="languageSupportZIPBuildpath" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#languageSupportZIPBuildpath()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="validateSourceModule" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#validateSourceModule(Lorg.eclipse.core.resources.IResource;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="validateSourcePackage" id="org.eclipse.dltk.core/IDLTKLanguageToolkit#validateSourcePackage(Lorg.eclipse.core.runtime.IPath;Lorg.eclipse.dltk.core.environment.IEnvironment;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicMethods="true" showStaticMethods="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

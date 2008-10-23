@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="sourceElementParser" size="918,622" id="org.exist.eclipse.xquery.core.internal.parser" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E7871756572792E636F72652F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="XQuerySourceElementParser" location="135,376" size="264,85" id="org.exist.eclipse.xquery.core.internal.parser/XQuerySourceElementParser" runTimeClassModel="createVisitor(),getNatureId()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="241,36">
+      <children xsi:type="editmodel:MethodEditModel" name="createVisitor" id="org.exist.eclipse.xquery.core.internal.parser/XQuerySourceElementParser#createVisitor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNatureId" id="org.exist.eclipse.xquery.core.internal.parser/XQuerySourceElementParser#getNatureId()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.exist.eclipse.xquery.core.internal.parser/XQuerySourceElementParser-Standard::Instantiate->org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate»" size="61,14" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="264,42" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,58"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.core/AbstractSourceElementParser&lt;-org.exist.eclipse.xquery.core.internal.parser/XQuerySourceElementParser" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="115,43"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="XQuerySourceElementRequestVisitor" location="465,360" size="357,117" id="org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="334,54">
+      <children xsi:type="editmodel:MethodEditModel" name="XQuerySourceElementRequestVisitor" id="org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor#XQuerySourceElementRequestVisitor(Lorg.eclipse.dltk.compiler.ISourceElementRequestor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.statements.Statement;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.statements.Statement;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor&lt;-org.exist.eclipse.xquery.core.internal.parser.visitors/XQuerySourceElementRequestVisitor" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="178,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="159,279"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1" name="AbstractSourceElementParser" location="158,281" size="231,43" id="org.eclipse.dltk.core/AbstractSourceElementParser" runTimeClassModel="setRequestor(Lorg.eclipse.dltk.compiler.ISourceElementRequestor;),setReporter(Lorg.eclipse.dltk.compiler.problem.IProblemReporter;),parseSourceModule(Lorg.eclipse.dltk.compiler.env.ISourceModule;Lorg.eclipse.dltk.core.ISourceModuleInfoCache.ISourceModuleInfo;),AbstractSourceElementParser()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.dltk.core/ISourceElementParser&lt;-org.eclipse.dltk.core/AbstractSourceElementParser" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="115,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="157,131"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPackageAttributes="true" showStaticAttributes="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0" name="ISourceElementParser" location="116,45" size="316,131" id="org.eclipse.dltk.core/ISourceElementParser" runTimeClassModel="setRequestor(Lorg.eclipse.dltk.compiler.ISourceElementRequestor;),setReporter(Lorg.eclipse.dltk.compiler.problem.IProblemReporter;),parseSourceModule(Lorg.eclipse.dltk.compiler.env.ISourceModule;Lorg.eclipse.dltk.core.ISourceModuleInfoCache.ISourceModuleInfo;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="293,54">
+      <children xsi:type="editmodel:MethodEditModel" name="parseSourceModule" id="org.eclipse.dltk.core/ISourceElementParser#parseSourceModule(Lorg.eclipse.dltk.compiler.env.ISourceModule;Lorg.eclipse.dltk.core.ISourceModuleInfoCache.ISourceModuleInfo;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setReporter" id="org.eclipse.dltk.core/ISourceElementParser#setReporter(Lorg.eclipse.dltk.compiler.problem.IProblemReporter;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRequestor" id="org.eclipse.dltk.core/ISourceElementParser#setRequestor(Lorg.eclipse.dltk.compiler.ISourceElementRequestor;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="SourceElementRequestVisitor" location="484,45" size="320,279" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="297,216">
+      <children xsi:type="editmodel:MethodEditModel" name="SourceElementRequestVisitor" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#SourceElementRequestVisitor(Lorg.eclipse.dltk.compiler.ISourceElementRequestor;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.declarations.MethodDeclaration;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.expressions.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.declarations.TypeDeclaration;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.declarations.ModuleDeclaration;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="endvisit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#endvisit(Lorg.eclipse.dltk.ast.statements.Statement;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCurrentMethod" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#getCurrentMethod()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.expressions.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.declarations.ModuleDeclaration;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.statements.Statement;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.declarations.TypeDeclaration;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="visit" id="org.eclipse.dltk.compiler/SourceElementRequestVisitor#visit(Lorg.eclipse.dltk.ast.declarations.MethodDeclaration;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

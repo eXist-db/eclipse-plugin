@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eXist Util
+Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true
+Bundle-Version: 0.6.1
+Bundle-Activator: org.exist.eclipse.util.internal.UtilPlugin
+Require-Bundle: org.eclipse.ui;bundle-version="3.3.0",
+ org.eclipse.core.runtime;bundle-version="3.3.0",
+ org.exist.eclipse,
+ org.exist.eclipse.browse
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: util.jar
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: eXist

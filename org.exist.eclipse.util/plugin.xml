@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   <extension
+         point="org.exist.eclipse.browse.collection">
+      <browse
+            class="org.exist.eclipse.util.internal.backup.BackupBrowseListener"
+            icon="icons/backup.png"
+            isMultiselect="false"
+            name="Backup"
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.util.internal.restore.RestoreBrowseListener"
+            icon="icons/restore.png"
+            isMultiselect="false"
+            name="Restore"
+            showOn="root">
+      </browse>
+   </extension>
+
+</plugin>

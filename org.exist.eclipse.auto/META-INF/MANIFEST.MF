@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eXist Automation
+Bundle-SymbolicName: org.exist.eclipse.auto;singleton:=true
+Bundle-Version: 0.6.1
+Bundle-Activator: org.exist.eclipse.auto.internal.AutoUI
+Bundle-Vendor: eXist
+Require-Bundle: org.eclipse.ui;bundle-version="3.3.0",
+ org.eclipse.core.runtime;bundle-version="3.3.0",
+ org.eclipse.ui.editors;bundle-version="3.3.0",
+ org.eclipse.ui.ide;bundle-version="3.3.0",
+ org.eclipse.jface.text;bundle-version="3.3.0",
+ org.eclipse.core.resources;bundle-version="3.3.0",
+ org.eclipse.ui.forms;bundle-version="3.3.0",
+ org.eclipse.core.filesystem;bundle-version="1.1.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/jdom.jar,
+ lib/endorsed/xercesImpl-2.9.1.jar,
+ .
+Export-Package: org.exist.eclipse.auto.connection,
+ org.exist.eclipse.auto.data,
+ org.exist.eclipse.auto.query

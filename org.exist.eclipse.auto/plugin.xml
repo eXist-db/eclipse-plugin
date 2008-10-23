@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.exist.eclipse.auto.internal.editor.AutomationEditor"
+            extensions="eqa"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.auto.editos.AutomationEditor"
+            name="Automation Editor">
+      </editor>
+      <editor
+            class="org.exist.eclipse.auto.internal.result.editor.ResultEditor"
+            extensions="eqar"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.auto.editor.ResultEditor"
+            name="Automation Result Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="org.exist.eclipse.auto.internal.wizard.AutomationNewWizard"
+            icon="icons/exist_icon.gif"
+            id="org.exist.eclipse.auto.internal.wizard.AutomationNewWizard"
+            name="Automation">
+      </wizard>
+   </extension>
+
+</plugin>

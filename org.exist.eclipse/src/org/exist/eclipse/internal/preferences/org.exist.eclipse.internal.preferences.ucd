@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1025,369" id="org.exist.eclipse.internal.preferences" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652F6D6163">
+  <children xsi:type="editmodel:ClassEditModel" name="PreferenceInitializer" location="75,60" size="150,67" id="org.exist.eclipse.internal.preferences/PreferenceInitializer" runTimeClassModel="initializeDefaultPreferences()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="127,18">
+      <children xsi:type="editmodel:MethodEditModel" name="initializeDefaultPreferences" id="org.exist.eclipse.internal.preferences/PreferenceInitializer#initializeDefaultPreferences()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DefaultExistPluginPreferencePage" location="75,175" size="219,67" id="org.exist.eclipse.internal.preferences/DefaultExistPluginPreferencePage" runTimeClassModel="DefaultExistPluginPreferencePage()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="150,18">
+      <children xsi:type="editmodel:MethodEditModel" name="DefaultExistPluginPreferencePage" id="org.exist.eclipse.internal.preferences/DefaultExistPluginPreferencePage#DefaultExistPluginPreferencePage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage&lt;-org.exist.eclipse.internal.preferences/DefaultExistPluginPreferencePage" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="219,33" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,148"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="ExistPluginPreferencePage" location="345,60" size="181,182" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage" runTimeClassModel="ExistPluginPreferencePage(),init(Lorg.eclipse.ui.IWorkbench;),org.exist.eclipse.internal.preferences.ExistPluginPreferencePage.UserSuffixFieldEditor,createControl(Lorg.eclipse.swt.widgets.Composite;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,54">
+      <children xsi:type="editmodel:MethodEditModel" name="ExistPluginPreferencePage" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage#ExistPluginPreferencePage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="createControl" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage#createControl(Lorg.eclipse.swt.widgets.Composite;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage#init(Lorg.eclipse.ui.IWorkbench;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="153,69">
+      <children xsi:type="editmodel:ClassEditModel" name="UserSuffixFieldEditor" size="153,67" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage$UserSuffixFieldEditor" runTimeClassModel="UserSuffixFieldEditor(Ljava.lang.String;Ljava.lang.String;Lorg.eclipse.swt.widgets.Composite;)">
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <children xsi:type="editmodel:CompartmentEditModel" size="105,18">
+          <children xsi:type="editmodel:MethodEditModel" name="UserSuffixFieldEditor" id="org.exist.eclipse.internal.preferences/ExistPluginPreferencePage$UserSuffixFieldEditor#UserSuffixFieldEditor(Ljava.lang.String;Ljava.lang.String;Lorg.eclipse.swt.widgets.Composite;)"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+      </children>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

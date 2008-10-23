@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eXist Browse
+Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true
+Bundle-Version: 0.6.1
+Bundle-Activator: org.exist.eclipse.browse.internal.BrowsePlugin
+Require-Bundle: org.eclipse.ui;bundle-version="3.3.0",
+ org.eclipse.core.runtime;bundle-version="3.3.0",
+ org.exist.eclipse,
+ org.eclipse.ui.ide;bundle-version="3.3.0",
+ org.eclipse.core.resources;bundle-version="3.3.0",
+ org.eclipse.jdt.core;bundle-version="3.3.0",
+ org.eclipse.ui.editors;bundle-version="3.3.0",
+ org.eclipse.jface.text;bundle-version="3.3.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.exist.eclipse.browse.browse,
+ org.exist.eclipse.browse.connection,
+ org.exist.eclipse.browse.create,
+ org.exist.eclipse.browse.document
+Bundle-ClassPath: browse.jar
+Bundle-Vendor: eXist

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1070,733" id="org.exist.eclipse.auto.internal.control" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030206F72672E65786973742E65636C697073652E6175746F2F736770">
+  <children xsi:type="editmodel:ClassEditModel" name="AutoContentProvider" location="192,285" size="229,139" id="org.exist.eclipse.auto.internal.control/AutoContentProvider" runTimeClassModel="getElements(Ljava.lang.Object;),dispose(),AutoContentProvider(Ljava.lang.String;),inputChanged(Lorg.eclipse.jface.viewers.Viewer;Ljava.lang.Object;Ljava.lang.Object;),model,getModel()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="112,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="model" id="org.exist.eclipse.auto.internal.control/AutoContentProvider#model"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="206,72">
+      <children xsi:type="editmodel:MethodEditModel" name="AutoContentProvider" id="org.exist.eclipse.auto.internal.control/AutoContentProvider#AutoContentProvider(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getModel" id="org.exist.eclipse.auto.internal.control/AutoContentProvider#getModel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="dispose" id="org.exist.eclipse.auto.internal.control/AutoContentProvider#dispose()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="inputChanged" id="org.exist.eclipse.auto.internal.control/AutoContentProvider#inputChanged(Lorg.eclipse.jface.viewers.Viewer;Ljava.lang.Object;Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.viewers/IStructuredContentProvider&lt;-org.exist.eclipse.auto.internal.control/AutoContentProvider" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="114,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,95"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.0" name="IStructuredContentProvider" location="199,150" size="215,95" id="org.eclipse.jface.viewers/IStructuredContentProvider" runTimeClassModel="getElements(Ljava.lang.Object;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="162,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getElements" id="org.eclipse.jface.viewers/IStructuredContentProvider#getElements(Ljava.lang.Object;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="AutoLabelProvider" location="461,340" size="161,29" id="org.exist.eclipse.auto.internal.control/AutoLabelProvider" runTimeClassModel="getColumnText(Ljava.lang.Object;I),getColumnImage(Ljava.lang.Object;I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="org.eclipse.jface.viewers/ITableLabelProvider&lt;-org.exist.eclipse.auto.internal.control/AutoLabelProvider" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="80,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="106,113"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@sourceConnections.0" name="ITableLabelProvider" location="435,150" size="213,113" id="org.eclipse.jface.viewers/ITableLabelProvider" runTimeClassModel="getColumnText(Ljava.lang.Object;I),getColumnImage(Ljava.lang.Object;I)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="190,36">
+      <children xsi:type="editmodel:MethodEditModel" name="getColumnImage" id="org.eclipse.jface.viewers/ITableLabelProvider#getColumnImage(Ljava.lang.Object;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getColumnText" id="org.eclipse.jface.viewers/ITableLabelProvider#getColumnText(Ljava.lang.Object;I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=0;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" showMethodsParameterTypes="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>
