@@ -150,9 +150,9 @@ public class LocalConnectionWizardPage extends WizardPage {
 		_copy = copy;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	private String getConnectionName() {
 		return _name.getText();
 	}
@@ -200,10 +200,11 @@ public class LocalConnectionWizardPage extends WizardPage {
 	private void dialogChanged() {
 		if (getConnectionName().length() < 1) {
 			setErrorState("Name must be specified");
-		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())
-				&& (_copy || (_connection != null && !_connection.getName()
-						.equals(getConnectionName())))) {
-			setErrorState("There exists a connection with the same name.");
+		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
+			if (!(!_copy && _connection != null && _connection.getName()
+					.equals(getConnectionName()))) {
+				setErrorState("There exists a connection with the same name.");
+			}
 		} else if (getUserName().length() < 1) {
 			setErrorState("Username must be specified");
 		} else if (getUri().length() < 1) {

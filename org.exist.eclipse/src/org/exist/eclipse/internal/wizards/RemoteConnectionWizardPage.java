@@ -141,23 +141,23 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		_copy = copy;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	private String getConnectionName() {
-		return _name.getText();
+		return _name.getText().trim();
 	}
 
 	private String getUri() {
-		return _uri.getText();
+		return _uri.getText().trim();
 	}
 
 	private String getUserName() {
-		return _username.getText();
+		return _username.getText().trim();
 	}
 
 	private String getPassword() {
-		return _password.getText();
+		return _password.getText().trim();
 	}
 
 	/**
@@ -167,10 +167,11 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	private void dialogChanged() {
 		if (getConnectionName().length() == 0) {
 			setErrorState("Name must be specified");
-		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())
-				&& (_copy || (_connection != null && !_connection.getName()
-						.equals(getConnectionName())))) {
-			setErrorState("There exists a connection with the same name.");
+		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
+			if (!(!_copy && _connection != null && _connection.getName()
+					.equals(getConnectionName()))) {
+				setErrorState("There exists a connection with the same name.");
+			}
 		} else if (getUserName().length() == 0) {
 			setErrorState("Username must be specified");
 		} else if (getUri().length() == 0) {
