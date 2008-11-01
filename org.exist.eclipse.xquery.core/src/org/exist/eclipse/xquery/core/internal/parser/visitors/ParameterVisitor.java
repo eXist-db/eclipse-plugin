@@ -40,12 +40,15 @@ public class ParameterVisitor implements XPathVisitor {
 				_name = node.getValue();
 				_endPos += node.getToken().endColumn;
 			} else {
-				_startPos = _parser.getStartPosition(0,
-						node.getToken().beginLine);
-				_endPos = _parser.getStartPosition(_startPos,
-						node.getToken().endLine - node.getToken().beginLine);
-				_startPos += (node.getToken().beginColumn - 1);
-				_endPos += (node.getToken().endColumn);
+				if (node.getToken() != null) {
+					_startPos = _parser.getStartPosition(0,
+							node.getToken().beginLine);
+					_endPos = _parser.getStartPosition(_startPos, node
+							.getToken().endLine
+							- node.getToken().beginLine);
+					_startPos += (node.getToken().beginColumn - 1);
+					_endPos += (node.getToken().endColumn);
+				}
 			}
 		} else if (OCCURENCE_INDICATOR.equals(node.toString())) {
 			_name += node.getValue();
