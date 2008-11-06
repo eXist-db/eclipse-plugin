@@ -14,11 +14,15 @@ import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.FormColors;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -177,7 +181,7 @@ public class AutoUI extends AbstractUIPlugin {
 
 	public String getFileInput(String filename) {
 		File fileToOpen = new File(filename);
-		String result = null;
+		StringBuilder result = new StringBuilder();
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
 
 			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(
@@ -188,12 +192,13 @@ public class AutoUI extends AbstractUIPlugin {
 						null);
 
 				byte[] buffer = new byte[4096];
-				ByteArrayOutputStream out = new ByteArrayOutputStream();
+				ByteArrayOutputStream out = null;
 				for (int len; (len = inputStream.read(buffer)) != -1;) {
+					out = new ByteArrayOutputStream();
 					out.write(buffer, 0, len);
+					result.append(new String(out.toByteArray(), Charset.forName("UTF-8").name())
+						.trim());
 				}
-				result = new String(buffer, Charset.forName("UTF-8").name())
-						.trim();
 
 			} catch (CoreException e) {
 				// 
@@ -201,7 +206,23 @@ public class AutoUI extends AbstractUIPlugin {
 				//
 			}
 		}
-		return result;
+		return result.toString();
 	}
+	
+	public void errorDialog(String title, String message, IStatus s) {
+		// if the 'message' resource string and the IStatus' message are the
+		// same,
+		// don't show both in the dialog
+		if (s != null && message.equals(s.getMessage())) {
+			message = null;
+		}
+		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow()
+				.getShell(), title, message, s);
+	}
+
+	public void infoDialog(String title, String message) {
+		Shell shell = getWorkbench().getDisplay().getActiveShell();
+		MessageDialog.openInformation(shell, title, message);
+	}	
 
 }
