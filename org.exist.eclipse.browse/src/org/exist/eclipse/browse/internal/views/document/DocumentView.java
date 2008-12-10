@@ -56,6 +56,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	private IBrowseItem _item;
 	private String _origPartname;
 	private Text _textFilter;
+	private Text _textCount;
 	private Button _buttonSubmit;
 
 	/**
@@ -125,7 +126,6 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_viewer.setLabelProvider(new ViewLabelProvider());
 		_viewer.setUseHashlookup(true);
 		_viewer.setSorter(new NameSorter());
-		createInput();
 		_viewer.getTable().setLinesVisible(true);
 		_viewer.getControl().addKeyListener(new DocumentKeyAdapter(this));
 		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -138,6 +138,16 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		gd.horizontalSpan = 6;
 		_viewer.getTable().setLayoutData(gd);
 
+		// text control - count
+		_textCount = new Text(parent, SWT.LEFT | SWT.BORDER);
+		_textCount.setEnabled(false);
+		gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 6;
+		gd.horizontalAlignment = SWT.FILL;
+		gd.grabExcessHorizontalSpace = true;
+		_textCount.setLayoutData(gd);
+
+		createInput();
 		makeActions();
 		hookContextMenu();
 		contributeToActionBars();
@@ -315,10 +325,11 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 			}
 			_viewer.setItemCount(sorted.size());
 			_viewer.setInput(sorted.toArray(new String[sorted.size()]));
-
+			_textCount.setText("Count: " + sorted.size());
 		} else {
 			_viewer.setItemCount(0);
 			_viewer.setInput(new String[0]);
+			_textCount.setText("Count: 0");
 		}
 	}
 
