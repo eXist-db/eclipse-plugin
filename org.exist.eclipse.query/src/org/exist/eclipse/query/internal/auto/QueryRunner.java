@@ -5,6 +5,8 @@ package org.exist.eclipse.query.internal.auto;
 
 import javax.xml.transform.OutputKeys;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.auto.connection.IQueryRunner;
 import org.exist.eclipse.auto.query.IQueryResult;
@@ -12,7 +14,10 @@ import org.exist.eclipse.auto.query.State;
 import org.exist.eclipse.browse.browse.BrowseHelper;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.exception.ConnectionException;
+import org.exist.eclipse.query.internal.QueryPlugin;
 import org.xmldb.api.base.CompiledExpression;
+import org.xmldb.api.base.ResourceSet;
+import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XQueryService;
 
 /**
@@ -40,6 +45,7 @@ public class QueryRunner implements IQueryRunner {
 	public IQueryResult runQuery(IQueryResult result) {
 
 		XQueryService service;
+		ResourceSet resourceSet = null;
 		try {
 			IBrowseItem item = BrowseHelper.getBrowseItem(_connection, result
 					.getQuery().getCollection());
@@ -54,14 +60,28 @@ public class QueryRunner implements IQueryRunner {
 					.getQuery());
 			long t1 = System.currentTimeMillis();
 			tCompiled = t1 - t0;
-			service.execute(compiled);
+			resourceSet = service.execute(compiled);
 			long tResult = System.currentTimeMillis() - t1;
 			result.setQueryState(State.SUCCESS);
 			result.setCompileTime(tCompiled);
 			result.setExecutionTime(tResult);
 
 		} catch (Exception e) {
+			String message = "Error while run query";
+			Status status = new Status(IStatus.ERROR, QueryPlugin.getId(),
+					message, e);
+			QueryPlugin.getDefault().getLog().log(status);
+			// QueryPlugin.getDefault().errorDialog(message, e.getMessage(),
+			// status);
 			result.setQueryState(State.FAILURE);
+		} finally {
+			if (resourceSet != null) {
+				try {
+					resourceSet.clear();
+				} catch (XMLDBException e) {
+					// do nothing
+				}
+			}
 		}
 		return result;
 	}
