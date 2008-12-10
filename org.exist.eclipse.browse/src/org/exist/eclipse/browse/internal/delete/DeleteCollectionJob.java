@@ -34,6 +34,7 @@ public class DeleteCollectionJob extends Job {
 
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
+		monitor.beginTask("Delete", _items.length);
 		final Collection<IBrowseItem> removedItems = new ArrayList<IBrowseItem>();
 		try {
 			for (IBrowseItem item : _items) {
@@ -42,6 +43,7 @@ public class DeleteCollectionJob extends Job {
 						.getConnection().getAdapter(IManagementService.class));
 				service.removeCollection(item.getCollection());
 				removedItems.add(item);
+				monitor.worked(1);
 			}
 		} catch (ConnectionException e) {
 			return new Status(Status.ERROR, BrowsePlugin.getId(),
