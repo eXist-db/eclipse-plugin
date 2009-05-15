@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+      		type="org.exist.eclipse.xquery.debug.ui.launchConfigurationTabGroups"
+      		description="Run or debug a xquery script"
+      		class="org.exist.eclipse.xquery.debug.ui.launching.XQueryTabGroup"
+      		id="org.exist.eclipse.xquery.debug.ui.launchConfigurationTabGroups">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelPresentations">
+      <debugModelPresentation
+      		class="org.exist.eclipse.xquery.debug.ui.model.XQueryModelPresentation"
+      		id="org.exist.eclipse.xquery.debug">
+      </debugModelPresentation>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+      		class="org.exist.eclipse.xquery.debug.ui.model.XQueryBreakpointAdapterFactory"
+      		adapterType="org.eclipse.ui.texteditor.ITextEditor">
+      	 <adapter
+      	 		type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+      	 </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+      		name="Data Stack"
+      		icon="icons/full/cview16/datastack_view.gif"
+      		class="org.exist.eclipse.xquery.debug.ui.views.DataStackView"
+      		id="org.exist.eclipse.xquery.debug.ui.DataStackView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+      		targetID="org.eclipse.debug.ui.DebugPerspective">
+      	 <view
+      	 		relative="org.eclipse.debug.ui.VariableView"
+      	 		visible="false"
+      	 		relationship="stack"
+      	 		id="org.exist.eclipse.xquery.debug.ui.DataStackView">
+      	 </view>
+      	 <viewShotcut
+      	 		id="org.exist.eclipse.xquery.debug.ui.DataStackView">
+      	 </viewShotcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+      		name="Debugging XQuery"
+      		description="Debugging XQuery"
+      		id="org.exist.eclipse.debug.ui.debugging"
+      		parentId="org.eclipse.debug.ui.debugging">
+      </context>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.debugModelContextBindings">
+      <modelContextBinding
+      		debugModelId="org.exist.eclipse.xquery.debug"
+      		contextId="org.exist.eclipse.xquery.debug.ui.debugging">
+      </modelContextBinding>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.contextViewBindings">
+      <contextViewBinding
+      		viewId="org.exist.eclipse.xquery.debug.ui.DataStackView"
+      		contextId="org.exist.eclipse.xquery.debug.ui.debugging"
+      		autoClose="true"
+      		autoOpen="true">
+      </contextViewBinding>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+      		icon="icons/full/cview16/xquery.gif"
+      		configTypeID="org.exist.eclipse.xquery.debug.core.launchConfigurationType"
+      		id="org.exist.eclipse.xquery.debug.ui.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
+
+</plugin>
