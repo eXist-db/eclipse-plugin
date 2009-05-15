@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+         sourceLocatorId="org.exist.eclipse.xquery.debug.core.sourceLookupDirector"
+         name="XQuery script"
+         sourcePathComputerId="org.exist.eclipse.xquery.debug.core.sourcePathComputer"
+         delegate="org.exist.eclipse.xquery.debug.core.launching.XQueryLaunchDelegate"
+         modes="run,debug"
+         id="org.exist.eclipse.xquery.debug.core.launchConfigurationType"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourceLocators">
+      <sourceLocator
+         name="XQuery Source Lookup Director"
+         class="org.exist.eclipse.xquery.debug.core.launching.XQuerySourceLookupDirector"
+         id="org.exist.eclipse.xquery.debug.core.sourceLookupDirector"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.sourcePathComputers">
+      <sourcePathComputer
+      		class="org.exist.eclipse.xquery.debug.core.launching.XQuerySourcePathComputerDelegate"
+      		id="org.exist.eclipse.xquery.debug.core.sourcePathComputer">
+      </sourcePathComputer>
+   </extension>
+   <extension
+         point="org.eclipse.core.variables.valueVariables">
+      <variable
+      		initialValue="localhost:8080"
+      		name="eXistExecutable"
+      		description="Path to eXist-db"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+      		markerType="org.exist.eclipse.xquery.debug.core.lineBreakpoint.marker"
+      		class="org.exist.eclipse.xquery.debug.core.model.XQueryLineBreakpoint"
+      		id="org.exist.eclipse.xquery.debug.core.lineBreakpoint"/>
+   </extension>
+   <extension
+         id="XQuery.lineBreakpoint.marker"
+         point="org.eclipse.core.resources.markers">
+      <super
+      	 type="org.eclipse.debug.core.lineBreakpointMarker">
+      </super>
+      <persistent
+      	 value="true">
+      </persistent>
+   </extension>
+
+</plugin>

@@ -43,7 +43,7 @@ import org.exist.eclipse.xquery.debug.core.model.XQueryDebugTarget;
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  *
  */
-public class LaunchDelegate extends LaunchConfigurationDelegate {
+public class XQueryLaunchDelegate extends LaunchConfigurationDelegate {
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String, org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
