@@ -38,6 +38,11 @@ public class DebugXQueryPlugin extends Plugin {
 	
 	private static DebugXQueryPlugin fgDefault = null;
 	
+	public DebugXQueryPlugin() {
+		super();
+		fgDefault = this;
+	}
+
 	public DebugXQueryPlugin(IPluginDescriptor descriptor) {
 		super(descriptor);
 		fgDefault = this;

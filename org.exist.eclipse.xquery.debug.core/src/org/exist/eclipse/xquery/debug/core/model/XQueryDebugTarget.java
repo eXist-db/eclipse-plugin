@@ -72,12 +72,12 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	private boolean fSuspended;
 	private boolean fTerminated;
 
-	public XQueryDebugTarget(ILaunch launch, IProcess process, int requestPort, int eventPort) throws CoreException {
+	public XQueryDebugTarget(ILaunch launch, int requestPort, int eventPort) throws CoreException {
 		super(null);
 		
 		fLaunch = launch;
 		fTarget = this;
-		fProcess = process;
+		fProcess = null; //TODO: any replacement
 		try {
 			fRequestSocket = new Socket("localhost", requestPort);
 			fRequestWriter = new PrintWriter(fRequestSocket.getOutputStream());

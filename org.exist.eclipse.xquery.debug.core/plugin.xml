@@ -28,7 +28,7 @@
    <extension
          point="org.eclipse.core.variables.valueVariables">
       <variable
-      		initialValue="localhost:8080"
+      		initialValue="xmldb:exist://localhost:8080/exist/xmlrpc"
       		name="eXistExecutable"
       		description="Path to eXist-db"/>
    </extension>

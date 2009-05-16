@@ -49,28 +49,11 @@ public class XQueryLaunchDelegate extends LaunchConfigurationDelegate {
 	 * @see org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String, org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
-		List<String> commandList = new ArrayList<String>();
+		int requestPort = 9008;
+		int eventPort = 9007;
 
-		String path = "";
-	
-		int requestPort = -1;
-		int eventPort = -1;
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-			requestPort = findFreePort();
-			eventPort = findFreePort();
-			if (requestPort == -1 || eventPort == -1) {
-				abort("Unable to find free port", null);
-			}
-			commandList.add("-debug");
-			commandList.add("" + requestPort );
-			commandList.add("" + eventPort );
-		} 
-		String[] commandLine = (String[]) 
-		commandList.toArray(new String[commandList.size()]);
-		Process process = DebugPlugin.exec(commandLine, null);
-		IProcess p = DebugPlugin.newProcess(launch, process, path);
-		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-			IDebugTarget target = new XQueryDebugTarget(launch,p,requestPort,eventPort );
+			IDebugTarget target = new XQueryDebugTarget(launch,requestPort,eventPort );
 			launch.addDebugTarget(target);
 		}
 	}
