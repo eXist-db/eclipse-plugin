@@ -19,7 +19,7 @@
  *  
  *  $Id:$
  */
-package org.exist.eclipse.xquery.debug.ui.lauching;
+package org.exist.eclipse.xquery.debug.ui.launching;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -72,7 +72,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		createVerticalSpacer(comp, 3);
 		
 		Label scriptLabel = new Label(comp, SWT.NONE);
-		scriptLabel.setText("&XQuery:");
+		scriptLabel.setText("&XQuery script:");
 		GridData gd = new GridData(GridData.BEGINNING);
 		scriptLabel.setLayoutData(gd);
 		scriptLabel.setFont(font);

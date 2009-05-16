@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
-      		type="org.exist.eclipse.xquery.debug.ui.launchConfigurationTabGroups"
+      		type="org.exist.eclipse.xquery.debug.core.launchConfigurationType"
       		description="Run or debug a xquery script"
       		class="org.exist.eclipse.xquery.debug.ui.launching.XQueryTabGroup"
       		id="org.exist.eclipse.xquery.debug.ui.launchConfigurationTabGroups">
@@ -56,7 +56,7 @@
       <context
       		name="Debugging XQuery"
       		description="Debugging XQuery"
-      		id="org.exist.eclipse.debug.ui.debugging"
+      		id="org.exist.eclipse.xquery.debug.ui.debugging"
       		parentId="org.eclipse.debug.ui.debugging">
       </context>
    </extension>
