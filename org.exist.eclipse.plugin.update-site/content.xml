@@ -1,17 +1,92 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<?metadataRepository class='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'?>
-<repository name='eXist Plugin Update Site' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1'>
+<?metadataRepository version='1.1.0'?>
+<repository name='${p2.metadata.repo.name}' type='org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository' version='1.0.0'>
   <properties size='2'>
     <property name='p2.compressed' value='false'/>
-    <property name='p2.timestamp' value='1224663555344'/>
+    <property name='p2.timestamp' value='1278423006223'/>
   </properties>
   <references size='4'>
-    <repository url='http://exist.sourceforge.net/plugin-update-site/' type='0' options='0'/>
-    <repository url='http://exist.sourceforge.net/plugin-update-site/' type='1' options='0'/>
-    <repository url='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' type='0' options='0'/>
-    <repository url='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' type='1' options='0'/>
+    <repository uri='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' url='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' type='0' options='0'/>
+    <repository uri='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' url='http://iserver.hta.fhz.ch/~iatanner/exist_plugin/' type='1' options='0'/>
+    <repository uri='http://exist.sourceforge.net/plugin-update-site/' url='http://exist.sourceforge.net/plugin-update-site/' type='1' options='0'/>
+    <repository uri='http://exist.sourceforge.net/plugin-update-site/' url='http://exist.sourceforge.net/plugin-update-site/' type='0' options='0'/>
   </references>
-  <units size='22'>
+  <units size='34'>
+    <unit id='org.exist.eclipse.feature.feature.jar' version='0.6.2'>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Core Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Core Plugins for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+        <property name='org.eclipse.update.feature.plugin' value='org.exist.eclipse'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' version='0.6.2'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.exist.eclipse.feature' version='0.6.2'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.exist.eclipse.feature' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse' version='0.6.2'>
+      <update id='org.exist.eclipse' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Base'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse' version='0.6.2'/>
+        <provided namespace='java.package' name='org.exist.backup' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.listener' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.preferences' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xmldb' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xquery.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.base' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.modules' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.backup,org.exist.eclipse,org.exist.eclipse.exception,org.exist.eclipse.listener,org.exist.eclipse.preferences,org.exist.xmldb,org.exist.xquery.util,org.xmldb.api,org.xmldb.api.base,org.xmldb.api.modules&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.internal.BasePlugin&#xA;Bundle-Name: eXist Base&#xA;Bundle-Version: 0.6.2&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: base.jar,lib/core/antlr-2.7.7.jar,lib/core/commons-collections-3.2.1.jar,lib/core/commons-logging-1.1.1.jar,lib/core/commons-pool-1.5.4.jar,lib/core/excalibur-cli-1.0.jar,lib/core/javax.servlet-1.4.jar,lib/core/jEdit-syntax.jar,lib/core/jgroups-all-2.2.6.jar,lib/core/jline-0.9.94.jar,lib/core/jta-1.1.jar,lib/core/log4j-1.2.15.jar,lib/core/quartz-1.6.6.jar,lib/core/stax-api-1.0.1.jar,lib/core/sunxacml-1.2.jar,lib/core/ws-commons-util-1.0.2.jar,lib/core/xmldb.jar,lib/core/xmlrpc-client-3.1.2.jar,lib/core/xmlrpc-common-3.1.2.jar,lib/core/xmlrpc-server-3.1.2.jar,lib/endorsed/resolver-1.2.jar,lib/endorsed/serializer-2.9.1.jar,lib/endorsed/xalan-2.7.1.jar,lib/endorsed/xercesImpl-2.9.1.jar,lib/endorsed/xml-apis.jar,lib/exist.jar,lib/jdom.jar&#xA;Manifest-Version: 1.0
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
     <unit id='org.exist.eclipse.util' version='0.6.1'>
       <update id='org.exist.eclipse.util' range='[0.0.0,0.6.1)' severity='0'/>
       <properties size='2'>
@@ -36,71 +111,7 @@
       <touchpointData size='1'>
         <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.util.internal.UtilPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: eXist Util&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse,org.exist.eclipse.browse&#xA;Bundle-ClassPath: util.jar&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true&#xA;Bundle-Version: 0.6.1&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='tooling.osgi.bundle.default' version='1.0.0' singleton='false'>
-      <hostRequirements size='1'>
-        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' range='0.0.0' multiple='true' greedy='false'/>
-      </hostRequirements>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
-      </properties>
-      <provides size='2'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='tooling.osgi.bundle.default' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.flavor' name='tooling' version='1.0.0'/>
-      </provides>
-      <requires size='1'>
-        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' range='0.0.0' multiple='true' greedy='false'/>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='4'>
-          <instruction key='uninstall'>
-            uninstallBundle(bundle:${artifact})
-          </instruction>
-          <instruction key='configure'>
-            setStartLevel(startLevel:4);
-          </instruction>
-          <instruction key='install'>
-            installBundle(bundle:${artifact})
-          </instruction>
-          <instruction key='unconfigure'>
-
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.util' version='0.4.3'>
-      <update id='org.exist.eclipse.util' range='[0.0.0,0.4.3)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='Util Plug-in'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' version='0.4.3'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.util' version='0.4.3'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='4'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.util' version='0.4.3'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.util.Activator&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Util Plug-in&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse,org.exist.eclipse.browse&#xA;Bundle-ClassPath: util.jar&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true&#xA;Bundle-Version: 0.4.3&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.util.internal.UtilPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: eXist Util&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse,org.exist.eclipse.browse&#xA;Bundle-ClassPath: util.jar&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true&#xA;Bundle-Version: 0.6.1
           </instruction>
           <instruction key='zipped'>
             true
@@ -144,6 +155,332 @@
         Copyright by Pascal Schmidiger &amp; Markus Tanner
       </copyright>
     </unit>
+    <unit id='org.exist.eclipse.query' version='0.6.2'>
+      <update id='org.exist.eclipse.query' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Query'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.query' version='0.6.2'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='11'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.6.2'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.6.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.auto' range='0.6.2'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' range='0.6.2'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.query' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.query.internal.QueryPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-ClassPath: query.jar&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.browse;bundle-version=&quot;0.6.2&quot;,org.exist.eclipse;bundle-version=&quot;0.6.2&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.auto;bundle-version=&quot;0.6.2&quot;,org.exist.eclipse.xquery.ui;bundle-version=&quot;0.6.2&quot;&#xA;Bundle-Name: eXist Query&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.query;singleton:=true&#xA;Bundle-Version: 0.6.2
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.feature.feature.group' version='0.6.1' singleton='false'>
+      <update id='org.exist.eclipse.feature.feature.group' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Core Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Core Plugins for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' version='0.6.1'/>
+      </provides>
+      <requires size='11'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' range='[0.6.1,0.6.1]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse' version='0.6.1'>
+      <update id='org.exist.eclipse' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Base'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='13'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse' version='0.6.1'/>
+        <provided namespace='java.package' name='org.exist.backup' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.listener' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.preferences' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xmldb' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xquery.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.base' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.modules' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse' version='0.6.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.backup,org.exist.eclipse,org.exist.eclipse.exception,org.exist.eclipse.listener,org.exist.eclipse.preferences,org.exist.xmldb,org.exist.xquery.util,org.xmldb.api,org.xmldb.api.base,org.xmldb.api.modules&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.internal.BasePlugin&#xA;Bundle-Name: eXist Base&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: base.jar,lib/core/antlr-2.7.6.jar,lib/core/commons-collections-3.1.jar,lib/core/commons-logging-1.0.4.jar,lib/core/commons-pool-1.4.jar,lib/core/excalibur-cli-1.0.jar,lib/core/javax.servlet-1.4.jar,lib/core/jEdit-syntax.jar,lib/core/jgroups-all.jar,lib/core/jline-0_9_5.jar,lib/core/jta.jar,lib/core/log4j-1.2.15.jar,lib/core/quartz-1.6.0.jar,lib/core/stax-api-1.0.1.jar,lib/core/sunxacml.jar,lib/core/xmldb.jar,lib/core/xmlrpc-1.2-patched.jar,lib/endorsed/resolver-1.2.jar,lib/endorsed/serializer-2.9.1.jar,lib/endorsed/xalan-2.7.1.jar,lib/endorsed/xercesImpl-2.9.1.jar,lib/endorsed/xml-apis.jar,lib/exist.jar,lib/jdom.jar
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='eXist' version='0.0.0.20100706153004'>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist XMLDB Plugin'/>
+        <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='eXist' version='0.0.0.20100706153004'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.group' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' range='[0.6.2,0.6.2]'/>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+    </unit>
+    <unit id='org.exist.eclipse' version='0.4.3'>
+      <update id='org.exist.eclipse' range='[0.0.0,0.4.3)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Eclipse Plug-in'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='14'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' version='0.4.3'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse' version='0.4.3'/>
+        <provided namespace='java.package' name='org.exist.backup' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.exception' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.listener' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.msg' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.preferences' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xmldb' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.xquery.util' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.base' version='0.0.0'/>
+        <provided namespace='java.package' name='org.xmldb.api.modules' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='2'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse' version='0.4.3'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.backup,org.exist.eclipse,org.exist.eclipse.exception,org.exist.eclipse.listener,org.exist.eclipse.msg,org.exist.eclipse.preferences,org.exist.xmldb,org.exist.xquery.util,org.xmldb.api,org.xmldb.api.base,org.xmldb.api.modules&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime&#xA;Bundle-Activator: org.exist.eclipse.Activator&#xA;Bundle-Name: Eclipse Plug-in&#xA;Bundle-Version: 0.4.3&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse;singleton:=true&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: base.jar,lib/core/antlr-2.7.6.jar,lib/core/commons-collections-3.1.jar,lib/core/commons-logging-1.0.4.jar,lib/core/commons-pool-1.4.jar,lib/core/excalibur-cli-1.0.jar,lib/core/javax.servlet-1.4.jar,lib/core/jEdit-syntax.jar,lib/core/jgroups-all.jar,lib/core/jline-0_9_5.jar,lib/core/jta.jar,lib/core/log4j-1.2.15.jar,lib/core/quartz-1.6.0.jar,lib/core/stax-api-1.0.1.jar,lib/core/sunxacml.jar,lib/core/xmldb.jar,lib/core/xmlrpc-1.2-patched.jar,lib/endorsed/resolver-1.2.jar,lib/endorsed/serializer-2.9.1.jar,lib/endorsed/xalan-2.7.1.jar,lib/endorsed/xercesImpl-2.9.1.jar,lib/endorsed/xml-apis.jar,lib/exist.jar,lib/jdom.jar&#xA;Eclipse-LazyStart: true
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='tooling.source.default' version='1.0.0' singleton='false'>
+      <hostRequirements size='1'>
+        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='source' range='0.0.0' optional='true' multiple='true' greedy='false'/>
+      </hostRequirements>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
+      </properties>
+      <provides size='2'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='tooling.source.default' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.flavor' name='tooling' version='1.0.0'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='source' range='0.0.0' optional='true' multiple='true' greedy='false'/>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='uninstall'>
+            removeSourceBundle(bundle:${artifact})
+          </instruction>
+          <instruction key='install'>
+            addSourceBundle(bundle:${artifact})
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.browse' version='0.6.2'>
+      <update id='org.exist.eclipse.browse' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Browse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.browse' version='0.6.2'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.browse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.connection' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.create' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.document' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.6.2'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.browse' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.browse.browse,org.exist.eclipse.browse.connection,org.exist.eclipse.browse.create,org.exist.eclipse.browse.document&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse;bundle-version=&quot;0.6.2&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.browse.internal.BrowsePlugin&#xA;Bundle-Name: eXist Browse&#xA;Bundle-Version: 0.6.2&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: browse.jar&#xA;Manifest-Version: 1.0
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.feature.feature.group' version='0.4.3' singleton='false'>
+      <update id='org.exist.eclipse.feature.feature.group' range='[0.0.0,0.4.3)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Plugin'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Plugin for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' version='0.4.3'/>
+      </provides>
+      <requires size='12'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='0.0.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='[0.4.3,0.4.3]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='[0.4.3,0.4.3]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' range='[0.4.3,0.4.3]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' range='[0.4.3,0.4.3]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' range='[0.4.3,0.4.3]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse.query.feature.feature.group' version='0.6.1' singleton='false'>
+      <update id='org.exist.eclipse.query.feature.feature.group' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Query Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Query Plugins for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.group' version='0.6.1'/>
+      </provides>
+      <requires size='22'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.forms' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.filesystem' range='1.1.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='0.6.1'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='0.6.1'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.core' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.ui' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' range='[0.6.1,0.6.1]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.jar' range='[0.6.1,0.6.1]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
     <unit id='org.exist.eclipse.browse' version='0.4.3'>
       <update id='org.exist.eclipse.browse' range='[0.0.0,0.4.3)' severity='0'/>
       <properties size='2'>
@@ -175,7 +512,7 @@
       <touchpointData size='1'>
         <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.browse,org.exist.eclipse.browse.browse,org.exist.eclipse.browse.document&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse,org.eclipse.ui.ide,org.eclipse.core.resources,org.eclipse.jdt.core,org.eclipse.ui.editors,org.eclipse.jface.text&#xA;Bundle-Activator: org.exist.eclipse.browse.Activator&#xA;Bundle-Name: Browse Plug-in&#xA;Bundle-Version: 0.4.3&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: browse.jar&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.browse,org.exist.eclipse.browse.browse,org.exist.eclipse.browse.document&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse,org.eclipse.ui.ide,org.eclipse.core.resources,org.eclipse.jdt.core,org.eclipse.ui.editors,org.eclipse.jface.text&#xA;Bundle-Activator: org.exist.eclipse.browse.Activator&#xA;Bundle-Name: Browse Plug-in&#xA;Bundle-Version: 0.4.3&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: browse.jar&#xA;Eclipse-LazyStart: true
           </instruction>
           <instruction key='zipped'>
             true
@@ -183,15 +520,401 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.exist.eclipse.auto' version='0.6.1'>
-      <update id='org.exist.eclipse.auto' range='[0.0.0,0.6.1)' severity='0'/>
+    <unit id='org.exist.eclipse.xquery.ui' version='0.6.1'>
+      <update id='org.exist.eclipse.xquery.ui' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='XQuery UI'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' version='0.6.1'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.completion' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.context' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.editor' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.result' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.ui' range='0.95.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='0.95.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk' range='0.95.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.ui' version='0.6.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.ui,org.exist.eclipse.xquery.ui.completion,org.exist.eclipse.xquery.ui.context,org.exist.eclipse.xquery.ui.editor,org.exist.eclipse.xquery.ui.result&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.ui;bundle-version=&quot;0.95.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;0.95.0&quot;,org.eclipse.dltk;bundle-version=&quot;0.95.0&quot;,org.exist.eclipse.xquery.core&#xA;Bundle-Activator: org.exist.eclipse.xquery.ui.XQueryUI&#xA;Bundle-Name: XQuery UI&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.ui;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: xquery.ui.jar
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.xquery.ui' version='0.6.2'>
+      <update id='org.exist.eclipse.xquery.ui' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='XQuery UI'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='8'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' version='0.6.2'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.completion' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.context' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.editor' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.result' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='10'>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.ui' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='1.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk' range='2.0.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' range='0.6.2'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.ui' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.ui,org.exist.eclipse.xquery.ui.completion,org.exist.eclipse.xquery.ui.context,org.exist.eclipse.xquery.ui.editor,org.exist.eclipse.xquery.ui.result&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.ui;bundle-version=&quot;1.0.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;1.0.0&quot;,org.eclipse.dltk;bundle-version=&quot;2.0.0&quot;,org.exist.eclipse.xquery.core;bundle-version=&quot;0.6.2&quot;&#xA;Bundle-Activator: org.exist.eclipse.xquery.ui.XQueryUI&#xA;Bundle-Name: XQuery UI&#xA;Bundle-Version: 0.6.2&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.ui;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: xquery.ui.jar&#xA;Manifest-Version: 1.0
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.util' version='0.6.2'>
+      <update id='org.exist.eclipse.util' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Util'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.util' version='0.6.2'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.6.2'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.6.2'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.util' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.util.internal.UtilPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-ClassPath: util.jar&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse;bundle-version=&quot;0.6.2&quot;,org.exist.eclipse.browse;bundle-version=&quot;0.6.2&quot;&#xA;Bundle-Name: eXist Util&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true&#xA;Bundle-Version: 0.6.2
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.xquery.core' version='0.6.1'>
+      <update id='org.exist.eclipse.xquery.core' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='XQuery Core'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' version='0.6.1'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.core' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='0.95.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.core' version='0.6.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.core&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;0.95.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.xquery.core.XQueryCorePlugin&#xA;Bundle-Name: XQuery Core&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.core;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: xquery.core.jar
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.query.feature.feature.group' version='0.6.2' singleton='false'>
+      <update id='org.exist.eclipse.query.feature.feature.group' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Query Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Query Plugins for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.group' version='0.6.2'/>
+      </provides>
+      <requires size='22'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.forms' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.filesystem' range='1.1.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='0.6.1'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='0.6.1'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.core' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.ui' range='0.95.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.jar' range='[0.6.2,0.6.2]'>
+          <filter>
+            (org.eclipse.update.install.features=true)
+          </filter>
+        </required>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse.query' version='0.6.1'>
+      <update id='org.exist.eclipse.query' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Query'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.query' version='0.6.1'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='11'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.6.1'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.6.1'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.auto' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.query' version='0.6.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.query.internal.QueryPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: eXist Query&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.browse;bundle-version=&quot;0.6.1&quot;,org.exist.eclipse;bundle-version=&quot;0.6.1&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.auto,org.exist.eclipse.xquery.ui&#xA;Bundle-ClassPath: query.jar&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.query;singleton:=true&#xA;Bundle-Version: 0.6.1
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.query.feature.feature.jar' version='0.6.2'>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Query Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Query Plugins for Eclipse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.jar' version='0.6.2'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.exist.eclipse.query.feature' version='0.6.2'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.exist.eclipse.query.feature' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse.browse' version='0.6.1'>
+      <update id='org.exist.eclipse.browse' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Browse'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='7'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.browse' version='0.6.1'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.browse' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.connection' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.create' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.browse.document' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.browse' version='0.6.1'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.browse.browse,org.exist.eclipse.browse.connection,org.exist.eclipse.browse.create,org.exist.eclipse.browse.document&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.browse.internal.BrowsePlugin&#xA;Bundle-Name: eXist Browse&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: browse.jar
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.xquery.core' version='0.6.2'>
+      <update id='org.exist.eclipse.xquery.core' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='XQuery Core'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='4'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' version='0.6.2'/>
+        <provided namespace='java.package' name='org.exist.eclipse.xquery.core' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.debug.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='1.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.core' version='0.6.2'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.core&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;1.0.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.xquery.core.XQueryCorePlugin&#xA;Bundle-Name: XQuery Core&#xA;Bundle-Version: 0.6.2&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.core;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: xquery.core.jar&#xA;Manifest-Version: 1.0
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.util' version='0.4.3'>
+      <update id='org.exist.eclipse.util' range='[0.0.0,0.4.3)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='Util Plug-in'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' version='0.4.3'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.util' version='0.4.3'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='4'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.0.0'/>
+        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.0.0'/>
+      </requires>
+      <artifacts size='1'>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.util' version='0.4.3'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='2'>
+          <instruction key='manifest'>
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.util.Activator&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Util Plug-in&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse,org.exist.eclipse.browse&#xA;Bundle-ClassPath: util.jar&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.util;singleton:=true&#xA;Bundle-Version: 0.4.3&#xA;Eclipse-LazyStart: true
+          </instruction>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.auto' version='0.6.2'>
+      <update id='org.exist.eclipse.auto' range='[0.0.0,0.6.2)' severity='0'/>
       <properties size='2'>
         <property name='org.eclipse.equinox.p2.name' value='eXist Automation'/>
         <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
       </properties>
       <provides size='6'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.auto' version='0.6.1'/>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' version='0.6.2'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.auto' version='0.6.2'/>
         <provided namespace='java.package' name='org.exist.eclipse.auto.connection' version='0.0.0'/>
         <provided namespace='java.package' name='org.exist.eclipse.auto.data' version='0.0.0'/>
         <provided namespace='java.package' name='org.exist.eclipse.auto.query' version='0.0.0'/>
@@ -208,13 +931,13 @@
         <required namespace='osgi.bundle' name='org.eclipse.core.filesystem' range='1.1.0'/>
       </requires>
       <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.auto' version='0.6.1'/>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.auto' version='0.6.2'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.auto.connection,org.exist.eclipse.auto.data,org.exist.eclipse.auto.query&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.forms;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.filesystem;bundle-version=&quot;1.1.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.auto.internal.AutoUI&#xA;Bundle-Name: eXist Automation&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.auto;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: lib/jdom.jar,lib/endorsed/xercesImpl-2.9.1.jar,.&#xA;
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.auto.connection,org.exist.eclipse.auto.data,org.exist.eclipse.auto.query&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.forms;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.filesystem;bundle-version=&quot;1.1.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.auto.internal.AutoUI&#xA;Bundle-Name: eXist Automation&#xA;Bundle-Version: 0.6.2&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.auto;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Bundle-ClassPath: lib/jdom.jar,lib/endorsed/xercesImpl-2.9.1.jar,.&#xA;Manifest-Version: 1.0
           </instruction>
         </instructions>
       </touchpointData>
@@ -370,168 +1093,95 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.exist.eclipse.feature.feature.jar' version='0.4.3'>
-      <update id='org.exist.eclipse.feature.feature.jar' range='[0.0.0,0.4.3)' severity='0'/>
-      <properties size='3'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Plugin'/>
-        <property name='org.eclipse.equinox.p2.description' value='eXist Plugin for Eclipse'/>
-        <property name='org.eclipse.update.feature.plugin' value='org.exist.eclipse'/>
+    <unit id='tooling.osgi.bundle.default' version='1.0.0' singleton='false'>
+      <hostRequirements size='1'>
+        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' range='0.0.0' multiple='true' greedy='false'/>
+      </hostRequirements>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
       </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' version='0.4.3'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
-        <provided namespace='org.eclipse.update.feature' name='org.exist.eclipse.feature' version='0.4.3'/>
+      <provides size='2'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='tooling.osgi.bundle.default' version='1.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.flavor' name='tooling' version='1.0.0'/>
       </provides>
-      <filter>
-        (org.eclipse.update.install.features=true)
-      </filter>
+      <requires size='1'>
+        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' range='0.0.0' multiple='true' greedy='false'/>
+      </requires>
+      <touchpoint id='null' version='0.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='4'>
+          <instruction key='uninstall'>
+            uninstallBundle(bundle:${artifact})
+          </instruction>
+          <instruction key='configure'>
+            setStartLevel(startLevel:4);
+          </instruction>
+          <instruction key='install'>
+            installBundle(bundle:${artifact})
+          </instruction>
+          <instruction key='unconfigure'>
+
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='config.a.jre' version='1.6.0' singleton='false'>
+      <hostRequirements size='1'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='a.jre' range='1.6.0'/>
+      </hostRequirements>
+      <properties size='1'>
+        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
+      </properties>
+      <provides size='1'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='config.a.jre' version='1.6.0'/>
+      </provides>
+      <requires size='1'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='a.jre' range='1.6.0'/>
+      </requires>
+      <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='install'>
+
+          </instruction>
+        </instructions>
+      </touchpointData>
+    </unit>
+    <unit id='org.exist.eclipse.auto' version='0.6.1'>
+      <update id='org.exist.eclipse.auto' range='[0.0.0,0.6.1)' severity='0'/>
+      <properties size='2'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Automation'/>
+        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
+      </properties>
+      <provides size='6'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' version='0.6.1'/>
+        <provided namespace='osgi.bundle' name='org.exist.eclipse.auto' version='0.6.1'/>
+        <provided namespace='java.package' name='org.exist.eclipse.auto.connection' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.auto.data' version='0.0.0'/>
+        <provided namespace='java.package' name='org.exist.eclipse.auto.query' version='0.0.0'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+      </provides>
+      <requires size='8'>
+        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.ui.forms' range='3.3.0'/>
+        <required namespace='osgi.bundle' name='org.eclipse.core.filesystem' range='1.1.0'/>
+      </requires>
       <artifacts size='1'>
-        <artifact classifier='org.eclipse.update.feature' id='org.exist.eclipse.feature' version='0.4.3'/>
+        <artifact classifier='osgi.bundle' id='org.exist.eclipse.auto' version='0.6.1'/>
       </artifacts>
       <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
       <touchpointData size='1'>
         <instructions size='1'>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-      <licenses size='1'>
-        <license>
-          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
-        </license>
-      </licenses>
-      <copyright>
-        Copyright by Pascal Schmidiger &amp; Markus Tanner
-      </copyright>
-    </unit>
-    <unit id='org.exist.eclipse' version='0.4.3'>
-      <update id='org.exist.eclipse' range='[0.0.0,0.4.3)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='Eclipse Plug-in'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='14'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' version='0.4.3'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse' version='0.4.3'/>
-        <provided namespace='java.package' name='org.exist.backup' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.exception' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.listener' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.msg' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.preferences' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.xmldb' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.xquery.util' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api.base' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api.modules' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='2'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse' version='0.4.3'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.backup,org.exist.eclipse,org.exist.eclipse.exception,org.exist.eclipse.listener,org.exist.eclipse.msg,org.exist.eclipse.preferences,org.exist.xmldb,org.exist.xquery.util,org.xmldb.api,org.xmldb.api.base,org.xmldb.api.modules&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime&#xA;Bundle-Activator: org.exist.eclipse.Activator&#xA;Bundle-Name: Eclipse Plug-in&#xA;Bundle-Version: 0.4.3&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse;singleton:=true&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: base.jar,lib/core/antlr-2.7.6.jar,lib/core/commons-collections-3.1.jar,lib/core/commons-logging-1.0.4.jar,lib/core/commons-pool-1.4.jar,lib/core/excalibur-cli-1.0.jar,lib/core/javax.servlet-1.4.jar,lib/core/jEdit-syntax.jar,lib/core/jgroups-all.jar,lib/core/jline-0_9_5.jar,lib/core/jta.jar,lib/core/log4j-1.2.15.jar,lib/core/quartz-1.6.0.jar,lib/core/stax-api-1.0.1.jar,lib/core/sunxacml.jar,lib/core/xmldb.jar,lib/core/xmlrpc-1.2-patched.jar,lib/endorsed/resolver-1.2.jar,lib/endorsed/serializer-2.9.1.jar,lib/endorsed/xalan-2.7.1.jar,lib/endorsed/xercesImpl-2.9.1.jar,lib/endorsed/xml-apis.jar,lib/exist.jar,lib/jdom.jar&#xA;Eclipse-LazyStart: true&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
+            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.auto.connection,org.exist.eclipse.auto.data,org.exist.eclipse.auto.query&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.forms;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.filesystem;bundle-version=&quot;1.1.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.auto.internal.AutoUI&#xA;Bundle-Name: eXist Automation&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.auto;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: lib/jdom.jar,lib/endorsed/xercesImpl-2.9.1.jar,.
           </instruction>
         </instructions>
       </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.feature.feature.group' version='0.6.1' singleton='false'>
-      <update id='org.exist.eclipse.feature.feature.group' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='4'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Core Feature'/>
-        <property name='org.eclipse.equinox.p2.description' value='eXist Core Plugins for Eclipse'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' version='0.6.1'/>
-      </provides>
-      <requires size='11'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' range='[0.6.1,0.6.1]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-      <licenses size='1'>
-        <license>
-          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
-        </license>
-      </licenses>
-      <copyright>
-        Copyright by Pascal Schmidiger &amp; Markus Tanner
-      </copyright>
-    </unit>
-    <unit id='org.exist.eclipse.query.feature.feature.group' version='0.6.1' singleton='false'>
-      <update id='org.exist.eclipse.query.feature.feature.group' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='4'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Query Feature'/>
-        <property name='org.eclipse.equinox.p2.description' value='eXist Query Plugins for Eclipse'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-        <property name='org.eclipse.equinox.p2.type.group' value='true'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.group' version='0.6.1'/>
-      </provides>
-      <requires size='22'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.forms' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.filesystem' range='1.1.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='0.6.1'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='0.6.1'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.core' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.debug.ui' range='3.3.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.core' range='0.95.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk' range='0.95.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.dltk.ui' range='0.95.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.auto' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' range='[0.6.1,0.6.1]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query.feature.feature.jar' range='[0.6.1,0.6.1]'>
-          <filter>
-            (org.eclipse.update.install.features=true)
-          </filter>
-        </required>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-      <licenses size='1'>
-        <license>
-          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
-        </license>
-      </licenses>
-      <copyright>
-        Copyright by Pascal Schmidiger &amp; Markus Tanner
-      </copyright>
     </unit>
     <unit id='org.exist.eclipse.query.feature.feature.jar' version='0.6.1'>
       <update id='org.exist.eclipse.query.feature.feature.jar' range='[0.0.0,0.6.1)' severity='0'/>
@@ -568,28 +1218,6 @@
         Copyright by Pascal Schmidiger &amp; Markus Tanner
       </copyright>
     </unit>
-    <unit id='config.a.jre' version='1.6.0' singleton='false'>
-      <hostRequirements size='1'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='a.jre' range='1.6.0'/>
-      </hostRequirements>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
-      </properties>
-      <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='config.a.jre' version='1.6.0'/>
-      </provides>
-      <requires size='1'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='a.jre' range='1.6.0'/>
-      </requires>
-      <touchpoint id='org.eclipse.equinox.p2.native' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='1'>
-          <instruction key='install'>
-
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
     <unit id='org.exist.eclipse.query' version='0.4.3'>
       <update id='org.exist.eclipse.query' range='[0.0.0,0.4.3)' severity='0'/>
       <properties size='2'>
@@ -619,7 +1247,7 @@
       <touchpointData size='1'>
         <instructions size='2'>
           <instruction key='manifest'>
-            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.query.Activator&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Query Plug-in&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse.browse,org.exist.eclipse,org.eclipse.jface.text,org.eclipse.ui.editors,org.eclipse.ui.ide,org.eclipse.jdt.core,org.eclipse.core.resources&#xA;Bundle-ClassPath: query.jar&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.query;singleton:=true&#xA;Bundle-Version: 0.4.3&#xA;Eclipse-LazyStart: true&#xA;
+            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.query.Activator&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: Query Plug-in&#xA;Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,org.exist.eclipse.browse,org.exist.eclipse,org.eclipse.jface.text,org.eclipse.ui.editors,org.eclipse.ui.ide,org.eclipse.jdt.core,org.eclipse.core.resources&#xA;Bundle-ClassPath: query.jar&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.query;singleton:=true&#xA;Bundle-Version: 0.4.3&#xA;Eclipse-LazyStart: true
           </instruction>
           <instruction key='zipped'>
             true
@@ -627,260 +1255,70 @@
         </instructions>
       </touchpointData>
     </unit>
-    <unit id='org.exist.eclipse.browse' version='0.6.1'>
-      <update id='org.exist.eclipse.browse' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Browse'/>
+    <unit id='org.exist.eclipse.feature.feature.group' version='0.6.2' singleton='false'>
+      <update id='org.exist.eclipse.feature.feature.group' range='[0.0.0,0.6.2)' severity='0'/>
+      <properties size='4'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Core Feature'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Core Plugins for Eclipse'/>
         <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='7'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.browse' version='0.6.1'/>
-        <provided namespace='java.package' name='org.exist.eclipse.browse.browse' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.browse.connection' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.browse.create' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.browse.document' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='8'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.browse' version='0.6.1'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.browse.browse,org.exist.eclipse.browse.connection,org.exist.eclipse.browse.create,org.exist.eclipse.browse.document&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.browse.internal.BrowsePlugin&#xA;Bundle-Name: eXist Browse&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.browse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: browse.jar&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.xquery.core' version='0.6.1'>
-      <update id='org.exist.eclipse.xquery.core' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='XQuery Core'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='4'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.core' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' version='0.6.1'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.core' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='8'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.debug.core' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.debug.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='0.95.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.core' version='0.6.1'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.core&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.debug.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;0.95.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.xquery.core.XQueryCorePlugin&#xA;Bundle-Name: XQuery Core&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.core;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: xquery.core.jar&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.xquery.ui' version='0.6.1'>
-      <update id='org.exist.eclipse.xquery.ui' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='XQuery UI'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='8'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.xquery.ui' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' version='0.6.1'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.completion' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.context' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.editor' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.xquery.ui.result' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='10'>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.dltk.ui' range='0.95.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.dltk.core' range='0.95.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.dltk' range='0.95.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.core' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.xquery.ui' version='0.6.1'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.eclipse.xquery.ui,org.exist.eclipse.xquery.ui.completion,org.exist.eclipse.xquery.ui.context,org.exist.eclipse.xquery.ui.editor,org.exist.eclipse.xquery.ui.result&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.dltk.ui;bundle-version=&quot;0.95.0&quot;,org.eclipse.dltk.core;bundle-version=&quot;0.95.0&quot;,org.eclipse.dltk;bundle-version=&quot;0.95.0&quot;,org.exist.eclipse.xquery.core&#xA;Bundle-Activator: org.exist.eclipse.xquery.ui.XQueryUI&#xA;Bundle-Name: XQuery UI&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse.xquery.ui;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: xquery.ui.jar&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='tooling.source.default' version='1.0.0' singleton='false'>
-      <hostRequirements size='1'>
-        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='source' range='0.0.0' optional='true' multiple='true' greedy='false'/>
-      </hostRequirements>
-      <properties size='1'>
-        <property name='org.eclipse.equinox.p2.type.fragment' value='true'/>
-      </properties>
-      <provides size='2'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='tooling.source.default' version='1.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.flavor' name='tooling' version='1.0.0'/>
-      </provides>
-      <requires size='1'>
-        <required namespace='org.eclipse.equinox.p2.eclipse.type' name='source' range='0.0.0' optional='true' multiple='true' greedy='false'/>
-      </requires>
-      <touchpoint id='null' version='0.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='uninstall'>
-            removeSourceBundle(bundle:${artifact})
-          </instruction>
-          <instruction key='install'>
-            addSourceBundle(bundle:${artifact})
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse' version='0.6.1'>
-      <update id='org.exist.eclipse' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Base'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='13'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse' version='0.6.1'/>
-        <provided namespace='java.package' name='org.exist.backup' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.exception' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.listener' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.eclipse.preferences' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.xmldb' version='0.0.0'/>
-        <provided namespace='java.package' name='org.exist.xquery.util' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api.base' version='0.0.0'/>
-        <provided namespace='java.package' name='org.xmldb.api.modules' version='0.0.0'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='2'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse' version='0.6.1'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-ManifestVersion: 2&#xA;Export-Package: org.exist.backup,org.exist.eclipse,org.exist.eclipse.exception,org.exist.eclipse.listener,org.exist.eclipse.preferences,org.exist.xmldb,org.exist.xquery.util,org.xmldb.api,org.xmldb.api.base,org.xmldb.api.modules&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;&#xA;Bundle-Activator: org.exist.eclipse.internal.BasePlugin&#xA;Bundle-Name: eXist Base&#xA;Bundle-Version: 0.6.1&#xA;Bundle-Vendor: eXist&#xA;Bundle-SymbolicName: org.exist.eclipse;singleton:=true&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-ClassPath: base.jar,lib/core/antlr-2.7.6.jar,lib/core/commons-collections-3.1.jar,lib/core/commons-logging-1.0.4.jar,lib/core/commons-pool-1.4.jar,lib/core/excalibur-cli-1.0.jar,lib/core/javax.servlet-1.4.jar,lib/core/jEdit-syntax.jar,lib/core/jgroups-all.jar,lib/core/jline-0_9_5.jar,lib/core/jta.jar,lib/core/log4j-1.2.15.jar,lib/core/quartz-1.6.0.jar,lib/core/stax-api-1.0.1.jar,lib/core/sunxacml.jar,lib/core/xmldb.jar,lib/core/xmlrpc-1.2-patched.jar,lib/endorsed/resolver-1.2.jar,lib/endorsed/serializer-2.9.1.jar,lib/endorsed/xalan-2.7.1.jar,lib/endorsed/xercesImpl-2.9.1.jar,lib/endorsed/xml-apis.jar,lib/exist.jar,lib/jdom.jar&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.query' version='0.6.1'>
-      <update id='org.exist.eclipse.query' range='[0.0.0,0.6.1)' severity='0'/>
-      <properties size='2'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Query'/>
-        <property name='org.eclipse.equinox.p2.provider' value='eXist'/>
-      </properties>
-      <provides size='3'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' version='0.6.1'/>
-        <provided namespace='osgi.bundle' name='org.exist.eclipse.query' version='0.6.1'/>
-        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
-      </provides>
-      <requires size='11'>
-        <required namespace='osgi.bundle' name='org.eclipse.ui' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse.browse' range='0.6.1'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse' range='0.6.1'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jface.text' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.editors' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.ui.ide' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.jdt.core' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='3.3.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse.auto' range='0.0.0'/>
-        <required namespace='osgi.bundle' name='org.exist.eclipse.xquery.ui' range='0.0.0'/>
-      </requires>
-      <artifacts size='1'>
-        <artifact classifier='osgi.bundle' id='org.exist.eclipse.query' version='0.6.1'/>
-      </artifacts>
-      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
-      <touchpointData size='1'>
-        <instructions size='2'>
-          <instruction key='manifest'>
-            Bundle-Vendor: eXist&#xA;Bundle-ManifestVersion: 2&#xA;Bundle-Activator: org.exist.eclipse.query.internal.QueryPlugin&#xA;Bundle-RequiredExecutionEnvironment: J2SE-1.5&#xA;Bundle-Name: eXist Query&#xA;Require-Bundle: org.eclipse.ui;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.runtime;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.browse;bundle-version=&quot;0.6.1&quot;,org.exist.eclipse;bundle-version=&quot;0.6.1&quot;,org.eclipse.jface.text;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.editors;bundle-version=&quot;3.3.0&quot;,org.eclipse.ui.ide;bundle-version=&quot;3.3.0&quot;,org.eclipse.jdt.core;bundle-version=&quot;3.3.0&quot;,org.eclipse.core.resources;bundle-version=&quot;3.3.0&quot;,org.exist.eclipse.auto,org.exist.eclipse.xquery.ui&#xA;Bundle-ClassPath: query.jar&#xA;Bundle-ActivationPolicy: lazy&#xA;Manifest-Version: 1.0&#xA;Bundle-SymbolicName: org.exist.eclipse.query;singleton:=true&#xA;Bundle-Version: 0.6.1&#xA;
-          </instruction>
-          <instruction key='zipped'>
-            true
-          </instruction>
-        </instructions>
-      </touchpointData>
-    </unit>
-    <unit id='org.exist.eclipse.feature.feature.group' version='0.4.3' singleton='false'>
-      <update id='org.exist.eclipse.feature.feature.group' range='[0.0.0,0.4.3)' severity='0'/>
-      <properties size='3'>
-        <property name='org.eclipse.equinox.p2.name' value='eXist Plugin'/>
-        <property name='org.eclipse.equinox.p2.description' value='eXist Plugin for Eclipse'/>
         <property name='org.eclipse.equinox.p2.type.group' value='true'/>
       </properties>
       <provides size='1'>
-        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' version='0.4.3'/>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.group' version='0.6.2'/>
       </provides>
-      <requires size='12'>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='0.0.0'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='[0.4.3,0.4.3]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='[0.4.3,0.4.3]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.query' range='[0.4.3,0.4.3]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' range='[0.4.3,0.4.3]'/>
-        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' range='[0.4.3,0.4.3]'>
+      <requires size='11'>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.ide' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jdt.core' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ui.editors' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.jface.text' range='3.3.0'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.browse' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.util' range='[0.6.2,0.6.2]'/>
+        <required namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' range='[0.6.2,0.6.2]'>
           <filter>
             (org.eclipse.update.install.features=true)
           </filter>
         </required>
       </requires>
       <touchpoint id='null' version='0.0.0'/>
+      <licenses size='1'>
+        <license>
+          The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.
+        </license>
+      </licenses>
+      <copyright>
+        Copyright by Pascal Schmidiger &amp; Markus Tanner
+      </copyright>
+    </unit>
+    <unit id='org.exist.eclipse.feature.feature.jar' version='0.4.3'>
+      <update id='org.exist.eclipse.feature.feature.jar' range='[0.0.0,0.4.3)' severity='0'/>
+      <properties size='3'>
+        <property name='org.eclipse.equinox.p2.name' value='eXist Plugin'/>
+        <property name='org.eclipse.equinox.p2.description' value='eXist Plugin for Eclipse'/>
+        <property name='org.eclipse.update.feature.plugin' value='org.exist.eclipse'/>
+      </properties>
+      <provides size='3'>
+        <provided namespace='org.eclipse.equinox.p2.iu' name='org.exist.eclipse.feature.feature.jar' version='0.4.3'/>
+        <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+        <provided namespace='org.eclipse.update.feature' name='org.exist.eclipse.feature' version='0.4.3'/>
+      </provides>
+      <filter>
+        (org.eclipse.update.install.features=true)
+      </filter>
+      <artifacts size='1'>
+        <artifact classifier='org.eclipse.update.feature' id='org.exist.eclipse.feature' version='0.4.3'/>
+      </artifacts>
+      <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+      <touchpointData size='1'>
+        <instructions size='1'>
+          <instruction key='zipped'>
+            true
+          </instruction>
+        </instructions>
+      </touchpointData>
       <licenses size='1'>
         <license>
           The eXist Plugin is released to the public under the terms of&#xA;the GNU LGPL license.

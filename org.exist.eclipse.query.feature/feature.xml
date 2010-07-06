@@ -49,14 +49,14 @@ the GNU LGPL license.
          id="org.exist.eclipse.auto"
          download-size="1388"
          install-size="0"
-         version="0.6.1"
+         version="0.6.2"
          unpack="false"/>
 
    <plugin
          id="org.exist.eclipse.query"
          download-size="87"
          install-size="0"
-         version="0.6.1"/>
+         version="0.6.2"/>
 
    <plugin
          id="org.exist.eclipse.xquery.core"
