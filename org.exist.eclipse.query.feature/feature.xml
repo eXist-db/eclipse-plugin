@@ -24,7 +24,7 @@ the GNU LGPL license.
 
    <includes
          id="org.exist.eclipse.feature"
-         version="0.6.1"/>
+         version="0.6.2"/>
 
    <requires>
       <import plugin="org.eclipse.ui" version="3.3.0" match="greaterOrEqual"/>
