@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: XQuery debug UI Plug-in
 Bundle-SymbolicName: org.exist.eclipse.xquery.debug.ui;singleton:=true
-Bundle-Version: 0.1.0
+Bundle-Version: 0.6.2
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: eXist-db.org
 Require-Bundle: org.eclipse.debug.core;bundle-version="3.4.1",

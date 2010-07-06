@@ -6,6 +6,7 @@ import org.eclipse.dltk.ui.text.completion.ScriptCompletionProposal;
 import org.eclipse.dltk.ui.text.completion.ScriptCompletionProposalCollector;
 import org.eclipse.dltk.ui.text.completion.ScriptOverrideCompletionProposal;
 import org.eclipse.swt.graphics.Image;
+import org.exist.eclipse.xquery.core.XQueryNature;
 
 /**
  * The collector for content assist.
@@ -47,5 +48,10 @@ public class XQueryCompletionProposalCollector extends
 		return new ScriptOverrideCompletionProposal(scriptProject,
 				compilationUnit, name, paramTypes, start, length, displayName,
 				completionProposal);
+	}
+
+	@Override
+	protected String getNatureId() {
+		return XQueryNature.NATURE_ID;
 	}
 }

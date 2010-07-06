@@ -2,7 +2,7 @@
 <feature
       id="org.exist.eclipse.feature"
       label="eXist Core Feature"
-      version="0.6.1"
+      version="0.6.2"
       provider-name="eXist"
       plugin="org.exist.eclipse">
 
@@ -50,5 +50,13 @@ the GNU LGPL license.
          download-size="31"
          install-size="0"
          version="0.6.1"/>
+
+   <plugin
+         id="org.exist.eclipse.lib"
+         download-size="0"
+         install-size="0"
+         version="0.6.2"
+         fragment="true"
+         unpack="false"/>
 
 </feature>

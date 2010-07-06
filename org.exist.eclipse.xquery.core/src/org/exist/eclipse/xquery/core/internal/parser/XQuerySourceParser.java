@@ -2,6 +2,8 @@ package org.exist.eclipse.xquery.core.internal.parser;
 
 import org.eclipse.dltk.ast.declarations.ModuleDeclaration;
 import org.eclipse.dltk.ast.parser.AbstractSourceParser;
+import org.eclipse.dltk.ast.parser.IModuleDeclaration;
+import org.eclipse.dltk.compiler.env.IModuleSource;
 import org.eclipse.dltk.compiler.problem.IProblemReporter;
 
 /**
@@ -17,12 +19,13 @@ public class XQuerySourceParser extends AbstractSourceParser {
 	public XQuerySourceParser() {
 	}
 
-	public ModuleDeclaration parse(char[] fileName, char[] content0,
-			IProblemReporter reporter) {// throws
-		ModuleDeclaration moduleDeclaration = new ModuleDeclaration(
-				content0.length, true);
-		XQueryParser parser = new XQueryParser(moduleDeclaration, fileName,
-				content0, reporter);
+	@Override
+	public IModuleDeclaration parse(IModuleSource input,
+			IProblemReporter reporter) {
+		ModuleDeclaration moduleDeclaration = new ModuleDeclaration(input.getSourceContents().length()
+				, true);
+		XQueryParser parser = new XQueryParser(moduleDeclaration,input.getFileName().toCharArray(),
+				input.getContentsAsCharArray(), reporter);
 		parser.parse();
 		moduleDeclaration.rebuild();
 		return moduleDeclaration;

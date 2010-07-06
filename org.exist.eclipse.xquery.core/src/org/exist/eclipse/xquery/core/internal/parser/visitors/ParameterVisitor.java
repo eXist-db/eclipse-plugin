@@ -38,7 +38,9 @@ public class ParameterVisitor implements XPathVisitor {
 		} else if (QNAME.equals(node.toString())) {
 			if (_hasAtomicType) {
 				_name = node.getValue();
-				_endPos += node.getToken().endColumn;
+				if(node.getToken()!=null){
+					_endPos += node.getToken().endColumn;					
+				}
 			} else {
 				if (node.getToken() != null) {
 					_startPos = _parser.getStartPosition(0,

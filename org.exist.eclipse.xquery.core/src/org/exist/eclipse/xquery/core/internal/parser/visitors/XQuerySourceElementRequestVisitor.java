@@ -6,7 +6,7 @@ package org.exist.eclipse.xquery.core.internal.parser.visitors;
 import org.eclipse.dltk.ast.statements.Statement;
 import org.eclipse.dltk.compiler.ISourceElementRequestor;
 import org.eclipse.dltk.compiler.SourceElementRequestVisitor;
-import org.eclipse.dltk.compiler.ISourceElementRequestor.FieldInfo;
+import org.eclipse.dltk.compiler.IElementRequestor.FieldInfo;
 import org.exist.eclipse.xquery.core.internal.parser.ast.XQueryFieldDeclaration;
 
 /**

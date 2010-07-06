@@ -2,7 +2,7 @@
 <feature
       id="org.exist.eclipse.query.feature"
       label="eXist Query Feature"
-      version="0.6.1"
+      version="0.6.2"
       provider-name="eXist">
 
    <description>
@@ -62,12 +62,12 @@ the GNU LGPL license.
          id="org.exist.eclipse.xquery.core"
          download-size="234"
          install-size="0"
-         version="0.6.1"/>
+         version="0.6.2"/>
 
    <plugin
          id="org.exist.eclipse.xquery.ui"
          download-size="124"
          install-size="0"
-         version="0.6.1"/>
+         version="0.6.2"/>
 
 </feature>

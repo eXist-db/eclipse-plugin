@@ -20,11 +20,11 @@
    <extension
          point="org.eclipse.core.runtime.adapters">
       <factory
-      		class="org.exist.eclipse.xquery.debug.ui.model.XQueryBreakpointAdapterFactory"
-      		adapterType="org.eclipse.ui.texteditor.ITextEditor">
-      	 <adapter
-      	 		type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
-      	 </adapter>
+            adaptableType="org.eclipse.ui.texteditor.ITextEditor"
+            class="org.exist.eclipse.xquery.debug.ui.model.XQueryBreakpointAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+         </adapter>
       </factory>
    </extension>
    <extension

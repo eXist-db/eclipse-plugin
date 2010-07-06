@@ -3,9 +3,8 @@ package org.exist.eclipse.xquery.ui.internal.completion;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.dltk.codeassist.IAssistParser;
 import org.eclipse.dltk.codeassist.ScriptCompletionEngine;
-import org.eclipse.dltk.compiler.env.ISourceModule;
+import org.eclipse.dltk.compiler.env.IModuleSource;
 import org.eclipse.dltk.core.CompletionProposal;
 import org.eclipse.dltk.core.CompletionRequestor;
 import org.eclipse.dltk.core.DLTKCore;
@@ -13,6 +12,7 @@ import org.eclipse.dltk.core.IField;
 import org.eclipse.dltk.core.IMethod;
 import org.eclipse.dltk.core.IModelElement;
 import org.eclipse.dltk.core.IModelElementVisitor;
+import org.eclipse.dltk.core.IParameter;
 import org.eclipse.dltk.core.IScriptProject;
 import org.eclipse.dltk.core.IType;
 import org.eclipse.dltk.core.ModelException;
@@ -39,7 +39,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 	public XQueryCompletionEngine() {
 	}
 
-	public void complete(ISourceModule module, int position, int pos) {
+	public void complete(IModuleSource module, int position, int pos) {
 		this.actualCompletionPosition = position;
 		this.offset = pos;
 
@@ -123,14 +123,10 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		params = method.getParameters();
 
 		if (params != null && params.length > 0) {
-			char[][] args = new char[params.length][];
-			for (int i = 0; i < params.length; ++i) {
-				args[i] = params[i].toCharArray();
-			}
-			proposal.setParameterNames(args);
+			proposal.setParameterNames(params);
 		}
-		proposal.setName(method.getName().toCharArray());
-		proposal.setCompletion(method.getName().toCharArray());
+		proposal.setName(method.getName());
+		proposal.setCompletion(method.getName());
 		proposal.setReplaceRange(actualCompletionPosition - offset
 				- prefix.length(), actualCompletionPosition - offset
 				- prefix.length());
@@ -156,7 +152,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 								this.actualCompletionPosition);
 						proposal.setFlags(method.getFlags());
 
-						String[] params = null;
+						IParameter[] params = null;
 						try {
 							params = method.getParameters();
 						} catch (ModelException e) {
@@ -164,11 +160,11 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 						}
 
 						if (params != null && params.length > 0) {
-							char[][] args = new char[params.length][];
-							for (int i = 0; i < params.length; ++i) {
-								args[i] = params[i].toCharArray();
+							String[] paramNames = new String[params.length];
+							for (int i=0; i<params.length; i++) {
+								paramNames[i] = params[i].getName();
 							}
-							proposal.setParameterNames(args);
+							proposal.setParameterNames(paramNames);
 						}
 						break;
 					case IModelElement.FIELD:
@@ -190,8 +186,8 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 						break;
 					}
 				}
-				proposal.setName(name.toCharArray());
-				proposal.setCompletion(name.toCharArray());
+				proposal.setName(name);
+				proposal.setCompletion(name);
 				proposal.setReplaceRange(actualCompletionPosition - offset
 						- prefix.length(), actualCompletionPosition - offset
 						- prefix.length());
@@ -229,22 +225,12 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 	}
 
 	@Override
-	protected String processFieldName(IField field, String token) {
-		return field.getElementName();
-	}
-
-	@Override
 	protected String processMethodName(IMethod method, String token) {
 		return null;
 	}
 
 	@Override
 	protected String processTypeName(IType method, String token) {
-		return null;
-	}
-
-	@Override
-	public IAssistParser getParser() {
 		return null;
 	}
 }
