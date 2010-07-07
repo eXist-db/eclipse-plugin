@@ -13,6 +13,7 @@ import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
+import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.XMLDBException;
 
 /**
@@ -83,10 +84,10 @@ public class BrowseService implements IBrowseService {
 			result.add(_item);
 		}
 		String[] children;
-		try {
+		try {			
 			children = _item.getCollection().listChildCollections();
 			for (String child : children) {
-				IBrowseItem childItem = _item.getChild(child);
+				IBrowseItem childItem = _item.getChild(URIUtils.urlDecodeUtf8(child));
 				result.add(childItem);
 				if (recursive) {
 					Set<IBrowseItem> childResult = IBrowseService.class.cast(
