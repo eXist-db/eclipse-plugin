@@ -5,6 +5,8 @@ package org.exist.eclipse.auto.internal.result.model;
 
 import java.util.ArrayList;
 
+import org.exist.eclipse.auto.query.State;
+
 /**
  * The ResultModel represents the central automation result data unit. Based on
  * this model the form page is put together.
@@ -40,6 +42,11 @@ public interface IResultModel {
 	 * @return query count
 	 */
 	public int getQueryCount();
+	
+	/**
+	 * @return {@link State#SUCCESS}, if all query runs was successful, else {@link State#FAILURE}.
+	 */
+	public State getState();
 
 	/**
 	 * Sets the query results
@@ -75,5 +82,12 @@ public interface IResultModel {
 	 * @return exectution compilation time
 	 */
 	public int getAvgExecTime();
+
+	/**
+	 * Returns the totally result count
+	 * 
+	 * @return
+	 */
+	public long getResultCount();
 
 }

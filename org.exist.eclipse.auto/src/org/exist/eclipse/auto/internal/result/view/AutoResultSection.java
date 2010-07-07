@@ -24,6 +24,8 @@ public class AutoResultSection {
 	private Text _queryCount;
 	private Text _avgCompTime;
 	private Text _avgExecTime;
+	private Text _state;
+	private Text _resultCount;
 	Composite _navigation;
 	IResultModel _model;
 	FormToolkit _toolkit;
@@ -99,12 +101,35 @@ public class AutoResultSection {
 				| GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_avgExecTime.setLayoutData(gd);
+		
+		// successful
+		_toolkit.createLabel(autoClient, "State: ");
+		_state = _toolkit.createText(autoClient, "", SWT.SINGLE
+				| SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
+				| GridData.FILL_HORIZONTAL);
+		gd.widthHint = 10;
+		_state.setLayoutData(gd);
+		
+		// filler
+		_toolkit.createLabel(autoClient, "      ");
+		
+		// resultCount
+		_toolkit.createLabel(autoClient, "Total Result Count: ");
+		_resultCount= _toolkit.createText(autoClient, "", SWT.SINGLE
+				| SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
+				| GridData.FILL_HORIZONTAL);
+		gd.widthHint = 10;
+		_resultCount.setLayoutData(gd);
 
 		autoSection.setClient(autoClient);
 		_queryCount.setText(Integer.toString(_model.getQueryCount()));
 		_threadCount.setText(Integer.toString(_model.getThreadCount()));
 		_avgCompTime.setText(Integer.toString(_model.getAvgCompTime()) + " ms");
 		_avgExecTime.setText(Integer.toString(_model.getAvgExecTime()) + " ms");
+		_state.setText(_model.getState().name());
+		_resultCount.setText(Long.toString(_model.getResultCount()));
 	}
 
 }

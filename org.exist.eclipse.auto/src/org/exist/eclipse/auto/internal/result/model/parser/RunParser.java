@@ -50,6 +50,8 @@ public class RunParser implements AutoTags, ContentHandler {
 					.parseInt(_value.toString().trim()));
 		} else if (EXECUTION.equals(name)) {
 			_runEntity.setExecution(Integer.parseInt(_value.toString().trim()));
+		}else if(RESULT_COUNT.equals(name)){
+			_runEntity.setResultCount(Long.parseLong(_value.toString().trim()));
 		}
 		_value = new StringBuilder(50);
 	}

@@ -133,10 +133,15 @@ public class ResultProcessor implements AutoTags {
 			Element executionElement = new Element(EXECUTION);
 			Long execTime = queryResult.getExecutionTime();
 			executionElement.setText(Long.toString(execTime));
+			
+			Element countElement = new Element(RESULT_COUNT);
+			long resultCount = queryResult.getResultCount();
+			countElement.setText(Long.toString(resultCount));
 
 			runElement.addContent(stateElement);
 			runElement.addContent(compilationElement);
 			runElement.addContent(executionElement);
+			runElement.addContent(countElement);
 
 			writer.println(outputter.outputString(runElement));
 		}

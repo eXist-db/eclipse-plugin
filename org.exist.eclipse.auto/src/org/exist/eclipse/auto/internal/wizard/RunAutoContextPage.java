@@ -174,9 +174,6 @@ public class RunAutoContextPage extends WizardPage {
 				setMessage("");
 
 			}
-			RunAutoCollectionPage page = (RunAutoCollectionPage) super
-					.getNextPage();
-			page.setSelectedContext(getAutoContext());
 			super.setPageComplete(true);
 		}
 	}

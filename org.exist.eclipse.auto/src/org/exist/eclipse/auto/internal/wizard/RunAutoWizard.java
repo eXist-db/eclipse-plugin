@@ -21,16 +21,14 @@ public class RunAutoWizard extends Wizard implements IWorkbenchWizard {
 	static final String WIZARD_TITLE = "Run Automation";
 	static final String WIZARD_DESCRIPTION = "This wizard initializes the execution of an automation.";
 	private RunAutoContextPage _contextWizardPage;
-	private RunAutoCollectionPage _collectionWizardPage;
 	private IAutoModel _autoModel;
 
 	@Override
 	public boolean performFinish() {
 		IAutoContext autoContext = _contextWizardPage.getAutoContext();
-		String target = _contextWizardPage.getTarget();
-		String collection = _collectionWizardPage.getSelection();
+		String target = _contextWizardPage.getTarget();		
 		AutomationHandler.getInstance().run(_autoModel, autoContext,
-				collection, target);
+				autoContext.getRootCollection(), target);
 		return true;
 	}
 
@@ -45,13 +43,11 @@ public class RunAutoWizard extends Wizard implements IWorkbenchWizard {
 
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_contextWizardPage = new RunAutoContextPage();
-		_collectionWizardPage = new RunAutoCollectionPage();
 		setNeedsProgressMonitor(true);
 	}
 
 	public void addPages() {
 		addPage(_contextWizardPage);
-		addPage(_collectionWizardPage);
 	}
 
 }

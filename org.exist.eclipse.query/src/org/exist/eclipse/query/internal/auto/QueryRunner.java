@@ -65,6 +65,7 @@ public class QueryRunner implements IQueryRunner {
 			result.setQueryState(State.SUCCESS);
 			result.setCompileTime(tCompiled);
 			result.setExecutionTime(tResult);
+			result.setResultCount(resourceSet.getSize());
 
 		} catch (Exception e) {
 			String message = "Error while run query";

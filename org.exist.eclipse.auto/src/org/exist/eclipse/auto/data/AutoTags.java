@@ -27,6 +27,7 @@ public interface AutoTags {
 	final String STATE = "state";
 	final String COMPILATION = "compilation";
 	final String EXECUTION = "execution";
+	final String RESULT_COUNT = "resultcount";
 	final String AVGCOMPILATION = "avgcompilation";
 	final String AVGEXECUTION = "avgexecution";
 

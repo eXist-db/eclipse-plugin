@@ -16,6 +16,7 @@ public class RunEntity {
 	int _compilation;
 	int _execution;
 	int _index;
+	private long _resultCount;
 
 	/**
 	 * RunEntity Constructor
@@ -58,6 +59,13 @@ public class RunEntity {
 	public int getIndex() {
 		return _index;
 	}
+	
+	/**
+	 * @return the count of query result.
+	 */
+	public long getResultCount(){
+		return _resultCount;
+	}
 
 	/**
 	 * Sets the state
@@ -93,6 +101,15 @@ public class RunEntity {
 	 */
 	public void setIndex(int index) {
 		_index = index;
+	}
+
+	/**
+	 * Set the count of query result.
+	 * 
+	 * @param resultCount
+	 */
+	public void setResultCount(long resultCount) {
+		_resultCount = resultCount;
 	}
 
 }

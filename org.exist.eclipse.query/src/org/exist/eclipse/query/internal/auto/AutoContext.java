@@ -3,18 +3,12 @@
  */
 package org.exist.eclipse.query.internal.auto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.auto.connection.IAutoContext;
 import org.exist.eclipse.auto.connection.IQueryRunner;
 import org.exist.eclipse.browse.browse.BrowseHelper;
-import org.exist.eclipse.browse.browse.IBrowseItem;
-import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.query.internal.QueryPlugin;
 
@@ -52,25 +46,8 @@ public class AutoContext implements IAutoContext {
 		return _connection.getName();
 	}
 
-	public Collection<String> getCollections() {
-		Collection<String> collections = new ArrayList<String>();
-
-		try {
-			IBrowseItem rootBrowseItem = BrowseHelper
-					.getRootBrowseItem(_connection);
-			IBrowseService service = (IBrowseService) rootBrowseItem
-					.getAdapter(IBrowseService.class);
-			Set<IBrowseItem> children = service.getChildren(true, true);
-			for (IBrowseItem item : children) {
-				collections.add(item.getPath());
-			}
-		} catch (ConnectionException e) {
-			QueryPlugin.getDefault().getLog().log(
-					new Status(IStatus.ERROR, QueryPlugin.getId(),
-							"Failure while fill items.", e));
-		}
-
-		return collections;
+	public String getRootCollection(){
+		return BrowseHelper.getRootBrowseItem(_connection).getPath();
 	}
 
 	@Override

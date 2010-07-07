@@ -3,7 +3,6 @@
  */
 package org.exist.eclipse.auto.connection;
 
-import java.util.Collection;
 
 /**
  * The IAutoContext represents a connection to the db.
@@ -25,12 +24,10 @@ public interface IAutoContext {
 	 * @ query runner
 	 */
 	public IQueryRunner createQueryRunner();
-
+	
 	/**
-	 * Gets all the collections for a specific auto context
-	 * 
-	 * @return Collections
+	 * @return the root collection
 	 */
-	public Collection<String> getCollections();
+	public String getRootCollection();
 
 }

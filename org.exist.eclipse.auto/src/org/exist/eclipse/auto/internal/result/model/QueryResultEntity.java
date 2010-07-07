@@ -5,6 +5,8 @@ package org.exist.eclipse.auto.internal.result.model;
 
 import java.util.ArrayList;
 
+import org.exist.eclipse.auto.query.State;
+
 
 /**
  * QueryResultEntity represents the result of all the runs of a specified query.
@@ -139,5 +141,24 @@ public class QueryResultEntity {
 
 	public void setAvgCompTime(int avgCompTime) {
 		_avgCompTime = avgCompTime;
+	}
+	
+	public boolean isSuccessful(){
+		boolean successful = true;
+		for (RunEntity run : _runs) {
+			if(!run.getState().equals(State.SUCCESS)){
+				successful = false;
+				break;
+			}
+		}
+		return successful;
+	}
+	
+	public long getResultCount(){
+		long count=0;
+		for (RunEntity run : _runs) {
+			count+=run.getResultCount();
+		}
+		return count;
 	}
 }

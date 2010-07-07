@@ -18,6 +18,7 @@ public class QueryResult implements IQueryResult {
 	private long _compileTime;
 	private long _exectime;
 	private State _state;
+	private long _resultCount;
 
 	/**
 	 * QueryResult Construtor
@@ -35,11 +36,20 @@ public class QueryResult implements IQueryResult {
 	public long getExecutionTime() {
 		return _exectime;
 	}
+	
+	public IQuery getQuery() {
+		return _query;
+	}
 
 	public State getQueryState() {
 		return _state;
 	}
 
+	@Override
+	public long getResultCount() {
+		return _resultCount;
+	}
+	
 	public void setCompileTime(long time) {
 		_compileTime = time;
 	}
@@ -52,8 +62,8 @@ public class QueryResult implements IQueryResult {
 		_state = state;
 	}
 
-	public IQuery getQuery() {
-		return _query;
+	public void setResultCount(long resultCount){
+		_resultCount = resultCount;		
 	}
 
 }
