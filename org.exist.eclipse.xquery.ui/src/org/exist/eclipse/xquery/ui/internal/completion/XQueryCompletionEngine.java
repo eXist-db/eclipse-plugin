@@ -219,17 +219,14 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		return proposal;
 	}
 
-	@Override
 	protected int getEndOfEmptyToken() {
 		return 0;
 	}
 
-	@Override
 	protected String processMethodName(IMethod method, String token) {
 		return null;
 	}
 
-	@Override
 	protected String processTypeName(IType method, String token) {
 		return null;
 	}

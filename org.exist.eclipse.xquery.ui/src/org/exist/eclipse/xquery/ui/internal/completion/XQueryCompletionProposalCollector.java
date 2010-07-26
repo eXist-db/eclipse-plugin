@@ -50,7 +50,6 @@ public class XQueryCompletionProposalCollector extends
 				completionProposal);
 	}
 
-	@Override
 	protected String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}

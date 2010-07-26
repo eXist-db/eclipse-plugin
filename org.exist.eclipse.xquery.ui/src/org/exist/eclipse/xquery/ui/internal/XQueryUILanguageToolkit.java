@@ -39,12 +39,10 @@ public class XQueryUILanguageToolkit extends AbstractDLTKUILanguageToolkit {
     return XQueryLanguageToolkit.getDefault();
   }
 
-  @Override
   public ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
     return new XQuerySourceViewerConfiguration(getTextTools().getColorManager(), getPreferenceStore(), null, getPartitioningId());
   }
 
-  @Override
   public IPreferenceStore getPreferenceStore() {
     return XQueryCorePlugin.getDefault().getPreferenceStore();
   }
