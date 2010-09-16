@@ -81,7 +81,6 @@ public class ResultModel implements IResultModel {
 		return _state;
 	}
 
-	@Override
 	public long getResultCount() {
 		if (_resultCount == null) {
 			long count = 0;
