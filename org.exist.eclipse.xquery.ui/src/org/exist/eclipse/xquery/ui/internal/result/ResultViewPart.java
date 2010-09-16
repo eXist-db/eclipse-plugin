@@ -3,8 +3,10 @@
  */
 package org.exist.eclipse.xquery.ui.internal.result;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -144,7 +146,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 			public void run() {
 				_info.setText("File: " + _filename);
 				_info.pack();
-				_status.setText("Query Processing...");
+				_status.setText("Query Processing... (start at " + DateFormat.getTimeInstance().format(new Date())+")");
 				_status.pack();
 			}
 		});
