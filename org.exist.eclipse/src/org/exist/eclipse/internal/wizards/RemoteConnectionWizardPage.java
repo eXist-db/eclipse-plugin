@@ -168,9 +168,11 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		if (getConnectionName().length() == 0) {
 			setErrorState("Name must be specified");
 		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
-			if (!(!_copy && _connection != null && _connection.getName()
-					.equals(getConnectionName()))) {
+			if (!(!_copy && _connection != null && getConnectionName()
+					.equals(_connection.getName()))) {
 				setErrorState("There exists a connection with the same name.");
+			}else{
+				setErrorState(null);
 			}
 		} else if (getUserName().length() == 0) {
 			setErrorState("Username must be specified");

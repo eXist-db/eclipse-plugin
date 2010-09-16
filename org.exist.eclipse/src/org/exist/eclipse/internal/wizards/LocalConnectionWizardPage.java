@@ -204,6 +204,8 @@ public class LocalConnectionWizardPage extends WizardPage {
 			if (!(!_copy && _connection != null && _connection.getName()
 					.equals(getConnectionName()))) {
 				setErrorState("There exists a connection with the same name.");
+			}else{
+				setErrorState(null);
 			}
 		} else if (getUserName().length() < 1) {
 			setErrorState("Username must be specified");
