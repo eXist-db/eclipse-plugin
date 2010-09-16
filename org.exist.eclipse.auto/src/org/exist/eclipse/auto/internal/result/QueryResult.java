@@ -45,7 +45,6 @@ public class QueryResult implements IQueryResult {
 		return _state;
 	}
 
-	@Override
 	public long getResultCount() {
 		return _resultCount;
 	}
