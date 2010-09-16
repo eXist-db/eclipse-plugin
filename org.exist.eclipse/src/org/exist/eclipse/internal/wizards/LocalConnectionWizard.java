@@ -22,6 +22,7 @@ public class LocalConnectionWizard extends Wizard implements INewWizard,
 		IWorkbenchWizard {
 	static final String WIZARD_TITLE = "New eXist local connection";
 	static final String WIZARD_DESCRIPTION = "This wizard creates a new eXist local connection.";
+	static final String WIZARD_EDIT_DESCRIPTION = "This wizard edits an eXist local connection.";
 	private IWorkbench _workbench;
 	private IConnection _connection;
 	private LocalConnectionWizardPage _page;
@@ -42,7 +43,11 @@ public class LocalConnectionWizard extends Wizard implements INewWizard,
 	public void addPages() {
 		_page = new LocalConnectionWizardPage();
 		_page.setTitle(WIZARD_TITLE);
-		_page.setDescription(WIZARD_DESCRIPTION);
+		if(!_copy && _connection!=null){
+			_page.setDescription(WIZARD_EDIT_DESCRIPTION);
+		}else{
+			_page.setDescription(WIZARD_DESCRIPTION);			
+		}
 		_page.setConnection(_connection, _copy);
 		addPage(_page);
 	}

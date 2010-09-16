@@ -20,6 +20,7 @@ import org.exist.eclipse.listener.ViewRegistration;
 public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	static final String WIZARD_TITLE = "New eXist remote connection";
 	static final String WIZARD_DESCRIPTION = "This wizard creates a new eXist remote connection.";
+	static final String WIZARD_EDIT_DESCRIPTION = "This wizard edits an eXist remote connection.";
 	private IWorkbench _workbench;
 	private IConnection _connection;
 	private RemoteConnectionWizardPage _page;
@@ -40,7 +41,11 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	public void addPages() {
 		_page = new RemoteConnectionWizardPage();
 		_page.setTitle(WIZARD_TITLE);
-		_page.setDescription(WIZARD_DESCRIPTION);
+		if(!_copy && _connection!=null){
+			_page.setDescription(WIZARD_EDIT_DESCRIPTION);
+		}else{
+			_page.setDescription(WIZARD_DESCRIPTION);			
+		}
 		_page.setConnection(_connection, _copy);
 		addPage(_page);
 	}

@@ -14,7 +14,6 @@ import org.eclipse.ui.IWorkbenchWizard;
  */
 public class NewConnectionWizard extends Wizard implements INewWizard {
 	static final String WIZARD_TITLE = "New eXist Connection";
-	static final String WIZARD_DESCRIPTION = "This wizard creates a new eXist connection.";
 	private IWorkbench _workbench;
 	private ConnectionTypeWizardPage _page;
 	private IStructuredSelection _selection;
