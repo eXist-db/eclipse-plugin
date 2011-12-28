@@ -40,8 +40,14 @@ public class ResultSelectionListener implements IDoubleClickListener {
 				.getEditorRegistry();
 
 		// take the default text editor
-		IEditorDescriptor defaultEditor = registry
-				.findEditor("org.eclipse.ui.DefaultTextEditor");
+		IEditorDescriptor defaultEditor;
+		IEditorDescriptor[] editors = registry.getEditors("dummy.xml");
+		if (editors.length > 0) {
+			defaultEditor = editors[0];
+		} else {
+			defaultEditor = registry
+					.findEditor("org.eclipse.ui.DefaultTextEditor");
+		}
 
 		if (defaultEditor != null) {
 			try {
