@@ -3,6 +3,8 @@
  */
 package org.exist.eclipse.xquery.core.internal.parser.visitors;
 
+import org.eclipse.dltk.ast.expressions.Expression;
+import org.eclipse.dltk.ast.expressions.MethodCallExpression;
 import org.eclipse.dltk.ast.statements.Statement;
 import org.eclipse.dltk.compiler.ISourceElementRequestor;
 import org.eclipse.dltk.compiler.SourceElementRequestVisitor;
@@ -27,6 +29,20 @@ public class XQuerySourceElementRequestVisitor extends
 			this.fRequestor.exitField(statement.sourceEnd());
 		}
 		return super.endvisit(statement);
+	}
+
+	@Override
+	public boolean visit(Expression expression) throws Exception {
+		super.visit(expression);
+
+		if (expression instanceof MethodCallExpression) {
+			MethodCallExpression cae = (MethodCallExpression) expression;
+			String name = cae.getName();
+			int nargs = cae.getArgs().getChilds().size();
+			this.fRequestor.acceptMethodReference(name, nargs, cae
+					.sourceStart(), cae.sourceEnd());
+		}
+		return true;
 	}
 
 	@Override

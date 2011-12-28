@@ -1,4 +1,3 @@
-
 package org.exist.eclipse.xquery.ui.internal;
 
 import org.eclipse.dltk.core.IDLTKLanguageToolkit;
@@ -17,33 +16,28 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySourceViewerConfiguration
  * @author Pascal Schmidiger
  */
 public class XQueryUILanguageToolkit extends AbstractDLTKUILanguageToolkit {
-  private static class XQueryScriptElementLabels extends ScriptElementLabels {
-    public void getElementLabel(IModelElement element, long flags, StringBuffer buf) {
-      StringBuffer buffer = new StringBuffer(60);
-      super.getElementLabel(element, flags, buffer);
-      String s = buffer.toString();
-      if (s != null && !s.startsWith(element.getElementName())) {
-        if (s.indexOf('$') != -1) {
-          s = s.replaceAll("\\$", ".");
-        }
-      }
-      buf.append(s);
-    }
-  };
+	private static class XQueryScriptElementLabels extends ScriptElementLabels {
+		public void getElementLabel(IModelElement element, long flags,
+				StringBuffer buf) {
+			buf.append(element.getElementName());
+		}
+	};
 
-  public ScriptElementLabels getScriptElementLabels() {
-    return new XQueryScriptElementLabels();
-  }
+	public ScriptElementLabels getScriptElementLabels() {
+		return new XQueryScriptElementLabels();
+	}
 
-  public IDLTKLanguageToolkit getCoreToolkit() {
-    return XQueryLanguageToolkit.getDefault();
-  }
+	public IDLTKLanguageToolkit getCoreToolkit() {
+		return XQueryLanguageToolkit.getDefault();
+	}
 
-  public ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
-    return new XQuerySourceViewerConfiguration(getTextTools().getColorManager(), getPreferenceStore(), null, getPartitioningId());
-  }
+	public ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
+		return new XQuerySourceViewerConfiguration(getTextTools()
+				.getColorManager(), getPreferenceStore(), null,
+				getPartitioningId());
+	}
 
-  public IPreferenceStore getPreferenceStore() {
-    return XQueryCorePlugin.getDefault().getPreferenceStore();
-  }
+	public IPreferenceStore getPreferenceStore() {
+		return XQueryCorePlugin.getDefault().getPreferenceStore();
+	}
 }

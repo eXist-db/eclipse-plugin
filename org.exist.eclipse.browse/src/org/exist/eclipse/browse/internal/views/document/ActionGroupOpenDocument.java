@@ -1,6 +1,7 @@
 /**
  * DocumentOpenActionGroup.java
  */
+
 package org.exist.eclipse.browse.internal.views.document;
 
 import java.util.ArrayList;
@@ -9,17 +10,20 @@ import java.util.Collection;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.viewers.DoubleClickEvent;
-import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionGroup;
-import org.exist.eclipse.IManagementService;
-import org.exist.eclipse.browse.browse.IBrowseService;
+import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.document.IDocumentItem;
+import org.exist.eclipse.browse.internal.BrowsePlugin;
+import org.exist.eclipse.browse.internal.create.CreateDocumentListener;
+import org.exist.eclipse.browse.internal.create.ImportDocumentsFromWorkingSetListener;
+import org.exist.eclipse.browse.internal.create.ImportDocumentsListener;
 import org.exist.eclipse.browse.internal.document.DocumentItem;
 import org.xmldb.api.modules.XMLResource;
 
@@ -31,11 +35,25 @@ import org.xmldb.api.modules.XMLResource;
  */
 public class ActionGroupOpenDocument extends ActionGroup {
 	private final DocumentView _view;
-	private IDoubleClickListener _doubleClickListener;
-	private Action _doubleClickAction;
+	private Action _importFromWorkingSetAction;
 
 	public ActionGroupOpenDocument(DocumentView view) {
 		_view = view;
+		_importFromWorkingSetAction = new Action("Import from Working Set...",
+				BrowsePlugin.getImageDescriptor("icons/import.png")) {
+			@Override
+			public void run() {
+				ImportDocumentsFromWorkingSetListener createDoc = new ImportDocumentsFromWorkingSetListener();
+				createDoc.init(_view.getSite().getPage());
+				createDoc
+						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+			}
+		};
+	}
+
+	@Override
+	public void fillActionBars(IActionBars actionBars) {
+		actionBars.getMenuManager().add(_importFromWorkingSetAction);
 	}
 
 	@Override
@@ -45,8 +63,6 @@ public class ActionGroupOpenDocument extends ActionGroup {
 		Object element = IStructuredSelection.class.cast(selection)
 				.getFirstElement();
 		if (element instanceof IDocumentItem) {
-			createDoubleClickAction();
-			manager.add(_doubleClickAction);
 
 			IDocumentItem item = DocumentItem.class.cast(element);
 			IEditorRegistry registry = PlatformUI.getWorkbench()
@@ -60,10 +76,14 @@ public class ActionGroupOpenDocument extends ActionGroup {
 			Collection<IEditorDescriptor> usedEditors = new ArrayList<IEditorDescriptor>();
 
 			if (editors.length > 0) {
+
+				manager.add(new ActionOpenDocument(editors[0].getId(), _view
+						.getViewer()));
+
 				MenuManager submenu = new MenuManager("Open With");
 				for (IEditorDescriptor editorDescriptor : editors) {
 					ActionOpenDocument actionOpen = new ActionOpenDocument(
-							_view, editorDescriptor.getId(), item);
+							editorDescriptor.getId(), _view.getViewer());
 					actionOpen.setText(editorDescriptor.getLabel());
 					actionOpen.setImageDescriptor(editorDescriptor
 							.getImageDescriptor());
@@ -75,7 +95,7 @@ public class ActionGroupOpenDocument extends ActionGroup {
 					for (IEditorDescriptor editorDescriptor : editorsXml) {
 						if (!usedEditors.contains(editorDescriptor)) {
 							ActionOpenDocument actionOpen = new ActionOpenDocument(
-									_view, editorDescriptor.getId(), item);
+									editorDescriptor.getId(), _view.getViewer());
 							actionOpen.setText(editorDescriptor.getLabel());
 							actionOpen.setImageDescriptor(editorDescriptor
 									.getImageDescriptor());
@@ -85,70 +105,69 @@ public class ActionGroupOpenDocument extends ActionGroup {
 				}
 				manager.add(submenu);
 			}
+
 		}
+
+		Action createDocumentAction = new Action("New Document...",
+				BrowsePlugin.getImageDescriptor("icons/document-new.png")) {
+			@Override
+			public void run() {
+				CreateDocumentListener createDoc = new CreateDocumentListener();
+				createDoc.init(_view.getSite().getPage());
+				createDoc
+						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+			}
+		};
+		ExportDocumentsAction exportAction = new ExportDocumentsAction(_view
+				.getViewer());
+		Action importAction = new Action("Import...", BrowsePlugin
+				.getImageDescriptor("icons/import.png")) {
+			@Override
+			public void run() {
+				ImportDocumentsListener createDoc = new ImportDocumentsListener();
+				createDoc.init(_view.getSite().getPage());
+				createDoc
+						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+			}
+		};
+
+		createDocumentAction.setEnabled(_view.hasItem());
+		exportAction.setEnabled(_view.hasItem());
+		importAction.setEnabled(_view.hasItem());
+
+		manager.add(new Separator());
+		manager.add(createDocumentAction);
+		manager.add(new Separator());
+		manager.add(importAction);
+		manager.add(_importFromWorkingSetAction);
+		manager.add(exportAction);
+
+		updateActionBars();
 	}
 
-	public void hookDoubleClickAction() {
-		if (_doubleClickListener != null) {
-			_view.getViewer().removeDoubleClickListener(_doubleClickListener);
-		}
-
-		ISelection selection = _view.getViewer().getSelection();
-
-		if (_view.hasItem()
-				&& IManagementService.class.cast(
-						_view.getItem().getConnection().getAdapter(
-								IManagementService.class)).check()
-				&& IBrowseService.class.cast(
-						_view.getItem().getAdapter(IBrowseService.class))
-						.check() && !selection.isEmpty()) {
-			Object element = IStructuredSelection.class.cast(selection)
-					.getFirstElement();
-			if (element instanceof IDocumentItem) {
-				createDoubleClickAction();
-				_doubleClickListener = new IDoubleClickListener() {
-
-					public void doubleClick(DoubleClickEvent event) {
-						_doubleClickAction.run();
-					}
-				};
-
-				_view.getViewer().addDoubleClickListener(_doubleClickListener);
-			}
-		}
+	@Override
+	public void updateActionBars() {
+		super.updateActionBars();
+		_importFromWorkingSetAction.setEnabled(_view.hasItem());
 	}
 
-	//
-	// private methods
-	//
-	private void createDoubleClickAction() {
-		IStructuredSelection selection = (IStructuredSelection) _view
-				.getViewer().getSelection();
-		Object element = selection.getFirstElement();
-		if (element instanceof IDocumentItem) {
-			IDocumentItem item = DocumentItem.class.cast(element);
+	/**
+	 * @return nullable if none
+	 */
+	public static IEditorDescriptor getDefaultEditor(IDocumentItem item) {
+		IEditorRegistry registry = PlatformUI.getWorkbench()
+				.getEditorRegistry();
+		IEditorDescriptor defaultEditor = registry
+				.getDefaultEditor(getName(item));
 
-			IEditorRegistry registry = PlatformUI.getWorkbench()
-					.getEditorRegistry();
-			IEditorDescriptor defaultEditor = registry
-					.getDefaultEditor(getName(item));
-
-			if (defaultEditor == null) {
-				defaultEditor = registry
-						.findEditor("org.eclipse.ui.DefaultTextEditor");
-			}
-
-			if (defaultEditor != null) {
-				_doubleClickAction = new ActionOpenDocument(_view,
-						defaultEditor.getId(), item);
-				_doubleClickAction.setText("Open");
-				_doubleClickAction.setImageDescriptor(defaultEditor
-						.getImageDescriptor());
-			}
+		if (defaultEditor == null) {
+			defaultEditor = registry
+					.findEditor("org.eclipse.ui.DefaultTextEditor");
 		}
+		return defaultEditor;
 	}
 
-	private String getName(IDocumentItem item) {
+	private static String getName(IDocumentItem item) {
 		String name = item.getName();
 		if (isXmlResource(item) && name.lastIndexOf(".") != name.length() - 4) {
 			name += ".xml";
@@ -156,7 +175,7 @@ public class ActionGroupOpenDocument extends ActionGroup {
 		return name;
 	}
 
-	private boolean isXmlResource(IDocumentItem item) {
+	private static boolean isXmlResource(IDocumentItem item) {
 		boolean result = false;
 		try {
 			if (item.getResource().getResourceType().equals(

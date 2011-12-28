@@ -17,17 +17,16 @@
       </language>
    </extension>
    <extension
-         point="org.eclipse.core.runtime.contentTypes">
+         point="org.eclipse.core.contenttype.contentTypes">
       <content-type
-            base-type="org.eclipse.core.runtime.text"
             describer="org.exist.eclipse.xquery.core.internal.XQueryContentDescriber"
-            file-extensions="xquery,xq, xpath"
+            file-extensions="xquery,xq,xpath"
             id="org.exist.eclipse.xquery.core.content-type"
             name="XQuery Source File"
             priority="high">
       </content-type>
-   </extension>
- <extension
+   </extension>     
+   <extension
          point="org.eclipse.dltk.core.sourceParsers">
       <parserContribution
             natureId="org.exist.eclipse.xquery.core.nature">
@@ -46,5 +45,5 @@
             nature="org.exist.eclipse.xquery.core.nature"
             priority="1">
       </parser>
-   </extension>     
+   </extension>
 </plugin>

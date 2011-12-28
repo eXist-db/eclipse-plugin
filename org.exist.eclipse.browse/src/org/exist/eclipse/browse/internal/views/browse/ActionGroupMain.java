@@ -28,7 +28,7 @@ public class ActionGroupMain extends ActionGroup {
 	public void makeActions() {
 		// new
 		_actionNewConnection = new ActionNewConn(_view.getViewSite());
-		_actionNewConnection.setText("New Connection");
+		_actionNewConnection.setText("New Connection...");
 		_actionNewConnection.setToolTipText("Create a new connection");
 		_actionNewConnection.setImageDescriptor(BrowsePlugin
 				.getImageDescriptor("icons/new_connection_icon.gif"));

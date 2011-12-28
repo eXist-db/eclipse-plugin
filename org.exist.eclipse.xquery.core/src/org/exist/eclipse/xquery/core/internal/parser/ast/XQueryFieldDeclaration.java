@@ -1,6 +1,7 @@
 package org.exist.eclipse.xquery.core.internal.parser.ast;
 
 import org.eclipse.dltk.ast.declarations.FieldDeclaration;
+import org.eclipse.dltk.ast.declarations.MethodDeclaration;
 import org.eclipse.dltk.utils.CorePrinter;
 
 /**
@@ -10,30 +11,25 @@ import org.eclipse.dltk.utils.CorePrinter;
  */
 public class XQueryFieldDeclaration extends FieldDeclaration {
 
-	private final String _initialization;
+	private MethodDeclaration _parent;
 
-	public XQueryFieldDeclaration(String name, String initialization,
-			int nameStart, int nameEnd, int declStart, int declEnd) {
-		super(name, nameStart, nameEnd, declStart, declEnd);
-		_initialization = initialization;
-	}
-
-	@Override
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-
-		sb.append(getName());
-		if (_initialization != null && _initialization.length() > 0) {
-			sb.append('=');
-			sb.append(_initialization);
-		}
-		return sb.toString();
+	/**
+	 * @param parent
+	 *            nullable if in module scope
+	 */
+	public XQueryFieldDeclaration(MethodDeclaration parent, String name,
+			int nameStart, int nameEnd) {
+		super(name, nameStart, nameEnd, nameStart, nameEnd);
 	}
 
 	@Override
 	public void printNode(CorePrinter output) {
 		output.formatPrint("Field" + this.getSourceRange().toString() + ":"); //$NON-NLS-1$ //$NON-NLS-2$
 		output.formatPrintLn(super.toString());
+	}
+
+	public MethodDeclaration getMethodDeclaration() {
+		return _parent;
 	}
 
 }

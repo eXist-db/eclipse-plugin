@@ -33,8 +33,9 @@ public enum ShowOnEnum {
 				}
 			}
 			break;
+		case all:
+			break;
 		}
-
 		return result;
 	}
 }

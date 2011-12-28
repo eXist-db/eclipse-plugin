@@ -13,14 +13,14 @@
          point="org.eclipse.ui.editors">
       <editor
             class="org.exist.eclipse.xquery.ui.internal.editor.XQueryEditor"
-            default="false"
+            default="true"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.xquery.ui.editor.XQueryEditor"
             name="XQuery Editor">
          <contentTypeBinding
                contentTypeId="org.exist.eclipse.xquery.core.content-type">
          </contentTypeBinding>
-      </editor>
+      </editor> 
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
@@ -102,7 +102,15 @@
 	         nature="org.exist.eclipse.xquery.core.nature"
 	         priority="0">
 	   </completionEngine>
-	</extension>   
+	</extension>
+ <extension
+       point="org.eclipse.dltk.core.selectionEngine">
+    <selectionEngine
+          class="org.exist.eclipse.xquery.ui.internal.selection.XQuerySelectionEngine"
+          nature="org.exist.eclipse.xquery.core.nature"
+          priority="0">
+    </selectionEngine>
+ </extension>   
 	<extension point="org.eclipse.dltk.ui.scriptCompletionProposalComputer"
 			id="XQueryTypeCompletionProposalComputer">
 			<scriptCompletionProposalComputer
@@ -123,8 +131,94 @@
             class="org.exist.eclipse.xquery.ui.internal.result.ResultView"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.xquery.ui.internal.result.ResultView"
-            name="Result View">
+            name="XQuery Results">
       </view>
    </extension>	
-	
+   
+  <extension
+             point="org.eclipse.ui.commands">
+        <category
+              id="org.exist.eclipse.xquery.ui.commands.category.Default"
+              name="eXist Eclipse XQuery UI Commands"/>
+        <category
+              id="org.exist.eclipse.xquery.ui.commands.category.Refactor"
+              name="Refactor - XQuery">
+        </category>
+         <command
+               categoryId="org.exist.eclipse.xquery.ui.commands.category.Default"
+               id="org.exist.eclipse.xquery.ui.action.RunXQueryAction"
+               name="Run XQuery"/>
+         <command
+               categoryId="org.exist.eclipse.xquery.ui.commands.category.Refactor"
+               id="org.exist.eclipse.xquery.ui.action.refactoring.ToggleCommentAction"
+               name="Toggle Comment"/>
+         <command
+               categoryId="org.exist.eclipse.xquery.ui.commands.category.Refactor"
+               id="org.exist.eclipse.xquery.ui.action.refactoring.ExtractLocalVariableAction"
+               name="Extract Local Variable"/>
+         <command
+               categoryId="org.exist.eclipse.xquery.ui.commands.category.Refactor"
+               id="org.exist.eclipse.xquery.ui.action.refactoring.ExtractMethodAction"
+               name="Extract Method"/>
+         <command
+               categoryId="org.exist.eclipse.xquery.ui.commands.category.Refactor"
+               id="org.eclipse.dltk.ui.edit.text.script.search.references.in.workspace"
+               name="SHIT"/>
+  </extension>
+   
+     <extension
+        point="org.eclipse.ui.bindings">
+      <key
+             commandId="org.exist.eclipse.xquery.ui.action.RunXQueryAction"
+             contextId="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+             sequence="M1+R"/>
+      <key
+            commandId="org.exist.eclipse.xquery.ui.action.refactoring.ToggleCommentAction"
+            contextId="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+/"/>
+      <key
+            commandId="org.exist.eclipse.xquery.ui.action.refactoring.ExtractLocalVariableAction"
+            contextId="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+L"/>
+      <key
+            commandId="org.exist.eclipse.xquery.ui.action.refactoring.ExtractMethodAction"
+            contextId="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M3+M"/>
+      <key
+            commandId="org.eclipse.dltk.ui.edit.text.script.search.references.in.workspace"
+            contextId="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+G"/>
+    </extension>
+     <extension
+           point="org.eclipse.ui.contexts">
+        <context
+              id="org.exist.eclipse.xquery.ui.xqueryEditorScope"
+              name="Editing XQuery Source"
+              parentId="org.eclipse.dltk.ui.scriptEditorScope">
+        </context>
+     </extension>
+     <extension
+           point="org.eclipse.dltk.core.search">
+        <searchFactory
+              class="org.exist.eclipse.xquery.ui.search.SearchFactory"
+              nature="org.exist.eclipse.xquery.core.nature"
+              priority="0">
+        </searchFactory>
+        <matchLocator
+              class="org.exist.eclipse.xquery.ui.search.MatchLocator"
+              nature="org.exist.eclipse.xquery.core.nature">
+        </matchLocator>
+     </extension>
+     <extension
+           point="org.eclipse.dltk.ui.completion">
+        <proposalLabelProvider
+              class="org.exist.eclipse.xquery.ui.internal.completion.XQueryCompletionProposalLabelProvider"
+              nature="org.exist.eclipse.xquery.core.nature">
+        </proposalLabelProvider>
+     </extension>
 </plugin>

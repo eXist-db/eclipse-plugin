@@ -16,7 +16,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.exist.eclipse.util.internal.UtilPlugin;
 
@@ -70,7 +69,7 @@ public class BackupLocationWizardPage extends WizardPage {
 
 		// button to select the target via dialog
 		Button selectCollectionBtn = new Button(container, SWT.Activate);
-		selectCollectionBtn.setText("Browse");
+		selectCollectionBtn.setText("Browse...");
 		gd = new GridData();
 		gd.horizontalSpan = 1;
 		gd.horizontalAlignment = SWT.CENTER;
@@ -96,10 +95,10 @@ public class BackupLocationWizardPage extends WizardPage {
 		return _ableToFinish;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// ///////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// ///////////////////
 
 	/**
@@ -151,15 +150,13 @@ public class BackupLocationWizardPage extends WizardPage {
 	 * 
 	 * The returned value either needs to point to a __contents__.xml file.
 	 * 
-	 * @return path of the backup location
 	 */
 	private void selectBackupLocation() {
 
-		Shell shell = new Shell();
-		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
+		FileDialog dialog = new FileDialog(getControl().getShell(), SWT.OPEN);
 		dialog.setText("Select a backup location");
-		String[] filterExtensions = { "*.xml" };
-		String[] filterNames = { "xml Files" };
+		String[] filterExtensions = { "*.xml", "*.*" };
+		String[] filterNames = { "XML Files (*.xml)", "All Files (*.*)" };
 		dialog.setFilterExtensions(filterExtensions);
 		dialog.setFilterNames(filterNames);
 

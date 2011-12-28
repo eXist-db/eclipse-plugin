@@ -11,8 +11,9 @@ public interface IXQueryMethod {
 
 	public int getFlags();
 
-	public String[] getParameters();
+	public String[] getParameterNames();
 
 	public String getName();
 
+	public String[] getParameterTypes();
 }

@@ -126,6 +126,9 @@ public class RemoteConnectionWizardPage extends WizardPage {
 				dialogChanged();
 			}
 		});
+
+		_name.setFocus();
+
 		setControl(container);
 		setPageComplete(false);
 		dialogChanged();
@@ -168,10 +171,10 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		if (getConnectionName().length() == 0) {
 			setErrorState("Name must be specified");
 		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
-			if (!(!_copy && _connection != null && getConnectionName()
-					.equals(_connection.getName()))) {
+			if (!(!_copy && _connection != null && getConnectionName().equals(
+					_connection.getName()))) {
 				setErrorState("There exists a connection with the same name.");
-			}else{
+			} else {
 				setErrorState(null);
 			}
 		} else if (getUserName().length() == 0) {

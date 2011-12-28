@@ -1,13 +1,18 @@
 /**
  * DocumentActionOpen.java
  */
+
 package org.exist.eclipse.browse.internal.views.document;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IStorageEditorInput;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
@@ -25,40 +30,50 @@ import org.exist.eclipse.browse.internal.edit.DocumentStorageEditorInput;
 public class ActionOpenDocument extends Action {
 
 	private final String _editorId;
-	private final DocumentView _view;
-	private final IDocumentItem _item;
+	private final IStructuredSelection _selection;
 
-	public ActionOpenDocument(DocumentView view, String editorId,
-			IDocumentItem item) {
-		_view = view;
+	public ActionOpenDocument(String editorId, IDocumentItem item) {
+		this(editorId, new StructuredSelection(item));
+	}
+
+	public ActionOpenDocument(String editorId, Viewer viewer) {
+		this(editorId, (IStructuredSelection) viewer.getSelection());
+	}
+
+	protected ActionOpenDocument(String editorId, IStructuredSelection selection) {
 		_editorId = editorId;
-		_item = item;
+		_selection = selection;
+		setText("Open");
 	}
 
 	@Override
 	public void run() {
-		IBrowseService bService = (IBrowseService) _item.getParent()
-				.getAdapter(IBrowseService.class);
-		IDocumentService service = (IDocumentService) _item
-				.getAdapter(IDocumentService.class);
 
-		if (IManagementService.class.cast(
-				_item.getParent().getConnection().getAdapter(
-						IManagementService.class)).check()
-				&& bService.check() && service.check()) {
-			IStorageEditorInput input = new DocumentStorageEditorInput(
-					new DocumentStorage(_item));
-			try {
-				_view.getViewSite().getWorkbenchWindow().getActivePage()
-						.openEditor(input, _editorId);
-			} catch (PartInitException e) {
-				String message = "Error while open document";
-				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message, e);
-				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+		for (Object it : _selection.toArray()) {
+			IDocumentItem _item = (IDocumentItem) it;
+
+			IBrowseService bService = (IBrowseService) _item.getParent()
+					.getAdapter(IBrowseService.class);
+			IDocumentService service = (IDocumentService) _item
+					.getAdapter(IDocumentService.class);
+
+			if (IManagementService.class.cast(
+					_item.getParent().getConnection().getAdapter(
+							IManagementService.class)).check()
+					&& bService.check() && service.check()) {
+				IStorageEditorInput input = new DocumentStorageEditorInput(
+						new DocumentStorage(_item));
+				try {
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+							.getActivePage().openEditor(input, _editorId);
+				} catch (PartInitException e) {
+					String message = "Error while open document";
+					Status status = new Status(IStatus.ERROR, BrowsePlugin
+							.getId(), message, e);
+					BrowsePlugin.getDefault().errorDialog(message,
+							e.getMessage(), status);
+				}
 			}
 		}
 	}
-
 }

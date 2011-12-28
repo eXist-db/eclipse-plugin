@@ -5,7 +5,7 @@ package org.exist.eclipse.exception;
  * 
  * @author Markus Tanner
  */
-public class ConnectionException extends Exception {
+public class ConnectionException extends RuntimeException {
 	private static final long serialVersionUID = -1802981190711923270L;
 
 	/**

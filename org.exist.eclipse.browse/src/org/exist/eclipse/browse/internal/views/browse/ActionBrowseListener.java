@@ -4,7 +4,7 @@
 package org.exist.eclipse.browse.internal.views.browse;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseListener;
@@ -27,11 +27,12 @@ public class ActionBrowseListener extends Action {
 
 	@Override
 	public void run() {
-		TreeItem[] selection = _view.getViewer().getTree().getSelection();
+		Object[] selection = ((IStructuredSelection) _view.getViewer()
+				.getSelection()).toArray();
 		if (selection.length > 0) {
 			IBrowseItem[] items = new IBrowseItem[selection.length];
 			for (int i = 0; i < selection.length; i++) {
-				Object data = selection[i].getData();
+				Object data = selection[i];
 				if (data instanceof IBrowseItem) {
 					items[i] = (IBrowseItem) data;
 				} else {

@@ -15,14 +15,18 @@ import org.xmldb.api.modules.XMLResource;
  */
 public class CreateXmlResource implements ICreateDocumentProvider {
 
-	public void create(IDocumentItem item) throws CreateDocumentException {
+	public void create(IDocumentItem item, String content)
+			throws CreateDocumentException {
 		XMLResource result = null;
 		try {
 			checkFileName(item);
 			Collection collection = item.getParent().getCollection();
 			result = (XMLResource) collection.createResource(URIUtils
 					.urlEncodeUtf8(item.getName()), XMLResource.RESOURCE_TYPE);
-			result.setContent(getContent()); //$NON-NLS-1$
+			if (content == null || content.isEmpty()) {
+				content = "<template></template>";
+			}
+			result.setContent(content);
 			collection.storeResource(result);
 			collection.close();
 		} catch (Exception e) {
@@ -32,10 +36,6 @@ public class CreateXmlResource implements ICreateDocumentProvider {
 
 	protected void checkFileName(IDocumentItem item) {
 		// no checkins
-	}
-
-	protected String getContent() {
-		return "<template></template>";
 	}
 
 }

@@ -20,8 +20,7 @@ import org.w3c.xqparser.XPathVisitor;
  * @author Pascal Schmidiger
  * 
  */
-public class ParameterListVisitor implements XPathVisitor {
-	private static final String PARAM = "Param";
+public class ParameterListVisitor implements XPathVisitor, NodeTypes {
 	private XQueryParser _parser;
 	private List<Argument> _arguments;
 

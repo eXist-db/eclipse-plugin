@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package org.exist.eclipse.xquery.ui.internal.result;
 
 import java.text.DateFormat;
@@ -10,13 +11,26 @@ import java.util.Date;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.DragSourceAdapter;
+import org.eclipse.swt.dnd.DragSourceEvent;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TableColumn;
 import org.exist.eclipse.xquery.ui.XQueryUI;
 import org.exist.eclipse.xquery.ui.result.IQueryEndState;
@@ -30,9 +44,25 @@ import org.exist.eclipse.xquery.ui.result.IResultFrame;
  */
 public class ResultViewPart implements IQueryFrame, IResultFrame {
 
+	public static class PartFrame extends Composite {
+
+		private ResultViewPart _part;
+
+		public ResultViewPart getPart() {
+			return _part;
+		}
+
+		protected void setPart(ResultViewPart part) {
+			_part = part;
+		}
+
+		public PartFrame(Composite parent) {
+			super(parent, SWT.NONE);
+		}
+	}
+
 	private TableViewer _viewer;
 	private Label _status;
-	private Label _info;
 	private int _actualCount;
 	private int _maxCount;
 	private String _query;
@@ -49,22 +79,18 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		_filename = creation.getFilename();
 	}
 
-	public void createPartControl(Composite parent) {
+	public void createPartControl(PartFrame parent) {
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 1;
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
 		parent.setLayout(layout);
 
-		// Status label
-		_info = new Label(parent, SWT.LEFT);
-		_info.pack();
+		parent.setPart(this);
+
 		GridData gd = new GridData();
-		gd.horizontalSpan = 1;
-		gd.grabExcessHorizontalSpace = true;
-		gd.horizontalAlignment = SWT.FILL;
-		_info.setLayoutData(gd);
 
 		// Table Viewer
-		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.FILL
+		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.MULTI
 				| SWT.FULL_SELECTION);
 		_viewer.setContentProvider(new ResultViewContentProvider());
 		_viewer.setLabelProvider(new ResultViewLabelProvider());
@@ -80,21 +106,69 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		_viewer.getTable().setLinesVisible(true);
 		_viewer.getTable().setHeaderVisible(true);
 		gd = new GridData(GridData.FILL_BOTH);
-		gd.horizontalSpan = 1;
 		_viewer.getTable().setLayoutData(gd);
 
 		ResultSelectionListener listener = new ResultSelectionListener();
-		_viewer.getTable().addMouseListener(listener);
+		_viewer.addDoubleClickListener(listener);
 
 		// Status label
-		_status = new Label(parent, SWT.LEFT);
+		_status = new Label(parent, SWT.NONE);
 		_status.pack();
 		gd = new GridData();
-		gd.horizontalSpan = 1;
-		gd.grabExcessHorizontalSpace = true;
-		gd.horizontalAlignment = SWT.FILL;
+		gd.horizontalIndent = 2;
 		_status.setLayoutData(gd);
+		hookContextMenu();
+		addDnDSupport();
+	}
 
+	private void addDnDSupport() {
+		int operations = DND.DROP_MOVE | DND.DROP_COPY | DND.DROP_LINK;
+
+		DragSource source = new DragSource(_viewer.getTable(), operations);
+		source.setTransfer(new Transfer[] { TextTransfer.getInstance() });
+		source.addDragListener(new DragSourceAdapter() {
+			public void dragSetData(DragSourceEvent event) {
+				try {
+					if (TextTransfer.getInstance().isSupportedType(
+							event.dataType)) {
+						event.data = new CopyResultItemsAction(_viewer)
+								.getCopyContent();
+					}
+				} catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+			}
+		});
+	}
+
+	private void hookContextMenu() {
+		MenuManager menuMgr = new MenuManager("#PopupMenu");
+		menuMgr.setRemoveAllWhenShown(true);
+		menuMgr.addMenuListener(new IMenuListener() {
+			public void menuAboutToShow(IMenuManager manager) {
+				fillContextMenu(manager);
+			}
+		});
+		Menu menu = menuMgr.createContextMenu(_viewer.getControl());
+		_viewer.getControl().setMenu(menu);
+	}
+
+	protected void fillContextMenu(IMenuManager manager) {
+		Action openInEditorAction = new Action("Open in Editor") {
+			@Override
+			public void run() {
+				new ResultSelectionListener()
+						.openEditor((IStructuredSelection) _viewer
+								.getSelection());
+			}
+		};
+
+		manager.add(openInEditorAction);
+
+		manager.add(new Separator());
+		manager.add(new CopyResultItemsAction(_viewer));
+		manager.add(new Separator());
+		manager.add(new ExportResultItemsAction(_viewer));
 	}
 
 	public void dispose() {
@@ -113,11 +187,11 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 			public void run() {
 				if (state.getState().equals(IQueryEndState.State.OK)) {
 					StringBuilder msg = new StringBuilder();
-					msg.append(state.getFoundedItems()).append(" items found");
+					msg.append(state.getFoundedItems()).append(" items found.");
 					msg.append(" Compilation: ")
-							.append(state.getCompiledTime()).append(" ms");
+							.append(state.getCompiledTime()).append(" ms.");
 					msg.append(" Execution: ").append(state.getExecutionTime())
-							.append(" ms");
+							.append(" ms.");
 					_status.setText(msg.toString());
 				} else {
 					_status.setText(state.getException().getMessage());
@@ -144,9 +218,10 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		_results = new ArrayList<ResultItem>(_maxCount);
 		Display.getDefault().asyncExec(new Runnable() {
 			public void run() {
-				_info.setText("File: " + _filename);
-				_info.pack();
-				_status.setText("Query Processing... (start at " + DateFormat.getTimeInstance().format(new Date())+")");
+				_status
+						.setText("Query Processing... (start at "
+								+ DateFormat.getTimeInstance().format(
+										new Date()) + ")");
 				_status.pack();
 			}
 		});

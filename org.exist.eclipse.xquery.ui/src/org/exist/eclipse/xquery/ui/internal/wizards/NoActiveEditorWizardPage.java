@@ -25,7 +25,7 @@ public class NoActiveEditorWizardPage extends WizardPage {
 
 	public void createControl(Composite parent) {
 		Label label = new Label(parent, SWT.NULL);
-		label.setText("Please open a file in the XQuery Editor.");
+		label.setText("Open a file in the XQuery Editor.");
 		setControl(parent);
 	}
 

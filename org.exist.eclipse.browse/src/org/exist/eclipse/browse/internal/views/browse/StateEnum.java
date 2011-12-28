@@ -33,6 +33,8 @@ public enum StateEnum {
 				}
 			}
 			break;
+		case both:
+			break;
 		}
 
 		return result;

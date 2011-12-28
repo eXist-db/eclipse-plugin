@@ -21,12 +21,6 @@ public interface IContextSwitcher {
 	public String getName();
 
 	/**
-	 * @return the wizardpages which will start on selected context and should
-	 *         set the new context.
-	 */
-	public AbstractContextWizardPage[] getWizardPages();
-
-	/**
 	 * @return the default {@link IConnectionContext}.
 	 */
 	public IConnectionContext getDefault();

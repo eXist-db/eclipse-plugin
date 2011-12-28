@@ -4,7 +4,7 @@
 package org.exist.eclipse.browse.internal.views.browse;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.swt.widgets.TreeItem;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.internal.connection.OpenConnectionListener;
@@ -24,12 +24,14 @@ public class ActionDoubleClick extends Action {
 
 	@Override
 	public void run() {
-		TreeItem[] selection = _view.getViewer().getTree().getSelection();
+		Object[] selection = ((IStructuredSelection) _view.getViewer()
+				.getSelection()).toArray();
 		if (selection.length > 0) {
-			Object data = selection[0].getData();
+			Object data = selection[0];
 			if (data instanceof IConnection) {
 				new ActionConnectionListener(_view,
 						new OpenConnectionListener()).run();
+				_view.getViewer().expandToLevel(data, 1);
 			} else if (data instanceof IBrowseItem) {
 				new ActionBrowseListener(_view, new DocumentBrowseListener())
 						.run();

@@ -1,9 +1,14 @@
 /**
  * BrowseListenerAction.java
  */
+
 package org.exist.eclipse.browse.internal.views.document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
@@ -20,27 +25,38 @@ public class ActionDocumentListener extends Action {
 
 	private final IDocumentListener _listener;
 	private final DocumentView _view;
-	private final IDocumentItem _item;
 
-	public ActionDocumentListener(DocumentView view,
-			IDocumentListener listener, IDocumentItem item) {
+	public ActionDocumentListener(DocumentView view, IDocumentListener listener) {
 		_view = view;
 		_listener = listener;
-		_item = item;
 	}
 
 	@Override
 	public void run() {
-		IBrowseService browseService = (IBrowseService) _item.getParent()
-				.getAdapter(IBrowseService.class);
-		IDocumentService documentService = (IDocumentService) _item
-				.getAdapter(IDocumentService.class);
-		if (IManagementService.class.cast(
-				_item.getParent().getConnection().getAdapter(
-						IManagementService.class)).check()
-				&& browseService.check() && documentService.check()) {
-			_listener.init(_view.getSite().getPage());
-			_listener.actionPerformed(_item);
+
+		Object[] sel = ((IStructuredSelection) _view.getViewer().getSelection())
+				.toArray();
+		if (sel.length > 0) {
+			IDocumentItem first = (IDocumentItem) sel[0];
+
+			// assume that others are also valid if first check succeed
+			IBrowseService browseService = (IBrowseService) first.getParent()
+					.getAdapter(IBrowseService.class);
+			IDocumentService documentService = (IDocumentService) first
+					.getAdapter(IDocumentService.class);
+			if (IManagementService.class.cast(
+					first.getParent().getConnection().getAdapter(
+							IManagementService.class)).check()
+					&& browseService.check() && documentService.check()) {
+				_listener.init(_view.getSite().getPage());
+
+				List<IDocumentItem> all = new ArrayList<IDocumentItem>();
+				for (Object it : sel) {
+					all.add((IDocumentItem) it);
+				}
+				_listener.actionPerformed(all.toArray(new IDocumentItem[all
+						.size()]));
+			}
 		}
 	}
 }

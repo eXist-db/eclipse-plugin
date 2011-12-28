@@ -13,7 +13,6 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IInformationControl;
 import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
-import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.presentation.IPresentationReconciler;
 import org.eclipse.jface.text.presentation.PresentationReconciler;
 import org.eclipse.jface.text.rules.DefaultDamagerRepairer;
@@ -122,9 +121,13 @@ public class XQuerySourceViewerConfiguration extends
 
 	protected void alterContentAssistant(ContentAssistant assistant) {
 		// IDocument.DEFAULT_CONTENT_TYPE
-		IContentAssistProcessor scriptProcessor = new XQueryCompletionProcessor(
-				getEditor(), assistant, IDocument.DEFAULT_CONTENT_TYPE);
-		assistant.setContentAssistProcessor(scriptProcessor,
+		// IContentAssistProcessor processor = new
+		// MultiplexContentAssistProcessor(
+		// new char[] { '$' }, new XQueryCompletionProcessor(getEditor(),
+		// assistant, IDocument.DEFAULT_CONTENT_TYPE),
+		// new HippieProposalProcessor());
+		assistant.setContentAssistProcessor(new XQueryCompletionProcessor(
+				getEditor(), assistant, IDocument.DEFAULT_CONTENT_TYPE),
 				IDocument.DEFAULT_CONTENT_TYPE);
 	}
 }

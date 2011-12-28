@@ -1,152 +1,151 @@
 fn:abs($arg as numeric?) as numeric?
-fn:adjust-date-to-timezone( $arg as xs:date?) as  xs:date?
-fn:abs($arg as  numeric?) as numeric? 
-fn:adjust-date-to-timezone( $arg as xs:date?) as  xs:date? 
-fn:adjust-date-to-timezone( $arg as xs:date?, $timezone as xs:dayTimeDuration?)  as xs:date? 
-fn:adjust-dateTime-to-timezone( $arg as xs:dateTime?)  as xs:dateTime? 
-fn:adjust-dateTime-to-timezone( $arg as xs:dateTime?, $timezone as xs:dayTimeDuration?)  as xs:dateTime? 
-fn:adjust-time-to-timezone( $arg as xs:time?) as  xs:time? 
-fn:adjust-time-to-timezone( $arg as xs:time?, $timezone as xs:dayTimeDuration?)  as xs:time? 
-fn:avg($arg as  xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:base-uri() as  xs:anyURI? 
-fn:base-uri($arg  as node()?) as  xs:anyURI? 
-fn:boolean($arg as  item()*) as xs:boolean 
-fn:ceiling($arg as  numeric?) as numeric? 
-fn:codepoint-equal($comparand1  as xs:string?, $comparand2 as xs:string?)  as xs:boolean? 
-fn:codepoints-to-string( $arg as xs:integer*)  as xs:string 
-fn:collection() as  node()* 
-fn:collection($arg  as xs:string?) as  node()* 
-fn:compare($comparand1  as xs:string?, $comparand2 as xs:string?)  as xs:integer? 
-fn:compare($comparand1  as xs:string?, $comparand2 as xs:string?, $collation as xs:string)  as xs:integer? 
-fn:concat($arg1 as  xs:anyAtomicType?, $arg2 as xs:anyAtomicType?, ...) as xs:string 
-fn:contains($arg1  as xs:string?, $arg2 as xs:string?)  as xs:boolean 
-fn:contains($arg1  as xs:string?, $arg2 as xs:string?, $collation as xs:string)  as xs:boolean 
-fn:count($arg as  item()*) as xs:integer 
-fn:current-date() as  xs:date 
-fn:current-dateTime()  as xs:dateTime 
-fn:current-time() as  xs:time 
-fn:data($arg as  item()*) as xs:anyAtomicType* 
-fn:dateTime($arg1  as xs:date?, $arg2 as xs:time?)  as xs:dateTime? 
-fn:day-from-date($arg  as xs:date?) as  xs:integer? 
-fn:day-from-dateTime( $arg as xs:dateTime?)  as xs:integer? 
-fn:days-from-duration( $arg as xs:duration?)  as xs:integer? 
-fn:deep-equal($parameter1  as item()*, $parameter2 as item()*)  as xs:boolean 
-fn:deep-equal($parameter1  as item()*, $parameter2 as item()*, $collation as string)  as xs:boolean 
-fn:default-collation()  as xs:string 
-fn:distinct-values($arg  as xs:anyAtomicType*) as  xs:anyAtomicType* 
-fn:distinct-values($arg  as xs:anyAtomicType*, $collation as xs:string)  as xs:anyAtomicType* 
-fn:doc($uri as  xs:string?) as document-node()? 
-fn:doc-available($uri  as xs:string?) as  xs:boolean 
-fn:document-uri($arg  as node()?) as  xs:anyURI? 
-fn:empty($arg as  item()*) as xs:boolean 
-fn:encode-for-uri($uri-part  as xs:string?) as  xs:string 
-fn:ends-with($arg1  as xs:string?, $arg2 as xs:string?)  as xs:boolean 
-fn:ends-with($arg1  as xs:string?, $arg2 as xs:string?, $collation as xs:string)  as xs:boolean 
-fn:error() as  none 
-fn:error($error as  xs:QName) as none 
-fn:error($error as  xs:QName?, $description as xs:string)  as none 
-fn:error($error as  xs:QName?, $description as xs:string, $error-object as item()*)  as none 
-fn:escape-html-uri($uri  as xs:string?) as  xs:string 
-fn:exactly-one($arg  as item()*) as  item() 
-fn:exists($arg as  item()*) as xs:boolean 
-fn:false() as  xs:boolean 
-fn:floor($arg as  numeric?) as numeric? 
-fn:hours-from-dateTime( $arg as xs:dateTime?)  as xs:integer? 
-fn:hours-from-duration( $arg as xs:duration?)  as xs:integer? 
-fn:hours-from-time($arg  as xs:time?) as  xs:integer? 
-fn:id($arg as  xs:string*) as element()* 
-fn:id($arg as  xs:string*, $node as node())  as element()* 
-fn:idref($arg as  xs:string*) as node()* 
-fn:idref($arg as  xs:string*, $node as node())  as node()* 
-fn:implicit-timezone()  as xs:dayTimeDuration 
-fn:in-scope-prefixes( $element as element())  as xs:string* 
-fn:index-of($seqParam  as xs:anyAtomicType*, $srchParam as xs:anyAtomicType)  as xs:integer* 
-fn:index-of($seqParam  as xs:anyAtomicType*, $srchParam as xs:anyAtomicType, $collation as xs:string)  as xs:integer* 
-fn:insert-before($target  as item()*, $position as xs:integer, $inserts as item()*)  as item()* 
-fn:iri-to-uri($iri  as xs:string?) as  xs:string 
-fn:lang($testlang as  xs:string?) as xs:boolean 
-fn:lang($testlang as  xs:string?, $node as node())  as xs:boolean 
-fn:last() as  xs:integer 
-fn:local-name() as  xs:string 
-fn:local-name($arg  as node()?) as  xs:string 
-fn:local-name-from-QName( $arg as xs:QName?) as  xs:NCName? 
-fn:lower-case($arg  as xs:string?) as  xs:string 
-fn:matches($input  as xs:string?, $pattern as xs:string)  as xs:boolean 
-fn:matches($input  as xs:string?, $pattern as xs:string, $flags as xs:string)  as xs:boolean 
-fn:max($arg as  xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:max($arg as  xs:anyAtomicType*, $collation as string)  as xs:anyAtomicType? 
-fn:min($arg as  xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:min($arg as  xs:anyAtomicType*, $collation as string)  as xs:anyAtomicType? 
-fn:minutes-from-dateTime( $arg as xs:dateTime?)  as xs:integer? 
-fn:minutes-from-duration( $arg as xs:duration?)  as xs:integer? 
-fn:minutes-from-time( $arg as xs:time?) as  xs:integer? 
-fn:month-from-date($arg  as xs:date?) as  xs:integer? 
-fn:month-from-dateTime( $arg as xs:dateTime?)  as xs:integer? 
-fn:months-from-duration( $arg as xs:duration?)  as xs:integer? 
-fn:name() as  xs:string 
-fn:name($arg as  node()?) as xs:string 
-fn:namespace-uri() as  xs:anyURI 
-fn:namespace-uri($arg  as node()?) as  xs:anyURI 
-fn:namespace-uri-for-prefix( $prefix as xs:string?, $element as element())  as xs:anyURI? 
-fn:namespace-uri-from-QName( $arg as xs:QName?) as  xs:anyURI? 
-fn:nilled($arg as  node()?) as xs:boolean? 
-fn:node-name($arg  as node()?) as  xs:QName? 
-fn:normalize-space() as  xs:string 
-fn:normalize-space($arg  as xs:string?) as  xs:string 
-fn:normalize-unicode( $arg as xs:string?)  as xs:string 
-fn:normalize-unicode( $arg as xs:string?, $normalizationForm as xs:string)  as xs:string 
-fn:not($arg as  item()*) as xs:boolean 
-fn:number() as  xs:double 
-fn:number($arg as  xs:anyAtomicType?) as xs:double 
-fn:one-or-more($arg  as item()*) as  item()+ 
-fn:position() as  xs:integer 
-fn:prefix-from-QName( $arg as xs:QName?) as  xs:NCName? 
-fn:QName($paramURI  as xs:string?, $paramQName as xs:string)  as xs:QName 
-fn:remove($target  as item()*, $position as xs:integer)  as item()* 
-fn:replace($input  as xs:string?, $pattern as xs:string, $replacement as xs:string)  as xs:string 
-fn:replace($input  as xs:string?, $pattern as xs:string, $replacement as xs:string, $flags as xs:string)  as xs:string 
-fn:resolve-QName($qname  as xs:string?, $element as element())  as xs:QName? 
-fn:resolve-uri($relative  as xs:string?) as  xs:anyURI? 
-fn:resolve-uri($relative  as xs:string?, $base as xs:string)  as xs:anyURI? 
-fn:reverse($arg as  item()*) as item()* 
-fn:root() as  node() 
-fn:root($arg as  node()?) as node()? 
-fn:round($arg as  numeric?) as numeric? 
-fn:round-half-to-even( $arg as numeric?) as  numeric? 
-fn:round-half-to-even( $arg as numeric?, $precision as xs:integer)  as numeric? 
-fn:seconds-from-dateTime( $arg as xs:dateTime?)  as xs:decimal? 
-fn:seconds-from-duration( $arg as xs:duration?)  as xs:decimal? 
-fn:seconds-from-time( $arg as xs:time?) as  xs:decimal? 
-fn:starts-with($arg1  as xs:string?, $arg2 as xs:string?)  as xs:boolean 
-fn:starts-with($arg1  as xs:string?, $arg2 as xs:string?, $collation as xs:string)  as xs:boolean 
-fn:static-base-uri() as  xs:anyURI? 
-fn:string() as  xs:string 
-fn:string($arg as  item()?) as xs:string 
-fn:string-join($arg1  as xs:string*, $arg2 as xs:string)  as xs:string 
-fn:string-length() as  xs:integer 
-fn:string-length($arg  as xs:string?) as  xs:integer 
-fn:string-to-codepoints( $arg as xs:string?)  as xs:integer* 
-fn:subsequence($sourceSeq  as item()*, $startingLoc as xs:double)  as item()* 
-fn:subsequence($sourceSeq  as item()*, $startingLoc as xs:double, $length as xs:double)  as item()* 
-fn:substring($sourceString  as xs:string?, $startingLoc as xs:double)  as xs:string 
-fn:substring($sourceString  as xs:string?, $startingLoc as xs:double, $length as xs:double)  as xs:string 
-fn:substring-after($arg1  as xs:string?, $arg2 as xs:string?)  as xs:string 
-fn:substring-after($arg1  as xs:string?, $arg2 as xs:string?, $collation as xs:string)  as xs:string 
-fn:substring-before( $arg1 as xs:string?, $arg2 as xs:string?)  as xs:string 
-fn:substring-before( $arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string)  as xs:string 
-fn:sum($arg as  xs:anyAtomicType*) as xs:anyAtomicType 
-fn:sum($arg as  xs:anyAtomicType*, $zero as xs:anyAtomicType?)  as xs:anyAtomicType? 
-fn:timezone-from-date( $arg as xs:date?) as  xs:dayTimeDuration? 
-fn:timezone-from-dateTime( $arg as xs:dateTime?)  as xs:dayTimeDuration?
-fn:timezone-from-time( $arg as xs:time?) as  xs:dayTimeDuration?
-fn:tokenize($input  as xs:string?, $pattern as xs:string)  as xs:string*
-fn:tokenize($input  as xs:string?, $pattern as xs:string, $flags as xs:string)  as xs:string*
-fn:trace($value as  item()*, $label as xs:string)  as item()*
-fn:translate($arg  as xs:string?, $mapString as xs:string, $transString as xs:string)  as xs:string
-fn:true() as  xs:boolean
-fn:unordered($sourceSeq  as item()*) as  item()*
-fn:upper-case($arg  as xs:string?) as  xs:string
-fn:year-from-date($arg  as xs:date?) as  xs:integer?
-fn:year-from-dateTime( $arg as xs:dateTime?)  as xs:integer?
-fn:years-from-duration( $arg as xs:duration?)  as xs:integer? 
-fn:zero-or-one($arg  as item()*) as  item()? 
+fn:adjust-date-to-timezone($arg as xs:date?) as xs:date?
+fn:adjust-date-to-timezone($arg as xs:date?) as xs:date? 
+fn:adjust-date-to-timezone($arg as xs:date?, $timezone as xs:dayTimeDuration?) as xs:date? 
+fn:adjust-dateTime-to-timezone($arg as xs:dateTime?) as xs:dateTime? 
+fn:adjust-dateTime-to-timezone($arg as xs:dateTime?, $timezone as xs:dayTimeDuration?) as xs:dateTime? 
+fn:adjust-time-to-timezone($arg as xs:time?) as xs:time? 
+fn:adjust-time-to-timezone($arg as xs:time?, $timezone as xs:dayTimeDuration?) as xs:time? 
+fn:avg($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
+fn:base-uri() as xs:anyURI? 
+fn:base-uri($arg as node()?) as xs:anyURI? 
+fn:boolean($arg as item()*) as xs:boolean 
+fn:ceiling($arg as numeric?) as numeric? 
+fn:codepoint-equal($comparand1 as xs:string?, $comparand2 as xs:string?) as xs:boolean? 
+fn:codepoints-to-string($arg as xs:integer*) as xs:string 
+fn:collection() as node()* 
+fn:collection($arg as xs:string?) as node()* 
+fn:compare($comparand1 as xs:string?, $comparand2 as xs:string?) as xs:integer? 
+fn:compare($comparand1 as xs:string?, $comparand2 as xs:string?, $collation as xs:string) as xs:integer? 
+fn:concat($arg1 as xs:anyAtomicType?, $arg2 as xs:anyAtomicType?, ...) as xs:string 
+fn:contains($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
+fn:contains($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
+fn:count($arg as item()*) as xs:integer 
+fn:current-date() as xs:date 
+fn:current-dateTime() as xs:dateTime 
+fn:current-time() as xs:time 
+fn:data($arg as item()*) as xs:anyAtomicType* 
+fn:dateTime($arg1 as xs:date?, $arg2 as xs:time?) as xs:dateTime? 
+fn:day-from-date($arg as xs:date?) as xs:integer? 
+fn:day-from-dateTime($arg as xs:dateTime?) as xs:integer? 
+fn:days-from-duration($arg as xs:duration?) as xs:integer? 
+fn:deep-equal($parameter1 as item()*, $parameter2 as item()*) as xs:boolean 
+fn:deep-equal($parameter1 as item()*, $parameter2 as item()*, $collation as string) as xs:boolean 
+fn:default-collation() as xs:string 
+fn:distinct-values($arg as xs:anyAtomicType*) as xs:anyAtomicType* 
+fn:distinct-values($arg as xs:anyAtomicType*, $collation as xs:string) as xs:anyAtomicType* 
+fn:doc($uri as xs:string?) as document-node()? 
+fn:doc-available($uri as xs:string?) as xs:boolean 
+fn:document-uri($arg as node()?) as xs:anyURI? 
+fn:empty($arg as item()*) as xs:boolean 
+fn:encode-for-uri($uri-part as xs:string?) as xs:string 
+fn:ends-with($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
+fn:ends-with($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
+fn:error() as none 
+fn:error($error as xs:QName) as none 
+fn:error($error as xs:QName?, $description as xs:string) as none 
+fn:error($error as xs:QName?, $description as xs:string, $error-object as item()*) as none 
+fn:escape-html-uri($uri as xs:string?) as xs:string 
+fn:exactly-one($arg as item()*) as item() 
+fn:exists($arg as item()*) as xs:boolean 
+fn:false() as xs:boolean 
+fn:floor($arg as numeric?) as numeric? 
+fn:hours-from-dateTime($arg as xs:dateTime?) as xs:integer? 
+fn:hours-from-duration($arg as xs:duration?) as xs:integer? 
+fn:hours-from-time($arg as xs:time?) as xs:integer? 
+fn:id($arg as xs:string*) as element()* 
+fn:id($arg as xs:string*, $node as node()) as element()* 
+fn:idref($arg as xs:string*) as node()* 
+fn:idref($arg as xs:string*, $node as node()) as node()* 
+fn:implicit-timezone() as xs:dayTimeDuration 
+fn:in-scope-prefixes($element as element()) as xs:string* 
+fn:index-of($seqParam as xs:anyAtomicType*, $srchParam as xs:anyAtomicType) as xs:integer* 
+fn:index-of($seqParam as xs:anyAtomicType*, $srchParam as xs:anyAtomicType, $collation as xs:string) as xs:integer* 
+fn:insert-before($target as item()*, $position as xs:integer, $inserts as item()*) as item()* 
+fn:iri-to-uri($iri as xs:string?) as xs:string 
+fn:lang($testlang as xs:string?) as xs:boolean 
+fn:lang($testlang as xs:string?, $node as node()) as xs:boolean 
+fn:last() as xs:integer 
+fn:local-name() as xs:string 
+fn:local-name($arg as node()?) as xs:string 
+fn:local-name-from-QName($arg as xs:QName?) as xs:NCName? 
+fn:lower-case($arg as xs:string?) as xs:string 
+fn:matches($input as xs:string?, $pattern as xs:string) as xs:boolean 
+fn:matches($input as xs:string?, $pattern as xs:string, $flags as xs:string) as xs:boolean 
+fn:max($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
+fn:max($arg as xs:anyAtomicType*, $collation as string) as xs:anyAtomicType? 
+fn:min($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
+fn:min($arg as xs:anyAtomicType*, $collation as string) as xs:anyAtomicType? 
+fn:minutes-from-dateTime($arg as xs:dateTime?) as xs:integer? 
+fn:minutes-from-duration($arg as xs:duration?) as xs:integer? 
+fn:minutes-from-time($arg as xs:time?) as xs:integer? 
+fn:month-from-date($arg as xs:date?) as xs:integer? 
+fn:month-from-dateTime($arg as xs:dateTime?) as xs:integer? 
+fn:months-from-duration($arg as xs:duration?) as xs:integer? 
+fn:name() as xs:string 
+fn:name($arg as node()?) as xs:string 
+fn:namespace-uri() as xs:anyURI 
+fn:namespace-uri($arg as node()?) as xs:anyURI 
+fn:namespace-uri-for-prefix($prefix as xs:string?, $element as element()) as xs:anyURI? 
+fn:namespace-uri-from-QName($arg as xs:QName?) as xs:anyURI? 
+fn:nilled($arg as node()?) as xs:boolean? 
+fn:node-name($arg as node()?) as xs:QName? 
+fn:normalize-space() as xs:string 
+fn:normalize-space($arg as xs:string?) as xs:string 
+fn:normalize-unicode($arg as xs:string?) as xs:string 
+fn:normalize-unicode($arg as xs:string?, $normalizationForm as xs:string) as xs:string 
+fn:not($arg as item()*) as xs:boolean 
+fn:number() as xs:double 
+fn:number($arg as xs:anyAtomicType?) as xs:double 
+fn:one-or-more($arg as item()*) as item()+ 
+fn:position() as xs:integer 
+fn:prefix-from-QName($arg as xs:QName?) as xs:NCName? 
+fn:QName($paramURI as xs:string?, $paramQName as xs:string) as xs:QName 
+fn:remove($target as item()*, $position as xs:integer) as item()* 
+fn:replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string) as xs:string 
+fn:replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string, $flags as xs:string) as xs:string 
+fn:resolve-QName($qname as xs:string?, $element as element()) as xs:QName? 
+fn:resolve-uri($relative as xs:string?) as xs:anyURI? 
+fn:resolve-uri($relative as xs:string?, $base as xs:string) as xs:anyURI? 
+fn:reverse($arg as item()*) as item()* 
+fn:root() as node() 
+fn:root($arg as node()?) as node()? 
+fn:round($arg as numeric?) as numeric? 
+fn:round-half-to-even($arg as numeric?) as numeric? 
+fn:round-half-to-even($arg as numeric?, $precision as xs:integer) as numeric? 
+fn:seconds-from-dateTime($arg as xs:dateTime?) as xs:decimal? 
+fn:seconds-from-duration($arg as xs:duration?) as xs:decimal? 
+fn:seconds-from-time($arg as xs:time?) as xs:decimal? 
+fn:starts-with($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
+fn:starts-with($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
+fn:static-base-uri() as xs:anyURI? 
+fn:string() as xs:string 
+fn:string($arg as item()?) as xs:string 
+fn:string-join($arg1 as xs:string*, $arg2 as xs:string) as xs:string 
+fn:string-length() as xs:integer 
+fn:string-length($arg as xs:string?) as xs:integer 
+fn:string-to-codepoints($arg as xs:string?) as xs:integer* 
+fn:subsequence($sourceSeq as item()*, $startingLoc as xs:double) as item()* 
+fn:subsequence($sourceSeq as item()*, $startingLoc as xs:double, $length as xs:double) as item()* 
+fn:substring($sourceString as xs:string?, $startingLoc as xs:double) as xs:string 
+fn:substring($sourceString as xs:string?, $startingLoc as xs:double, $length as xs:double) as xs:string 
+fn:substring-after($arg1 as xs:string?, $arg2 as xs:string?) as xs:string 
+fn:substring-after($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:string 
+fn:substring-before($arg1 as xs:string?, $arg2 as xs:string?) as xs:string 
+fn:substring-before($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:string 
+fn:sum($arg as xs:anyAtomicType*) as xs:anyAtomicType 
+fn:sum($arg as xs:anyAtomicType*, $zero as xs:anyAtomicType?) as xs:anyAtomicType? 
+fn:timezone-from-date($arg as xs:date?) as xs:dayTimeDuration? 
+fn:timezone-from-dateTime($arg as xs:dateTime?) as xs:dayTimeDuration?
+fn:timezone-from-time($arg as xs:time?) as xs:dayTimeDuration?
+fn:tokenize($input as xs:string?, $pattern as xs:string) as xs:string*
+fn:tokenize($input as xs:string?, $pattern as xs:string, $flags as xs:string) as xs:string*
+fn:trace($value as item()*, $label as xs:string) as item()*
+fn:translate($arg as xs:string?, $mapString as xs:string, $transString as xs:string) as xs:string
+fn:true() as xs:boolean
+fn:unordered($sourceSeq as item()*) as item()*
+fn:upper-case($arg as xs:string?) as xs:string
+fn:year-from-date($arg as xs:date?) as xs:integer?
+fn:year-from-dateTime($arg as xs:dateTime?) as xs:integer?
+fn:years-from-duration($arg as xs:duration?) as xs:integer? 
+fn:zero-or-one($arg as item()*) as item()? 

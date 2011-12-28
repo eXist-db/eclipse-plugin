@@ -44,13 +44,13 @@ public class DocumentService implements IDocumentService {
 		return isOk;
 	}
 
-	public void create(IConfigurationElement providerElement)
+	public void create(IConfigurationElement providerElement, String content)
 			throws CreateDocumentException {
 		Assert.isNotNull(providerElement);
 		try {
 			ICreateDocumentProvider provider = (ICreateDocumentProvider) providerElement
 					.createExecutableExtension("class");
-			provider.create(_item);
+			provider.create(_item, content);
 		} catch (Exception e) {
 			throw new CreateDocumentException(_item, e);
 		}

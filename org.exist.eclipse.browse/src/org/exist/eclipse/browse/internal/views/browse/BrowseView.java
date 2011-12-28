@@ -1,16 +1,28 @@
 package org.exist.eclipse.browse.internal.views.browse;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.dnd.DropTarget;
+import org.eclipse.swt.dnd.DropTargetAdapter;
+import org.eclipse.swt.dnd.DropTargetEvent;
+import org.eclipse.swt.dnd.FileTransfer;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.ActionGroup;
 import org.eclipse.ui.part.DrillDownAdapter;
 import org.eclipse.ui.part.ViewPart;
@@ -18,6 +30,9 @@ import org.exist.eclipse.IConnection;
 import org.exist.eclipse.browse.browse.BrowseCoordinator;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseItemListener;
+import org.exist.eclipse.browse.internal.create.ImportDocumentsListener;
+import org.exist.eclipse.browse.internal.delete.DeleteCollectionListener;
+import org.exist.eclipse.browse.internal.refresh.RefreshCollectionListener;
 import org.exist.eclipse.listener.ConnectionRegistration;
 import org.exist.eclipse.listener.IConnectionListener;
 
@@ -74,6 +89,29 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 
 		ConnectionRegistration.addListener(this);
 		BrowseCoordinator.getInstance().addListener(this);
+		addDnDSupport();
+
+		IActionBars bars = getViewSite().getActionBars();
+
+		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(),
+				new Action() {
+					@Override
+					public void run() {
+						ActionBrowseListener listener = new ActionBrowseListener(
+								BrowseView.this,
+								new RefreshCollectionListener());
+						listener.run();
+					}
+				});
+		bars.setGlobalActionHandler(ActionFactory.DELETE.getId(), new Action() {
+			@Override
+			public void run() {
+				ActionBrowseListener listener = new ActionBrowseListener(
+						BrowseView.this, new DeleteCollectionListener());
+				listener.run();
+			}
+		});
+
 	}
 
 	public Object getInitInput() {
@@ -96,6 +134,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 
 	public void added(IConnection connection) {
 		getViewer().add(getViewSite(), connection);
+		getViewer().setSelection(new StructuredSelection(connection));
 	}
 
 	public void removed(IConnection connection) {
@@ -115,7 +154,9 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 	}
 
 	public void added(IBrowseItem item) {
+		getViewer().expandToLevel(item.getParent(), 1);
 		getViewer().add(item.getParent(), item);
+		getViewer().setSelection(new StructuredSelection(item), true);
 	}
 
 	public void removed(IBrowseItem[] items) {
@@ -178,5 +219,31 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 				_doubleClickAction.run();
 			}
 		});
+	}
+
+	private void addDnDSupport() {
+		int operations = DND.DROP_MOVE | DND.DROP_COPY | DND.DROP_LINK;
+
+		DropTarget target = new DropTarget(_viewer.getTree(), operations);
+		target.setTransfer(new Transfer[] { FileTransfer.getInstance() });
+		target.addDropListener(new DropTargetAdapter() {
+			public void drop(DropTargetEvent event) {
+
+				Object item = event.item.getData();
+
+				if (event.data == null || !(item instanceof IBrowseItem)) {
+					event.detail = DND.DROP_NONE;
+					return;
+				}
+				List<File> files = new ArrayList<File>();
+				for (String it : (String[]) event.data) {
+					files.add(new File(it));
+				}
+
+				new ImportDocumentsListener().importFiles((IBrowseItem) item,
+						files);
+			}
+		});
+
 	}
 }

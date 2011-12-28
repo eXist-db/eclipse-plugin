@@ -16,14 +16,15 @@
             class="org.exist.eclipse.browse.internal.views.browse.BrowseView"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.browse.internal.views.browse.BrowseView"
-            name="Browse View">
+            name="eXist Explorer">
       </view>
       <view
+            allowMultiple="true"
             category="org.exist.eclipse"
             class="org.exist.eclipse.browse.internal.views.document.DocumentView"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.browse.internal.views.document.DocumentView"
-            name="Document View">
+            name="Documents">
       </view>
    </extension>
    <extension
@@ -59,7 +60,7 @@
             class="org.exist.eclipse.browse.internal.refresh.RefreshCollectionListener"
             icon="icons/refresh_icon.png"
             isMultiselect="true"
-            name="refresh"
+            name="Refresh"
             showOn="all">
       </browse>
    </extension>
@@ -69,12 +70,12 @@
             class="org.exist.eclipse.browse.internal.create.CreateCollectionListener"
             icon="icons/folder_new.png"
             isMultiselect="false"
-            name="Create Collection"
+            name="New Collection..."
             showOn="all">
       </browse>
       <browse
             class="org.exist.eclipse.browse.internal.delete.DeleteCollectionListener"
-            icon="icons/user-trash-full.png"
+            icon="icons/delete.png"
             isMultiselect="true"
             name="Delete"
             showOn="collection">
@@ -83,7 +84,7 @@
             class="org.exist.eclipse.browse.internal.move.MoveCollectionListener"
             icon="icons/move.png"
             isMultiselect="false"
-            name="Rename/Move"
+            name="Rename/Move..."
             showOn="collection">
       </browse>
    </extension>
@@ -100,7 +101,21 @@
             class="org.exist.eclipse.browse.internal.create.CreateDocumentListener"
             icon="icons/document-new.png"
             isMultiselect="false"
-            name="Create Document"
+            name="New Document..."
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.browse.internal.create.ImportDocumentsListener"
+            icon="icons/import.png"
+            isMultiselect="false"
+            name="Import Documents..."
+            showOn="all">
+      </browse>
+      <browse
+            class="org.exist.eclipse.browse.internal.create.ImportDocumentsFromWorkingSetListener"
+            icon="icons/import.png"
+            isMultiselect="false"
+            name="Import Documents from WorkingSet..."
             showOn="all">
       </browse>
    </extension>
@@ -108,13 +123,13 @@
          point="org.exist.eclipse.browse.document">
       <document
             class="org.exist.eclipse.browse.internal.delete.DeleteDocumentListener"
-            icon="icons/user-trash-full.png"
+            icon="icons/delete.png"
             name="Delete">
       </document>
       <document
             class="org.exist.eclipse.browse.internal.move.RenameDocumentListener"
             icon="icons/move.png"
-            name="Rename">
+            name="Rename...">
       </document>
    </extension>
    <extension
@@ -135,23 +150,23 @@
       </connection>
       <connection
             class="org.exist.eclipse.browse.internal.connection.RemoveConnectionListener"
-            icon="icons/user-trash-full.png"
+            icon="icons/delete.png"
             isMultiselect="true"
             name="Delete"
             state="both">
       </connection>
       <connection
             class="org.exist.eclipse.browse.internal.connection.ChangeConnectionListener"
-            icon="icons/move.png"
+            icon="icons/edit.png"
             isMultiselect="false"
-            name="Edit"
+            name="Edit..."
             state="both">
       </connection>
       <connection
             class="org.exist.eclipse.browse.internal.connection.CopyConnectionListener"
             icon="icons/edit-copy.png"
             isMultiselect="false"
-            name="Copy"
+            name="Copy..."
             state="both">
       </connection>
    </extension>

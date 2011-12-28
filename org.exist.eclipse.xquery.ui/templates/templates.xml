@@ -2,13 +2,6 @@
 <templates>
 <template 
   context="xqueryUniversalTemplateContextType" 
-  description="declare a new function" 
-  id="org.exist.eclipse.xquery.ui.templates.function" 
-  name="function">declare function ${name}($$${param1} as ${type}) as ${returnVal}{
-${cursor}
-};</template>
-<template 
-  context="xqueryUniversalTemplateContextType" 
   description="let - define a variable" 
   id="org.exist.eclipse.xquery.ui.templates.let" 
   name="let">let $$${var} := ${value}
@@ -27,8 +20,15 @@ ${cursor}</template>
   return $$${obj}${cursor}</template>
 <template 
   context="xqueryUniversalTemplateContextType" 
-  description="declare - declare a new varialbe" 
+  description="declare a new variable" 
   id="org.exist.eclipse.xquery.ui.templates.declare" 
-  name="declare">declare variable $$${var} := ${value};
+  name="declare variable">declare variable $$${var} := ${value};
 ${cursor}</template>  
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="declare a new function" 
+  id="org.exist.eclipse.xquery.ui.templates.function" 
+  name="declare function">declare function ${name}($$${param1} as ${type}) as ${returnType} {
+  ${cursor}
+};</template>
 </templates>

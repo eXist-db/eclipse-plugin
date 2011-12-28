@@ -7,8 +7,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.exist.eclipse.xquery.ui.XQueryUI;
 import org.exist.eclipse.xquery.ui.context.AbstractContextWizardPage;
-import org.exist.eclipse.xquery.ui.context.ContextSwitcherRegistration;
 import org.exist.eclipse.xquery.ui.context.IConnectionContext;
+import org.exist.eclipse.xquery.ui.context.IContextSwitcher;
 import org.exist.eclipse.xquery.ui.editor.IXQueryEditor;
 
 /**
@@ -17,11 +17,30 @@ import org.exist.eclipse.xquery.ui.editor.IXQueryEditor;
  * @author Pascal Schmidiger
  */
 public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
-	public static final String WIZARD_TITLE = "Select the context";
-	static final String WIZARD_DESCRIPTION = "Select the context for running queries.";
+
+	private static String _lastSelectedConnection;
+
+	protected static void setLastSelectedConnection(
+			String lastSelectedConnection) {
+		_lastSelectedConnection = lastSelectedConnection;
+	}
+
+	protected static String getLastSelectedConnection() {
+		if (_lastSelectedConnection == null) {
+			_lastSelectedConnection = "";
+		}
+		return _lastSelectedConnection;
+	}
+
+	public static final String WIZARD_TITLE = "Select a connection";
+	static final String WIZARD_DESCRIPTION = "Select a connection for running queries.";
 	private IWorkbench _workbench;
 	private IStructuredSelection _selection;
-	private AbstractContextWizardPage[] _pages;
+
+	@Override
+	public boolean needsPreviousAndNextButtons() {
+		return false;
+	}
 
 	/**
 	 * Adding the page to the wizard.
@@ -29,15 +48,9 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 	public void addPages() {
 		if (XQueryUI.getDefault().getActiveXQueryEditor() == null) {
 			addPage(new NoActiveEditorWizardPage());
-		} else if (ContextSwitcherRegistration.getInstance()
-				.getContextSwitchers().size() < 1) {
-			addPage(new NoContextWizardPage());
-		} else if (_pages == null) {
-			addPage(new ChooseContextWizardPage(_workbench, _selection));
 		} else {
-			for (AbstractContextWizardPage page : _pages) {
-				addPage(page);
-			}
+			// do nothing
+			addPage(new ChooseContextWizardPage(_workbench, _selection));
 		}
 	}
 
@@ -68,7 +81,9 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 		IConnectionContext context = null;
 		if (currentPage instanceof ChooseContextWizardPage) {
 			ChooseContextWizardPage page = (ChooseContextWizardPage) currentPage;
-			context = page.getSelected().getDefault();
+			IContextSwitcher switcher = page.getSelected();
+			setLastSelectedConnection(switcher.getName());
+			context = switcher.getDefault();
 		} else if (currentPage instanceof AbstractContextWizardPage) {
 			AbstractContextWizardPage page = (AbstractContextWizardPage) currentPage;
 			context = page.getConnectionContext();
@@ -82,9 +97,5 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 		}
 
 		return true;
-	}
-
-	public void setPages(AbstractContextWizardPage[] pages) {
-		_pages = pages;
 	}
 }

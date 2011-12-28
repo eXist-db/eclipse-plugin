@@ -31,6 +31,15 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySyntaxUtils;
  * @author Pascal Schmidiger
  */
 public class XQueryCompletionEngine extends ScriptCompletionEngine {
+
+	public static String removeFnPrefix(String methodName) {
+		String fnPrefix = XQueryMixinModel.PREFIX_FN + ":";
+		if (methodName.startsWith(fnPrefix)) {
+			methodName = methodName.substring(fnPrefix.length());
+		}
+		return methodName;
+	}
+
 	IScriptProject project;
 	private CompletionRequestor requestor;
 	private int actualCompletionPosition;
@@ -44,7 +53,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		this.offset = pos;
 
 		final String content = module.getSourceContents();
-		final String wordStarting = getWordStarting(content, position, 10);
+		final String wordStarting = getWordStarting(content, position);
 
 		if (wordStarting.length() != 0) {
 			setSourceRange(position - wordStarting.length(), position);
@@ -98,41 +107,51 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		}
 	}
 
-	private String getWordStarting(String content, int position, int maxLen) {
-		if (position <= 0 || position > content.length()) {
+	private String getWordStarting(String content, int pos) {
+		if (pos <= 0 || pos > content.length()) {
 			return "";
 		}
-		final int original = position;
+		final int original = pos;
 
-		while (position > 0
-				&& maxLen > 0
-				&& XQuerySyntaxUtils.isXQueryIdentifierPart((char) (content
-						.charAt(position - 1)))) {
-			--position;
-			--maxLen;
+		while (true) {
+			char c = content.charAt(pos - 1);
+			if (pos == 0 || !XQuerySyntaxUtils.isXQueryIdentifierPart(c)) {
+				break;
+			}
+
+			pos--;
 		}
-		return content.substring(position, original);
+		return content.substring(pos, original);
 	}
 
 	private void createProposal(IXQueryMethod method, String prefix) {
-		CompletionProposal proposal = createProposal(
-				CompletionProposal.METHOD_DECLARATION,
-				this.actualCompletionPosition);
-		proposal.setFlags(method.getFlags());
-		String[] params = null;
-		params = method.getParameters();
 
-		if (params != null && params.length > 0) {
-			proposal.setParameterNames(params);
+		String methodName = method.getName();
+
+		methodName = removeFnPrefix(methodName);
+
+		boolean hasPrefix = methodName.startsWith(prefix);
+		if (hasPrefix) {
+			CompletionProposal proposal = createProposal(
+					CompletionProposal.METHOD_REF,
+					this.actualCompletionPosition);
+			proposal.setFlags(method.getFlags());
+			String[] params = method.getParameterNames();
+			if (params != null && params.length > 0) {
+				proposal.setParameterNames(params);
+			}
+
+			proposal.setExtraInfo(new MethodCompletionExtraInfo(method
+					.getParameterTypes()));
+
+			proposal.setName(methodName);
+			proposal.setCompletion(methodName);
+			int range = actualCompletionPosition - offset - prefix.length();
+			proposal.setReplaceRange(range, range);
+			proposal.setRelevance(20);
+			proposal.setModelElement(null);
+			this.requestor.accept(proposal);
 		}
-		proposal.setName(method.getName());
-		proposal.setCompletion(method.getName());
-		proposal.setReplaceRange(actualCompletionPosition - offset
-				- prefix.length(), actualCompletionPosition - offset
-				- prefix.length());
-		proposal.setRelevance(20);
-		proposal.setModelElement(null);
-		this.requestor.accept(proposal);
 	}
 
 	private void createProposal(String name, IModelElement element,
@@ -148,7 +167,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 					case IModelElement.METHOD:
 						IMethod method = (IMethod) element;
 						proposal = this.createProposal(
-								CompletionProposal.METHOD_DECLARATION,
+								CompletionProposal.METHOD_REF,
 								this.actualCompletionPosition);
 						proposal.setFlags(method.getFlags());
 
@@ -161,7 +180,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
 						if (params != null && params.length > 0) {
 							String[] paramNames = new String[params.length];
-							for (int i=0; i<params.length; i++) {
+							for (int i = 0; i < params.length; i++) {
 								paramNames[i] = params[i].getName();
 							}
 							proposal.setParameterNames(paramNames);

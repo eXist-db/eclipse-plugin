@@ -16,8 +16,8 @@ public class RenameDocumentListener implements IDocumentListener {
 
 	private IWorkbenchPage _page;
 
-	public void actionPerformed(IDocumentItem item) {
-		RenameDocumentWizard wizard = new RenameDocumentWizard(item);
+	public void actionPerformed(IDocumentItem[] items) {
+		RenameDocumentWizard wizard = new RenameDocumentWizard(items[0]);
 		wizard.init(_page.getWorkbenchWindow().getWorkbench(), null);
 		WizardDialog dialog = new WizardDialog(_page.getWorkbenchWindow()
 				.getShell(), wizard);

@@ -86,7 +86,7 @@ public class GetFunctionJob extends Job {
 				while (token.hasMoreTokens()) {
 					String param = token.nextToken();
 					param = param.substring(param.lastIndexOf(" "));
-					method.addParameter(param.trim());
+					method.addParameter(param.trim(), "");
 				}
 			}
 			methods.add(method);

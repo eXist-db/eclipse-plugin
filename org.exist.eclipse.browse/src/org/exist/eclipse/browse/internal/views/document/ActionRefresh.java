@@ -9,10 +9,10 @@ import org.eclipse.jface.action.Action;
  * @author Pascal Schmidiger
  * 
  */
-public class ActionReload extends Action {
+public class ActionRefresh extends Action {
 	private final DocumentView _view;
 
-	public ActionReload(DocumentView view) {
+	public ActionRefresh(DocumentView view) {
 		_view = view;
 	}
 

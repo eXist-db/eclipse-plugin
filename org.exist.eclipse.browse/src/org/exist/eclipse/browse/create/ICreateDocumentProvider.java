@@ -17,8 +17,12 @@ public interface ICreateDocumentProvider {
 	 * 
 	 * @param item
 	 *            which should be created.
+	 * @param content
+	 *            initial content for the document or null to use default
+	 *            content
 	 * @throws CreateDocumentException
 	 *             if the document could not created.
 	 */
-	public void create(IDocumentItem item) throws CreateDocumentException;
+	public void create(IDocumentItem item, String content)
+			throws CreateDocumentException;
 }

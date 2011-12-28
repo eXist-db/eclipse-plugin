@@ -17,46 +17,25 @@ import org.w3c.xqparser.XPathVisitor;
  */
 public class ParameterVisitor implements XPathVisitor {
 	private static final String QNAME = "QName";
-	private static final String ATOMIC_TYPE = "AtomicType";
-	private static final String OCCURENCE_INDICATOR = "OccurrenceIndicator";
-	private static final String DEFAULT = "element";
 	private XQueryParser _parser;
 	private String _name;
 	private int _startPos;
 	private int _endPos;
-	private boolean _hasAtomicType;
 
 	public ParameterVisitor(XQueryParser parser) {
 		_parser = parser;
-		_name = DEFAULT;
+		_name = null;
 	}
 
 	public Object visit(SimpleNode node, Object data) {
-		if (ATOMIC_TYPE.equals(node.toString())) {
-			_hasAtomicType = true;
-			node.childrenAccept(this, data);
-		} else if (QNAME.equals(node.toString())) {
-			if (_hasAtomicType) {
-				_name = node.getValue();
-				if(node.getToken()!=null){
-					_endPos += node.getToken().endColumn;					
-				}
-			} else {
-				if (node.getToken() != null) {
-					_startPos = _parser.getStartPosition(0,
-							node.getToken().beginLine);
-					_endPos = _parser.getStartPosition(_startPos, node
-							.getToken().endLine
-							- node.getToken().beginLine);
-					_startPos += (node.getToken().beginColumn - 1);
-					_endPos += (node.getToken().endColumn);
-				}
+		if (QNAME.equals(node.toString())) {
+			_name = "$" + node.getValue();
+			if (node.getToken() != null) {
+				int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node
+						.getToken());
+				_startPos = startEnd[0];
+				_endPos = startEnd[1];
 			}
-		} else if (OCCURENCE_INDICATOR.equals(node.toString())) {
-			_name += node.getValue();
-			_endPos++;
-		} else {
-			node.childrenAccept(this, data);
 		}
 
 		return data;
@@ -66,8 +45,11 @@ public class ParameterVisitor implements XPathVisitor {
 	 * @return the created {@link Argument}
 	 */
 	public Argument getArgument() {
-		return new Argument(new SimpleReference(_startPos, _endPos, _name
-				.toString()), _startPos, null, 0);
+		Argument arg = new Argument(new SimpleReference(_startPos, _endPos,
+				_name), _startPos, null, 0);
+		arg.getRef().setStart(_startPos);
+		arg.getRef().setEnd(_startPos + _name.length() - 1);
+		return arg;
 	}
 
 }

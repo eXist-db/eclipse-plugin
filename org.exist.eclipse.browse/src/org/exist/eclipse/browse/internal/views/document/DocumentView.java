@@ -5,25 +5,33 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
@@ -35,6 +43,8 @@ import org.exist.eclipse.browse.document.DocumentCoordinator;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.document.IDocumentItemListener;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
+import org.exist.eclipse.browse.internal.delete.DeleteDocumentListener;
+import org.exist.eclipse.browse.internal.views.browse.BrowseView;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.listener.ConnectionRegistration;
 import org.exist.eclipse.listener.IConnectionListener;
@@ -49,6 +59,7 @@ import org.xmldb.api.base.XMLDBException;
 public class DocumentView extends ViewPart implements IConnectionListener,
 		IBrowseItemListener, IDocumentItemListener {
 	public static final String ID = "org.exist.eclipse.browse.internal.views.document.DocumentView";
+
 	private TableViewer _viewer;
 	private ActionGroupMain _agMain;
 	private ActionGroupOpenDocument _agOpenDocument;
@@ -56,8 +67,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	private IBrowseItem _item;
 	private String _origPartname;
 	private Text _textFilter;
-	private Text _textCount;
-	private Button _buttonSubmit;
+	private Label _labelCount;
 
 	/**
 	 * The constructor.
@@ -79,73 +89,84 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	 */
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 6;
+		layout.marginHeight = 2;
+		layout.marginWidth = 0;
+		layout.verticalSpacing = 2;
 		parent.setLayout(layout);
 
+		Composite inner = new Composite(parent, SWT.NONE);
+		GridLayout innerLayout = new GridLayout();
+		innerLayout.marginHeight = 0;
+		innerLayout.marginWidth = 2;
+		innerLayout.numColumns = 2;
+		GridData innerGd = new GridData(GridData.FILL_HORIZONTAL);
+		inner.setLayoutData(innerGd);
+
+		inner.setLayout(innerLayout);
 		// text control - filter
-		_textFilter = new Text(parent, SWT.LEFT | SWT.BORDER);
+		Label filterLabel = new Label(inner, SWT.NONE);
+		filterLabel.setText("Filter:");
+		filterLabel.setLayoutData(new GridData(0));
+		_textFilter = new Text(inner, SWT.BORDER);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = 5;
-		gd.horizontalAlignment = SWT.FILL;
-		gd.grabExcessHorizontalSpace = true;
 		_textFilter.setLayoutData(gd);
-		_textFilter.addKeyListener(new KeyListener() {
 
-			public void keyPressed(KeyEvent e) {
-			}
+		_textFilter.addModifyListener(new ModifyListener() {
 
-			public void keyReleased(KeyEvent e) {
-				if (e.character == SWT.CR) {
+			Runnable _refresher = new Runnable() {
+				public void run() {
 					refresh();
-					_textFilter.setFocus();
 				}
+			};
+
+			public void modifyText(ModifyEvent e) {
+				e.display.timerExec(-1, _refresher);
+				e.display.timerExec(e.display.getDoubleClickTime(), _refresher);
 			}
 		});
 
-		// button control - filter
-		_buttonSubmit = new Button(parent, SWT.LEFT);
-		_buttonSubmit.setText("Filter");
-		gd = new GridData();
-		gd.horizontalSpan = 1;
-		_buttonSubmit.setLayoutData(gd);
-		_buttonSubmit.addSelectionListener(new SelectionListener() {
-
-			public void widgetDefaultSelected(SelectionEvent e) {
-			}
-
-			public void widgetSelected(SelectionEvent e) {
-				refresh();
-
-			}
-		});
-
-		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.FILL);
-		// _documentFilter = new DocumentFilter();
-		// _viewer.setFilters(new ViewerFilter[] { _documentFilter });
+		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.MULTI);
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
 		_viewer.setUseHashlookup(true);
 		_viewer.setSorter(new NameSorter());
-		_viewer.getTable().setLinesVisible(true);
-		_viewer.getControl().addKeyListener(new DocumentKeyAdapter(this));
-		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+		_viewer.getTable().addPaintListener(new PaintListener() {
+			public void paintControl(PaintEvent e) {
+				onPaintTable(e);
+			}
+		});
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				_agOpenDocument.hookDoubleClickAction();
+		// SWT.FULL_SELECTION does not have an effect. create effect with
+		// TableColumn that fill's horizontally
+		_viewer.getTable().addControlListener(new ControlAdapter() {
+			@Override
+			public void controlResized(ControlEvent e) {
+				_viewer.getTable().getColumns()[0]
+						.setWidth(_viewer.getTable().getSize().x
+								- (_viewer.getTable().getVerticalBar()
+										.getSize().x + 5));
+			}
+		});
+		new TableColumn(_viewer.getTable(), SWT.NONE);
+		_viewer.getControl().addKeyListener(new DocumentKeyAdapter(this));
+		_viewer.addDoubleClickListener(new IDoubleClickListener() {
+			public void doubleClick(DoubleClickEvent event) {
+				IDocumentItem first = (IDocumentItem) ((IStructuredSelection) _viewer
+						.getSelection()).getFirstElement();
+				if (first != null) {
+					new ActionOpenDocument(ActionGroupOpenDocument
+							.getDefaultEditor(first).getId(), _viewer).run();
+				}
 			}
 		});
 		gd = new GridData(GridData.FILL_BOTH);
-		gd.horizontalSpan = 6;
 		_viewer.getTable().setLayoutData(gd);
 
 		// text control - count
-		_textCount = new Text(parent, SWT.LEFT | SWT.BORDER);
-		_textCount.setEnabled(false);
+		_labelCount = new Label(parent, SWT.NONE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = 6;
-		gd.horizontalAlignment = SWT.FILL;
-		gd.grabExcessHorizontalSpace = true;
-		_textCount.setLayoutData(gd);
+		gd.horizontalIndent = 2;
+		_labelCount.setLayoutData(gd);
 
 		createInput();
 		makeActions();
@@ -155,6 +176,25 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		BrowseCoordinator.getInstance().addListener(this);
 		DocumentCoordinator.getInstance().addListener(this);
 		_origPartname = getPartName();
+
+		DocumentDnD.install(this);
+	}
+
+	protected void onPaintTable(PaintEvent e) {
+		String msg = null;
+		if (!hasItem()) {
+			String explorerName = PlatformUI.getWorkbench().getViewRegistry()
+					.find(BrowseView.ID).getLabel();
+			msg = "To display documents, double click a collection\nin "
+					+ explorerName + ".";
+		} else if (getViewer().getTable().getItemCount() == 0) {
+			msg = "No documents found";
+		}
+
+		if (msg != null) {
+			GC gc = e.gc;
+			gc.drawText(msg, 4, 4);
+		}
 	}
 
 	/**
@@ -256,7 +296,6 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 
 	protected void refresh() {
 		createInput();
-		setFocus();
 	}
 
 	// //////////////////////////////////////////////////////////////////////////
@@ -273,6 +312,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 			setPartName(_item.getPath() + " ("
 					+ _item.getConnection().getName() + ")");
 		}
+		_agOpenDocument.updateActionBars();
 	}
 
 	private void createInput() {
@@ -286,12 +326,12 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 			TreeSet<String> sorted = new TreeSet<String>();
 			try {
 				elements = getItem().getCollection().listResources();
-				String filter = _textFilter.getText();
+				String filter = _textFilter.getText().toLowerCase();
 				boolean applyFilter = filter.length() > 0;
 				for (String element : elements) {
 					String decElement = URIUtils.urlDecodeUtf8(element);
 					if (applyFilter) {
-						if (decElement.matches(filter)) {
+						if (decElement.toLowerCase().indexOf(filter) != -1) {
 							sorted.add(decElement);
 						}
 					} else {
@@ -325,11 +365,11 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 			}
 			_viewer.setItemCount(sorted.size());
 			_viewer.setInput(sorted.toArray(new String[sorted.size()]));
-			_textCount.setText("Count: " + sorted.size());
+			_labelCount.setText("Count: " + sorted.size());
 		} else {
 			_viewer.setItemCount(0);
 			_viewer.setInput(new String[0]);
-			_textCount.setText("Count: 0");
+			_labelCount.setText("Count: 0");
 		}
 	}
 
@@ -349,6 +389,20 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	private void contributeToActionBars() {
 		IActionBars bars = getViewSite().getActionBars();
 		_agMain.fillActionBars(bars);
+
+		_agOpenDocument.fillActionBars(bars);
+
+		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(),
+				new ActionRefresh(this));
+
+		bars.setGlobalActionHandler(ActionFactory.DELETE.getId(), new Action() {
+			@Override
+			public void run() {
+				ActionDocumentListener listener = new ActionDocumentListener(
+						DocumentView.this, new DeleteDocumentListener());
+				listener.run();
+			}
+		});
 	}
 
 	private void fillContextMenu(IMenuManager manager) {

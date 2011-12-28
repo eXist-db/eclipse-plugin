@@ -2,15 +2,18 @@ package org.exist.eclipse.xquery.ui.internal.result;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.eclipse.jface.action.Action;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.custom.CTabFolder;
+import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.TabFolder;
-import org.eclipse.swt.widgets.TabItem;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
+import org.exist.eclipse.xquery.ui.internal.result.ResultViewPart.PartFrame;
 import org.exist.eclipse.xquery.ui.result.IQueryFrame;
 
 /**
@@ -20,49 +23,58 @@ import org.exist.eclipse.xquery.ui.result.IQueryFrame;
  */
 public class ResultView extends ViewPart {
 	public static final String ID = "org.exist.eclipse.xquery.ui.internal.result.ResultView";
-	private ResultViewPart _defaultPart;
-	public static AtomicInteger _uniqueNr = new AtomicInteger(0);
-	private TabFolder _tabFolder;
-	private TabItem _tabItem;
+	public static final AtomicInteger _uniqueNr = new AtomicInteger(0);
+	private CTabFolder _tabFolder;
+	private DisposeListener _tabItemDisposeListener;
 
 	public ResultView() {
 	}
 
-	@Override
-	public void dispose() {
-		super.dispose();
-	}
-
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 1;
+		layout.marginTop = 2;
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
 		parent.setLayout(layout);
-		_tabFolder = new TabFolder(parent, SWT.TOP);
+		_tabFolder = new CTabFolder(parent, SWT.NONE);
+		_tabFolder.setUnselectedCloseVisible(false);
+		_tabFolder.marginWidth = -2;
+		_tabFolder.marginHeight = -2;
 		GridData gd = new GridData(GridData.FILL_BOTH);
 		_tabFolder.setLayoutData(gd);
-		_tabFolder.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseDoubleClick(MouseEvent e) {
-				TabFolder tab = (TabFolder) e.getSource();
-				TabItem[] items = tab.getSelection();
-				for (TabItem item : items) {
-					if (!item.equals(_tabItem)) {
-						item.dispose();
+		CTabItem tabItem = createTabItem();
+		setTabItemText(tabItem, "Result", -1);
+
+		getViewSite().getActionBars().setGlobalActionHandler(
+				ActionFactory.COPY.getId(), new Action() {
+					@Override
+					public void run() {
+						CTabItem sel = _tabFolder.getSelection();
+						PartFrame partFrame = (PartFrame) sel.getControl();
+						new CopyResultItemsAction(partFrame.getPart()
+								.getViewer()).run();
+					}
+				});
+		_tabFolder.setSelection(0);
+	}
+
+	private DisposeListener getTabItemDisposeListener() {
+		if (_tabItemDisposeListener == null) {
+			_tabItemDisposeListener = new DisposeListener() {
+				public void widgetDisposed(DisposeEvent e) {
+					// do not let close last tab item
+					if (_tabFolder.getItemCount() == 1) {
+						_tabFolder.getItem(0).setShowClose(false);
 					}
 				}
-			}
-		});
-		_tabItem = new TabItem(_tabFolder, SWT.NONE);
-		_tabItem.setText("default");
-		Composite composite = new Composite(_tabFolder, SWT.NONE);
-		_defaultPart = new ResultViewPart();
-		_defaultPart.createPartControl(composite);
-		_tabItem.setControl(composite);
+			};
+		}
+		return _tabItemDisposeListener;
 	}
 
 	@Override
 	public void setFocus() {
-
+		_tabFolder.setFocus();
 	}
 
 	/**
@@ -71,35 +83,61 @@ public class ResultView extends ViewPart {
 	 * @return a new {@link IQueryFrame} in which you can run the xquery.
 	 */
 	public IQueryFrame createQueryFrame(IQueryFrameInfo creation) {
-		int uniqueNr = getUniqueNr();
+		int uniqueNr = nextUniqueNr();
 		ResultViewPart part = getResultViewPart(uniqueNr, creation
-				.isCreatedNewTab());
+				.getFilename(), creation.isCreatedNewTab());
 		part.initCreation(creation, uniqueNr);
+
 		return part;
 	}
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////
 	// private mehtods
 	// ////////////////////////////////////////////////////////////////////////////////////////////
-	private int getUniqueNr() {
+	private int nextUniqueNr() {
 		return _uniqueNr.getAndIncrement();
 	}
 
-	private ResultViewPart getResultViewPart(int uniqueNr, boolean withTabs) {
-		ResultViewPart part = null;
+	private ResultViewPart getResultViewPart(int uniqueNr, String fileName,
+			boolean withTabs) {
+		CTabItem item;
 		if (withTabs) {
-			TabItem tabItem = new TabItem(_tabFolder, SWT.NONE);
-			tabItem.setText("" + uniqueNr);
-			part = new ResultViewPart();
-			Composite composite = new Composite(_tabFolder, SWT.NONE);
-			part.createPartControl(composite);
-			tabItem.setControl(composite);
-			_tabFolder.setSelection(_tabFolder.getItemCount() - 1);
+			item = createTabItem();
+			for (CTabItem it : _tabFolder.getItems()) {
+				it.setShowClose(true); // has more than 1 now
+			}
 		} else {
-			_tabItem.setText("default_" + uniqueNr);
-			_tabFolder.setSelection(0);
-			part = _defaultPart;
+			if (_tabFolder.getItemCount() == 0) {
+				item = createTabItem();
+			} else {
+				item = _tabFolder.getSelection();
+				if (item == null) {
+					item = _tabFolder.getItem(0);
+				}
+			}
 		}
-		return part;
+
+		_tabFolder.setSelection(item);
+		setTabItemText(item, fileName, uniqueNr);
+
+		return ((PartFrame) item.getControl()).getPart();
+	}
+
+	private CTabItem createTabItem() {
+		CTabItem tabItem = new CTabItem(_tabFolder, SWT.NONE);
+		tabItem.addDisposeListener(getTabItemDisposeListener());
+		ResultViewPart part = new ResultViewPart();
+		PartFrame composite = new PartFrame(_tabFolder);
+		part.createPartControl(composite);
+		tabItem.setControl(composite);
+		return tabItem;
+	}
+
+	private void setTabItemText(CTabItem tabItem, String fileName, int uniqueNr) {
+		String text = fileName;
+		if (uniqueNr != -1) {
+			text += " #" + uniqueNr;
+		}
+		tabItem.setText(text);
 	}
 }

@@ -1,6 +1,7 @@
 /**
  * BrowseActionGroup.java
  */
+
 package org.exist.eclipse.browse.internal.views.document;
 
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -55,7 +56,7 @@ public class ActionGroupDocumentExtension extends ActionGroup {
 						IDocumentListener listener = (IDocumentListener) element
 								.createExecutableExtension("class");
 						Action action = new ActionDocumentListener(_view,
-								listener, IDocumentItem.class.cast(obj));
+								listener);
 						action.setText(element.getAttribute("name"));
 						action.setToolTipText(element.getAttribute("name"));
 						String icon = element.getAttribute("icon");

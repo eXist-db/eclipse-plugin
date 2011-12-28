@@ -52,8 +52,8 @@ public class ToolBarActions {
 					MessageDialog.openInformation(form.getShell(),
 							"No Query available",
 							"An automation can only be executed if there's "
-									+ "at least one query configured.\nPlease"
-									+ " add a query to the automation.");
+									+ "at least one query configured.\nAdd"
+									+ " a query to the automation.");
 				} else {
 					RunAutoWizard wizard = new RunAutoWizard(_autoModel);
 					wizard.init(AutoUI.getDefault().getWorkbench(), null);

@@ -60,7 +60,6 @@ public class EnterDocumentWizardPage extends WizardPage {
 				dialogChanged();
 			}
 		});
-		_name.setFocus();
 		dialogChanged();
 		setControl(container);
 	}
@@ -99,9 +98,9 @@ public class EnterDocumentWizardPage extends WizardPage {
 		return null;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 
 	private void setDefaultDescription() {
 		setDescription("Enter a new document name");
@@ -134,6 +133,14 @@ public class EnterDocumentWizardPage extends WizardPage {
 	private void setErrorState(String message) {
 		setErrorMessage(message);
 		setPageComplete(message == null);
+	}
+
+	@Override
+	public void setVisible(boolean visible) {
+		super.setVisible(visible);
+		if (visible) {
+			_name.setFocus();
+		}
 	}
 
 }

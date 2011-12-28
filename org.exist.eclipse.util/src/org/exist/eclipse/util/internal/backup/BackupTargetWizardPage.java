@@ -16,7 +16,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.util.internal.UtilPlugin;
@@ -88,7 +87,7 @@ public class BackupTargetWizardPage extends WizardPage {
 
 		// button to select the target via dialog
 		Button selectCollectionBtn = new Button(container, SWT.Activate);
-		selectCollectionBtn.setText("Browse");
+		selectCollectionBtn.setText("Browse...");
 		gd = new GridData();
 		gd.horizontalSpan = 1;
 		gd.horizontalAlignment = SWT.CENTER;
@@ -114,10 +113,10 @@ public class BackupTargetWizardPage extends WizardPage {
 		return _ableToFinish;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// ///////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// ///////////////////
 
 	/**
@@ -174,8 +173,7 @@ public class BackupTargetWizardPage extends WizardPage {
 	 */
 	private void selectBackupLocation() {
 
-		Shell shell = new Shell();
-		FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+		FileDialog dialog = new FileDialog(getControl().getShell(), SWT.SAVE);
 		dialog.setText("Select a backup location");
 		dialog.setFileName("eXist-backup.zip");
 

@@ -4,14 +4,26 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.dialogs.IDialogPage;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.wizard.IWizardNode;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.ControlAdapter;
+import org.eclipse.swt.events.ControlEvent;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.internal.WorkbenchPlugin;
@@ -33,13 +45,14 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 
 	private Map<String, IContextSwitcher> _switcher;
 	private IContextSwitcher _selected;
+	private TableViewer _viewer;
 
 	public ChooseContextWizardPage(IWorkbench aWorkbench,
 			IStructuredSelection currentSelection) {
 		super("choosecontextwizardpage", aWorkbench, currentSelection, null,
 				null);
 		setTitle(SelectContextWizard.WIZARD_TITLE);
-		setDescription("Select the context.");
+		setDescription("Select a connection.");
 		setImageDescriptor(XQueryUI
 				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
 	}
@@ -50,42 +63,118 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 	 * @see IDialogPage#createControl(Composite)
 	 */
 	public void createControl(Composite parent) {
-		Composite container = new Composite(parent, SWT.NULL);
+		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
 		container.setLayout(layout);
-		layout.numColumns = 1;
 
 		_switcher = ContextSwitcherRegistration.getInstance()
 				.getContextSwitchersAsMap();
 
-		Button button = null;
-		for (String name : _switcher.keySet()) {
-			button = new Button(container, SWT.RADIO);
-			button.setText(name);
-			button.addSelectionListener(new SelectionAdapter() {
+		_viewer = new TableViewer(container, SWT.FULL_SELECTION | SWT.BORDER);
+		_viewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
+		_viewer.setContentProvider(new IStructuredContentProvider() {
 
-				public void widgetSelected(SelectionEvent e) {
-					_selected = _switcher.get(Button.class.cast(e.getSource())
-							.getText());
-					setErrorMessage(null);
-					setPageComplete(true);
-					updateSelectedNode();
+			public void inputChanged(Viewer viewer, Object oldInput,
+					Object newInput) {
+			}
+
+			public void dispose() {
+			}
+
+			public Object[] getElements(Object inputElement) {
+				return _switcher.values().toArray();
+			}
+		});
+
+		_viewer.setLabelProvider(new LabelProvider() {
+
+			private Image _connectionImage;
+
+			@Override
+			public Image getImage(Object element) {
+				return getConnectionImage();
+			}
+
+			@Override
+			public void dispose() {
+				super.dispose();
+				if (_connectionImage != null) {
+					_connectionImage.dispose();
 				}
-			});
-		}
+			}
+
+			private Image getConnectionImage() {
+				if (_connectionImage == null) {
+					_connectionImage = XQueryUI.getImageDescriptor(
+							"icons/connection_open.png").createImage();
+				}
+				return _connectionImage;
+			}
+
+			@Override
+			public String getText(Object element) {
+				return ((IContextSwitcher) element).getName();
+			}
+		});
+		_viewer.setSorter(new ViewerSorter());
+
+		_viewer.addDoubleClickListener(new IDoubleClickListener() {
+			public void doubleClick(DoubleClickEvent event) {
+				if (getWizard().performFinish()) {
+					getWizard().getContainer().getShell().close();
+				}
+			}
+		});
+		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			public void selectionChanged(SelectionChangedEvent event) {
+				_selected = (IContextSwitcher) ((IStructuredSelection) event
+						.getSelection()).getFirstElement();
+				setErrorMessage(null);
+				setPageComplete(true);
+				updateSelectedNode();
+			}
+		});
+
+		// SWT.FULL_SELECTION does not have an effect. create effect with
+		// TableColumn that fill's horizontally
+		_viewer.getTable().addControlListener(new ControlAdapter() {
+			@Override
+			public void controlResized(ControlEvent e) {
+				_viewer.getTable().getColumns()[0]
+						.setWidth(_viewer.getTable().getSize().x
+								- (_viewer.getTable().getVerticalBar()
+										.getSize().x + 5));
+			}
+		});
+		new TableColumn(_viewer.getTable(), SWT.NONE);
 
 		setControl(container);
-		setErrorMessage("Select a context");
-		setPageComplete(false);
-	}
 
-	@Override
-	public boolean canFlipToNextPage() {
-		if (_selected != null && _selected.getWizardPages() != null
-				&& _selected.getWizardPages().length < 1) {
-			return false;
+		_viewer.setInput(new Object());
+		if (_viewer.getTable().getItemCount() == 0) {
+			setErrorMessage("There exists no connection. A connection can be created in eXist Explorer.");
+			setPageComplete(false);
+		} else {
+
+			IContextSwitcher newSel = null;
+			String last = SelectContextWizard.getLastSelectedConnection();
+			if (!last.isEmpty()) {
+				for (IContextSwitcher it : _switcher.values()) {
+					if (it.getName().equals(last)) {
+						newSel = it;
+						break;
+					}
+				}
+			}
+
+			if (newSel == null) {
+				newSel = (IContextSwitcher) _viewer.getTable().getItem(0)
+						.getData();
+			}
+			_viewer.setSelection(new StructuredSelection(newSel));
 		}
-		return super.canFlipToNextPage();
 	}
 
 	public final IContextSwitcher getSelected() {
@@ -113,7 +202,6 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 			public IWorkbenchWizard createWizard() throws CoreException {
 				SelectContextWizard selectContextWizard = (SelectContextWizard) wizardElement
 						.createWizard();
-				selectContextWizard.setPages(_selected.getWizardPages());
 				return selectContextWizard;
 			}
 		};

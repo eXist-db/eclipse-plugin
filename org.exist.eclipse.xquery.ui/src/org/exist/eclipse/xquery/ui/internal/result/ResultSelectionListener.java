@@ -1,12 +1,12 @@
 /**
  * ResultSelectionListener.java
  */
+
 package org.exist.eclipse.xquery.ui.internal.result;
 
-import org.eclipse.swt.events.MouseAdapter;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IStorageEditorInput;
@@ -22,21 +22,15 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class ResultSelectionListener extends MouseAdapter {
+public class ResultSelectionListener implements IDoubleClickListener {
 
 	public ResultSelectionListener() {
 	}
 
-	@Override
-	public void mouseDoubleClick(MouseEvent e) {
-		Table source = (Table) e.getSource();
-		TableItem[] item = source.getSelection();
-
-		if (item.length > 0) {
-			ResultItem resultItem = (ResultItem) item[0].getData();
+	public void openEditor(IStructuredSelection selection) {
+		for (Object it : selection.toArray()) {
 			IStorageEditorInput input = new QueryResultStorageEditorInput(
-					new QueryResultStorage(resultItem));
-
+					new QueryResultStorage((ResultItem) it));
 			openEditor(input);
 		}
 	}
@@ -59,6 +53,10 @@ public class ResultSelectionListener extends MouseAdapter {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public void doubleClick(DoubleClickEvent event) {
+		openEditor((IStructuredSelection) event.getSelection());
 	}
 
 }

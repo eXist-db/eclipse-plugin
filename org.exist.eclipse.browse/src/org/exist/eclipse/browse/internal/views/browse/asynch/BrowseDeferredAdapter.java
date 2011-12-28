@@ -3,6 +3,8 @@
  */
 package org.exist.eclipse.browse.internal.views.browse.asynch;
 
+import java.util.Arrays;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,11 +30,12 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 			IElementCollector collector, IProgressMonitor monitor) {
 		if (object instanceof IBrowseItem) {
 			IBrowseItem item = IBrowseItem.class.cast(object);
-			String[] collections;
 			try {
 				monitor.beginTask("Loading", item.getCollection()
 						.getChildCollectionCount());
-				collections = item.getCollection().listChildCollections();
+				String[] collections = item.getCollection()
+						.listChildCollections();
+				Arrays.sort(collections);
 				GetBrowseItemJob job = new GetBrowseItemJob("Get " + item,
 						collector, item, collections);
 				job.schedule();

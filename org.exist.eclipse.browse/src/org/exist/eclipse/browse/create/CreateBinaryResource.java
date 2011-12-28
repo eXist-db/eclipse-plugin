@@ -19,15 +19,19 @@ import org.xmldb.api.modules.BinaryResource;
  */
 public class CreateBinaryResource implements ICreateDocumentProvider {
 
-	public void create(IDocumentItem item) throws CreateDocumentException {
+	public void create(IDocumentItem item, String content)
+			throws CreateDocumentException {
 		try {
 			checkFileName(item);
 			Collection collection = item.getParent().getCollection();
 			BinaryResource result = (BinaryResource) collection.createResource(
 					URIUtils.urlEncodeUtf8(item.getName()),
 					BinaryResource.RESOURCE_TYPE);
-			result.setContent(getContent().getBytes(
-					ExistPreferences.getEncoding().name()));
+			if (content == null) {
+				content = "";
+			}
+			result.setContent(content.getBytes(ExistPreferences.getEncoding()
+					.name()));
 			collection.storeResource(result);
 			collection.close();
 		} catch (Exception e) {
@@ -45,7 +49,4 @@ public class CreateBinaryResource implements ICreateDocumentProvider {
 		// no checkins
 	}
 
-	protected String getContent() {
-		return "";
-	}
 }

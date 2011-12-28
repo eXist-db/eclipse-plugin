@@ -50,8 +50,8 @@ public class ViewLabelProvider extends LabelProvider {
 	//
 	private Image getFolderImage() {
 		if (_imgFolder == null) {
-			_imgFolder = BrowsePlugin.getImageDescriptor("icons/folder_icon.png")
-					.createImage();
+			_imgFolder = BrowsePlugin.getImageDescriptor(
+					"icons/folder_icon.png").createImage();
 		}
 		return _imgFolder;
 	}
@@ -70,5 +70,21 @@ public class ViewLabelProvider extends LabelProvider {
 					"icons/connection_close.png").createImage();
 		}
 		return _imgConnectionClose;
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		if (_imgFolder != null) {
+			_imgFolder.dispose();
+		}
+
+		if (_imgConnectionClose != null) {
+			_imgConnectionClose.dispose();
+		}
+
+		if (_imgConnectionOpen != null) {
+			_imgConnectionOpen.dispose();
+		}
 	}
 }

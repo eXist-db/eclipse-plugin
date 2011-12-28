@@ -14,11 +14,7 @@ import org.w3c.xqparser.XPathVisitor;
  * 
  * @author Pascal Schmidiger
  */
-public class FunctionVisitor implements XPathVisitor {
-	private static final String QNAME = "QName";
-	private static final String PARAM_LIST = "ParamList";
-	private static final String L_BRACE_EXPR_ENCLOSURE = "LbraceExprEnclosure";
-	private static final String R_BRACE = "Rbrace";
+public class FunctionVisitor implements XPathVisitor, NodeTypes {
 
 	private final XQueryParser _parser;
 	private String _name;
@@ -35,11 +31,10 @@ public class FunctionVisitor implements XPathVisitor {
 
 	public Object visit(SimpleNode node, Object data) {
 		if (QNAME.equals(node.toString()) && _name == null) {
-			_startPos = _parser.getStartPosition(0, node.getToken().beginLine);
-			_endPos = _parser.getStartPosition(_startPos,
-					node.getToken().endLine - node.getToken().beginLine);
-			_startPos += (node.getToken().beginColumn - 1);
-			_endPos += (node.getToken().endColumn);
+			int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node
+					.getToken());
+			_startPos = startEnd[0];
+			_endPos = startEnd[1];
 			_name = node.getValue();
 		} else if (PARAM_LIST.equals(node.toString())) {
 			_parameterListVisitor = new ParameterListVisitor(_parser);

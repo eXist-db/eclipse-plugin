@@ -4,6 +4,7 @@
 package org.exist.eclipse.query.internal.auto;
 
 import org.exist.eclipse.auto.data.Automation;
+import org.exist.eclipse.browse.create.CreateDocumentException;
 import org.exist.eclipse.browse.create.CreateXmlResource;
 import org.exist.eclipse.browse.document.IDocumentItem;
 
@@ -15,8 +16,9 @@ import org.exist.eclipse.browse.document.IDocumentItem;
 public class CreateAutoXmlResource extends CreateXmlResource {
 
 	@Override
-	protected String getContent() {
-		return Automation.createEmptyAutomationXml();
+	public void create(IDocumentItem item, String content)
+			throws CreateDocumentException {
+		super.create(item, Automation.createEmptyAutomationXml());
 	}
 
 	@Override

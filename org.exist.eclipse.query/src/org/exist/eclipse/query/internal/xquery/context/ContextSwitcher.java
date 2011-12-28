@@ -9,8 +9,8 @@ import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.BrowseHelper;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
+import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.query.internal.xquery.completion.GetFunctionJob;
-import org.exist.eclipse.xquery.ui.context.AbstractContextWizardPage;
 import org.exist.eclipse.xquery.ui.context.IConnectionContext;
 import org.exist.eclipse.xquery.ui.context.IContextSwitcher;
 
@@ -26,21 +26,20 @@ public class ContextSwitcher implements IContextSwitcher {
 
 	public ContextSwitcher(IConnection connection) {
 		_connection = connection;
-		_functionJob = new GetFunctionJob(BrowseHelper
-				.getRootBrowseItem(connection));
-		_functionJob.schedule();
 	}
 
 	public String getName() {
 		return _connection.getName();
 	}
 
-	public AbstractContextWizardPage[] getWizardPages() {
-		ContextWizardPage page = new ContextWizardPage(_connection, this);
-		return new AbstractContextWizardPage[] { page };
+	private void openConnection() throws ConnectionException {
+		if (!_connection.isOpen()) {
+			_connection.open();
+		}
 	}
 
 	public IConnectionContext getDefault() {
+		openConnection();
 		return getConnectionContext(BrowseHelper.getRootBrowseItem(_connection));
 	}
 
@@ -48,6 +47,9 @@ public class ContextSwitcher implements IContextSwitcher {
 		Display.getDefault().asyncExec(new Runnable() {
 			public void run() {
 				if (item != null) {
+					_functionJob = new GetFunctionJob(BrowseHelper
+							.getRootBrowseItem(_connection));
+					_functionJob.schedule();
 					IManagementService.class.cast(
 							item.getConnection().getAdapter(
 									IManagementService.class)).check();

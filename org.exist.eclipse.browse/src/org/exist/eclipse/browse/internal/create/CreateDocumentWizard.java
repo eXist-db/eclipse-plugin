@@ -2,6 +2,7 @@ package org.exist.eclipse.browse.internal.create;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWizard;
 import org.exist.eclipse.IManagementService;
@@ -11,6 +12,8 @@ import org.exist.eclipse.browse.create.CreateDocumentException;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.document.IDocumentService;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
+import org.exist.eclipse.browse.internal.views.document.ActionGroupOpenDocument;
+import org.exist.eclipse.browse.internal.views.document.ActionOpenDocument;
 
 /**
  * This wizard creates a new document.
@@ -65,8 +68,18 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 					IDocumentService documentService = (IDocumentService) documentItem
 							.getAdapter(IDocumentService.class);
 					documentService.create(_enterDocumentPage
-							.getDocumentProvider());
+							.getDocumentProvider(), null);
 					_itemService.refresh();
+
+					IEditorDescriptor defaultEditor = ActionGroupOpenDocument
+							.getDefaultEditor(documentItem);
+					if (defaultEditor != null) {
+						// open in editor
+						ActionOpenDocument openAction = new ActionOpenDocument(
+								defaultEditor.getId(), documentItem);
+						openAction.run();
+					}
+
 				} catch (CreateDocumentException e) {
 					isFinished = false;
 					_enterDocumentPage

@@ -1,6 +1,7 @@
 /**
  * MainActionGroup.java
  */
+
 package org.exist.eclipse.browse.internal.views.document;
 
 import org.eclipse.jface.action.Action;
@@ -24,9 +25,9 @@ public class ActionGroupMain extends ActionGroup {
 
 	public void makeActions() {
 		// refresh
-		_actionRefresh = new ActionReload(_view);
-		_actionRefresh.setText("Reload");
-		_actionRefresh.setToolTipText("Reload the selected collection");
+		_actionRefresh = new ActionRefresh(_view);
+		_actionRefresh.setText("Refresh");
+		_actionRefresh.setToolTipText("Refresh");
 		_actionRefresh.setImageDescriptor(BrowsePlugin
 				.getImageDescriptor("icons/refresh_icon.png"));
 	}
@@ -39,24 +40,17 @@ public class ActionGroupMain extends ActionGroup {
 
 	@Override
 	public void fillContextMenu(IMenuManager manager) {
-		if (_view.hasItem()) {
-			manager.add(_actionRefresh);
-		}
+		manager.add(_actionRefresh);
 	}
 
 	//
 	// private methods
 	//
 	private void fillLocalPullDown(IMenuManager manager) {
-		if (_view.hasItem()) {
-			manager.add(_actionRefresh);
-		}
 	}
 
 	private void fillLocalToolBar(IToolBarManager manager) {
-		if (_view.hasItem()) {
-			manager.add(_actionRefresh);
-		}
+		manager.add(_actionRefresh);
 	}
 
 }

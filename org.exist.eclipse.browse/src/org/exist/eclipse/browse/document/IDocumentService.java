@@ -35,9 +35,12 @@ public interface IDocumentService {
 	 * @param providerElement
 	 *            the configuration of the provider which is from extension
 	 *            "org.exist.eclipse.browse.createdocument".
+	 * @param content
+	 *            initial content for the document or null to use default
+	 *            content
 	 * @throws CreateDocumentException
 	 */
-	public void create(IConfigurationElement providerElement)
+	public void create(IConfigurationElement providerElement, String content)
 			throws CreateDocumentException;
 
 	/**

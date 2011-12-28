@@ -12,14 +12,21 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IStorageEditorInput;
+import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.texteditor.DocumentProviderRegistry;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.exist.eclipse.xquery.core.XQueryLanguageToolkit;
 import org.exist.eclipse.xquery.ui.XQueryUI;
+import org.exist.eclipse.xquery.ui.action.RunXQueryAction;
+import org.exist.eclipse.xquery.ui.action.refactoring.ExtractLocalVariableAction;
+import org.exist.eclipse.xquery.ui.action.refactoring.ExtractMethodAction;
+import org.exist.eclipse.xquery.ui.action.refactoring.ToggleCommentAction;
 import org.exist.eclipse.xquery.ui.context.IConnectionContext;
 import org.exist.eclipse.xquery.ui.editor.IXQueryEditor;
 import org.exist.eclipse.xquery.ui.internal.folding.XQueryFoldingStructureProvider;
@@ -33,9 +40,10 @@ import org.exist.eclipse.xquery.ui.internal.text.XQueryDocumentSetupParticipant;
  */
 public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
+	public static final String EDITING_XQUERY_SOURCE_CONTEXT = "org.exist.eclipse.xquery.ui.xqueryEditorScope";
 	public static final String EDITOR_ID = "org.exist.eclipse.xquery.ui.editor.XQueryEditor";
 
-	public static final String EDITOR_CONTEXT = "#XQueryEditorContext";
+	public static final String EDITOR_CONTEXT_MENU_ID = "#XQueryEditorContext";
 
 	private XQueryFoldingStructureProvider _foldingProvider;
 
@@ -43,7 +51,7 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
 	protected void initializeEditor() {
 		super.initializeEditor();
-		setEditorContextMenuId(EDITOR_CONTEXT);
+		setEditorContextMenuId(EDITOR_CONTEXT_MENU_ID);
 	}
 
 	public String getEditorId() {
@@ -81,30 +89,75 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 		}
 	}
 
+	public void runQuery() {
+		_xqueryContextPart.runQuery();
+	}
+
 	@Override
 	public void createPartControl(Composite parent) {
+
+		if (!isEditable()) {
+			super.createPartControl(parent);
+			return;
+		}
+
 		Layout defaultLayout = parent.getLayout();
 
 		GridLayout layout = new GridLayout();
-		layout.numColumns = 1;
+		layout.marginWidth = 0;
+		layout.marginHeight = 0;
+		layout.verticalSpacing = 0;
+		layout.horizontalSpacing = 0;
 		parent.setLayout(layout);
 
-		Composite toolbar = new Composite(parent, SWT.LEFT | SWT.BORDER);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		gd.horizontalSpan = 1;
-		toolbar.setLayoutData(gd);
 
+		Composite toolbar = new Composite(parent, SWT.NONE);
+		gd = new GridData(GridData.FILL_HORIZONTAL);
+		toolbar.setLayoutData(gd);
 		_xqueryContextPart = new XQueryContextPart(this);
 		_xqueryContextPart.createToolbarControl(toolbar);
 
-		Composite editor = new Composite(parent, SWT.LEFT | SWT.BORDER);
-		editor.setLayout(defaultLayout);
-		gd = new GridData(GridData.FILL_BOTH);
-		gd.horizontalSpan = 1;
-		gd.grabExcessHorizontalSpace = true;
-		editor.setLayoutData(gd);
+		GridData separatorGd = new GridData(GridData.FILL_HORIZONTAL);
+		separatorGd.heightHint = 1;
+		Label separator = new Label(parent, SWT.NONE);
+		separator.setLayoutData(separatorGd);
+		separator.setBackground(separator.getDisplay().getSystemColor(
+				SWT.COLOR_WIDGET_LIGHT_SHADOW));
 
-		super.createPartControl(editor);
+		Composite editorContainer = new Composite(parent, SWT.NONE);
+
+		editorContainer.setLayout(defaultLayout);
+		gd = new GridData(GridData.FILL_BOTH);
+		editorContainer.setLayoutData(gd);
+
+		super.createPartControl(editorContainer);
+
+		setGlobalActionHandlers();
+		activateContext();
+	}
+
+	private void setGlobalActionHandlers() {
+		IActionBars actionBars = getEditorSite().getActionBars();
+		actionBars.setGlobalActionHandler(RunXQueryAction.ID,
+				new RunXQueryAction());
+		actionBars.setGlobalActionHandler(ToggleCommentAction.ID,
+				new ToggleCommentAction());
+		actionBars.setGlobalActionHandler(ExtractLocalVariableAction.ID,
+				new ExtractLocalVariableAction());
+		actionBars.setGlobalActionHandler(ExtractMethodAction.ID,
+				new ExtractMethodAction());
+
+		actionBars.updateActionBars();
+	}
+
+	private void activateContext() {
+		IContextService service = (IContextService) getSite().getService(
+				IContextService.class);
+		if (service != null) {
+			service.activateContext("org.eclipse.dltk.ui.scriptEditorScope");
+			service.activateContext(EDITING_XQUERY_SOURCE_CONTEXT);
+		}
 	}
 
 	public void setConnectionContext(IConnectionContext context) {
@@ -117,7 +170,9 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
 	@Override
 	public void dispose() {
-		_xqueryContextPart.dispose();
+		if (_xqueryContextPart != null) {
+			_xqueryContextPart.dispose();
+		}
 		super.dispose();
 	}
 
@@ -153,6 +208,12 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 			super.setDocumentProvider(input);
 		}
 		super.setDocumentProvider(input);
+	}
+
+	@Override
+	protected boolean isTabsToSpacesConversionEnabled() {
+		// needed for proper node location detection
+		return true;
 	}
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////

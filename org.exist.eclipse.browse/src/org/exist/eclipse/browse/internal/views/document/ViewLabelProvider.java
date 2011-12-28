@@ -26,7 +26,7 @@ public class ViewLabelProvider extends LabelProvider {
 		} else if (element instanceof IBrowseItem) {
 			return IBrowseItem.class.cast(element).getPath();
 		}
-		return "pending...";
+		return "Pending...";
 
 	}
 
@@ -52,9 +52,20 @@ public class ViewLabelProvider extends LabelProvider {
 
 	private Image getFolderImage() {
 		if (_imgFolder == null) {
-			_imgFolder = BrowsePlugin.getImageDescriptor("icons/folder_icon.png")
-					.createImage();
+			_imgFolder = BrowsePlugin.getImageDescriptor(
+					"icons/folder_icon.png").createImage();
 		}
 		return _imgFolder;
+	}
+
+	@Override
+	public void dispose() {
+		super.dispose();
+		if (_imgDocument != null) {
+			_imgDocument.dispose();
+		}
+		if (_imgFolder != null) {
+			_imgFolder.dispose();
+		}
 	}
 }

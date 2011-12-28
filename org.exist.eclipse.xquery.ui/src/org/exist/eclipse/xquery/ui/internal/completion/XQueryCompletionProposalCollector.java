@@ -1,10 +1,12 @@
 package org.exist.eclipse.xquery.ui.internal.completion;
 
+import org.eclipse.dltk.core.CompletionProposal;
 import org.eclipse.dltk.core.IScriptProject;
 import org.eclipse.dltk.core.ISourceModule;
+import org.eclipse.dltk.ui.text.completion.IScriptCompletionProposal;
+import org.eclipse.dltk.ui.text.completion.LazyScriptCompletionProposal;
 import org.eclipse.dltk.ui.text.completion.ScriptCompletionProposal;
 import org.eclipse.dltk.ui.text.completion.ScriptCompletionProposalCollector;
-import org.eclipse.dltk.ui.text.completion.ScriptOverrideCompletionProposal;
 import org.eclipse.swt.graphics.Image;
 import org.exist.eclipse.xquery.core.XQueryNature;
 
@@ -27,6 +29,29 @@ public class XQueryCompletionProposalCollector extends
 		super(module);
 	}
 
+	@Override
+	protected IScriptCompletionProposal createScriptCompletionProposal(
+			CompletionProposal proposal) {
+
+		switch (proposal.getKind()) {
+		case CompletionProposal.METHOD_REF:
+		case CompletionProposal.METHOD_NAME_REFERENCE:
+			return createMethodReferenceProposal(proposal);
+		default:
+			break;
+		}
+
+		return super.createScriptCompletionProposal(proposal);
+	}
+
+	private IScriptCompletionProposal createMethodReferenceProposal(
+			CompletionProposal methodProposal) {
+		LazyScriptCompletionProposal proposal = new XQueryScriptMethodCompletionProposal(
+				methodProposal, getInvocationContext());
+		// adaptLength(proposal, methodProposal);
+		return proposal;
+	}
+
 	protected ScriptCompletionProposal createScriptCompletionProposal(
 			String completion, int replaceStart, int length, Image image,
 			String displayString, int i) {
@@ -45,9 +70,8 @@ public class XQueryCompletionProposalCollector extends
 			IScriptProject scriptProject, ISourceModule compilationUnit,
 			String name, String[] paramTypes, int start, int length,
 			String displayName, String completionProposal) {
-		return new ScriptOverrideCompletionProposal(scriptProject,
-				compilationUnit, name, paramTypes, start, length, displayName,
-				completionProposal);
+		return new XQueryCompletionProposal(completionProposal, start, length,
+				null, displayName, 0);
 	}
 
 	protected String getNatureId() {

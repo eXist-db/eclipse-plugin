@@ -59,14 +59,22 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		Button button = null;
 		for (ConnectionEnum type : ConnectionEnum.values()) {
 			button = new Button(container, SWT.RADIO);
-			button.setText(type.name());
+			String typeName = type.name();
+
+			// ui elements should start with an uppercase letter
+			typeName = Character.toUpperCase(typeName.charAt(0))
+					+ typeName.substring(1);
+
+			button.setText(typeName);
+			button.setData(ConnectionEnum.class.toString(), type);
+
 			button.addSelectionListener(new SelectionListener() {
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 
 				public void widgetSelected(SelectionEvent e) {
-					_type = ConnectionEnum.valueOf(Button.class.cast(
-							e.getSource()).getText());
+					_type = (ConnectionEnum) e.widget
+							.getData(ConnectionEnum.class.toString());
 					setErrorMessage(null);
 					setPageComplete(true);
 					updateSelectedNode();
@@ -79,9 +87,9 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		setPageComplete(false);
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	private ConnectionEnum getType() {
 		return _type;
 	}

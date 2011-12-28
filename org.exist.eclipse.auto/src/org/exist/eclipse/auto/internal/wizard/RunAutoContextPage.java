@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package org.exist.eclipse.auto.internal.wizard;
 
 import java.io.File;
@@ -18,7 +19,6 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.exist.eclipse.auto.connection.AutoContextRegistration;
 import org.exist.eclipse.auto.connection.IAutoContext;
@@ -102,7 +102,7 @@ public class RunAutoContextPage extends WizardPage {
 
 		// button to select the target via dialog
 		Button selectTargetBtn = new Button(container, SWT.Activate);
-		selectTargetBtn.setText("Browse");
+		selectTargetBtn.setText("Browse...");
 		gd = new GridData();
 		gd.horizontalSpan = 1;
 		gd.horizontalAlignment = SWT.CENTER;
@@ -146,9 +146,9 @@ public class RunAutoContextPage extends WizardPage {
 		return _resultTarget;
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	/**
 	 * Handles the error message display.
@@ -192,8 +192,7 @@ public class RunAutoContextPage extends WizardPage {
 
 	private void selectResultLocation() {
 
-		Shell shell = new Shell();
-		FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+		FileDialog dialog = new FileDialog(getControl().getShell(), SWT.SAVE);
 		dialog.setText("Select a result location");
 		dialog.setFileName("automation_result.eqar");
 
