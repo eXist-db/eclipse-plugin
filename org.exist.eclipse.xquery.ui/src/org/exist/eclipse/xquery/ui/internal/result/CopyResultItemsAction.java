@@ -58,13 +58,20 @@ public class CopyResultItemsAction extends Action {
 
 	public String getCopyContent() {
 		StringWriter out = new StringWriter();
-		PrintWriter pw = new PrintWriter(out);
 		Object[] all = ((IStructuredSelection) _viewer.getSelection())
 				.toArray();
 
+		PrintWriter pw = new PrintWriter(out);
+		boolean printed = false;
 		for (Object it : all) {
+			if (printed) {
+				pw.println();
+			} else {
+				printed = true;
+			}
+
 			ResultItem resultItem = (ResultItem) it;
-			pw.println(resultItem.getContent());
+			pw.print(resultItem.getContent());
 		}
 
 		String content = out.toString();
