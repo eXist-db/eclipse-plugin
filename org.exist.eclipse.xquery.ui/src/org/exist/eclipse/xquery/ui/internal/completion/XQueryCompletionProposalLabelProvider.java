@@ -2,6 +2,7 @@ package org.exist.eclipse.xquery.ui.internal.completion;
 
 import org.eclipse.dltk.core.CompletionProposal;
 import org.eclipse.dltk.ui.text.completion.CompletionProposalLabelProvider;
+import org.exist.eclipse.xquery.ui.completion.IXQueryMethod;
 
 public class XQueryCompletionProposalLabelProvider extends
 		CompletionProposalLabelProvider {
@@ -36,8 +37,7 @@ public class XQueryCompletionProposalLabelProvider extends
 				}
 				String name = parameterNames[i];
 				buffer.append(name);
-				if (parameterTypes != null
-						&& !name.equals(XQueryMixinModel.MORE)) {
+				if (parameterTypes != null && !name.equals(IXQueryMethod.MORE)) {
 					String type = parameterTypes[i];
 					if (!type.isEmpty()) {
 						buffer.append(" as ").append(type);

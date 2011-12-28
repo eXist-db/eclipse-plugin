@@ -1,68 +1,344 @@
-op:add-dayTimeDuration-to-date($arg1 as xs:date, $arg2 as xs:dayTimeDuration) as xs:date 
-op:add-dayTimeDuration-to-dateTime($arg1 as xs:dateTime, $arg2 as xs:dayTimeDuration) as xs:dateTime
-op:add-dayTimeDuration-to-time($arg1 as xs:time, $arg2 as xs:dayTimeDuration) as xs:time 
-op:add-dayTimeDurations($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:dayTimeDuration 
-op:add-yearMonthDuration-to-date($arg1 as xs:date, $arg2 as xs:yearMonthDuration) as xs:date 
-op:add-yearMonthDuration-to-dateTime($arg1 as xs:dateTime, $arg2 as xs:yearMonthDuration) as xs:dateTime 
-op:add-yearMonthDurations($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:yearMonthDuration 
-op:base64Binary-equal($value1 as xs:base64Binary, $value2 as xs:base64Binary) as xs:boolean 
-op:boolean-equal($value1 as xs:boolean, $value2 as xs:boolean) as xs:boolean 
-op:boolean-greater-than($arg1 as xs:boolean, $arg2 as xs:boolean) as xs:boolean 
-op:boolean-less-than($arg1 as xs:boolean, $arg2 as xs:boolean) as xs:boolean 
-op:concatenate($seq1 as item()*, $seq2 as item()*) as item()* 
-op:date-equal($arg1 as xs:date, $arg2 as xs:date) as xs:boolean 
-op:date-greater-than($arg1 as xs:date, $arg2 as xs:date) as xs:boolean 
-op:date-less-than($arg1 as xs:date, $arg2 as xs:date) as xs:boolean 
-op:dateTime-equal($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean 
-op:dateTime-greater-than($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean 
-op:dateTime-less-than($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean 
-op:dayTimeDuration-greater-than($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:boolean 
-op:dayTimeDuration-less-than($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:boolean 
-op:divide-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:double) as xs:dayTimeDuration 
-op:divide-dayTimeDuration-by-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:decimal 
-op:divide-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:double) as xs:yearMonthDuration 
-op:divide-yearMonthDuration-by-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:decimal 
-op:duration-equal($arg1 as xs:duration, $arg2 as xs:duration) as xs:boolean 
-op:except($parameter1 as node()*, $parameter2 as node()*) as node()* 
-op:gDay-equal($arg1 as xs:gDay, $arg2 as xs:gDay) as xs:boolean 
-op:gMonth-equal($arg1 as xs:gMonth, $arg2 as xs:gMonth) as xs:boolean 
-op:gMonthDay-equal($arg1 as xs:gMonthDay, $arg2 as xs:gMonthDay) as xs:boolean 
-op:gYear-equal($arg1 as xs:gYear, $arg2 as xs:gYear) as xs:boolean 
-op:gYearMonth-equal($arg1 as xs:gYearMonth, $arg2 as xs:gYearMonth) as xs:boolean 
-op:hexBinary-equal($value1 as xs:hexBinary, $value2 as xs:hexBinary) as xs:boolean 
-op:intersect($parameter1 as node()*, $parameter2 as node()*) as node()* 
-op:is-same-node($parameter1 as node(), $parameter2 as node()) as xs:boolean 
-op:multiply-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:double) as xs:dayTimeDuration 
-op:multiply-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:double) as xs:yearMonthDuration 
-op:node-after($parameter1 as node(), $parameter2 as node()) as xs:boolean 
-op:node-before($parameter1 as node(), $parameter2 as node()) as xs:boolean 
-op:NOTATION-equal($arg1 as xs:NOTATION, $arg2 as xs:NOTATION) as xs:boolean 
-op:numeric-add($arg1 as numeric, $arg2 as numeric) as numeric 
-op:numeric-divide($arg1 as numeric, $arg2 as numeric) as numeric 
-op:numeric-equal($arg1 as numeric, $arg2 as numeric) as xs:boolean 
-op:numeric-greater-than($arg1 as numeric, $arg2 as numeric) as xs:boolean 
-op:numeric-integer-divide($arg1 as numeric, $arg2 as numeric) as xs:integer 
-op:numeric-less-than($arg1 as numeric, $arg2 as numeric) as xs:boolean 
-op:numeric-mod($arg1 as numeric, $arg2 as numeric) as numeric 
-op:numeric-multiply($arg1 as numeric, $arg2 as numeric) as numeric 
-op:numeric-subtract($arg1 as numeric, $arg2 as numeric) as numeric 
-op:numeric-unary-minus($arg as numeric) as numeric 
-op:numeric-unary-plus($arg as numeric) as numeric 
-op:QName-equal($arg1 as xs:QName, $arg2 as xs:QName) as xs:boolean 
-op:subtract-dates($arg1 as xs:date, $arg2 as xs:date) as xs:dayTimeDuration? 
-op:subtract-dateTimes($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:dayTimeDuration? 
-op:subtract-dayTimeDuration-from-date($arg1 as xs:date, $arg2 as xs:dayTimeDuration) as xs:date 
-op:subtract-dayTimeDuration-from-dateTime($arg1 as xs:dateTime, $arg2 as xs:dayTimeDuration) as xs:dateTime 
-op:subtract-dayTimeDuration-from-time($arg1 as xs:time, $arg2 as xs:dayTimeDuration) as xs:time 
-op:subtract-dayTimeDurations($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:dayTimeDuration 
-op:subtract-times($arg1 as xs:time, $arg2 as xs:time) as xs:dayTimeDuration 
-op:subtract-yearMonthDuration-from-date($arg1 as xs:date, $arg2 as xs:yearMonthDuration) as xs:date 
-op:subtract-yearMonthDuration-from-dateTime($arg1 as xs:dateTime, $arg2 as xs:yearMonthDuration) as xs:dateTime 
-op:subtract-yearMonthDurations($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:yearMonthDuration 
-op:time-equal($arg1 as xs:time, $arg2 as xs:time) as xs:boolean 
-op:time-greater-than($arg1 as xs:time, $arg2 as xs:time) as xs:boolean 
-op:time-less-than($arg1 as xs:time, $arg2 as xs:time) as xs:boolean 
-op:to($firstval as xs:integer, $lastval as xs:integer) as xs:integer*
-op:union($parameter1 as node()*, $parameter2 as node()*) as node()*
-op:yearMonthDuration-greater-than($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:boolean
-op:yearMonthDuration-less-than($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:boolean
+<xqdoc>
+  <functions>
+    <function>
+      <name>add-dayTimeDuration-to-date</name>
+      <comment/>
+      <signature>add-dayTimeDuration-to-date($arg1 as xs:date, $arg2 as xs:dayTimeDuration) as xs:date </signature>
+    </function>
+    <function>
+      <name>add-dayTimeDuration-to-dateTime</name>
+      <comment/>
+      <signature>add-dayTimeDuration-to-dateTime($arg1 as xs:dateTime, $arg2 as xs:dayTimeDuration) as xs:dateTime</signature>
+    </function>
+    <function>
+      <name>add-dayTimeDuration-to-time</name>
+      <comment/>
+      <signature>add-dayTimeDuration-to-time($arg1 as xs:time, $arg2 as xs:dayTimeDuration) as xs:time </signature>
+    </function>
+    <function>
+      <name>add-dayTimeDurations</name>
+      <comment/>
+      <signature>add-dayTimeDurations($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:dayTimeDuration </signature>
+    </function>
+    <function>
+      <name>add-yearMonthDuration-to-date</name>
+      <comment/>
+      <signature>add-yearMonthDuration-to-date($arg1 as xs:date, $arg2 as xs:yearMonthDuration) as xs:date </signature>
+    </function>
+    <function>
+      <name>add-yearMonthDuration-to-dateTime</name>
+      <comment/>
+      <signature>add-yearMonthDuration-to-dateTime($arg1 as xs:dateTime, $arg2 as xs:yearMonthDuration) as xs:dateTime </signature>
+    </function>
+    <function>
+      <name>add-yearMonthDurations</name>
+      <comment/>
+      <signature>add-yearMonthDurations($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:yearMonthDuration </signature>
+    </function>
+    <function>
+      <name>base64Binary-equal</name>
+      <comment/>
+      <signature>base64Binary-equal($value1 as xs:base64Binary, $value2 as xs:base64Binary) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>boolean-equal</name>
+      <comment/>
+      <signature>boolean-equal($value1 as xs:boolean, $value2 as xs:boolean) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>boolean-greater-than</name>
+      <comment/>
+      <signature>boolean-greater-than($arg1 as xs:boolean, $arg2 as xs:boolean) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>boolean-less-than</name>
+      <comment/>
+      <signature>boolean-less-than($arg1 as xs:boolean, $arg2 as xs:boolean) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>concatenate</name>
+      <comment/>
+      <signature>concatenate($seq1 as item()*, $seq2 as item()*) as item()* </signature>
+    </function>
+    <function>
+      <name>date-equal</name>
+      <comment/>
+      <signature>date-equal($arg1 as xs:date, $arg2 as xs:date) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>date-greater-than</name>
+      <comment/>
+      <signature>date-greater-than($arg1 as xs:date, $arg2 as xs:date) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>date-less-than</name>
+      <comment/>
+      <signature>date-less-than($arg1 as xs:date, $arg2 as xs:date) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>dateTime-equal</name>
+      <comment/>
+      <signature>dateTime-equal($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>dateTime-greater-than</name>
+      <comment/>
+      <signature>dateTime-greater-than($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>dateTime-less-than</name>
+      <comment/>
+      <signature>dateTime-less-than($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>dayTimeDuration-greater-than</name>
+      <comment/>
+      <signature>dayTimeDuration-greater-than($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>dayTimeDuration-less-than</name>
+      <comment/>
+      <signature>dayTimeDuration-less-than($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>divide-dayTimeDuration</name>
+      <comment/>
+      <signature>divide-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:double) as xs:dayTimeDuration </signature>
+    </function>
+    <function>
+      <name>divide-dayTimeDuration-by-dayTimeDuration</name>
+      <comment/>
+      <signature>divide-dayTimeDuration-by-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:decimal </signature>
+    </function>
+    <function>
+      <name>divide-yearMonthDuration</name>
+      <comment/>
+      <signature>divide-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:double) as xs:yearMonthDuration </signature>
+    </function>
+    <function>
+      <name>divide-yearMonthDuration-by-yearMonthDuration</name>
+      <comment/>
+      <signature>divide-yearMonthDuration-by-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:decimal </signature>
+    </function>
+    <function>
+      <name>duration-equal</name>
+      <comment/>
+      <signature>duration-equal($arg1 as xs:duration, $arg2 as xs:duration) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>except</name>
+      <comment/>
+      <signature>except($parameter1 as node()*, $parameter2 as node()*) as node()* </signature>
+    </function>
+    <function>
+      <name>gDay-equal</name>
+      <comment/>
+      <signature>gDay-equal($arg1 as xs:gDay, $arg2 as xs:gDay) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>gMonth-equal</name>
+      <comment/>
+      <signature>gMonth-equal($arg1 as xs:gMonth, $arg2 as xs:gMonth) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>gMonthDay-equal</name>
+      <comment/>
+      <signature>gMonthDay-equal($arg1 as xs:gMonthDay, $arg2 as xs:gMonthDay) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>gYear-equal</name>
+      <comment/>
+      <signature>gYear-equal($arg1 as xs:gYear, $arg2 as xs:gYear) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>gYearMonth-equal</name>
+      <comment/>
+      <signature>gYearMonth-equal($arg1 as xs:gYearMonth, $arg2 as xs:gYearMonth) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>hexBinary-equal</name>
+      <comment/>
+      <signature>hexBinary-equal($value1 as xs:hexBinary, $value2 as xs:hexBinary) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>intersect</name>
+      <comment/>
+      <signature>intersect($parameter1 as node()*, $parameter2 as node()*) as node()* </signature>
+    </function>
+    <function>
+      <name>is-same-node</name>
+      <comment/>
+      <signature>is-same-node($parameter1 as node(), $parameter2 as node()) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>multiply-dayTimeDuration</name>
+      <comment/>
+      <signature>multiply-dayTimeDuration($arg1 as xs:dayTimeDuration, $arg2 as xs:double) as xs:dayTimeDuration </signature>
+    </function>
+    <function>
+      <name>multiply-yearMonthDuration</name>
+      <comment/>
+      <signature>multiply-yearMonthDuration($arg1 as xs:yearMonthDuration, $arg2 as xs:double) as xs:yearMonthDuration </signature>
+    </function>
+    <function>
+      <name>node-after</name>
+      <comment/>
+      <signature>node-after($parameter1 as node(), $parameter2 as node()) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>node-before</name>
+      <comment/>
+      <signature>node-before($parameter1 as node(), $parameter2 as node()) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>NOTATION-equal</name>
+      <comment/>
+      <signature>NOTATION-equal($arg1 as xs:NOTATION, $arg2 as xs:NOTATION) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>numeric-add</name>
+      <comment/>
+      <signature>numeric-add($arg1 as numeric, $arg2 as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-divide</name>
+      <comment/>
+      <signature>numeric-divide($arg1 as numeric, $arg2 as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-equal</name>
+      <comment/>
+      <signature>numeric-equal($arg1 as numeric, $arg2 as numeric) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>numeric-greater-than</name>
+      <comment/>
+      <signature>numeric-greater-than($arg1 as numeric, $arg2 as numeric) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>numeric-integer-divide</name>
+      <comment/>
+      <signature>numeric-integer-divide($arg1 as numeric, $arg2 as numeric) as xs:integer </signature>
+    </function>
+    <function>
+      <name>numeric-less-than</name>
+      <comment/>
+      <signature>numeric-less-than($arg1 as numeric, $arg2 as numeric) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>numeric-mod</name>
+      <comment/>
+      <signature>numeric-mod($arg1 as numeric, $arg2 as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-multiply</name>
+      <comment/>
+      <signature>numeric-multiply($arg1 as numeric, $arg2 as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-subtract</name>
+      <comment/>
+      <signature>numeric-subtract($arg1 as numeric, $arg2 as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-unary-minus</name>
+      <comment/>
+      <signature>numeric-unary-minus($arg as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>numeric-unary-plus</name>
+      <comment/>
+      <signature>numeric-unary-plus($arg as numeric) as numeric </signature>
+    </function>
+    <function>
+      <name>QName-equal</name>
+      <comment/>
+      <signature>QName-equal($arg1 as xs:QName, $arg2 as xs:QName) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>subtract-dates</name>
+      <comment/>
+      <signature>subtract-dates($arg1 as xs:date, $arg2 as xs:date) as xs:dayTimeDuration? </signature>
+    </function>
+    <function>
+      <name>subtract-dateTimes</name>
+      <comment/>
+      <signature>subtract-dateTimes($arg1 as xs:dateTime, $arg2 as xs:dateTime) as xs:dayTimeDuration? </signature>
+    </function>
+    <function>
+      <name>subtract-dayTimeDuration-from-date</name>
+      <comment/>
+      <signature>subtract-dayTimeDuration-from-date($arg1 as xs:date, $arg2 as xs:dayTimeDuration) as xs:date </signature>
+    </function>
+    <function>
+      <name>subtract-dayTimeDuration-from-dateTime</name>
+      <comment/>
+      <signature>subtract-dayTimeDuration-from-dateTime($arg1 as xs:dateTime, $arg2 as xs:dayTimeDuration) as xs:dateTime </signature>
+    </function>
+    <function>
+      <name>subtract-dayTimeDuration-from-time</name>
+      <comment/>
+      <signature>subtract-dayTimeDuration-from-time($arg1 as xs:time, $arg2 as xs:dayTimeDuration) as xs:time </signature>
+    </function>
+    <function>
+      <name>subtract-dayTimeDurations</name>
+      <comment/>
+      <signature>subtract-dayTimeDurations($arg1 as xs:dayTimeDuration, $arg2 as xs:dayTimeDuration) as xs:dayTimeDuration </signature>
+    </function>
+    <function>
+      <name>subtract-times</name>
+      <comment/>
+      <signature>subtract-times($arg1 as xs:time, $arg2 as xs:time) as xs:dayTimeDuration </signature>
+    </function>
+    <function>
+      <name>subtract-yearMonthDuration-from-date</name>
+      <comment/>
+      <signature>subtract-yearMonthDuration-from-date($arg1 as xs:date, $arg2 as xs:yearMonthDuration) as xs:date </signature>
+    </function>
+    <function>
+      <name>subtract-yearMonthDuration-from-dateTime</name>
+      <comment/>
+      <signature>subtract-yearMonthDuration-from-dateTime($arg1 as xs:dateTime, $arg2 as xs:yearMonthDuration) as xs:dateTime </signature>
+    </function>
+    <function>
+      <name>subtract-yearMonthDurations</name>
+      <comment/>
+      <signature>subtract-yearMonthDurations($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:yearMonthDuration </signature>
+    </function>
+    <function>
+      <name>time-equal</name>
+      <comment/>
+      <signature>time-equal($arg1 as xs:time, $arg2 as xs:time) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>time-greater-than</name>
+      <comment/>
+      <signature>time-greater-than($arg1 as xs:time, $arg2 as xs:time) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>time-less-than</name>
+      <comment/>
+      <signature>time-less-than($arg1 as xs:time, $arg2 as xs:time) as xs:boolean </signature>
+    </function>
+    <function>
+      <name>to</name>
+      <comment/>
+      <signature>to($firstval as xs:integer, $lastval as xs:integer) as xs:integer*</signature>
+    </function>
+    <function>
+      <name>union</name>
+      <comment/>
+      <signature>union($parameter1 as node()*, $parameter2 as node()*) as node()*</signature>
+    </function>
+    <function>
+      <name>yearMonthDuration-greater-than</name>
+      <comment/>
+      <signature>yearMonthDuration-greater-than($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:boolean</signature>
+    </function>
+    <function>
+      <name>yearMonthDuration-less-than</name>
+      <comment/>
+      <signature>yearMonthDuration-less-than($arg1 as xs:yearMonthDuration, $arg2 as xs:yearMonthDuration) as xs:boolean</signature>
+    </function>
+  </functions>
+</xqdoc>

@@ -32,14 +32,6 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySyntaxUtils;
  */
 public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
-	public static String removeFnPrefix(String methodName) {
-		String fnPrefix = XQueryMixinModel.PREFIX_FN + ":";
-		if (methodName.startsWith(fnPrefix)) {
-			methodName = methodName.substring(fnPrefix.length());
-		}
-		return methodName;
-	}
-
 	IScriptProject project;
 	private CompletionRequestor requestor;
 	private int actualCompletionPosition;
@@ -127,8 +119,6 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 	private void createProposal(IXQueryMethod method, String prefix) {
 
 		String methodName = method.getName();
-
-		methodName = removeFnPrefix(methodName);
 
 		boolean hasPrefix = methodName.startsWith(prefix);
 		if (hasPrefix) {

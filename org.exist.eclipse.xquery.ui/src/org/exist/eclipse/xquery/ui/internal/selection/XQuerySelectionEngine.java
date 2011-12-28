@@ -1,10 +1,5 @@
 package org.exist.eclipse.xquery.ui.internal.selection;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
-
-import org.eclipse.core.runtime.Path;
 import org.eclipse.dltk.codeassist.ScriptSelectionEngine;
 import org.eclipse.dltk.compiler.env.IModuleSource;
 import org.eclipse.dltk.core.IField;
@@ -17,14 +12,15 @@ import org.eclipse.dltk.core.ISourceRange;
 import org.eclipse.dltk.core.ModelException;
 import org.eclipse.dltk.core.model.LocalVariable;
 import org.eclipse.dltk.internal.ui.editor.ExternalStorageEditorInput;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
+import org.exist.eclipse.xquery.ui.internal.completion.LibDocument;
 import org.exist.eclipse.xquery.ui.internal.completion.XQueryMixinModel;
 import org.exist.eclipse.xquery.ui.internal.editor.XQueryEditor;
-import org.exist.eclipse.xquery.ui.internal.result.ExportResultItemsAction;
 
 /**
  * @author Christian Oetterli
@@ -172,53 +168,59 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 	}
 
 	private IModelElement openLibraryFunction(IModelElement parent,
-			final String word, final int caret, final int argCount) {
+			String fqMethodName, final int caret, final int argCount) {
 		final IModelElement[] isLib = new IModelElement[1];
-		int prefixPos = word.indexOf(':');
+		int prefixPos = fqMethodName.indexOf(':');
 		String prefix;
+		final String methodName;
 		if (prefixPos == -1) {
 			prefix = XQueryMixinModel.PREFIX_FN;
+			methodName = fqMethodName;
+			fqMethodName = XQueryMixinModel.PREFIX_FN + ":" + fqMethodName;
 		} else {
-			prefix = word.substring(0, prefixPos);
+			prefix = fqMethodName.substring(0, prefixPos);
+			methodName = fqMethodName.substring(prefixPos + 1);
 		}
 
 		try {
 
-			Path path = XQueryMixinModel.getInstance().getFilePath(prefix);
-			InputStream in = XQueryMixinModel.getInstance().getFileStream(path);
-			if (in != null) {
+			final LibDocument doc = XQueryMixinModel.getInstance()
+					.getLibDocument(prefix);
 
-				StringWriter out = new StringWriter();
-				ExportResultItemsAction.copy(new InputStreamReader(in), out);
-				final ExternalStorageEditorInput editorInput = new ExternalStorageEditorInput(
-						new StringStorage(prefix + " (built-in)", path, out
-								.toString()));
+			if (doc != null) {
 
-				isLib[0] = new ForeignElement(parent, word, caret) {
-					public void codeSelect() {
-						Display.getDefault().asyncExec(new Runnable() {
-							public void run() {
+				final int line = doc.getLineOfMethod(fqMethodName, argCount);
+				if (line != -1) {
 
-								try {
-									ITextEditor editor = (ITextEditor) PlatformUI
-											.getWorkbench()
-											.getActiveWorkbenchWindow()
-											.getActivePage().openEditor(
-													editorInput,
-													XQueryEditor.EDITOR_ID);
+					final ExternalStorageEditorInput editorInput = new ExternalStorageEditorInput(
+							new StringStorage(prefix + " (built-in)", doc
+									.getPath(), doc.getContent().toString()));
 
-									selectLibraryFunction(word, argCount,
-											editor);
+					isLib[0] = new ForeignElement(parent, fqMethodName, caret) {
+						public void codeSelect() {
+							Display.getDefault().asyncExec(new Runnable() {
+								public void run() {
 
-								} catch (PartInitException e) {
-									throw new RuntimeException(e);
+									try {
+										ITextEditor editor = (ITextEditor) PlatformUI
+												.getWorkbench()
+												.getActiveWorkbenchWindow()
+												.getActivePage().openEditor(
+														editorInput,
+														XQueryEditor.EDITOR_ID);
+
+										selectLibraryFunction(doc, line,
+												methodName, editor);
+
+									} catch (PartInitException e) {
+										throw new RuntimeException(e);
+									}
+
 								}
-
-							}
-						});
-					}
-				};
-
+							});
+						}
+					};
+				}
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -271,31 +273,23 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 		}
 	}
 
-	private void selectLibraryFunction(final String word, int argCountt,
-			ITextEditor editor) {
-		IDocument document = editor.getDocumentProvider().getDocument(
-				editor.getEditorInput());
-		String content = document.get();
+	private boolean selectLibraryFunction(LibDocument doc, int line,
+			final String method, ITextEditor editor) {
 
-		int result = -1;
-		int wordLen = word.length();
-		while (true) {
-			int pos = content.indexOf(word, (result == -1) ? 0
-					: (result + wordLen));
-			if (pos == -1) {
-				break;
+		try {
+			IDocument document = editor.getDocumentProvider().getDocument(
+					editor.getEditorInput());
+
+			int off = document.getLineOffset(line);
+
+			if (off != -1) {
+				editor.selectAndReveal(off, method.length());
+				return true;
 			}
 
-			result = pos; // if it does not find any better
-
-			int paramCount = parseArgCount(content, pos + wordLen);
-			if (argCountt == paramCount) {
-				break;
-			}
+		} catch (BadLocationException e) {
+			// do nothing
 		}
-
-		if (result != -1) {
-			editor.selectAndReveal(result, wordLen);
-		}
+		return false;
 	}
 }

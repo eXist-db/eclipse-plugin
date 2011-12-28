@@ -26,7 +26,8 @@ public class ExistXQueryMethod implements IXQueryMethod {
 	 * Add the given <code>parameter</code> to the method.
 	 * 
 	 * @param name
-	 * @param type empty for none
+	 * @param type
+	 *            empty for none
 	 */
 	public void addParameter(String name, String type) {
 		_parameterNames.add(name);
@@ -47,6 +48,15 @@ public class ExistXQueryMethod implements IXQueryMethod {
 
 	public String getName() {
 		return _name;
+	}
+
+
+	public String getComment() {
+		return "";
+	}
+
+	public String getSignature() {
+		return "";
 	}
 
 }

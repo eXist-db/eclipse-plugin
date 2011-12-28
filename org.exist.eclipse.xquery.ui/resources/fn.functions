@@ -1,151 +1,1889 @@
-fn:abs($arg as numeric?) as numeric?
-fn:adjust-date-to-timezone($arg as xs:date?) as xs:date?
-fn:adjust-date-to-timezone($arg as xs:date?) as xs:date? 
-fn:adjust-date-to-timezone($arg as xs:date?, $timezone as xs:dayTimeDuration?) as xs:date? 
-fn:adjust-dateTime-to-timezone($arg as xs:dateTime?) as xs:dateTime? 
-fn:adjust-dateTime-to-timezone($arg as xs:dateTime?, $timezone as xs:dayTimeDuration?) as xs:dateTime? 
-fn:adjust-time-to-timezone($arg as xs:time?) as xs:time? 
-fn:adjust-time-to-timezone($arg as xs:time?, $timezone as xs:dayTimeDuration?) as xs:time? 
-fn:avg($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:base-uri() as xs:anyURI? 
-fn:base-uri($arg as node()?) as xs:anyURI? 
-fn:boolean($arg as item()*) as xs:boolean 
-fn:ceiling($arg as numeric?) as numeric? 
-fn:codepoint-equal($comparand1 as xs:string?, $comparand2 as xs:string?) as xs:boolean? 
-fn:codepoints-to-string($arg as xs:integer*) as xs:string 
-fn:collection() as node()* 
-fn:collection($arg as xs:string?) as node()* 
-fn:compare($comparand1 as xs:string?, $comparand2 as xs:string?) as xs:integer? 
-fn:compare($comparand1 as xs:string?, $comparand2 as xs:string?, $collation as xs:string) as xs:integer? 
-fn:concat($arg1 as xs:anyAtomicType?, $arg2 as xs:anyAtomicType?, ...) as xs:string 
-fn:contains($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
-fn:contains($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
-fn:count($arg as item()*) as xs:integer 
-fn:current-date() as xs:date 
-fn:current-dateTime() as xs:dateTime 
-fn:current-time() as xs:time 
-fn:data($arg as item()*) as xs:anyAtomicType* 
-fn:dateTime($arg1 as xs:date?, $arg2 as xs:time?) as xs:dateTime? 
-fn:day-from-date($arg as xs:date?) as xs:integer? 
-fn:day-from-dateTime($arg as xs:dateTime?) as xs:integer? 
-fn:days-from-duration($arg as xs:duration?) as xs:integer? 
-fn:deep-equal($parameter1 as item()*, $parameter2 as item()*) as xs:boolean 
-fn:deep-equal($parameter1 as item()*, $parameter2 as item()*, $collation as string) as xs:boolean 
-fn:default-collation() as xs:string 
-fn:distinct-values($arg as xs:anyAtomicType*) as xs:anyAtomicType* 
-fn:distinct-values($arg as xs:anyAtomicType*, $collation as xs:string) as xs:anyAtomicType* 
-fn:doc($uri as xs:string?) as document-node()? 
-fn:doc-available($uri as xs:string?) as xs:boolean 
-fn:document-uri($arg as node()?) as xs:anyURI? 
-fn:empty($arg as item()*) as xs:boolean 
-fn:encode-for-uri($uri-part as xs:string?) as xs:string 
-fn:ends-with($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
-fn:ends-with($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
-fn:error() as none 
-fn:error($error as xs:QName) as none 
-fn:error($error as xs:QName?, $description as xs:string) as none 
-fn:error($error as xs:QName?, $description as xs:string, $error-object as item()*) as none 
-fn:escape-html-uri($uri as xs:string?) as xs:string 
-fn:exactly-one($arg as item()*) as item() 
-fn:exists($arg as item()*) as xs:boolean 
-fn:false() as xs:boolean 
-fn:floor($arg as numeric?) as numeric? 
-fn:hours-from-dateTime($arg as xs:dateTime?) as xs:integer? 
-fn:hours-from-duration($arg as xs:duration?) as xs:integer? 
-fn:hours-from-time($arg as xs:time?) as xs:integer? 
-fn:id($arg as xs:string*) as element()* 
-fn:id($arg as xs:string*, $node as node()) as element()* 
-fn:idref($arg as xs:string*) as node()* 
-fn:idref($arg as xs:string*, $node as node()) as node()* 
-fn:implicit-timezone() as xs:dayTimeDuration 
-fn:in-scope-prefixes($element as element()) as xs:string* 
-fn:index-of($seqParam as xs:anyAtomicType*, $srchParam as xs:anyAtomicType) as xs:integer* 
-fn:index-of($seqParam as xs:anyAtomicType*, $srchParam as xs:anyAtomicType, $collation as xs:string) as xs:integer* 
-fn:insert-before($target as item()*, $position as xs:integer, $inserts as item()*) as item()* 
-fn:iri-to-uri($iri as xs:string?) as xs:string 
-fn:lang($testlang as xs:string?) as xs:boolean 
-fn:lang($testlang as xs:string?, $node as node()) as xs:boolean 
-fn:last() as xs:integer 
-fn:local-name() as xs:string 
-fn:local-name($arg as node()?) as xs:string 
-fn:local-name-from-QName($arg as xs:QName?) as xs:NCName? 
-fn:lower-case($arg as xs:string?) as xs:string 
-fn:matches($input as xs:string?, $pattern as xs:string) as xs:boolean 
-fn:matches($input as xs:string?, $pattern as xs:string, $flags as xs:string) as xs:boolean 
-fn:max($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:max($arg as xs:anyAtomicType*, $collation as string) as xs:anyAtomicType? 
-fn:min($arg as xs:anyAtomicType*) as xs:anyAtomicType? 
-fn:min($arg as xs:anyAtomicType*, $collation as string) as xs:anyAtomicType? 
-fn:minutes-from-dateTime($arg as xs:dateTime?) as xs:integer? 
-fn:minutes-from-duration($arg as xs:duration?) as xs:integer? 
-fn:minutes-from-time($arg as xs:time?) as xs:integer? 
-fn:month-from-date($arg as xs:date?) as xs:integer? 
-fn:month-from-dateTime($arg as xs:dateTime?) as xs:integer? 
-fn:months-from-duration($arg as xs:duration?) as xs:integer? 
-fn:name() as xs:string 
-fn:name($arg as node()?) as xs:string 
-fn:namespace-uri() as xs:anyURI 
-fn:namespace-uri($arg as node()?) as xs:anyURI 
-fn:namespace-uri-for-prefix($prefix as xs:string?, $element as element()) as xs:anyURI? 
-fn:namespace-uri-from-QName($arg as xs:QName?) as xs:anyURI? 
-fn:nilled($arg as node()?) as xs:boolean? 
-fn:node-name($arg as node()?) as xs:QName? 
-fn:normalize-space() as xs:string 
-fn:normalize-space($arg as xs:string?) as xs:string 
-fn:normalize-unicode($arg as xs:string?) as xs:string 
-fn:normalize-unicode($arg as xs:string?, $normalizationForm as xs:string) as xs:string 
-fn:not($arg as item()*) as xs:boolean 
-fn:number() as xs:double 
-fn:number($arg as xs:anyAtomicType?) as xs:double 
-fn:one-or-more($arg as item()*) as item()+ 
-fn:position() as xs:integer 
-fn:prefix-from-QName($arg as xs:QName?) as xs:NCName? 
-fn:QName($paramURI as xs:string?, $paramQName as xs:string) as xs:QName 
-fn:remove($target as item()*, $position as xs:integer) as item()* 
-fn:replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string) as xs:string 
-fn:replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string, $flags as xs:string) as xs:string 
-fn:resolve-QName($qname as xs:string?, $element as element()) as xs:QName? 
-fn:resolve-uri($relative as xs:string?) as xs:anyURI? 
-fn:resolve-uri($relative as xs:string?, $base as xs:string) as xs:anyURI? 
-fn:reverse($arg as item()*) as item()* 
-fn:root() as node() 
-fn:root($arg as node()?) as node()? 
-fn:round($arg as numeric?) as numeric? 
-fn:round-half-to-even($arg as numeric?) as numeric? 
-fn:round-half-to-even($arg as numeric?, $precision as xs:integer) as numeric? 
-fn:seconds-from-dateTime($arg as xs:dateTime?) as xs:decimal? 
-fn:seconds-from-duration($arg as xs:duration?) as xs:decimal? 
-fn:seconds-from-time($arg as xs:time?) as xs:decimal? 
-fn:starts-with($arg1 as xs:string?, $arg2 as xs:string?) as xs:boolean 
-fn:starts-with($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:boolean 
-fn:static-base-uri() as xs:anyURI? 
-fn:string() as xs:string 
-fn:string($arg as item()?) as xs:string 
-fn:string-join($arg1 as xs:string*, $arg2 as xs:string) as xs:string 
-fn:string-length() as xs:integer 
-fn:string-length($arg as xs:string?) as xs:integer 
-fn:string-to-codepoints($arg as xs:string?) as xs:integer* 
-fn:subsequence($sourceSeq as item()*, $startingLoc as xs:double) as item()* 
-fn:subsequence($sourceSeq as item()*, $startingLoc as xs:double, $length as xs:double) as item()* 
-fn:substring($sourceString as xs:string?, $startingLoc as xs:double) as xs:string 
-fn:substring($sourceString as xs:string?, $startingLoc as xs:double, $length as xs:double) as xs:string 
-fn:substring-after($arg1 as xs:string?, $arg2 as xs:string?) as xs:string 
-fn:substring-after($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:string 
-fn:substring-before($arg1 as xs:string?, $arg2 as xs:string?) as xs:string 
-fn:substring-before($arg1 as xs:string?, $arg2 as xs:string?, $collation as xs:string) as xs:string 
-fn:sum($arg as xs:anyAtomicType*) as xs:anyAtomicType 
-fn:sum($arg as xs:anyAtomicType*, $zero as xs:anyAtomicType?) as xs:anyAtomicType? 
-fn:timezone-from-date($arg as xs:date?) as xs:dayTimeDuration? 
-fn:timezone-from-dateTime($arg as xs:dateTime?) as xs:dayTimeDuration?
-fn:timezone-from-time($arg as xs:time?) as xs:dayTimeDuration?
-fn:tokenize($input as xs:string?, $pattern as xs:string) as xs:string*
-fn:tokenize($input as xs:string?, $pattern as xs:string, $flags as xs:string) as xs:string*
-fn:trace($value as item()*, $label as xs:string) as item()*
-fn:translate($arg as xs:string?, $mapString as xs:string, $transString as xs:string) as xs:string
-fn:true() as xs:boolean
-fn:unordered($sourceSeq as item()*) as item()*
-fn:upper-case($arg as xs:string?) as xs:string
-fn:year-from-date($arg as xs:date?) as xs:integer?
-fn:year-from-dateTime($arg as xs:dateTime?) as xs:integer?
-fn:years-from-duration($arg as xs:duration?) as xs:integer? 
-fn:zero-or-one($arg as item()*) as item()? 
+<xqdoc xmlns="http://www.xqdoc.org/1.0">
+    <control>
+        <date>2011-12-28T14:56:50.937+01:00</date>
+        <version>1.0</version>
+    </control>
+    <module type="library">
+        <uri>http://www.w3.org/2005/xpath-functions</uri>
+        <name/>
+        <comment>
+            <description>A module with the XQuery/XPath Core Library Functions</description>
+            <since>&amp;lt; eXist-1.0</since>
+        </comment>
+    </module>
+    <functions>
+        <function>
+            <comment>
+                <description>Returns the absolute value of the argument $number. If the argument is negative returns -$number otherwise returns $number.</description>
+                <param>$number The number</param>
+                <return>the absolute value of the argument</return>
+            </comment>
+            <name>abs</name>
+            <signature>abs($number as numeric?) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:date value $date to the implicit timezone of the current locale.</description>
+                <param>$date The date</param>
+                <return>the adjusted date</return>
+            </comment>
+            <name>adjust-date-to-timezone</name>
+            <signature>adjust-date-to-timezone($date as xs:date?) xs:date?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:date value $date to a specific timezone, or to no timezone at all. If $duration is the empty sequence, returns an xs:date without a timezone.</description>
+                <param>$date The date</param>
+                <param>$duration The duration</param>
+                <return>the adjusted date</return>
+            </comment>
+            <name>adjust-date-to-timezone</name>
+            <signature>adjust-date-to-timezone($date as xs:date?, $duration as xdt:dayTimeDuration?) xs:date?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:dateTime value $date-time to the implicit timezone of the current locale.</description>
+                <param>$date-time The date-time</param>
+                <return>the adjusted date-time</return>
+            </comment>
+            <name>adjust-dateTime-to-timezone</name>
+            <signature>adjust-dateTime-to-timezone($date-time as xs:dateTime?) xs:dateTime?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:dateTime value $date-time to a specific timezone, or to no timezone at all. If $duration is the empty sequence, returns an xs:dateTime without a timezone.</description>
+                <param>$date-time The date-time</param>
+                <param>$duration The duration</param>
+                <return>the adjusted date-time</return>
+            </comment>
+            <name>adjust-dateTime-to-timezone</name>
+            <signature>adjust-dateTime-to-timezone($date-time as xs:dateTime?, $duration as xdt:dayTimeDuration?) xs:dateTime?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:time value $time to the implicit timezone of the current locale.</description>
+                <param>$time The time</param>
+                <return>the adjusted time</return>
+            </comment>
+            <name>adjust-time-to-timezone</name>
+            <signature>adjust-time-to-timezone($time as xs:time?) xs:time?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Adjusts the xs:time value $time to a specific timezone, or to no timezone at all. If $duration is the empty sequence, returns an xs:time without a timezone.</description>
+                <param>$time The time</param>
+                <param>$duration The duration</param>
+                <return>the adjusted time</return>
+            </comment>
+            <name>adjust-time-to-timezone</name>
+            <signature>adjust-time-to-timezone($time as xs:time?, $duration as xdt:dayTimeDuration?) xs:time?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the average of the values in the input sequence $values, that is, the sum of the values divided by the number of values.</description>
+                <param>$values The values</param>
+                <return>the average of the values in the input sequence</return>
+            </comment>
+            <name>avg</name>
+            <signature>avg($values as xdt:anyAtomicType*) xdt:anyAtomicType?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the base URI property for $uri. If $uri is the empty sequence, the empty sequence is returned.</description>
+                <param>$uri The URI</param>
+                <return>the base URI from $uri</return>
+            </comment>
+            <name>base-uri</name>
+            <signature>base-uri($uri as node()?) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the base URI property for the context item.</description>
+                <param>$a</param>
+                <return>the base URI from the context item</return>
+            </comment>
+            <name>base-uri</name>
+            <signature>base-uri() xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Computes the xs:boolean value of the sequence $items.</description>
+                <param>$items The items</param>
+                <return>the boolean value, ebv, of the items</return>
+            </comment>
+            <name>boolean</name>
+            <signature>boolean($items as item()*) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a value of the same type as the argument. Specifically, returns the smallest (closest to negative infinity) number with no fractional part that is not less than the value of the argument, $number.</description>
+                <param>$number The number</param>
+                <return>the non-fractional number not less than $number</return>
+            </comment>
+            <name>ceiling</name>
+            <signature>ceiling($number as numeric?) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true or false depending on whether the value of $string-1 is equal to the value of $string-2, according to the Unicode code point collation.</description>
+                <param>$string-1 The first string</param>
+                <param>$string-2 The second string</param>
+                <return>true() if the codepoints are equal, false() otherwise</return>
+            </comment>
+            <name>codepoint-equal</name>
+            <signature>codepoint-equal($string-1 as xs:string?, $string-2 as xs:string?) xs:boolean?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Creates an xs:string from a sequence of code points. Returns the zero-length string if $codepoints is the empty sequence. If any of the code points in $codepoints is not a legal XML character, an error is raised</description>
+                <param>$codepoints The codepoints as a sequence of xs:integer values</param>
+                <return>the string constructed from the codepoints if valid</return>
+            </comment>
+            <name>codepoints-to-string</name>
+            <signature>codepoints-to-string($codepoints as xs:integer*) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the documents contained in the collections specified in the input sequence. Collection URIs can be specified either as a simple collection path or an XMLDB URI. Documents contained in subcollections are also included.</description>
+                <param>$collection-uris The collection-uris for which to include the documents</param>
+                <param>overloaded</param>
+                <return>the document nodes contained in or under the given collections</return>
+            </comment>
+            <name>collection</name>
+            <signature>collection($collection-uris as xs:string*, ...) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the collatable comparison between $string-1 and $string-2, -1 if $string-1 is inferior to $string-2, 0 if $string-1 is equal to $string-2, 1 if $string-1 is superior to $string-2. If either comparand is the empty sequence, the empty sequence is returned. Please remember to specify the collation in the context or use the three argument version if you don't want the system default.</description>
+                <param>$string-1 The first string</param>
+                <param>$string-2 The second string</param>
+                <return>-1 if $string-1 is inferior to $string-2, 0 if $string-1 is equal to $string-2, 1 if $string-1 is superior to $string-2. If either comparand is the empty sequence, the empty sequence is returned.</return>
+            </comment>
+            <name>compare</name>
+            <signature>compare($string-1 as xs:string?, $string-2 as xs:string?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the collatable comparison using $collation-uri between $string-1 and $string-2, -1 if $string-1 is inferior to $string-2, 0 if $string-1 is equal to $string-2, 1 if $string-1 is superior to $string-2. If either comparand is the empty sequence, the empty sequence is returned. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$string-1 The first string</param>
+                <param>$string-2 The second string</param>
+                <param>$collation-uri The relative collation URI</param>
+                <return>-1 if $string-1 is inferior to $string-2, 0 if $string-1 is equal to $string-2, 1 if $string-1 is superior to $string-2. If either comparand is the empty sequence, the empty sequence is returned.</return>
+            </comment>
+            <name>compare</name>
+            <signature>compare($string-1 as xs:string?, $string-2 as xs:string?, $collation-uri as xs:string) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Accepts two or more xdt:anyAtomicType arguments, $atomizable-values, and converts them to xs:string. Returns the xs:string that is the concatenation of the values of its arguments after conversion. If any of the arguments is the empty sequence, the argument is treated as the zero-length string.</description>
+                <param>$atomizable-values The atomizable values</param>
+                <param>overloaded</param>
+                <return>the concatenated values</return>
+            </comment>
+            <name>concat</name>
+            <signature>concat($atomizable-values as xdt:anyAtomicType?, ...) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:boolean indicating whether or not the value of $source-string contains (at the beginning, at the end, or anywhere within) at least one sequence of collation units that provides a minimal match to the collation units in the value of $substring, according to the default collation.</description>
+                <param>$source-string The source-string</param>
+                <param>$substring The substring</param>
+                <return>true() if $source-string contains $substring, false() otherwise</return>
+            </comment>
+            <name>contains</name>
+            <signature>contains($source-string as xs:string?, $substring as xs:string?) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:boolean indicating whether or not the value of $source-string contains (at the beginning, at the end, or anywhere within) at least one sequence of collation units that provides a minimal match to the collation units in the value of $substring, according to the collation that is specified in $collation-uri.The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source-string The source-string</param>
+                <param>$substring The substring</param>
+                <param>$collation-uri The collation URI</param>
+                <return>true() if $source-string contains $substring, false() otherwise</return>
+            </comment>
+            <name>contains</name>
+            <signature>contains($source-string as xs:string?, $substring as xs:string?, $collation-uri as xs:string) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the number of items in the argument sequence, $items.</description>
+                <param>$items The items</param>
+                <return>the number of items in the argument sequence</return>
+            </comment>
+            <name>count</name>
+            <signature>count($items as item()*) xs:integer</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the xs:date (with timezone) that is current at some time during the evaluation of a query or transformation in which fn:current-date() is executed.</description>
+                <param>$a</param>
+                <return>the date current within the query execution time span</return>
+            </comment>
+            <name>current-date</name>
+            <signature>current-date() xs:date</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the xs:dateTime (with timezone) that is current at some time during the evaluation of a query or transformation in which fn:current-dateTime() is executed.</description>
+                <param>$a</param>
+                <return>the date-time current within query execution time span</return>
+            </comment>
+            <name>current-dateTime</name>
+            <signature>current-dateTime() xs:dateTime</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the xs:time (with timezone) that is current at some time during the evaluation of a query or transformation in which fn:current-time() is executed.</description>
+                <param>$a</param>
+                <return>the time current within query execution time span</return>
+            </comment>
+            <name>current-time</name>
+            <signature>current-time() xs:time</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of atomic values from the items in $items.</description>
+                <param>$items The items</param>
+                <return>the atomic values of the items in $items</return>
+            </comment>
+            <name>data</name>
+            <signature>data($items as item()*) xdt:anyAtomicType*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Creates an xs:dateTime from an xs:date, $date, and an xs:time, $time.</description>
+                <param>$date The date as xs:date</param>
+                <param>$time The time as xs:time</param>
+                <return>the combined date and time as xs:dateTime</return>
+            </comment>
+            <name>dateTime</name>
+            <signature>dateTime($date as xs:date?, $time as xs:time?) xs:dateTime?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 1 and 31, both inclusive, representing the day component in the localized value of $date.</description>
+                <param>$date The date as xs:date</param>
+                <return>the day component from $date</return>
+            </comment>
+            <name>day-from-date</name>
+            <signature>day-from-date($date as xs:date?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 1 and 31, both inclusive, representing the day component in the localized value of $date-time.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the day component from $date-time</return>
+            </comment>
+            <name>day-from-dateTime</name>
+            <signature>day-from-dateTime($date-time as xs:dateTime?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the days component in the canonical lexical representation of the value of $duration. The result may be negative.</description>
+                <param>$duration The duration as xs:dayTimeDuration</param>
+                <return>the days component of $duration</return>
+            </comment>
+            <name>days-from-duration</name>
+            <signature>days-from-duration($duration as xdt:dayTimeDuration?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true iff every item in $items-1 is deep-equal to the item at the same position in $items-2, false otherwise. If both $items-1 and $items-2 are the empty sequence, returns true(). </description>
+                <param>$items-1 The first item sequence</param>
+                <param>$items-2 The second item sequence</param>
+                <return>true() if the sequences are deep-equal, false() otherwise</return>
+            </comment>
+            <name>deep-equal</name>
+            <signature>deep-equal($items-1 as item()*, $items-2 as item()*) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true iff every item in $items-1 is deep-equal to the item at the same position in $items-2, false otherwise. If both $items-1 and $items-2 are the empty sequence, returns true(). Comparison collation is specified by $collation-uri. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$items-1 The first item sequence</param>
+                <param>$items-2 The second item sequence</param>
+                <param>$collation-uri The collation URI</param>
+                <return>true() if the sequences are deep-equal, false() otherwise</return>
+            </comment>
+            <name>deep-equal</name>
+            <signature>deep-equal($items-1 as item()*, $items-2 as item()*, $collation-uri as xs:string) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the context's default collation. E.g. http://www.w3.org/2005/xpath-functions/collation/codepoint.</description>
+                <param>$a</param>
+                <return>the default collation from the context</return>
+            </comment>
+            <name>default-collation</name>
+            <signature>default-collation() xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a sequence where duplicate values of $atomic-values, based on value equality, have been deleted.</description>
+                <param>$atomic-values The atomic values</param>
+                <return>the distinct values sequence</return>
+            </comment>
+            <name>distinct-values</name>
+            <signature>distinct-values($atomic-values as xdt:anyAtomicType*) xdt:anyAtomicType*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a sequence where duplicate values of $atomic-values, based on value equality specified by collation $collation-uri, have been deleted.</description>
+                <param>$atomic-values The atomic values</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the distinct values sequence</return>
+            </comment>
+            <name>distinct-values</name>
+            <signature>distinct-values($atomic-values as xdt:anyAtomicType*, $collation-uri as xs:string) xdt:anyAtomicType*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the document node of $document-uri. Resource URIs can be specified either as a simple collection path, an XMLDB URI or any URI.</description>
+                <param>$document-uri The document URI</param>
+                <return>the document node of $document-uri</return>
+            </comment>
+            <name>doc</name>
+            <signature>doc($document-uri as xs:string?) node()?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns whether or not the document, $document-uri, specified in the input sequence is available. Resource URIs can be specified either as a simple collection path, an XMLDB URI or any URI.</description>
+                <param>$document-uri The document URI</param>
+                <return>true() if the document is available, false() otherwise</return>
+            </comment>
+            <name>doc-available</name>
+            <signature>doc-available($document-uri as xs:string?) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the document nodes of the documents based on the DOCTYPE.</description>
+                <param>$doctype one or more DOCTYPE names</param>
+                <return>the document nodes matching the DOCTYPE names</return>
+                <deprecated>This function is eXist-specific and deprecated. It should not be in the standard functions namespace. Please use util:doctype() instead.
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>doctype</name>
+            <signature>doctype($doctype as xs:string+) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the documents specified in the input sequence. This function is specific to eXist and will be replaced with the corresponding fn:doc function. Collection URIs can be specified either as a simple collection path or an XMLDB URI. If the input sequence is empty, the function will load all documents in the database.</description>
+                <param>$document-uris The document URIs</param>
+                <param>overloaded</param>
+                <return>the documents</return>
+                <deprecated>Moved to the 'http://exist-db.org/xquery/xmldb' namespace since it conflicts with the XSLT 2.0 function.
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>document</name>
+            <signature>document($document-uris as xs:string+, ...) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the absolute URI of the resource from which the document node $document-node was constructed, if none such URI exists returns the empty sequence. If $document-node is the empty sequence, returns the empty sequence.</description>
+                <param>$document-node The document node</param>
+                <return>the document URI of $document-node</return>
+            </comment>
+            <name>document-uri</name>
+            <signature>document-uri($document-node as node()?) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true() if the value of $items is the empty sequence, false() otherwise.</description>
+                <param>$items The item sequence</param>
+                <return>true() if the empty sequence, false() otherwise</return>
+            </comment>
+            <name>empty</name>
+            <signature>empty($items as item()*) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Escapes reserved characters in $uri-part by replacing it with its percent-encoded form as described in [RFC 3986]. If $uri-part is the empty sequence, returns the zero-length string.</description>
+                <param>$uri-part The URI part to encode</param>
+                <return>the URI part with reserved characters percent encoded</return>
+            </comment>
+            <name>encode-for-uri</name>
+            <signature>encode-for-uri($uri-part as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true if the string value of $suffix is a suffix of the string value of $source-string, false otherwise. If either $source-string or $suffix is the empty sequence, the empty sequence is returned.</description>
+                <param>$source-string The source-string</param>
+                <param>$suffix The suffix</param>
+                <return>true() if $suffix is suffix of $source-string, false() otherwise</return>
+            </comment>
+            <name>ends-with</name>
+            <signature>ends-with($source-string as xs:string?, $suffix as xs:string?) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true if the string value of $suffix is a suffix of the string value of $source-string using collation $collation-uri,  false otherwise. If either $source-string or $suffix is the empty sequence, the empty sequence is returned. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source-string The source-string</param>
+                <param>$suffix The suffix</param>
+                <param>$collation-uri The collation URI</param>
+                <return>true() if $suffix is suffix of $source-string, false() otherwise</return>
+            </comment>
+            <name>ends-with</name>
+            <signature>ends-with($source-string as xs:string?, $suffix as xs:string?, $collation-uri as xs:string) xs:boolean?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Indicates that an irrecoverable error has occurred. The script will terminate immediately with an exception using $qname and the default message, 'An error has been raised by the query'.</description>
+                <param>$qname The qname</param>
+            </comment>
+            <name>error</name>
+            <signature>error($qname as xs:QName) empty()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Indicates that an irrecoverable error has occurred. The script will terminate immediately with an exception using $qname and $message.</description>
+                <param>$qname The qname</param>
+                <param>$message The message</param>
+            </comment>
+            <name>error</name>
+            <signature>error($qname as xs:QName?, $message as xs:string) empty()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Indicates that an irrecoverable error has occurred. The script will terminate immediately with an exception using $qname and $message with $error-object appended.</description>
+                <param>$qname The qname</param>
+                <param>$message The message</param>
+                <param>$error-object The error object</param>
+            </comment>
+            <name>error</name>
+            <signature>error($qname as xs:QName?, $message as xs:string, $error-object as item()*) empty()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Indicates that an irrecoverable error has occurred. The script will terminate immediately with an exception using the default qname, 'http://www.w3.org/2004/07/xqt-errors#err:FOER0000', and the default error message, 'An error has been raised by the query'.</description>
+                <param>$a</param>
+            </comment>
+            <name>error</name>
+            <signature>error() empty()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Replaces all nonprintable ASCII characters in the string value of $html-uri by an escape sequence represented as a hexadecimal octet in the form %XX. If $html-uri is the empty sequence, returns the zero-length string.</description>
+                <param>$html-uri The html URI</param>
+                <return>all nonprintable ASCII characters in $html-uri encoded by escape sequences</return>
+            </comment>
+            <name>escape-html-uri</name>
+            <signature>escape-html-uri($html-uri as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>This function applies the URI escaping rules defined in section 2 of [RFC 2396] as amended by [RFC 2732], with one exception, to the string supplied as $uri, which typically represents all or part of a URI. The effect of the function is to escape a set of identified characters in the string. Each such character is replaced in the string by an escape sequence, which is formed by encoding the character as a sequence of octets in UTF-8, and then representing each of these octets in the form %HH, where HH is the hexadecimal representation of the octet. $escape-reserved indicates whether to escape reserved characters.</description>
+                <param>$uri The URI</param>
+                <param>$escape-reserved The escaped-reserved</param>
+                <return>the identified characters in $uri encoded with escape sequences</return>
+            </comment>
+            <name>escape-uri</name>
+            <signature>escape-uri($uri as xs:string?, $escape-reserved as xs:boolean) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the argument sequence, $items, if it contains exactly one item. Otherwise, raises an error.</description>
+                <param>$items The item sequence</param>
+                <return>the sole item in $items if it contains exactly one item. Otherwise, an error is raised.</return>
+            </comment>
+            <name>exactly-one</name>
+            <signature>exactly-one($items as item()*) item()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns true if the argument $items is not the empty sequence, false otherwise.</description>
+                <param>$items The item sequence</param>
+                <return>true() if not the empty-sequence, false() otherwise</return>
+            </comment>
+            <name>exists</name>
+            <signature>exists($items as item()*) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Always returns the boolean value false</description>
+                <param>$a</param>
+                <return>false</return>
+            </comment>
+            <name>false</name>
+            <signature>false() xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the largets number not greater than the value of $number. If $number is the empty sequence, returns the empty sequence.</description>
+                <param>$number The number</param>
+                <return>the largets number without fraction part not greater than the value of $number</return>
+            </comment>
+            <name>floor</name>
+            <signature>floor($number as numeric*) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 0 and 23, both inclusive, representing the value of the hours component in the localized value of $date-time.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the hours component from $date-time</return>
+            </comment>
+            <name>hours-from-dateTime</name>
+            <signature>hours-from-dateTime($date-time as xs:dateTime?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the hours component in the canonical lexical representation of the value of $duration. The result may be negative.</description>
+                <param>$duration The duration as xs:dayTimeDuration</param>
+                <return>the hours component of $duration</return>
+            </comment>
+            <name>hours-from-duration</name>
+            <signature>hours-from-duration($duration as xdt:dayTimeDuration?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 0 and 23, both inclusive, representing the value of the hours component in the localized value of $time.</description>
+                <param>$time The time as xs:time</param>
+                <return>the hours component from $time</return>
+            </comment>
+            <name>hours-from-time</name>
+            <signature>hours-from-time($time as xs:time?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of element nodes that have an ID value matching the value of one or more of the IDREF values supplied in $idrefs. If none is matching or $idrefs is the empty sequence, returns the empty sequence.</description>
+                <param>$idrefs The IDREF sequence</param>
+                <return>the elements with IDs  matching IDREFs from $idref-sequence</return>
+            </comment>
+            <name>id</name>
+            <signature>id($idrefs as xs:string*) element()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of element nodes that have an ID value matching the value of one or more of the IDREF values supplied in $idrefs and is in the same document as $node-in-document. If none is matching or $idrefs is the empty sequence, returns the empty sequence.</description>
+                <param>$idrefs The IDREF sequence</param>
+                <param>$node-in-document The node in document</param>
+                <return>the elements with IDs matching IDREFs from $idrefs in the same document as $node-in-document</return>
+            </comment>
+            <name>id</name>
+            <signature>id($idrefs as xs:string*, $node-in-document as node()) element()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of element or attributes nodes with an IDREF value matching the value of one or more of the ID values supplied in $ids. If none is matching or $ids is the empty sequence, returns the empty sequence.</description>
+                <param>$ids The ID sequence</param>
+                <return>the elements with matching IDREF values from IDs in $ids</return>
+            </comment>
+            <name>idref</name>
+            <signature>idref($ids as xs:string*) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of element or attributes nodes with an IDREF value matching the value of one or more of the ID values supplied in $ids. If none is matching or $ids is the empty sequence, returns the empty sequence.</description>
+                <param>$ids The ID sequence</param>
+                <param>$node-in-document The node in document</param>
+                <return>the elements with matching IDREF values from IDs in $ids in the same document as $node-in-document</return>
+            </comment>
+            <name>idref</name>
+            <signature>idref($ids as xs:string*, $node-in-document as node()) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the implicit timezone property from the dynamic context.</description>
+                <param>$a</param>
+                <return>the implicit timezone daytime-duration from the dynamic context</return>
+            </comment>
+            <name>implicit-timezone</name>
+            <signature>implicit-timezone() xdt:dayTimeDuration</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the prefixes of the in-scope namespaces for $element. For namespaces that have a prefix, it returns the prefix as an xs:NCName. For the default namespace, which has no prefix, it returns the zero-length string.</description>
+                <param>$element The element</param>
+                <return>the prefixes</return>
+            </comment>
+            <name>in-scope-prefixes</name>
+            <signature>in-scope-prefixes($element as element()) xs:string*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a sequence of positive integers giving the positions within the sequence of atomic values $source that are equal to $search.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations. The collation is used when string comparison is required.
+
+The items in the sequence $source are compared with $search under the rules for the 'eq' operator. Values of type xs:untypedAtomic are compared as if they were of type xs:string. Values that cannot be compared, i.e. the 'eq' operator is not defined for their types, are considered to be distinct. If an item compares equal, then the position of that item in the sequence $source is included in the result.
+
+If the value of $source is the empty sequence, or if no item in $source matches $search, then the empty sequence is returned.
+
+The first item in a sequence is at position 1, not position 0.
+
+The result sequence is in ascending numeric order.</description>
+                <param>$source The source sequence</param>
+                <param>$search The search component</param>
+                <return>the sequence of positive integers giving the positions within the sequence</return>
+            </comment>
+            <name>index-of</name>
+            <signature>index-of($source as xdt:anyAtomicType*, $search as xdt:anyAtomicType) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a sequence of positive integers giving the positions within the sequence of atomic values $source that are equal to $search.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations. The collation is used when string comparison is required.
+
+The items in the sequence $source are compared with $search under the rules for the 'eq' operator. Values of type xs:untypedAtomic are compared as if they were of type xs:string. Values that cannot be compared, i.e. the 'eq' operator is not defined for their types, are considered to be distinct. If an item compares equal, then the position of that item in the sequence $source is included in the result.
+
+If the value of $source is the empty sequence, or if no item in $source matches $search, then the empty sequence is returned.
+
+The first item in a sequence is at position 1, not position 0.
+
+The result sequence is in ascending numeric order. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source The source sequence</param>
+                <param>$search The search component</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the sequence of positive integers giving the positions within the sequence</return>
+            </comment>
+            <name>index-of</name>
+            <signature>index-of($source as xdt:anyAtomicType*, $search as xdt:anyAtomicType, $collation-uri as xs:string) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a new sequence constructed from the value of $target with the value of $inserts inserted at the position specified by the value of $position. (The value of $target is not affected by the sequence construction.)
+
+If $target is the empty sequence, $inserts is returned. If $inserts is the empty sequence, $target is returned.
+
+The value returned by the function consists of all items of $target whose index is less than $position, followed by all items of $inserts, followed by the remaining elements of $target, in that sequence.
+
+If $position is less than one (1), the first position, the effective value of $position is one (1). If $position is greater than the number of items in $target, then the effective value of $position is equal to the number of items in $target plus 1.</description>
+                <param>$target The target</param>
+                <param>$position The position to insert before</param>
+                <param>$inserts The data to insert</param>
+                <return>the new sequence</return>
+            </comment>
+            <name>insert-before</name>
+            <signature>insert-before($target as item()*, $position as xs:integer, $inserts as item()*) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>This function converts an xs:string containing an IRI into a URI according to the rules spelled out in Section 3.1 of [RFC 3987]. It is idempotent but not invertible.
+
+If $iri contains a character that is invalid in an IRI, such as the space character (see note below), the invalid character is replaced by its percent-encoded form as described in [RFC 3986] before the conversion is performed.
+
+If $iri is the empty sequence, returns the zero-length string.
+
+Since [RFC 3986] recommends that, for consistency, URI producers and normalizers should use uppercase hexadecimal digits for all percent-encodings, this function must always generate hexadecimal values using the upper-case letters A-F.
+
+Notes:
+
+This function does not check whether $iri is a legal IRI. It treats it as an xs:string and operates on the characters in the xs:string.
+
+The following printable ASCII characters are invalid in an IRI: "&lt;", "&gt;", " " " (double quote), space, "{", "}", "|", "\", "^", and "`". Since these characters should not appear in an IRI, if they do appear in $iri they will be percent-encoded. In addition, characters outside the range x20-x126 will be percent-encoded because they are invalid in a URI.
+
+Since this function does not escape the PERCENT SIGN "%" and this character is not allowed in data within a URI, users wishing to convert character strings, such as file names, that include "%" to a URI should manually escape "%" by replacing it with "%25".</description>
+                <param>$iri The IRI</param>
+                <return>the URI</return>
+            </comment>
+            <name>iri-to-uri</name>
+            <signature>iri-to-uri($iri as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the item in $source that is located at the position specified by $index.</description>
+                <param>$source The source sequence</param>
+                <param>$index The index of the item in the source sequence to return</param>
+                <return>the item</return>
+                <deprecated>This function is eXist-specific and deprecated. It should not be in the standard functions namespace. Use e.g. $x[1] instead. 
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>item-at</name>
+            <signature>item-at($source as item()*, $index as xs:integer) item()?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Tests whether the language of the context item as specified by xml:lang attributes is the same as, or is a sublanguage of, the language specified by $lang. The behavior of the function if the second argument is omitted is exactly the same as if the context item (.) had been passed as the second argument. The language of the argument node, or the context item if the second argument is omitted, is determined by the value of the xml:lang attribute on the node, or, if the node has no such attribute, by the value of the xml:lang attribute on the nearest ancestor of the node that has an xml:lang attribute. If there is no such ancestor, then the function returns false().
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If $lang is the empty sequence it is interpreted as the zero-length string.</description>
+                <param>$lang The language code</param>
+                <return>true if the language code matches, false otherwise</return>
+            </comment>
+            <name>lang</name>
+            <signature>lang($lang as xs:string?) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Tests whether the language of $node as specified by xml:lang attributes is the same as, or is a sublanguage of, the language specified by $lang. The behavior of the function if the second argument is omitted is exactly the same as if the context item (.) had been passed as the second argument. The language of the argument node, or the context item if the second argument is omitted, is determined by the value of the xml:lang attribute on the node, or, if the node has no such attribute, by the value of the xml:lang attribute on the nearest ancestor of the node that has an xml:lang attribute. If there is no such ancestor, then the function returns false().
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If $lang is the empty sequence it is interpreted as the zero-length string.</description>
+                <param>$lang The language code</param>
+                <param>$node The node</param>
+                <return>true if the language code matches, false otherwise</return>
+            </comment>
+            <name>lang</name>
+            <signature>lang($lang as xs:string?, $node as node()) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the context size from the dynamic context. If the context item is undefined, an error is raised.</description>
+                <param>$a</param>
+                <return>the context size from the dynamic context</return>
+            </comment>
+            <name>last</name>
+            <signature>last() xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the local part of the name of $arg as an xs:string that will either be the zero-length string or will have the lexical form of an xs:NCName.
+
+If the argument is omitted, it defaults to the context item (.). The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If the argument is supplied and is the empty sequence, the function returns the zero-length string.
+
+If the target node has no name (that is, if it is a document node, a comment, or a text node), the function returns the zero-length string.
+
+Otherwise, the value returned will be the local part of the expanded-QName of the target node (as determined by the dm:node-name accessor in Section 5.11 node-name AccessorDM. This will be an xs:string whose lexical form is an xs:NCName.</description>
+                <param>$arg The node to retrieve the local name from</param>
+                <return>the local name</return>
+            </comment>
+            <name>local-name</name>
+            <signature>local-name($arg as node()?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the local part of the name of $arg as an xs:string that will either be the zero-length string or will have the lexical form of an xs:NCName.
+
+If the argument is omitted, it defaults to the context item (.). The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If the argument is supplied and is the empty sequence, the function returns the zero-length string.
+
+If the target node has no name (that is, if it is a document node, a comment, or a text node), the function returns the zero-length string.
+
+Otherwise, the value returned will be the local part of the expanded-QName of the target node (as determined by the dm:node-name accessor in Section 5.11 node-name AccessorDM. This will be an xs:string whose lexical form is an xs:NCName.</description>
+                <return>the local name</return>
+            </comment>
+            <name>local-name</name>
+            <signature>local-name() xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:NCName representing the local part of $arg. If $arg is the empty sequence, returns the empty sequence.</description>
+                <param>$arg The QName</param>
+                <return>the local name</return>
+            </comment>
+            <name>local-name-from-QName</name>
+            <signature>local-name-from-QName($arg as xs:QName?) xs:NCName?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg after translating every character to its lower-case correspondent as defined in the appropriate case mappings section in the Unicode standard. For versions of Unicode beginning with the 2.1.8 update, only locale-insensitive case mappings should be applied. Beginning with version 3.2.0 (and likely future versions) of Unicode, precise mappings are described in default case operations, which are full case mappings in the absence of tailoring for particular languages and environments. Every upper-case character that does not have a lower-case correspondent, as well as every lower-case character, is included in the returned value in its original form.</description>
+                <param>$arg The text to be converted to all lower-case characters</param>
+                <return>the resulting lower-case text</return>
+            </comment>
+            <name>lower-case</name>
+            <signature>lower-case($arg as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Tries to match each of the regular expression strings passed in $regular-expression and all following parameters against the keywords contained in the old fulltext index. The keywords found are then compared to the node set in $nodes. Every node containing all of the keywords is copied to the result sequence.</description>
+                <param>$nodes The node set that is to be searched for the keyword set</param>
+                <param>$regular-expression The regular expressions to be matched against the fulltext index</param>
+                <param>overloaded</param>
+                <return>the sequence of all of the matching nodes</return>
+                <deprecated>This function is eXist-specific and should not be in the standard functions namespace. Please use text:match-all() instead.
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>match-all</name>
+            <signature>match-all($nodes as node()*, $regular-expression as xs:string+, ...) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Tries to match each of the regular expression strings passed in $regular-expression and all following parameters against the keywords contained in the old fulltext index. The keywords found are then compared to the node set in $nodes. Every node containing any of the keywords is copied to the result sequence.</description>
+                <param>$nodes The node set that is to be searched for the keyword set</param>
+                <param>$regular-expression The regular expressions to be matched against the fulltext index</param>
+                <param>overloaded</param>
+                <return>the sequence of all of the matching nodes</return>
+                <deprecated>This function is eXist-specific and should not be in the standard functions namespace. Please use text:match-any() instead.
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>match-any</name>
+            <signature>match-any($nodes as node()*, $regular-expression as xs:string+, ...) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The function returns true if $input matches the regular expression supplied as $pattern, if present; otherwise, it returns false.
+
+If $input is the empty sequence, it is interpreted as the zero-length string.
+
+Unless the metacharacters ^ and $ are used as anchors, the string is considered to match the pattern if any substring matches the pattern. But if anchors are used, the anchors must match the start/end of the string (in string mode), or the start/end of a line (in multiline mode).
+
+Note:
+
+This is different from the behavior of patterns in [XML Schema Part 2: Datatypes Second Edition], where regular expressions are implicitly anchored.
+
+Please note that - in contrast - with the specification - this method allows zero or more items for the string argument.
+
+An error is raised [err:FORX0002] if the value of $pattern is invalid according to the rules described in section 7.6.1 Regular Expression Syntax.
+
+</description>
+                <param>$input The input string</param>
+                <param>$pattern The pattern</param>
+                <return>true if the pattern is a match, false otherwise</return>
+            </comment>
+            <name>matches</name>
+            <signature>matches($input as xs:string*, $pattern as xs:string) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The function returns true if $input matches the regular expression supplied as $pattern as influenced by the value of $flags, if present; otherwise, it returns false.
+
+The effect of calling this version of the function with the $flags argument set to a zero-length string is the same as using the other two argument version. Flags are defined in 7.6.1.1 Flags.
+
+If $input is the empty sequence, it is interpreted as the zero-length string.
+
+Unless the metacharacters ^ and $ are used as anchors, the string is considered to match the pattern if any substring matches the pattern. But if anchors are used, the anchors must match the start/end of the string (in string mode), or the start/end of a line (in multiline mode).
+
+Note:
+
+This is different from the behavior of patterns in [XML Schema Part 2: Datatypes Second Edition], where regular expressions are implicitly anchored.
+
+Please note that - in contrast - with the specification - this method allows zero or more items for the string argument.
+
+An error is raised [err:FORX0002] if the value of $pattern is invalid according to the rules described in section 7.6.1 Regular Expression Syntax.
+
+An error is raised [err:FORX0001] if the value of $flags is invalid according to the rules described in section 7.6.1 Regular Expression Syntax.</description>
+                <param>$input The input string</param>
+                <param>$pattern The pattern</param>
+                <param>$flags The flags</param>
+                <return>true if the pattern is a match, false otherwise</return>
+            </comment>
+            <name>matches</name>
+            <signature>matches($input as xs:string*, $pattern as xs:string, $flags as xs:string) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Selects an item from the input sequence $arg whose value is greater than or equal to the value of every other item in the input sequence. If there are two or more such items, then the specific item whose value is returned is implementation dependent.
+
+The following rules are applied to the input sequence:
+
+- Values of type xs:untypedAtomic in $arg are cast to xs:double.
+- Numeric and xs:anyURI values are converted to the least common type that supports the 'ge' operator by a combination of type promotion and subtype substitution. See Section B.1 Type PromotionXP and Section B.2 Operator MappingXP.
+
+The items in the resulting sequence may be reordered in an arbitrary order. The resulting sequence is referred to below as the converted sequence. This function returns an item from the converted sequence rather than the input sequence.
+
+If the converted sequence is empty, the empty sequence is returned.
+
+All items in $arg must be numeric or derived from a single base type for which the 'ge' operator is defined. In addition, the values in the sequence must have a total order. If date/time values do not have a timezone, they are considered to have the implicit timezone provided by the dynamic context for purposes of comparison. Duration values must either all be xs:yearMonthDuration values or must all be xs:dayTimeDuration values.
+
+If any of these conditions is not met, then a type error is raised [err:FORG0006].
+
+If the converted sequence contains the value NaN, the value NaN is returned.
+
+If the items in the value of $arg are of type xs:string or types derived by restriction from xs:string, then the determination of the item with the largest value is made according to the collation that is used.The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations.</description>
+                <param>$arg The input sequence</param>
+                <return>the max value</return>
+            </comment>
+            <name>max</name>
+            <signature>max($arg as xdt:anyAtomicType*) xdt:anyAtomicType?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Selects an item from the input sequence $arg whose value is greater than or equal to the value of every other item in the input sequence. If there are two or more such items, then the specific item whose value is returned is implementation dependent.
+
+The following rules are applied to the input sequence:
+
+- Values of type xs:untypedAtomic in $arg are cast to xs:double.
+- Numeric and xs:anyURI values are converted to the least common type that supports the 'ge' operator by a combination of type promotion and subtype substitution. See Section B.1 Type PromotionXP and Section B.2 Operator MappingXP.
+
+The items in the resulting sequence may be reordered in an arbitrary order. The resulting sequence is referred to below as the converted sequence. This function returns an item from the converted sequence rather than the input sequence.
+
+If the converted sequence is empty, the empty sequence is returned.
+
+All items in $arg must be numeric or derived from a single base type for which the 'ge' operator is defined. In addition, the values in the sequence must have a total order. If date/time values do not have a timezone, they are considered to have the implicit timezone provided by the dynamic context for purposes of comparison. Duration values must either all be xs:yearMonthDuration values or must all be xs:dayTimeDuration values.
+
+If any of these conditions is not met, then a type error is raised [err:FORG0006].
+
+If the converted sequence contains the value NaN, the value NaN is returned.
+
+If the items in the value of $arg are of type xs:string or types derived by restriction from xs:string, then the determination of the item with the largest value is made according to the collation that is used.If the type of the items in $arg is not xs:string and $collation-uri is specified, the collation is ignored.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations.</description>
+                <param>$arg The input sequence</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the max value</return>
+            </comment>
+            <name>max</name>
+            <signature>max($arg as xdt:anyAtomicType*, $collation-uri as xs:string) xdt:anyAtomicType?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Selects an item from the input sequence $arg whose value is less than or equal to the value of every other item in the input sequence. If there are two or more such items, then the specific item whose value is returned is implementation dependent.
+
+The following rules are applied to the input sequence:
+
+- Values of type xs:untypedAtomic in $arg are cast to xs:double.
+- Numeric and xs:anyURI values are converted to the least common type that supports the 'le' operator by a combination of type promotion and subtype substitution. See Section B.1 Type PromotionXP and Section B.2 Operator MappingXP.
+
+The items in the resulting sequence may be reordered in an arbitrary order. The resulting sequence is referred to below as the converted sequence. This function returns an item from the converted sequence rather than the input sequence.
+
+If the converted sequence is empty, the empty sequence is returned.
+
+All items in $arg must be numeric or derived from a single base type for which the 'le' operator is defined. In addition, the values in the sequence must have a total order. If date/time values do not have a timezone, they are considered to have the implicit timezone provided by the dynamic context for the purpose of comparison. Duration values must either all be xs:yearMonthDuration values or must all be xs:dayTimeDuration values.
+
+If any of these conditions is not met, a type error is raised [err:FORG0006].
+
+If the converted sequence contains the value NaN, the value NaN is returned.
+
+If the items in the value of $arg are of type xs:string or types derived by restriction from xs:string, then the determination of the item with the smallest value is made according to the collation that is used. The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations.</description>
+                <param>$arg The input sequence</param>
+                <return>the minimum value</return>
+            </comment>
+            <name>min</name>
+            <signature>min($arg as xdt:anyAtomicType*) xdt:anyAtomicType?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Selects an item from the input sequence $arg whose value is less than or equal to the value of every other item in the input sequence. If there are two or more such items, then the specific item whose value is returned is implementation dependent.
+
+The following rules are applied to the input sequence:
+
+- Values of type xs:untypedAtomic in $arg are cast to xs:double.
+- Numeric and xs:anyURI values are converted to the least common type that supports the 'le' operator by a combination of type promotion and subtype substitution. See Section B.1 Type PromotionXP and Section B.2 Operator MappingXP.
+
+The items in the resulting sequence may be reordered in an arbitrary order. The resulting sequence is referred to below as the converted sequence. This function returns an item from the converted sequence rather than the input sequence.
+
+If the converted sequence is empty, the empty sequence is returned.
+
+All items in $arg must be numeric or derived from a single base type for which the 'le' operator is defined. In addition, the values in the sequence must have a total order. If date/time values do not have a timezone, they are considered to have the implicit timezone provided by the dynamic context for the purpose of comparison. Duration values must either all be xs:yearMonthDuration values or must all be xs:dayTimeDuration values.
+
+If any of these conditions is not met, a type error is raised [err:FORG0006].
+
+If the converted sequence contains the value NaN, the value NaN is returned.
+
+If the items in the value of $arg are of type xs:string or types derived by restriction from xs:string, then the determination of the item with the smallest value is made according to the collation that is used. If the type of the items in $arg is not xs:string and $collation is specified, the collation is ignored.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations.</description>
+                <param>$arg The input sequence</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the minimum value</return>
+            </comment>
+            <name>min</name>
+            <signature>min($arg as xdt:anyAtomicType*, $collation-uri as xs:string) xdt:anyAtomicType?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer value between 0 to 59, both inclusive, representing the value of the minutes component in the localized value of $date-time.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the minutes component from $date-time</return>
+            </comment>
+            <name>minutes-from-dateTime</name>
+            <signature>minutes-from-dateTime($date-time as xs:dateTime?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the minutes component in the canonical lexical representation of the value of $duration. The result may be negative.</description>
+                <param>$duration The duration as xs:dayTimeDuration</param>
+                <return>the minutes component of $duration</return>
+            </comment>
+            <name>minutes-from-duration</name>
+            <signature>minutes-from-duration($duration as xdt:dayTimeDuration?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer value between 0 to 59, both inclusive, representing the value of the minutes component in the localized value of $time.</description>
+                <param>$time The time as xs:time</param>
+                <return>the minutes component from $time</return>
+            </comment>
+            <name>minutes-from-time</name>
+            <signature>minutes-from-time($time as xs:time?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 1 and 12, both inclusive, representing the month component in the localized value of $date.</description>
+                <param>$date The date as xs:date</param>
+                <return>the month component from $date</return>
+            </comment>
+            <name>month-from-date</name>
+            <signature>month-from-date($date as xs:date?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer between 1 and 12, both inclusive, representing the month component in the localized value of $date-time.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the month component from $date-time</return>
+            </comment>
+            <name>month-from-dateTime</name>
+            <signature>month-from-dateTime($date-time as xs:dateTime?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the months component in the canonical lexical representation of the value of $duration. The result may be negative.</description>
+                <param>$duration The duration as xs:yearMonthDuration</param>
+                <return>the months component of $duration</return>
+            </comment>
+            <name>months-from-duration</name>
+            <signature>months-from-duration($duration as xdt:yearMonthDuration?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the name of $arg as an xs:string that is either the zero-length string, or has the lexical form of an xs:QName.
+
+If the argument is omitted, it defaults to the context item (.). The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If the argument is supplied and is the empty sequence, the function returns the zero-length string.
+
+If the target node has no name (that is, if it is a document node, a comment, a text node, or a namespace binding having no name), the function returns the zero-length string.
+
+Otherwise, the value returned is fn:string(fn:node-name($arg)).</description>
+                <param>$arg The input node</param>
+                <return>the name</return>
+            </comment>
+            <name>name</name>
+            <signature>name($arg as node()?) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the name of the context item as an xs:string that is either the zero-length string, or has the lexical form of an xs:QName.
+
+The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If the argument is supplied and is the empty sequence, the function returns the zero-length string.
+
+If the target node has no name (that is, if it is a document node, a comment, a text node, or a namespace binding having no name), the function returns the zero-length string.
+
+Otherwise, the value returned is fn:string(fn:node-name($arg)).</description>
+                <return>the name</return>
+            </comment>
+            <name>name</name>
+            <signature>name() xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the namespace URI of the xs:QName of $arg.
+
+If the argument is omitted, it defaults to the context node (.). The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If $arg is neither an element nor an attribute node, or if it is an element or attribute node whose expanded-QName (as determined by the dm:node-name accessor in the Section 5.11 node-name AccessorDM) is in no namespace, then the function returns the xs:anyURI corresponding to the zero-length string.</description>
+                <param>$arg The input node</param>
+                <return>the namespace URI</return>
+            </comment>
+            <name>namespace-uri</name>
+            <signature>namespace-uri($arg as node()?) xs:anyURI</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the namespace URI of the xs:QName of the context item.
+
+The behavior of the function if the argument is omitted is exactly the same as if the context item had been passed as the argument.
+
+The following errors may be raised: if the context item is undefined [err:XPDY0002]XP; if the context item is not a node [err:XPTY0004]XP.
+
+If $arg is neither an element nor an attribute node, or if it is an element or attribute node whose expanded-QName (as determined by the dm:node-name accessor in the Section 5.11 node-name AccessorDM) is in no namespace, then the function returns the xs:anyURI corresponding to the zero-length string.</description>
+                <return>the namespace URI</return>
+            </comment>
+            <name>namespace-uri</name>
+            <signature>namespace-uri() xs:anyURI</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the namespace URI of one of the in-scope namespaces for $element, identified by its namespace prefix.
+
+If $element has an in-scope namespace whose namespace prefix is equal to $prefix, it returns the namespace URI of that namespace. If $prefix is the zero-length string or the empty sequence, it returns the namespace URI of the default (unnamed) namespace. Otherwise, it returns the empty sequence.
+
+Prefixes are equal only if their Unicode code points match exactly.</description>
+                <param>$prefix The namespace prefix</param>
+                <param>$element The element</param>
+                <return>the namespace URI</return>
+            </comment>
+            <name>namespace-uri-for-prefix</name>
+            <signature>namespace-uri-for-prefix($prefix as xs:string?, $element as element()) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the namespace URI for $arg. If $arg is the empty sequence, returns the empty sequence.</description>
+                <param>$arg The QName</param>
+                <return>the namespace URI</return>
+            </comment>
+            <name>namespace-uri-from-QName</name>
+            <signature>namespace-uri-from-QName($arg as xs:QName?) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:boolean indicating whether the argument node is "nilled". If the argument is not an element node, returns the empty sequence. If the argument is the empty sequence, returns the empty sequence.</description>
+                <param>$arg The input node</param>
+                <return>true if the argument node is "nilled"</return>
+            </comment>
+            <name>nilled</name>
+            <signature>nilled($arg as node()?) xs:boolean?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an expanded-QName for node kinds that can have names. For other kinds of nodes it returns the empty sequence. If $arg is the empty sequence, the empty sequence is returned.</description>
+                <param>$arg The input node</param>
+                <return>the expanded QName</return>
+            </comment>
+            <name>node-name</name>
+            <signature>node-name($arg as node()?) xs:QName?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg with whitespace normalized by stripping leading and trailing whitespace and replacing sequences of one or more than one whitespace character with a single space, #x20.
+
+The whitespace characters are defined in the metasymbol S (Production 3) of [Extensible Markup Language (XML) 1.0 Recommendation (Third Edition)].
+
+Note:
+
+The definition of the metasymbol S (Production 3), is unchanged in [Extensible Markup Language (XML) 1.1 Recommendation].
+
+If the value of $arg is the empty sequence, returns the zero-length string.
+
+If no argument is supplied, $arg defaults to the string value (calculated using fn:string()) of the context item (.). If no argument is supplied or if the argument is the context item and the context item is undefined an error is raised: [err:XPDY0002].</description>
+                <param>$arg The string to normalize</param>
+                <return>the normalized text</return>
+            </comment>
+            <name>normalize-space</name>
+            <signature>normalize-space($arg as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the calculated string value of the context item with whitespace normalized by stripping leading and trailing whitespace and replacing sequences of one or more than one whitespace character with a single space, #x20.
+
+The whitespace characters are defined in the metasymbol S (Production 3) of [Extensible Markup Language (XML) 1.0 Recommendation (Third Edition)].
+
+Note:
+
+The definition of the metasymbol S (Production 3), is unchanged in [Extensible Markup Language (XML) 1.1 Recommendation].
+
+If no argument is supplied, $arg defaults to the string value (calculated using fn:string()) of the context item (.). If no argument is supplied or if the argument is the context item and the context item is undefined an error is raised: [err:XPDY0002].</description>
+                <return>the normalized text</return>
+            </comment>
+            <name>normalize-space</name>
+            <signature>normalize-space() xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the context item normalized according to the nomalization form "NFC"
+
+</description>
+                <param>$arg The unicode string to normalize</param>
+                <return>the normalized text</return>
+            </comment>
+            <name>normalize-unicode</name>
+            <signature>normalize-unicode($arg as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg normalized according to the normalization criteria for a normalization form identified by the value of $normalization-form. The effective value of the $normalization-form is computed by removing leading and trailing blanks, if present, and converting to upper case.
+
+If the value of $arg is the empty sequence, returns the zero-length string.
+
+See [Character Model for the World Wide Web 1.0: Normalization] for a description of the normalization forms.
+
+- If the effective value of $normalization-form is "NFC", then the value returned by the function is the value of $arg in Unicode Normalization Form C (NFC).
+- If the effective value of $normalization-form is "NFD", then the value returned by the function is the value of $arg in Unicode Normalization Form D (NFD).
+- If the effective value of $normalization-form is "NFKC", then the value returned by the function is the value of $arg in Unicode Normalization Form KC (NFKC).
+- If the effective value of $normalization-form is "NFKD", then the value returned by the function is the value of $arg in Unicode Normalization Form KD (NFKD).
+- If the effective value of $normalization-form is "FULLY-NORMALIZED", then the value returned by the function is the value of $arg in the fully normalized form.
+- If the effective value of $normalization-form is the zero-length string, no normalization is performed and $arg is returned.
+
+Conforming implementations must support normalization form "NFC" and may support normalization forms "NFD", "NFKC", "NFKD", "FULLY-NORMALIZED". They may also support other normalization forms with implementation-defined semantics. If the effective value of the $normalization-form is other than one of the values supported by the implementation, then an error is raised [err:FOCH0003].</description>
+                <param>$arg The unicode string to normalize</param>
+                <param>$normalization-form The normalization form</param>
+                <return>the normalized text</return>
+            </comment>
+            <name>normalize-unicode</name>
+            <signature>normalize-unicode($arg as xs:string?, $normalization-form as xs:string) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description> Returns true if the effective boolean value is false, and false if the effective boolean value is true. 
+
+ $arg is reduced to an effective boolean value by applying the fn:boolean() function.</description>
+                <param>$arg The input items</param>
+                <return>the negated effective boolean value (ebv) of $arg</return>
+            </comment>
+            <name>not</name>
+            <signature>not($arg as item()*) xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value indicated by $arg or, if $arg is not specified, the context item after atomization, converted to an xs:double.
+
+Calling the zero-argument version of the function is defined to give the same result as calling the single-argument version with the context item (.). That is, fn:number() is equivalent to fn:number(.).
+
+If $arg is the empty sequence or if $arg or the context item cannot be converted to an xs:double, the xs:double value NaN is returned. If the context item is undefined an error is raised: [err:XPDY0002]XP.
+
+If $arg is the empty sequence, NaN is returned. Otherwise, $arg, or the context item after atomization, is converted to an xs:double following the rules of 17.1.3.2 Casting to xs:double. If the conversion to xs:double fails, the xs:double value NaN is returned.</description>
+                <param>$arg The input item</param>
+                <return>the numerical value</return>
+            </comment>
+            <name>number</name>
+            <signature>number($arg as xdt:anyAtomicType?) xs:double</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the context item after atomization, converted to an xs:double.
+
+If the context item cannot be converted to an xs:double, the xs:double value NaN is returned. If the context item is undefined an error is raised: [err:XPDY0002]XP.
+
+</description>
+                <return>the numerical value</return>
+            </comment>
+            <name>number</name>
+            <signature>number() xs:double</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns $arg if it contains one or more items. Otherwise, raises an error.</description>
+                <param>$arg The input sequence</param>
+                <return>the sequence passed in by $arg if it contains one or more items.</return>
+            </comment>
+            <name>one-or-more</name>
+            <signature>one-or-more($arg as item()*) item()+</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the context position from the dynamic context. If the context item is undefined, raises an error.</description>
+                <param>$a</param>
+                <return>the context position</return>
+            </comment>
+            <name>position</name>
+            <signature>position() xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:NCName representing the prefix of $arg. If $arg is the empty sequence, returns the empty sequence.</description>
+                <param>$arg The QName</param>
+                <return>the prefix</return>
+            </comment>
+            <name>prefix-from-QName</name>
+            <signature>prefix-from-QName($arg as xs:QName?) xs:NCName?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:QName with the namespace URI given in $uri. If $uri is the zero-length string or the empty sequence, it represents "no namespace"; in this case, if the value of $qname contains a colon (:), an error is raised [err:FOCA0002]. The prefix (or absence of a prefix) in $qname is retained in the returned xs:QName value. The local name in the result is taken from the local part of $qname.
+
+If $qname does not have the correct lexical form for xs:QName an error is raised [err:FOCA0002].
+
+Note that unlike xs:QName this function does not require a xs:string literal as the argument.</description>
+                <param>$uri The namespace URI</param>
+                <param>$qname The prefix</param>
+                <return>the xs:QName with the namespace URI given in $uri</return>
+            </comment>
+            <name>QName</name>
+            <signature>QName($uri as xs:string?, $qname as xs:string) xs:QName</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a new sequence constructed from the value of $target with the item at $position removed.
+
+If $position is less than 1 or greater than the number of items in $target, $target is returned. Otherwise, the value returned by the function consists of all items of $target whose index is less than $position, followed by all items of $target whose index is greater than $position. If $target is the empty sequence, the empty sequence is returned.</description>
+                <param>$target The input sequence</param>
+                <param>$position The position of the value to be removed</param>
+                <return>the new sequence with the item at the position specified by the value of $position removed.</return>
+            </comment>
+            <name>remove</name>
+            <signature>remove($target as item()*, $position as xs:integer) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The function returns the xs:string that is obtained by replacing each non-overlapping substring of $input that matches the given $pattern with an occurrence of the $replacement string.
+
+If $input is the empty sequence, it is interpreted as the zero-length string.
+
+If two overlapping substrings of $input both match the $pattern, then only the first one (that is, the one whose first character comes first in the $input string) is replaced.
+
+Within the $replacement string, a variable $N may be used to refer to the substring captured by the Nth parenthesized sub-expression in the regular expression. For each match of the pattern, these variables are assigned the value of the content matched by the relevant sub-expression, and the modified replacement string is then substituted for the characters in $input that matched the pattern. $0 refers to the substring captured by the regular expression as a whole.
+
+More specifically, the rules are as follows, where S is the number of parenthesized sub-expressions in the regular expression, and N is the decimal number formed by taking all the digits that consecutively follow the $ character:
+
+1.  If N=0, then the variable is replaced by the substring matched by the regular expression as a whole.
+
+2.  If 1&lt;=N&lt;=S, then the variable is replaced by the substring captured by the Nth parenthesized sub-expression. If the Nth parenthesized sub-expression was not matched, then the variable is replaced by the zero-length string.
+
+3.  If S&lt;N&lt;=9, then the variable is replaced by the zero-length string.
+
+4.  Otherwise (if N&gt;S and N&gt;9), the last digit of N is taken to be a literal character to be included "as is" in the replacement string, and the rules are reapplied using the number N formed by stripping off this last digit.</description>
+                <param>$input The input string</param>
+                <param>$pattern The pattern to match</param>
+                <param>$replacement The string to replace the pattern with</param>
+                <return>the altered string</return>
+            </comment>
+            <name>replace</name>
+            <signature>replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The function returns the xs:string that is obtained by replacing each non-overlapping substring of $input that matches the given $pattern with an occurrence of the $replacement string.
+
+The $flags argument is interpreted in the same manner as for the fn:matches() function.
+
+Calling the four argument version with the $flags argument set to a zero-length string gives the same effect as using the three argument version.
+
+If $input is the empty sequence, it is interpreted as the zero-length string.
+
+If two overlapping substrings of $input both match the $pattern, then only the first one (that is, the one whose first character comes first in the $input string) is replaced.
+
+Within the $replacement string, a variable $N may be used to refer to the substring captured by the Nth parenthesized sub-expression in the regular expression. For each match of the pattern, these variables are assigned the value of the content matched by the relevant sub-expression, and the modified replacement string is then substituted for the characters in $input that matched the pattern. $0 refers to the substring captured by the regular expression as a whole.
+
+More specifically, the rules are as follows, where S is the number of parenthesized sub-expressions in the regular expression, and N is the decimal number formed by taking all the digits that consecutively follow the $ character:
+
+1.  If N=0, then the variable is replaced by the substring matched by the regular expression as a whole.
+
+2.  If 1&lt;=N&lt;=S, then the variable is replaced by the substring captured by the Nth parenthesized sub-expression. If the Nth parenthesized sub-expression was not matched, then the variable is replaced by the zero-length string.
+
+3.  If S&lt;N&lt;=9, then the variable is replaced by the zero-length string.
+
+4.  Otherwise (if N&gt;S and N&gt;9), the last digit of N is taken to be a literal character to be included "as is" in the replacement string, and the rules are reapplied using the number N formed by stripping off this last digit.</description>
+                <param>$input The input string</param>
+                <param>$pattern The pattern to match</param>
+                <param>$replacement The string to replace the pattern with</param>
+                <param>$flags The flags</param>
+                <return>the altered string</return>
+            </comment>
+            <name>replace</name>
+            <signature>replace($input as xs:string?, $pattern as xs:string, $replacement as xs:string, $flags as xs:string) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:QName value (that is, an expanded-QName) by taking an xs:string that has the lexical form of an xs:QName (a string in the form "prefix:local-name" or "local-name") and resolving it using the in-scope namespaces for a given element.
+
+If $qname does not have the correct lexical form for xs:QName an error is raised [err:FOCA0002].
+
+If $qname is the empty sequence, returns the empty sequence.
+
+More specifically, the function searches the namespace bindings of $element for a binding whose name matches the prefix of $qname, or the zero-length string if it has no prefix, and constructs an expanded-QName whose local name is taken from the supplied $qname, and whose namespace URI is taken from the string value of the namespace binding.
+
+If the $qname has a prefix and if there is no namespace binding for $element that matches this prefix, then an error is raised [err:FONS0004].
+
+If the $qname has no prefix, and there is no namespace binding for $element corresponding to the default (unnamed) namespace, then the resulting expanded-QName has no namespace part.
+
+The prefix (or absence of a prefix) in the supplied $qname argument is retained in the returned expanded-QName.</description>
+                <param>$qname The QName name</param>
+                <param>$element The element</param>
+                <return>the QName of $element with lexical form $qname</return>
+            </comment>
+            <name>resolve-QName</name>
+            <signature>resolve-QName($qname as xs:string?, $element as element()) xs:QName</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Resolves $relative against the value of the base-uri property from the static context using an algorithm such as the ones described in [RFC 2396] or [RFC 3986], and the resulting absolute URI reference is returned. An error may be raised [err:FORG0009] in the resolution process.
+
+If $relative is an absolute URI reference, it is returned unchanged.
+
+If $relative or $base is not a valid xs:anyURI an error is raised [err:FORG0002].
+
+If $relative is the empty sequence, the empty sequence is returned.</description>
+                <param>$relative The relative URI</param>
+                <return>the absolute URI</return>
+            </comment>
+            <name>resolve-uri</name>
+            <signature>resolve-uri($relative as xs:string?) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Resolves $relative against $base using an algorithm such as the ones described in [RFC 2396] or [RFC 3986], and the resulting absolute URI reference is returned. An error may be raised [err:FORG0009] in the resolution process.
+
+If $relative is an absolute URI reference, it is returned unchanged.
+
+If $relative or $base is not a valid xs:anyURI an error is raised [err:FORG0002].
+
+If $relative is the empty sequence, the empty sequence is returned.</description>
+                <param>$relative The relative URI</param>
+                <param>$base The base URI</param>
+                <return>the absolute URI</return>
+            </comment>
+            <name>resolve-uri</name>
+            <signature>resolve-uri($relative as xs:string?, $base as xs:string) xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Reverses the order of items in a sequence.  If the argument is an emptysequence, the empty sequence is returned.</description>
+                <param>$arg The sequence to reverse</param>
+                <return>the reverse order sequence</return>
+            </comment>
+            <name>reverse</name>
+            <signature>reverse($arg as item()*) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the root of the tree to which $arg belongs. This will usually, but not necessarily, be a document node.
+
+If $arg is the empty sequence, the empty sequence is returned.
+
+If $arg is a document node, $arg is returned.
+
+ The behavior of the zero argument version of the function is exactly the same as if the context item had been passed in $arg.</description>
+                <param>$arg The input node</param>
+                <return>the root node of the tree to which $arg belongs</return>
+            </comment>
+            <name>root</name>
+            <signature>root($arg as node()?) node()?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the root of the tree to which the context item belongs. </description>
+                <return>the root node of the tree to which the context node belongs</return>
+            </comment>
+            <name>root</name>
+            <signature>root() node()</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the number with no fractional part that is closest to the argument $arg. If there are two such numbers, then the one that is closest to positive infinity is returned. If type of $arg is one of the four numeric types xs:float, xs:double, xs:decimal or xs:integer the type of the result is the same as the type of $arg. If the type of $arg is a type derived from one of the numeric types, the result is an instance of the base numeric type.
+
+For xs:float and xs:double arguments, if the argument is positive infinity, then positive infinity is returned. If the argument is negative infinity, then negative infinity is returned. If the argument is positive zero, then positive zero is returned. If the argument is negative zero, then negative zero is returned. If the argument is less than zero, but greater than or equal to -0.5, then negative zero is returned. In the cases where positive zero or negative zero is returned, negative zero or positive zero may be returned as [XML Schema Part 2: Datatypes Second Edition] does not distinguish between the values positive zero and negative zero.</description>
+                <param>$arg The input number</param>
+                <return>the rounded value</return>
+            </comment>
+            <name>round</name>
+            <signature>round($arg as numeric?) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The value returned is the nearest (that is, numerically closest) value to $arg that is a multiple of ten to the power of minus 0. If two such values are equally near (e.g. if the fractional part in $arg is exactly .500...), the function returns the one whose least significant digit is even.
+
+If the type of $arg is one of the four numeric types xs:float, xs:double, xs:decimal or xs:integer the type of the result is the same as the type of $arg. If the type of $arg is a type derived from one of the numeric types, the result is an instance of the base numeric type.
+
+The three argument version of the function with $precision = 0 produces the same result as the two argument version.
+
+For arguments of type xs:float and xs:double, if the argument is NaN, positive or negative zero, or positive or negative infinity, then the result is the same as the argument. In all other cases, the argument is cast to xs:decimal, the function is applied to this xs:decimal value, and the resulting xs:decimal is cast back to xs:float or xs:double as appropriate to form the function result. If the resulting xs:decimal value is zero, then positive or negative zero is returned according to the sign of the original argument.
+
+Note that the process of casting to xs:decimal may result in an error [err:FOCA0001].
+
+If $arg is of type xs:float or xs:double, rounding occurs on the value of the mantissa computed with exponent = 0.</description>
+                <param>$arg The input number</param>
+                <return>the rounded value</return>
+            </comment>
+            <name>round-half-to-even</name>
+            <signature>round-half-to-even($arg as numeric?) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>The value returned is the nearest (that is, numerically closest) value to $arg that is a multiple of ten to the power of minus $precision. If two such values are equally near (e.g. if the fractional part in $arg is exactly .500...), the function returns the one whose least significant digit is even.
+
+If the type of $arg is one of the four numeric types xs:float, xs:double, xs:decimal or xs:integer the type of the result is the same as the type of $arg. If the type of $arg is a type derived from one of the numeric types, the result is an instance of the base numeric type.
+
+The three argument version of the function with $precision = 0 produces the same result as the two argument version.
+
+For arguments of type xs:float and xs:double, if the argument is NaN, positive or negative zero, or positive or negative infinity, then the result is the same as the argument. In all other cases, the argument is cast to xs:decimal, the function is applied to this xs:decimal value, and the resulting xs:decimal is cast back to xs:float or xs:double as appropriate to form the function result. If the resulting xs:decimal value is zero, then positive or negative zero is returned according to the sign of the original argument.
+
+Note that the process of casting to xs:decimal may result in an error [err:FOCA0001].
+
+If $arg is of type xs:float or xs:double, rounding occurs on the value of the mantissa computed with exponent = 0.</description>
+                <param>$arg The input number</param>
+                <param>$precision The precision factor</param>
+                <return>the rounded value</return>
+            </comment>
+            <name>round-half-to-even</name>
+            <signature>round-half-to-even($arg as numeric?, $precision as numeric?) numeric</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:decimal value between 0 and 60.999..., both inclusive, representing the seconds and fractional seconds in the localized value of $date-time. Note that the value can be greater than 60 seconds to accommodate occasional leap seconds used to keep human time synchronized with the rotation of the planet.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the seconds component from $date-time</return>
+            </comment>
+            <name>seconds-from-dateTime</name>
+            <signature>seconds-from-dateTime($date-time as xs:dateTime?) xs:decimal?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:decimal representing the seconds component in the canonical lexical representation of the value of $duration. The result may be negative</description>
+                <param>$duration The duration as xs:dayTimeDuration</param>
+                <return>the seconds component of $duration</return>
+            </comment>
+            <name>seconds-from-duration</name>
+            <signature>seconds-from-duration($duration as xdt:dayTimeDuration?) xs:decimal?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:decimal value between 0 and 60.999..., both inclusive, representing the seconds and fractional seconds in the localized value of $date. Note that the value can be greater than 60 seconds to accommodate occasional leap seconds used to keep human time synchronized with the rotation of the planet.</description>
+                <param>$time The time as xs:time</param>
+                <return>the seconds component from $time</return>
+            </comment>
+            <name>seconds-from-time</name>
+            <signature>seconds-from-time($time as xs:time?) xs:decimal?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:boolean indicating whether or not the value of $source starts with a sequence of collation units that provides a minimal match to the collation units of $prefix according to the collation that is used.
+
+Note:
+
+"Minimal match" is defined in [Unicode Collation Algorithm].
+
+If the value of $source or $prefix is the empty sequence, or contains only ignorable collation units, it is interpreted as the zero-length string.
+
+If the value of $prefix is the zero-length string, then the function returns true. If the value of $source is the zero-length string and the value of $prefix is not the zero-length string, then the function returns false.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations. If the specified collation does not support collation units an error may be raised [err:FOCH0004]. </description>
+                <param>$source The source string</param>
+                <param>$prefix The string to determine if is a prefix of $source</param>
+                <return>true if $prefix is a prefix of the string $source</return>
+            </comment>
+            <name>starts-with</name>
+            <signature>starts-with($source as xs:string?, $prefix as xs:string?) xs:boolean?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:boolean indicating whether or not the value of $source starts with a sequence of collation units that provides a minimal match to the collation units of $prefix according to the collation that is used.
+
+Note:
+
+"Minimal match" is defined in [Unicode Collation Algorithm].
+
+If the value of $source or $prefix is the empty sequence, or contains only ignorable collation units, it is interpreted as the zero-length string.
+
+If the value of $prefix is the zero-length string, then the function returns true. If the value of $source is the zero-length string and the value of $prefix is not the zero-length string, then the function returns false.
+
+The collation used by the invocation of this function is determined according to the rules in 7.3.1 Collations. If the specified collation does not support collation units an error may be raised [err:FOCH0004]. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source The source string</param>
+                <param>$prefix The string to determine if is a prefix of $source</param>
+                <param>$collation-uri The collation URI</param>
+                <return>true if $prefix is a prefix of the string $source</return>
+            </comment>
+            <name>starts-with</name>
+            <signature>starts-with($source as xs:string?, $prefix as xs:string?, $collation-uri as xs:string) xs:boolean?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the base URI property from the static context. If the base-uri property is undefined, the empty sequence is returned.</description>
+                <param>$a</param>
+                <return>the base URI from the static context</return>
+            </comment>
+            <name>static-base-uri</name>
+            <signature>static-base-uri() xs:anyURI?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg as xs:string. If the value of $arg is the empty sequence, the zero-length string is returned. If the context item of $arg is undefined, an error is raised.</description>
+                <param>$arg The sequence to get the vaule of as an xs:string</param>
+                <return>the value of $arg as an xs:string</return>
+            </comment>
+            <name>string</name>
+            <signature>string($arg as item()?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of the context item as xs:string. If the context item is undefined, an error is raised.</description>
+                <return>the value of the context item as an xs:string</return>
+            </comment>
+            <name>string</name>
+            <signature>string() xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a xs:string created by concatenating the members of the $arg sequence using $separator as a separator. If the value of the separator is the zero-length string, then the members of the sequence are concatenated without a separator.</description>
+                <param>$arg The sequence to be joined to form the string</param>
+                <param>$separator The separator to be placed in the string between the items of $arg</param>
+                <return>the joined string</return>
+            </comment>
+            <name>string-join</name>
+            <signature>string-join($arg as xs:string*, $separator as xs:string) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer equal to the length in characters of the value of $arg.
+If the value of $arg is the empty sequence, the xs:integer 0 is returned.
+If no argument is supplied, $arg defaults to the string value (calculated using fn:string()) of the context item (.). If no argument is supplied or if the argument is the context item and the context item is undefined an error is raised</description>
+                <param>$arg The input string</param>
+                <return>the length in characters</return>
+            </comment>
+            <name>string-length</name>
+            <signature>string-length($arg as xs:string?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer equal to the length in characters of the value of the context item.
+If the context item is undefined an error is raised. </description>
+                <return>the length in characters</return>
+            </comment>
+            <name>string-length</name>
+            <signature>string-length() xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:string consisting of a number copies of $arg concatenated together without any separators. The number of copies is specified by $count.</description>
+                <param>$arg The string to be duplicated</param>
+                <param>$count The number of copies of $arg to be returned</param>
+                <return>the duplicated string</return>
+            </comment>
+            <name>string-pad</name>
+            <signature>string-pad($arg as xs:string?, $count as xs:integer) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the sequence of unicode code points that constitute an xs:string. If $arg is a zero-length string or the empty sequence, the empty sequence is returned.</description>
+                <param>$arg The input string</param>
+                <return>the sequence of code points</return>
+            </comment>
+            <name>string-to-codepoints</name>
+            <signature>string-to-codepoints($arg as xs:string?) xs:integer*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a subsequence of the items in $source-sequence, items starting at the position, $starting-at, up to the end of the sequence are included.</description>
+                <param>$source The source sequence</param>
+                <param>$starting-at The starting position in the $source</param>
+                <return>the subsequence</return>
+            </comment>
+            <name>subsequence</name>
+            <signature>subsequence($source as item()*, $starting-at as xs:double) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a subsequence of the items in $source, starting at the position, $starting-at,  including the number of items indicated by $length.</description>
+                <param>$source The source sequence</param>
+                <param>$starting-at The starting position in the $source</param>
+                <param>$length The length of the subsequence</param>
+                <return>the subsequence</return>
+            </comment>
+            <name>subsequence</name>
+            <signature>subsequence($source as item()*, $starting-at as xs:double, $length as xs:double) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the portion of the value of $source beginning at the position indicated by the value of $starting-at and continuing to the end of $source. The characters returned do not extend beyond the end of $source. If $starting-at is zero or negative, only those characters in positions greater than zero are returned.If the value of $source is the empty sequence, the zero-length string is returned.</description>
+                <param>$source The source string</param>
+                <param>$starting-at The starting position</param>
+                <return>the substring</return>
+            </comment>
+            <name>substring</name>
+            <signature>substring($source as xs:string?, $starting-at as xs:double) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the portion of the value of $source beginning at the position indicated by the value of $starting-at and continuing for the number of characters indicated by the value of $length. The characters returned do not extend beyond the end of $source. If $starting-at is zero or negative, only those characters in positions greater than zero are returned. If the value of $source is the empty sequence, the zero-length string is returned.</description>
+                <param>$source The source string</param>
+                <param>$starting-at The starting position</param>
+                <param>$length The number of characters in the substring</param>
+                <return>the substring</return>
+            </comment>
+            <name>substring</name>
+            <signature>substring($source as xs:string?, $starting-at as xs:double, $length as xs:double) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the substring of the value of $source that follows the first occurrence of a sequence of the value of $search. If the value of $source or $search is the empty sequence it is interpreted as the zero-length string. If the value of $search is the zero-length string, the zero-length string is returned. If the value of $source does not contain a string that is equal to the value of $search, the zero-length string is returned.</description>
+                <param>$source The input string</param>
+                <param>$search The search string</param>
+                <return>the substring after $search</return>
+            </comment>
+            <name>substring-after</name>
+            <signature>substring-after($source as xs:string?, $search as xs:string?) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the substring of the value of $source that follows the first occurrence of a sequence of the value of $search in the collation $collation-uri. If the value of $source or $search is the empty sequence it is interpreted as the zero-length string. If the value of $search is the zero-length string, the zero-length string is returned. If the value of $source does not contain a string that is equal to the value of $search, the zero-length string is returned. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source The input string</param>
+                <param>$search The search string</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the substring after $search</return>
+            </comment>
+            <name>substring-after</name>
+            <signature>substring-after($source as xs:string?, $search as xs:string?, $collation-uri as xs:string) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the substring of the value of $source that precedes the first occurrence of a sequence of the value of $search. If the value of $source or $search is the empty sequence it is interpreted as the zero-length string. If the value of $search is the zero-length string, the zero-length string is returned. If the value of $source does not contain a string that is equal to the value of $search, the zero-length string is returned.</description>
+                <param>$source The input string</param>
+                <param>$search The search string</param>
+                <return>the substring before $search</return>
+            </comment>
+            <name>substring-before</name>
+            <signature>substring-before($source as xs:string?, $search as xs:string?) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the substring of the value of $source that precedes the first occurrence of a sequence of the value of $search in the collation $collation-uri. If the value of $source or $search is the empty sequence it is interpreted as the zero-length string. If the value of $search is the zero-length string, the zero-length string is returned. If the value of $source does not contain a string that is equal to the value of $search, the zero-length string is returned. The third argument $collation-uri is relative so you only need to specify the last part of a valid full collation-uri, e.g. '?lang=sv-SE', 'lang=sv-SE;strength=primary;decomposition=standard' or 'swedish'.</description>
+                <param>$source The input string</param>
+                <param>$search The search string</param>
+                <param>$collation-uri The collation URI</param>
+                <return>the substring before $search</return>
+            </comment>
+            <name>substring-before</name>
+            <signature>substring-before($source as xs:string?, $search as xs:string?, $collation-uri as xs:string) xs:string?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a value obtained by adding together the values in $arg. If $arg is the the empty sequence the xs:double value 0.0e0 is returned.</description>
+                <param>$arg The sequence of numbers to be summed up</param>
+                <return>the sum of all numbers in $arg</return>
+            </comment>
+            <name>sum</name>
+            <signature>sum($arg as xdt:anyAtomicType*) xdt:anyAtomicType</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns a value obtained by adding together the values in $arg. If $arg is the the empty sequence then $default is returned.</description>
+                <param>$arg The sequence of numbers to be summed up</param>
+                <param>$default The default value if $arg computes to the empty sequence</param>
+                <return>the sum of all numbers in $arg</return>
+            </comment>
+            <name>sum</name>
+            <signature>sum($arg as xdt:anyAtomicType*, $default as xdt:anyAtomicType?) xdt:anyAtomicType</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the timezone component of $date if any. If $date has a timezone component, then the result is an xs:dayTimeDuration that indicates deviation from UTC; its value may range from +14:00 to -14:00 hours, both inclusive. Otherwise, the result is the empty sequence.If $date is the empty sequence, returns the empty sequence.</description>
+                <param>$date The date as xs:date</param>
+                <return>the timezone component from $date</return>
+            </comment>
+            <name>timezone-from-date</name>
+            <signature>timezone-from-date($date as xs:date?) xdt:dayTimeDuration?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the timezone component of $date-time if any. If $date-time has a timezone component, then the result is an xdt:dayTimeDuration that indicates deviation from UTC; its value may range from +14:00 to -14:00 hours, both inclusive. Otherwise, the result is the empty sequence.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the timezone component from $date-time</return>
+            </comment>
+            <name>timezone-from-dateTime</name>
+            <signature>timezone-from-dateTime($date-time as xs:dateTime?) xdt:dayTimeDuration?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the timezone component of $time if any. If $time has a timezone component, then the result is an xdt:dayTimeDuration that indicates deviation from UTC; its value may range from +14:00 to -14:00 hours, both inclusive. Otherwise, the result is the empty sequence.</description>
+                <param>$time The time as xs:time</param>
+                <return>the timezone component from $time</return>
+            </comment>
+            <name>timezone-from-time</name>
+            <signature>timezone-from-time($time as xs:time?) xdt:dayTimeDuration?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Breaks the input string $input into a sequence of strings, treating any substring that matches pattern $pattern as a separator. The separators themselves are not returned.</description>
+                <param>$input The input string</param>
+                <param>$pattern The tokenization pattern</param>
+                <return>the token sequence</return>
+            </comment>
+            <name>tokenize</name>
+            <signature>tokenize($input as xs:string?, $pattern as xs:string) xs:string+</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Breaks the input string $input into a sequence of strings, treating any substring that matches pattern $pattern as a separator using $flags, see http://www.w3.org/TR/xpath-functions/#flags. The separators themselves are not returned.</description>
+                <param>$input The input string</param>
+                <param>$pattern The tokenization pattern</param>
+                <param>$flags The flags</param>
+                <return>the token sequence</return>
+            </comment>
+            <name>tokenize</name>
+            <signature>tokenize($input as xs:string?, $pattern as xs:string, $flags as xs:string) xs:string+</signature>
+        </function>
+        <function>
+            <comment>
+                <description>This function is intended to be used in debugging queries by providing a trace of their execution. The input $value is returned, unchanged, as the result of the function. In addition, the inputs $value, converted to an xs:string, and $label is directed to a trace data set in the eXist log files.</description>
+                <param>$value The value</param>
+                <param>$label The label in the log file</param>
+                <return>the labelled $value in the log</return>
+            </comment>
+            <name>trace</name>
+            <signature>trace($value as item()*, $label as xs:string) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg modified so that every character in the value of $arg that occurs at some position N in the value of $map has been replaced by the character that occurs at position N in the value of $trans.
+
+If the value of $arg is the empty sequence, the zero-length string is returned.
+
+Every character in the value of $arg that does not appear in the value of $map is unchanged.
+
+Every character in the value of $arg that appears at some position M in the value of $map, where the value of $trans is less than M characters in length, is omitted from the returned value. If $map is the zero-length string $arg is returned.
+
+If a character occurs more than once in $map, then the first occurrence determines the replacement character. If $trans is longer than $map, the excess characters are ignored.
+
+i.e. fn:translate("bar","abc","ABC") returns "BAr"</description>
+                <param>$arg The string to be translated</param>
+                <param>$map The map string</param>
+                <param>$trans The translation string</param>
+                <return>the translated string</return>
+            </comment>
+            <name>translate</name>
+            <signature>translate($arg as xs:string?, $map as xs:string, $trans as xs:string) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Always returns the boolean value true</description>
+                <param>$a</param>
+                <return>true</return>
+            </comment>
+            <name>true</name>
+            <signature>true() xs:boolean</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Takes a sequence $arg as input and returns an arbitrary implementation dependent permutation of it. Currently, this has no effect in eXist, but it might be used for future optimizations.</description>
+                <param>$arg The input sequence</param>
+                <return>the input sequence in an arbitrary implementation dependent permutation</return>
+            </comment>
+            <name>unordered</name>
+            <signature>unordered($arg as item()*) item()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the value of $arg after translating every character to its upper-case correspondent as defined in the appropriate case mappings section in the Unicode standard. For versions of Unicode beginning with the 2.1.8 update, only locale-insensitive case mappings should be applied. Beginning with version 3.2.0 (and likely future versions) of Unicode, precise mappings are described in default case operations, which are full case mappings in the absence of tailoring for particular languages and environments. Every lower-case character that does not have an upper-case correspondent, as well as every upper-case character, is included in the returned value in its original form.</description>
+                <param>$arg The text to be converted to all upper-case characters</param>
+                <return>the resulting upper-case text</return>
+            </comment>
+            <name>upper-case</name>
+            <signature>upper-case($arg as xs:string?) xs:string</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the document nodes in the collections $collection-uris non-recursively, i.e. does not include document nodes found in sub-collections.
+
+C.f. fn:collection(). Collection URIs can be specified either as a simple collection path or an XMLDB URI.</description>
+                <param>$collection-uris The collection URIs</param>
+                <param>overloaded</param>
+                <return>the document nodes from the specified collections excluding sub-collections</return>
+                <deprecated>This function is eXist-specific and deprecated. It should not be in the standard functions namespace. Please use http://exist-db.org/xquery/xmldb:xcollection() instead.
+This function could be removed at anytime during the 1.5 development and will be removed in the 1.6 release.</deprecated>
+            </comment>
+            <name>xcollection</name>
+            <signature>xcollection($collection-uris as xs:string+, ...) node()*</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the year in the localized value of $date. The value may be negative.</description>
+                <param>$date The date as xs:date</param>
+                <return>the year component from $date</return>
+            </comment>
+            <name>year-from-date</name>
+            <signature>year-from-date($date as xs:date?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the year in the localized value of $date-time. The value may be negative.</description>
+                <param>$date-time The date-time as xs:dateTime</param>
+                <return>the year component from $date-time</return>
+            </comment>
+            <name>year-from-dateTime</name>
+            <signature>year-from-dateTime($date-time as xs:dateTime?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns an xs:integer representing the years component in the canonical lexical representation of the value of $duration. The result may be negative.</description>
+                <param>$duration The duration as xs:yearMonthDuration</param>
+                <return>the years component of $duration</return>
+            </comment>
+            <name>years-from-duration</name>
+            <signature>years-from-duration($duration as xdt:yearMonthDuration?) xs:integer?</signature>
+        </function>
+        <function>
+            <comment>
+                <description>Returns the argument sequence $arg if it contains zero or one items. Otherwise, raises an error.</description>
+                <param>$arg The sequence to be tested for cardinality</param>
+                <return>the input sequence if it contains zero or one items.</return>
+            </comment>
+            <name>zero-or-one</name>
+            <signature>zero-or-one($arg as item()*) item()?</signature>
+        </function>
+    </functions>
+</xqdoc>

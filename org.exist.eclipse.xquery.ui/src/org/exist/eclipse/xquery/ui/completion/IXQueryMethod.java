@@ -9,11 +9,17 @@ package org.exist.eclipse.xquery.ui.completion;
  */
 public interface IXQueryMethod {
 
-	public int getFlags();
+	String MORE = "...";
 
-	public String[] getParameterNames();
+	int getFlags();
 
-	public String getName();
+	String[] getParameterNames();
 
-	public String[] getParameterTypes();
+	String getName();
+
+	String[] getParameterTypes();
+
+	String getComment();
+
+	String getSignature();
 }
