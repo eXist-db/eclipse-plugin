@@ -15,21 +15,23 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
-import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
@@ -69,6 +71,12 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	private Text _textFilter;
 	private Label _labelCount;
 
+	private Link _infoLink;
+
+	private Composite _content;
+
+	private Composite _stack;
+
 	/**
 	 * The constructor.
 	 */
@@ -94,20 +102,46 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		layout.verticalSpacing = 2;
 		parent.setLayout(layout);
 
-		Composite inner = new Composite(parent, SWT.NONE);
-		GridLayout innerLayout = new GridLayout();
-		innerLayout.marginHeight = 0;
-		innerLayout.marginWidth = 2;
-		innerLayout.numColumns = 2;
-		GridData innerGd = new GridData(GridData.FILL_HORIZONTAL);
-		inner.setLayoutData(innerGd);
+		Composite stack = new Composite(parent, SWT.NONE);
+		_stack = stack;
+		StackLayout a = new StackLayout();
+		stack.setLayout(a);
+		stack.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		inner.setLayout(innerLayout);
+		Link infoLink = new Link(stack, SWT.NONE);
+		String explorerName = PlatformUI.getWorkbench().getViewRegistry().find(
+				BrowseView.ID).getLabel();
+		infoLink.setText("To display documents here, open a collection in <a>"
+				+ explorerName + "</a>.");
+		infoLink.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				onOpenEXistExplorer();
+			}
+		});
+		_infoLink = infoLink;
+
+		Composite content = new Composite(stack, SWT.NONE);
+		GridLayout contentGl = new GridLayout();
+		contentGl.marginWidth = 0;
+		contentGl.marginHeight = 0;
+		content.setLayout(contentGl);
+		_content = content;
+
+		Composite top = new Composite(content, SWT.NONE);
+		GridLayout topLayout = new GridLayout();
+		topLayout.marginHeight = 0;
+		topLayout.marginWidth = 2;
+		topLayout.numColumns = 2;
+		top.setLayout(topLayout);
+		GridData topGd = new GridData(GridData.FILL_HORIZONTAL);
+		top.setLayoutData(topGd);
+
 		// text control - filter
-		Label filterLabel = new Label(inner, SWT.NONE);
+		Label filterLabel = new Label(top, SWT.NONE);
 		filterLabel.setText("Filter:");
 		filterLabel.setLayoutData(new GridData(0));
-		_textFilter = new Text(inner, SWT.BORDER);
+		_textFilter = new Text(top, SWT.BORDER);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		_textFilter.setLayoutData(gd);
 
@@ -125,16 +159,11 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 			}
 		});
 
-		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.MULTI);
+		_viewer = new TableViewer(content, SWT.VIRTUAL | SWT.MULTI);
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
 		_viewer.setUseHashlookup(true);
 		_viewer.setSorter(new NameSorter());
-		_viewer.getTable().addPaintListener(new PaintListener() {
-			public void paintControl(PaintEvent e) {
-				onPaintTable(e);
-			}
-		});
 
 		// SWT.FULL_SELECTION does not have an effect. create effect with
 		// TableColumn that fill's horizontally
@@ -163,7 +192,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_viewer.getTable().setLayoutData(gd);
 
 		// text control - count
-		_labelCount = new Label(parent, SWT.NONE);
+		_labelCount = new Label(content, SWT.NONE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalIndent = 2;
 		_labelCount.setLayoutData(gd);
@@ -177,23 +206,17 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		DocumentCoordinator.getInstance().addListener(this);
 		_origPartname = getPartName();
 
+		updateStackLayout();
+
 		DocumentDnD.install(this);
 	}
 
-	protected void onPaintTable(PaintEvent e) {
-		String msg = null;
-		if (!hasItem()) {
-			String explorerName = PlatformUI.getWorkbench().getViewRegistry()
-					.find(BrowseView.ID).getLabel();
-			msg = "To display documents, double click a collection\nin "
-					+ explorerName + ".";
-		} else if (getViewer().getTable().getItemCount() == 0) {
-			msg = "No documents found";
-		}
-
-		if (msg != null) {
-			GC gc = e.gc;
-			gc.drawText(msg, 4, 4);
+	protected void onOpenEXistExplorer() {
+		try {
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+					.getActivePage().showView(BrowseView.ID);
+		} catch (PartInitException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -284,6 +307,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	protected void setItem(IBrowseItem item) {
 		setItemInternal(item);
 		createInput();
+		updateStackLayout();
 	}
 
 	protected boolean hasItem() {
@@ -417,5 +441,11 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_agMain.makeActions();
 		_agOpenDocument = new ActionGroupOpenDocument(this);
 		_agDocumentExtension = new ActionGroupDocumentExtension(this);
+	}
+
+	private void updateStackLayout() {
+		((StackLayout) _stack.getLayout()).topControl = (hasItem()) ? _content
+				: _infoLink;
+		_stack.layout();
 	}
 }
