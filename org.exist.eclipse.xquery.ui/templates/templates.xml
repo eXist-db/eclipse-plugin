@@ -31,4 +31,10 @@ ${cursor}</template>
   name="declare function">declare function ${name}($$${param1} as ${type}) as ${returnType} {
   ${cursor}
 };</template>
+<template 
+  context="xqueryUniversalTemplateContextType" 
+  description="declare a namespace" 
+  id="org.exist.eclipse.xquery.ui.templates.namespace" 
+  name="declare namespace">declare namespace ${prefix}='${uri}';
+  ${cursor}</template>
 </templates>
