@@ -79,10 +79,10 @@
       </wizard>
       <wizard
             category="org.exist.eclipse.xquery.ui.category"
-            class="org.exist.eclipse.xquery.ui.internal.wizards.XQueryNewWizard"
+            class="org.exist.eclipse.xquery.ui.internal.wizards.NewXQueryFileWizard"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.xquery.ui.internal.wizards.XQueryNewWizard"
-            name="XQuery">
+            name="XQuery File">
       </wizard>
       <wizard
             category="org.exist.eclipse.xquery.ui.category"

@@ -7,6 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
@@ -15,15 +16,17 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryNewWizardPage extends WizardNewFileCreationPage {
+public class NewXQueryFileWizardPage extends WizardNewFileCreationPage {
+
+	private IFile _newFile;
 
 	/**
 	 * @param pageName
 	 * @param selection
 	 */
-	public XQueryNewWizardPage(IStructuredSelection selection) {
+	public NewXQueryFileWizardPage(IStructuredSelection selection) {
 		super("xquerynewwizardPage", selection);
-		setDescription("This wizard creates a new file with *.*.xquery extension that can be opened by a xquery editor.");
+		setDescription("This wizard creates a new file with *.*.xquery extension that can be opened by a XQuery editor.");
 		setFileName("new_file.xq");
 	}
 
@@ -33,8 +36,16 @@ public class XQueryNewWizardPage extends WizardNewFileCreationPage {
 	 * @return <code>true</code> if the file was created.
 	 */
 	public boolean finish() {
-		createNewFile();
+		setNewFile(createNewFile());
 		return true;
+	}
+
+	public IFile getNewFile() {
+		return _newFile;
+	}
+
+	protected void setNewFile(IFile newFile) {
+		_newFile = newFile;
 	}
 
 	@Override
@@ -44,7 +55,7 @@ public class XQueryNewWizardPage extends WizardNewFileCreationPage {
 		input.append(getFileName()).append("\n");
 		input.append(":)\n");
 		input.append("xquery version \"1.0\";\n\n");
-		input.append("query");
+		input.append("//*");
 		try {
 			return new ByteArrayInputStream(input.toString().getBytes("UTF8"));
 		} catch (UnsupportedEncodingException e) {
