@@ -5,6 +5,7 @@ package org.exist.eclipse.auto.internal.result.model;
 
 import java.util.ArrayList;
 
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.query.State;
 
 /**
@@ -90,4 +91,32 @@ public interface IResultModel {
 	 */
 	public long getResultCount();
 
+	/**
+	 * Returns the query order type
+	 * 
+	 * @return query order type
+	 */
+	public QueryOrderType getQueryOrderType();
+	
+	/**
+	 * Sets the query order type
+	 * 
+	 * @param type
+	 */
+	public void setQueryOrderType(QueryOrderType type);
+
+	/**
+	 * Returns the note on the automation
+	 * 
+	 * @return
+	 */
+	public String getAutoNote();
+
+	/**
+	 * Sets the note concerning the automation
+	 * 
+	 * @param note
+	 */
+	public void setAutoNote(String note);	
+	
 }

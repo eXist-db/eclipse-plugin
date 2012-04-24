@@ -39,10 +39,14 @@ public class AutoModelConverter implements AutoTags {
 
 		Element automation = new Element(AUTOMATION);
 		Element threadCount = new Element(THREADCOUNT);
+		Element queryOrderType = new Element(QUERYORDERTYPE);
+		Element autoNote = new Element(AUTONOTE);
 		Element queries = new Element(QUERIES);
 
 		// add data from model
 		threadCount.setText(Integer.toString(autoModel.getThreadCount()));
+		queryOrderType.setText(autoModel.getQueryOrderType().toString());
+		autoNote.setText(autoModel.getAutoNote());
 
 		for (QueryEntity queryEntity : autoModel.getQueries()) {
 			Element query = new Element(QUERY);
@@ -62,6 +66,8 @@ public class AutoModelConverter implements AutoTags {
 		}
 
 		automation.addContent(threadCount);
+		automation.addContent(queryOrderType);
+		automation.addContent(autoNote);
 		automation.addContent(queries);
 
 		Document document = new Document(automation);
@@ -87,6 +93,15 @@ public class AutoModelConverter implements AutoTags {
 		Element automation = doc.getRootElement();
 		Element threadCount = automation.getChild(THREADCOUNT);
 		model.setThreadCount(Integer.parseInt(threadCount.getText()));
+		Element queryOrderType = automation.getChild(QUERYORDERTYPE);
+		if (queryOrderType != null && !queryOrderType.getText().isEmpty()) {
+			model.setQueryOrderType(QueryOrderType.valueOf(queryOrderType
+					.getText().toUpperCase()));
+		} else {
+			model.setQueryOrderType(QueryOrderType.SEQUENTIAL);
+		}
+		Element autoNote = automation.getChild(AUTONOTE);
+		model.setAutoNote(autoNote.getText());
 		Element queries = automation.getChild(QUERIES);
 		Iterator<?> it = queries.getChildren(QUERY).iterator();
 		while (it.hasNext()) {
@@ -95,9 +110,10 @@ public class AutoModelConverter implements AutoTags {
 			Element quantity = query.getChild(QUANTITY);
 			Element content = query.getChild(CONTENT);
 
-			QueryEntity queryEntity = new QueryEntity(query
-					.getAttributeValue(NAME), note.getText(), Integer
-					.parseInt(quantity.getText()), content.getText());
+			QueryEntity queryEntity = new QueryEntity(
+					query.getAttributeValue(NAME),
+					note != null ? note.getText() : "",
+					Integer.parseInt(quantity.getText()), content.getText());
 
 			model.addQuery(queryEntity);
 		}
@@ -106,9 +122,9 @@ public class AutoModelConverter implements AutoTags {
 		return model;
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	/**
 	 * This method converts a String into an Xml-Document. The document is

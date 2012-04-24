@@ -44,7 +44,6 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	private IManagedForm _mform;
 	private QueryEntity _queryEntity;
 	private Text _name;
-	private Text _notes;
 	private Text _quantity;
 	private Text _query;
 	private boolean _dirty;
@@ -117,9 +116,9 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		return false;
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Actions
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	public void selectionChanged(IFormPart part, ISelection selection) {
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
@@ -138,12 +137,6 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 					String previousText = _queryEntity.getName();
 					_queryEntity.setName(_name.getText());
 					createNotification(_queryEntity.getName(), previousText);
-				}
-			} else if (modifiedText == _notes) {
-				if (_queryEntity != null) {
-					String previousText = _queryEntity.getNotes();
-					_queryEntity.setNotes(_notes.getText());
-					createNotification(_queryEntity.getNotes(), previousText);
 				}
 			} else if (modifiedText == _quantity) {
 				handleQuantityInput();
@@ -168,9 +161,9 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		}
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	/**
 	 * Creates a notification if the new input is not the same as the existing
@@ -197,19 +190,11 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	 * update the entities
 	 */
 	private void update() {
-		_name
-				.setText(_queryEntity != null && _queryEntity.getName() != null ? _queryEntity
-						.getName()
-						: "");
-		_notes
-				.setText(_queryEntity != null
-						&& _queryEntity.getNotes() != null ? _queryEntity
-						.getNotes() : "");
+		_name.setText(_queryEntity != null && _queryEntity.getName() != null ? _queryEntity
+				.getName() : "");
 		_quantity.setText(Integer.toString(_queryEntity.getQuantity()));
-		_query
-				.setText(_queryEntity != null
-						&& _queryEntity.getQuery() != null ? _queryEntity
-						.getQuery() : "");
+		_query.setText(_queryEntity != null && _queryEntity.getQuery() != null ? _queryEntity
+				.getQuery() : "");
 	}
 
 	/**
@@ -239,20 +224,6 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		_quantity.addModifyListener(this);
 		_quantity.addFocusListener(this);
 		_quantity.setLayoutData(gd);
-
-		createSpacer(toolkit, client, 2);
-
-		// notes
-		Label notesLabel = toolkit.createLabel(client, "Notes:");
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
-		notesLabel.setLayoutData(gd);
-
-		gd = new GridData(GridData.FILL_HORIZONTAL);
-		_notes = toolkit.createText(client, "", SWT.MULTI | SWT.WRAP);
-		_notes.setToolTipText("Notes");
-		_notes.addModifyListener(this);
-		gd.heightHint = 40;
-		_notes.setLayoutData(gd);
 
 		createSpacer(toolkit, client, 2);
 

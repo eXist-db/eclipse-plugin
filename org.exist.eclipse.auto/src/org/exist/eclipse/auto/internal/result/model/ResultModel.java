@@ -5,6 +5,7 @@ package org.exist.eclipse.auto.internal.result.model;
 
 import java.util.ArrayList;
 
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.query.State;
 
 /**
@@ -19,6 +20,8 @@ public class ResultModel implements IResultModel {
 	private State _state;
 	private Long _resultCount;
 	private ArrayList<QueryResultEntity> _queryResults;
+	private QueryOrderType _queryOrderType;
+	private String _autoNote;
 
 	public ResultModel() {
 		_queryResults = new ArrayList<QueryResultEntity>();
@@ -52,6 +55,22 @@ public class ResultModel implements IResultModel {
 		return _queryResults.toArray();
 	}
 
+	public QueryOrderType getQueryOrderType() {
+		return _queryOrderType == null ? QueryOrderType.SEQUENTIAL : _queryOrderType;
+	}
+	
+	public void setQueryOrderType(QueryOrderType type){
+		_queryOrderType = type;
+	}
+
+	public String getAutoNote() {
+		return _autoNote == null ? "" : _autoNote;
+	}
+
+	public void setAutoNote(String note) {
+		_autoNote = note;
+	}	
+	
 	public int getAvgCompTime() {
 		int totCompTime = 0;
 		for (QueryResultEntity result : _queryResults) {

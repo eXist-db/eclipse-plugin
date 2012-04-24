@@ -5,6 +5,8 @@
         <xs:complexType> 
             <xs:sequence>
                 <xs:element ref="threadcount" minOccurs="1" maxOccurs="1" />
+                <xs:element ref="queryordertype" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="autonote" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="queries" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -22,7 +24,7 @@
         <xs:complexType>
             
             <xs:sequence>
-                <xs:element ref="note" minOccurs='1' maxOccurs='1'/>
+                <xs:element ref="note" minOccurs='0' maxOccurs='1'/>
                 <xs:element ref="quantity" minOccurs='1' maxOccurs='1'/>
                 <xs:element ref="content" minOccurs='1' maxOccurs='1'/>
             </xs:sequence>
@@ -31,6 +33,8 @@
     </xs:element>
     
     <xs:element name="threadcount" type="xs:integer" />
+    <xs:element name="autonote" type="xs:string" />
+    <xs:element name="queryordertype" type="xs:string" />
     <xs:element name="note" type='xs:string'/>
     <xs:element name="quantity" type='xs:integer'/> 
     <xs:element name="content" type='xs:string'/> 

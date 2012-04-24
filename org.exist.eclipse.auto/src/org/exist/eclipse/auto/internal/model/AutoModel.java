@@ -15,6 +15,8 @@ public class AutoModel implements IAutoModel {
 
 	private ArrayList<QueryEntity> _queries;
 	private int _threadCount;
+	private QueryOrderType _queryOrderType;
+	private String _autoNote;
 
 	/**
 	 * @return the queries
@@ -58,5 +60,22 @@ public class AutoModel implements IAutoModel {
 	public int getThreadCount() {
 		return _threadCount;
 	}
+
+	public QueryOrderType getQueryOrderType() {
+		return _queryOrderType;
+	}
+	
+	public void setQueryOrderType(QueryOrderType type){
+		_queryOrderType = type;
+	}
+
+	public String getAutoNote() {
+		return _autoNote;
+	}
+
+	public void setAutoNote(String note) {
+		_autoNote = note;
+	}
+	
 
 }

@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 import org.exist.eclipse.auto.data.AutoTags;
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.internal.result.view.QueryGroup;
 import org.exist.eclipse.auto.query.IQueryResult;
 import org.jdom.Element;
@@ -25,19 +26,23 @@ public class ResultProcessor implements AutoTags {
 	Map<Integer, QueryGroup> _results;
 	int _threadCount;
 	int _queryCount;
+	private QueryOrderType _queryOrderType;
+	private String _autoNote;
 
 	/**
-	 * ResultProcessor constructor
-	 * 
 	 * @param results
 	 * @param threadCount
+	 * @param type
+	 * @param autoNote
 	 * @param queryCount
 	 */
 	public ResultProcessor(Map<Integer, QueryGroup> results, int threadCount,
-			int queryCount) {
+			QueryOrderType type, String autoNote, int queryCount) {
 		_results = results;
 		_threadCount = threadCount;
 		_queryCount = queryCount;
+		_queryOrderType = type;
+		_autoNote = autoNote;
 	}
 
 	/**
@@ -61,6 +66,16 @@ public class ResultProcessor implements AutoTags {
 
 			element = new Element(QUERYCOUNT);
 			element.setText(Integer.toString(_queryCount));
+			outputter.setFormat(Format.getPrettyFormat());
+			writer.println("\t\t" + outputter.outputString(element));
+
+			element = new Element(QUERYORDERTYPE);
+			element.setText(_queryOrderType.toString());
+			outputter.setFormat(Format.getPrettyFormat());
+			writer.println("\t\t" + outputter.outputString(element));
+
+			element = new Element(AUTONOTE);
+			element.setText(_autoNote);
 			outputter.setFormat(Format.getPrettyFormat());
 			writer.println("\t\t" + outputter.outputString(element));
 
@@ -133,7 +148,7 @@ public class ResultProcessor implements AutoTags {
 			Element executionElement = new Element(EXECUTION);
 			Long execTime = queryResult.getExecutionTime();
 			executionElement.setText(Long.toString(execTime));
-			
+
 			Element countElement = new Element(RESULT_COUNT);
 			long resultCount = queryResult.getResultCount();
 			countElement.setText(Long.toString(resultCount));

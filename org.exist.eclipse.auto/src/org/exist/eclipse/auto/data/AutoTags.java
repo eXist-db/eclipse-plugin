@@ -14,6 +14,7 @@ public interface AutoTags {
 	final String AUTOMATION = "automation";
 	final String THREADCOUNT = "threadcount";
 	final String QUERYCOUNT = "querycount";
+	final String AUTONOTE = "autonote";
 
 	final String QUERIES = "queries";
 	final String QUERY = "query";
@@ -21,6 +22,7 @@ public interface AutoTags {
 	final String NOTE = "note";
 	final String QUANTITY = "quantity";
 	final String CONTENT = "content";
+	final String QUERYORDERTYPE = "queryordertype";
 
 	final String RUNS = "runs";
 	final String RUN = "run";

@@ -4,6 +4,7 @@
 package org.exist.eclipse.auto.internal.result.model.parser;
 
 import org.exist.eclipse.auto.data.AutoTags;
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.internal.result.model.IResultModel;
 import org.exist.eclipse.auto.internal.result.model.ResultModel;
 import org.xml.sax.Attributes;
@@ -56,6 +57,15 @@ public class ResultParser implements AutoTags, ContentHandler {
 				if (_resultModel != null) {
 					_resultModel.setQueryCount(Integer.parseInt(_value
 							.toString().trim()));
+				}
+			} else if (QUERYORDERTYPE.equals(name)) {
+				if (_resultModel != null) {
+					_resultModel.setQueryOrderType(QueryOrderType
+							.valueOf(_value.toString().trim()));
+				}
+			} else if (AUTONOTE.equals(name)) {
+				if (_resultModel != null) {
+					_resultModel.setAutoNote(_value.toString().trim());
 				}
 			}
 			_value = new StringBuilder(50);

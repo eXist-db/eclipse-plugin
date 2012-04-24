@@ -11,13 +11,16 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.exist.eclipse.auto.internal.mod.AutoModEvent;
 import org.exist.eclipse.auto.internal.mod.IAutoModificationNotifier;
 import org.exist.eclipse.auto.internal.model.IAutoModel;
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 
 /**
  * This class represents the automation configuration section.
@@ -30,6 +33,8 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	private FormToolkit _toolkit;
 	private IAutoModel _autoModel;
 	private Composite _navigation;
+	private Combo _queryOrderTypeCombo;
+	private Text _autoNote;
 	private IAutoModificationNotifier _notifier;
 
 	public AutomationSection(Composite navigation, IAutoModel model,
@@ -49,6 +54,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		autoSection.setText("Automation Details");
 		autoSection
 				.setDescription("Automation specific values can be edited here.");
+
 		autoSection.marginWidth = 10;
 		autoSection.marginHeight = 5;
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -58,7 +64,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		GridLayout autoLayout = new GridLayout();
 		autoLayout.numColumns = 2;
 		autoLayout.marginWidth = 2;
-		autoLayout.marginHeight = 2;
+		autoLayout.marginHeight = 5;
 		autoClient.setLayout(autoLayout);
 
 		// thread count
@@ -73,14 +79,50 @@ public class AutomationSection implements ModifyListener, FocusListener {
 
 		autoSection.setClient(autoClient);
 		_threadCount.setText(Integer.toString(_autoModel.getThreadCount()));
+
+		// query order type
+		Label queryOrderTypeLbl = _toolkit.createLabel(autoClient,
+				"Query Order Type:");
+		String queryOrderTypeToolTip = "SEQUENTIAL: Running queries sequentially\n"
+				+ "RANDOM: Running queries in a random order\n"
+				+ "ITERATING: Looping over queries - a query is run once per iteration";
+		queryOrderTypeLbl.setToolTipText(queryOrderTypeToolTip);
+		_queryOrderTypeCombo = new Combo(autoClient, SWT.NONE);
+		_queryOrderTypeCombo.setToolTipText(queryOrderTypeToolTip);
+		_toolkit.paintBordersFor(autoClient);
+		gd = new GridData(GridData.FILL_HORIZONTAL
+				| GridData.VERTICAL_ALIGN_BEGINNING);
+		gd.widthHint = 10;
+		_queryOrderTypeCombo.setLayoutData(gd);
+		for (QueryOrderType type : QueryOrderType.values()) {
+			_queryOrderTypeCombo.add(type.toString());
+		}
+		_queryOrderTypeCombo.select(_autoModel.getQueryOrderType().ordinal());
+		_queryOrderTypeCombo.addModifyListener(this);
+
+		// notes
+		Label noteLabel = _toolkit.createLabel(autoClient, "Note:");
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
+		noteLabel.setLayoutData(gd);
+		_autoNote = _toolkit.createText(autoClient, "", SWT.MULTI | SWT.WRAP
+				| SWT.V_SCROLL);
+		gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.heightHint = 30;
+		gd.widthHint = 10;
+		_autoNote.setLayoutData(gd);
+		_autoNote.addModifyListener(this);
+		_autoNote.setText(_autoModel.getAutoNote());
+
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Actions
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	public void modifyText(ModifyEvent e) {
 		handleThreadCountInput();
+		handleQueryOrderTypeInput();
+		handleNoteInput();
 	}
 
 	public void focusGained(FocusEvent e) {
@@ -93,9 +135,9 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		}
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	private boolean isValidInt(String input) {
 		char[] chars = new char[input.length()];
@@ -149,6 +191,21 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		if (sendNotification) {
 			_notifier.automationModified(new AutoModEvent(
 					"Thread Count modified."));
+		}
+	}
+
+	private void handleQueryOrderTypeInput() {
+		if (_autoModel != null && _queryOrderTypeCombo != null) {
+			_autoModel
+					.setQueryOrderType(QueryOrderType.values()[_queryOrderTypeCombo
+							.getSelectionIndex()]);
+		}
+
+	}
+
+	private void handleNoteInput() {
+		if (_autoModel != null && _autoNote != null) {
+			_autoModel.setAutoNote(_autoNote.getText());
 		}
 	}
 

@@ -3,6 +3,7 @@
  */
 package org.exist.eclipse.auto.internal.run;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -12,7 +13,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.exist.eclipse.auto.connection.ConnectionPool;
 import org.exist.eclipse.auto.internal.AutoUI;
 import org.exist.eclipse.auto.internal.model.IAutoModel;
-import org.exist.eclipse.auto.internal.model.QueryEntity;
 import org.exist.eclipse.auto.internal.result.AutomationResult;
 
 /**
@@ -52,28 +52,26 @@ public class AutomationJob extends Job {
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
 		try {
-			// prepare the whole count
-			int expectedCount = 0;
-			for (QueryEntity query : _autoModel.getQueries()) {
-				expectedCount += query.getQuantity();
-			}
-			monitor.beginTask("Running Query Automation", expectedCount);
-			AutomationResult autoResult = new AutomationResult(expectedCount,
-					_autoModel.getThreadCount(), monitor, _target);
 
-			int queryEntityCount = 0;
-			for (QueryEntity query : _autoModel.getQueries()) {
-				Query queryToRun = new Query(query, _collection,
-						++queryEntityCount);
-				for (int i = 0; i < query.getQuantity(); i++) {
-					QueryExecution execution = new QueryExecution(queryToRun,
-							_connPool, autoResult);
+			ExecutionPreparer queryBase = new ExecutionPreparer(
+					_autoModel.getQueries(), _autoModel.getQueryOrderType(),
+					_collection);
+			ArrayList<Query> queries = queryBase.getQueriesInConfiguredOrder();
 
-					if (monitor.isCanceled()) {
-						break;
-					}
-					_executor.execute(execution);
+			monitor.beginTask("Running Query Automation", queries.size());
+			AutomationResult autoResult = new AutomationResult(queries.size(),
+					_autoModel.getThreadCount(),
+					_autoModel.getQueryOrderType(), _autoModel.getAutoNote(),
+					monitor, _target);
+
+			for (Query query : queries) {
+				QueryExecution execution = new QueryExecution(query, _connPool,
+						autoResult);
+
+				if (monitor.isCanceled()) {
+					break;
 				}
+				_executor.execute(execution);
 			}
 
 			autoResult.join();

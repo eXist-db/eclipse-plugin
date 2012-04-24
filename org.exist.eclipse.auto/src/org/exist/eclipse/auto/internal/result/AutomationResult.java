@@ -17,6 +17,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.ide.IDE;
 import org.exist.eclipse.auto.internal.AutoUI;
+import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.internal.result.view.QueryGroup;
 import org.exist.eclipse.auto.internal.run.AutomationHandler;
 import org.exist.eclipse.auto.query.IQueryResult;
@@ -33,22 +34,30 @@ public class AutomationResult {
 	private int _expectedCount;
 	private int _threadCount;
 	private String _target;
+	private QueryOrderType _queryOrderType;
+	private String _autoNote;
 
 	private Map<Integer, QueryGroup> _results;
 	private final IProgressMonitor _monitor;
+
 
 	/**
 	 * AutomationResult constructor
 	 * 
 	 * @param expectedCount
 	 * @param threadCount
+	 * @param type
+	 * @param autoNote
 	 * @param monitor
 	 * @param target
 	 */
 	public AutomationResult(int expectedCount, int threadCount,
-			IProgressMonitor monitor, String target) {
+			QueryOrderType type, String autoNote, IProgressMonitor monitor,
+			String target) {
 		_expectedCount = expectedCount;
 		_threadCount = threadCount;
+		_queryOrderType = type;
+		_autoNote = autoNote;
 		_monitor = monitor;
 		_target = target;
 
@@ -103,7 +112,7 @@ public class AutomationResult {
 	 */
 	private void displayResult() {
 		ResultProcessor result = new ResultProcessor(_results, _threadCount,
-				_expectedCount);
+				_queryOrderType, _autoNote, _expectedCount);
 
 		final File file = new File(_target);
 		try {
@@ -137,8 +146,8 @@ public class AutomationResult {
 				try {
 					IDE.openEditorOnFileStore(page, fileStore);
 				} catch (PartInitException e) {
-					Status status = new Status(Status.ERROR, AutoUI.getId(), e
-							.getMessage(), e);
+					Status status = new Status(Status.ERROR, AutoUI.getId(),
+							e.getMessage(), e);
 					AutoUI.getDefault().getLog().log(status);
 					ErrorDialog.openError(
 							Display.getCurrent().getActiveShell(),

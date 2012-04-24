@@ -49,6 +49,36 @@ public interface IAutoModel {
 	 */
 	public ArrayList<QueryEntity> getQueries();
 
+	
+	/**
+	 * Returns the type of the order in which the queries should be executed
+	 * 
+	 * @return The query order type
+	 */
+	public QueryOrderType getQueryOrderType();
+	
+	/**
+	 * Set the Order of the executed queries
+	 * 
+	 * @param type
+	 */
+	public void setQueryOrderType(QueryOrderType type);	
+		
+	/**
+	 * Returns the note on the automation
+	 * 
+	 * @return
+	 */
+	public String getAutoNote();
+	
+
+	/**
+	 * Sets the automation note
+	 * 
+	 * @param note
+	 */
+	public void setAutoNote(String note);
+	
 	/**
 	 * Returns the queries from the model as an array
 	 * 
