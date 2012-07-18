@@ -3,6 +3,8 @@
  */
 package org.exist.eclipse.query.internal.auto;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.xml.transform.OutputKeys;
 
 import org.eclipse.core.runtime.IStatus;
@@ -55,13 +57,13 @@ public class QueryRunner implements IQueryRunner {
 					"XQueryService", "1.0");
 			service.setProperty(OutputKeys.INDENT, "yes");
 
-			long t0 = System.currentTimeMillis();
+			long t0 = System.nanoTime();
 			CompiledExpression compiled = service.compile(result.getQuery()
 					.getQuery());
-			long t1 = System.currentTimeMillis();
-			tCompiled = t1 - t0;
+			long t1 = System.nanoTime();
+			tCompiled = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
 			resourceSet = service.execute(compiled);
-			long tResult = System.currentTimeMillis() - t1;
+			long tResult = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - t1);
 			result.setQueryState(State.SUCCESS);
 			result.setCompileTime(tCompiled);
 			result.setExecutionTime(tResult);

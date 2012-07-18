@@ -1,5 +1,7 @@
 package org.exist.eclipse.query.internal.xquery.result;
 
+import java.util.concurrent.TimeUnit;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -51,12 +53,12 @@ public class QueryJob extends Job {
 			RunQuery existQuery = new RunQuery(_item, _frame.getQuery());
 			existQuery.init();
 
-			long t0 = System.currentTimeMillis();
+			long t0 = System.nanoTime();
 			CompiledExpression compiled = existQuery.compile();
-			long t1 = System.currentTimeMillis();
-			tCompiled = t1 - t0;
+			long t1 = System.nanoTime();
+			tCompiled = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
 			result = existQuery.execute(compiled);
-			long tResult = System.currentTimeMillis() - t1;
+			long tResult = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - t1);
 
 			ResourceIterator i = result.getIterator();
 
