@@ -68,7 +68,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 				dialogChanged();
 			}
 		});
-		_newText.setText("CopyOf" + _item.getName());
+		_newText.setText("New" + _item.getName());
 		_newText.selectAll();
 		initialize();
 		dialogChanged();

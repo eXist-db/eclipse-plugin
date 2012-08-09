@@ -83,10 +83,10 @@ public class MoveCollectionWizardPage extends WizardPage {
 			}
 		});
 		if (_item.getParent().isRoot()) {
-			_enterCol.setText("CopyOf" + _item.getName());
+			_enterCol.setText("New" + _item.getName());
 		} else {
 			_enterCol.setText(_item.getParent().getPath().substring(4)
-					+ "/CopyOf" + _item.getName());
+					+ "/New" + _item.getName());
 		}
 		_enterCol.selectAll();
 
