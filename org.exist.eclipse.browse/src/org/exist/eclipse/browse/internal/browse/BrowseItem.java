@@ -149,8 +149,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		return _connection;
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter.getName().equals(IBrowseService.class.getName())) {
 			return new BrowseService(this);
 		}

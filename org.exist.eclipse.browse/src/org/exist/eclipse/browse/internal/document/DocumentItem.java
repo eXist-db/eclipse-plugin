@@ -96,8 +96,7 @@ public class DocumentItem implements IDocumentItem {
 		return getName();
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter.getName().equals(IDocumentService.class.getName())) {
 			return new DocumentService(this);
 		}

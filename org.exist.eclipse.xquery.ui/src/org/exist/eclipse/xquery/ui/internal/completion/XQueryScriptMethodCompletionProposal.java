@@ -4,6 +4,7 @@ import org.eclipse.dltk.core.CompletionProposal;
 import org.eclipse.dltk.core.IScriptProject;
 import org.eclipse.dltk.ui.DLTKUIPlugin;
 import org.eclipse.dltk.ui.PreferenceConstants;
+import org.eclipse.dltk.ui.text.completion.ICompletionProposalInfo;
 import org.eclipse.dltk.ui.text.completion.LazyScriptCompletionProposal;
 import org.eclipse.dltk.ui.text.completion.MethodProposalInfo;
 import org.eclipse.dltk.ui.text.completion.ProposalInfo;
@@ -263,7 +264,7 @@ public class XQueryScriptMethodCompletionProposal extends
 
 	}
 
-	protected ProposalInfo computeProposalInfo() {
+	protected ICompletionProposalInfo computeProposalInfo() {
 		IScriptProject project = fInvocationContext.getProject();
 		if (project != null)
 			return new MethodProposalInfo(project, fProposal);

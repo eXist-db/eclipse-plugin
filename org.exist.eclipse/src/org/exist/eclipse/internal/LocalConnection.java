@@ -260,10 +260,9 @@ public class LocalConnection implements IConnection {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (IManagementService.class.equals(adapter)) {
-			return new ManagementService(this);
+			return adapter.cast(new ManagementService(this));
 		}
 		return null;
 	}
@@ -272,9 +271,9 @@ public class LocalConnection implements IConnection {
 		_db = db;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	private String getRootUri() {
 		return getUri() + "/db";
 	}

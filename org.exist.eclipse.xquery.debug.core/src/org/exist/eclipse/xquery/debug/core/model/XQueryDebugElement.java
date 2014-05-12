@@ -58,7 +58,7 @@ public abstract class XQueryDebugElement extends PlatformObject implements IDebu
 		return IXQueryConstants.ID_XQUERY_DEBUG_MODEL;
 	}
 	
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter == IDebugElement.class) {
 			return this;
 		}

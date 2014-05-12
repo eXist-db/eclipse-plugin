@@ -209,8 +209,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public void setOptions(Map options) {
+	public void setOptions(@SuppressWarnings("rawtypes") Map options) {
 	}
 
 	public void setProject(IScriptProject project) {

@@ -43,8 +43,8 @@ public class XQueryCompletionProposalCollector extends
 
 		return super.createScriptCompletionProposal(proposal);
 	}
-
-	private IScriptCompletionProposal createMethodReferenceProposal(
+	
+	protected IScriptCompletionProposal createMethodReferenceProposal(
 			CompletionProposal methodProposal) {
 		LazyScriptCompletionProposal proposal = new XQueryScriptMethodCompletionProposal(
 				methodProposal, getInvocationContext());

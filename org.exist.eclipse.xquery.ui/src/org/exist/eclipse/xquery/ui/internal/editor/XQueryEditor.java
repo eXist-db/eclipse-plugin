@@ -58,7 +58,7 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 		return EDITOR_ID;
 	}
 
-	protected IPreferenceStore getScriptPreferenceStore() {
+	public IPreferenceStore getScriptPreferenceStore() {
 		return XQueryUI.getDefault().getPreferenceStore();
 	}
 

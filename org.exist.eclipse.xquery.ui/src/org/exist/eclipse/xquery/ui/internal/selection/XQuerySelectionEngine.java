@@ -1,9 +1,9 @@
 package org.exist.eclipse.xquery.ui.internal.selection;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.dltk.codeassist.ScriptSelectionEngine;
 import org.eclipse.dltk.compiler.env.IModuleSource;
 import org.eclipse.dltk.core.IField;
-import org.eclipse.dltk.core.IForeignElement;
 import org.eclipse.dltk.core.IMethod;
 import org.eclipse.dltk.core.IModelElement;
 import org.eclipse.dltk.core.IModelElementVisitor;
@@ -12,9 +12,11 @@ import org.eclipse.dltk.core.ISourceRange;
 import org.eclipse.dltk.core.ModelException;
 import org.eclipse.dltk.core.model.LocalVariable;
 import org.eclipse.dltk.internal.ui.editor.ExternalStorageEditorInput;
+import org.eclipse.dltk.ui.IOpenDelegate;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.texteditor.ITextEditor;
@@ -160,7 +162,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 	 * location.
 	 */
 	private static abstract class ForeignElement extends LocalVariable
-			implements IForeignElement {
+			implements IOpenDelegate{
 
 		public ForeignElement(IModelElement parent, String name, int start) {
 			super(parent, name, start, 0, start, 0, "");
@@ -169,7 +171,6 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 
 	private IModelElement openLibraryFunction(IModelElement parent,
 			String fqMethodName, final int caret, final int argCount) {
-		final IModelElement[] isLib = new IModelElement[1];
 		int prefixPos = fqMethodName.indexOf(':');
 		String prefix;
 		final String methodName;
@@ -196,8 +197,9 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 							new StringStorage(prefix + " (built-in)", doc
 									.getPath(), doc.getContent().toString()));
 
-					isLib[0] = new ForeignElement(parent, fqMethodName, caret) {
+					return new ForeignElement(parent, fqMethodName, caret) {
 						public void codeSelect() {
+							//TODO: check for replacement
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 
@@ -219,6 +221,26 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 								}
 							});
 						}
+
+						@Override
+						public String getName(Object arg0) {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public IEditorPart openInEditor(Object arg0,
+								boolean arg1) throws PartInitException,
+								CoreException {
+							// TODO Auto-generated method stub
+							return null;
+						}
+
+						@Override
+						public boolean supports(Object arg0) {
+							// TODO Auto-generated method stub
+							return false;
+						}
 					};
 				}
 			}
@@ -226,7 +248,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 			throw new RuntimeException(e);
 		}
 
-		return isLib[0];
+		return null;
 	}
 
 	private int parseArgCount(String source, int pos) {
