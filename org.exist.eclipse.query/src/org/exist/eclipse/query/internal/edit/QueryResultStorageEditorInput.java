@@ -40,8 +40,7 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 		return _storage.getName();
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 

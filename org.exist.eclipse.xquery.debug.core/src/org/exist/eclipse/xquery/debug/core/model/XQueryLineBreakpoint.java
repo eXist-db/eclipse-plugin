@@ -21,8 +21,6 @@
  */
 package org.exist.eclipse.xquery.debug.core.model;
 
-import java.security.acl.Owner;
-
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;

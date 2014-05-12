@@ -62,8 +62,7 @@ public class QueryResultStorage implements IEncodedStorage {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 

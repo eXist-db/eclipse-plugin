@@ -44,5 +44,5 @@ Bundle-ClassPath: base.jar,
  lib/endorsed/xml-apis.jar,
  lib/exist.jar,
  lib/jdom.jar
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: eXist

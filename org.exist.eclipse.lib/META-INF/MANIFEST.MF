@@ -31,3 +31,4 @@ Bundle-ClassPath: .,
  lib/endorsed/xercesImpl-2.9.1.jar,
  lib/endorsed/xml-apis.jar,
  lib/exist.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

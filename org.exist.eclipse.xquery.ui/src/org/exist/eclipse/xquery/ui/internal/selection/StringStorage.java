@@ -37,7 +37,7 @@ public class StringStorage implements IStorage {
 		return getFullPath().hashCode();
 	}
 
-	public Object getAdapter(@SuppressWarnings("unchecked") Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 

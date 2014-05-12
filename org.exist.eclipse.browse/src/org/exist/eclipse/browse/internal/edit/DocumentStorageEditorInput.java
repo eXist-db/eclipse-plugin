@@ -47,8 +47,7 @@ public class DocumentStorageEditorInput implements IStorageEditorInput {
 		return _storage.getToolTipText();
 	}
 
-	@SuppressWarnings("unchecked")
-	public Object getAdapter(Class adapter) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter.getName().equals(IInputSave.class.getName())) {
 			return _storage;
 		}

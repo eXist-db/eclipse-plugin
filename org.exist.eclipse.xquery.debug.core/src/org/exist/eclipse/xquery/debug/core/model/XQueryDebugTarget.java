@@ -27,7 +27,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.text.MessageFormat;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IMarkerDelta;
@@ -70,8 +69,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	private EventDispatchJob fEventDispatch;
 	private String fName;
 	private boolean fSuspended;
-	private boolean fTerminated;
-
+	
 	public XQueryDebugTarget(ILaunch launch, int requestPort, int eventPort) throws CoreException {
 		super(null);
 		
@@ -260,7 +258,6 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	}
 	
 	private void terminated() {
-		fTerminated = true;
 		fSuspended = false;
 		DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
 		fireTermonateEvent();
@@ -341,7 +338,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	}
 	
 	private void breakpointHit(String event) {
-		//determine which breakpoit was hit, and set the thread's breakpoint
+		//determine which breakpoint was hit, and set the thread's breakpoint
 		int lastSpace = event.lastIndexOf(" ");
 		if (lastSpace > 0) {
 			String line = event.substring(lastSpace + 1);

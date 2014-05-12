@@ -7,7 +7,6 @@ import org.eclipse.dltk.ui.PreferenceConstants;
 import org.eclipse.dltk.ui.text.completion.ICompletionProposalInfo;
 import org.eclipse.dltk.ui.text.completion.LazyScriptCompletionProposal;
 import org.eclipse.dltk.ui.text.completion.MethodProposalInfo;
-import org.eclipse.dltk.ui.text.completion.ProposalInfo;
 import org.eclipse.dltk.ui.text.completion.ScriptContentAssistInvocationContext;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.BadLocationException;
