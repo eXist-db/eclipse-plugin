@@ -16,23 +16,28 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
 public final class XQueryFoldingPreferencePage extends
 		AbstractConfigurationBlockPreferencePage {
 
+	@Override
 	protected String getHelpId() {
 		return null;
 	}
 
+	@Override
 	protected void setDescription() {
 		String description = PreferencesMessages.EditorPreferencePage_folding_title;
 		setDescription(description);
 	}
 
+	@Override
 	protected void setPreferenceStore() {
 		setPreferenceStore(XQueryUI.getDefault().getPreferenceStore());
 	}
 
+	@Override
 	protected Label createDescriptionLabel(Composite parent) {
 		return null; // no description for new look.
 	}
 
+	@Override
 	protected IPreferenceConfigurationBlock createConfigurationBlock(
 			OverlayPreferenceStore overlayPreferenceStore) {
 		return new XQueryFoldingConfigurationBlock(overlayPreferenceStore, this);

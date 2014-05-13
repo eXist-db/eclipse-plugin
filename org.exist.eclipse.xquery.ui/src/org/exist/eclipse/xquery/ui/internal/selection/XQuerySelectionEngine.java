@@ -70,6 +70,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 	public XQuerySelectionEngine() {
 	}
 
+	@Override
 	public IModelElement[] select(IModuleSource module, final int caret, int i) {
 		try {
 
@@ -103,6 +104,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 
 			if (isFunction) {
 				mod.accept(new IModelElementVisitor() {
+					@Override
 					public boolean visit(IModelElement element) {
 						try {
 							if ((element instanceof IMethod)
@@ -123,6 +125,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 				final IMethod[] coveringFun = new IMethod[1];
 				final IField[] field = new IField[1];
 				mod.accept(new IModelElementVisitor() {
+					@Override
 					public boolean visit(IModelElement element) {
 						if (element instanceof IField
 								&& element.getElementName().equals(word)) {
@@ -201,6 +204,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 						public void codeSelect() {
 							//TODO: check for replacement
 							Display.getDefault().asyncExec(new Runnable() {
+								@Override
 								public void run() {
 
 									try {

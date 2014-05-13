@@ -31,10 +31,12 @@ public class XQueryCodeScanner extends AbstractScriptScanner {
 		initialize();
 	}
 
+	@Override
 	protected String[] getTokenProperties() {
 		return _tokenProperties;
 	}
 
+	@Override
 	protected List<IRule> createRules() {
 		List<IRule> rules = new ArrayList<IRule>();
 		IToken keyword = this.getToken(IXQueryColorConstants.XQUERY_KEYWORD);

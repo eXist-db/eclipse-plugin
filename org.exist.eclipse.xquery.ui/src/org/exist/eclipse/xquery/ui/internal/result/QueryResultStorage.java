@@ -27,6 +27,7 @@ public class QueryResultStorage implements IEncodedStorage {
 		_encoding = Charset.forName(ENCODING_DEFAULT);
 	}
 
+	@Override
 	public InputStream getContents() throws CoreException {
 		InputStream is = null;
 		try {
@@ -42,14 +43,17 @@ public class QueryResultStorage implements IEncodedStorage {
 
 	}
 
+	@Override
 	public String getCharset() throws CoreException {
 		return _encoding.name();
 	}
 
+	@Override
 	public IPath getFullPath() {
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		StringBuilder name = new StringBuilder();
 		name.append(_item.getGroup()).append("_").append(_item.getUniqueNr())
@@ -57,10 +61,12 @@ public class QueryResultStorage implements IEncodedStorage {
 		return name.toString();
 	}
 
+	@Override
 	public boolean isReadOnly() {
 		return true;
 	}
 
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}

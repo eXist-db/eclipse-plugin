@@ -29,38 +29,47 @@ public class QueryResult implements IQueryResult {
 		_query = query;
 	}
 
+	@Override
 	public long getCompileTime() {
 		return _compileTime;
 	}
 
+	@Override
 	public long getExecutionTime() {
 		return _exectime;
 	}
 	
+	@Override
 	public IQuery getQuery() {
 		return _query;
 	}
 
+	@Override
 	public State getQueryState() {
 		return _state;
 	}
 
+	@Override
 	public long getResultCount() {
 		return _resultCount;
 	}
 	
+	@Override
 	public void setCompileTime(long time) {
 		_compileTime = time;
 	}
 
+	@Override
 	public void setExecutionTime(long time) {
 		_exectime = time;
 	}
 
+	@Override
 	public void setQueryState(State state) {
 		_state = state;
 	}
 
+	@Override
 	public void setResultCount(long resultCount){
 		_resultCount = resultCount;		
 	}

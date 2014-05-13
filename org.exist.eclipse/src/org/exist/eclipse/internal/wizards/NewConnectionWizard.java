@@ -21,6 +21,7 @@ public class NewConnectionWizard extends Wizard implements INewWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_page = new ConnectionTypeWizardPage(_workbench, _selection);
 		addPage(_page);
@@ -30,6 +31,7 @@ public class NewConnectionWizard extends Wizard implements INewWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the NewConnectionWizardPage.
 	 */
+	@Override
 	public boolean canFinish() {
 		return false;
 	}
@@ -40,6 +42,7 @@ public class NewConnectionWizard extends Wizard implements INewWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_workbench = workbench;
 		_selection = selection;

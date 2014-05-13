@@ -33,6 +33,7 @@ public class ManagementService implements IManagementService {
 		_connection = connection;
 	}
 
+	@Override
 	public boolean check() {
 		boolean result = _connection.isOpen();
 		if (!result) {
@@ -42,14 +43,15 @@ public class ManagementService implements IManagementService {
 			BasePlugin.getDefault().getLog().log(status);
 			BasePlugin.getDefault().errorDialog(message, message, status);
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					try {
 						_connection.close();
 					} catch (ConnectionException e) {
-						IStatus status = new Status(Status.ERROR, BasePlugin
-								.getId(), "Error while closing the connection",
-								e);
-						BasePlugin.getDefault().getLog().log(status);
+						IStatus errorStatus = new Status(Status.ERROR,
+								BasePlugin.getId(),
+								"Error while closing the connection", e);
+						BasePlugin.getDefault().getLog().log(errorStatus);
 					}
 				}
 			});
@@ -58,6 +60,7 @@ public class ManagementService implements IManagementService {
 		return result;
 	}
 
+	@Override
 	public Collection createCollection(Collection collection, String name)
 			throws ConnectionException {
 		try {
@@ -69,6 +72,7 @@ public class ManagementService implements IManagementService {
 		}
 	}
 
+	@Override
 	public void removeCollection(Collection collection)
 			throws ConnectionException {
 		if (collection != null) {
@@ -88,6 +92,7 @@ public class ManagementService implements IManagementService {
 		}
 	}
 
+	@Override
 	public void removeDocument(Collection collection, String document)
 			throws ConnectionException {
 		if (collection != null) {
@@ -102,6 +107,7 @@ public class ManagementService implements IManagementService {
 		}
 	}
 
+	@Override
 	public Collection getCollection(String path) throws ConnectionException {
 		try {
 			Collection collection = _connection.getRoot();
@@ -128,41 +134,44 @@ public class ManagementService implements IManagementService {
 		}
 	}
 
+	@Override
 	public void rename(String fromPath, String toPath)
 			throws ConnectionException {
 		CollectionManagementServiceImpl service;
 		try {
 			service = (CollectionManagementServiceImpl) _connection.getRoot()
 					.getService("CollectionManagementService", "1.0");
-			service.move(XmldbURI.xmldbUriFor(fromPath), null, XmldbURI
-					.xmldbUriFor(toPath));
+			service.move(XmldbURI.xmldbUriFor(fromPath), null,
+					XmldbURI.xmldbUriFor(toPath));
 		} catch (Exception e) {
 			throw new ConnectionException("Rename of collection '" + fromPath
 					+ "' failed", e);
 		}
 	}
 
+	@Override
 	public void move(String fromPath, String toPath) throws ConnectionException {
 		CollectionManagementServiceImpl service;
 		try {
 			service = (CollectionManagementServiceImpl) _connection.getRoot()
 					.getService("CollectionManagementService", "1.0");
-			service.move(XmldbURI.xmldbUriFor(fromPath), XmldbURI
-					.xmldbUriFor(toPath), null);
+			service.move(XmldbURI.xmldbUriFor(fromPath),
+					XmldbURI.xmldbUriFor(toPath), null);
 		} catch (Exception e) {
 			throw new ConnectionException("Move of collection '" + fromPath
 					+ "' failed", e);
 		}
 	}
 
+	@Override
 	public void renameResource(Collection collection, String fromName,
 			String toName) throws ConnectionException {
 		CollectionManagementServiceImpl service;
 		try {
 			service = (CollectionManagementServiceImpl) collection.getService(
 					"CollectionManagementService", "1.0");
-			service.moveResource(XmldbURI.xmldbUriFor(fromName), null, XmldbURI
-					.xmldbUriFor(toName));
+			service.moveResource(XmldbURI.xmldbUriFor(fromName), null,
+					XmldbURI.xmldbUriFor(toName));
 		} catch (Exception e) {
 			throw new ConnectionException("Rename of document '" + fromName
 					+ "' failed", e);

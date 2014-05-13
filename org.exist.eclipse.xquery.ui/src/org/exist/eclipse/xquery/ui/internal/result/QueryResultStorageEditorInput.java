@@ -19,30 +19,37 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 		_storage = storage;
 	}
 
+	@Override
 	public IStorage getStorage() throws CoreException {
 		return _storage;
 	}
 
+	@Override
 	public ImageDescriptor getImageDescriptor() {
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		return _storage.getName();
 	}
 
+	@Override
 	public IPersistableElement getPersistable() {
 		return null;
 	}
 
+	@Override
 	public String getToolTipText() {
 		return _storage.getName();
 	}
 
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 
+	@Override
 	public boolean exists() {
 		return false;
 	}

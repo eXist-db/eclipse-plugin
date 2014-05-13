@@ -119,11 +119,13 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		return _context;
 	}
 
+	@Override
 	public void refresh(ConnectionContextEvent event) {
 		_context = event.getConnectionContext();
 		refresh();
 	}
 
+	@Override
 	public void disposed(ConnectionContextEvent event) {
 		dispose();
 		refresh();
@@ -159,6 +161,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		_selectContextLabel.setCursor(_selectContextLabel.getDisplay()
 				.getSystemCursor(SWT.CURSOR_HAND));
 		_selectContextLabel.addPaintListener(new PaintListener() {
+			@Override
 			public void paintControl(PaintEvent e) {
 				if (labelEnter[0]) {
 					GC gc = e.gc;
@@ -219,6 +222,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 				.getPreferenceStore();
 		_tabCheck.setSelection(store.getBoolean(TAB_CHECK_PREFERENCES));
 		_tabCheck.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				Button button = (Button) e.getSource();
 				store.setValue(TAB_CHECK_PREFERENCES, button.getSelection());
@@ -257,19 +261,23 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		});
 	}
 
+	@Override
 	public String getFilename() {
 		return _editor.getTitle();
 	}
 
+	@Override
 	public int getMaxCount() {
 		return _querySpinner.getSelection();
 	}
 
+	@Override
 	public String getQuery() {
 		return _editor.getDocumentProvider().getDocument(
 				_editor.getEditorInput()).get();
 	}
 
+	@Override
 	public boolean isCreatedNewTab() {
 		return _tabCheck.getSelection();
 	}

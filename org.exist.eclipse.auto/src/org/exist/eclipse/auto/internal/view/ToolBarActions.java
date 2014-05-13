@@ -47,6 +47,7 @@ public class ToolBarActions {
 
 		// run automation
 		Action runAction = new Action("run", Action.AS_PUSH_BUTTON) {
+			@Override
 			public void run() {
 				if (_autoModel.getQueries().size() == 0) {
 					MessageDialog.openInformation(form.getShell(),
@@ -71,6 +72,7 @@ public class ToolBarActions {
 
 		// horizontal perspecitve
 		Action hAction = new Action("hor", Action.AS_RADIO_BUTTON) {
+			@Override
 			public void run() {
 				_sashForm.setOrientation(SWT.HORIZONTAL);
 				form.reflow(true);
@@ -83,6 +85,7 @@ public class ToolBarActions {
 
 		// vertical perspective
 		Action vAction = new Action("ver", Action.AS_RADIO_BUTTON) {
+			@Override
 			public void run() {
 				_sashForm.setOrientation(SWT.VERTICAL);
 				form.reflow(true);

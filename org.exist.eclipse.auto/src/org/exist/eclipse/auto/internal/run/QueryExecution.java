@@ -36,6 +36,7 @@ public class QueryExecution implements Runnable {
 		_automationResult = automationResult;
 	}
 
+	@Override
 	public void run() {
 
 		// fetch a query runner

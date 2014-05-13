@@ -11,6 +11,7 @@ import org.eclipse.dltk.ast.parser.ISourceParserFactory;
  */
 public class XQuerySourceParserFactory implements ISourceParserFactory {
 
+	@Override
 	public ISourceParser createSourceParser() {
 		return new XQuerySourceParser();
 	}

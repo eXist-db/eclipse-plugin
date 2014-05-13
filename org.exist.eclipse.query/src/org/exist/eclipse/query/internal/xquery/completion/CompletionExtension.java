@@ -19,6 +19,7 @@ public class CompletionExtension implements ICompletionExtension {
 		_functionJob = functionJob;
 	}
 
+	@Override
 	public IXQueryMethod[] getMethods(String prefix) {
 		if (_functionJob.hasFetched()) {
 			return _functionJob.getMethods(prefix);

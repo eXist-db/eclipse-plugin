@@ -19,14 +19,17 @@ public class XQueryTemplateCompletionProcessor extends
 		super(context);
 	}
 
+	@Override
 	protected String getContextTypeId() {
 		return XQueryUniversalTemplateContextType.CONTEXT_TYPE_ID;
 	}
 
+	@Override
 	protected char[] getIgnore() {
 		return IGNORE;
 	}
 
+	@Override
 	protected ScriptTemplateAccess getTemplateAccess() {
 		return XQueryTemplateAccess.getInstance();
 	}

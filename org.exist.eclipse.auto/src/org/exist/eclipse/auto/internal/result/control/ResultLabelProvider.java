@@ -16,10 +16,12 @@ import org.exist.eclipse.auto.internal.result.model.QueryResultEntity;
 public class ResultLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
+	@Override
 	public Image getColumnImage(Object element, int columnIndex) {
 		return null;
 	}
 
+	@Override
 	public String getColumnText(Object element, int columnIndex) {
 		if (element instanceof QueryResultEntity) {
 			QueryResultEntity entity = (QueryResultEntity) element;

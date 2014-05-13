@@ -17,6 +17,7 @@ import org.exist.eclipse.xquery.ui.context.IContextSwitcher;
  */
 public class ContextSwitcherListener implements IConnectionListener {
 
+	@Override
 	public void added(IConnection connection) {
 		ContextSwitcher contextSwitcher = new ContextSwitcher(connection);
 		ContextSwitcherRegistration.getInstance().addContextSwitcher(
@@ -24,12 +25,15 @@ public class ContextSwitcherListener implements IConnectionListener {
 		ContextSwitcherContainer.getInstance().put(connection, contextSwitcher);
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 	}
 
+	@Override
 	public void opened(IConnection connection) {
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 		ContextSwitcher contextSwitcher = ContextSwitcherContainer
 				.getInstance().getContextSwitcher(connection);

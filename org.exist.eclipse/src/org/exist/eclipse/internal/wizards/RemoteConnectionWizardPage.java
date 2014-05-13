@@ -36,8 +36,6 @@ public class RemoteConnectionWizardPage extends WizardPage {
 
 	/**
 	 * Constructor for SampleNewWizardPage.
-	 * 
-	 * @param selection
 	 */
 	public RemoteConnectionWizardPage() {
 		super("remoteconnectionwizardPage");
@@ -46,6 +44,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		_copy = true;
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -97,6 +96,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -106,6 +106,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_username.setLayoutData(gd);
 		_username.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -114,6 +115,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_password.setLayoutData(gd);
 		_password.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -122,6 +124,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_uri.setLayoutData(gd);
 		_uri.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}

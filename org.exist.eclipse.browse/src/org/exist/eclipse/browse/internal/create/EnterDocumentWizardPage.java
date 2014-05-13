@@ -29,6 +29,7 @@ public class EnterDocumentWizardPage extends WizardPage {
 		setDefaultDescription();
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -56,6 +57,7 @@ public class EnterDocumentWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}

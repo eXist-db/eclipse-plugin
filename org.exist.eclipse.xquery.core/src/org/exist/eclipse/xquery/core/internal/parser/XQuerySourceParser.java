@@ -19,6 +19,7 @@ public class XQuerySourceParser extends AbstractSourceParser {
 	public XQuerySourceParser() {
 	}
 
+	@Override
 	public IModuleDeclaration parse(IModuleSource input,
 			IProblemReporter reporter) {
 		ModuleDeclaration moduleDeclaration = new ModuleDeclaration(input

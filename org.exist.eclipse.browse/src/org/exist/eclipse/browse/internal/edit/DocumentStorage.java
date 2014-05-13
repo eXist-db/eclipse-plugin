@@ -13,6 +13,7 @@ import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.text.IDocument;
 import org.exist.eclipse.IManagementService;
@@ -30,9 +31,11 @@ import org.xmldb.api.modules.XMLResource;
  * @author Pascal Schmidiger
  */
 public class DocumentStorage implements IEncodedStorage, IInputSave {
-	private Charset _encoding;
 	private final IDocumentItem _item;
+
 	private boolean _corrupt;
+	private IPath _path;
+	private Charset _encoding;
 
 	public DocumentStorage(IDocumentItem item) {
 		_item = item;
@@ -40,6 +43,7 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 		_corrupt = false;
 	}
 
+	@Override
 	public InputStream getContents() throws CoreException {
 		if (check()) {
 			InputStream is = null;
@@ -57,29 +61,34 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 							.name()));
 				}
 			} catch (UnsupportedEncodingException e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while encode resource '").append(_item).append(
-						"' with '").append(_encoding).append("'");
-				throw new CoreException(new Status(Status.ERROR, BrowsePlugin
-						.getId(), message.toString(), e));
+				StringBuilder message = new StringBuilder(50)
+						.append("Error while encode resource '").append(_item)
+						.append("' with '").append(_encoding).append('\'');
+				throw new CoreException(new Status(Status.ERROR,
+						BrowsePlugin.getId(), message.toString(), e));
 			} catch (Exception e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while loading resource '").append(
-						_item.getName()).append("'");
-				throw new CoreException(new Status(Status.ERROR, BrowsePlugin
-						.getId(), message.toString(), e));
+				StringBuilder message = new StringBuilder(50)
+						.append("Error while loading resource '")
+						.append(_item.getName()).append('\'');
+				throw new CoreException(new Status(Status.ERROR,
+						BrowsePlugin.getId(), message.toString(), e));
 			}
 			return is;
 		} else {
-			throw new CoreException(new Status(Status.ERROR, BrowsePlugin.getId(),
-					" Error while getting contents."));
+			throw new CoreException(new Status(Status.ERROR,
+					BrowsePlugin.getId(), " Error while getting contents."));
 		}
 	}
 
+	@Override
 	public IPath getFullPath() {
-		return null;
+		if (_path == null) {
+			_path = new Path("", _item.getPath());
+		}
+		return _path;
 	}
 
+	@Override
 	public String getName() {
 		return _item.getName() + " ("
 				+ _item.getParent().getConnection().getName() + ")";
@@ -90,14 +99,17 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 				+ _item.getParent().getConnection().getName() + ")";
 	}
 
+	@Override
 	public boolean isReadOnly() {
 		return _corrupt;
 	}
 
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 
+	@Override
 	public void setContents(IProgressMonitor monitor, IDocument document)
 			throws CoreException {
 		monitor.beginTask("save document '" + _item.getName() + "'", 1);
@@ -115,46 +127,52 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 					}
 					_item.getParent().getCollection().storeResource(resource);
 				} catch (UnsupportedEncodingException e) {
-					throw new CoreException(new Status(Status.ERROR, BrowsePlugin
-							.getId(), "Problem with encoding"));
+					throw new CoreException(new Status(Status.ERROR,
+							BrowsePlugin.getId(), "Problem with encoding"));
 				} catch (Exception e) {
-					throw new CoreException(new Status(Status.ERROR, BrowsePlugin
-							.getId(), "Could not store the document"));
+					throw new CoreException(new Status(Status.ERROR,
+							BrowsePlugin.getId(),
+							"Could not store the document"));
 				}
 			} else {
 				_corrupt = true;
-				throw new CoreException(new Status(Status.ERROR, BrowsePlugin
-						.getId(), "Could not store the document"));
+				throw new CoreException(new Status(Status.ERROR,
+						BrowsePlugin.getId(), "Could not store the document"));
 			}
 		} finally {
 			monitor.done();
 		}
 	}
 
+	@Override
 	public String getCharset() throws CoreException {
 		return _encoding.name();
 	}
 
 	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		boolean isEquals = false;
-		if (!_corrupt && _item != null && obj instanceof DocumentStorage) {
-			DocumentStorage cast = DocumentStorage.class.cast(obj);
-			if (!cast._corrupt) {
-				isEquals = cast._item.equals(_item);
-			}
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof DocumentStorage)) {
+			return false;
 		}
-		return isEquals;
+		DocumentStorage other = DocumentStorage.class.cast(obj);
+		return _corrupt == other._corrupt && _item.equals(other._item);
 	}
 
 	protected final boolean exists() {
 		return _item.exists();
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// //////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// //////////////////
 	private boolean check() {
 		if (!_corrupt) {
@@ -163,8 +181,8 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 			IDocumentService dService = (IDocumentService) _item
 					.getAdapter(IDocumentService.class);
 			return IManagementService.class.cast(
-					_item.getParent().getConnection().getAdapter(
-							IManagementService.class)).check()
+					_item.getParent().getConnection()
+							.getAdapter(IManagementService.class)).check()
 					&& bService.check() && dService.check();
 		} else {
 			return false;

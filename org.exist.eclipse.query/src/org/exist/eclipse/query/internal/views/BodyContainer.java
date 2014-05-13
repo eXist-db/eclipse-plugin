@@ -76,12 +76,15 @@ public class BodyContainer extends Composite implements IQueryListener,
 		return _queryInput.getText();
 	}
 
+	@Override
 	public void end(QueryEndEvent event) {
 		// ignore
 	}
 
+	@Override
 	public void start(final QueryStartEvent event) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				_resultTable.removeAll();
 				_resultMouseListener.setId(event.getId());
@@ -89,8 +92,10 @@ public class BodyContainer extends Composite implements IQueryListener,
 		});
 	}
 
+	@Override
 	public void addResult(final QueryResultEvent event) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				int row = _resultTable.getItemCount();
 				TableItem resultItem = new TableItem(_resultTable, row);

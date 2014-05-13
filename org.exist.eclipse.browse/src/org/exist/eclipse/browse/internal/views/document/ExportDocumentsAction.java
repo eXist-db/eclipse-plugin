@@ -3,6 +3,7 @@ package org.exist.eclipse.browse.internal.views.document;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringReader;
@@ -102,15 +103,20 @@ public class ExportDocumentsAction extends Action {
 		for (Map.Entry<IDocumentItem, File> all : files.entrySet()) {
 			IDocumentItem document = all.getKey();
 			File file = all.getValue();
-
 			try {
 				String content = (String) document.getResource().getContent();
-				copy(new StringReader(content), new OutputStreamWriter(
-						new FileOutputStream(file), DEFAULT_ENCODING));
+				try (Reader reader = new StringReader(content);
+						OutputStream out = new FileOutputStream(file);
+						Writer writer = new OutputStreamWriter(out,
+								DEFAULT_ENCODING)) {
+					copy(reader, writer);
+				}
 			} catch (Exception e) {
 				hadErrors = true;
-				BrowsePlugin.getDefault().getLog().log(
-						new Status(IStatus.ERROR, BrowsePlugin.getId(),
+				BrowsePlugin
+						.getDefault()
+						.getLog()
+						.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
 								"An error occured while exporting the document '"
 										+ document.getName() + "': " + e));
 			}

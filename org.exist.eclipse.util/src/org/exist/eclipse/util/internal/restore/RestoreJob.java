@@ -41,6 +41,7 @@ public class RestoreJob extends Job {
 							_location), _item.getConnection().getUri());
 			restore.restore(false, null);
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					MessageDialog.openInformation(new Shell(),
 							"Restore completed", "Restore from '" + _location

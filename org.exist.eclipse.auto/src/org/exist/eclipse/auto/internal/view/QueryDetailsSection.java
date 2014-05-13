@@ -57,10 +57,12 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		_notifier = notifier;
 	}
 
+	@Override
 	public void initialize(IManagedForm mform) {
 		_mform = mform;
 	}
 
+	@Override
 	public void createContents(Composite parent) {
 		_parent = parent;
 		FillLayout layout = new FillLayout();
@@ -90,28 +92,35 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		queryDetailsSection.setClient(client);
 	}
 
+	@Override
 	public void commit(boolean onSave) {
 	}
 
+	@Override
 	public void setFocus() {
 		// do not set focus
 	}
 
+	@Override
 	public void dispose() {
 	}
 
+	@Override
 	public boolean isDirty() {
 		return _dirty;
 	}
 
+	@Override
 	public boolean isStale() {
 		return false;
 	}
 
+	@Override
 	public void refresh() {
 		update();
 	}
 
+	@Override
 	public boolean setFormInput(Object input) {
 		return false;
 	}
@@ -120,6 +129,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	// Actions
 	// --------------------------------------------------------------------------
 
+	@Override
 	public void selectionChanged(IFormPart part, ISelection selection) {
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 		if (structuredSelection.size() == 1) {
@@ -129,6 +139,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		update();
 	}
 
+	@Override
 	public void modifyText(ModifyEvent e) {
 		if (e.getSource() instanceof Text) {
 			Text modifiedText = (Text) e.getSource();
@@ -150,11 +161,13 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		}
 	}
 
+	@Override
 	public void focusGained(FocusEvent e) {
 		// This action is not of interest
 
 	}
 
+	@Override
 	public void focusLost(FocusEvent e) {
 		if (_quantity.getText().compareTo("") == 0) {
 			_quantity.setText("1");
@@ -327,6 +340,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 				event.feedback = DND.FEEDBACK_SELECT | DND.FEEDBACK_SCROLL;
 			}
 
+			@Override
 			public void drop(DropTargetEvent event) {
 				if (fileTransfer.isSupportedType(event.currentDataType)) {
 					String[] filenames = (String[]) event.data;

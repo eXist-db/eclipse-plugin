@@ -24,10 +24,12 @@ public class ViewContentProvider implements ILazyContentProvider {
 		_view = view;
 	}
 
+	@Override
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 		_elements = (String[]) newInput;
 	}
 
+	@Override
 	public void updateElement(int index) {
 		if (_view.getItem() != null) {
 			_view.getViewer().replace(
@@ -35,6 +37,7 @@ public class ViewContentProvider implements ILazyContentProvider {
 		}
 	}
 
+	@Override
 	public void dispose() {
 	}
 }

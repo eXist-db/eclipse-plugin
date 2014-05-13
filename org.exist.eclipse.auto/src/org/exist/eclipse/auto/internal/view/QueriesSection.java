@@ -123,6 +123,7 @@ public class QueriesSection implements SelectionListener {
 	// Actions
 	// --------------------------------------------------------------------------
 
+	@Override
 	public void widgetSelected(SelectionEvent e) {
 		if (e.getSource() instanceof Button) {
 			Button eventButton = (Button) e.getSource();
@@ -160,6 +161,7 @@ public class QueriesSection implements SelectionListener {
 		}
 	}
 
+	@Override
 	public void widgetDefaultSelected(SelectionEvent e) {
 		// SelectionListener interface method - not used
 	}
@@ -182,6 +184,7 @@ public class QueriesSection implements SelectionListener {
 				event.feedback = DND.FEEDBACK_SELECT | DND.FEEDBACK_SCROLL;
 			}
 
+			@Override
 			public void drop(DropTargetEvent event) {
 				if (fileTransfer.isSupportedType(event.currentDataType)) {
 					String[] filenames = (String[]) event.data;

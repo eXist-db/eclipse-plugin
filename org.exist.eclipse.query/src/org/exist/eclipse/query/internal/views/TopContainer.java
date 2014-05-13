@@ -60,6 +60,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 	/**
 	 * Disposing all resources.
 	 */
+	@Override
 	public void dispose() {
 		ChangeItemNotifier.getInstance().removeListener(this);
 		ConnectionRegistration.removeListener(this);
@@ -80,34 +81,42 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		return _querySpinner.getSelection();
 	}
 
+	@Override
 	public void change(IBrowseItem item) {
 		_item = item;
 		refresh();
 	}
 
+	@Override
 	public void added(IConnection connection) {
 		// TODO
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 		// TODO
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 		_item = null;
 		refresh();
 	}
 
+	@Override
 	public void opened(IConnection connection) {
 		refresh();
 	}
 
+	@Override
 	public void added(IBrowseItem item) {
 	}
 
+	@Override
 	public void refresh(IBrowseItem item) {
 	}
 
+	@Override
 	public void removed(IBrowseItem[] items) {
 		if (items != null) {
 			for (IBrowseItem item : items) {
@@ -120,6 +129,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		refresh();
 	}
 
+	@Override
 	public void moved(IBrowseItem fromItem, IBrowseItem toItem) {
 		if (fromItem.equals(_item)) {
 			change(toItem);
@@ -176,6 +186,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		_execQueryButton.setLayoutData(gd);
 
 		_execQueryButton.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				_queryInit.triggerQuery();
 			}

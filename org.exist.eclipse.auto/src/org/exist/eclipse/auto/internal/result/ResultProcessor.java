@@ -23,9 +23,9 @@ import org.jdom.output.XMLOutputter;
  */
 public class ResultProcessor implements AutoTags {
 
-	Map<Integer, QueryGroup> _results;
-	int _threadCount;
-	int _queryCount;
+	private Map<Integer, QueryGroup> _results;
+	private int _threadCount;
+	private int _queryCount;
 	private QueryOrderType _queryOrderType;
 	private String _autoNote;
 
@@ -46,9 +46,10 @@ public class ResultProcessor implements AutoTags {
 	}
 
 	/**
-	 * Returns the result as xml representation.
+	 * Returns the result as XML representation.
 	 * 
-	 * @return Automation Result
+	 * @param outputFile
+	 *            Automation Result target file
 	 * @throws Exception
 	 */
 	public void writeResultXml(File outputFile) throws Exception {
@@ -105,8 +106,8 @@ public class ResultProcessor implements AutoTags {
 	private void analyzeQueryResults(QueryGroup group, PrintWriter writer) {
 
 		StringBuilder query = new StringBuilder();
-		query.append("<" + QUERY + " " + NAME + "=\"").append(
-				group.getQuery().getName()).append("\">");
+		query.append('<').append(QUERY).append(' ').append(NAME).append("=\"")
+				.append(group.getQuery().getName()).append("\">");
 		writer.println(query.toString());
 
 		XMLOutputter outputter = new XMLOutputter();
@@ -132,7 +133,7 @@ public class ResultProcessor implements AutoTags {
 		writer.println("\t\t" + outputter.outputString(element));
 
 		query = new StringBuilder();
-		query.append("<" + RUNS + ">");
+		query.append('<').append(RUNS).append('>');
 		writer.println(query.toString());
 
 		for (IQueryResult queryResult : group.getResults()) {
@@ -142,12 +143,12 @@ public class ResultProcessor implements AutoTags {
 			stateElement.setText(queryResult.getQueryState().toString());
 
 			Element compilationElement = new Element(COMPILATION);
-			Long compileTime = queryResult.getCompileTime();
-			compilationElement.setText(Long.toString(compileTime));
+			Long compileTime = Long.valueOf(queryResult.getCompileTime());
+			compilationElement.setText(compileTime.toString());
 
 			Element executionElement = new Element(EXECUTION);
-			Long execTime = queryResult.getExecutionTime();
-			executionElement.setText(Long.toString(execTime));
+			Long execTime = Long.valueOf(queryResult.getExecutionTime());
+			executionElement.setText(execTime.toString());
 
 			Element countElement = new Element(RESULT_COUNT);
 			long resultCount = queryResult.getResultCount();
@@ -160,7 +161,7 @@ public class ResultProcessor implements AutoTags {
 
 			writer.println(outputter.outputString(runElement));
 		}
-		writer.println("</" + RUNS + ">");
-		writer.println("</" + QUERY + ">");
+		writer.append("</").append(RUNS).append('>').println();
+		writer.append("</").append(QUERY).append('>');
 	}
 }

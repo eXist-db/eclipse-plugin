@@ -30,6 +30,7 @@ public class ResultView extends ViewPart {
 	public ResultView() {
 	}
 
+	@Override
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.marginTop = 2;
@@ -61,6 +62,7 @@ public class ResultView extends ViewPart {
 	private DisposeListener getTabItemDisposeListener() {
 		if (_tabItemDisposeListener == null) {
 			_tabItemDisposeListener = new DisposeListener() {
+				@Override
 				public void widgetDisposed(DisposeEvent e) {
 					// do not let close last tab item
 					if (_tabFolder.getItemCount() == 1) {

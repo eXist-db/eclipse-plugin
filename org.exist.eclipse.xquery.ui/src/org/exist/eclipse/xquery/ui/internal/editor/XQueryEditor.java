@@ -49,27 +49,33 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
 	private XQueryContextPart _xqueryContextPart;
 
+	@Override
 	protected void initializeEditor() {
 		super.initializeEditor();
 		setEditorContextMenuId(EDITOR_CONTEXT_MENU_ID);
 	}
 
+	@Override
 	public String getEditorId() {
 		return EDITOR_ID;
 	}
 
+	@Override
 	public IPreferenceStore getScriptPreferenceStore() {
 		return XQueryUI.getDefault().getPreferenceStore();
 	}
 
+	@Override
 	public IDLTKLanguageToolkit getLanguageToolkit() {
 		return XQueryLanguageToolkit.getDefault();
 	}
 
+	@Override
 	public ScriptTextTools getTextTools() {
 		return XQueryUI.getDefault().getTextTools();
 	}
 
+	@Override
 	protected void connectPartitioningToElement(IEditorInput input,
 			IDocument document) {
 		if (document instanceof IDocumentExtension3) {
@@ -160,10 +166,12 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 		}
 	}
 
+	@Override
 	public void setConnectionContext(IConnectionContext context) {
 		_xqueryContextPart.setConnectionContext(context);
 	}
 
+	@Override
 	public final IConnectionContext getConnectionContext() {
 		return _xqueryContextPart.getConnectionContext();
 	}

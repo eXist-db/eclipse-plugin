@@ -67,8 +67,7 @@ public interface IBrowseItem extends IAdaptable {
 	public String getPath();
 
 	/**
-	 * Check, if the collection has children. Call firstly the method
-	 * {@link #check()}.
+	 * Check, if the collection has children.
 	 * 
 	 * @return <code>true</code> if the collection has children, elsewhere
 	 *         <code>false</code>.
@@ -77,8 +76,7 @@ public interface IBrowseItem extends IAdaptable {
 	public boolean hasChildren() throws ConnectionException;
 
 	/**
-	 * Check if the collection has documents. Call firstly the method
-	 * {@link #check()}.
+	 * Check if the collection has documents.
 	 * 
 	 * @return <code>true</code> if the collection has documents, elsewhere
 	 *         <code>false</code>.
@@ -93,8 +91,8 @@ public interface IBrowseItem extends IAdaptable {
 	public boolean isRoot();
 
 	/**
-	 * @return <code>true</code> if the given <code>item</code> is a sub
-	 *         item of this one, elsewhere <code>false</code>.
+	 * @return <code>true</code> if the given <code>item</code> is a sub item of
+	 *         this one, elsewhere <code>false</code>.
 	 */
 	public boolean contains(IBrowseItem item);
 }

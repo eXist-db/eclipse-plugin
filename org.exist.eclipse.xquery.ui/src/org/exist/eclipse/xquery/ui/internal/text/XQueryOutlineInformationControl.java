@@ -18,6 +18,7 @@ public class XQueryOutlineInformationControl extends
 		super(parent, shellStyle, treeStyle, commandId);
 	}
 
+	@Override
 	protected IPreferenceStore getPreferenceStore() {
 		return XQueryUI.getDefault().getPreferenceStore();
 	}

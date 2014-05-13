@@ -25,6 +25,7 @@ public class ExistPerspective implements IPerspectiveFactory {
 		super();
 	}
 
+	@Override
 	public void createInitialLayout(IPageLayout factory) {
 	}
 

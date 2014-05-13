@@ -36,6 +36,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_renameDocumentPage = new RenameDocumentWizardPage(_selection, _item);
 		addPage(_renameDocumentPage);
@@ -45,6 +46,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the {@link MoveCollectionWizardPage}.
 	 */
+	@Override
 	public boolean canFinish() {
 		return _renameDocumentPage.isPageComplete();
 	}
@@ -53,6 +55,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		if (IManagementService.class.cast(
@@ -89,6 +92,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 	}

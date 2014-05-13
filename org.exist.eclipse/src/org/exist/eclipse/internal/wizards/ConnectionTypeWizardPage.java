@@ -25,15 +25,16 @@ import org.exist.eclipse.internal.ConnectionEnum;
  * 
  * @author Pascal Schmidiger
  */
-@SuppressWarnings("restriction")
 public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	private ConnectionEnum _type;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
 	 * 
-	 * @param selection
-	 * @param page
+	 * @param aWorkbench
+	 *            the workbench instance
+	 * @param currentSelection
+	 *            the current selection
 	 */
 	public ConnectionTypeWizardPage(IWorkbench aWorkbench,
 			IStructuredSelection currentSelection) {
@@ -50,6 +51,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -69,9 +71,11 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 			button.setData(ConnectionEnum.class.toString(), type);
 
 			button.addSelectionListener(new SelectionListener() {
+				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
 				}
 
+				@Override
 				public void widgetSelected(SelectionEvent e) {
 					_type = (ConnectionEnum) e.widget
 							.getData(ConnectionEnum.class.toString());
@@ -121,6 +125,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	 */
 	private IWizardNode createWizardNode(IWizardDescriptor element) {
 		return new WorkbenchWizardNode(this, element) {
+			@Override
 			public IWorkbenchWizard createWizard() throws CoreException {
 				return wizardElement.createWizard();
 			}

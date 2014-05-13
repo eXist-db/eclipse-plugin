@@ -43,23 +43,28 @@ public class XQuerySourceViewerConfiguration extends
 		super(colorManager, preferenceStore, editor, partitioning);
 	}
 
+	@Override
 	public IAutoEditStrategy[] getAutoEditStrategies(
 			ISourceViewer sourceViewer, String contentType) {
 		return new IAutoEditStrategy[] { new DefaultIndentLineAutoEditStrategy() };
 	}
 
+	@Override
 	public String[] getIndentPrefixes(ISourceViewer sourceViewer,
 			String contentType) {
 		return new String[] { "\t", "        " };
 	}
 
+	@Override
 	protected ContentAssistPreference getContentAssistPreference() {
 		return XQueryContentAssistPreference.getDefault();
 	}
 
+	@Override
 	protected IInformationControlCreator getOutlinePresenterControlCreator(
 			ISourceViewer sourceViewer, final String commandId) {
 		return new IInformationControlCreator() {
+			@Override
 			public IInformationControl createInformationControl(Shell parent) {
 				int shellStyle = SWT.RESIZE;
 				int treeStyle = SWT.V_SCROLL | SWT.H_SCROLL;
@@ -69,10 +74,12 @@ public class XQuerySourceViewerConfiguration extends
 		};
 	}
 
+	@Override
 	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 		return IXQueryPartitions.XQUERY_PARITION_TYPES;
 	}
 
+	@Override
 	protected void initializeScanners() {
 		this._codeScanner = new XQueryCodeScanner(this.getColorManager(),
 				this.fPreferenceStore);
@@ -83,6 +90,7 @@ public class XQuerySourceViewerConfiguration extends
 				this.fPreferenceStore);
 	}
 
+	@Override
 	public IPresentationReconciler getPresentationReconciler(
 			ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new ScriptPresentationReconciler();
@@ -105,6 +113,7 @@ public class XQuerySourceViewerConfiguration extends
 		return reconciler;
 	}
 
+	@Override
 	public void handlePropertyChangeEvent(PropertyChangeEvent event) {
 		if (this._codeScanner.affectsBehavior(event)) {
 			this._codeScanner.adaptToPreferenceChange(event);
@@ -114,11 +123,13 @@ public class XQuerySourceViewerConfiguration extends
 		}
 	}
 
+	@Override
 	public boolean affectsTextPresentation(PropertyChangeEvent event) {
 		return _codeScanner.affectsBehavior(event)
 				|| _stringScanner.affectsBehavior(event);
 	}
 
+	@Override
 	protected void alterContentAssistant(ContentAssistant assistant) {
 		// IDocument.DEFAULT_CONTENT_TYPE
 		// IContentAssistProcessor processor = new

@@ -19,6 +19,7 @@ import org.xmldb.api.modules.BinaryResource;
  */
 public class CreateBinaryResource implements ICreateDocumentProvider {
 
+	@Override
 	public void create(IDocumentItem item, String content)
 			throws CreateDocumentException {
 		try {

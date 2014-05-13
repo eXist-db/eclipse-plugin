@@ -42,6 +42,7 @@ public class MoveCollectionWizardPage extends WizardPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -78,6 +79,7 @@ public class MoveCollectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 3;
 		_enterCol.setLayoutData(gd);
 		_enterCol.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}

@@ -40,7 +40,6 @@ public class AutomationResult {
 	private Map<Integer, QueryGroup> _results;
 	private final IProgressMonitor _monitor;
 
-
 	/**
 	 * AutomationResult constructor
 	 * 
@@ -71,7 +70,7 @@ public class AutomationResult {
 	 * @param result
 	 */
 	public synchronized void addQueryResult(IQueryResult result) {
-		int key = result.getQuery().getId();
+		Integer key = Integer.valueOf(result.getQuery().getId());
 		QueryGroup group = _results.get(key);
 		if (group == null) {
 			group = new QueryGroup(result.getQuery());
@@ -122,6 +121,7 @@ public class AutomationResult {
 			e.printStackTrace();
 		}
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				openEditor(file);
 			}

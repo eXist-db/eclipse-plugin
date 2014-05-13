@@ -40,12 +40,15 @@ public class SimpleNode implements Node {
 		return new SimpleNode(p, id);
 	}
 
+	@Override
 	public void jjtOpen() {
 	}
 
+	@Override
 	public void jjtClose() {
 	}
 
+	@Override
 	public void jjtSetParent(Node n) {
 		parent = n;
 	}
@@ -54,10 +57,12 @@ public class SimpleNode implements Node {
 		children = n;
 	}
 
+	@Override
 	public Node jjtGetParent() {
 		return parent;
 	}
 
+	@Override
 	public void jjtAddChild(Node n, int i) {
 		if (id == XPathTreeConstants.JJTNCNAME
 				&& ((SimpleNode) n).id == XPathTreeConstants.JJTQNAME) {
@@ -85,15 +90,18 @@ public class SimpleNode implements Node {
 		children[i] = n;
 	}
 
+	@Override
 	public Node jjtGetChild(int i) {
 		return children[i];
 	}
 
+	@Override
 	public int jjtGetNumChildren() {
 		return (children == null) ? 0 : children.length;
 	}
 
 	/** Accept the visitor. * */
+	@Override
 	public Object jjtAccept(XPathVisitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
@@ -115,6 +123,7 @@ public class SimpleNode implements Node {
 	 * otherwise overriding toString() is probably all you need to do.
 	 */
 
+	@Override
 	public String toString() {
 		return XPathTreeConstants.jjtNodeName[id];
 	}

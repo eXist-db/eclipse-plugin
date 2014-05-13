@@ -26,7 +26,8 @@ public class BrowseHelper {
 	 * Return the root item for the given <code>connection</code>.
 	 * 
 	 * @param connection
-	 * @return
+	 *            the connection object
+	 * @return the actual browse item
 	 */
 	public static IBrowseItem getRootBrowseItem(IConnection connection) {
 		IBrowseItem item = null;
@@ -46,8 +47,10 @@ public class BrowseHelper {
 	 * given <code>connection</code>.
 	 * 
 	 * @param connection
+	 *            the connection object
 	 * @param path
-	 * @return
+	 *            the actual collection path
+	 * @return the actual browse item
 	 */
 	public static IBrowseItem getBrowseItem(IConnection connection, String path) {
 		return new BrowseItem(connection, path);
@@ -66,8 +69,10 @@ public class BrowseHelper {
 				collections.add(item.getPath());
 			}
 		} catch (ConnectionException e) {
-			BrowsePlugin.getDefault().getLog().log(
-					new Status(IStatus.ERROR, BrowsePlugin.getId(),
+			BrowsePlugin
+					.getDefault()
+					.getLog()
+					.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
 							"Failure while fill items.", e));
 		}
 

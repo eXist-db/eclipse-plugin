@@ -41,6 +41,7 @@ public class BackupJob extends Job {
 
 			backup.backup(false, null);
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					MessageDialog.openInformation(new Shell(),
 							"Backup completed", "Backup for '"

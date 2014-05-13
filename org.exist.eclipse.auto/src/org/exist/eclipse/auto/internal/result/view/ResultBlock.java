@@ -75,6 +75,7 @@ public class ResultBlock extends MasterDetailsBlock {
 
 		TableViewer _viewer = resultSelectionSection.getTableViewer();
 		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				managedForm.fireSelectionChanged(spart, event.getSelection());
 			}
@@ -94,9 +95,8 @@ public class ResultBlock extends MasterDetailsBlock {
 	}
 
 	@Override
-	protected void registerPages(DetailsPart detailsPart) {
-		detailsPart.registerPage(QueryResultEntity.class,
-				new QueryRunsSection());
+	protected void registerPages(DetailsPart details) {
+		details.registerPage(QueryResultEntity.class, new QueryRunsSection());
 	}
 
 }

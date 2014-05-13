@@ -14,10 +14,12 @@ import org.eclipse.jface.text.rules.IWordDetector;
  */
 public class XQueryWordDetector implements IWordDetector {
 
+	@Override
 	public boolean isWordPart(char character) {
 		return XQuerySyntaxUtils.isXQueryIdentifierPart(character);
 	}
 
+	@Override
 	public boolean isWordStart(char character) {
 		return XQuerySyntaxUtils.isXQueryIdentifierStart(character);
 	}

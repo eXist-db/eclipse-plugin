@@ -25,6 +25,7 @@ public class XQueryTextTools extends ScriptTextTools {
 		_partitionScanner = new XQueryPartitionScanner();
 	}
 
+	@Override
 	public ScriptSourceViewerConfiguration createSourceViewerConfiguraton(
 			IPreferenceStore preferenceStore, ITextEditor editor,
 			String partitioning) {
@@ -32,6 +33,7 @@ public class XQueryTextTools extends ScriptTextTools {
 				preferenceStore, editor, partitioning);
 	}
 
+	@Override
 	public IPartitionTokenScanner getPartitionScanner() {
 		return _partitionScanner;
 	}

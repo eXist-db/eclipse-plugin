@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -57,11 +58,16 @@ public class AutoUI extends AbstractUIPlugin {
 		try {
 			_resourceBundle = ResourceBundle
 					.getBundle("org.exist.eclipse.auto.AutomationResources");
-		} catch (MissingResourceException x) {
+		} catch (MissingResourceException e) {
+			AutoUI.getDefault()
+					.getLog()
+					.log(new Status(IStatus.ERROR, PLUGIN_ID,
+							"Resource bundle not found", e));
 			_resourceBundle = null;
 		}
 	}
 
+	@Override
 	protected void initializeImageRegistry(ImageRegistry registry) {
 		registerImage(registry, IMG_HORIZONTAL, "th_horizontal.gif");
 		registerImage(registry, IMG_VERTICAL, "th_vertical.gif");
@@ -80,22 +86,29 @@ public class AutoUI extends AbstractUIPlugin {
 	 */
 	private void registerImage(ImageRegistry registry, String key,
 			String fileName) {
+		IPath path = new Path("icons/".concat(fileName));
 		try {
-			IPath path = new Path("icons/" + fileName);
 			URL url = FileLocator.find(getBundle(), path, null);
 			if (url != null) {
 				ImageDescriptor desc = ImageDescriptor.createFromURL(url);
 				registry.put(key, desc);
 			}
 		} catch (Exception e) {
+			AutoUI.getDefault()
+					.getLog()
+					.log(new Status(IStatus.ERROR, PLUGIN_ID,
+							"Unable to register image: " + fileName + " key: "
+									+ key, e));
 		}
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		try {
 			if (_formColors != null) {
@@ -120,7 +133,8 @@ public class AutoUI extends AbstractUIPlugin {
 	 * Gets the image.
 	 * 
 	 * @param key
-	 * @return
+	 *            the image key
+	 * @return the image for the given key
 	 */
 	public Image getImage(String key) {
 		return getImageRegistry().get(key);
@@ -130,7 +144,8 @@ public class AutoUI extends AbstractUIPlugin {
 	 * Gets the image descriptor
 	 * 
 	 * @param key
-	 * @return
+	 *            the image key
+	 * @return the image descriptor for the given key
 	 */
 	public ImageDescriptor getImageDescriptor(String key) {
 		return getImageRegistry().getDescriptor(key);
@@ -145,6 +160,10 @@ public class AutoUI extends AbstractUIPlugin {
 		try {
 			return (bundle != null ? bundle.getString(key) : key);
 		} catch (MissingResourceException e) {
+			AutoUI.getDefault()
+					.getLog()
+					.log(new Status(IStatus.ERROR, PLUGIN_ID,
+							"Unable to find resource: ".concat(key), e));
 			return key;
 		}
 	}
@@ -153,7 +172,8 @@ public class AutoUI extends AbstractUIPlugin {
 	 * Gets the Form Colors
 	 * 
 	 * @param display
-	 * @return
+	 *            the display instance
+	 * @return the from colors for the specified display
 	 */
 	public FormColors getFormColors(Display display) {
 		if (_formColors == null) {
@@ -186,29 +206,25 @@ public class AutoUI extends AbstractUIPlugin {
 
 			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(
 					fileToOpen.toURI());
-			try {
-
-				InputStream inputStream = fileStore.openInputStream(EFS.NONE,
-						null);
+			try (InputStream inputStream = fileStore.openInputStream(EFS.NONE,
+					null);
+					ByteArrayOutputStream out = new ByteArrayOutputStream();) {
 
 				byte[] buffer = new byte[4096];
-				ByteArrayOutputStream out = null;
 				for (int len; (len = inputStream.read(buffer)) != -1;) {
-					out = new ByteArrayOutputStream();
 					out.write(buffer, 0, len);
-					result.append(new String(out.toByteArray(), Charset.forName("UTF-8").name())
-						.trim());
+					result.append(new String(out.toByteArray(), Charset
+							.forName("UTF-8").name()).trim());
 				}
-
 			} catch (CoreException e) {
-				// 
+				//
 			} catch (IOException e) {
 				//
 			}
 		}
 		return result.toString();
 	}
-	
+
 	public void errorDialog(String title, String message, IStatus s) {
 		// if the 'message' resource string and the IStatus' message are the
 		// same,
@@ -223,6 +239,6 @@ public class AutoUI extends AbstractUIPlugin {
 	public void infoDialog(String title, String message) {
 		Shell shell = getWorkbench().getDisplay().getActiveShell();
 		MessageDialog.openInformation(shell, title, message);
-	}	
+	}
 
 }

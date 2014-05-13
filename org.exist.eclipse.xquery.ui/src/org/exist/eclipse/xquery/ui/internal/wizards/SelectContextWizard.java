@@ -45,6 +45,7 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		if (XQueryUI.getDefault().getActiveXQueryEditor() == null) {
 			addPage(new NoActiveEditorWizardPage());
@@ -58,6 +59,7 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the NewConnectionWizardPage.
 	 */
+	@Override
 	public boolean canFinish() {
 		return getContainer().getCurrentPage().isPageComplete();
 	}
@@ -68,6 +70,7 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_workbench = workbench;
 		_selection = selection;

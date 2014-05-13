@@ -35,6 +35,7 @@ public class EnterCollectionWizardPage extends WizardPage {
 		_selection = selection;
 	}
 
+	@Override
 	public String getName() {
 		String name = _name.getText();
 		if (name.length() > 0) {
@@ -53,6 +54,7 @@ public class EnterCollectionWizardPage extends WizardPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -80,6 +82,7 @@ public class EnterCollectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}

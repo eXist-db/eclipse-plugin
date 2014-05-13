@@ -22,6 +22,7 @@ abstract public class ARefactorAction extends AXQueryEditorAction {
 		final Button replaceButton = new Button(parent, SWT.CHECK);
 		replaceButton.setText("&Replace all occurences (" + nOccurences + ")");
 		replaceButton.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				replaceAll[0] = replaceButton.getSelection();
 			}

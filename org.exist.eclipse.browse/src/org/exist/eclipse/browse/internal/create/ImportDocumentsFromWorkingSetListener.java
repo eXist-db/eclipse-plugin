@@ -47,6 +47,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 		return PlatformUI.getWorkbench().getWorkingSetManager();
 	}
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
 		IBrowseService service = (IBrowseService) browseItem
@@ -147,6 +148,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

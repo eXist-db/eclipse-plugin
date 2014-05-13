@@ -16,10 +16,12 @@ import org.exist.eclipse.auto.internal.result.model.RunEntity;
 public class RunsLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
+	@Override
 	public Image getColumnImage(Object element, int columnIndex) {
 		return null;
 	}
 
+	@Override
 	public String getColumnText(Object element, int columnIndex) {
 		if (element instanceof RunEntity) {
 			RunEntity entity = (RunEntity) element;

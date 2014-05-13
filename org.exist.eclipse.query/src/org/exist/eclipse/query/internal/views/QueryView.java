@@ -31,6 +31,7 @@ public class QueryView extends ViewPart {
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
 	 */
+	@Override
 	public void createPartControl(Composite parent) {
 		_composer = new BaseContainer(parent, this);
 		_composer.composeView();
@@ -39,6 +40,7 @@ public class QueryView extends ViewPart {
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
+	@Override
 	public void setFocus() {
 		_composer.setFocus();
 	}

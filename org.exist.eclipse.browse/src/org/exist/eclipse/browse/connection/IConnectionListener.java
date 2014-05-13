@@ -12,7 +12,7 @@ import org.exist.eclipse.IConnection;
  * The time flow of the method is:
  * <ol>
  * <li>call {@link #init(IWorkbenchPage)}</li>
- * <li>call {@link #actionPerformed(IConnection))}</li>
+ * <li>call {@link #actionPerformed(IConnection)}</li>
  * </ol>
  * 
  * @author Pascal Schmidiger

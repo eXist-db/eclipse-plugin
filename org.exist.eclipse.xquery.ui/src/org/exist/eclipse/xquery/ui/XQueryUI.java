@@ -36,11 +36,13 @@ public class XQueryUI extends AbstractUIPlugin {
 	public XQueryUI() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		_plugin = this;
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		_plugin = null;
 		super.stop(context);

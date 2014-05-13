@@ -33,6 +33,7 @@ public class QueryEntity implements IQuery {
 		_query = query;
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
@@ -46,6 +47,7 @@ public class QueryEntity implements IQuery {
 		_name = name;
 	}
 
+	@Override
 	public String getNotes() {
 		return _notes;
 	}
@@ -59,6 +61,7 @@ public class QueryEntity implements IQuery {
 		_notes = notes;
 	}
 
+	@Override
 	public int getQuantity() {
 		return _quantity;
 	}
@@ -72,6 +75,7 @@ public class QueryEntity implements IQuery {
 		this._quantity = quantity;
 	}
 
+	@Override
 	public String getQuery() {
 		return _query;
 	}
@@ -95,11 +99,13 @@ public class QueryEntity implements IQuery {
 	}
 
 	// implements interface method - unused
+	@Override
 	public int getId() {
 		return 0;
 	}
 
 	// implements interface method - unused
+	@Override
 	public String getCollection() {
 		return "/db";
 	}

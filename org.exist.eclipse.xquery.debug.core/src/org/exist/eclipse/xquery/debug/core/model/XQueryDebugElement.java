@@ -46,18 +46,22 @@ public abstract class XQueryDebugElement extends PlatformObject implements IDebu
 		fTarget = target;
 	}
 
+	@Override
 	public IDebugTarget getDebugTarget() {
 		return fTarget;
 	}
 
+	@Override
 	public ILaunch getLaunch() {
 		return getDebugTarget().getLaunch();
 	}
 
+	@Override
 	public String getModelIdentifier() {
 		return IXQueryConstants.ID_XQUERY_DEBUG_MODEL;
 	}
 	
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (adapter == IDebugElement.class) {
 			return this;

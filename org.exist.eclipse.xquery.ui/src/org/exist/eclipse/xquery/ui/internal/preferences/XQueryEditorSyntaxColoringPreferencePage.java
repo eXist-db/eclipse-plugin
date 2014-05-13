@@ -16,23 +16,28 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
 public class XQueryEditorSyntaxColoringPreferencePage extends
 		AbstractConfigurationBlockPreferencePage {
 
+	@Override
 	protected String getHelpId() {
 		return "";
 	}
 
+	@Override
 	protected void setDescription() {
 		String description = PreferencesMessages.DLTKEditorPreferencePage_colors;
 		setDescription(description);
 	}
 
+	@Override
 	protected Label createDescriptionLabel(Composite parent) {
 		return null;
 	}
 
+	@Override
 	protected void setPreferenceStore() {
 		setPreferenceStore(XQueryUI.getDefault().getPreferenceStore());
 	}
 
+	@Override
 	protected IPreferenceConfigurationBlock createConfigurationBlock(
 			OverlayPreferenceStore overlayPreferenceStore) {
 		return new XQueryEditorColoringConfigurationBlock(

@@ -15,19 +15,18 @@ import org.eclipse.dltk.core.search.matching.PossibleMatchSet;
 
 public class MatchLocator extends
 		org.eclipse.dltk.core.search.matching.MatchLocator {
-	@SuppressWarnings("restriction")
 	@Override
-	public void initialize(SearchPattern pattern, IDLTKSearchScope scope) {
-		super.initialize(pattern, scope);
-		if (pattern.kind == IIndexConstants.FIELD_PATTERN) {
-			patternLocator = new MyFieldLocator(pattern);
-		} else if (pattern.kind == IIndexConstants.METHOD_PATTERN) {
-			patternLocator = new MyMethodLocator(pattern);
+	public void initialize(SearchPattern searchPattern,
+			IDLTKSearchScope searchScope) {
+		super.initialize(searchPattern, searchScope);
+		if (searchPattern.kind == IIndexConstants.FIELD_PATTERN) {
+			patternLocator = new MyFieldLocator(searchPattern);
+		} else if (searchPattern.kind == IIndexConstants.METHOD_PATTERN) {
+			patternLocator = new MyMethodLocator(searchPattern);
 		}
 		matchContainer = patternLocator.matchContainer();
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	protected void locateMatches(IScriptProject scriptProject,
 			PossibleMatchSet matchSet, int expected) throws CoreException {

@@ -34,6 +34,7 @@ public class AutomationEditor extends FormEditor implements
 	public AutomationEditor() {
 	}
 
+	@Override
 	protected FormToolkit createToolkit(Display display) {
 		// Create a toolkit that shares colors between editors.
 		return new FormToolkit(AutoUI.getDefault().getFormColors(display));
@@ -47,12 +48,14 @@ public class AutomationEditor extends FormEditor implements
 	 * The <code>MultiPageEditorExample</code> implementation of this method
 	 * checks that the input is an instance of <code>IFileEditorInput</code>.
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput)
 			throws PartInitException {
 		super.init(site, editorInput);
 		super.setPartName(editorInput.getName());
 	}
 
+	@Override
 	public void doSave(IProgressMonitor monitor) {
 		if (getActivePage() == _formPage.getIndex()) {
 			// call doSave() to propagate the changes from the form-page to the
@@ -76,10 +79,12 @@ public class AutomationEditor extends FormEditor implements
 		setDirty(false);
 	}
 
+	@Override
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
 
+	@Override
 	public void doSaveAs() {
 		// unused interface method, save as is not allowed
 	}
@@ -136,10 +141,12 @@ public class AutomationEditor extends FormEditor implements
 		return _dirty;
 	}
 
+	@Override
 	public void automationModified(AutoModEvent event) {
 		setDirty(true);
 	}
 
+	@Override
 	public void modificationCleared(AutoModEvent event) {
 		setDirty(false);
 	}

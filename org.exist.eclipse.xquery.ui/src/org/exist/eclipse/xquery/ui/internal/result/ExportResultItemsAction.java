@@ -3,6 +3,7 @@ package org.exist.eclipse.xquery.ui.internal.result;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringReader;
@@ -105,14 +106,17 @@ public class ExportResultItemsAction extends Action {
 				ResultItem resultItem = all.getKey();
 				File file = all.getValue();
 
-				try {
-					String content = resultItem.getContent();
-					copy(new StringReader(content), new OutputStreamWriter(
-							new FileOutputStream(file), DEFAULT_ENCODING));
+				String content = resultItem.getContent();
+				try (Reader reader = new StringReader(content);
+						OutputStream out = new FileOutputStream(file);
+						Writer writer = new OutputStreamWriter(out,
+								DEFAULT_ENCODING)) {
+					copy(reader, writer);
 				} catch (Exception e) {
 					hadErrors = true;
-					XQueryUI.getDefault().getLog().log(
-							new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+					XQueryUI.getDefault()
+							.getLog()
+							.log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
 									"An error occured while exporting result to '"
 											+ file + "': " + e));
 				}

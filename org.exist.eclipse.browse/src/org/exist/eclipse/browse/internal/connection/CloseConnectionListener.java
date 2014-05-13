@@ -17,6 +17,7 @@ import org.exist.eclipse.exception.ConnectionException;
  */
 public class CloseConnectionListener implements IConnectionListener {
 
+	@Override
 	public void actionPerformed(IConnection connection) {
 		try {
 			connection.close();
@@ -29,6 +30,7 @@ public class CloseConnectionListener implements IConnectionListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

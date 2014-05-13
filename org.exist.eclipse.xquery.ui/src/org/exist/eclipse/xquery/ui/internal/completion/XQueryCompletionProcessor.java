@@ -16,6 +16,7 @@ public class XQueryCompletionProcessor extends ScriptCompletionProcessor {
 		super(editor, assistant, partition);
 	}
 
+	@Override
 	protected String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}

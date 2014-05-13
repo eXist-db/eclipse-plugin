@@ -31,6 +31,7 @@ public class QueryResultStorage implements IEncodedStorage {
 		_content = content;
 	}
 
+	@Override
 	public InputStream getContents() throws CoreException {
 		InputStream is = null;
 		try {
@@ -39,38 +40,50 @@ public class QueryResultStorage implements IEncodedStorage {
 		} catch (UnsupportedEncodingException e) {
 			StringBuilder message = new StringBuilder(50)
 					.append("Error while loading text'");
-			throw new CoreException(new Status(Status.ERROR, QueryPlugin
-					.getId(), message.toString(), e));
+			throw new CoreException(new Status(Status.ERROR,
+					QueryPlugin.getId(), message.toString(), e));
 		}
 		return is;
 
 	}
 
+	@Override
 	public String getCharset() throws CoreException {
 		return _encoding.name();
 	}
 
+	@Override
 	public IPath getFullPath() {
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		return "Query Result " + _id;
 	}
 
+	@Override
 	public boolean isReadOnly() {
 		return true;
 	}
 
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		return null;
 	}
 
 	@Override
+	public int hashCode() {
+		return _id.hashCode();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof QueryResultStorage) {
-			return QueryResultStorage.class.cast(obj)._id.equals(_id);
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof QueryResultStorage)) {
+			return false;
 		}
-		return super.equals(obj);
+		return _id.equals(QueryResultStorage.class.cast(obj)._id);
 	}
 }

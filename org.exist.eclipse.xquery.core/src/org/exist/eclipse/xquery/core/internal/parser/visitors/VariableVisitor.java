@@ -33,6 +33,7 @@ public class VariableVisitor implements XPathVisitor, NodeTypes {
 		_parser = parser;
 	}
 
+	@Override
 	public Object visit(SimpleNode node, Object data) {
 		boolean isFun = FUNCTION_QNAME.equals(node.toString());
 		if (_name == null && (QNAME.equals(node.toString()) || isFun)) {

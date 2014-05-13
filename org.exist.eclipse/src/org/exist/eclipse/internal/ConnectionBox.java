@@ -50,6 +50,7 @@ public final class ConnectionBox implements IConnectionBox {
 		}
 	}
 
+	@Override
 	public void removeConnection(IConnection connection) {
 		if (connection != null && _connections.contains(connection)) {
 			if (connection.isOpen()) {
@@ -81,6 +82,7 @@ public final class ConnectionBox implements IConnectionBox {
 		}
 	}
 
+	@Override
 	public final Collection<IConnection> getConnections() {
 		return _connections;
 	}
@@ -89,6 +91,7 @@ public final class ConnectionBox implements IConnectionBox {
 		return !_uniqueNames.contains(name);
 	}
 
+	@Override
 	public void addListener(IConnectionListener listener) {
 		if (listener != null) {
 			_listeners.add(listener);
@@ -103,6 +106,7 @@ public final class ConnectionBox implements IConnectionBox {
 		}
 	}
 
+	@Override
 	public void removeListener(IConnectionListener listener) {
 		if (listener != null) {
 			_listeners.remove(listener);

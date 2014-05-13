@@ -25,6 +25,7 @@ public class DeleteDocumentListener implements IDocumentListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IDocumentItem[] items) {
 		if (items.length == 0) {
 			return;
@@ -73,6 +74,7 @@ public class DeleteDocumentListener implements IDocumentListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

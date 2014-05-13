@@ -21,6 +21,7 @@ public class XQueryCompletionProposalCollector extends
 	protected final static char[] VAR_TRIGGER = new char[] { '\t', ' ', '=',
 			';', '.' };
 
+	@Override
 	protected char[] getVarTrigger() {
 		return VAR_TRIGGER;
 	}
@@ -44,6 +45,7 @@ public class XQueryCompletionProposalCollector extends
 		return super.createScriptCompletionProposal(proposal);
 	}
 	
+	@Override
 	protected IScriptCompletionProposal createMethodReferenceProposal(
 			CompletionProposal methodProposal) {
 		LazyScriptCompletionProposal proposal = new XQueryScriptMethodCompletionProposal(
@@ -52,6 +54,7 @@ public class XQueryCompletionProposalCollector extends
 		return proposal;
 	}
 
+	@Override
 	protected ScriptCompletionProposal createScriptCompletionProposal(
 			String completion, int replaceStart, int length, Image image,
 			String displayString, int i) {
@@ -59,6 +62,7 @@ public class XQueryCompletionProposalCollector extends
 				image, displayString, i);
 	}
 
+	@Override
 	protected ScriptCompletionProposal createScriptCompletionProposal(
 			String completion, int replaceStart, int length, Image image,
 			String displayString, int i, boolean isInDoc) {
@@ -66,6 +70,7 @@ public class XQueryCompletionProposalCollector extends
 				image, displayString, i, isInDoc);
 	}
 
+	@Override
 	protected ScriptCompletionProposal createOverrideCompletionProposal(
 			IScriptProject scriptProject, ISourceModule compilationUnit,
 			String name, String[] paramTypes, int start, int length,
@@ -74,6 +79,7 @@ public class XQueryCompletionProposalCollector extends
 				null, displayName, 0);
 	}
 
+	@Override
 	protected String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}

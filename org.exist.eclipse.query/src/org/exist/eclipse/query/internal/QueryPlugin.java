@@ -34,6 +34,7 @@ public class QueryPlugin extends AbstractUIPlugin {
 	public QueryPlugin() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -43,6 +44,7 @@ public class QueryPlugin extends AbstractUIPlugin {
 		ConnectionRegistration.addListener(_contextSwitcherListener);
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		ConnectionRegistration.removeListener(_contextListener);
 		ConnectionRegistration.removeListener(_contextSwitcherListener);

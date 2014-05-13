@@ -20,14 +20,14 @@ import org.eclipse.swt.widgets.Label;
  * 
  * @author Pascal Schmidiger
  */
-@SuppressWarnings("restriction")
 public class XQueryFoldingPreferenceBlock implements IFoldingPreferenceBlock {
 
 	private OverlayPreferenceStore _overlayStore;
 	private OverlayKey[] _keys;
-	private Map<Button, String> _checkBoxes = new HashMap<Button, String>();
+	private Map<Button, String> _checkBoxes;
 
 	public XQueryFoldingPreferenceBlock(OverlayPreferenceStore store) {
+		_checkBoxes = new HashMap<Button, String>();
 		_overlayStore = store;
 		_keys = createKeys();
 		_overlayStore.addKeys(_keys);
@@ -42,6 +42,7 @@ public class XQueryFoldingPreferenceBlock implements IFoldingPreferenceBlock {
 		return keys;
 	}
 
+	@Override
 	public Control createControl(Composite composite) {
 		_overlayStore.load();
 		_overlayStore.start();
@@ -60,24 +61,28 @@ public class XQueryFoldingPreferenceBlock implements IFoldingPreferenceBlock {
 
 	private void initializeFields() {
 		for (Button b : _checkBoxes.keySet()) {
-			String key = (String) _checkBoxes.get(b);
+			String key = _checkBoxes.get(b);
 			b.setSelection(_overlayStore.getBoolean(key));
 		}
 	}
 
+	@Override
 	public void performOk() {
 		_overlayStore.propagate();
 	}
 
+	@Override
 	public void initialize() {
 		initializeFields();
 	}
 
+	@Override
 	public void performDefaults() {
 		_overlayStore.loadDefaults();
 		initializeFields();
 	}
 
+	@Override
 	public void dispose() {
 		_overlayStore.stop();
 	}

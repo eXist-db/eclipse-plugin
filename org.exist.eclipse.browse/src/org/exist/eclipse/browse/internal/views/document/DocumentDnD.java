@@ -39,6 +39,7 @@ public class DocumentDnD {
 			_dragSource = dragSource;
 		}
 
+		@Override
 		public void drop(DropTargetEvent event) {
 
 			if (!_view.hasItem() || event.data == null) {
@@ -99,6 +100,7 @@ public class DocumentDnD {
 			return _tmpSession;
 		}
 
+		@Override
 		public void dragSetData(DragSourceEvent event) {
 			try {
 				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
@@ -142,6 +144,7 @@ public class DocumentDnD {
 			reset();
 
 			event.display.timerExec(3000, new Runnable() {
+				@Override
 				public void run() {
 					deleteRecursive(sessionDir);
 				}

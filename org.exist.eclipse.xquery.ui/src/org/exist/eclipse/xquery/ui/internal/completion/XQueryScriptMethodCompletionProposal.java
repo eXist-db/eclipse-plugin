@@ -63,6 +63,7 @@ public class XQueryScriptMethodCompletionProposal extends
 		super(proposal, context);
 	}
 
+	@Override
 	public void apply(IDocument document, char trigger, int offset) {
 		if (trigger == ' ' || trigger == '(')
 			trigger = '\0';
@@ -123,6 +124,7 @@ public class XQueryScriptMethodCompletionProposal extends
 	/**
 	 * @see org.eclipse.dltk.ui.text.completion.AbstractScriptCompletionProposal#getSelection(org.eclipse.jface.text.IDocument)
 	 */
+	@Override
 	public Point getSelection(IDocument document) {
 		if (fSelectedRegion == null)
 			return new Point(getReplacementOffset(), 0);
@@ -131,6 +133,7 @@ public class XQueryScriptMethodCompletionProposal extends
 				.getLength());
 	}
 
+	@Override
 	public CharSequence getPrefixCompletionText(IDocument document,
 			int completionOffset) {
 		if (hasArgumentList()) {
@@ -145,6 +148,7 @@ public class XQueryScriptMethodCompletionProposal extends
 		return super.getPrefixCompletionText(document, completionOffset);
 	}
 
+	@Override
 	protected IContextInformation computeContextInformation() {
 		// no context information for METHOD_NAME_REF proposals (e.g. for static
 		// imports)
@@ -164,6 +168,7 @@ public class XQueryScriptMethodCompletionProposal extends
 		return super.computeContextInformation();
 	}
 
+	@Override
 	protected char[] computeTriggerCharacters() {
 		if (fProposal.getKind() == CompletionProposal.METHOD_NAME_REFERENCE)
 			return METHOD_NAME_TRIGGERS;
@@ -218,6 +223,7 @@ public class XQueryScriptMethodCompletionProposal extends
 				&& (noOverwrite || completion.charAt(completion.length() - 1) == ')');
 	}
 
+	@Override
 	protected String computeReplacementString() {
 		if (!hasArgumentList())
 			return super.computeReplacementString();
@@ -263,6 +269,7 @@ public class XQueryScriptMethodCompletionProposal extends
 
 	}
 
+	@Override
 	protected ICompletionProposalInfo computeProposalInfo() {
 		IScriptProject project = fInvocationContext.getProject();
 		if (project != null)
@@ -281,6 +288,7 @@ public class XQueryScriptMethodCompletionProposal extends
 		fContextInformationPosition = contextInformationPosition;
 	}
 
+	@Override
 	protected boolean isValidPrefix(String prefix) {
 		if (super.isValidPrefix(prefix))
 			return true;
@@ -300,12 +308,14 @@ public class XQueryScriptMethodCompletionProposal extends
 		return isPrefix(prefix, word);
 	}
 
+	@Override
 	protected void handleSmartTrigger(IDocument document, char trigger,
 			int referenceOffset) throws BadLocationException {
 		// TODO Auto-generated method stub
 
 	}
 
+	@Override
 	protected boolean isSmartTrigger(char trigger) {
 		return false;
 	}

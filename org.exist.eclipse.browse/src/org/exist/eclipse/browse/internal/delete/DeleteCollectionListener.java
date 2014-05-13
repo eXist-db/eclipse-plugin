@@ -23,6 +23,7 @@ public class DeleteCollectionListener implements IBrowseListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		if (IManagementService.class.cast(
 				items[0].getConnection().getAdapter(IManagementService.class))
@@ -57,6 +58,7 @@ public class DeleteCollectionListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

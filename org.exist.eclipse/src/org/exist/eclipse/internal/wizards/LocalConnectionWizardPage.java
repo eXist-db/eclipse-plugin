@@ -80,6 +80,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		_copy = true;
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -129,6 +130,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -138,6 +140,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_username.setLayoutData(gd);
 		_username.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -146,6 +149,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_password.setLayoutData(gd);
 		_password.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -153,6 +157,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		_config.setLayoutData(gd);
 		_config.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -161,6 +166,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		gd.horizontalSpan = 1;
 		_browseBtn.setLayoutData(gd);
 		_browseBtn.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent event) {
 				String config = selectConfigFile();
 				if (config != null) {
@@ -212,9 +218,11 @@ public class LocalConnectionWizardPage extends WizardPage {
 								+ "' cannot be created.");
 					}
 
-					copy(LocalConnectionWizardPage.class
-							.getResourceAsStream("conf.xml.dat"),
-							new FileOutputStream(file));
+					try (FileOutputStream out = new FileOutputStream(file)) {
+						copy(LocalConnectionWizardPage.class
+								.getResourceAsStream("conf.xml.dat"),
+								out);
+					}
 					ok = true;
 				} catch (Exception ex) {
 					MessageDialog.openError(getShell(),

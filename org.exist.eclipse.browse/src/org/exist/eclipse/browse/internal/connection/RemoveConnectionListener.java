@@ -17,6 +17,7 @@ public class RemoveConnectionListener implements IConnectionListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IConnection connection) {
 		boolean confirm = UiUtil.openConfirm(_page.getWorkbenchWindow()
 				.getShell(), "Delete", "Delete the connection '"
@@ -26,6 +27,7 @@ public class RemoveConnectionListener implements IConnectionListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

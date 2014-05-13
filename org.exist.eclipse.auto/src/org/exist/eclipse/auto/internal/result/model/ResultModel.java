@@ -27,50 +27,62 @@ public class ResultModel implements IResultModel {
 		_queryResults = new ArrayList<QueryResultEntity>();
 	}
 
+	@Override
 	public ArrayList<QueryResultEntity> getQueryResults() {
 		return _queryResults;
 	}
 
+	@Override
 	public int getThreadCount() {
 		return _threadCount;
 	}
 
+	@Override
 	public int getQueryCount() {
 		return _queryCount;
 	}
 
+	@Override
 	public void setThreadCount(int threadCount) {
 		_threadCount = threadCount;
 	}
 
+	@Override
 	public void setQueryCount(int queryCount) {
 		_queryCount = queryCount;
 	}
 
+	@Override
 	public void addQueryResultEntity(QueryResultEntity result) {
 		_queryResults.add(result);
 	}
 
+	@Override
 	public Object[] getContents() {
 		return _queryResults.toArray();
 	}
 
+	@Override
 	public QueryOrderType getQueryOrderType() {
 		return _queryOrderType == null ? QueryOrderType.SEQUENTIAL : _queryOrderType;
 	}
 	
+	@Override
 	public void setQueryOrderType(QueryOrderType type){
 		_queryOrderType = type;
 	}
 
+	@Override
 	public String getAutoNote() {
 		return _autoNote == null ? "" : _autoNote;
 	}
 
+	@Override
 	public void setAutoNote(String note) {
 		_autoNote = note;
 	}	
 	
+	@Override
 	public int getAvgCompTime() {
 		int totCompTime = 0;
 		for (QueryResultEntity result : _queryResults) {
@@ -79,6 +91,7 @@ public class ResultModel implements IResultModel {
 		return totCompTime / _queryResults.size();
 	}
 
+	@Override
 	public int getAvgExecTime() {
 		int totExecTime = 0;
 		for (QueryResultEntity result : _queryResults) {
@@ -87,6 +100,7 @@ public class ResultModel implements IResultModel {
 		return totExecTime / _queryResults.size();
 	}
 
+	@Override
 	public State getState() {
 		if (_state == null) {
 			_state = State.SUCCESS;
@@ -100,6 +114,7 @@ public class ResultModel implements IResultModel {
 		return _state;
 	}
 
+	@Override
 	public long getResultCount() {
 		if (_resultCount == null) {
 			long count = 0;

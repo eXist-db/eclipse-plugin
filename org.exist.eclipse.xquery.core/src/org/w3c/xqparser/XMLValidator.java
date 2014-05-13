@@ -85,6 +85,7 @@ public class XMLValidator {
 
 			DefaultHandler handler = new DefaultHandler() {
 
+				@Override
 				public void error(SAXParseException arg0) throws SAXException {
 					_isValid = false;
 					if (errors != null)

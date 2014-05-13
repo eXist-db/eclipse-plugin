@@ -44,6 +44,7 @@ public class ResultFormPage extends FormPage {
 		_block = new ResultBlock(this, _contentProvider, getResultDataModel());
 	}
 
+	@Override
 	protected void createFormContent(IManagedForm managedForm) {
 		ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();

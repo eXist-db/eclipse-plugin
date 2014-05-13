@@ -27,6 +27,7 @@ public class ConnectionPool implements IConnectionPool {
 		initialize(count, autoContext);
 	}
 
+	@Override
 	public IQueryRunner getQueryRunner() {
 		try {
 			return _queryRunners.take();
@@ -36,6 +37,7 @@ public class ConnectionPool implements IConnectionPool {
 		}
 	}
 
+	@Override
 	public void putQueryRunner(IQueryRunner queryRunner) {
 		try {
 			_queryRunners.put(queryRunner);

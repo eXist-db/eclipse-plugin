@@ -34,6 +34,7 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_moveCollectionPage = new MoveCollectionWizardPage(_selection, _item);
 		addPage(_moveCollectionPage);
@@ -43,6 +44,7 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the {@link MoveCollectionWizardPage}.
 	 */
+	@Override
 	public boolean canFinish() {
 		return _moveCollectionPage.isPageComplete();
 	}
@@ -51,6 +53,7 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		if (IManagementService.class.cast(
@@ -82,6 +85,7 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 	}

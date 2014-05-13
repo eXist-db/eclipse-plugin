@@ -23,6 +23,7 @@ public class DocumentBrowseListener implements IBrowseListener {
 
 	private DocumentView _view;
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		if (_view != null) {
 			IBrowseService service = (IBrowseService) items[0]
@@ -33,6 +34,7 @@ public class DocumentBrowseListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		if (page != null) {
 			try {

@@ -42,6 +42,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#getBreakpoints()
 	 */
+	@Override
 	public IBreakpoint[] getBreakpoints() {
 		if (fBreakpoints == null)
 			return new IBreakpoint[0];
@@ -56,6 +57,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#getName()
 	 */
+	@Override
 	public String getName() throws DebugException {
 		return "Thread[XQuery]";
 	}
@@ -63,6 +65,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#getPriority()
 	 */
+	@Override
 	public int getPriority() throws DebugException {
 		return 0;
 	}
@@ -70,6 +73,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#getStackFrames()
 	 */
+	@Override
 	public IStackFrame[] getStackFrames() throws DebugException {
 		if (isSuspended()) {
 			return ((XQueryDebugTarget)getDebugTarget()).getStackFrames();
@@ -81,6 +85,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#getTopStackFrame()
 	 */
+	@Override
 	public IStackFrame getTopStackFrame() throws DebugException {
 		IStackFrame[] frames = getStackFrames();
 		if (frames.length > 0) 
@@ -92,6 +97,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IThread#hasStackFrames()
 	 */
+	@Override
 	public boolean hasStackFrames() throws DebugException {
 		return isSuspended();
 	}
@@ -99,6 +105,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canResume()
 	 */
+	@Override
 	public boolean canResume() {
 		return isSuspended();
 	}
@@ -106,6 +113,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canSuspend()
 	 */
+	@Override
 	public boolean canSuspend() {
 		return !isSuspended();
 	}
@@ -113,6 +121,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#isSuspended()
 	 */
+	@Override
 	public boolean isSuspended() {
 		return getDebugTarget().isSuspended();
 	}
@@ -120,6 +129,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#resume()
 	 */
+	@Override
 	public void resume() throws DebugException {
 		getDebugTarget().resume();
 	}
@@ -127,6 +137,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#suspend()
 	 */
+	@Override
 	public void suspend() throws DebugException {
 		getDebugTarget().suspend();
 	}
@@ -134,6 +145,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepInto()
 	 */
+	@Override
 	public boolean canStepInto() {
 		return false;
 	}
@@ -141,6 +153,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepOver()
 	 */
+	@Override
 	public boolean canStepOver() {
 		return isSuspended();
 	}
@@ -148,6 +161,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepReturn()
 	 */
+	@Override
 	public boolean canStepReturn() {
 		return false;
 	}
@@ -155,6 +169,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#isStepping()
 	 */
+	@Override
 	public boolean isStepping() {
 		return fStepping;
 	}
@@ -162,12 +177,14 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepInto()
 	 */
+	@Override
 	public void stepInto() throws DebugException {
 	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepOver()
 	 */
+	@Override
 	public void stepOver() throws DebugException {
 		((XQueryDebugTarget)getDebugTarget()).step();
 	}
@@ -175,12 +192,14 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepReturn()
 	 */
+	@Override
 	public void stepReturn() throws DebugException {
 	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#canTerminate()
 	 */
+	@Override
 	public boolean canTerminate() {
 		return !isTerminated();
 	}
@@ -188,6 +207,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#isTerminated()
 	 */
+	@Override
 	public boolean isTerminated() {
 		return getDebugTarget().isTerminated();
 	}
@@ -195,6 +215,7 @@ public class XQueryThread extends XQueryDebugElement implements IThread {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#terminate()
 	 */
+	@Override
 	public void terminate() throws DebugException {
 		getDebugTarget().terminate();
 	}

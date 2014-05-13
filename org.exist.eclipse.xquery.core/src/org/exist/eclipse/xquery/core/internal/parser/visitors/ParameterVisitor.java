@@ -27,6 +27,7 @@ public class ParameterVisitor implements XPathVisitor {
 		_name = null;
 	}
 
+	@Override
 	public Object visit(SimpleNode node, Object data) {
 		if (QNAME.equals(node.toString())) {
 			_name = "$" + node.getValue();

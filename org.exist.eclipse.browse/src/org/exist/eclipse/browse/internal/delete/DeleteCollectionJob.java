@@ -50,6 +50,7 @@ public class DeleteCollectionJob extends Job {
 					"Error while deleting collections", e);
 		} finally {
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					BrowseCoordinator.getInstance().removed(
 							removedItems.toArray(new IBrowseItem[removedItems

@@ -61,6 +61,7 @@ public class ResultSelectionListener implements IDoubleClickListener {
 		}
 	}
 
+	@Override
 	public void doubleClick(DoubleClickEvent event) {
 		openEditor((IStructuredSelection) event.getSelection());
 	}

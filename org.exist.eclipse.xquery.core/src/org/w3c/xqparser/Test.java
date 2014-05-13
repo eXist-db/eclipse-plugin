@@ -342,6 +342,7 @@ public class Test {
 
 		NodeIterator testCases = ((DocumentTraversal) doc).createNodeIterator(
 				doc, NodeFilter.SHOW_ELEMENT, new NodeFilter() {
+					@Override
 					public short acceptNode(org.w3c.dom.Node node) {
 						String nm = node.getLocalName();
 						String namespace = node.getNamespaceURI();
@@ -364,6 +365,7 @@ public class Test {
 			NodeIterator queryies = ((DocumentTraversal) doc)
 					.createNodeIterator(testCase, NodeFilter.SHOW_ELEMENT,
 							new NodeFilter() {
+								@Override
 								public short acceptNode(org.w3c.dom.Node node) {
 									String nm = node.getLocalName();
 									String namespace = node.getNamespaceURI();

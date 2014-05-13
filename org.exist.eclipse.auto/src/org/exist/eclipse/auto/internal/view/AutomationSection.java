@@ -119,16 +119,19 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	// Actions
 	// --------------------------------------------------------------------------
 
+	@Override
 	public void modifyText(ModifyEvent e) {
 		handleThreadCountInput();
 		handleQueryOrderTypeInput();
 		handleNoteInput();
 	}
 
+	@Override
 	public void focusGained(FocusEvent e) {
 		// This event is not of interest
 	}
 
+	@Override
 	public void focusLost(FocusEvent e) {
 		if (_threadCount.getText().compareTo("") == 0) {
 			_threadCount.setText("1");

@@ -35,12 +35,11 @@ import org.exist.eclipse.xquery.ui.context.ContextSwitcherRegistration;
 import org.exist.eclipse.xquery.ui.context.IContextSwitcher;
 
 /**
- * Select the type of the connection. This page will start the
- * {@link RemoteConnectionWizard} or the {@link LocalConnectionWizard}.
+ * Select the type of the connection. This page will start the connection
+ * wizard.
  * 
  * @author Pascal Schmidiger
  */
-@SuppressWarnings("restriction")
 public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 
 	private Map<String, IContextSwitcher> _switcher;
@@ -62,6 +61,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
 		GridLayout layout = new GridLayout();
@@ -76,13 +76,16 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		_viewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 		_viewer.setContentProvider(new IStructuredContentProvider() {
 
+			@Override
 			public void inputChanged(Viewer viewer, Object oldInput,
 					Object newInput) {
 			}
 
+			@Override
 			public void dispose() {
 			}
 
+			@Override
 			public Object[] getElements(Object inputElement) {
 				return _switcher.values().toArray();
 			}
@@ -121,6 +124,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		_viewer.setSorter(new ViewerSorter());
 
 		_viewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				if (getWizard().performFinish()) {
 					getWizard().getContainer().getShell().close();
@@ -128,6 +132,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 			}
 		});
 		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				_selected = (IContextSwitcher) ((IStructuredSelection) event
 						.getSelection()).getFirstElement();
@@ -188,8 +193,8 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 	private void updateSelectedNode() {
 		setErrorMessage(null);
 		IWizardDescriptor element = WorkbenchPlugin.getDefault()
-				.getNewWizardRegistry().findWizard(
-						SelectContextWizard.class.getCanonicalName());
+				.getNewWizardRegistry()
+				.findWizard(SelectContextWizard.class.getCanonicalName());
 		setSelectedNode(createWizardNode(element));
 		setMessage(element.getDescription());
 	}
@@ -199,6 +204,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 	 */
 	private IWizardNode createWizardNode(IWizardDescriptor element) {
 		return new WorkbenchWizardNode(this, element) {
+			@Override
 			public IWorkbenchWizard createWizard() throws CoreException {
 				SelectContextWizard selectContextWizard = (SelectContextWizard) wizardElement
 						.createWizard();

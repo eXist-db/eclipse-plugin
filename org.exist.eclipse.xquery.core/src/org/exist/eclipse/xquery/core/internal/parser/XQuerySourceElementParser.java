@@ -13,6 +13,7 @@ import org.exist.eclipse.xquery.core.internal.parser.visitors.XQuerySourceElemen
  */
 public class XQuerySourceElementParser extends AbstractSourceElementParser {
 
+	@Override
 	protected String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}

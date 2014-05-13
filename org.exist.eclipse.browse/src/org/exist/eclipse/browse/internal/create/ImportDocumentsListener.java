@@ -95,6 +95,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 		return xmlCfg;
 	}
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
 		IBrowseService service = (IBrowseService) browseItem
@@ -147,6 +148,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

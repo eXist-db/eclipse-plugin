@@ -20,6 +20,7 @@ public class XQueryContentAssistPreference extends ContentAssistPreference {
 		return _instance;
 	}
 
+	@Override
 	protected ScriptTextTools getTextTools() {
 		return XQueryUI.getDefault().getTextTools();
 	}

@@ -104,6 +104,7 @@ public class ExtractLocalVariableAction extends ARefactorAction {
 			final int nOccurences, final boolean[] replaceAll) {
 		InputDialog dialog = new InputDialog(shell, "Extract Local Variable",
 				"&Name", "foo", new IInputValidator() {
+					@Override
 					public String isValid(String newText) {
 						// not displayed; just disable ok button
 						return newText.isEmpty() ? "" : null;
@@ -120,6 +121,7 @@ public class ExtractLocalVariableAction extends ARefactorAction {
 				final Text text = (Text) parent.getChildren()[1];
 
 				text.addModifyListener(new ModifyListener() {
+					@Override
 					public void modifyText(ModifyEvent e) {
 						text.setToolTipText("adsdsds");
 					}

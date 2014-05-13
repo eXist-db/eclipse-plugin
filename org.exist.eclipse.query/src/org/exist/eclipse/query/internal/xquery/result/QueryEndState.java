@@ -37,22 +37,27 @@ public class QueryEndState implements IQueryEndState {
 
 	}
 
+	@Override
 	public long getCompiledTime() {
 		return _compiledTime;
 	}
 
+	@Override
 	public Exception getException() {
 		return _exception;
 	}
 
+	@Override
 	public long getExecutionTime() {
 		return _executionTime;
 	}
 
+	@Override
 	public long getFoundedItems() {
 		return _foundedItems;
 	}
 
+	@Override
 	public State getState() {
 		return _state;
 	}

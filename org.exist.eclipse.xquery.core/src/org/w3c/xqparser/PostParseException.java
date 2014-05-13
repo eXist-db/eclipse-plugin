@@ -28,6 +28,11 @@ package org.w3c.xqparser;
 public class PostParseException extends RuntimeException {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * This constructor is used by the method "generateParseException" in the
 	 * generated parser. Calling this constructor generates a new object of this
 	 * type with the fields "currentToken", "expectedTokenSequences", and
@@ -101,6 +106,7 @@ public class PostParseException extends RuntimeException {
 	 * during the printing of the final stack trace, and hence the correct error
 	 * message gets displayed.
 	 */
+	@Override
 	public String getMessage() {
 		if (!specialConstructor) {
 			return super.getMessage();

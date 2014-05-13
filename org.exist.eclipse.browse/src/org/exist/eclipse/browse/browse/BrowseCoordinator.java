@@ -51,24 +51,28 @@ public class BrowseCoordinator implements IBrowseItemListener {
 		}
 	}
 
+	@Override
 	public void added(IBrowseItem item) {
 		for (IBrowseItemListener listener : _listeners) {
 			listener.added(item);
 		}
 	}
 
+	@Override
 	public void refresh(IBrowseItem item) {
 		for (IBrowseItemListener listener : _listeners) {
 			listener.refresh(item);
 		}
 	}
 
+	@Override
 	public void removed(IBrowseItem[] items) {
 		for (IBrowseItemListener listener : _listeners) {
 			listener.removed(items);
 		}
 	}
 
+	@Override
 	public void moved(IBrowseItem fromItem, IBrowseItem toItem) {
 		for (IBrowseItemListener listener : _listeners) {
 			listener.moved(fromItem, toItem);

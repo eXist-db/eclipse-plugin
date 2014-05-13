@@ -28,6 +28,7 @@ public class ContextSwitcher implements IContextSwitcher {
 		_connection = connection;
 	}
 
+	@Override
 	public String getName() {
 		return _connection.getName();
 	}
@@ -38,6 +39,7 @@ public class ContextSwitcher implements IContextSwitcher {
 		}
 	}
 
+	@Override
 	public IConnectionContext getDefault() {
 		openConnection();
 		return getConnectionContext(BrowseHelper.getRootBrowseItem(_connection));
@@ -45,6 +47,7 @@ public class ContextSwitcher implements IContextSwitcher {
 
 	public IConnectionContext getConnectionContext(final IBrowseItem item) {
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				if (item != null) {
 					_functionJob = new GetFunctionJob(BrowseHelper

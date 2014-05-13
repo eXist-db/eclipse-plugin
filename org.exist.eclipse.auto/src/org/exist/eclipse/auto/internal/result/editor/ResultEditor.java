@@ -27,6 +27,7 @@ public class ResultEditor extends FormEditor {
 	private ResultTextPage _textPage;
 	private ResultFormPage _formPage;
 
+	@Override
 	protected FormToolkit createToolkit(Display display) {
 		// Create a toolkit that shares colors between editors.
 		return new FormToolkit(AutoUI.getDefault().getFormColors(display));
@@ -36,6 +37,7 @@ public class ResultEditor extends FormEditor {
 	 * The <code>MultiPageEditorExample</code> implementation of this method
 	 * checks that the input is an instance of <code>IFileEditorInput</code>.
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput)
 			throws PartInitException {
 		super.init(site, editorInput);

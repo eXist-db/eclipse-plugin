@@ -41,6 +41,7 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.IDebugModelPresentation#computeDetail(org.eclipse.debug.core.model.IValue, org.eclipse.debug.ui.IValueDetailListener)
 	 */
+	@Override
 	public void computeDetail(IValue value, IValueDetailListener listener) {
 		String detail = "";
 		try {
@@ -53,12 +54,14 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.IDebugModelPresentation#setAttribute(java.lang.String, java.lang.Object)
 	 */
+	@Override
 	public void setAttribute(String attribute, Object value) {
 	}
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorId(org.eclipse.ui.IEditorInput, java.lang.Object)
 	 */
+	@Override
 	public String getEditorId(IEditorInput input, Object element) {
 		if (element instanceof IFile || element instanceof ILineBreakpoint) {
 			return "org.eclipse.ui.DefaultTextEditor";
@@ -69,6 +72,7 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
 	 */
+	@Override
 	public IEditorInput getEditorInput(Object element) {
 		if (element instanceof IFile) {
 			return new FileEditorInput((IFile) element);
@@ -78,10 +82,12 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 		return null;
 	}
 
+	@Override
 	public Image getImage(Object element) {
 		return null;
 	}
 	
+	@Override
 	public String getText(Object element) {
 		return null;
 	}

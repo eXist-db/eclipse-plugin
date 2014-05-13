@@ -97,6 +97,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		
 	}
 
+	@Override
 	public String getName() throws DebugException {
 		if (fName == null) {
 			fName = "XQuery script";
@@ -108,18 +109,22 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		return fName;
 	}
 
+	@Override
 	public IProcess getProcess() {
 		return fProcess;
 	}
 
+	@Override
 	public IThread[] getThreads() throws DebugException {
 		return fThreads;
 	}
 
+	@Override
 	public boolean hasThreads() throws DebugException {
 		return true;
 	}
 
+	@Override
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
 		if (breakpoint.getModelIdentifier().equals(IXQueryConstants.ID_XQUERY_DEBUG_MODEL)) {
 			try {
@@ -137,22 +142,27 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		return false;
 	}
 	
+	@Override
 	public IDebugTarget getDebugTarget() {
 		return this;
 	}
 	
+	@Override
 	public ILaunch getLaunch() {
 		return fLaunch;
 	}
 
+	@Override
 	public boolean canTerminate() {
 		return getProcess().canTerminate();
 	}
 
+	@Override
 	public boolean isTerminated() {
 		return getProcess().isTerminated();
 	}
 
+	@Override
 	public void terminate() throws DebugException {
 		synchronized (fRequestSocket) {
 			fRequestWriter.println("exit");
@@ -160,18 +170,22 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		}
 	}
 
+	@Override
 	public boolean canResume() {
 		return !isTerminated() && isSuspended();
 	}
 
+	@Override
 	public boolean canSuspend() {
 		return !isTerminated() && isSuspended();
 	}
 
+	@Override
 	public boolean isSuspended() {
 		return fSuspended;
 	}
 
+	@Override
 	public void resume() throws DebugException {
 		sendRequest("resume");
 	}
@@ -186,9 +200,11 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		fThread.fireSuspendEvent(detail);
 	}
 
+	@Override
 	public void suspend() throws DebugException {
 	}
 
+	@Override
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -204,6 +220,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		
 	}
 
+	@Override
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -217,26 +234,32 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		}
 	}
 
+	@Override
 	public void breakpointRemoved(IBreakpoint arg0, IMarkerDelta arg1) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public boolean canDisconnect() {
 		return false;
 	}
 
+	@Override
 	public void disconnect() throws DebugException {
 	}
 
+	@Override
 	public boolean isDisconnected() {
 		return false;
 	}
 
+	@Override
 	public IMemoryBlock getMemoryBlock(long startAddress, long length) throws DebugException {
 		return null;
 	}
 
+	@Override
 	public boolean supportsStorageRetrieval() {
 		return false;
 	}

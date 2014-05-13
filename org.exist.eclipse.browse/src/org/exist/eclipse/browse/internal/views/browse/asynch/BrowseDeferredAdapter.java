@@ -26,6 +26,7 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 	public BrowseDeferredAdapter() {
 	}
 
+	@Override
 	public void fetchDeferredChildren(Object object,
 			IElementCollector collector, IProgressMonitor monitor) {
 		if (object instanceof IBrowseItem) {
@@ -55,26 +56,32 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 		}
 	}
 
+	@Override
 	public ISchedulingRule getRule(Object object) {
 		return null;
 	}
 
+	@Override
 	public boolean isContainer() {
 		return false;
 	}
 
+	@Override
 	public Object[] getChildren(Object o) {
 		return null;
 	}
 
+	@Override
 	public ImageDescriptor getImageDescriptor(Object object) {
 		return null;
 	}
 
+	@Override
 	public String getLabel(Object o) {
 		return null;
 	}
 
+	@Override
 	public Object getParent(Object o) {
 		return null;
 	}

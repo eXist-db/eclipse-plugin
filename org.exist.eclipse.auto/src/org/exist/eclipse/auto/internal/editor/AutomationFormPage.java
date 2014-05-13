@@ -46,6 +46,7 @@ public class AutomationFormPage extends FormPage {
 		_block.addModificationListener(editor);
 	}
 
+	@Override
 	protected void createFormContent(final IManagedForm managedForm) {
 		final ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();

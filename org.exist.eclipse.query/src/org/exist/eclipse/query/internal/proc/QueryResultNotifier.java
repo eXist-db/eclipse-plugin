@@ -54,6 +54,7 @@ public class QueryResultNotifier implements IQueryResultListener {
 	 * 
 	 * @param event
 	 */
+	@Override
 	public void addResult(final QueryResultEvent event) {
 		for (IQueryResultListener listener : _listener) {
 			listener.addResult(event);

@@ -19,6 +19,7 @@ import org.exist.eclipse.xquery.ui.editor.IXQueryEditor;
  */
 public class RunQueryBrowseListener implements IBrowseListener {
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IXQueryEditor editor = XQueryUI.getDefault().getActiveXQueryEditor();
 		if (editor != null) {
@@ -29,6 +30,7 @@ public class RunQueryBrowseListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 }

@@ -29,6 +29,7 @@ public class BrowseService implements IBrowseService {
 		_item = item;
 	}
 
+	@Override
 	public boolean check() {
 		boolean isOk = _item.exists();
 		if (!isOk) {
@@ -43,6 +44,7 @@ public class BrowseService implements IBrowseService {
 		return isOk;
 	}
 
+	@Override
 	public void create() throws ConnectionException {
 		if (!_item.getParent().exists()) {
 			IBrowseService service = (IBrowseService) _item.getParent()
@@ -56,12 +58,14 @@ public class BrowseService implements IBrowseService {
 				.getName());
 
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				BrowseCoordinator.getInstance().added(_item);
 			}
 		});
 	}
 
+	@Override
 	public void delete() throws ConnectionException {
 		IManagementService service = IManagementService.class.cast(_item
 				.getConnection().getAdapter(IManagementService.class));
@@ -69,14 +73,17 @@ public class BrowseService implements IBrowseService {
 		fireRemoved();
 	}
 
+	@Override
 	public void refresh() {
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				BrowseCoordinator.getInstance().refresh(_item);
 			}
 		});
 	}
 
+	@Override
 	public Set<IBrowseItem> getChildren(boolean self, boolean recursive)
 			throws ConnectionException {
 		Set<IBrowseItem> result = new TreeSet<IBrowseItem>();
@@ -102,6 +109,7 @@ public class BrowseService implements IBrowseService {
 		return result;
 	}
 
+	@Override
 	public boolean move(IBrowseItem item) throws ConnectionException {
 		boolean value = false;
 		if (_item.exists() && !item.exists()) {
@@ -133,6 +141,7 @@ public class BrowseService implements IBrowseService {
 	// /////////////////////////////////////////////////////////////////////////////////////////////
 	private void fireRemoved() {
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				BrowseCoordinator.getInstance().removed(
 						new IBrowseItem[] { _item });

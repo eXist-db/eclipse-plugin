@@ -18,7 +18,8 @@ public class XQueryContentDescriber extends ScriptContentDescriber {
   public XQueryContentDescriber() {
   }
 
-  public int describe(Reader contents, IContentDescription description) throws IOException {
+  @Override
+public int describe(Reader contents, IContentDescription description) throws IOException {
     return ScriptContentDescriber.VALID;
   }
 

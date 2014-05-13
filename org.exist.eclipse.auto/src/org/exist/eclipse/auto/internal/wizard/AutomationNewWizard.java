@@ -27,16 +27,19 @@ public class AutomationNewWizard extends Wizard implements INewWizard {
 		setNeedsProgressMonitor(true);
 	}
 
+	@Override
 	public void addPages() {
 		_page = new AutomationNewWizardPage(_selection);
 		_page.setTitle(WIZARD_TITLE);
 		addPage(_page);
 	}
 
+	@Override
 	public boolean performFinish() {
 		return _page.finish();
 	}
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 		setWindowTitle(WIZARD_TITLE);

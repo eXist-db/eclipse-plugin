@@ -4,6 +4,7 @@
 package org.exist.eclipse.internal;
 
 import java.io.File;
+import java.util.Objects;
 
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
@@ -20,7 +21,7 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class LocalConnection implements IConnection {
+public class LocalConnection extends AbstractConnection {
 	private static int _counter = 0;
 
 	private final String _name;
@@ -70,26 +71,32 @@ public class LocalConnection implements IConnection {
 		return "local" + _counter++;
 	}
 
+	@Override
 	public final String getName() {
 		return _name;
 	}
 
+	@Override
 	public String getPassword() {
 		return _password;
 	}
 
+	@Override
 	public String getPath() {
 		return _path;
 	}
 
+	@Override
 	public ConnectionEnum getType() {
 		return ConnectionEnum.local;
 	}
 
+	@Override
 	public String getUsername() {
 		return _username;
 	}
 
+	@Override
 	public void open() throws ConnectionException {
 		openDb();
 		openRoot();
@@ -147,6 +154,7 @@ public class LocalConnection implements IConnection {
 		}
 	}
 
+	@Override
 	public void close() throws ConnectionException {
 		closeRoot();
 		closeDb();
@@ -202,14 +210,17 @@ public class LocalConnection implements IConnection {
 		}
 	}
 
+	@Override
 	public Collection getRoot() {
 		return _root;
 	}
 
+	@Override
 	public String getUri() {
 		return "xmldb:" + getUriName() + "://";
 	}
 
+	@Override
 	public boolean isOpen() {
 		if (_db == null && _root == null) {
 			return false;
@@ -218,11 +229,13 @@ public class LocalConnection implements IConnection {
 				_root.getChildCollectionCount();
 				return true;
 			} catch (Exception e) {
+				// ignored
 				return false;
 			}
 		}
 	}
 
+	@Override
 	public IConnection duplicate() throws ConnectionException {
 		LocalConnectionWrapper wrapper = new LocalConnectionWrapper(_name,
 				_username, _password, _path, _uriName, _db);
@@ -245,21 +258,16 @@ public class LocalConnection implements IConnection {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		} else if (!(obj instanceof LocalConnection)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		final LocalConnection other = (LocalConnection) obj;
-		if (_name == null) {
-			if (other._name != null)
-				return false;
-		} else if (!_name.equals(other._name))
-			return false;
-		return true;
+		return Objects.equals(_name, other._name);
 	}
 
+	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (IManagementService.class.equals(adapter)) {
 			return adapter.cast(new ManagementService(this));

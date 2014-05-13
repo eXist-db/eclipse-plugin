@@ -28,6 +28,7 @@ public class DocumentService implements IDocumentService {
 		_item = item;
 	}
 
+	@Override
 	public boolean check() {
 		boolean isOk = _item.exists();
 		if (!isOk) {
@@ -35,6 +36,7 @@ public class DocumentService implements IDocumentService {
 			BrowsePlugin.getDefault().infoDialog("eXist", message);
 
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					DocumentCoordinator.getInstance().removed(_item);
 				}
@@ -44,6 +46,7 @@ public class DocumentService implements IDocumentService {
 		return isOk;
 	}
 
+	@Override
 	public void create(IConfigurationElement providerElement, String content)
 			throws CreateDocumentException {
 		Assert.isNotNull(providerElement);
@@ -56,6 +59,7 @@ public class DocumentService implements IDocumentService {
 		}
 	}
 
+	@Override
 	public void delete() throws ConnectionException {
 		IManagementService service = IManagementService.class.cast(_item
 				.getParent().getConnection().getAdapter(
@@ -65,6 +69,7 @@ public class DocumentService implements IDocumentService {
 		DocumentCoordinator.getInstance().removed(_item);
 	}
 
+	@Override
 	public boolean move(IDocumentItem item) throws ConnectionException {
 		boolean value = false;
 		if (_item.exists() && !item.exists()) {

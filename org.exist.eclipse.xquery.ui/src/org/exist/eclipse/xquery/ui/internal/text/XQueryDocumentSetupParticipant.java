@@ -15,6 +15,7 @@ public class XQueryDocumentSetupParticipant implements
 	public XQueryDocumentSetupParticipant() {
 	}
 
+	@Override
 	public void setup(IDocument document) {
 		XQueryTextTools tools = XQueryUI.getDefault().getTextTools();
 		tools.setupDocumentPartitioner(document,

@@ -44,9 +44,11 @@ public class BaseContainer implements IQueryInit {
 		_queryView = queryView;
 
 		_parent.addControlListener(new ControlListener() {
+			@Override
 			public void controlMoved(ControlEvent e) {
 			}
 
+			@Override
 			public void controlResized(ControlEvent e) {
 				// refreshView();
 			}
@@ -92,6 +94,7 @@ public class BaseContainer implements IQueryInit {
 		_bottomContainer.dispose();
 	}
 
+	@Override
 	public void triggerQuery() {
 		IBrowseItem item = _topContainer.getContextSelection();
 		int maxDisplay = _topContainer.getMaxDisplay();

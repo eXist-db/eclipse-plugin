@@ -27,6 +27,7 @@ public class XQueryUniversalTemplateContextType extends
 		super(id);
 	}
 
+	@Override
 	public ScriptTemplateContext createContext(IDocument document,
 			int completionPosition, int length, ISourceModule sourceModule) {
 		return new XQueryTemplateContext(this, document, completionPosition,

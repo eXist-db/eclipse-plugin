@@ -32,7 +32,7 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySyntaxUtils;
  */
 public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
-	IScriptProject project;
+	private IScriptProject project;
 	private CompletionRequestor requestor;
 	private int actualCompletionPosition;
 	private int offset;
@@ -40,6 +40,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 	public XQueryCompletionEngine() {
 	}
 
+	@Override
 	public void complete(IModuleSource module, int position, int pos) {
 		this.actualCompletionPosition = position;
 		this.offset = pos;
@@ -61,6 +62,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		// completion for model elements.
 		try {
 			module.getModelElement().accept(new IModelElementVisitor() {
+				@Override
 				public boolean visit(IModelElement element) {
 					if (element.getElementType() > IModelElement.SOURCE_MODULE) {
 						createProposal(element.getElementName(), element,
@@ -161,20 +163,19 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 								this.actualCompletionPosition);
 						proposal.setFlags(method.getFlags());
 
-						IParameter[] params = null;
 						try {
-							params = method.getParameters();
+							IParameter[] params = method.getParameters();
+							if (params != null && params.length > 0) {
+								String[] paramNames = new String[params.length];
+								for (int i = 0; i < params.length; i++) {
+									paramNames[i] = params[i].getName();
+								}
+								proposal.setParameterNames(paramNames);
+							}
 						} catch (ModelException e) {
 							// Ignore
 						}
 
-						if (params != null && params.length > 0) {
-							String[] paramNames = new String[params.length];
-							for (int i = 0; i < params.length; i++) {
-								paramNames[i] = params[i].getName();
-							}
-							proposal.setParameterNames(paramNames);
-						}
 						break;
 					case IModelElement.FIELD:
 						proposal = this.createProposal(
@@ -209,17 +210,21 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		}
 	}
 
+	@Override
 	public void setOptions(@SuppressWarnings("rawtypes") Map options) {
 	}
 
+	@Override
 	public void setProject(IScriptProject project) {
 		this.project = project;
 	}
 
+	@Override
 	public void setRequestor(CompletionRequestor requestor) {
 		this.requestor = requestor;
 	}
 
+	@Override
 	protected CompletionProposal createProposal(int kind, int completionOffset) {
 		CompletionProposal proposal = CompletionProposal.create(kind,
 				completionOffset - this.offset);
@@ -227,14 +232,17 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		return proposal;
 	}
 
+	@Override
 	protected int getEndOfEmptyToken() {
 		return 0;
 	}
 
+	@Override
 	protected String processMethodName(IMethod method, String token) {
 		return null;
 	}
 
+	@Override
 	protected String processTypeName(IType method, String token) {
 		return null;
 	}

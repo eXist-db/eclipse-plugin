@@ -36,17 +36,21 @@ public class ViewContentProvider implements IStructuredContentProvider,
 		_view = view;
 	}
 
+	@Override
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 	}
 
+	@Override
 	public void dispose() {
 		// clear();
 	}
 
+	@Override
 	public Object[] getElements(Object parent) {
 		return getChildren(parent);
 	}
 
+	@Override
 	public Object getParent(Object child) {
 		if (child instanceof IBrowseItem) {
 			IBrowseItem item = IBrowseItem.class.cast(child);
@@ -59,6 +63,7 @@ public class ViewContentProvider implements IStructuredContentProvider,
 		return null;
 	}
 
+	@Override
 	public Object[] getChildren(Object parent) {
 		Object[] result = null;
 		if (parent instanceof IConnection) {
@@ -102,6 +107,7 @@ public class ViewContentProvider implements IStructuredContentProvider,
 		return result;
 	}
 
+	@Override
 	public boolean hasChildren(Object parent) {
 		boolean result = false;
 		if (parent instanceof IConnection) {

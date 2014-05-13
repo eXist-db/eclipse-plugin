@@ -16,6 +16,7 @@ public class RenameDocumentListener implements IDocumentListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IDocumentItem[] items) {
 		RenameDocumentWizard wizard = new RenameDocumentWizard(items[0]);
 		wizard.init(_page.getWorkbenchWindow().getWorkbench(), null);
@@ -24,6 +25,7 @@ public class RenameDocumentListener implements IDocumentListener {
 		dialog.open();
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

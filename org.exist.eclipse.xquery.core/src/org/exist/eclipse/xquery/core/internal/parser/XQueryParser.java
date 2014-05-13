@@ -76,11 +76,11 @@ public class XQueryParser {
 		for (int i = 1; i < lineCount; i++) {
 			boolean eof = false;
 			while (!eof && startPosOnLine < _content.length) {
-				int sign = (int) _content[startPosOnLine++];
+				int sign = _content[startPosOnLine++];
 
 				if (sign == 13) {
 					if ((startPosOnLine) < _content.length) {
-						int nextsign = (int) _content[startPosOnLine];
+						int nextsign = _content[startPosOnLine];
 						if (nextsign == 10) {
 							startPosOnLine++;
 						}
@@ -88,7 +88,7 @@ public class XQueryParser {
 					eof = true;
 				} else if (sign == 10) {
 					if ((startPosOnLine) < _content.length) {
-						int nextsign = (int) _content[startPosOnLine];
+						int nextsign = _content[startPosOnLine];
 						if (nextsign == 13) {
 							startPosOnLine++;
 						}

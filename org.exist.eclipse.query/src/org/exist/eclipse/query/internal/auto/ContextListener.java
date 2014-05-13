@@ -16,20 +16,24 @@ import org.exist.eclipse.listener.IConnectionListener;
  */
 public class ContextListener implements IConnectionListener {
 
+	@Override
 	public void opened(IConnection connection) {
 		AutoContext autoContext = new AutoContext(connection);
 		AutoContextRegistration.getInstance().add(autoContext);
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 		AutoContext autoContext = new AutoContext(connection);
 		AutoContextRegistration.getInstance().remove(autoContext);
 	}
 
+	@Override
 	public void added(IConnection connection) {
 		// do nothing
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 		// do nothing
 	}

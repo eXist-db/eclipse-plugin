@@ -3,7 +3,6 @@
  */
 package org.exist.eclipse.auto.connection;
 
-
 /**
  * The IAutoContext represents a connection to the db.
  * 
@@ -21,10 +20,10 @@ public interface IAutoContext {
 	/**
 	 * Creates a query runner instance
 	 * 
-	 * @ query runner
+	 * @return query runner
 	 */
 	public IQueryRunner createQueryRunner();
-	
+
 	/**
 	 * @return the root collection
 	 */

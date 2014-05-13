@@ -36,6 +36,7 @@ public class QueryRunner implements IQueryRunner {
 		_connection = connection;
 	}
 
+	@Override
 	public void close() {
 		try {
 			_connection.close();
@@ -44,6 +45,7 @@ public class QueryRunner implements IQueryRunner {
 		}
 	}
 
+	@Override
 	public IQueryResult runQuery(IQueryResult result) {
 
 		XQueryService service;
