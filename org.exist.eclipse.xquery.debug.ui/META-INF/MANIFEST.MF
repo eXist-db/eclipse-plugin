@@ -32,5 +32,4 @@ Export-Package: org.exist.eclipse.xquery.debug.ui.launching;uses:="org.eclipse.d
    org.eclipse.ui,
    org.eclipse.jface.viewers,
    org.eclipse.swt.widgets"
-Bundle-ClassPath: ui.jar,
- .
+Bundle-ClassPath: ui.jar

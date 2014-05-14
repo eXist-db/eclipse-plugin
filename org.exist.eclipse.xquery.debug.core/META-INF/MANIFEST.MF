@@ -15,5 +15,4 @@ Export-Package: org.exist.eclipse.xquery.debug.core,
  org.exist.eclipse.xquery.debug.core.launching,
  org.exist.eclipse.xquery.debug.core.model
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: core.jar,
- .
+Bundle-ClassPath: core.jar
