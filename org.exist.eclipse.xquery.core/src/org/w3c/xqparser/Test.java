@@ -118,9 +118,8 @@ public class Test {
 				}
 			}
 			return UTF_8;
-		} catch (FileNotFoundException fne) {
-			return null;
 		} catch (IOException ioe) {
+			// ignore
 			return null;
 		} finally {
 			try {
@@ -200,8 +199,7 @@ public class Test {
 							fis.read();
 						}
 						InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-								fis)
-								: new InputStreamReader(fis, encoding);
+								fis) : new InputStreamReader(fis, encoding);
 						XPath parser = new XPath(isr);
 						SimpleNode tree = parser.XPath2();
 						dump(tree, dumpFormat);
@@ -221,8 +219,7 @@ public class Test {
 							fis.read();
 						}
 						InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-								fis)
-								: new InputStreamReader(fis, encoding);
+								fis) : new InputStreamReader(fis, encoding);
 						XPath parser = new XPath(isr);
 						SimpleNode tree = parser.XPath2();
 						dump(tree, dumpFormat);
@@ -298,10 +295,8 @@ public class Test {
 					}
 					if (dumpFormat != DUMP_XQUERYX)
 						System.out.println("Test successful!!!");
-				} catch (PostParseException ppe) {
-					System.err.println("    " + ppe.getMessage());
-					return;
 				} catch (Exception e) {
+					// ignore
 					System.out.println("    " + e.getMessage());
 					e.printStackTrace();
 				}
@@ -415,8 +410,7 @@ public class Test {
 						fis.read();
 					}
 					InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-							fis)
-							: new InputStreamReader(fis, encoding);
+							fis) : new InputStreamReader(fis, encoding);
 
 					XPath parser = new XPath(isr);
 					SimpleNode tree = parser.XPath2();

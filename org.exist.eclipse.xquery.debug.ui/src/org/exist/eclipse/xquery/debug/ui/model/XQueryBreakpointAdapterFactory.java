@@ -36,7 +36,7 @@ public class XQueryBreakpointAdapterFactory implements IAdapterFactory {
 	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
 	 */
 	@Override
-	public Object getAdapter(Object adaptableObject, @SuppressWarnings("rawtypes") Class adapterType) {
+	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (adaptableObject instanceof ITextEditor) {
 			ITextEditor editorPart = (ITextEditor) adaptableObject;
 			IResource resource = (IResource) editorPart.getEditorInput().getAdapter(IResource.class);
@@ -55,7 +55,6 @@ public class XQueryBreakpointAdapterFactory implements IAdapterFactory {
 	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapterList()
 	 */
 	@Override
-	@SuppressWarnings("rawtypes")
 	public Class[] getAdapterList() {
 		return new Class[]{IToggleBreakpointsTarget.class};
 	}

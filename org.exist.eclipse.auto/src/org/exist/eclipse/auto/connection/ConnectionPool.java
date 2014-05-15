@@ -23,7 +23,7 @@ public class ConnectionPool implements IConnectionPool {
 	 * @param autoContext
 	 */
 	public ConnectionPool(int count, IAutoContext autoContext) {
-		_queryRunners = new ArrayBlockingQueue<IQueryRunner>(count);
+		_queryRunners = new ArrayBlockingQueue<>(count);
 		initialize(count, autoContext);
 	}
 
@@ -32,6 +32,7 @@ public class ConnectionPool implements IConnectionPool {
 		try {
 			return _queryRunners.take();
 		} catch (InterruptedException e) {
+			// ignore
 			e.printStackTrace();
 			return null;
 		}
@@ -42,6 +43,7 @@ public class ConnectionPool implements IConnectionPool {
 		try {
 			_queryRunners.put(queryRunner);
 		} catch (InterruptedException e) {
+			// ignore
 			e.printStackTrace();
 		}
 	}

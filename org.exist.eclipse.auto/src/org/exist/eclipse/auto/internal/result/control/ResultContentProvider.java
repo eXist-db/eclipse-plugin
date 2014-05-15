@@ -34,6 +34,7 @@ public class ResultContentProvider implements IStructuredContentProvider {
 			// get the data from the model - via text editor
 			return getModel().getContents();
 		} catch (AutoException e) {
+			// ignore
 			e.printStackTrace();
 			return null;
 		}

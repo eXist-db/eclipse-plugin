@@ -113,7 +113,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 			String aFile = dialog.open();
 			if (aFile != null) {
 				File folder = new File(aFile).getParentFile();
-				List<File> allFiles = new ArrayList<File>();
+				List<File> allFiles = new ArrayList<>();
 				for (String file : dialog.getFileNames()) {
 					allFiles.add(new File(folder, file));
 				}

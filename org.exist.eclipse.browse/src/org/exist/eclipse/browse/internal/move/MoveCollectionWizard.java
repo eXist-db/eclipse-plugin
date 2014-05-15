@@ -1,5 +1,7 @@
 package org.exist.eclipse.browse.internal.move;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -8,6 +10,7 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
+import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
 
 /**
@@ -42,7 +45,8 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 
 	/**
 	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link MoveCollectionWizardPage}.
+	 * The button should only be enabled on the {@link MoveCollectionWizardPage}
+	 * .
 	 */
 	@Override
 	public boolean canFinish() {
@@ -65,8 +69,13 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 					_itemService.move(newItem);
 				} catch (ConnectionException e) {
 					isFinished = false;
-					_moveCollectionPage
-							.setErrorMessage("Failure while move collection.");
+					String message = "Failure while move collection.";
+					BrowsePlugin
+							.getDefault()
+							.getLog()
+							.log(new Status(IStatus.ERROR,
+									BrowsePlugin.getId(), message, e));
+					_moveCollectionPage.setErrorMessage(message);
 				}
 			}
 		}

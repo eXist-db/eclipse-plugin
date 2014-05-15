@@ -186,14 +186,14 @@ public class Xq2xml {
 
 		if (i + 1 >= end) {
 			throw new RuntimeException("Invalid UTF-16 surrogate detected: "
-					+ Integer.toHexString((int) c));
+					+ Integer.toHexString(c));
 		} else {
 			next = ch[++i];
 
 			if (!(0xdc00 <= next && next < 0xe000))
 				throw new RuntimeException(
 						"Invalid UTF-16 surrogate detected: "
-								+ Integer.toHexString((int) c));
+								+ Integer.toHexString(c));
 
 			next = ((c - 0xd800) << 10) + next - 0xdc00 + 0x00010000;
 		}
@@ -235,7 +235,7 @@ public class Xq2xml {
 				writeUTF16Surrogate(ps, c, chars, i, n - 1);
 			} else if (!canConvert(c)) {
 				ps.print("&#");
-				ps.print(Integer.toString((int) c));
+				ps.print(Integer.toString(c));
 				ps.print(";");
 			} else {
 				ps.print(c);

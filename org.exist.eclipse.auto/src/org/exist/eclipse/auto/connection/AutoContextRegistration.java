@@ -18,7 +18,7 @@ public final class AutoContextRegistration {
 
 	private AutoContextRegistration() {
 		// singleton
-		_autoContexts = new ArrayList<IAutoContext>();
+		_autoContexts = new ArrayList<>();
 	}
 
 	public static AutoContextRegistration getInstance() {

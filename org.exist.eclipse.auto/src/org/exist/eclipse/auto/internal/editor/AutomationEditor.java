@@ -2,6 +2,7 @@ package org.exist.eclipse.auto.internal.editor;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -63,7 +64,7 @@ public class AutomationEditor extends FormEditor implements
 			try {
 				_textPage.setContent(_formPage.getAutomationData());
 			} catch (AutoException e) {
-				Status status = new Status(Status.ERROR, AutoUI.getId(), e
+				Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 						.getMessage(), e);
 				AutoUI.getDefault().getLog().log(status);
 				ErrorDialog.openError(Display.getCurrent().getActiveShell(),
@@ -102,7 +103,7 @@ public class AutomationEditor extends FormEditor implements
 			addPage(0, _formPage);
 
 		} catch (AutoException ae) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), ae
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae
 					.getMessage(), ae);
 			AutoUI.getDefault().getLog().log(status);
 			ErrorDialog
@@ -113,7 +114,7 @@ public class AutomationEditor extends FormEditor implements
 							status);
 
 		} catch (PartInitException e) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), e
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 					.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 

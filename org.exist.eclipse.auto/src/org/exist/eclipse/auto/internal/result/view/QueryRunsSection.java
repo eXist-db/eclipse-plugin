@@ -54,7 +54,7 @@ public class QueryRunsSection implements IDetailsPage {
 
 		// header
 		FormToolkit toolkit = _mform.getToolkit();
-		_queryRunsSection = toolkit.createSection(_parent, Section.TITLE_BAR
+		_queryRunsSection = toolkit.createSection(_parent, ExpandableComposite.TITLE_BAR
 				| ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
 		_queryRunsSection.marginWidth = 10;
 		_queryRunsSection.marginHeight = 5;

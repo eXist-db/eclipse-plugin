@@ -19,7 +19,7 @@ public class BrowseCoordinator implements IBrowseItemListener {
 	private List<IBrowseItemListener> _listeners;
 
 	private BrowseCoordinator() {
-		_listeners = new ArrayList<IBrowseItemListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	public static BrowseCoordinator getInstance() {

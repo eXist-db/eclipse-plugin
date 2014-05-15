@@ -38,7 +38,7 @@ public class DeleteCollectionListener implements IBrowseListener {
 			boolean confirm = UiUtil
 					.openConfirm(shell, "Delete", msg, "Delete");
 			if (confirm) {
-				Collection<IBrowseItem> deleteItems = new ArrayList<IBrowseItem>();
+				Collection<IBrowseItem> deleteItems = new ArrayList<>();
 				for (IBrowseItem item : items) {
 					IBrowseService service = IBrowseService.class.cast(item
 							.getAdapter(IBrowseService.class));

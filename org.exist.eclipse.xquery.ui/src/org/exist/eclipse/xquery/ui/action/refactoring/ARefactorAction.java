@@ -45,7 +45,7 @@ abstract public class ARefactorAction extends AXQueryEditorAction {
 	}
 
 	protected List<Integer> findOffsets(IDocument document, String text) {
-		List<Integer> offs = new ArrayList<Integer>();
+		List<Integer> offs = new ArrayList<>();
 		int pos = 0;
 		String all = document.get();
 		while (true) {

@@ -42,7 +42,7 @@ public class ConnectionBoxMemento implements Serializable {
 	 * @param filepath
 	 */
 	public ConnectionBoxMemento(String filepath) {
-		_connections = new ArrayList<IConnection>();
+		_connections = new ArrayList<>();
 		Document doc;
 		try {
 			doc = new SAXBuilder().build(filepath);

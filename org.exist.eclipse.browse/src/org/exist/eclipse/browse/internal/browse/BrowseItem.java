@@ -19,7 +19,7 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
+public class BrowseItem implements IBrowseItem {
 	private static final String DELIMITER = "/";
 
 	private final String _path;
@@ -66,6 +66,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		try {
 			return getCollection() != null;
 		} catch (ConnectionException e) {
+			// ignore
 			return false;
 		}
 	}
@@ -150,20 +151,19 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 
 	@Override
 	public int hashCode() {
-		return getConnection().hashCode();
+		return getPath().hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		boolean isEquals = false;
-		if (obj != null && obj instanceof BrowseItem) {
-			BrowseItem item = BrowseItem.class.cast(obj);
-			isEquals = item.getPath().equals(getPath());
-			if (isEquals) {
-				isEquals = item.getConnection().equals(getConnection());
-			}
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof BrowseItem)) {
+			return false;
 		}
-		return isEquals;
+		BrowseItem item = (BrowseItem) obj;
+		return getPath().equals(item.getPath())
+				&& getConnection().equals(item.getConnection());
 	}
 
 	@Override
@@ -172,7 +172,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IBrowseService.class.getName())) {
 			return new BrowseService(this);
 		}

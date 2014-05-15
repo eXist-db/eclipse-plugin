@@ -57,6 +57,15 @@ public class XQueryUI extends AbstractUIPlugin {
 		return _plugin;
 	}
 
+	/**
+	 * Returns a symbolic id of the plugin instance.
+	 * 
+	 * @return Id
+	 */
+	public static String getId() {
+		return getDefault().getBundle().getSymbolicName();
+	}
+
 	public synchronized XQueryTextTools getTextTools() {
 		if (_xqueryTextTools == null)
 			_xqueryTextTools = new XQueryTextTools(true);

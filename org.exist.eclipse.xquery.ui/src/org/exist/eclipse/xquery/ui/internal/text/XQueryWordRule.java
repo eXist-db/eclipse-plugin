@@ -71,7 +71,7 @@ public class XQueryWordRule implements IRule {
 			IToken funcToken, IToken argumentToken) {
 		_lastFound = "";
 		_buffer = new StringBuilder();
-		_words = new HashMap<String, IToken>();
+		_words = new HashMap<>();
 		_column = UNDEFINED;
 		Assert.isNotNull(detector);
 		Assert.isNotNull(defaultToken);

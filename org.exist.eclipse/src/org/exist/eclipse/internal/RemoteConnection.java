@@ -247,7 +247,7 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		if (IManagementService.class.equals(adapter)) {
 			return new ManagementService(this);
 		}

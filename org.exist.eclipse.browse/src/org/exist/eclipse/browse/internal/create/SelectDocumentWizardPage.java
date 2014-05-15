@@ -28,7 +28,7 @@ public class SelectDocumentWizardPage extends WizardPage {
 	public SelectDocumentWizardPage() {
 		super("selectdocumentwizardpage");
 		setDescription("Select the document type");
-		_configurations = new HashMap<String, IConfigurationElement>();
+		_configurations = new HashMap<>();
 	}
 
 	@Override

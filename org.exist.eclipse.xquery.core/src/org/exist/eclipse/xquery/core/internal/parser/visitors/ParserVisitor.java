@@ -65,7 +65,6 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public Object visit(SimpleNode node, Object data) {
 
 		if (_lastMethod != null) {
@@ -152,7 +151,6 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 		return node.childrenAccept(this, data);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void addStatementToLastMethodOrModule(Statement field) {
 		if (_lastMethod != null) {
 			_lastMethod.getStatements().add(field);

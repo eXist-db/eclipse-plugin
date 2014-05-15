@@ -54,7 +54,7 @@ public class DocumentStorageEditorInput implements IStorageEditorInput {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IInputSave.class.getName())) {
 			return _storage;
 		}

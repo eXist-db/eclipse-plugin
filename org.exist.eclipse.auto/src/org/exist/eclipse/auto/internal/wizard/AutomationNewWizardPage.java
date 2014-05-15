@@ -44,6 +44,7 @@ public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 			return new ByteArrayInputStream(Automation
 					.createEmptyAutomationXml().getBytes("UTF8"));
 		} catch (UnsupportedEncodingException e) {
+			// ignore
 			return null;
 		}
 	}

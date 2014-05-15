@@ -112,14 +112,14 @@ public class LibDocument {
 
 	public List<IXQueryMethod> getMethods() {
 		if (_methods == null) {
-			_methods = new ArrayList<IXQueryMethod>();
+			_methods = new ArrayList<>();
 		}
 		return _methods;
 	}
 
 	protected Map<String, Integer> getIndex() {
 		if (_index == null) {
-			_index = new HashMap<String, Integer>();
+			_index = new HashMap<>();
 		}
 		return _index;
 	}
@@ -195,7 +195,7 @@ public class LibDocument {
 
 	// w3c helpers
 	private static List<Element> getElements(Element parent, String name) {
-		List<Element> result = new ArrayList<Element>();
+		List<Element> result = new ArrayList<>();
 		NodeList kids = parent.getChildNodes();
 		for (int i = 0, n = kids.getLength(); i < n; i++) {
 			Node item = kids.item(i);

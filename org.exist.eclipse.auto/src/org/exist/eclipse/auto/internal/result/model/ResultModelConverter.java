@@ -39,6 +39,7 @@ public class ResultModelConverter implements AutoTags {
 			input = new ByteArrayInputStream(resultXml.getBytes(Charset
 					.forName("UTF-8").name()));
 		} catch (UnsupportedEncodingException e1) {
+			// ignore
 			e1.printStackTrace();
 		}
 		InputSource source = new InputSource(input);

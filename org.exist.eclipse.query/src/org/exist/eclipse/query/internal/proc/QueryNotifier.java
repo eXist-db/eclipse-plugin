@@ -24,7 +24,7 @@ public class QueryNotifier implements IQueryListener {
 	}
 
 	private QueryNotifier() {
-		_listener = new ArrayList<IQueryListener>();
+		_listener = new ArrayList<>();
 	}
 
 	/**

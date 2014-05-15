@@ -31,7 +31,7 @@ public class QueryResultEntity {
 	 */
 	public QueryResultEntity(IResultModel model) {
 		_model = model;
-		_runs = new ArrayList<RunEntity>();
+		_runs = new ArrayList<>();
 		_model.addQueryResultEntity(this);
 	}
 

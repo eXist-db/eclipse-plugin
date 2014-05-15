@@ -38,7 +38,7 @@ public class ManagementService implements IManagementService {
 		boolean result = _connection.isOpen();
 		if (!result) {
 			String message = "The connection is not open.";
-			IStatus status = new Status(Status.ERROR, BasePlugin.getId(),
+			IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(),
 					message);
 			BasePlugin.getDefault().getLog().log(status);
 			BasePlugin.getDefault().errorDialog(message, message, status);
@@ -48,7 +48,7 @@ public class ManagementService implements IManagementService {
 					try {
 						_connection.close();
 					} catch (ConnectionException e) {
-						IStatus errorStatus = new Status(Status.ERROR,
+						IStatus errorStatus = new Status(IStatus.ERROR,
 								BasePlugin.getId(),
 								"Error while closing the connection", e);
 						BasePlugin.getDefault().getLog().log(errorStatus);

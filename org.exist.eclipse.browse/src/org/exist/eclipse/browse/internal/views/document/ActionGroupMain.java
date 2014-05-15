@@ -34,7 +34,6 @@ public class ActionGroupMain extends ActionGroup {
 
 	@Override
 	public void fillActionBars(IActionBars actionBars) {
-		fillLocalPullDown(actionBars.getMenuManager());
 		fillLocalToolBar(actionBars.getToolBarManager());
 	}
 
@@ -46,11 +45,8 @@ public class ActionGroupMain extends ActionGroup {
 	//
 	// private methods
 	//
-	private void fillLocalPullDown(IMenuManager manager) {
-	}
 
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(_actionRefresh);
 	}
-
 }

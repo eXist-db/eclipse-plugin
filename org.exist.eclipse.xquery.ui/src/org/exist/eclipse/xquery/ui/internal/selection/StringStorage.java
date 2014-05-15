@@ -38,7 +38,7 @@ public class StringStorage implements IStorage {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		return null;
 	}
 

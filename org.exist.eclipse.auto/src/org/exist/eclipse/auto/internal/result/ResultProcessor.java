@@ -6,6 +6,7 @@ package org.exist.eclipse.auto.internal.result;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Map;
 
 import org.exist.eclipse.auto.data.AutoTags;
@@ -53,10 +54,9 @@ public class ResultProcessor implements AutoTags {
 	 * @throws Exception
 	 */
 	public void writeResultXml(File outputFile) throws Exception {
-		PrintWriter writer = null;
 		XMLOutputter outputter = new XMLOutputter();
-		try {
-			writer = new PrintWriter(new FileWriter(outputFile));
+		try (Writer out = new FileWriter(outputFile);
+				PrintWriter writer = new PrintWriter(out)) {
 			writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			writer.println("<" + AUTOMATIONRESULT + ">");
 
@@ -88,11 +88,6 @@ public class ResultProcessor implements AutoTags {
 
 			writer.println("</" + QUERIES + ">");
 			writer.print("</" + AUTOMATIONRESULT + ">");
-		} finally {
-			if (writer != null) {
-				writer.flush();
-				writer.close();
-			}
 		}
 	}
 

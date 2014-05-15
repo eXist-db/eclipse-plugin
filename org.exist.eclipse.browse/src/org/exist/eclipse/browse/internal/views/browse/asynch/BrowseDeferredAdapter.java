@@ -42,13 +42,18 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 				job.schedule();
 				job.join();
 			} catch (InterruptedException e) {
+				BrowsePlugin
+						.getDefault()
+						.getLog()
+						.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
+								"Fetching deferred children interrupted.", e));
 				Thread.currentThread().interrupt();
 			} catch (Exception e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while fetching children for collection '")
+				StringBuilder message = new StringBuilder(50)
+						.append("Error while fetching children for collection '")
 						.append(item).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
-						message.toString(), e);
+				IStatus status = new Status(IStatus.ERROR,
+						BrowsePlugin.getId(), message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 			} finally {
 				monitor.done();

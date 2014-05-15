@@ -9,6 +9,7 @@ import org.eclipse.core.resources.IEncodedStorage;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.preferences.ExistPreferences;
 import org.exist.eclipse.query.internal.QueryPlugin;
@@ -40,7 +41,7 @@ public class QueryResultStorage implements IEncodedStorage {
 		} catch (UnsupportedEncodingException e) {
 			StringBuilder message = new StringBuilder(50)
 					.append("Error while loading text'");
-			throw new CoreException(new Status(Status.ERROR,
+			throw new CoreException(new Status(IStatus.ERROR,
 					QueryPlugin.getId(), message.toString(), e));
 		}
 		return is;
@@ -68,7 +69,7 @@ public class QueryResultStorage implements IEncodedStorage {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		return null;
 	}
 

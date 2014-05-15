@@ -20,7 +20,7 @@ public class ContextSwitcherRegistration {
 	private final Collection<IContextSwitcher> _switchers;
 
 	private ContextSwitcherRegistration() {
-		_switchers = new ArrayList<IContextSwitcher>();
+		_switchers = new ArrayList<>();
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class ContextSwitcherRegistration {
 	 *         {@link IContextSwitcher}
 	 */
 	public final Map<String, IContextSwitcher> getContextSwitchersAsMap() {
-		Map<String, IContextSwitcher> result = new HashMap<String, IContextSwitcher>(
+		Map<String, IContextSwitcher> result = new HashMap<>(
 				_switchers.size());
 		synchronized (_switchers) {
 			for (IContextSwitcher contextSwitcher : _switchers) {

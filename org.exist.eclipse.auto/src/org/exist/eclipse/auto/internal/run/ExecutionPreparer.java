@@ -26,7 +26,7 @@ public class ExecutionPreparer {
 	private void initialize(ArrayList<QueryEntity> queryEntities,
 			String collection) {
 
-		_queryBase = new ArrayList<Query>();
+		_queryBase = new ArrayList<>();
 		
 		int queryEntityCount = 0;
 		for (QueryEntity queryEntity : queryEntities) {
@@ -40,7 +40,7 @@ public class ExecutionPreparer {
 
 	public ArrayList<Query> getQueriesInConfiguredOrder() {
 
-		ArrayList<Query> queryList = new ArrayList<Query>();
+		ArrayList<Query> queryList = new ArrayList<>();
 
 		if (_type == QueryOrderType.ITERATING) {
 			return prepareIterating(queryList);
@@ -69,7 +69,7 @@ public class ExecutionPreparer {
 
 	protected ArrayList<Query> prepareIterating(ArrayList<Query> queryList) {
 		int rotations = 0;
-		ArrayList<Query> queriesToIgnore = new ArrayList<Query>();
+		ArrayList<Query> queriesToIgnore = new ArrayList<>();
 		while (_queryBase.size() > 0) {
 			++rotations;
 			for (Query queryToRun : _queryBase) {

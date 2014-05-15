@@ -13,6 +13,7 @@ import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.text.IDocument;
@@ -64,18 +65,18 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 				StringBuilder message = new StringBuilder(50)
 						.append("Error while encode resource '").append(_item)
 						.append("' with '").append(_encoding).append('\'');
-				throw new CoreException(new Status(Status.ERROR,
+				throw new CoreException(new Status(IStatus.ERROR,
 						BrowsePlugin.getId(), message.toString(), e));
 			} catch (Exception e) {
 				StringBuilder message = new StringBuilder(50)
 						.append("Error while loading resource '")
 						.append(_item.getName()).append('\'');
-				throw new CoreException(new Status(Status.ERROR,
+				throw new CoreException(new Status(IStatus.ERROR,
 						BrowsePlugin.getId(), message.toString(), e));
 			}
 			return is;
 		} else {
-			throw new CoreException(new Status(Status.ERROR,
+			throw new CoreException(new Status(IStatus.ERROR,
 					BrowsePlugin.getId(), " Error while getting contents."));
 		}
 	}
@@ -105,7 +106,7 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		return null;
 	}
 
@@ -127,16 +128,16 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 					}
 					_item.getParent().getCollection().storeResource(resource);
 				} catch (UnsupportedEncodingException e) {
-					throw new CoreException(new Status(Status.ERROR,
+					throw new CoreException(new Status(IStatus.ERROR,
 							BrowsePlugin.getId(), "Problem with encoding"));
 				} catch (Exception e) {
-					throw new CoreException(new Status(Status.ERROR,
+					throw new CoreException(new Status(IStatus.ERROR,
 							BrowsePlugin.getId(),
 							"Could not store the document"));
 				}
 			} else {
 				_corrupt = true;
-				throw new CoreException(new Status(Status.ERROR,
+				throw new CoreException(new Status(IStatus.ERROR,
 						BrowsePlugin.getId(), "Could not store the document"));
 			}
 		} finally {

@@ -40,7 +40,7 @@ public class ConnectionContext implements IConnectionContext,
 	public ConnectionContext(IBrowseItem item, GetFunctionJob functionJob) {
 		_item = item;
 		_functionJob = functionJob;
-		_listeners = new ArrayList<IContextListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	@Override

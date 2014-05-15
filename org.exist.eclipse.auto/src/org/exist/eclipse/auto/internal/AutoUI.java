@@ -61,7 +61,7 @@ public class AutoUI extends AbstractUIPlugin {
 		} catch (MissingResourceException e) {
 			AutoUI.getDefault()
 					.getLog()
-					.log(new Status(IStatus.ERROR, PLUGIN_ID,
+					.log(new Status(IStatus.ERROR, AutoUI.getId(),
 							"Resource bundle not found", e));
 			_resourceBundle = null;
 		}
@@ -162,7 +162,7 @@ public class AutoUI extends AbstractUIPlugin {
 		} catch (MissingResourceException e) {
 			AutoUI.getDefault()
 					.getLog()
-					.log(new Status(IStatus.ERROR, PLUGIN_ID,
+					.log(new Status(IStatus.ERROR, AutoUI.getId(),
 							"Unable to find resource: ".concat(key), e));
 			return key;
 		}
@@ -216,10 +216,8 @@ public class AutoUI extends AbstractUIPlugin {
 					result.append(new String(out.toByteArray(), Charset
 							.forName("UTF-8").name()).trim());
 				}
-			} catch (CoreException e) {
-				//
-			} catch (IOException e) {
-				//
+			} catch (CoreException | IOException e) {
+				// ignore
 			}
 		}
 		return result.toString();

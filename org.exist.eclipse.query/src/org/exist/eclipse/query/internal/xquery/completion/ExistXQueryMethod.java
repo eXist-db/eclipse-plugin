@@ -18,8 +18,8 @@ public class ExistXQueryMethod implements IXQueryMethod {
 
 	public ExistXQueryMethod(String name) {
 		_name = name;
-		_parameterNames = new ArrayList<String>();
-		_parameterTypes = new ArrayList<String>();
+		_parameterNames = new ArrayList<>();
+		_parameterTypes = new ArrayList<>();
 	}
 
 	/**

@@ -211,7 +211,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 	}
 
 	@Override
-	public void setOptions(@SuppressWarnings("rawtypes") Map options) {
+	public void setOptions(Map options) {
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public class ResultModel implements IResultModel {
 	private String _autoNote;
 
 	public ResultModel() {
-		_queryResults = new ArrayList<QueryResultEntity>();
+		_queryResults = new ArrayList<>();
 	}
 
 	@Override

@@ -268,7 +268,7 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		if (IManagementService.class.equals(adapter)) {
 			return adapter.cast(new ManagementService(this));
 		}

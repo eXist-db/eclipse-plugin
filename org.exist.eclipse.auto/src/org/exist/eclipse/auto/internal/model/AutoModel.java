@@ -30,7 +30,7 @@ public class AutoModel implements IAutoModel {
 	 * Constructor class
 	 */
 	public AutoModel() {
-		_queries = new ArrayList<QueryEntity>();
+		_queries = new ArrayList<>();
 	}
 
 	@Override

@@ -41,6 +41,7 @@ public class QueryRunner implements IQueryRunner {
 		try {
 			_connection.close();
 		} catch (ConnectionException e) {
+			// ignore
 			e.printStackTrace();
 		}
 	}
@@ -84,7 +85,7 @@ public class QueryRunner implements IQueryRunner {
 				try {
 					resourceSet.clear();
 				} catch (XMLDBException e) {
-					// do nothing
+					// ignore
 				}
 			}
 		}

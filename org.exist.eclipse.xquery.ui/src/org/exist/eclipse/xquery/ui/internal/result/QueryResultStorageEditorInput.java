@@ -45,7 +45,7 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		return null;
 	}
 

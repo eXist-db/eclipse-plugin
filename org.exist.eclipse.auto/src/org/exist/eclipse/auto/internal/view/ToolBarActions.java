@@ -4,6 +4,7 @@
 package org.exist.eclipse.auto.internal.view;
 
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.SWT;
@@ -46,7 +47,7 @@ public class ToolBarActions {
 		final ScrolledForm form = _managedForm.getForm();
 
 		// run automation
-		Action runAction = new Action("run", Action.AS_PUSH_BUTTON) {
+		Action runAction = new Action("run", IAction.AS_PUSH_BUTTON) {
 			@Override
 			public void run() {
 				if (_autoModel.getQueries().size() == 0) {
@@ -71,7 +72,7 @@ public class ToolBarActions {
 				.getDescriptor(AutoUI.IMG_RUN));
 
 		// horizontal perspecitve
-		Action hAction = new Action("hor", Action.AS_RADIO_BUTTON) {
+		Action hAction = new Action("hor", IAction.AS_RADIO_BUTTON) {
 			@Override
 			public void run() {
 				_sashForm.setOrientation(SWT.HORIZONTAL);
@@ -84,7 +85,7 @@ public class ToolBarActions {
 				.getDescriptor(AutoUI.IMG_HORIZONTAL));
 
 		// vertical perspective
-		Action vAction = new Action("ver", Action.AS_RADIO_BUTTON) {
+		Action vAction = new Action("ver", IAction.AS_RADIO_BUTTON) {
 			@Override
 			public void run() {
 				_sashForm.setOrientation(SWT.VERTICAL);

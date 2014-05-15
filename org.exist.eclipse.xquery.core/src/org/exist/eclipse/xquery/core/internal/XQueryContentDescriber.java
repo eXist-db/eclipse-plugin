@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.runtime.content.IContentDescriber;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.dltk.core.ScriptContentDescriber;
 
@@ -20,7 +21,7 @@ public class XQueryContentDescriber extends ScriptContentDescriber {
 
   @Override
 public int describe(Reader contents, IContentDescription description) throws IOException {
-    return ScriptContentDescriber.VALID;
+    return IContentDescriber.VALID;
   }
 
   @Override

@@ -248,7 +248,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 					event.detail = DND.DROP_NONE;
 					return;
 				}
-				List<File> files = new ArrayList<File>();
+				List<File> files = new ArrayList<>();
 				for (String it : (String[]) event.data) {
 					files.add(new File(it));
 				}

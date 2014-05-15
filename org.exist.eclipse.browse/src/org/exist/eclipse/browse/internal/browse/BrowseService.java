@@ -86,7 +86,7 @@ public class BrowseService implements IBrowseService {
 	@Override
 	public Set<IBrowseItem> getChildren(boolean self, boolean recursive)
 			throws ConnectionException {
-		Set<IBrowseItem> result = new TreeSet<IBrowseItem>();
+		Set<IBrowseItem> result = new TreeSet<>();
 		if (self) {
 			result.add(_item);
 		}

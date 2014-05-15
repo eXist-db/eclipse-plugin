@@ -72,7 +72,7 @@ public class ExportResultItemsAction extends Action {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
 
-		Map<ResultItem, File> files = new HashMap<ResultItem, File>();
+		Map<ResultItem, File> files = new HashMap<>();
 
 		if (sel.length == 1) {
 			ResultItem document = (ResultItem) sel[0];

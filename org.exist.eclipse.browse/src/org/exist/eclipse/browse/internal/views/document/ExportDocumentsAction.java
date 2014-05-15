@@ -66,7 +66,7 @@ public class ExportDocumentsAction extends Action {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
 
-		Map<IDocumentItem, File> files = new HashMap<IDocumentItem, File>();
+		Map<IDocumentItem, File> files = new HashMap<>();
 
 		if (sel.length == 1) {
 			IDocumentItem document = (IDocumentItem) sel[0];

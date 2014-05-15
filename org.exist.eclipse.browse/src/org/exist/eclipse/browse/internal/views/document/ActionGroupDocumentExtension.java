@@ -17,6 +17,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.ActionGroup;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.document.IDocumentListener;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
@@ -63,7 +64,7 @@ public class ActionGroupDocumentExtension extends ActionGroup {
 						String id = extension.getNamespaceIdentifier();
 
 						if (icon != null) {
-							action.setImageDescriptor(BrowsePlugin
+							action.setImageDescriptor(AbstractUIPlugin
 									.imageDescriptorFromPlugin(id, icon));
 						}
 						addSeperator(manager);

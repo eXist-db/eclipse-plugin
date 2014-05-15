@@ -26,7 +26,7 @@ public class ParameterListVisitor implements XPathVisitor, NodeTypes {
 
 	public ParameterListVisitor(XQueryParser parser) {
 		_parser = parser;
-		_arguments = new ArrayList<Argument>();
+		_arguments = new ArrayList<>();
 	}
 
 	@Override

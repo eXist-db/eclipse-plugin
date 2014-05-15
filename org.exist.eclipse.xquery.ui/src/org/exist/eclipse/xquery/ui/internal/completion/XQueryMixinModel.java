@@ -3,7 +3,6 @@
  */
 package org.exist.eclipse.xquery.ui.internal.completion;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.xquery.ui.XQueryUI;
 import org.exist.eclipse.xquery.ui.completion.IXQueryMethod;
 
@@ -49,7 +50,7 @@ public class XQueryMixinModel {
 	 * @return all methods for the prefix
 	 */
 	public List<IXQueryMethod> getMethods(String prefix) {
-		List<IXQueryMethod> result = new ArrayList<IXQueryMethod>();
+		List<IXQueryMethod> result = new ArrayList<>();
 
 		getCache().get(PREFIX_FN).fillMethods(prefix, result);
 		getCache().get(PREFIX_OP).fillMethods(prefix, result);
@@ -62,39 +63,20 @@ public class XQueryMixinModel {
 		LibDocument doc = cache.get(prefix);
 		if (doc == null) {
 			Path path = getFilePath(prefix);
-			InputStream in = getFileStream(path);
 			doc = new LibDocument(prefix, namespaceUri, path);
-			if (in != null) {
-				try {
-					doc.parseMethods(in);
-					cache.put(prefix, doc);
-				} catch (Exception e) {
-					// ignore
-				} finally {
-					if (in != null) {
-						try {
-							in.close();
-						} catch (IOException e) {
-						}
-					}
-				}
+			XQueryUI plugin = XQueryUI.getDefault();
+			try (InputStream in = FileLocator.openStream(plugin.getBundle(),
+					path, false)) {
+				doc.parseMethods(in);
+				cache.put(prefix, doc);
+			} catch (Exception e) {
+				plugin.getLog().log(
+						new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, String
+								.format("Unable to lobrary %s:%s", prefix,
+										namespaceUri), e));
 			}
 		}
 		return doc;
-	}
-
-	/**
-	 * @return nullable if none or an error
-	 */
-	public InputStream getFileStream(Path path) {
-		InputStream result = null;
-		try {
-			result = FileLocator.openStream(XQueryUI.getDefault().getBundle(),
-					path, false);
-		} catch (Exception e) {
-			// ignore
-		}
-		return result;
 	}
 
 	/**
@@ -110,7 +92,7 @@ public class XQueryMixinModel {
 
 	private Map<String, LibDocument> getCache() {
 		if (_cache == null) {
-			_cache = new HashMap<String, LibDocument>();
+			_cache = new HashMap<>();
 		}
 		return _cache;
 	}

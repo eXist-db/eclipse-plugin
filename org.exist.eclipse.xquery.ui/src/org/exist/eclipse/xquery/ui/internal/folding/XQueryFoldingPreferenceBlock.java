@@ -27,14 +27,14 @@ public class XQueryFoldingPreferenceBlock implements IFoldingPreferenceBlock {
 	private Map<Button, String> _checkBoxes;
 
 	public XQueryFoldingPreferenceBlock(OverlayPreferenceStore store) {
-		_checkBoxes = new HashMap<Button, String>();
+		_checkBoxes = new HashMap<>();
 		_overlayStore = store;
 		_keys = createKeys();
 		_overlayStore.addKeys(_keys);
 	}
 
 	private OverlayKey[] createKeys() {
-		ArrayList<OverlayPreferenceStore.OverlayKey> overlayKeys = new ArrayList<OverlayPreferenceStore.OverlayKey>();
+		ArrayList<OverlayPreferenceStore.OverlayKey> overlayKeys = new ArrayList<>();
 
 		OverlayPreferenceStore.OverlayKey[] keys = new OverlayPreferenceStore.OverlayKey[overlayKeys
 				.size()];

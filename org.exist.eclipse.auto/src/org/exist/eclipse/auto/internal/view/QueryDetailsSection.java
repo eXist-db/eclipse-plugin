@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.IDetailsPage;
 import org.eclipse.ui.forms.IFormPart;
 import org.eclipse.ui.forms.IManagedForm;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.exist.eclipse.auto.internal.AutoUI;
@@ -74,7 +75,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		// header
 		FormToolkit toolkit = _mform.getToolkit();
 		Section queryDetailsSection = toolkit.createSection(_parent,
-				Section.TITLE_BAR);
+				ExpandableComposite.TITLE_BAR);
 		queryDetailsSection.marginWidth = 10;
 		queryDetailsSection.marginHeight = 5;
 		queryDetailsSection.setText("Query Details");

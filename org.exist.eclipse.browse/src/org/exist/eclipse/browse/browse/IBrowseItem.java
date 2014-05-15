@@ -11,7 +11,7 @@ import org.xmldb.api.base.Collection;
  * 
  * @author Pascal Schmidiger
  */
-public interface IBrowseItem extends IAdaptable {
+public interface IBrowseItem extends IAdaptable, Comparable<IBrowseItem> {
 	/**
 	 * Check only if the collection does exists in the xmldb.
 	 * 

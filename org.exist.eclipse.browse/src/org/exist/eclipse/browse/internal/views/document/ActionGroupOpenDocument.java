@@ -73,7 +73,7 @@ public class ActionGroupOpenDocument extends ActionGroup {
 				editorsXml = registry.getEditors("test.xml");
 			}
 
-			Collection<IEditorDescriptor> usedEditors = new ArrayList<IEditorDescriptor>();
+			Collection<IEditorDescriptor> usedEditors = new ArrayList<>();
 
 			if (editors.length > 0) {
 

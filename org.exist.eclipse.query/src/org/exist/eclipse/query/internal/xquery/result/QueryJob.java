@@ -83,7 +83,7 @@ public class QueryJob extends Job {
 				try {
 					result.clear();
 				} catch (XMLDBException e) {
-					// do nothing
+					//  ignore
 				}
 			}
 			monitor.done();

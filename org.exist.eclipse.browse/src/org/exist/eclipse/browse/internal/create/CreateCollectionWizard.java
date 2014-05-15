@@ -1,5 +1,7 @@
 package org.exist.eclipse.browse.internal.create;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -8,6 +10,7 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
+import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
 
 /**
@@ -72,8 +75,13 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 					// _itemService.refresh();
 				} catch (ConnectionException e) {
 					isFinished = false;
-					_enterCollectionPage
-							.setErrorMessage("Failure while create collection.");
+					String message = "Failure while create collection.";
+					BrowsePlugin
+							.getDefault()
+							.getLog()
+							.log(new Status(IStatus.ERROR,
+									BrowsePlugin.getId(), message, e));
+					_enterCollectionPage.setErrorMessage(message);
 				}
 			}
 		}

@@ -221,7 +221,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 	@Override
 	public IResultFrame start() {
 		_actualCount = 0;
-		_results = new ArrayList<ResultItem>(_maxCount);
+		_results = new ArrayList<>(_maxCount);
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {

@@ -28,7 +28,7 @@ public class ChangeItemNotifier implements IChangeItemListener {
 	}
 
 	private ChangeItemNotifier() {
-		_listeners = new ArrayList<IChangeItemListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	public void addListener(IChangeItemListener listener) {

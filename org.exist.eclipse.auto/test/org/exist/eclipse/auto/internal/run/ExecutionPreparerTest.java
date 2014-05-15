@@ -14,7 +14,7 @@ public class ExecutionPreparerTest {
 	public void testPrepareSequential() {
 
 		// arrange
-		ArrayList<QueryEntity> queryEntities = new ArrayList<QueryEntity>();
+		ArrayList<QueryEntity> queryEntities = new ArrayList<>();
 		QueryEntity ent1 = new QueryEntity("name1", "note", 10, "query1");
 		QueryEntity ent2 = new QueryEntity("name2", "note", 20, "query2");
 		QueryEntity ent3 = new QueryEntity("name3", "note", 30, "query3");
@@ -49,7 +49,7 @@ public class ExecutionPreparerTest {
 	public void testPrepareIterating() {
 
 		// arrange
-		ArrayList<QueryEntity> queryEntities = new ArrayList<QueryEntity>();
+		ArrayList<QueryEntity> queryEntities = new ArrayList<>();
 		QueryEntity ent1 = new QueryEntity("name1", "note", 10, "query1");
 		QueryEntity ent2 = new QueryEntity("name2", "note", 20, "query2");
 		QueryEntity ent3 = new QueryEntity("name3", "note", 40, "query3");
@@ -87,7 +87,7 @@ public class ExecutionPreparerTest {
 	public void testPrepareRandom() {
 
 		// arrange
-		ArrayList<QueryEntity> queryEntities = new ArrayList<QueryEntity>();
+		ArrayList<QueryEntity> queryEntities = new ArrayList<>();
 		QueryEntity ent1 = new QueryEntity("name1", "note", 10, "query1");
 		QueryEntity ent2 = new QueryEntity("name2", "note", 20, "query2");
 		QueryEntity ent3 = new QueryEntity("name3", "note", 30, "query3");

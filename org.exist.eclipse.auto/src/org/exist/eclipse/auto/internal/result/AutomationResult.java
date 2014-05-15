@@ -10,6 +10,7 @@ import java.util.Map;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -60,7 +61,7 @@ public class AutomationResult {
 		_monitor = monitor;
 		_target = target;
 
-		_results = new HashMap<Integer, QueryGroup>(expectedCount);
+		_results = new HashMap<>(expectedCount);
 		_resultCount = 0;
 	}
 
@@ -96,7 +97,7 @@ public class AutomationResult {
 				displayResult();
 			}
 		} catch (InterruptedException e) {
-			// end the join method
+			// ignore
 		} finally {
 			AutomationHandler.getInstance().cleanup();
 		}
@@ -146,7 +147,7 @@ public class AutomationResult {
 				try {
 					IDE.openEditorOnFileStore(page, fileStore);
 				} catch (PartInitException e) {
-					Status status = new Status(Status.ERROR, AutoUI.getId(),
+					Status status = new Status(IStatus.ERROR, AutoUI.getId(),
 							e.getMessage(), e);
 					AutoUI.getDefault().getLog().log(status);
 					ErrorDialog.openError(

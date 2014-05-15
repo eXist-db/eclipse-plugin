@@ -4,6 +4,7 @@
 
 package org.exist.eclipse.browse.internal.delete;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
@@ -59,7 +60,7 @@ public class DeleteDocumentListener implements IDocumentListener {
 					}
 				} catch (Exception e) {
 					hadErrors = true;
-					Status status = new Status(Status.ERROR, BrowsePlugin
+					Status status = new Status(IStatus.ERROR, BrowsePlugin
 							.getId(), "Error while deleting document '"
 							+ item.getName() + "': " + e, e);
 					BrowsePlugin.getDefault().getLog().log(status);

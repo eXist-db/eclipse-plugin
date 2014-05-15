@@ -50,7 +50,7 @@ public class ActionDocumentListener extends Action {
 					&& browseService.check() && documentService.check()) {
 				_listener.init(_view.getSite().getPage());
 
-				List<IDocumentItem> all = new ArrayList<IDocumentItem>();
+				List<IDocumentItem> all = new ArrayList<>();
 				for (Object it : sel) {
 					all.add((IDocumentItem) it);
 				}

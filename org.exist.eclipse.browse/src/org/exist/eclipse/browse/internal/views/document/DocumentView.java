@@ -362,7 +362,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				&& IBrowseService.class.cast(
 						getItem().getAdapter(IBrowseService.class)).check()) {
 			String[] elements;
-			TreeSet<String> sorted = new TreeSet<String>();
+			TreeSet<String> sorted = new TreeSet<>();
 			try {
 				elements = getItem().getCollection().listResources();
 				String filter = _textFilter.getText().toLowerCase();
@@ -381,7 +381,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				StringBuilder message = new StringBuilder(50).append(
 						"Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 						message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 				BrowsePlugin.getDefault().errorDialog(message.toString(),
@@ -390,7 +390,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				StringBuilder message = new StringBuilder(50).append(
 						"Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 						message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 				BrowsePlugin.getDefault().errorDialog(message.toString(),

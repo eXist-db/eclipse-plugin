@@ -128,14 +128,14 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 
 		if (i + 1 >= end) {
 			throw new RuntimeException("Invalid UTF-16 surrogate detected: "
-					+ Integer.toHexString((int) c));
+					+ Integer.toHexString(c));
 		} else {
 			next = ch[++i];
 
 			if (!(0xdc00 <= next && next < 0xe000))
 				throw new RuntimeException(
 						"Invalid UTF-16 surrogate detected: "
-								+ Integer.toHexString((int) c));
+								+ Integer.toHexString(c));
 
 			next = ((c - 0xd800) << 10) + next - 0xdc00 + 0x00010000;
 		}
@@ -198,7 +198,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 					writeUTF16Surrogate(_xqout2, c, chars, i, n - 1);
 			} else if (!canConvert(c)) {
 				xqprint("&#");
-				xqprint(Integer.toString((int) c));
+				xqprint(Integer.toString(c));
 				xqprint(";");
 			} else if (c == 0x0D && (i + 1) < s.length()
 					&& s.charAt(i + 1) == 0x0A) {
@@ -211,7 +211,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 					_xqout2.print(' ');
 			} else if (c == 0x0D || c == 0x85 || c == 0x2028) {
 				xqprint("&#");
-				xqprint(Integer.toString((int) c));
+				xqprint(Integer.toString(c));
 				xqprint(";");
 			} else {
 				if (null != _xqout1)
@@ -1371,7 +1371,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 					pushElem("xqx:typedVariableBinding", node);
 					flushOpen(node, true);
 
-					pushElem(child.id, (SimpleNode) child);
+					pushElem(child.id, child);
 					String qname = ((SimpleNode) child.jjtGetChild(0)).m_value;
 					if (null != qname)
 						qname = processPrefix(qname);
@@ -2671,7 +2671,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * @return
 	 */
 	private SimpleNode getFirstChildOfFirstChild(SimpleNode node) {
-		if (((SimpleNode) node).jjtGetNumChildren() <= 0)
+		if (node.jjtGetNumChildren() <= 0)
 			return null;
 		Node firstChild = node.jjtGetChild(0);
 		if (((SimpleNode) firstChild).jjtGetNumChildren() <= 0)
@@ -2684,7 +2684,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * @return
 	 */
 	private int getFirstChildOfFirstChildID(SimpleNode node) {
-		if (((SimpleNode) node).jjtGetNumChildren() <= 0)
+		if (node.jjtGetNumChildren() <= 0)
 			return -1;
 		Node firstChild = node.jjtGetChild(0);
 		if (((SimpleNode) firstChild).jjtGetNumChildren() <= 0)
@@ -2697,7 +2697,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * @return
 	 */
 	private int getChildID(SimpleNode node, int i) {
-		if (i < ((SimpleNode) node).jjtGetNumChildren())
+		if (i < node.jjtGetNumChildren())
 			return ((SimpleNode) node.jjtGetChild(i)).id;
 		else
 			return -1;

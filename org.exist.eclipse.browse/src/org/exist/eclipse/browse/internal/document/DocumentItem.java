@@ -103,7 +103,7 @@ public class DocumentItem implements IDocumentItem {
 	}
 
 	@Override
-	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IDocumentService.class.getName())) {
 			return new DocumentService(this);
 		}

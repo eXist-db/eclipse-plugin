@@ -4,6 +4,7 @@
 package org.exist.eclipse.auto.internal.result.editor;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -56,7 +57,7 @@ public class ResultEditor extends FormEditor {
 			_formPage = new ResultFormPage(this, _textPage);
 			addPage(0, _formPage);
 		} catch (AutoException ae) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), ae
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae
 					.getMessage(), ae);
 			AutoUI.getDefault().getLog().log(status);
 			ErrorDialog
@@ -67,7 +68,7 @@ public class ResultEditor extends FormEditor {
 							status);
 
 		} catch (PartInitException e) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), e
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 					.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 

@@ -3,6 +3,7 @@
  */
 package org.exist.eclipse.auto.internal.result.editor;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -57,7 +58,7 @@ public class ResultFormPage extends FormPage {
 					.getBody(), getResultDataModel(), toolkit);
 			autoResultSection.init();
 		} catch (AutoException e) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), e
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 					.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 			ErrorDialog

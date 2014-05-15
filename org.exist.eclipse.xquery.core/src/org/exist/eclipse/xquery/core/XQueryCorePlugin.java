@@ -40,4 +40,11 @@ public class XQueryCorePlugin extends AbstractUIPlugin {
 		return _plugin;
 	}
 
-}
+	/**
+	 * Returns a symbolic id of the plugin instance.
+	 * 
+	 * @return Id
+	 */
+	public static String getId() {
+		return getDefault().getBundle().getSymbolicName();
+	}}

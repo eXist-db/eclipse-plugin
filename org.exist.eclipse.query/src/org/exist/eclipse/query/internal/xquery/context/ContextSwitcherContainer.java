@@ -25,7 +25,7 @@ public class ContextSwitcherContainer {
 	}
 
 	private ContextSwitcherContainer() {
-		_switchers = new HashMap<IConnection, ContextSwitcher>();
+		_switchers = new HashMap<>();
 	}
 
 	/**

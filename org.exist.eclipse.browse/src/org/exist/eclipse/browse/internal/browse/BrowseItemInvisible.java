@@ -21,7 +21,7 @@ public class BrowseItemInvisible extends BrowseItem {
 
 	public BrowseItemInvisible() {
 		super(null, "");
-		_children = new ArrayList<BrowseItem>();
+		_children = new ArrayList<>();
 	}
 
 	/**

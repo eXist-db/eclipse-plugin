@@ -52,7 +52,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 */
 	public AutomationBlock(AutomationFormPage page,
 			AutoContentProvider contentProvider, IAutoModel autoModel) {
-		_modListeners = new ArrayList<IAutoModificationListener>();
+		_modListeners = new ArrayList<>();
 		_page = page;
 		_contentProvider = contentProvider;
 		_autoModel = autoModel;
