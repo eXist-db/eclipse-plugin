@@ -40,13 +40,15 @@ public class ConnectionContext implements IConnectionContext,
 	public ConnectionContext(IBrowseItem item, GetFunctionJob functionJob) {
 		_item = item;
 		_functionJob = functionJob;
-		_listeners = new ArrayList<IContextListener>();
+		_listeners = new ArrayList<>();
 	}
 
+	@Override
 	public String getName() {
 		return _item.getPath() + " (" + _item.getConnection().getName() + ")";
 	}
 
+	@Override
 	public void addContextListener(IContextListener listener) {
 		Assert.isNotNull(listener);
 		if (_listeners.size() < 1) {
@@ -56,6 +58,7 @@ public class ConnectionContext implements IConnectionContext,
 		_listeners.add(listener);
 	}
 
+	@Override
 	public void removeContextListener(IContextListener listener) {
 		Assert.isNotNull(listener);
 		_listeners.remove(listener);
@@ -65,6 +68,7 @@ public class ConnectionContext implements IConnectionContext,
 		}
 	}
 
+	@Override
 	public void run(IQueryFrame frame) {
 		if (_item != null
 				&& IManagementService.class.cast(
@@ -79,6 +83,7 @@ public class ConnectionContext implements IConnectionContext,
 		}
 	}
 
+	@Override
 	public ICompletionExtension getCompletionExtension() {
 		if (_item != null
 				&& IManagementService.class.cast(
@@ -92,27 +97,33 @@ public class ConnectionContext implements IConnectionContext,
 		return null;
 	}
 
+	@Override
 	public void added(IConnection connection) {
 
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 		if (_item.getConnection().equals(connection)) {
 			fireDisposed();
 		}
 	}
 
+	@Override
 	public void opened(IConnection connection) {
 
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 	}
 
+	@Override
 	public void added(IBrowseItem item) {
 		// do nothing
 	}
 
+	@Override
 	public void moved(IBrowseItem fromItem, IBrowseItem toItem) {
 		if (_item.equals(fromItem)) {
 			_item = toItem;
@@ -120,12 +131,14 @@ public class ConnectionContext implements IConnectionContext,
 		}
 	}
 
+	@Override
 	public void refresh(IBrowseItem item) {
 		if (_item.equals(item)) {
 			fireRefresh();
 		}
 	}
 
+	@Override
 	public void removed(IBrowseItem[] items) {
 		for (IBrowseItem item : items) {
 			if (_item.equals(item)) {
@@ -141,6 +154,7 @@ public class ConnectionContext implements IConnectionContext,
 		final IContextListener[] listeners = _listeners
 				.toArray(new IContextListener[_listeners.size()]);
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				for (IContextListener listener : listeners) {
 					listener.disposed(event);
@@ -154,6 +168,7 @@ public class ConnectionContext implements IConnectionContext,
 		final IContextListener[] listeners = _listeners
 				.toArray(new IContextListener[_listeners.size()]);
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				for (IContextListener listener : listeners) {
 					listener.refresh(event);

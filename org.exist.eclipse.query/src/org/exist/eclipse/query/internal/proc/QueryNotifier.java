@@ -24,7 +24,7 @@ public class QueryNotifier implements IQueryListener {
 	}
 
 	private QueryNotifier() {
-		_listener = new ArrayList<IQueryListener>();
+		_listener = new ArrayList<>();
 	}
 
 	/**
@@ -49,12 +49,14 @@ public class QueryNotifier implements IQueryListener {
 		}
 	}
 
+	@Override
 	public void end(final QueryEndEvent event) {
 		for (IQueryListener listener : _listener) {
 			listener.end(event);
 		}
 	}
 
+	@Override
 	public void start(final QueryStartEvent event) {
 		for (IQueryListener listener : _listener) {
 			listener.start(event);

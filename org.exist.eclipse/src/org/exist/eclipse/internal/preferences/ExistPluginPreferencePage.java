@@ -11,8 +11,8 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 /**
  * This class represents a preference page that is contributed to the
- * Preferences dialog. By subclassing <samp>FieldEditorPreferencePage</samp>,
- * we can use the field support built into JFace that allows us to create a page
+ * Preferences dialog. By subclassing <samp>FieldEditorPreferencePage</samp>, we
+ * can use the field support built into JFace that allows us to create a page
  * that is small and knows how to save, restore and apply itself.
  * <p>
  * This page is used to modify preferences only. They are stored in the
@@ -37,9 +37,10 @@ public class ExistPluginPreferencePage extends FieldEditorPreferencePage
 		 * 
 		 * @return - <code>true</code> if valid
 		 */
+		@Override
 		protected boolean doCheckState() {
 			String txt = getTextControl().getText();
-			for (int i = 0; i < txt.length(); i++) {
+			for (int i = 0, n = txt.length(); i < n; i++) {
 				if (!Character.isLetterOrDigit(txt.charAt(i))) {
 					setErrorMessage("Input not ok!");
 					return false;
@@ -61,13 +62,15 @@ public class ExistPluginPreferencePage extends FieldEditorPreferencePage
 	/**
 	 * Initialization
 	 */
-	public void init(IWorkbench workbench) {
-		this.workbench = workbench;
+	@Override
+	public void init(IWorkbench initialWorkbench) {
+		this.workbench = initialWorkbench;
 	}
 
 	/**
 	 * construct page content
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
 		workbench.getHelpSystem().setHelp(getControl(),
@@ -91,8 +94,9 @@ public class ExistPluginPreferencePage extends FieldEditorPreferencePage
 		String[][] encodings = new String[Charset.availableCharsets().size()][2];
 		int counter = 0;
 		for (String charsetName : Charset.availableCharsets().keySet()) {
-			encodings[counter][0] = charsetName;
-			encodings[counter][1] = charsetName;
+			String[] encoding = encodings[counter];
+			encoding[0] = charsetName;
+			encoding[1] = charsetName;
 			counter++;
 		}
 		ComboFieldEditor comboFieldEditor = new ComboFieldEditor(

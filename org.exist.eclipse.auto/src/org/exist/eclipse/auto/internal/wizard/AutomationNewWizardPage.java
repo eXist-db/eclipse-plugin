@@ -19,8 +19,8 @@ import org.exist.eclipse.auto.data.Automation;
 public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 
 	/**
-	 * @param pageName
 	 * @param selection
+	 *            the selection object
 	 */
 	public AutomationNewWizardPage(IStructuredSelection selection) {
 		super("xquerynewwizardPage", selection);
@@ -31,7 +31,7 @@ public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 	/**
 	 * Creates the new file
 	 * 
-	 * @return
+	 * @return <code>true</code> if successful, <code>false</code> otherwise
 	 */
 	public boolean finish() {
 		createNewFile();
@@ -44,6 +44,7 @@ public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 			return new ByteArrayInputStream(Automation
 					.createEmptyAutomationXml().getBytes("UTF8"));
 		} catch (UnsupportedEncodingException e) {
+			// ignore
 			return null;
 		}
 	}

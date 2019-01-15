@@ -123,6 +123,7 @@ public class XPath/* @bgen(jjtree) */implements XPathTreeConstants,
 					NodeIterator testCases = ((DocumentTraversal) doc)
 							.createNodeIterator(doc, NodeFilter.SHOW_ELEMENT,
 									new NodeFilter() {
+										@Override
 										public short acceptNode(
 												org.w3c.dom.Node node) {
 											String nm = node.getNodeName();
@@ -139,6 +140,7 @@ public class XPath/* @bgen(jjtree) */implements XPathTreeConstants,
 								.createNodeIterator(testCase,
 										NodeFilter.SHOW_ELEMENT,
 										new NodeFilter() {
+											@Override
 											public short acceptNode(
 													org.w3c.dom.Node node) {
 												String nm = node.getNodeName();
@@ -16013,6 +16015,11 @@ public class XPath/* @bgen(jjtree) */implements XPathTreeConstants,
 	}
 
 	static private final class LookaheadSuccess extends java.lang.Error {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 	}
 
 	final private LookaheadSuccess jj_ls = new LookaheadSuccess();

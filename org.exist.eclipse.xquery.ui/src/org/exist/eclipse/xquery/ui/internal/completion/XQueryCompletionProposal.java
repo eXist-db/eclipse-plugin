@@ -26,6 +26,7 @@ public class XQueryCompletionProposal extends ScriptCompletionProposal {
 				displayString, relevance, isInDoc);
 	}
 
+	@Override
 	protected boolean isSmartTrigger(char trigger) {
 		if (trigger == '.') {
 			return true;
@@ -33,6 +34,7 @@ public class XQueryCompletionProposal extends ScriptCompletionProposal {
 		return false;
 	}
 
+	@Override
 	protected boolean insertCompletion() {
 		IPreferenceStore preference = XQueryCorePlugin.getDefault()
 				.getPreferenceStore();

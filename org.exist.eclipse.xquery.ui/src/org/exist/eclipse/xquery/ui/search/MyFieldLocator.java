@@ -13,7 +13,6 @@ import org.eclipse.dltk.internal.core.search.matching.FieldPattern;
 import org.eclipse.dltk.internal.core.search.matching.MatchingNodeSet;
 import org.exist.eclipse.xquery.core.XQueryVariableReference;
 
-@SuppressWarnings("restriction")
 public class MyFieldLocator extends FieldLocator {
 	public MyFieldLocator(SearchPattern pattern) {
 		super((FieldPattern) pattern);

@@ -23,23 +23,27 @@ public class ConnectionPool implements IConnectionPool {
 	 * @param autoContext
 	 */
 	public ConnectionPool(int count, IAutoContext autoContext) {
-		_queryRunners = new ArrayBlockingQueue<IQueryRunner>(count);
+		_queryRunners = new ArrayBlockingQueue<>(count);
 		initialize(count, autoContext);
 	}
 
+	@Override
 	public IQueryRunner getQueryRunner() {
 		try {
 			return _queryRunners.take();
 		} catch (InterruptedException e) {
+			// ignore
 			e.printStackTrace();
 			return null;
 		}
 	}
 
+	@Override
 	public void putQueryRunner(IQueryRunner queryRunner) {
 		try {
 			_queryRunners.put(queryRunner);
 		} catch (InterruptedException e) {
+			// ignore
 			e.printStackTrace();
 		}
 	}

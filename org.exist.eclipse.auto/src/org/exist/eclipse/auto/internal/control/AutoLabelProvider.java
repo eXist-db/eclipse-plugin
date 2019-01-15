@@ -19,6 +19,7 @@ import org.exist.eclipse.auto.internal.model.QueryEntity;
 public class AutoLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
+	@Override
 	public String getColumnText(Object obj, int index) {
 		if (obj instanceof QueryEntity) {
 			QueryEntity entity = (QueryEntity) obj;
@@ -27,6 +28,7 @@ public class AutoLabelProvider extends LabelProvider implements
 		return "---";
 	}
 
+	@Override
 	public Image getColumnImage(Object obj, int index) {
 		if (obj instanceof QueryEntity) {
 			return PlatformUI.getWorkbench().getSharedImages().getImage(

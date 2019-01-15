@@ -51,6 +51,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 	
 	class StackViewContentProvider implements ITreeContentProvider {
 
+		@Override
 		public Object[] getChildren(Object parentElement) {
 			if (parentElement instanceof XQueryDebugTarget) {
 				XQueryDebugTarget debugTarget = (XQueryDebugTarget) parentElement;
@@ -62,6 +63,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 			return new Object[0];
 		}
 
+		@Override
 		public Object getParent(Object element) {
 			if (element instanceof IDebugTarget) {
 				return null;
@@ -70,6 +72,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 			}
 		}
 
+		@Override
 		public boolean hasChildren(Object element) {
 			if (element instanceof IDebugElement) {
 				return getChildren(element).length > 0;
@@ -77,13 +80,16 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 			return false;
 		}
 
+		@Override
 		public Object[] getElements(Object inputElement) {
 			return getChildren(inputElement);
 		}
 
+		@Override
 		public void dispose() {
 		}
 
+		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 		
@@ -116,6 +122,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 		return null;
 	}
 
+	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		IAdaptable adaptable = DebugUITools.getDebugContext();
 		Object input = null;
@@ -130,6 +137,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 		getViewer().setInput(input);
 	}
 	
+	@Override
 	public void dispose() {
 		getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(IDebugUIConstants.ID_DEBUG_VIEW, this);
 		super.dispose();

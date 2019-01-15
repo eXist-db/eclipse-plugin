@@ -11,7 +11,7 @@ import org.eclipse.ui.IWorkbenchPage;
  * The time flow of the method is:
  * <ol>
  * <li>call {@link #init(IWorkbenchPage)}</li>
- * <li>call {@link #actionPerformed(IDocumentItem))}</li>
+ * <li>call {@link #actionPerformed(IDocumentItem[])}</li>
  * </ol>
  * 
  * @author Pascal Schmidiger

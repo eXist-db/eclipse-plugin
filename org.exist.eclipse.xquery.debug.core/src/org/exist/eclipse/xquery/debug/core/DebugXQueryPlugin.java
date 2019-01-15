@@ -21,44 +21,31 @@
  */
 package org.exist.eclipse.xquery.debug.core;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IPluginDescriptor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 
 /**
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
- *
+ * 
  */
 public class DebugXQueryPlugin extends Plugin {
-	
-	private static DebugXQueryPlugin fgDefault = null;
-	
+
+	private static DebugXQueryPlugin fgDefault;
+
 	public DebugXQueryPlugin() {
 		super();
 		fgDefault = this;
 	}
 
-	public DebugXQueryPlugin(IPluginDescriptor descriptor) {
-		super(descriptor);
-		fgDefault = this;
-	}
-	
 	public static DebugXQueryPlugin getDefault() {
 		return fgDefault;
 	}
 
-	public static File getFileInPlugin(IPath path) {
-		try {
-			URL installURL = new URL(getDefault().getDescriptor().getInstallURL(), path.toString());
-			URL localURL = Platform.asLocalURL(installURL);
-			return new File(localURL.getFile());
-		} catch (IOException ioe) {
-			return null;
-		}
+	/**
+	 * Returns a symbolic id of the plugin instance.
+	 * 
+	 * @return Id
+	 */
+	public static String getId() {
+		return getDefault().getBundle().getSymbolicName();
 	}
 }

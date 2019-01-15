@@ -20,7 +20,7 @@ public class XQueryPartitionScanner extends RuleBasedPartitionScanner {
 		IToken string = new Token(IXQueryPartitions.XQUERY_STRING);
 		IToken comment = new Token(IXQueryPartitions.XQUERY_COMMENT);
 
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 
 		rules.add(new MultiLineRule("(:", ":)", comment));
 

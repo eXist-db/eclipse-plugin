@@ -48,6 +48,15 @@ public interface IConnection extends IAdaptable {
 	public Collection getRoot();
 
 	/**
+	 * This method returns the collection for the given path
+	 * 
+	 * @param path
+	 *            the collection path name
+	 * @return the collection object
+	 */
+	public Collection getCollection(String path);
+
+	/**
 	 * This method opens a connection to the database.
 	 * 
 	 * @throws ConnectionException

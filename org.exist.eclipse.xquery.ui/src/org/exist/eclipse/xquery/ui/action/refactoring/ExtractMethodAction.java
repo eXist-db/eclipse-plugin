@@ -117,6 +117,7 @@ public class ExtractMethodAction extends ARefactorAction {
 
 		InputDialog dialog = new InputDialog(shell, "Extract Method",
 				"&Name or Signature", defaultName, new IInputValidator() {
+					@Override
 					public String isValid(String newText) {
 						// not displayed; just disable ok button
 						return newText.isEmpty() ? "" : null;
@@ -141,6 +142,7 @@ public class ExtractMethodAction extends ARefactorAction {
 				parent.getChildren()[2].setLayoutData(new GridData(0, 0));
 
 				final ModifyListener modifyListener = new ModifyListener() {
+					@Override
 					public void modifyText(ModifyEvent e) {
 						String signature = getSignature(text.getText());
 						if (signature.isEmpty()) {
@@ -161,6 +163,7 @@ public class ExtractMethodAction extends ARefactorAction {
 				parent.setTabList(new Control[] { text, replaceButton });
 
 				text.getDisplay().asyncExec(new Runnable() {
+					@Override
 					public void run() {
 						text.setSelection(defaultName.length()
 								- defaultMethodName.length(), defaultName

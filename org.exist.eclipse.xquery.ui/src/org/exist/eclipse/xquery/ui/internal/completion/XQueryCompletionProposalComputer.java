@@ -18,11 +18,13 @@ public class XQueryCompletionProposalComputer extends
 	public XQueryCompletionProposalComputer() {
 	}
 
+	@Override
 	protected ScriptCompletionProposalCollector createCollector(
 			ScriptContentAssistInvocationContext context) {
 		return new XQueryCompletionProposalCollector(context.getSourceModule());
 	}
 
+	@Override
 	protected TemplateCompletionProcessor createTemplateProposalComputer(
 			ScriptContentAssistInvocationContext context) {
 		return new XQueryTemplateCompletionProcessor(context);

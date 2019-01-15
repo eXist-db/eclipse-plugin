@@ -23,36 +23,44 @@ public class XQueryFoldingStructureProvider extends
 	// private IElementCommentResolver _elementCommentResolver = new
 	// DefaultElementCommentResolver();
 
+	@Override
 	public String getCommentPartition() {
 		return IXQueryPartitions.XQUERY_COMMENT;
 	}
 
+	@Override
 	protected ILog getLog() {
 		return XQueryUI.getDefault().getLog();
 	}
 
+	@Override
 	protected String getPartition() {
 		return IXQueryPartitions.XQUERY_PARTITIONING;
 	}
 
+	@Override
 	protected IPartitionTokenScanner getPartitionScanner() {
 		return new XQueryPartitionScanner();
 	}
 
+	@Override
 	protected String[] getPartitionTypes() {
 		return IXQueryPartitions.XQUERY_PARITION_TYPES;
 	}
 
+	@Override
 	protected String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}
 
+	@Override
 	protected void initializePreferences(IPreferenceStore store) {
 		super.initializePreferences(store);
 		fFoldNewLines = true;
 		_initCollapseComments = true;
 	}
 
+	@Override
 	protected boolean initiallyCollapse(ASTNode s,
 			FoldingStructureComputationContext ctx) {
 		return false;
@@ -63,6 +71,7 @@ public class XQueryFoldingStructureProvider extends
 		return ctx.allowCollapsing() && _initCollapseComments;
 	}
 
+	@Override
 	protected boolean mayCollapse(ASTNode s,
 			FoldingStructureComputationContext ctx) {
 		return true;

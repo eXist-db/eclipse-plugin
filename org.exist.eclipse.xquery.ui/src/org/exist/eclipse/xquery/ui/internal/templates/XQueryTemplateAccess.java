@@ -23,14 +23,17 @@ public class XQueryTemplateAccess extends ScriptTemplateAccess {
 		return instance;
 	}
 
+	@Override
 	protected String getContextTypeId() {
 		return XQueryUniversalTemplateContextType.CONTEXT_TYPE_ID;
 	}
 
+	@Override
 	protected String getCustomTemplatesKey() {
 		return CUSTOM_TEMPLATES_KEY;
 	}
 
+	@Override
 	protected IPreferenceStore getPreferenceStore() {
 		return XQueryUI.getDefault().getPreferenceStore();
 	}

@@ -21,7 +21,7 @@ public class BrowseItemInvisible extends BrowseItem {
 
 	public BrowseItemInvisible() {
 		super(null, "");
-		_children = new ArrayList<BrowseItem>();
+		_children = new ArrayList<>();
 	}
 
 	/**
@@ -35,8 +35,7 @@ public class BrowseItemInvisible extends BrowseItem {
 	}
 
 	public IBrowseItem[] getChildren() {
-		return (IBrowseItem[]) _children.toArray(new BrowseItem[_children
-				.size()]);
+		return _children.toArray(new BrowseItem[_children.size()]);
 	}
 
 	@Override

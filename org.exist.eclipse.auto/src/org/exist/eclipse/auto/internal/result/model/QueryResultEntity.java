@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import org.exist.eclipse.auto.query.State;
 
-
 /**
  * QueryResultEntity represents the result of all the runs of a specified query.
  * 
@@ -27,16 +26,12 @@ public class QueryResultEntity {
 	/**
 	 * QueryResultEntity Constructor
 	 * 
-	 * @param name
-	 * @param notes
-	 * @param quantity
-	 * @param query
-	 * @param time
-	 * @param runs
+	 * @param model
+	 *            the result model
 	 */
 	public QueryResultEntity(IResultModel model) {
 		_model = model;
-		_runs = new ArrayList<RunEntity>();
+		_runs = new ArrayList<>();
 		_model.addQueryResultEntity(this);
 	}
 
@@ -50,8 +45,7 @@ public class QueryResultEntity {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return the query notes
 	 */
 	public String getNotes() {
 		return _notes;
@@ -142,22 +136,22 @@ public class QueryResultEntity {
 	public void setAvgCompTime(int avgCompTime) {
 		_avgCompTime = avgCompTime;
 	}
-	
-	public boolean isSuccessful(){
+
+	public boolean isSuccessful() {
 		boolean successful = true;
 		for (RunEntity run : _runs) {
-			if(!run.getState().equals(State.SUCCESS)){
+			if (!run.getState().equals(State.SUCCESS)) {
 				successful = false;
 				break;
 			}
 		}
 		return successful;
 	}
-	
-	public long getResultCount(){
-		long count=0;
+
+	public long getResultCount() {
+		long count = 0;
 		for (RunEntity run : _runs) {
-			count+=run.getResultCount();
+			count += run.getResultCount();
 		}
 		return count;
 	}

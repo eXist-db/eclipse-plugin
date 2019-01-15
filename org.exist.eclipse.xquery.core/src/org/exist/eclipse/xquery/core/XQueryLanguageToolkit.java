@@ -18,14 +18,17 @@ public class XQueryLanguageToolkit extends AbstractLanguageToolkit {
 		return _default;
 	}
 
+	@Override
 	public String getLanguageName() {
 		return "XQuery";
 	}
 
+	@Override
 	public String getNatureId() {
 		return XQueryNature.NATURE_ID;
 	}
 
+	@Override
 	public String getLanguageContentType() {
 		return "org.exist.eclipse.xquery.core.content-type";
 	}

@@ -20,9 +20,9 @@ public class QueryEndEvent {
 	 *            of the query.
 	 * @param count
 	 *            of founded results
-	 * @param compiled
+	 * @param compiledTime
 	 *            of the query.
-	 * @param duration
+	 * @param executionTime
 	 *            of the query.
 	 */
 	public QueryEndEvent(int id, long count, long compiledTime,
@@ -35,7 +35,7 @@ public class QueryEndEvent {
 	 * 
 	 * @param id
 	 *            of the query.
-	 * @param compiled
+	 * @param compiledTime
 	 *            of the query
 	 * @param exception
 	 *            which throws while query running.

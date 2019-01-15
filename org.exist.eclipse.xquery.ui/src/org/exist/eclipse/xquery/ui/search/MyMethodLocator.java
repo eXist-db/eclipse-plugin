@@ -8,12 +8,12 @@ import org.eclipse.dltk.internal.core.search.matching.MatchingNodeSet;
 import org.eclipse.dltk.internal.core.search.matching.MethodLocator;
 import org.eclipse.dltk.internal.core.search.matching.MethodPattern;
 
-@SuppressWarnings("restriction")
 public class MyMethodLocator extends MethodLocator {
 	public MyMethodLocator(SearchPattern pattern) {
 		super((MethodPattern) pattern);
 	}
 
+	@Override
 	public int match(CallExpression node, MatchingNodeSet nodeSet) {
 		if (!this.pattern.findReferences) {
 			return IMPOSSIBLE_MATCH;

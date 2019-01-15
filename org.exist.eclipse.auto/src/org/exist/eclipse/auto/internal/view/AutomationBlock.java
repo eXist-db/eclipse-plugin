@@ -40,7 +40,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	private AutomationFormPage _page;
 	private AutoContentProvider _contentProvider;
 	private IAutoModel _autoModel;
-	private Collection<IAutoModificationListener> _modListeners = new ArrayList<IAutoModificationListener>();
+	private Collection<IAutoModificationListener> _modListeners;
 	private TableViewer _viewer;
 
 	/**
@@ -52,11 +52,13 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 */
 	public AutomationBlock(AutomationFormPage page,
 			AutoContentProvider contentProvider, IAutoModel autoModel) {
+		_modListeners = new ArrayList<>();
 		_page = page;
 		_contentProvider = contentProvider;
 		_autoModel = autoModel;
 	}
 
+	@Override
 	protected void createMasterPart(final IManagedForm managedForm,
 			Composite parent) {
 
@@ -86,6 +88,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 
 		_viewer = queriesSection.getTableViewer();
 		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				managedForm.fireSelectionChanged(spart, event.getSelection());
 			}
@@ -103,6 +106,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 * 
 	 * @param listener
 	 */
+	@Override
 	public void addModificationListener(IAutoModificationListener listener) {
 		_modListeners.add(listener);
 	}
@@ -112,6 +116,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 * 
 	 * @param event
 	 */
+	@Override
 	public void automationModified(AutoModEvent event) {
 		for (IAutoModificationListener listener : _modListeners) {
 			listener.automationModified(event);
@@ -126,16 +131,18 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 * 
 	 * @param event
 	 */
+	@Override
 	public void modificationCleared(AutoModEvent event) {
 		for (IAutoModificationListener listener : _modListeners) {
 			listener.modificationCleared(event);
 		}
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Actions
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
+	@Override
 	protected void createToolBarActions(IManagedForm managedForm) {
 
 		ToolBarActions toolBarActions = new ToolBarActions(managedForm,
@@ -143,14 +150,14 @@ public class AutomationBlock extends MasterDetailsBlock implements
 		toolBarActions.create();
 	}
 
-	protected void registerPages(DetailsPart detailsPart) {
-		detailsPart.registerPage(QueryEntity.class, new QueryDetailsSection(
-				this));
+	@Override
+	protected void registerPages(DetailsPart details) {
+		details.registerPage(QueryEntity.class, new QueryDetailsSection(this));
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	/**
 	 * Creates a given space between controls.

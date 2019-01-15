@@ -5,14 +5,19 @@ package org.exist.eclipse.xquery.core.internal.parser;
 
 import java.io.StringReader;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.dltk.ast.declarations.ModuleDeclaration;
 import org.eclipse.dltk.compiler.problem.DefaultProblem;
+import org.eclipse.dltk.compiler.problem.DefaultProblemIdentifier;
 import org.eclipse.dltk.compiler.problem.IProblem;
 import org.eclipse.dltk.compiler.problem.IProblemReporter;
 import org.eclipse.dltk.compiler.problem.ProblemSeverities;
+import org.exist.eclipse.xquery.core.XQueryCorePlugin;
 import org.exist.eclipse.xquery.core.internal.parser.visitors.ParserVisitor;
 import org.w3c.xqparser.ParseException;
 import org.w3c.xqparser.SimpleNode;
+import org.w3c.xqparser.Token;
 import org.w3c.xqparser.XPath;
 
 /**
@@ -76,11 +81,11 @@ public class XQueryParser {
 		for (int i = 1; i < lineCount; i++) {
 			boolean eof = false;
 			while (!eof && startPosOnLine < _content.length) {
-				int sign = (int) _content[startPosOnLine++];
+				int sign = _content[startPosOnLine++];
 
 				if (sign == 13) {
 					if ((startPosOnLine) < _content.length) {
-						int nextsign = (int) _content[startPosOnLine];
+						int nextsign = _content[startPosOnLine];
 						if (nextsign == 10) {
 							startPosOnLine++;
 						}
@@ -88,7 +93,7 @@ public class XQueryParser {
 					eof = true;
 				} else if (sign == 10) {
 					if ((startPosOnLine) < _content.length) {
-						int nextsign = (int) _content[startPosOnLine];
+						int nextsign = _content[startPosOnLine];
 						if (nextsign == 13) {
 							startPosOnLine++;
 						}
@@ -110,13 +115,14 @@ public class XQueryParser {
 
 	private void reportError(ParseException e) {
 		try {
-			String[] messages = { "Syntax Error: " + e.getMessage() };
+			String[] messages = { "Syntax Error: ".concat(e.getMessage()) };
 
-			int startPos = getStartPosition(0, e.currentToken.next.beginLine);
-			int endPos = getStartPosition(startPos, e.currentToken.next.endLine
-					- e.currentToken.next.beginLine);
-			startPos += (e.currentToken.next.beginColumn - 1);
-			endPos += (e.currentToken.next.endColumn);
+			Token token = e.currentToken.next;
+			int startPos = getStartPosition(0, token.beginLine);
+			int endPos = getStartPosition(startPos, token.endLine
+					- token.beginLine);
+			startPos += (token.beginColumn - 1);
+			endPos += (token.endColumn);
 
 			if (endPos > 0 && endPos > (_content.length - 1)) {
 				endPos = _content.length - 1;
@@ -125,14 +131,19 @@ public class XQueryParser {
 				startPos = 0;
 			}
 
-			DefaultProblem defaultProblem = new DefaultProblem(new String(
-					_fileName), messages[0], IProblem.Syntax, new String[] {},
-					ProblemSeverities.Error, startPos, endPos,
-					e.currentToken.next.beginLine - 1);
+			DefaultProblem defaultProblem = new DefaultProblem(
+					String.valueOf(_fileName), messages[0],
+					DefaultProblemIdentifier.decode(IProblem.Syntax),
+					new String[0], ProblemSeverities.Error, startPos, endPos,
+					token.beginLine - 1, token.beginColumn);
 
 			_problemReporter.reportProblem(defaultProblem);
 		} catch (Exception ignore) {
-
+			XQueryCorePlugin
+					.getDefault()
+					.getLog()
+					.log(new Status(IStatus.ERROR, XQueryCorePlugin.getId(),
+							"Unable to report problem", ignore));
 		}
 	}
 

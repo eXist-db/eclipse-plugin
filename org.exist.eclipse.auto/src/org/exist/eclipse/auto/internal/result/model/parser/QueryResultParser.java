@@ -31,6 +31,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 		_value = new StringBuilder(50);
 	}
 
+	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 
@@ -41,9 +42,11 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 		}
 	}
 
+	@Override
 	public void endDocument() throws SAXException {
 	}
 
+	@Override
 	public void endElement(String uri, String localName, String name)
 			throws SAXException {
 		if (RUNS.equals(name)) {
@@ -70,13 +73,16 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 		}
 	}
 
+	@Override
 	public void endPrefixMapping(String prefix) throws SAXException {
 	}
 
+	@Override
 	public void ignorableWhitespace(char[] ch, int start, int length)
 			throws SAXException {
 	}
 
+	@Override
 	public void processingInstruction(String target, String data)
 			throws SAXException {
 		if (_delegate != null) {
@@ -84,15 +90,19 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 		}
 	}
 
+	@Override
 	public void setDocumentLocator(Locator locator) {
 	}
 
+	@Override
 	public void skippedEntity(String name) throws SAXException {
 	}
 
+	@Override
 	public void startDocument() throws SAXException {
 	}
 
+	@Override
 	public void startElement(String uri, String localName, String name,
 			Attributes atts) throws SAXException {
 		if (_delegate != null) {
@@ -109,6 +119,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 		}
 	}
 
+	@Override
 	public void startPrefixMapping(String prefix, String uri)
 			throws SAXException {
 	}

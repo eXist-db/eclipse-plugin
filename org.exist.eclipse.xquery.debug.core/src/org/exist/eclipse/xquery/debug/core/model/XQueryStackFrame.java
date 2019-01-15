@@ -67,6 +67,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getCharEnd()
 	 */
+	@Override
 	public int getCharEnd() throws DebugException {
 		return -1;
 	}
@@ -74,6 +75,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getCharStart()
 	 */
+	@Override
 	public int getCharStart() throws DebugException {
 		return -1;
 	}
@@ -81,6 +83,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getLineNumber()
 	 */
+	@Override
 	public int getLineNumber() throws DebugException {
 		return fPC;
 	}
@@ -88,6 +91,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getName()
 	 */
+	@Override
 	public String getName() throws DebugException {
 		return fName;
 	}
@@ -95,6 +99,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getRegisterGroups()
 	 */
+	@Override
 	public IRegisterGroup[] getRegisterGroups() throws DebugException {
 		return null;
 	}
@@ -102,6 +107,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getThread()
 	 */
+	@Override
 	public IThread getThread() {
 		return fThread;
 	}
@@ -109,6 +115,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#getVariables()
 	 */
+	@Override
 	public IVariable[] getVariables() throws DebugException {
 		return fVariables;
 	}
@@ -116,6 +123,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#hasRegisterGroups()
 	 */
+	@Override
 	public boolean hasRegisterGroups() throws DebugException {
 		return false;
 	}
@@ -123,6 +131,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStackFrame#hasVariables()
 	 */
+	@Override
 	public boolean hasVariables() throws DebugException {
 		return fVariables.length > 0;
 	}
@@ -130,6 +139,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepInto()
 	 */
+	@Override
 	public boolean canStepInto() {
 		return getThread().canStepInto();
 	}
@@ -137,6 +147,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepOver()
 	 */
+	@Override
 	public boolean canStepOver() {
 		return getThread().canStepOver();
 	}
@@ -144,6 +155,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#canStepReturn()
 	 */
+	@Override
 	public boolean canStepReturn() {
 		return getThread().canStepReturn();
 	}
@@ -151,6 +163,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#isStepping()
 	 */
+	@Override
 	public boolean isStepping() {
 		return getThread().isStepping();
 	}
@@ -158,6 +171,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepInto()
 	 */
+	@Override
 	public void stepInto() throws DebugException {
 		getThread().stepInto();
 	}
@@ -165,6 +179,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepOver()
 	 */
+	@Override
 	public void stepOver() throws DebugException {
 		getThread().stepOver();
 	}
@@ -172,6 +187,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IStep#stepReturn()
 	 */
+	@Override
 	public void stepReturn() throws DebugException {
 		getThread().stepReturn();
 	}
@@ -179,6 +195,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canResume()
 	 */
+	@Override
 	public boolean canResume() {
 		return getThread().canResume();
 	}
@@ -186,6 +203,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canSuspend()
 	 */
+	@Override
 	public boolean canSuspend() {
 		return getThread().canSuspend();
 	}
@@ -193,6 +211,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#isSuspended()
 	 */
+	@Override
 	public boolean isSuspended() {
 		return getThread().isSuspended();
 	}
@@ -200,6 +219,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#resume()
 	 */
+	@Override
 	public void resume() throws DebugException {
 		getThread().resume();
 	}
@@ -207,6 +227,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ISuspendResume#suspend()
 	 */
+	@Override
 	public void suspend() throws DebugException {
 		getThread().resume();
 	}
@@ -214,6 +235,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#canTerminate()
 	 */
+	@Override
 	public boolean canTerminate() {
 		return getThread().canTerminate();
 	}
@@ -221,6 +243,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#isTerminated()
 	 */
+	@Override
 	public boolean isTerminated() {
 		return getThread().isTerminated();
 	}
@@ -228,6 +251,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.ITerminate#terminate()
 	 */
+	@Override
 	public void terminate() throws DebugException {
 		getThread().terminate();
 	}
@@ -236,6 +260,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fFileName;
 	}
 	
+	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof XQueryStackFrame) {
 			XQueryStackFrame sf = (XQueryStackFrame) obj;
@@ -249,6 +274,7 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return false;
 	}
 	
+	@Override
 	public int hashCode() {
 		return getSourceName().hashCode() + fId;
 	}

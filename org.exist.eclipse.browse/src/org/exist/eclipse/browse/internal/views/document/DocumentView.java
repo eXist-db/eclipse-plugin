@@ -95,6 +95,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
 	 */
+	@Override
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.marginHeight = 2;
@@ -148,11 +149,13 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_textFilter.addModifyListener(new ModifyListener() {
 
 			Runnable _refresher = new Runnable() {
+				@Override
 				public void run() {
 					refresh();
 				}
 			};
 
+			@Override
 			public void modifyText(ModifyEvent e) {
 				e.display.timerExec(-1, _refresher);
 				e.display.timerExec(e.display.getDoubleClickTime(), _refresher);
@@ -179,6 +182,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		new TableColumn(_viewer.getTable(), SWT.NONE);
 		_viewer.getControl().addKeyListener(new DocumentKeyAdapter(this));
 		_viewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				IDocumentItem first = (IDocumentItem) ((IStructuredSelection) _viewer
 						.getSelection()).getFirstElement();
@@ -223,18 +227,22 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
+	@Override
 	public void setFocus() {
 		_viewer.getControl().setFocus();
 	}
 
+	@Override
 	public void added(IConnection connection) {
 		// do nothing
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 		// do nothing
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 		if (_item != null && connection != null) {
 			if (connection.equals(_item.getConnection())) {
@@ -243,14 +251,17 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		}
 	}
 
+	@Override
 	public void opened(IConnection connection) {
 		// do nothing
 	}
 
+	@Override
 	public void added(IBrowseItem item) {
 		// do nothing
 	}
 
+	@Override
 	public void removed(IBrowseItem[] items) {
 		if (items != null) {
 			for (IBrowseItem item : items) {
@@ -262,6 +273,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		}
 	}
 
+	@Override
 	public void refresh(IBrowseItem item) {
 		if (item != null) {
 			if (item.equals(_item)) {
@@ -270,6 +282,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		}
 	}
 
+	@Override
 	public void moved(IBrowseItem fromItem, IBrowseItem toItem) {
 		if (fromItem.equals(_item)) {
 			setItemInternal(toItem);
@@ -277,6 +290,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 
 	}
 
+	@Override
 	public void removed(IDocumentItem item) {
 		if (item != null) {
 			if (item.getParent().equals(_item)) {
@@ -285,6 +299,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		}
 	}
 
+	@Override
 	public void moved(IDocumentItem fromItem, IDocumentItem toItem) {
 		if (fromItem.getParent().equals(_item)) {
 			setItem(toItem.getParent());
@@ -347,7 +362,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				&& IBrowseService.class.cast(
 						getItem().getAdapter(IBrowseService.class)).check()) {
 			String[] elements;
-			TreeSet<String> sorted = new TreeSet<String>();
+			TreeSet<String> sorted = new TreeSet<>();
 			try {
 				elements = getItem().getCollection().listResources();
 				String filter = _textFilter.getText().toLowerCase();
@@ -366,7 +381,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				StringBuilder message = new StringBuilder(50).append(
 						"Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 						message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 				BrowsePlugin.getDefault().errorDialog(message.toString(),
@@ -375,7 +390,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 				StringBuilder message = new StringBuilder(50).append(
 						"Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 						message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 				BrowsePlugin.getDefault().errorDialog(message.toString(),
@@ -401,6 +416,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
+			@Override
 			public void menuAboutToShow(IMenuManager manager) {
 				DocumentView.this.fillContextMenu(manager);
 			}

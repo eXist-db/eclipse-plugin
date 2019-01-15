@@ -43,17 +43,18 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 	}
 
 	/**
-	 * @return nullable
+	 * @return the found token or <code>null</code> if it does not exist
 	 */
 	public static Token findFirstToken(SimpleNode node) {
 		final Token[] t = { node.getToken() };
 		if (t[0] == null) {
 			node.childrenAccept(new XPathVisitor() {
-				public Object visit(SimpleNode node, Object data) {
+				@Override
+				public Object visit(SimpleNode visitedNode, Object data) {
 					if (t[0] == null) {
-						t[0] = node.getToken();
+						t[0] = visitedNode.getToken();
 						if (t[0] == null) {
-							node.childrenAccept(this, null);
+							visitedNode.childrenAccept(this, null);
 						}
 					}
 					return null;
@@ -63,7 +64,7 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 		return t[0];
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object visit(SimpleNode node, Object data) {
 
 		if (_lastMethod != null) {
@@ -99,8 +100,8 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 			for (Object a : _lastMethod.getArguments()) {
 				Argument arg = (Argument) a;
 				XQueryFieldDeclaration fieldDeclaration = new XQueryFieldDeclaration(
-						_lastMethod, arg.getName(), arg.getNameStart(), arg
-								.getNameEnd());
+						_lastMethod, arg.getName(), arg.getNameStart(),
+						arg.getNameEnd());
 				fieldDeclaration.setModifiers(Modifier.PRIVATE);
 				_lastMethod.getStatements().add(fieldDeclaration);
 			}
@@ -150,7 +151,6 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 		return node.childrenAccept(this, data);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void addStatementToLastMethodOrModule(Statement field) {
 		if (_lastMethod != null) {
 			_lastMethod.getStatements().add(field);

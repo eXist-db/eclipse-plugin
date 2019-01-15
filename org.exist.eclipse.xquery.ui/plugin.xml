@@ -71,7 +71,7 @@
       <wizard
             canFinishEarly="false"
             category="org.exist.eclipse.xquery.ui.category"
-            class="org.eclipse.dltk.ui.wizards.GenericDLTKProjectWizard:org.exist.eclipse.xquery.core.nature"
+            class="org.exist.eclipse.xquery.ui.internal.wizards.NewXQueryProjectWizard"
             icon="icons/exist_icon.gif"
             id="org.exist.eclipse.xquery.core.wizard.project"
             name="XQuery Project"

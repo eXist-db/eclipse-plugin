@@ -36,14 +36,17 @@ public class QueryRunner implements IQueryRunner {
 		_connection = connection;
 	}
 
+	@Override
 	public void close() {
 		try {
 			_connection.close();
 		} catch (ConnectionException e) {
+			// ignore
 			e.printStackTrace();
 		}
 	}
 
+	@Override
 	public IQueryResult runQuery(IQueryResult result) {
 
 		XQueryService service;
@@ -82,7 +85,7 @@ public class QueryRunner implements IQueryRunner {
 				try {
 					resourceSet.clear();
 				} catch (XMLDBException e) {
-					// do nothing
+					// ignore
 				}
 			}
 		}

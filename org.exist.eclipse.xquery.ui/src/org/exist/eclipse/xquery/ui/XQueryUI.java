@@ -36,11 +36,13 @@ public class XQueryUI extends AbstractUIPlugin {
 	public XQueryUI() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		_plugin = this;
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		_plugin = null;
 		super.stop(context);
@@ -53,6 +55,15 @@ public class XQueryUI extends AbstractUIPlugin {
 	 */
 	public static XQueryUI getDefault() {
 		return _plugin;
+	}
+
+	/**
+	 * Returns a symbolic id of the plugin instance.
+	 * 
+	 * @return Id
+	 */
+	public static String getId() {
+		return getDefault().getBundle().getSymbolicName();
 	}
 
 	public synchronized XQueryTextTools getTextTools() {

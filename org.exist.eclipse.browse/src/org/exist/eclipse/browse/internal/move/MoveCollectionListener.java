@@ -17,6 +17,7 @@ public class MoveCollectionListener implements IBrowseListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseService service = (IBrowseService) items[0]
 				.getAdapter(IBrowseService.class);
@@ -29,6 +30,7 @@ public class MoveCollectionListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

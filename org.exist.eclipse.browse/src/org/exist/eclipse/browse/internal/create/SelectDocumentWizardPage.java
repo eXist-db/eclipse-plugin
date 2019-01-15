@@ -28,9 +28,10 @@ public class SelectDocumentWizardPage extends WizardPage {
 	public SelectDocumentWizardPage() {
 		super("selectdocumentwizardpage");
 		setDescription("Select the document type");
-		_configurations = new HashMap<String, IConfigurationElement>();
+		_configurations = new HashMap<>();
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -51,9 +52,11 @@ public class SelectDocumentWizardPage extends WizardPage {
 				button = new Button(container, SWT.RADIO);
 				button.setText(name);
 				button.addSelectionListener(new SelectionListener() {
+					@Override
 					public void widgetDefaultSelected(SelectionEvent e) {
 					}
 
+					@Override
 					public void widgetSelected(SelectionEvent e) {
 						EnterDocumentWizardPage nextPage = (EnterDocumentWizardPage) getNextPage();
 						IConfigurationElement configurationElement = _configurations

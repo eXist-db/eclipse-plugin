@@ -21,6 +21,7 @@ public class ViewLabelProvider extends LabelProvider {
 	private Image _imgConnectionOpen;
 	private Image _imgConnectionClose;
 
+	@Override
 	public String getText(Object obj) {
 		String text;
 		if (obj instanceof IBrowseItem || obj instanceof IConnection) {
@@ -31,6 +32,7 @@ public class ViewLabelProvider extends LabelProvider {
 		return text;
 	}
 
+	@Override
 	public Image getImage(Object obj) {
 		if (obj instanceof IBrowseItem) {
 			return getFolderImage();

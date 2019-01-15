@@ -25,7 +25,7 @@ public class ViewRegistration {
 	}
 
 	private ViewRegistration() {
-		_listeners = new ArrayList<IViewListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	public void addListener(IViewListener listener) {

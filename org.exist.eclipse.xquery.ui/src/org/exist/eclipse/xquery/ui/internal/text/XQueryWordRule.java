@@ -35,17 +35,19 @@ public class XQueryWordRule implements IRule {
 	 */
 	protected IToken _defaultToken;
 	/** The column constraint */
-	protected int _column = UNDEFINED;
+	protected int _column;
 	/** The table of predefined words and token for this rule */
-	protected Map<String, IToken> _words = new HashMap<String, IToken>();
-	/** Buffer used for pattern detection */
-	private StringBuffer _buffer = new StringBuffer();
+	protected Map<String, IToken> _words;
+	/**
+	 * Buffer used for pattern detection
+	 */
+	private StringBuilder _buffer;
 
 	private final IToken _argumentToken;
 
 	private final IToken _funcToken;
 
-	private String _lastFound = "";
+	private String _lastFound;
 
 	/**
 	 * Creates a rule which, with the help of a word detector, will return the
@@ -58,7 +60,7 @@ public class XQueryWordRule implements IRule {
 	 * @param defaultToken
 	 *            the default token to be returned on success if nothing else is
 	 *            specified, may not be <code>null</code>
-	 * @param funcNameToken
+	 * @param funcToken
 	 *            token for function name
 	 * @param argumentToken
 	 *            token for arguments
@@ -67,6 +69,10 @@ public class XQueryWordRule implements IRule {
 	 */
 	public XQueryWordRule(IWordDetector detector, IToken defaultToken,
 			IToken funcToken, IToken argumentToken) {
+		_lastFound = "";
+		_buffer = new StringBuilder();
+		_words = new HashMap<>();
+		_column = UNDEFINED;
 		Assert.isNotNull(detector);
 		Assert.isNotNull(defaultToken);
 
@@ -103,11 +109,13 @@ public class XQueryWordRule implements IRule {
 	 *            the column in which the pattern starts
 	 */
 	public void setColumnConstraint(int column) {
-		if (column < 0)
+		if (column < 0) {
 			column = UNDEFINED;
+		}
 		_column = column;
 	}
 
+	@Override
 	public IToken evaluate(ICharacterScanner scanner) {
 		int c = scanner.read();
 		if (_detector.isWordStart((char) c)) {
@@ -122,7 +130,7 @@ public class XQueryWordRule implements IRule {
 				scanner.unread();
 
 				String str = _buffer.toString();
-				IToken token = (IToken) _words.get(str);
+				IToken token = _words.get(str);
 				if (token != null) {
 					_lastFound = str;
 					return token;
@@ -139,7 +147,6 @@ public class XQueryWordRule implements IRule {
 				if ((_lastFound.equals("function"))) {
 					_lastFound = str;
 					return _funcToken;
-				} else {
 				}
 				return _defaultToken;
 			}
@@ -156,7 +163,8 @@ public class XQueryWordRule implements IRule {
 	 *            the scanner to be used
 	 */
 	protected void unreadBuffer(ICharacterScanner scanner) {
-		for (int i = _buffer.length() - 1; i >= 0; i--)
+		for (int i = _buffer.length() - 1; i >= 0; i--) {
 			scanner.unread();
+		}
 	}
 }

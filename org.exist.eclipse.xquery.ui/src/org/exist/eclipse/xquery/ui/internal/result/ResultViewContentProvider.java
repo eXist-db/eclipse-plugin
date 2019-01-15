@@ -20,15 +20,18 @@ public class ResultViewContentProvider implements ILazyContentProvider {
 	ResultViewContentProvider() {
 	}
 
+	@Override
 	public void inputChanged(Viewer v, Object oldInput, Object newInput) {
 		_viewer = (TableViewer) v;
 		_elements = (ResultItem[]) newInput;
 	}
 
+	@Override
 	public void updateElement(int index) {
 		_viewer.replace(_elements[index], index);
 	}
 
+	@Override
 	public void dispose() {
 	}
 }

@@ -44,6 +44,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IVariable#getName()
 	 */
+	@Override
 	public String getName() throws DebugException {
 		return fName;
 	}
@@ -51,6 +52,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IVariable#getReferenceTypeName()
 	 */
+	@Override
 	public String getReferenceTypeName() throws DebugException {
 		// TODO Auto-generated method stub
 		return null;
@@ -59,6 +61,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IVariable#getValue()
 	 */
+	@Override
 	public IValue getValue() throws DebugException {
 		return ((XQueryDebugTarget)getDebugTarget()).getVariableValue(this);
 	}
@@ -66,6 +69,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IVariable#hasValueChanged()
 	 */
+	@Override
 	public boolean hasValueChanged() throws DebugException {
 		// TODO Auto-generated method stub
 		return false;
@@ -74,6 +78,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IValueModification#setValue(java.lang.String)
 	 */
+	@Override
 	public void setValue(String arg0) throws DebugException {
 		// TODO Auto-generated method stub
 
@@ -82,6 +87,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IValueModification#setValue(org.eclipse.debug.core.model.IValue)
 	 */
+	@Override
 	public void setValue(IValue arg0) throws DebugException {
 		// TODO Auto-generated method stub
 
@@ -90,6 +96,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IValueModification#supportsValueModification()
 	 */
+	@Override
 	public boolean supportsValueModification() {
 		return false;
 	}
@@ -97,6 +104,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(java.lang.String)
 	 */
+	@Override
 	public boolean verifyValue(String arg0) throws DebugException {
 		// TODO Auto-generated method stub
 		return false;
@@ -105,6 +113,7 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(org.eclipse.debug.core.model.IValue)
 	 */
+	@Override
 	public boolean verifyValue(IValue arg0) throws DebugException {
 		// TODO Auto-generated method stub
 		return false;

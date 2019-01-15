@@ -19,6 +19,7 @@ import org.exist.eclipse.listener.IViewListener;
  */
 public class BrowseViewListener implements IViewListener {
 
+	@Override
 	public void openView(IWorkbenchPage page) {
 		try {
 			page.showView(BrowseView.ID);

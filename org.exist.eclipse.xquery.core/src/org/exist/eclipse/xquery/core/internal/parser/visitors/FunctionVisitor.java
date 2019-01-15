@@ -29,6 +29,7 @@ public class FunctionVisitor implements XPathVisitor, NodeTypes {
 		_parser = parser;
 	}
 
+	@Override
 	public Object visit(SimpleNode node, Object data) {
 		if (QNAME.equals(node.toString()) && _name == null) {
 			int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node

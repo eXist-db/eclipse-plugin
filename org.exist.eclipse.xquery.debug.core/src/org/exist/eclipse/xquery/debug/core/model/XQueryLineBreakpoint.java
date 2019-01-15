@@ -21,8 +21,6 @@
  */
 package org.exist.eclipse.xquery.debug.core.model;
 
-import java.security.acl.Owner;
-
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRunnable;
@@ -43,6 +41,7 @@ public class XQueryLineBreakpoint extends LineBreakpoint {
 
 	public XQueryLineBreakpoint(final IResource resource, final int lineNumber) throws CoreException {
 		IWorkspaceRunnable runnable = new IWorkspaceRunnable() {
+			@Override
 			public void run(IProgressMonitor monitor) throws CoreException {
 				IMarker marker = resource.createMarker("org.exist.eclipse.xquery.debug.core.markerType.lineBreakpoit");
 				setMarker(marker);
@@ -58,6 +57,7 @@ public class XQueryLineBreakpoint extends LineBreakpoint {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.model.IBreakpoint#getModelIdentifier()
 	 */
+	@Override
 	public String getModelIdentifier() {
 		return IXQueryConstants.ID_XQUERY_DEBUG_MODEL;
 	}

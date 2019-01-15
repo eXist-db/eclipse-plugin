@@ -27,6 +27,11 @@ import java.io.UnsupportedEncodingException;
 
 @SuppressWarnings("all")
 public class XPathApplet extends Applet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	boolean isStandalone = false;
 
 	Button button1 = new Button();
@@ -55,6 +60,7 @@ public class XPathApplet extends Applet {
 	}
 
 	/** Initialize the applet */
+	@Override
 	public void init() {
 		try {
 			jbInit();
@@ -86,23 +92,28 @@ public class XPathApplet extends Applet {
 	}
 
 	/** Start the applet */
+	@Override
 	public void start() {
 	}
 
 	/** Stop the applet */
+	@Override
 	public void stop() {
 	}
 
 	/** Destroy the applet */
+	@Override
 	public void destroy() {
 	}
 
 	/** Get Applet information */
+	@Override
 	public String getAppletInfo() {
 		return "Applet Information";
 	}
 
 	/** Get parameter info */
+	@Override
 	public String[][] getParameterInfo() {
 		return null;
 	}

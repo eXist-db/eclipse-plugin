@@ -41,11 +41,13 @@ public class RunAutoWizard extends Wizard implements IWorkbenchWizard {
 		_autoModel = autoModel;
 	}
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_contextWizardPage = new RunAutoContextPage();
 		setNeedsProgressMonitor(true);
 	}
 
+	@Override
 	public void addPages() {
 		addPage(_contextWizardPage);
 	}

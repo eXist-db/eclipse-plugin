@@ -9,6 +9,7 @@ import org.eclipse.core.resources.IEncodedStorage;
 import org.eclipse.core.resources.IStorage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.xquery.ui.XQueryUI;
 
@@ -27,6 +28,7 @@ public class QueryResultStorage implements IEncodedStorage {
 		_encoding = Charset.forName(ENCODING_DEFAULT);
 	}
 
+	@Override
 	public InputStream getContents() throws CoreException {
 		InputStream is = null;
 		try {
@@ -35,21 +37,24 @@ public class QueryResultStorage implements IEncodedStorage {
 		} catch (UnsupportedEncodingException e) {
 			StringBuilder message = new StringBuilder(50)
 					.append("Error while loading text'");
-			throw new CoreException(new Status(Status.ERROR,
+			throw new CoreException(new Status(IStatus.ERROR,
 					XQueryUI.PLUGIN_ID, message.toString(), e));
 		}
 		return is;
 
 	}
 
+	@Override
 	public String getCharset() throws CoreException {
 		return _encoding.name();
 	}
 
+	@Override
 	public IPath getFullPath() {
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		StringBuilder name = new StringBuilder();
 		name.append(_item.getGroup()).append("_").append(_item.getUniqueNr())
@@ -57,11 +62,12 @@ public class QueryResultStorage implements IEncodedStorage {
 		return name.toString();
 	}
 
+	@Override
 	public boolean isReadOnly() {
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class adapter) {
 		return null;
 	}

@@ -33,6 +33,7 @@ public class XQuerySourceLookupDirector extends AbstractSourceLookupDirector {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.core.sourcelookup.ISourceLookupDirector#initializeParticipants()
 	 */
+	@Override
 	public void initializeParticipants() {
 		addParticipants(new ISourceLookupParticipant[]{new XQuerySourceLookupParticipant()});
 	}

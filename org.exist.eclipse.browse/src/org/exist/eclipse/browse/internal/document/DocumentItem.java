@@ -17,12 +17,13 @@ import org.xmldb.api.base.XMLDBException;
  * @author Pascal Schmidiger
  */
 public class DocumentItem implements IDocumentItem {
-
 	private final String _name;
+	private final String _basePath;
 	private final IBrowseItem _parent;
 
 	public DocumentItem(String name, IBrowseItem parent) {
 		_name = name;
+		_basePath = parent.getPath().concat("/");
 		_parent = parent;
 	}
 
@@ -32,6 +33,7 @@ public class DocumentItem implements IDocumentItem {
 	 * @see
 	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#exists()
 	 */
+	@Override
 	public boolean exists() {
 		boolean exist = false;
 		if (IBrowseService.class.cast(_parent.getAdapter(IBrowseService.class))
@@ -51,6 +53,7 @@ public class DocumentItem implements IDocumentItem {
 	 * @see
 	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getName()
 	 */
+	@Override
 	public final String getName() {
 		return _name;
 	}
@@ -62,6 +65,7 @@ public class DocumentItem implements IDocumentItem {
 	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getResource
 	 * ()
 	 */
+	@Override
 	public Resource getResource() throws ConnectionException {
 		try {
 			return getParent().getCollection().getResource(getName());
@@ -77,6 +81,7 @@ public class DocumentItem implements IDocumentItem {
 	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getParent
 	 * ()
 	 */
+	@Override
 	public IBrowseItem getParent() {
 		return _parent;
 	}
@@ -87,8 +92,9 @@ public class DocumentItem implements IDocumentItem {
 	 * @see
 	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getPath()
 	 */
+	@Override
 	public String getPath() {
-		return getParent().getPath() + "/" + getName();
+		return _basePath.concat(_name);
 	}
 
 	@Override
@@ -96,7 +102,7 @@ public class DocumentItem implements IDocumentItem {
 		return getName();
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IDocumentService.class.getName())) {
 			return new DocumentService(this);
@@ -105,15 +111,19 @@ public class DocumentItem implements IDocumentItem {
 	}
 
 	@Override
+	public int hashCode() {
+		return getPath().hashCode();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		boolean isEquals = false;
-		if (obj != null && obj instanceof DocumentItem) {
-			DocumentItem item = DocumentItem.class.cast(obj);
-			isEquals = item.getPath().equals(getPath());
-			if (isEquals) {
-				isEquals = item.getParent().equals(getParent());
-			}
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof DocumentItem)) {
+			return false;
 		}
-		return isEquals;
+		DocumentItem other = DocumentItem.class.cast(obj);
+		return getPath().equals(other.getPath())
+				&& getParent().equals(other.getParent());
 	}
 }

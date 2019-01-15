@@ -26,23 +26,26 @@ public class XQueryMethod implements IXQueryMethod {
 		_comment = comment;
 	}
 
+	@Override
 	public int getFlags() {
 		return Modifier.PUBLIC;
 	}
 
+	@Override
 	public String[] getParameterNames() {
 		parseSignature();
 		return _parameterNames.toArray(new String[_parameterNames.size()]);
 	}
 
+	@Override
 	public String[] getParameterTypes() {
 		parseSignature();
 		return _parameterTypes.toArray(new String[_parameterTypes.size()]);
 	}
 
 	private void parseSignature() {
-		_parameterNames = new ArrayList<String>();
-		_parameterTypes = new ArrayList<String>();
+		_parameterNames = new ArrayList<>();
+		_parameterTypes = new ArrayList<>();
 
 		String signature = getSignature();
 
@@ -80,14 +83,17 @@ public class XQueryMethod implements IXQueryMethod {
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public String getSignature() {
 		return _signature;
 	}
 
+	@Override
 	public String getComment() {
 		return _comment;
 	}

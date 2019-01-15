@@ -26,6 +26,7 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 	public BrowseDeferredAdapter() {
 	}
 
+	@Override
 	public void fetchDeferredChildren(Object object,
 			IElementCollector collector, IProgressMonitor monitor) {
 		if (object instanceof IBrowseItem) {
@@ -41,13 +42,18 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 				job.schedule();
 				job.join();
 			} catch (InterruptedException e) {
+				BrowsePlugin
+						.getDefault()
+						.getLog()
+						.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
+								"Fetching deferred children interrupted.", e));
 				Thread.currentThread().interrupt();
 			} catch (Exception e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while fetching children for collection '")
+				StringBuilder message = new StringBuilder(50)
+						.append("Error while fetching children for collection '")
 						.append(item).append("'");
-				IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
-						message.toString(), e);
+				IStatus status = new Status(IStatus.ERROR,
+						BrowsePlugin.getId(), message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 			} finally {
 				monitor.done();
@@ -55,26 +61,32 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 		}
 	}
 
+	@Override
 	public ISchedulingRule getRule(Object object) {
 		return null;
 	}
 
+	@Override
 	public boolean isContainer() {
 		return false;
 	}
 
+	@Override
 	public Object[] getChildren(Object o) {
 		return null;
 	}
 
+	@Override
 	public ImageDescriptor getImageDescriptor(Object object) {
 		return null;
 	}
 
+	@Override
 	public String getLabel(Object o) {
 		return null;
 	}
 
+	@Override
 	public Object getParent(Object o) {
 		return null;
 	}

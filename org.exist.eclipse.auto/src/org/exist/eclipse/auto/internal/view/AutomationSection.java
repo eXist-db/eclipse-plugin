@@ -15,6 +15,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.exist.eclipse.auto.internal.mod.AutoModEvent;
@@ -50,7 +51,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	 */
 	public void init() {
 		Section autoSection = _toolkit.createSection(_navigation,
-				Section.TITLE_BAR);
+				ExpandableComposite.TITLE_BAR);
 		autoSection.setText("Automation Details");
 		autoSection
 				.setDescription("Automation specific values can be edited here.");
@@ -119,16 +120,19 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	// Actions
 	// --------------------------------------------------------------------------
 
+	@Override
 	public void modifyText(ModifyEvent e) {
 		handleThreadCountInput();
 		handleQueryOrderTypeInput();
 		handleNoteInput();
 	}
 
+	@Override
 	public void focusGained(FocusEvent e) {
 		// This event is not of interest
 	}
 
+	@Override
 	public void focusLost(FocusEvent e) {
 		if (_threadCount.getText().compareTo("") == 0) {
 			_threadCount.setText("1");

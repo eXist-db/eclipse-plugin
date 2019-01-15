@@ -21,7 +21,6 @@ public class NewXQueryFileWizardPage extends WizardNewFileCreationPage {
 	private IFile _newFile;
 
 	/**
-	 * @param pageName
 	 * @param selection
 	 */
 	public NewXQueryFileWizardPage(IStructuredSelection selection) {
@@ -52,7 +51,7 @@ public class NewXQueryFileWizardPage extends WizardNewFileCreationPage {
 	protected InputStream getInitialContents() {
 		StringBuilder input = new StringBuilder();
 		input.append("(:\n");
-		input.append(getFileName()).append("\n");
+		input.append(getFileName()).append('\n');
 		input.append(":)\n");
 		input.append("xquery version \"1.0\";\n\n");
 		input.append("//*");

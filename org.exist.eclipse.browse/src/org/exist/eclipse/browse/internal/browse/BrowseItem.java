@@ -19,25 +19,29 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
+public class BrowseItem implements IBrowseItem {
 	private static final String DELIMITER = "/";
-	private IBrowseItem _parent;
+
 	private final String _path;
 	private final IConnection _connection;
+
+	private Collection _collection;
+	private IBrowseItem _parent;
 
 	/**
 	 * Create a new item.
 	 * 
-	 * @param name
-	 *            of the item.
-	 * @param collection
-	 *            a valid collection from the XMLDB.
+	 * @param connection
+	 *            the connection object
+	 * @param path
+	 *            the actual collection path
 	 */
 	public BrowseItem(IConnection connection, String path) {
 		_connection = connection;
 		_path = path;
 	}
 
+	@Override
 	public IBrowseItem getChild(String name) {
 		if (name.startsWith(DELIMITER)) {
 			name.substring(1);
@@ -57,32 +61,42 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		}
 	}
 
+	@Override
 	public boolean exists() {
 		try {
 			return getCollection() != null;
 		} catch (ConnectionException e) {
+			// ignore
 			return false;
 		}
 	}
 
+	@Override
 	public final Collection getCollection() throws ConnectionException {
-		IManagementService service = IManagementService.class.cast(_connection
-				.getAdapter(IManagementService.class));
-		return service.getCollection(getPath());
+		if (_collection == null) {
+			IManagementService service = IManagementService.class
+					.cast(_connection.getAdapter(IManagementService.class));
+			_collection = service.getCollection(getPath());
+		}
+		return _collection;
 	}
 
+	@Override
 	public IDocumentItem getDocument(String name) {
 		return new DocumentItem(name, this);
 	}
 
+	@Override
 	public IBrowseItem getParent() {
 		return _parent;
 	}
 
+	@Override
 	public String getPath() {
 		return _path;
 	}
 
+	@Override
 	public boolean hasChildren() throws ConnectionException {
 		boolean has = false;
 		try {
@@ -93,6 +107,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		return has;
 	}
 
+	@Override
 	public boolean hasDocuments() throws ConnectionException {
 		boolean has = false;
 		try {
@@ -103,6 +118,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		return has;
 	}
 
+	@Override
 	public boolean isRoot() {
 		return getParent() == null
 				|| (getParent() instanceof BrowseItemInvisible);
@@ -118,6 +134,7 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		_parent = parent;
 	}
 
+	@Override
 	public String getName() {
 		int index = getPath().lastIndexOf(DELIMITER);
 		if (index == -1) {
@@ -133,23 +150,28 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		boolean isEquals = false;
-		if (obj != null && obj instanceof BrowseItem) {
-			BrowseItem item = BrowseItem.class.cast(obj);
-			isEquals = item.getPath().equals(getPath());
-			if (isEquals) {
-				isEquals = item.getConnection().equals(getConnection());
-			}
-		}
-		return isEquals;
+	public int hashCode() {
+		return getPath().hashCode();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof BrowseItem)) {
+			return false;
+		}
+		BrowseItem item = (BrowseItem) obj;
+		return getPath().equals(item.getPath())
+				&& getConnection().equals(item.getConnection());
+	}
+
+	@Override
 	public IConnection getConnection() {
 		return _connection;
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IBrowseService.class.getName())) {
 			return new BrowseService(this);
@@ -157,10 +179,12 @@ public class BrowseItem implements IBrowseItem, Comparable<IBrowseItem> {
 		return null;
 	}
 
+	@Override
 	public int compareTo(IBrowseItem o) {
 		return getPath().compareTo(o.getPath());
 	}
 
+	@Override
 	public boolean contains(IBrowseItem item) {
 		return item != null && item.getPath().startsWith(getPath() + DELIMITER);
 	}

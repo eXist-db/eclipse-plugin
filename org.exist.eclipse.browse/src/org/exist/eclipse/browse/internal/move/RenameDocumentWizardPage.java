@@ -38,6 +38,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -64,6 +65,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 		gd.horizontalSpan = 3;
 		_newText.setLayoutData(gd);
 		_newText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}

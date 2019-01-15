@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.xquery.ui.XQueryUI;
 
 /**
@@ -24,30 +26,25 @@ public final class KeyWordContainer {
 	private boolean _loaded;
 
 	public KeyWordContainer() {
-		_keywords = new ArrayList<String>();
+		_keywords = new ArrayList<>();
 	}
 
 	public void load() {
 		if (!_loaded) {
-			BufferedReader reader = null;
-			try {
-				InputStream inputStream = FileLocator.openStream(XQueryUI
-						.getDefault().getBundle(), new Path(
-						"resources/keywords.csv"), false);
-				reader = new BufferedReader(new InputStreamReader(inputStream));
+			Path path = new Path("resources/keywords.csv");
+			XQueryUI plugin = XQueryUI.getDefault();
+			try (InputStream inputStream = FileLocator.openStream(
+					plugin.getBundle(), path, false);
+					BufferedReader reader = new BufferedReader(
+							new InputStreamReader(inputStream))) {
 				String keyword;
 				while ((keyword = reader.readLine()) != null) {
 					_keywords.add(keyword);
 				}
 			} catch (IOException e) {
-				// ignore
-			} finally {
-				if (reader != null) {
-					try {
-						reader.close();
-					} catch (IOException e) {
-					}
-				}
+				plugin.getLog().log(
+						new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+								"Unable to load " + path, e));
 			}
 			_loaded = true;
 		}

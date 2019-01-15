@@ -33,6 +33,7 @@ public class QueryProcessor implements IQueryProcessor {
 		_maxDisplay = maxDisplay;
 	}
 
+	@Override
 	public void runQuery() throws ConnectionException {
 		if (_item != null
 				&& IManagementService.class.cast(

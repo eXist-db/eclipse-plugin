@@ -1,5 +1,7 @@
 package org.exist.eclipse.browse.internal.move;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -9,6 +11,7 @@ import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.document.IDocumentService;
+import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
 
 /**
@@ -36,6 +39,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_renameDocumentPage = new RenameDocumentWizardPage(_selection, _item);
 		addPage(_renameDocumentPage);
@@ -43,8 +47,10 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 
 	/**
 	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link MoveCollectionWizardPage}.
+	 * The button should only be enabled on the {@link MoveCollectionWizardPage}
+	 * .
 	 */
+	@Override
 	public boolean canFinish() {
 		return _renameDocumentPage.isPageComplete();
 	}
@@ -53,11 +59,12 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		if (IManagementService.class.cast(
-				_item.getParent().getConnection().getAdapter(
-						IManagementService.class)).check()) {
+				_item.getParent().getConnection()
+						.getAdapter(IManagementService.class)).check()) {
 
 			if (IBrowseService.class.cast(
 					_item.getParent().getAdapter(IBrowseService.class)).check()) {
@@ -68,8 +75,13 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 						_itemService.move(newItem);
 					} catch (ConnectionException e) {
 						isFinished = false;
-						_renameDocumentPage
-								.setErrorMessage("Failure while move document.");
+						String message = "Failure while move document.";
+						BrowsePlugin
+								.getDefault()
+								.getLog()
+								.log(new Status(IStatus.ERROR, BrowsePlugin
+										.getId(), message, e));
+						_renameDocumentPage.setErrorMessage(message);
 					}
 				}
 			}
@@ -89,6 +101,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 	}

@@ -3,6 +3,8 @@
  */
 package org.exist.eclipse.internal;
 
+import java.util.Objects;
+
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.exception.ConnectionException;
@@ -16,7 +18,7 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class RemoteConnection implements IConnection, Cloneable {
+public class RemoteConnection extends AbstractConnection implements Cloneable {
 	private final String _name;
 	private final String _username;
 	private final String _password;
@@ -53,26 +55,32 @@ public class RemoteConnection implements IConnection, Cloneable {
 		_path = path;
 	}
 
+	@Override
 	public final String getName() {
 		return _name;
 	}
 
+	@Override
 	public String getPassword() {
 		return _password;
 	}
 
+	@Override
 	public String getPath() {
 		return _path;
 	}
 
+	@Override
 	public ConnectionEnum getType() {
 		return ConnectionEnum.remote;
 	}
 
+	@Override
 	public String getUsername() {
 		return _username;
 	}
 
+	@Override
 	public void open() throws ConnectionException {
 		openDb();
 		openRoot();
@@ -127,6 +135,7 @@ public class RemoteConnection implements IConnection, Cloneable {
 		}
 	}
 
+	@Override
 	public void close() throws ConnectionException {
 		closeRoot();
 		closeDb();
@@ -180,14 +189,17 @@ public class RemoteConnection implements IConnection, Cloneable {
 		_db = db;
 	}
 
+	@Override
 	public Collection getRoot() {
 		return _root;
 	}
 
+	@Override
 	public String getUri() {
 		return getPath();
 	}
 
+	@Override
 	public boolean isOpen() {
 		if (_db == null && _root == null) {
 			return false;
@@ -196,11 +208,13 @@ public class RemoteConnection implements IConnection, Cloneable {
 				_root.getChildCollectionCount();
 				return true;
 			} catch (Exception e) {
+				// ignored
 				return false;
 			}
 		}
 	}
 
+	@Override
 	public IConnection duplicate() throws ConnectionException {
 		RemoteConnectionWrapper wrapper = new RemoteConnectionWrapper(_name,
 				_username, _password, _path, _db);
@@ -223,22 +237,16 @@ public class RemoteConnection implements IConnection, Cloneable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		} else if (!(obj instanceof RemoteConnection)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		final RemoteConnection other = (RemoteConnection) obj;
-		if (_name == null) {
-			if (other._name != null)
-				return false;
-		} else if (!_name.equals(other._name))
-			return false;
-		return true;
+		return Objects.equals(_name, other._name);
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class adapter) {
 		if (IManagementService.class.equals(adapter)) {
 			return new ManagementService(this);
@@ -246,9 +254,9 @@ public class RemoteConnection implements IConnection, Cloneable {
 		return null;
 	}
 
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	// private methods
-	////////////////////////////////////////////////////////////////////////////
+	// //////////////////////////////////////////////////////////////////////////
 	private String getRootUri() {
 		return getUri() + "/db";
 	}

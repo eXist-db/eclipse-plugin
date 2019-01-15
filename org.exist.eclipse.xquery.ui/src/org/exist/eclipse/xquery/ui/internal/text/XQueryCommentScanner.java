@@ -22,14 +22,16 @@ public class XQueryCommentScanner extends AbstractScriptScanner {
 		initialize();
 	}
 
+	@Override
 	protected String[] getTokenProperties() {
 		return _tokenProperties;
 	}
 
+	@Override
 	protected List<IRule> createRules() {
 		IToken comment = getToken(IXQueryColorConstants.XQUERY_COMMENT);
 		setDefaultReturnToken(comment);
-		List<IRule> rules = new ArrayList<IRule>();
+		List<IRule> rules = new ArrayList<>();
 		return rules;
 	}
 }

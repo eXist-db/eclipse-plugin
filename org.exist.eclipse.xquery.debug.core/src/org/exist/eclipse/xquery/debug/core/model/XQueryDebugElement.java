@@ -35,52 +35,58 @@ import org.exist.eclipse.xquery.debug.core.launching.IXQueryConstants;
 
 /**
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
- *
+ * 
  */
-public abstract class XQueryDebugElement extends PlatformObject implements IDebugElement {
-	
-	
+public abstract class XQueryDebugElement extends PlatformObject implements
+		IDebugElement {
+
 	protected XQueryDebugTarget fTarget;
-	
+
 	public XQueryDebugElement(XQueryDebugTarget target) {
 		fTarget = target;
 	}
 
+	@Override
 	public IDebugTarget getDebugTarget() {
 		return fTarget;
 	}
 
+	@Override
 	public ILaunch getLaunch() {
 		return getDebugTarget().getLaunch();
 	}
 
+	@Override
 	public String getModelIdentifier() {
 		return IXQueryConstants.ID_XQUERY_DEBUG_MODEL;
 	}
-	
+
+	@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter == IDebugElement.class) {
 			return this;
 		}
 		return super.getAdapter(adapter);
 	}
-	
+
 	protected void abort(String message, Throwable e) throws DebugException {
-		throw new DebugException(new Status(IStatus.ERROR, DebugXQueryPlugin.getDefault().getDescriptor().getUniqueIdentifier(), DebugPlugin.INTERNAL_ERROR, message, e));
+		throw new DebugException(new Status(IStatus.ERROR,
+				DebugXQueryPlugin.getId(), DebugPlugin.INTERNAL_ERROR, message,
+				e));
 	}
-	
+
 	protected void fireEvent(DebugEvent event) {
-		DebugPlugin.getDefault().fireDebugEventSet(new DebugEvent[] {event});
+		DebugPlugin.getDefault().fireDebugEventSet(new DebugEvent[] { event });
 	}
-	
+
 	protected void fireCreationEvent() {
 		fireEvent(new DebugEvent(this, DebugEvent.CREATE));
 	}
-	
+
 	public void fireResumeEvent(int detail) {
 		fireEvent(new DebugEvent(this, DebugEvent.RESUME, detail));
 	}
-	
+
 	public void fireSuspendEvent(int detail) {
 		fireEvent(new DebugEvent(this, DebugEvent.SUSPEND, detail));
 	}

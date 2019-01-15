@@ -18,6 +18,7 @@ public class SearchFactory extends AbstractSearchFactory {
 			super(locator);
 		}
 
+		@Override
 		protected void processStatement(ASTNode node, PatternLocator locator) {
 			if (node instanceof MethodCallExpression) {
 				locator.match((MethodCallExpression) node, getNodeSet());
@@ -34,6 +35,7 @@ public class SearchFactory extends AbstractSearchFactory {
 		return new XQueryMatchLocationParser(locator);
 	}
 
+	@Override
 	public String getNormalizedTypeName(IType type) {
 		return type.getElementName();
 	}

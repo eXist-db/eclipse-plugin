@@ -3,6 +3,7 @@
  */
 package org.exist.eclipse.auto.internal.editor;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -46,6 +47,7 @@ public class AutomationFormPage extends FormPage {
 		_block.addModificationListener(editor);
 	}
 
+	@Override
 	protected void createFormContent(final IManagedForm managedForm) {
 		final ScrolledForm form = managedForm.getForm();
 		FormToolkit toolkit = managedForm.getToolkit();
@@ -87,7 +89,7 @@ public class AutomationFormPage extends FormPage {
 		try {
 			_textPage.setContent(getAutomationData());
 		} catch (AutoException e) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), e
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 					.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 			ErrorDialog.openError(Display.getCurrent().getActiveShell(),

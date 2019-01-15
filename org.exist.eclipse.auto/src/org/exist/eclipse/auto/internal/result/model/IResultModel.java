@@ -43,16 +43,18 @@ public interface IResultModel {
 	 * @return query count
 	 */
 	public int getQueryCount();
-	
+
 	/**
-	 * @return {@link State#SUCCESS}, if all query runs was successful, else {@link State#FAILURE}.
+	 * @return {@link State#SUCCESS}, if all query runs was successful, else
+	 *         {@link State#FAILURE}.
 	 */
 	public State getState();
 
 	/**
 	 * Sets the query results
 	 * 
-	 * @param queryResults
+	 * @param result
+	 *            the query result
 	 */
 	public void addQueryResultEntity(QueryResultEntity result);
 
@@ -78,16 +80,16 @@ public interface IResultModel {
 	public int getAvgCompTime();
 
 	/**
-	 * Returns the average exectution time
+	 * Returns the average execution time
 	 * 
-	 * @return exectution compilation time
+	 * @return execution compilation time
 	 */
 	public int getAvgExecTime();
 
 	/**
 	 * Returns the totally result count
 	 * 
-	 * @return
+	 * @return the amount of results
 	 */
 	public long getResultCount();
 
@@ -97,7 +99,7 @@ public interface IResultModel {
 	 * @return query order type
 	 */
 	public QueryOrderType getQueryOrderType();
-	
+
 	/**
 	 * Sets the query order type
 	 * 
@@ -108,7 +110,7 @@ public interface IResultModel {
 	/**
 	 * Returns the note on the automation
 	 * 
-	 * @return
+	 * @return the automation note
 	 */
 	public String getAutoNote();
 
@@ -116,7 +118,8 @@ public interface IResultModel {
 	 * Sets the note concerning the automation
 	 * 
 	 * @param note
+	 *            the new automation note
 	 */
-	public void setAutoNote(String note);	
-	
+	public void setAutoNote(String note);
+
 }

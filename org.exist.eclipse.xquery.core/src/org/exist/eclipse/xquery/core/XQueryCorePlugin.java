@@ -19,11 +19,13 @@ public class XQueryCorePlugin extends AbstractUIPlugin {
 	public XQueryCorePlugin() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		_plugin = this;
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		_plugin = null;
 		super.stop(context);
@@ -38,4 +40,11 @@ public class XQueryCorePlugin extends AbstractUIPlugin {
 		return _plugin;
 	}
 
-}
+	/**
+	 * Returns a symbolic id of the plugin instance.
+	 * 
+	 * @return Id
+	 */
+	public static String getId() {
+		return getDefault().getBundle().getSymbolicName();
+	}}

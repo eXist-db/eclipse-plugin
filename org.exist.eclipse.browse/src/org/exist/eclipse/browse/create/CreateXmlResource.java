@@ -15,6 +15,7 @@ import org.xmldb.api.modules.XMLResource;
  */
 public class CreateXmlResource implements ICreateDocumentProvider {
 
+	@Override
 	public void create(IDocumentItem item, String content)
 			throws CreateDocumentException {
 		XMLResource result = null;

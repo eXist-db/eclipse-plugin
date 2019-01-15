@@ -58,6 +58,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Font font = parent.getFont();
 		
@@ -82,6 +83,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		fScriptText.setLayoutData(gd);
 		fScriptText.setFont(font);
 		fScriptText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				updateLaunchConfigurationDialog();
 			}
@@ -89,6 +91,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		
 		fScriptButton = createPushButton(comp, "&Browse...", null);
 		fScriptButton.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				browseXQueryFiles();
 			}
@@ -109,6 +112,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
 	 */
+	@Override
 	public String getName() {
 		return "Main";
 	}
@@ -116,6 +120,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
 	 */
+	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
 			String script = configuration.getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String)null);
@@ -129,6 +134,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
+	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 		String script = fScriptText.getText().trim();
 		if (script.length() == 0) {
@@ -140,9 +146,11 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	/* (non-Javadoc)
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
 	 */
+	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
+	@Override
 	public boolean isValid(ILaunchConfiguration launchConfig) {
 		String text = fScriptText.getText();
 		if (text.length() > 0) {

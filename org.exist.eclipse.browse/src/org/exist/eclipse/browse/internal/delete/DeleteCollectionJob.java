@@ -35,7 +35,7 @@ public class DeleteCollectionJob extends Job {
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
 		monitor.beginTask("Delete", _items.length);
-		final Collection<IBrowseItem> removedItems = new ArrayList<IBrowseItem>();
+		final Collection<IBrowseItem> removedItems = new ArrayList<>();
 		try {
 			for (IBrowseItem item : _items) {
 				setName("Delete '" + item + "'");
@@ -46,10 +46,11 @@ public class DeleteCollectionJob extends Job {
 				monitor.worked(1);
 			}
 		} catch (ConnectionException e) {
-			return new Status(Status.ERROR, BrowsePlugin.getId(),
+			return new Status(IStatus.ERROR, BrowsePlugin.getId(),
 					"Error while deleting collections", e);
 		} finally {
 			Display.getDefault().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					BrowseCoordinator.getInstance().removed(
 							removedItems.toArray(new IBrowseItem[removedItems

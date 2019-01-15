@@ -18,8 +18,8 @@ public class ExistXQueryMethod implements IXQueryMethod {
 
 	public ExistXQueryMethod(String name) {
 		_name = name;
-		_parameterNames = new ArrayList<String>();
-		_parameterTypes = new ArrayList<String>();
+		_parameterNames = new ArrayList<>();
+		_parameterTypes = new ArrayList<>();
 	}
 
 	/**
@@ -34,27 +34,33 @@ public class ExistXQueryMethod implements IXQueryMethod {
 		_parameterTypes.add(type);
 	}
 
+	@Override
 	public int getFlags() {
 		return Modifier.PUBLIC;
 	}
 
+	@Override
 	public String[] getParameterNames() {
 		return _parameterNames.toArray(new String[_parameterNames.size()]);
 	}
 
+	@Override
 	public String[] getParameterTypes() {
 		return _parameterTypes.toArray(new String[_parameterTypes.size()]);
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
 
+	@Override
 	public String getComment() {
 		return "";
 	}
 
+	@Override
 	public String getSignature() {
 		return "";
 	}

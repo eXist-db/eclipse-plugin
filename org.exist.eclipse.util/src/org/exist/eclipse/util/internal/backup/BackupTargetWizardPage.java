@@ -3,7 +3,6 @@ package org.exist.eclipse.util.internal.backup;
 import java.io.File;
 
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -29,22 +28,22 @@ import org.exist.eclipse.util.internal.UtilPlugin;
  */
 public class BackupTargetWizardPage extends WizardPage {
 
-	private String _backupTarget = null;
-	private ISelection _selection;
 	private final IBrowseItem _item;
+	private boolean _ableToFinish;
+	private String _backupTarget;
 	private Text _targetText;
-	private boolean _ableToFinish = true;
 
 	protected BackupTargetWizardPage(ISelection selection, IBrowseItem item) {
 		super("backuptargetwizardpage");
+		_ableToFinish = true;
 		_item = item;
 		setTitle("Create a backup");
 		setDescription("Enter a location for the backup.");
 		setImageDescriptor(UtilPlugin
 				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
-		_selection = selection;
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -79,6 +78,7 @@ public class BackupTargetWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_targetText.setLayoutData(gd);
 		_targetText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				_backupTarget = _targetText.getText();
 				dialogChanged();
@@ -94,13 +94,13 @@ public class BackupTargetWizardPage extends WizardPage {
 		selectCollectionBtn.setLayoutData(gd);
 
 		selectCollectionBtn.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectBackupLocation();
 				dialogChanged();
 			}
 		});
 
-		initialize();
 		dialogChanged();
 		setControl(container);
 	}
@@ -151,25 +151,11 @@ public class BackupTargetWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Tests if the current workbench selection is a suitable container to use.
-	 */
-	private void initialize() {
-		if (_selection != null && _selection.isEmpty() == false
-				&& _selection instanceof IStructuredSelection) {
-			IStructuredSelection ssel = (IStructuredSelection) _selection;
-			if (ssel.size() > 1)
-				return;
-		}
-	}
-
-	/**
 	 * Opens a FileDialog so that the backup location can be defined. Returns
 	 * the path of the backup location. The return-value is empty in case the
 	 * selection is not valid.
 	 * 
 	 * The returned value either needs to be a directory or a zip-file.
-	 * 
-	 * @return path of the backup location
 	 */
 	private void selectBackupLocation() {
 
@@ -192,12 +178,7 @@ public class BackupTargetWizardPage extends WizardPage {
 	 */
 	private boolean targetExists() {
 		File target = new File(_backupTarget);
-
-		if (target.exists()) {
-			return true;
-		} else {
-			return false;
-		}
+		return target.exists();
 	}
 
 }

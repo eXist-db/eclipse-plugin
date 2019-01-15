@@ -17,7 +17,7 @@ import org.exist.eclipse.auto.internal.result.model.ResultModelConverter;
 public class ResultContentProvider implements IStructuredContentProvider {
 
 	private String _inputData;
-	private IResultModel _model = null;
+	private IResultModel _model;
 
 	/**
 	 * ResultContentProvider Constructor
@@ -28,20 +28,22 @@ public class ResultContentProvider implements IStructuredContentProvider {
 		_inputData = inputData;
 	}
 
+	@Override
 	public Object[] getElements(Object inputElement) {
 		try {
 			// get the data from the model - via text editor
 			return getModel().getContents();
 		} catch (AutoException e) {
+			// ignore
 			e.printStackTrace();
 			return null;
 		}
 	}
 
 	/**
-	 * Returns the IResultModel if it's not istantiated yet.
+	 * Returns the IResultModel if it's not instantiated yet.
 	 * 
-	 * @return
+	 * @return the result model object
 	 * @throws AutoException
 	 */
 	public IResultModel getModel() throws AutoException {
@@ -51,10 +53,12 @@ public class ResultContentProvider implements IStructuredContentProvider {
 		return _model;
 	}
 
+	@Override
 	public void dispose() {
 		_model = null;
 	}
 
+	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// do nothing here
 	}

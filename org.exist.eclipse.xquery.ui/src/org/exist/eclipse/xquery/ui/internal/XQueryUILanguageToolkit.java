@@ -17,26 +17,31 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySourceViewerConfiguration
  */
 public class XQueryUILanguageToolkit extends AbstractDLTKUILanguageToolkit {
 	private static class XQueryScriptElementLabels extends ScriptElementLabels {
+		@Override
 		public void getElementLabel(IModelElement element, long flags,
 				StringBuffer buf) {
 			buf.append(element.getElementName());
 		}
-	};
+	}
 
+	@Override
 	public ScriptElementLabels getScriptElementLabels() {
 		return new XQueryScriptElementLabels();
 	}
 
+	@Override
 	public IDLTKLanguageToolkit getCoreToolkit() {
 		return XQueryLanguageToolkit.getDefault();
 	}
 
+	@Override
 	public ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
 		return new XQuerySourceViewerConfiguration(getTextTools()
 				.getColorManager(), getPreferenceStore(), null,
 				getPartitioningId());
 	}
 
+	@Override
 	public IPreferenceStore getPreferenceStore() {
 		return XQueryCorePlugin.getDefault().getPreferenceStore();
 	}

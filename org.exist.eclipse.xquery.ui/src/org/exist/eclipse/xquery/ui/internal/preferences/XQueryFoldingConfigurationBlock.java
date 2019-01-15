@@ -18,6 +18,7 @@ public class XQueryFoldingConfigurationBlock extends FoldingConfigurationBlock {
 		super(store, p);
 	}
 
+	@Override
 	protected IFoldingPreferenceBlock createFoldingPreferenceBlock() {
 		return new XQueryFoldingPreferenceBlock(fStore);
 	}

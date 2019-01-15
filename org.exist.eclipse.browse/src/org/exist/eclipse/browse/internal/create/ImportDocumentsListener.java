@@ -95,6 +95,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 		return xmlCfg;
 	}
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
 		IBrowseService service = (IBrowseService) browseItem
@@ -112,7 +113,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 			String aFile = dialog.open();
 			if (aFile != null) {
 				File folder = new File(aFile).getParentFile();
-				List<File> allFiles = new ArrayList<File>();
+				List<File> allFiles = new ArrayList<>();
 				for (String file : dialog.getFileNames()) {
 					allFiles.add(new File(folder, file));
 				}
@@ -147,6 +148,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

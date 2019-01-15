@@ -13,19 +13,23 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
 public class XQueryGlobalPreferencesPage extends
 		AbstractConfigurationBlockPreferencePage {
 
+	@Override
 	protected IPreferenceConfigurationBlock createConfigurationBlock(
 			OverlayPreferenceStore overlayPreferenceStore) {
 		return new XQueryGlobalConfigurationBlock(overlayPreferenceStore, this);
 	}
 
+	@Override
 	protected String getHelpId() {
 		return null;
 	}
 
+	@Override
 	protected void setDescription() {
 		setDescription("General XQuery settings");
 	}
 
+	@Override
 	protected void setPreferenceStore() {
 		setPreferenceStore(XQueryUI.getDefault().getPreferenceStore());
 	}

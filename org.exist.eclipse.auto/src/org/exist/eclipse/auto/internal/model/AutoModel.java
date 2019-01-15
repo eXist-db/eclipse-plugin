@@ -21,6 +21,7 @@ public class AutoModel implements IAutoModel {
 	/**
 	 * @return the queries
 	 */
+	@Override
 	public ArrayList<QueryEntity> getQueries() {
 		return _queries;
 	}
@@ -29,13 +30,15 @@ public class AutoModel implements IAutoModel {
 	 * Constructor class
 	 */
 	public AutoModel() {
-		_queries = new ArrayList<QueryEntity>();
+		_queries = new ArrayList<>();
 	}
 
+	@Override
 	public Object[] getContents() {
 		return _queries.toArray();
 	}
 
+	@Override
 	public void addQuery(QueryEntity query) {
 		_queries.add(query);
 	}
@@ -49,30 +52,37 @@ public class AutoModel implements IAutoModel {
 		}
 	}
 
+	@Override
 	public void removeQuery(QueryEntity query) {
 		_queries.remove(query);
 	}
 
+	@Override
 	public void setThreadCount(int threadCount) {
 		_threadCount = threadCount;
 	}
 
+	@Override
 	public int getThreadCount() {
 		return _threadCount;
 	}
 
+	@Override
 	public QueryOrderType getQueryOrderType() {
 		return _queryOrderType;
 	}
 	
+	@Override
 	public void setQueryOrderType(QueryOrderType type){
 		_queryOrderType = type;
 	}
 
+	@Override
 	public String getAutoNote() {
 		return _autoNote;
 	}
 
+	@Override
 	public void setAutoNote(String note) {
 		_autoNote = note;
 	}

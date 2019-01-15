@@ -15,6 +15,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.actions.ActionGroup;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.browse.connection.IConnectionListener;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
@@ -68,7 +69,7 @@ public class ActionGroupConnectionExtension extends ActionGroup {
 											.getNamespaceIdentifier();
 
 									if (icon != null) {
-										action.setImageDescriptor(BrowsePlugin
+										action.setImageDescriptor(AbstractUIPlugin
 												.imageDescriptorFromPlugin(id,
 														icon));
 									}

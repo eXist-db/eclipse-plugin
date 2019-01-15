@@ -2,7 +2,7 @@ package org.exist.eclipse.preferences;
 
 import java.nio.charset.Charset;
 
-import org.eclipse.core.runtime.Preferences;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.exist.eclipse.internal.BasePlugin;
 import org.exist.eclipse.internal.preferences.IExistPreferenceConstants;
 
@@ -17,7 +17,7 @@ public class ExistPreferences {
 	 * @return the encoding which was defined in the preferences.
 	 */
 	public static Charset getEncoding() {
-		Preferences prefs = BasePlugin.getDefault().getPluginPreferences();
+		IPreferenceStore prefs = BasePlugin.getDefault().getPreferenceStore();
 		String encodingString = prefs
 				.getString(IExistPreferenceConstants.PREFS_ENCODING);
 

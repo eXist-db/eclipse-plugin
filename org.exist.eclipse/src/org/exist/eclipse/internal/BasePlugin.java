@@ -22,6 +22,7 @@ public class BasePlugin extends AbstractUIPlugin {
 	public BasePlugin() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -31,6 +32,7 @@ public class BasePlugin extends AbstractUIPlugin {
 		ConnectionBox.getInstance().setMemento(memento);
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		ConnectionBox box = ConnectionBox.getInstance();
 		for (IConnection connection : box.getConnections()) {

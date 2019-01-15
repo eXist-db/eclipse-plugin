@@ -43,6 +43,7 @@ public class RunAutoContextPage extends WizardPage {
 				.getDescriptor(AutoUI.IMG_EXIST_ECLIPSE_LOGO));
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -70,6 +71,7 @@ public class RunAutoContextPage extends WizardPage {
 
 		// add selection listener for the combo
 		_contextSelection.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				dialogChanged();
 			}
@@ -94,6 +96,7 @@ public class RunAutoContextPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_targetText.setLayoutData(gd);
 		_targetText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				_resultTarget = _targetText.getText();
 				dialogChanged();
@@ -109,6 +112,7 @@ public class RunAutoContextPage extends WizardPage {
 		selectTargetBtn.setLayoutData(gd);
 
 		selectTargetBtn.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectResultLocation();
 				dialogChanged();

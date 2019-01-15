@@ -38,7 +38,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 
 	protected static List<String> getLastSelectedWorkingSets() {
 		if (_lastSelectedWorkingSets == null) {
-			_lastSelectedWorkingSets = new ArrayList<String>();
+			_lastSelectedWorkingSets = new ArrayList<>();
 		}
 		return _lastSelectedWorkingSets;
 	}
@@ -47,6 +47,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 		return PlatformUI.getWorkbench().getWorkingSetManager();
 	}
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
 		IBrowseService service = (IBrowseService) browseItem
@@ -60,7 +61,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 
 			List<String> lastSelectedWorkingSets = getLastSelectedWorkingSets();
 			if (!lastSelectedWorkingSets.isEmpty()) {
-				List<IWorkingSet> sel = new ArrayList<IWorkingSet>();
+				List<IWorkingSet> sel = new ArrayList<>();
 				for (String it : lastSelectedWorkingSets) {
 					IWorkingSet set = workingSetManager.getWorkingSet(it);
 					if (set != null) {
@@ -121,7 +122,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 
 	protected List<IFile> collectFiles(IWorkingSet[] sets) {
 		try {
-			List<IFile> result = new ArrayList<IFile>();
+			List<IFile> result = new ArrayList<>();
 			for (IWorkingSet set : sets) {
 				for (IAdaptable elem : set.getElements()) {
 					IFile file = (IFile) elem.getAdapter(IFile.class);
@@ -147,6 +148,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

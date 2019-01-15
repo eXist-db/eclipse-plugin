@@ -26,12 +26,14 @@ public class AutoContentProvider implements IStructuredContentProvider {
 		_inputData = inputData;
 	}
 
+	@Override
 	public Object[] getElements(Object inputElement) {
 
 		try {
 			// get the data from the model - via text editor
 			return getModel().getContents();
 		} catch (AutoException e) {
+			// ignore
 			return null;
 		}
 	}
@@ -52,10 +54,12 @@ public class AutoContentProvider implements IStructuredContentProvider {
 		return _model;
 	}
 
+	@Override
 	public void dispose() {
 		_model = null;
 	}
 
+	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// do nothing here
 	}

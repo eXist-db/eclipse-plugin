@@ -11,6 +11,7 @@ import org.eclipse.jface.text.rules.IWhitespaceDetector;
  * @author Pascal Schmidiger
  */
 public class XQueryWhitespaceDetector implements IWhitespaceDetector {
+	@Override
 	public boolean isWhitespace(char character) {
 		return Character.isWhitespace(character);
 	}

@@ -59,6 +59,7 @@ public class ResultSelectionListener extends MouseAdapter {
 				_workbenchWindow.getActivePage().openEditor(input,
 						defaultEditor.getId().toString());
 			} catch (PartInitException ex) {
+				// ignore
 				ex.printStackTrace();
 			}
 		}

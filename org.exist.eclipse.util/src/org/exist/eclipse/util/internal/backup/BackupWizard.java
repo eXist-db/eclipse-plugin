@@ -34,6 +34,7 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 		setNeedsProgressMonitor(true);
 	}
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 	}
@@ -41,6 +42,7 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_backupTargetPage = new BackupTargetWizardPage(_selection, _item);
 		addPage(_backupTargetPage);
@@ -50,6 +52,7 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the {@link BackupTargetWizardPage}.
 	 */
+	@Override
 	public boolean canFinish() {
 		return _backupTargetPage.isAbleToFinish();
 	}
@@ -58,6 +61,7 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 

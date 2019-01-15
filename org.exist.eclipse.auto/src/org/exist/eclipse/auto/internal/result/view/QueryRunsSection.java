@@ -41,6 +41,7 @@ public class QueryRunsSection implements IDetailsPage {
 	private TableColumn _execTimeCol;
 	private Section _queryRunsSection;
 
+	@Override
 	public void createContents(Composite parent) {
 		_parent = parent;
 		GridLayout layout = new GridLayout();
@@ -53,7 +54,7 @@ public class QueryRunsSection implements IDetailsPage {
 
 		// header
 		FormToolkit toolkit = _mform.getToolkit();
-		_queryRunsSection = toolkit.createSection(_parent, Section.TITLE_BAR
+		_queryRunsSection = toolkit.createSection(_parent, ExpandableComposite.TITLE_BAR
 				| ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
 		_queryRunsSection.marginWidth = 10;
 		_queryRunsSection.marginHeight = 5;
@@ -94,35 +95,44 @@ public class QueryRunsSection implements IDetailsPage {
 		_queryRunsSection.setClient(client);
 	}
 
+	@Override
 	public void commit(boolean onSave) {
 	}
 
+	@Override
 	public void dispose() {
 
 	}
 
+	@Override
 	public void initialize(IManagedForm mform) {
 		_mform = mform;
 	}
 
+	@Override
 	public boolean isDirty() {
 		return false;
 	}
 
+	@Override
 	public boolean isStale() {
 		return false;
 	}
 
+	@Override
 	public void refresh() {
 	}
 
+	@Override
 	public void setFocus() {
 	}
 
+	@Override
 	public boolean setFormInput(Object input) {
 		return false;
 	}
 
+	@Override
 	public void selectionChanged(IFormPart part, ISelection selection) {
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 		if (structuredSelection.size() == 1) {

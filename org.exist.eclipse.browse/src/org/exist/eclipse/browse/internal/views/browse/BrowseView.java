@@ -73,6 +73,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 	 * This is a callback that will allow us to create the viewer and initialize
 	 * it.
 	 */
+	@Override
 	public void createPartControl(Composite parent) {
 		_viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL);
@@ -121,6 +122,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 	/**
 	 * Passing the focus request to the viewer's control.
 	 */
+	@Override
 	public void setFocus() {
 		_viewer.getControl().setFocus();
 	}
@@ -132,19 +134,23 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 		return _viewer;
 	}
 
+	@Override
 	public void added(IConnection connection) {
 		getViewer().add(getViewSite(), connection);
 		getViewer().setSelection(new StructuredSelection(connection));
 	}
 
+	@Override
 	public void removed(IConnection connection) {
 		getViewer().remove(connection);
 	}
 
+	@Override
 	public void closed(IConnection connection) {
 		getViewer().refresh(connection);
 	}
 
+	@Override
 	public void opened(IConnection connection) {
 		getViewer().refresh(connection);
 	}
@@ -153,20 +159,24 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 		return _drillDownAdapter;
 	}
 
+	@Override
 	public void added(IBrowseItem item) {
 		getViewer().expandToLevel(item.getParent(), 1);
 		getViewer().add(item.getParent(), item);
 		getViewer().setSelection(new StructuredSelection(item), true);
 	}
 
+	@Override
 	public void removed(IBrowseItem[] items) {
 		getViewer().remove(items);
 	}
 
+	@Override
 	public void refresh(IBrowseItem item) {
 		getViewer().refresh(item);
 	}
 
+	@Override
 	public void moved(IBrowseItem fromItem, IBrowseItem toItem) {
 		removed(new IBrowseItem[] { fromItem });
 		added(toItem);
@@ -179,6 +189,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
+			@Override
 			public void menuAboutToShow(IMenuManager manager) {
 				BrowseView.this.fillContextMenu(manager);
 			}
@@ -215,6 +226,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 
 	private void hookDoubleClickAction() {
 		_viewer.addDoubleClickListener(new IDoubleClickListener() {
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				_doubleClickAction.run();
 			}
@@ -227,6 +239,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 		DropTarget target = new DropTarget(_viewer.getTree(), operations);
 		target.setTransfer(new Transfer[] { FileTransfer.getInstance() });
 		target.addDropListener(new DropTargetAdapter() {
+			@Override
 			public void drop(DropTargetEvent event) {
 
 				Object item = event.item.getData();
@@ -235,7 +248,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 					event.detail = DND.DROP_NONE;
 					return;
 				}
-				List<File> files = new ArrayList<File>();
+				List<File> files = new ArrayList<>();
 				for (String it : (String[]) event.data) {
 					files.add(new File(it));
 				}

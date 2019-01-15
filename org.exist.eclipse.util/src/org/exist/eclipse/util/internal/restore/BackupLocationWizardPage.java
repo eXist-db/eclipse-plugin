@@ -42,6 +42,7 @@ public class BackupLocationWizardPage extends WizardPage {
 		_selection = selection;
 	}
 
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -61,6 +62,7 @@ public class BackupLocationWizardPage extends WizardPage {
 		gd.horizontalSpan = 2;
 		_locationText.setLayoutData(gd);
 		_locationText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(ModifyEvent e) {
 				_backupLocation = _locationText.getText();
 				dialogChanged();
@@ -76,6 +78,7 @@ public class BackupLocationWizardPage extends WizardPage {
 		selectCollectionBtn.setLayoutData(gd);
 
 		selectCollectionBtn.addSelectionListener(new SelectionAdapter() {
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 				selectBackupLocation();
 				dialogChanged();

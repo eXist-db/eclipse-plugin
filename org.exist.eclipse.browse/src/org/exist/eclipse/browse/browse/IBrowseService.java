@@ -35,7 +35,7 @@ public interface IBrowseService {
 	 * Check if the collection exists. If the collection does not exist then
 	 * <ul>
 	 * <li>a message dialog will show</li>
-	 * <li>call {@link BrowseCoordinator#removed(IBrowseItem)}</li>
+	 * <li>call {@link BrowseCoordinator#removed(IBrowseItem[])}</li>
 	 * </ul>
 	 * 
 	 * @return <code>true</code> if the item exists, elsewhere
@@ -53,8 +53,7 @@ public interface IBrowseService {
 	/**
 	 * @param recursive
 	 *            <code>true</code> then return also the children of the
-	 *            children, <code>false</code> return also the directly
-	 *            children
+	 *            children, <code>false</code> return also the directly children
 	 * @param self
 	 *            <code>true</code>then add itself to the result
 	 * @return all collections from the xmldb as {@link IBrowseItem}.

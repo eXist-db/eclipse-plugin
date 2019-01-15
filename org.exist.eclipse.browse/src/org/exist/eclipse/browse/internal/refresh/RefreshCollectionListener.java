@@ -14,6 +14,7 @@ import org.exist.eclipse.browse.browse.IBrowseService;
  */
 public class RefreshCollectionListener implements IBrowseListener {
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		for (IBrowseItem item : items) {
 			IBrowseService.class.cast(item.getAdapter(IBrowseService.class))
@@ -21,6 +22,7 @@ public class RefreshCollectionListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 	}
 

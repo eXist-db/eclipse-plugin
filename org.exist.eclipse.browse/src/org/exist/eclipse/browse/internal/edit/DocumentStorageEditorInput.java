@@ -23,31 +23,37 @@ public class DocumentStorageEditorInput implements IStorageEditorInput {
 		_storage = storage;
 	}
 
+	@Override
 	public IStorage getStorage() throws CoreException {
 		return _storage;
 	}
 
+	@Override
 	public boolean exists() {
 		return _storage.exists();
 	}
 
+	@Override
 	public ImageDescriptor getImageDescriptor() {
 		return null;
 	}
 
+	@Override
 	public String getName() {
 		return _storage.getName();
 	}
 
+	@Override
 	public IPersistableElement getPersistable() {
 		return null;
 	}
 
+	@Override
 	public String getToolTipText() {
 		return _storage.getToolTipText();
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	public Object getAdapter(Class adapter) {
 		if (adapter.getName().equals(IInputSave.class.getName())) {
 			return _storage;
@@ -56,12 +62,18 @@ public class DocumentStorageEditorInput implements IStorageEditorInput {
 	}
 
 	@Override
+	public int hashCode() {
+		return _storage.hashCode();
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		boolean isEquals = false;
-		if (obj instanceof DocumentStorageEditorInput) {
-			isEquals = DocumentStorageEditorInput.class.cast(obj)._storage
-					.equals(_storage);
+		if (this == obj) {
+			return true;
+		} else if (!(obj instanceof DocumentStorageEditorInput)) {
+			return false;
 		}
-		return isEquals;
+		DocumentStorageEditorInput other = (DocumentStorageEditorInput) obj;
+		return _storage.equals(other._storage);
 	}
 }

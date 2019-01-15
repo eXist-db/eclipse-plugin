@@ -23,8 +23,8 @@ public interface IBrowseItemListener {
 	/**
 	 * The given <code>item</code> was removed.
 	 * 
-	 * @param item
-	 *            the removed item.
+	 * @param items
+	 *            the removed items.
 	 */
 	public void removed(IBrowseItem[] items);
 

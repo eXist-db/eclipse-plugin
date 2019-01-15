@@ -16,22 +16,27 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
 public class XQueryEditorPreferencesPage extends
 		AbstractConfigurationBlockPreferencePage {
 
+	@Override
 	protected String getHelpId() {
 		return "";
 	}
 
+	@Override
 	protected void setDescription() {
 		setDescription("Appeara&nce");
 	}
 
+	@Override
 	protected Label createDescriptionLabel(Composite parent) {
 		return null;
 	}
 
+	@Override
 	protected void setPreferenceStore() {
 		setPreferenceStore(XQueryUI.getDefault().getPreferenceStore());
 	}
 
+	@Override
 	protected IPreferenceConfigurationBlock createConfigurationBlock(
 			OverlayPreferenceStore overlayPreferenceStore) {
 		return new EditorConfigurationBlock(this, overlayPreferenceStore);

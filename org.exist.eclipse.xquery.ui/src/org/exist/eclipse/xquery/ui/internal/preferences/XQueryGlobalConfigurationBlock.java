@@ -21,6 +21,7 @@ public class XQueryGlobalConfigurationBlock extends AbstractConfigurationBlock {
 		super(store, mainPreferencePage);
 	}
 
+	@Override
 	public Control createControl(Composite parent) {
 		initializeDialogUnits(parent);
 

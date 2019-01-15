@@ -64,8 +64,10 @@ public class BottomContainer extends Composite implements IQueryListener {
 		QueryNotifier.getInstance().addListener(this);
 	}
 
+	@Override
 	public void end(final QueryEndEvent event) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				StringBuilder text = new StringBuilder(100);
 				text.append(event.getCount()).append(" items found | ");
@@ -79,8 +81,10 @@ public class BottomContainer extends Composite implements IQueryListener {
 		});
 	}
 
+	@Override
 	public void start(QueryStartEvent event) {
 		Display.getDefault().syncExec(new Runnable() {
+			@Override
 			public void run() {
 				_itemsFound.setText("Query processing...");
 				_itemsFound.pack();

@@ -37,22 +37,27 @@ public class StringStorage implements IStorage {
 		return getFullPath().hashCode();
 	}
 
-	public Object getAdapter(@SuppressWarnings("unchecked") Class adapter) {
+	@Override
+	public Object getAdapter(Class adapter) {
 		return null;
 	}
 
+	@Override
 	public boolean isReadOnly() {
 		return true;
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public IPath getFullPath() {
 		return _path;
 	}
 
+	@Override
 	public InputStream getContents() throws CoreException {
 		try {
 			return new ByteArrayInputStream(_content.getBytes("UTF-8"));

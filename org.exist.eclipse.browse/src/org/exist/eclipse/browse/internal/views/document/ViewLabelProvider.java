@@ -30,6 +30,7 @@ public class ViewLabelProvider extends LabelProvider {
 
 	}
 
+	@Override
 	public Image getImage(Object obj) {
 		if (obj instanceof IDocumentItem) {
 			return getDocumentImage();

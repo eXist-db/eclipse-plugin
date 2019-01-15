@@ -27,7 +27,7 @@ public class QueryGroup {
 		_query = query;
 		_compilation = 0;
 		_execution = 0;
-		_results = new ArrayList<IQueryResult>();
+		_results = new ArrayList<>();
 	}
 
 	/**

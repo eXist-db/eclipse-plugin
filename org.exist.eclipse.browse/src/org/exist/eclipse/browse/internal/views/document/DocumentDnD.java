@@ -39,6 +39,7 @@ public class DocumentDnD {
 			_dragSource = dragSource;
 		}
 
+		@Override
 		public void drop(DropTargetEvent event) {
 
 			if (!_view.hasItem() || event.data == null) {
@@ -46,7 +47,7 @@ public class DocumentDnD {
 				return;
 			}
 			boolean sourceIsSelf = false;
-			List<File> files = new ArrayList<File>();
+			List<File> files = new ArrayList<>();
 
 			// check for dropped on/dragged from self
 			String session = _dragSource.getTmpSession();
@@ -99,6 +100,7 @@ public class DocumentDnD {
 			return _tmpSession;
 		}
 
+		@Override
 		public void dragSetData(DragSourceEvent event) {
 			try {
 				if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
@@ -142,6 +144,7 @@ public class DocumentDnD {
 			reset();
 
 			event.display.timerExec(3000, new Runnable() {
+				@Override
 				public void run() {
 					deleteRecursive(sessionDir);
 				}
@@ -149,7 +152,7 @@ public class DocumentDnD {
 		}
 
 		private String[] createTempFiles() {
-			List<File> files = new ArrayList<File>();
+			List<File> files = new ArrayList<>();
 
 			for (Object it : ((IStructuredSelection) _viewer.getSelection())
 					.toArray()) {
@@ -175,7 +178,7 @@ public class DocumentDnD {
 				}
 			}
 
-			List<String> result = new ArrayList<String>(files.size());
+			List<String> result = new ArrayList<>(files.size());
 			for (File it : files) {
 				result.add(it.getAbsolutePath());
 			}

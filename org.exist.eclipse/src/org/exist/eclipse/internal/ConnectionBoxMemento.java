@@ -42,7 +42,7 @@ public class ConnectionBoxMemento implements Serializable {
 	 * @param filepath
 	 */
 	public ConnectionBoxMemento(String filepath) {
-		_connections = new ArrayList<IConnection>();
+		_connections = new ArrayList<>();
 		Document doc;
 		try {
 			doc = new SAXBuilder().build(filepath);
@@ -87,21 +87,21 @@ public class ConnectionBoxMemento implements Serializable {
 	 * @param filepath
 	 */
 	public void writeStateAsXml(String filepath) {
-		try {
-			Element connections = new Element(CONNECTIONS);
-			connections.removeChildren(CONNECTION);
-			for (IConnection connection : _connections) {
-				Element element = new Element(CONNECTION);
-				element.setAttribute(TYPE, connection.getType().name());
-				element.setAttribute(NAME, connection.getName());
-				element.setAttribute(USERNAME, connection.getUsername());
-				element.setAttribute(PASSWORD, connection.getPassword());
-				element.setAttribute(URI, connection.getPath());
-				connections.addContent(element);
-			}
-			Document document = new Document(connections);
-			XMLOutputter outp = new XMLOutputter();
-			outp.output(document, new FileOutputStream(filepath));
+		Element connections = new Element(CONNECTIONS);
+		connections.removeChildren(CONNECTION);
+		for (IConnection connection : _connections) {
+			Element element = new Element(CONNECTION);
+			element.setAttribute(TYPE, connection.getType().name());
+			element.setAttribute(NAME, connection.getName());
+			element.setAttribute(USERNAME, connection.getUsername());
+			element.setAttribute(PASSWORD, connection.getPassword());
+			element.setAttribute(URI, connection.getPath());
+			connections.addContent(element);
+		}
+		Document document = new Document(connections);
+		XMLOutputter outp = new XMLOutputter();
+		try (FileOutputStream out = new FileOutputStream(filepath)) {
+			outp.output(document, out);
 		} catch (Exception e1) {
 			// do nothing
 		}

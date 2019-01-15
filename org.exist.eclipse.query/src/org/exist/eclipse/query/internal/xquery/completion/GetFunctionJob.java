@@ -30,7 +30,7 @@ public class GetFunctionJob extends Job {
 	public GetFunctionJob(IBrowseItem item) {
 		super("Get functions from " + item.getConnection());
 		_item = item;
-		_methods = new ArrayList<IXQueryMethod>();
+		_methods = new ArrayList<>();
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class GetFunctionJob extends Job {
 	 */
 	public IXQueryMethod[] getMethods(String prefix) {
 		if (prefix != null && prefix.length() > 0) {
-			Collection<IXQueryMethod> result = new ArrayList<IXQueryMethod>();
+			Collection<IXQueryMethod> result = new ArrayList<>();
 			for (IXQueryMethod method : _methods) {
 				if (method.getName().startsWith(prefix)) {
 					result.add(method);
@@ -73,7 +73,7 @@ public class GetFunctionJob extends Job {
 
 	private Collection<IXQueryMethod> fillMethods() {
 		Collection<String> fromExist = getMethodsFromExist();
-		Collection<IXQueryMethod> methods = new ArrayList<IXQueryMethod>(
+		Collection<IXQueryMethod> methods = new ArrayList<>(
 				fromExist.size());
 		for (String methodString : fromExist) {
 			String name = null;
@@ -95,7 +95,7 @@ public class GetFunctionJob extends Job {
 	}
 
 	private Collection<String> getMethodsFromExist() {
-		Collection<String> methods = new ArrayList<String>();
+		Collection<String> methods = new ArrayList<>();
 		ResourceSet result = null;
 		try {
 			RunQuery existQuery = new RunQuery(_item, getQuery());
@@ -117,7 +117,7 @@ public class GetFunctionJob extends Job {
 				try {
 					result.clear();
 				} catch (XMLDBException e) {
-					// do nothing
+					// ignore
 				}
 			}
 		}

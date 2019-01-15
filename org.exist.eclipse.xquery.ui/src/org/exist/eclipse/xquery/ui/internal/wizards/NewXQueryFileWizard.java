@@ -27,17 +27,20 @@ public class NewXQueryFileWizard extends Wizard implements INewWizard {
 		setNeedsProgressMonitor(true);
 	}
 
+	@Override
 	public void addPages() {
 		_page = new NewXQueryFileWizardPage(_selection);
 		_page.setTitle(WIZARD_TITLE);
 		addPage(_page);
 	}
 
+	@Override
 	public boolean performFinish() {
 		boolean ok = _page.finish();
 		if (ok) {
 			final IFile newFile = _page.getNewFile();
 			_page.getControl().getDisplay().asyncExec(new Runnable() {
+				@Override
 				public void run() {
 					try {
 						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
@@ -54,6 +57,7 @@ public class NewXQueryFileWizard extends Wizard implements INewWizard {
 		return ok;
 	}
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 		setWindowTitle(WIZARD_TITLE);

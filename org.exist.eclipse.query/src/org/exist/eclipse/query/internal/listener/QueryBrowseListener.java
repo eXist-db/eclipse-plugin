@@ -22,6 +22,7 @@ import org.exist.eclipse.query.internal.views.QueryView;
  */
 public class QueryBrowseListener implements IBrowseListener {
 
+	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseService service = (IBrowseService) items[0]
 				.getAdapter(IBrowseService.class);
@@ -30,6 +31,7 @@ public class QueryBrowseListener implements IBrowseListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		if (page != null) {
 			try {

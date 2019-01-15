@@ -22,6 +22,7 @@ public class BrowsePlugin extends AbstractUIPlugin {
 	public BrowsePlugin() {
 	}
 
+	@Override
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
@@ -29,6 +30,7 @@ public class BrowsePlugin extends AbstractUIPlugin {
 		ViewRegistration.getInstance().addListener(_viewListener);
 	}
 
+	@Override
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		ViewRegistration.getInstance().removeListener(_viewListener);

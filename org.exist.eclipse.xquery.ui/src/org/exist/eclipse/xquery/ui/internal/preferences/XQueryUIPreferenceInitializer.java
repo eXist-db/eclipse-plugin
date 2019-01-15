@@ -18,6 +18,7 @@ import org.exist.eclipse.xquery.ui.internal.text.IXQueryColorConstants;
 public class XQueryUIPreferenceInitializer extends
 		AbstractPreferenceInitializer {
 
+	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = XQueryUI.getDefault().getPreferenceStore();
 

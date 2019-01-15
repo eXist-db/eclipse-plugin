@@ -127,6 +127,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		DragSource source = new DragSource(_viewer.getTable(), operations);
 		source.setTransfer(new Transfer[] { TextTransfer.getInstance() });
 		source.addDragListener(new DragSourceAdapter() {
+			@Override
 			public void dragSetData(DragSourceEvent event) {
 				try {
 					if (TextTransfer.getInstance().isSupportedType(
@@ -145,6 +146,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
 		menuMgr.setRemoveAllWhenShown(true);
 		menuMgr.addMenuListener(new IMenuListener() {
+			@Override
 			public void menuAboutToShow(IMenuManager manager) {
 				fillContextMenu(manager);
 			}
@@ -182,8 +184,10 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		return _viewer;
 	}
 
+	@Override
 	public void end(final IQueryEndState state) {
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				if (state.getState().equals(IQueryEndState.State.OK)) {
 					StringBuilder msg = new StringBuilder();
@@ -209,14 +213,17 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		});
 	}
 
+	@Override
 	public String getQuery() {
 		return _query;
 	}
 
+	@Override
 	public IResultFrame start() {
 		_actualCount = 0;
-		_results = new ArrayList<ResultItem>(_maxCount);
+		_results = new ArrayList<>(_maxCount);
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				_status
 						.setText("Query Processing... (start at "
@@ -228,6 +235,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		return this;
 	}
 
+	@Override
 	public boolean addResult(String content) {
 		if (_actualCount < _maxCount) {
 			_results.add(new ResultItem(_uniqueNr, _filename, _actualCount,
@@ -239,6 +247,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _filename;
 	}

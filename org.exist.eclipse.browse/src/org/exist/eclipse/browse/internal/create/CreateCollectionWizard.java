@@ -1,5 +1,7 @@
 package org.exist.eclipse.browse.internal.create;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
@@ -8,6 +10,7 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
+import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
 
 /**
@@ -36,6 +39,7 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_enterCollectionPage = new EnterCollectionWizardPage(_selection, _item);
 		addPage(_enterCollectionPage);
@@ -46,6 +50,7 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * The button should only be enabled on the
 	 * {@link EnterCollectionWizardPage}.
 	 */
+	@Override
 	public boolean canFinish() {
 		return _enterCollectionPage.isPageComplete();
 	}
@@ -54,6 +59,7 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		if (IManagementService.class.cast(
@@ -69,8 +75,13 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 					// _itemService.refresh();
 				} catch (ConnectionException e) {
 					isFinished = false;
-					_enterCollectionPage
-							.setErrorMessage("Failure while create collection.");
+					String message = "Failure while create collection.";
+					BrowsePlugin
+							.getDefault()
+							.getLog()
+							.log(new Status(IStatus.ERROR,
+									BrowsePlugin.getId(), message, e));
+					_enterCollectionPage.setErrorMessage(message);
 				}
 			}
 		}
@@ -89,6 +100,7 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_selection = selection;
 	}

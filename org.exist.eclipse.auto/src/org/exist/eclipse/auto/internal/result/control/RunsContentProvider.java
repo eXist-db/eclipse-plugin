@@ -24,10 +24,12 @@ public class RunsContentProvider implements ILazyContentProvider {
 	public RunsContentProvider() {
 	}
 
+	@Override
 	public void dispose() {
 		_runEntities = null;
 	}
 
+	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		_viewer = (TableViewer) viewer;
 		if (newInput != null) {
@@ -37,6 +39,7 @@ public class RunsContentProvider implements ILazyContentProvider {
 		}
 	}
 
+	@Override
 	public void updateElement(int index) {
 		_viewer.replace(_runEntities[index], index);
 	}

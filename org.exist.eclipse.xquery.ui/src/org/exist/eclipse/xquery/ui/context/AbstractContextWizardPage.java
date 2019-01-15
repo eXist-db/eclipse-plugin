@@ -10,13 +10,11 @@ import org.eclipse.jface.wizard.WizardPage;
  * the xquery editor. First of all you have to register a
  * {@link IContextSwitcher} on the singleton instance
  * {@link ContextSwitcherRegistration}. If this context will selected from the
- * user, then the system call the method
- * {@link IContextSwitcher#getWizardPages()} and returns instances of this type.
- * Here you can define your own logic to choose the {@link IConnectionContext},
- * but at the end you have to give back an {@link IConnectionContext} instance
- * over the method {@link AbstractContextWizardPage#getConnectionContext()}.
- * Therefore you must override this method, otherwise it will return
- * <code>null</code> on default.
+ * user, then the system returns instances of this type. Here you can define
+ * your own logic to choose the {@link IConnectionContext}, but at the end you
+ * have to give back an {@link IConnectionContext} instance over the method
+ * {@link AbstractContextWizardPage#getConnectionContext()}. Therefore you must
+ * override this method, otherwise it will return <code>null</code> on default.
  * 
  * @see IContextSwitcher
  * @see ContextSwitcherRegistration

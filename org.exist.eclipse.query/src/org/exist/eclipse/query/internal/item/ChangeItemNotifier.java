@@ -12,7 +12,7 @@ import org.exist.eclipse.browse.browse.IBrowseItem;
  * Here you can add and remove {@link IChangeItemListener} and notify all
  * registered listeners.
  * 
- * @see IChangeItemListener.
+ * @see IChangeItemListener
  * @author Pascal Schmidiger
  * 
  */
@@ -28,7 +28,7 @@ public class ChangeItemNotifier implements IChangeItemListener {
 	}
 
 	private ChangeItemNotifier() {
-		_listeners = new ArrayList<IChangeItemListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	public void addListener(IChangeItemListener listener) {
@@ -43,6 +43,7 @@ public class ChangeItemNotifier implements IChangeItemListener {
 		}
 	}
 
+	@Override
 	public void change(IBrowseItem item) {
 		for (IChangeItemListener listener : _listeners) {
 			listener.change(item);

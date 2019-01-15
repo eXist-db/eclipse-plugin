@@ -19,7 +19,7 @@ public class DocumentCoordinator implements IDocumentItemListener {
 	private List<IDocumentItemListener> _listeners;
 
 	private DocumentCoordinator() {
-		_listeners = new ArrayList<IDocumentItemListener>();
+		_listeners = new ArrayList<>();
 	}
 
 	public static DocumentCoordinator getInstance() {
@@ -51,12 +51,14 @@ public class DocumentCoordinator implements IDocumentItemListener {
 		}
 	}
 
+	@Override
 	public void removed(IDocumentItem item) {
 		for (IDocumentItemListener listener : _listeners) {
 			listener.removed(item);
 		}
 	}
 
+	@Override
 	public void moved(IDocumentItem fromItem, IDocumentItem toItem) {
 		for (IDocumentItemListener listener : _listeners) {
 			listener.moved(fromItem, toItem);

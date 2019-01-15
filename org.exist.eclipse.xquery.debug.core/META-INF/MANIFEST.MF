@@ -1,19 +1,18 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: org.exist.eclipse.xquery.debug.core
 Bundle-ManifestVersion: 2
 Bundle-Name: XQuery Debug Core Plug-in
 Bundle-SymbolicName: org.exist.eclipse.xquery.debug.core;singleton:=true
-Bundle-Version: 0.6.2
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Version: 4.10
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: eXist-db.org
-Require-Bundle: org.eclipse.debug.core;bundle-version="3.4.1",
- org.eclipse.core.variables;bundle-version="3.2.100",
- org.eclipse.core.runtime;bundle-version="3.4.0",
- org.eclipse.core.runtime.compatibility;bundle-version="3.2.0",
- org.eclipse.dltk.debug;bundle-version="2.0.0"
+Require-Bundle: org.eclipse.debug.core,
+ org.eclipse.core.variables,
+ org.eclipse.core.runtime,
+ org.eclipse.dltk.debug
 Bundle-Activator: org.exist.eclipse.xquery.debug.core.DebugXQueryPlugin
 Export-Package: org.exist.eclipse.xquery.debug.core,
  org.exist.eclipse.xquery.debug.core.launching,
  org.exist.eclipse.xquery.debug.core.model
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: core.jar,
- .
+Bundle-ClassPath: core.jar

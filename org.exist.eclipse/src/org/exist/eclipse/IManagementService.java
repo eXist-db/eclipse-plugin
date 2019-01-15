@@ -16,9 +16,7 @@ import org.xmldb.api.base.Collection;
  */
 public interface IManagementService {
 	/**
-	 * Check if the connection is valid ({@link #isValid()}). If the connection
-	 * is not valid then it will show a message and call implicit the method
-	 * {@link #close()}
+	 * Check if the connection is valid.
 	 * 
 	 * @return <code>true</code> if the connection is open and valid, elsewhere
 	 *         <code>false</code>.

@@ -10,6 +10,7 @@ import java.util.Map;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -40,7 +41,6 @@ public class AutomationResult {
 	private Map<Integer, QueryGroup> _results;
 	private final IProgressMonitor _monitor;
 
-
 	/**
 	 * AutomationResult constructor
 	 * 
@@ -61,7 +61,7 @@ public class AutomationResult {
 		_monitor = monitor;
 		_target = target;
 
-		_results = new HashMap<Integer, QueryGroup>(expectedCount);
+		_results = new HashMap<>(expectedCount);
 		_resultCount = 0;
 	}
 
@@ -71,7 +71,7 @@ public class AutomationResult {
 	 * @param result
 	 */
 	public synchronized void addQueryResult(IQueryResult result) {
-		int key = result.getQuery().getId();
+		Integer key = Integer.valueOf(result.getQuery().getId());
 		QueryGroup group = _results.get(key);
 		if (group == null) {
 			group = new QueryGroup(result.getQuery());
@@ -97,7 +97,7 @@ public class AutomationResult {
 				displayResult();
 			}
 		} catch (InterruptedException e) {
-			// end the join method
+			// ignore
 		} finally {
 			AutomationHandler.getInstance().cleanup();
 		}
@@ -122,6 +122,7 @@ public class AutomationResult {
 			e.printStackTrace();
 		}
 		Display.getDefault().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				openEditor(file);
 			}
@@ -146,7 +147,7 @@ public class AutomationResult {
 				try {
 					IDE.openEditorOnFileStore(page, fileStore);
 				} catch (PartInitException e) {
-					Status status = new Status(Status.ERROR, AutoUI.getId(),
+					Status status = new Status(IStatus.ERROR, AutoUI.getId(),
 							e.getMessage(), e);
 					AutoUI.getDefault().getLog().log(status);
 					ErrorDialog.openError(

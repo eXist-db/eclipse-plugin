@@ -19,6 +19,7 @@ import org.xmldb.api.modules.BinaryResource;
  */
 public class CreateBinaryResource implements ICreateDocumentProvider {
 
+	@Override
 	public void create(IDocumentItem item, String content)
 			throws CreateDocumentException {
 		try {
@@ -37,7 +38,7 @@ public class CreateBinaryResource implements ICreateDocumentProvider {
 		} catch (Exception e) {
 			CreateDocumentException createDocumentException = new CreateDocumentException(
 					item, e);
-			IStatus status = new Status(Status.ERROR, BrowsePlugin.getId(),
+			IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 					"Failure while create binary resource.",
 					createDocumentException);
 			BrowsePlugin.getDefault().getLog().log(status);

@@ -51,22 +51,27 @@ public class ResultTextPage extends TextEditor implements IFormPage {
 		return getDocumentProvider().getDocument(getEditorInput()).get();
 	}
 
+	@Override
 	public boolean canLeaveThePage() {
 		return true;
 	}
 
+	@Override
 	public FormEditor getEditor() {
 		return _editor;
 	}
 
+	@Override
 	public String getId() {
 		return _editor.getSite().getId() + ".resultTextPage";
 	}
 
+	@Override
 	public int getIndex() {
 		return _index;
 	}
 
+	@Override
 	public IManagedForm getManagedForm() {
 		return null;
 	}
@@ -78,29 +83,36 @@ public class ResultTextPage extends TextEditor implements IFormPage {
 		_partControl = children[children.length - 1];
 	}
 
+	@Override
 	public Control getPartControl() {
 		return _partControl;
 	}
 
+	@Override
 	public void initialize(FormEditor editor) {
 		_editor = (ResultEditor) editor;
 	}
 
+	@Override
 	public boolean isActive() {
 		return equals(_editor.getActivePageInstance());
 	}
 
+	@Override
 	public boolean isEditor() {
 		return true;
 	}
 
+	@Override
 	public boolean selectReveal(Object object) {
 		return false;
 	}
 
+	@Override
 	public void setActive(boolean active) {
 	}
 
+	@Override
 	public void setIndex(int index) {
 		_index = index;
 	}

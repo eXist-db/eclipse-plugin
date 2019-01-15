@@ -1,5 +1,7 @@
 package org.exist.eclipse.browse.internal.create;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorDescriptor;
@@ -35,6 +37,7 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 		setNeedsProgressMonitor(true);
 	}
 
+	@Override
 	public void addPages() {
 		SelectDocumentWizardPage page = new SelectDocumentWizardPage();
 		page.setTitle(TITLE);
@@ -48,6 +51,7 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 		addPage(_enterDocumentPage);
 	}
 
+	@Override
 	public boolean canFinish() {
 		if (getContainer().getCurrentPage() == _enterDocumentPage) {
 			return _enterDocumentPage.isPageComplete();
@@ -56,6 +60,7 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 		}
 	}
 
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		if (IManagementService.class.cast(
@@ -67,8 +72,8 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 				try {
 					IDocumentService documentService = (IDocumentService) documentItem
 							.getAdapter(IDocumentService.class);
-					documentService.create(_enterDocumentPage
-							.getDocumentProvider(), null);
+					documentService.create(
+							_enterDocumentPage.getDocumentProvider(), null);
 					_itemService.refresh();
 
 					IEditorDescriptor defaultEditor = ActionGroupOpenDocument
@@ -82,8 +87,13 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 
 				} catch (CreateDocumentException e) {
 					isFinished = false;
-					_enterDocumentPage
-							.setErrorMessage("Failure while create document.");
+					String message = "Failure while create document.";
+					BrowsePlugin
+							.getDefault()
+							.getLog()
+							.log(new Status(IStatus.ERROR,
+									BrowsePlugin.getId(), message, e));
+					_enterDocumentPage.setErrorMessage(message);
 				}
 			}
 		}
@@ -95,6 +105,7 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 		return _itemService.check();
 	}
 
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 	}
 

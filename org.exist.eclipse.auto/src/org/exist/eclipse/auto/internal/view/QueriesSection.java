@@ -23,6 +23,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.exist.eclipse.auto.internal.AutoUI;
@@ -61,7 +62,7 @@ public class QueriesSection implements SelectionListener {
 	 */
 	public Section init() {
 		Section querySection = _toolkit.createSection(_navigation,
-				Section.TITLE_BAR);
+				ExpandableComposite.TITLE_BAR);
 		querySection.setText("Queries");
 		querySection.marginWidth = 10;
 		querySection.marginHeight = 5;
@@ -123,6 +124,7 @@ public class QueriesSection implements SelectionListener {
 	// Actions
 	// --------------------------------------------------------------------------
 
+	@Override
 	public void widgetSelected(SelectionEvent e) {
 		if (e.getSource() instanceof Button) {
 			Button eventButton = (Button) e.getSource();
@@ -160,6 +162,7 @@ public class QueriesSection implements SelectionListener {
 		}
 	}
 
+	@Override
 	public void widgetDefaultSelected(SelectionEvent e) {
 		// SelectionListener interface method - not used
 	}
@@ -182,6 +185,7 @@ public class QueriesSection implements SelectionListener {
 				event.feedback = DND.FEEDBACK_SELECT | DND.FEEDBACK_SCROLL;
 			}
 
+			@Override
 			public void drop(DropTargetEvent event) {
 				if (fileTransfer.isSupportedType(event.currentDataType)) {
 					String[] filenames = (String[]) event.data;

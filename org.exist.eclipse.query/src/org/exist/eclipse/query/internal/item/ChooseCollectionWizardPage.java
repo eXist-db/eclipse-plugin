@@ -54,6 +54,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	 * 
 	 * @see IDialogPage#createControl(Composite)
 	 */
+	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();

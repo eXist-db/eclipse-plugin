@@ -55,10 +55,12 @@ public class XQueryEditorColoringConfigurationBlock extends
 		super(store);
 	}
 
+	@Override
 	protected String[][] getSyntaxColorListModel() {
 		return _syntaxColorListModel;
 	}
 
+	@Override
 	protected ProjectionViewer createPreviewViewer(Composite parent,
 			IVerticalRuler verticalRuler, IOverviewRuler overviewRuler,
 			boolean showAnnotationsOverview, int styles, IPreferenceStore store) {
@@ -66,6 +68,7 @@ public class XQueryEditorColoringConfigurationBlock extends
 				showAnnotationsOverview, styles, store);
 	}
 
+	@Override
 	protected ScriptSourceViewerConfiguration createSimpleSourceViewerConfiguration(
 			IColorManager colorManager, IPreferenceStore preferenceStore,
 			ITextEditor editor, boolean configureFormatter) {
@@ -74,11 +77,13 @@ public class XQueryEditorColoringConfigurationBlock extends
 				configureFormatter);
 	}
 
+	@Override
 	protected void setDocumentPartitioning(IDocument document) {
 		XQueryDocumentSetupParticipant participant = new XQueryDocumentSetupParticipant();
 		participant.setup(document);
 	}
 
+	@Override
 	protected InputStream getPreviewContentReader() {
 		return getClass().getResourceAsStream(PREVIEW_FILE_NAME);
 	}

@@ -31,26 +31,32 @@ public class Query implements IQuery {
 
 	}
 
+	@Override
 	public int getId() {
 		return _id;
 	}
 
+	@Override
 	public String getName() {
 		return _queryEntity.getName();
 	}
 
+	@Override
 	public String getNotes() {
 		return _queryEntity.getNotes();
 	}
 
+	@Override
 	public String getQuery() {
 		return _queryEntity.getQuery();
 	}
 
+	@Override
 	public int getQuantity() {
 		return _queryEntity.getQuantity();
 	}
 
+	@Override
 	public String getCollection() {
 		return _collection;
 	}

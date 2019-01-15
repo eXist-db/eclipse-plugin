@@ -20,6 +20,7 @@ public class CopyConnectionListener implements IConnectionListener {
 
 	private IWorkbenchPage _page;
 
+	@Override
 	public void actionPerformed(IConnection connection) {
 		try {
 			ConnectionFactory.changeConnection(_page.getWorkbenchWindow()
@@ -33,6 +34,7 @@ public class CopyConnectionListener implements IConnectionListener {
 		}
 	}
 
+	@Override
 	public void init(IWorkbenchPage page) {
 		_page = page;
 	}

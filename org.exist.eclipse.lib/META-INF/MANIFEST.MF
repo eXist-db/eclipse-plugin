@@ -1,10 +1,11 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: org.exist.eclipse.lib
 Bundle-ManifestVersion: 2
 Bundle-Name: eXist Libraries
 Bundle-SymbolicName: org.exist.eclipse.lib
-Bundle-Version: 0.6.2
+Bundle-Version: 4.10
 Bundle-Vendor: eXist
-Fragment-Host: org.exist.eclipse;bundle-version="0.6.1"
+Fragment-Host: org.exist.eclipse
 Bundle-ClassPath: .,
  lib/core/antlr-2.7.7.jar,
  lib/core/commons-collections-3.2.1.jar,
@@ -31,3 +32,4 @@ Bundle-ClassPath: .,
  lib/endorsed/xercesImpl-2.9.1.jar,
  lib/endorsed/xml-apis.jar,
  lib/exist.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

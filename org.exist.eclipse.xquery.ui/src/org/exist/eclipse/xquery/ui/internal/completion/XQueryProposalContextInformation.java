@@ -10,7 +10,6 @@ import org.eclipse.swt.graphics.Image;
  * changed/refactored/cleaned.
  * 
  * @author Christian Oetterli
- * @version $Id: $
  */
 public class XQueryProposalContextInformation implements IContextInformation,
 		IContextInformationExtension {
@@ -41,7 +40,7 @@ public class XQueryProposalContextInformation implements IContextInformation,
 	}
 
 	private String createParametersList(CompletionProposal proposal) {
-		StringBuffer bf = new StringBuffer();
+		StringBuilder bf = new StringBuilder();
 		String[] pNames = proposal.findParameterNames(null);
 
 		String[] pTypes;
@@ -71,6 +70,12 @@ public class XQueryProposalContextInformation implements IContextInformation,
 	}
 
 	@Override
+	public int hashCode() {
+		return String.valueOf(getContextDisplayString()).toLowerCase()
+				.hashCode();
+	}
+
+	@Override
 	public boolean equals(Object object) {
 		if (object instanceof IContextInformation) {
 			IContextInformation contextInformation = (IContextInformation) object;
@@ -86,18 +91,22 @@ public class XQueryProposalContextInformation implements IContextInformation,
 		return false;
 	}
 
+	@Override
 	public String getInformationDisplayString() {
 		return _informationDisplayString;
 	}
 
+	@Override
 	public Image getImage() {
 		return _image;
 	}
 
+	@Override
 	public String getContextDisplayString() {
 		return _contextDisplayString;
 	}
 
+	@Override
 	public int getContextInformationPosition() {
 		return _position;
 	}

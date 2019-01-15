@@ -2,6 +2,7 @@ package org.exist.eclipse.auto.internal.editor;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.widgets.Display;
@@ -34,6 +35,7 @@ public class AutomationEditor extends FormEditor implements
 	public AutomationEditor() {
 	}
 
+	@Override
 	protected FormToolkit createToolkit(Display display) {
 		// Create a toolkit that shares colors between editors.
 		return new FormToolkit(AutoUI.getDefault().getFormColors(display));
@@ -47,12 +49,14 @@ public class AutomationEditor extends FormEditor implements
 	 * The <code>MultiPageEditorExample</code> implementation of this method
 	 * checks that the input is an instance of <code>IFileEditorInput</code>.
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput)
 			throws PartInitException {
 		super.init(site, editorInput);
 		super.setPartName(editorInput.getName());
 	}
 
+	@Override
 	public void doSave(IProgressMonitor monitor) {
 		if (getActivePage() == _formPage.getIndex()) {
 			// call doSave() to propagate the changes from the form-page to the
@@ -60,7 +64,7 @@ public class AutomationEditor extends FormEditor implements
 			try {
 				_textPage.setContent(_formPage.getAutomationData());
 			} catch (AutoException e) {
-				Status status = new Status(Status.ERROR, AutoUI.getId(), e
+				Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 						.getMessage(), e);
 				AutoUI.getDefault().getLog().log(status);
 				ErrorDialog.openError(Display.getCurrent().getActiveShell(),
@@ -76,10 +80,12 @@ public class AutomationEditor extends FormEditor implements
 		setDirty(false);
 	}
 
+	@Override
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
 
+	@Override
 	public void doSaveAs() {
 		// unused interface method, save as is not allowed
 	}
@@ -97,7 +103,7 @@ public class AutomationEditor extends FormEditor implements
 			addPage(0, _formPage);
 
 		} catch (AutoException ae) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), ae
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae
 					.getMessage(), ae);
 			AutoUI.getDefault().getLog().log(status);
 			ErrorDialog
@@ -108,7 +114,7 @@ public class AutomationEditor extends FormEditor implements
 							status);
 
 		} catch (PartInitException e) {
-			Status status = new Status(Status.ERROR, AutoUI.getId(), e
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
 					.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 
@@ -136,10 +142,12 @@ public class AutomationEditor extends FormEditor implements
 		return _dirty;
 	}
 
+	@Override
 	public void automationModified(AutoModEvent event) {
 		setDirty(true);
 	}
 
+	@Override
 	public void modificationCleared(AutoModEvent event) {
 		setDirty(false);
 	}

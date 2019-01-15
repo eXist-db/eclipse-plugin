@@ -38,6 +38,7 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	/**
 	 * Adding the page to the wizard.
 	 */
+	@Override
 	public void addPages() {
 		_page = new RemoteConnectionWizardPage();
 		_page.setTitle(WIZARD_TITLE);
@@ -54,6 +55,7 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	 * This method figures out whether the 'Finish' button should be enabled.
 	 * The button should only be enabled on the NewConnectionWizardPage.
 	 */
+	@Override
 	public boolean canFinish() {
 		return getContainer().getCurrentPage().isPageComplete();
 	}
@@ -62,6 +64,7 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	 * This method is called when 'Finish' button is pressed in the wizard. We
 	 * will create an operation and run it using wizard as execution context.
 	 */
+	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 		IConnection connection = _page.getConnection();
@@ -86,6 +89,7 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	 * 
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		_workbench = workbench;
 	}
