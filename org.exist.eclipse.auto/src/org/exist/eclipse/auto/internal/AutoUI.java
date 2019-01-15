@@ -42,7 +42,6 @@ public class AutoUI extends AbstractUIPlugin {
 	private static AutoUI plugin;
 
 	// Resource bundle.
-	private ResourceBundle _resourceBundle;
 	private FormColors _formColors;
 	public static final String IMG_HORIZONTAL = "horizontal";
 	public static final String IMG_VERTICAL = "vertical";
@@ -55,16 +54,6 @@ public class AutoUI extends AbstractUIPlugin {
 	 */
 	public AutoUI() {
 		plugin = this;
-		try {
-			_resourceBundle = ResourceBundle
-					.getBundle("org.exist.eclipse.auto.AutomationResources");
-		} catch (MissingResourceException e) {
-			AutoUI.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, AutoUI.getId(),
-							"Resource bundle not found", e));
-			_resourceBundle = null;
-		}
 	}
 
 	@Override
@@ -152,23 +141,6 @@ public class AutoUI extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the string from the plugin's resource bundle, or 'key' if not
-	 * found.
-	 */
-	public static String getResourceString(String key) {
-		ResourceBundle bundle = AutoUI.getDefault().getResourceBundle();
-		try {
-			return (bundle != null ? bundle.getString(key) : key);
-		} catch (MissingResourceException e) {
-			AutoUI.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, AutoUI.getId(),
-							"Unable to find resource: ".concat(key), e));
-			return key;
-		}
-	}
-
-	/**
 	 * Gets the Form Colors
 	 * 
 	 * @param display
@@ -181,13 +153,6 @@ public class AutoUI extends AbstractUIPlugin {
 			_formColors.markShared();
 		}
 		return _formColors;
-	}
-
-	/**
-	 * Returns the plugin's resource bundle,
-	 */
-	public ResourceBundle getResourceBundle() {
-		return _resourceBundle;
 	}
 
 	/**
