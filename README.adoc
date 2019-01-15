@@ -3,7 +3,7 @@ Patrick Reinhart <https://github.com/reinhapa[@reinhapa]>
 :project-full-path: eXist-db/eclipse-plugin
 :github-branch: master
 
-image:https://img.shields.io/badge/license-EPL-2.0-blue.svg["XML:DB Initiative Software License", link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"]
+image:https://img.shields.io/badge/license-EPL_2.0-blue.svg["Eclipse Public License - v 2.0", link="https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"]
 image:https://img.shields.io/badge/Java-8-blue.svg["Java 8", link="https://travis-ci.org/{project-full-path}"]
 
 == Content
