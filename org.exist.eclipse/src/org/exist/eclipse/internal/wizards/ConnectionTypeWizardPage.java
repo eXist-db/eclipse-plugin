@@ -43,7 +43,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		setTitle(NewConnectionWizard.WIZARD_TITLE);
 		setDescription("Select the type of the connection");
 		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**

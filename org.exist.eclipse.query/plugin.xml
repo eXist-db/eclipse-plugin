@@ -10,7 +10,7 @@
       <view
             category="org.exist.eclipse"
             class="org.exist.eclipse.query.internal.views.QueryView"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.query.internal.views.QueryView"
             name="Query View">
       </view>

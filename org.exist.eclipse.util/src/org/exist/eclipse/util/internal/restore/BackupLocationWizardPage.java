@@ -38,7 +38,7 @@ public class BackupLocationWizardPage extends WizardPage {
 		setTitle("Restore from backup");
 		setDescription("Enter the location of the backup you want to restore from. (__contents__.xml)");
 		setImageDescriptor(UtilPlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 		_selection = selection;
 	}
 

@@ -6,14 +6,14 @@
       <editor
             class="org.exist.eclipse.auto.internal.editor.AutomationEditor"
             extensions="eqa"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.auto.editos.AutomationEditor"
             name="Automation Editor">
       </editor>
       <editor
             class="org.exist.eclipse.auto.internal.result.editor.ResultEditor"
             extensions="eqar"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.auto.editor.ResultEditor"
             name="Automation Result Editor">
       </editor>
@@ -22,7 +22,7 @@
          point="org.eclipse.ui.newWizards">
       <wizard
             class="org.exist.eclipse.auto.internal.wizard.AutomationNewWizard"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.auto.internal.wizard.AutomationNewWizard"
             name="Automation">
       </wizard>

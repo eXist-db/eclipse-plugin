@@ -40,7 +40,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	public RemoteConnectionWizardPage() {
 		super("remoteconnectionwizardPage");
 		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 		_copy = true;
 	}
 

@@ -1,13 +1,5 @@
-import org.gradle.plugins.ide.eclipse.model.BuildCommand
-import org.gradle.plugins.ide.eclipse.model.Library
-
 plugins {
   id 'java'
-  id 'eclipse'
-}
-
-ext {
-  libraryPattern = '(.+?)-([0-9][.0-9a-z]+)(-SNAPSHOT)?(-[a-z]+)?\\.jar$'
 }
 
 repositories {
@@ -21,80 +13,20 @@ repositories {
   }
 }
 
-subprojects {
-  sourceSets {
-    main {
-      java.srcDirs = ['src']
-      resources{
-        srcDirs = ['src']
-        exclude '**/*.java'
-      }
-    }
-    test {
-      java.srcDirs = ['src_test']
-      resources{
-        srcDirs = ['src_test']
-        exclude '**/*.java'
-      }
-    }
-  }
-
-  configurations {
-    eclipsePlugin
-  }
-
-  eclipse.classpath.file.whenMerged {
-    entries.forEach { entry ->
-      if (entry.kind == 'lib') {
-        // mark test libraries not already included by the main scope 
-        def scopes = entry.entryAttributes.gradle_used_by_scope.split(',')
-        def libraryFile = file(entry.path)
-        if (!scopes.contains('main') && scopes.contains('test') && !configurations.compileOnly.resolve().contains(libraryFile) ) {
-          entry.entryAttributes['test'] = true 
-        } else {
-          entry.entryAttributes.remove('test')
+task updateLogos {
+  doLast {
+    [ 'org.exist.eclipse',
+      'org.exist.eclipse.auto',
+      'org.exist.eclipse.browse',
+      'org.exist.eclipse.query',
+      'org.exist.eclipse.util',
+      'org.exist.eclipse.xquery.ui' ].each {
+        def target = "$it/icons"
+        copy {
+          from 'logos'
+          into target
+          include '*.png'
         }
-        if (configurations.eclipsePlugin.resolve().contains(libraryFile)) {
-          entries -= entry
-          def lib = new Library(fileReference('lib/' + libraryFile.getName()))
-          lib.sourcePath = entry.sourcePath
-          entries += lib 
-        }
-      }
-    }
-  }
-
-  def addIfMissing = { newValue, values ->
-    if (!values.contains(newValue)) {
-      values.add(newValue)
-    } 
-  }
-  
-  eclipse {
-    project.file.whenMerged {
-      if (file('plugin.xml').exists() || file('plugin.properties').exists() || file('fragment.xml').exists()) {
-        addIfMissing('org.eclipse.pde.PluginNature', natures)
-        addIfMissing(new BuildCommand('org.eclipse.pde.ManifestBuilder'), buildCommands)
-        addIfMissing(new BuildCommand('org.eclipse.pde.SchemaBuilder'), buildCommands)
-        sync {
-          from configurations.eclipsePlugin
-          into 'lib'
-        }
-      }
     }
   }
 }
-
-project(':org.exist.eclipse.lib') {
-  dependencies {
-    eclipsePlugin "org.exist-db:exist-core:4.4.0"
-  }
-
-  // update libraries
-  task listLibraries {
-    doLast {
-      println configurations.eclipsePlugin
-    }
-  }
-}
-
