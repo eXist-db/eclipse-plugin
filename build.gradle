@@ -1,0 +1,30 @@
+plugins {
+  id 'java'
+  id 'eclipse'
+}
+
+ext {
+  libraryPattern = '(.+?)-([0-9][.0-9a-z]+)(-SNAPSHOT)?(-[a-z]+)?\\.jar$'
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+  maven {
+    url 'http://repo.evolvedbinary.com/content/repositories/exist-db'
+  }
+  maven {
+    url 'http://repo.evolvedbinary.com/content/repositories/exist-db-snapshots'
+  }
+}
+
+dependencies {
+	runtime "org.exist-db:exist-core:4.4.0"
+}
+
+// update libraries
+task listLibraries {
+  doLast {
+    println configurations.runtime
+  }
+}
