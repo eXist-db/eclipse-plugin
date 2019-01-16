@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.3"?>
+<?eclipse version="4.10"?>
 <plugin>
    <extension-point id="collection" name="Collection" schema="schema/collection.exsd"/>
    <extension-point id="document" name="Document" schema="schema/document.exsd"/>
