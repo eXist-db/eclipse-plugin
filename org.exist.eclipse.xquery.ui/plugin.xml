@@ -14,7 +14,7 @@
       <editor
             class="org.exist.eclipse.xquery.ui.internal.editor.XQueryEditor"
             default="true"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.xquery.ui.editor.XQueryEditor"
             name="XQuery Editor">
          <contentTypeBinding
@@ -72,7 +72,7 @@
             canFinishEarly="false"
             category="org.exist.eclipse.xquery.ui.category"
             class="org.exist.eclipse.xquery.ui.internal.wizards.NewXQueryProjectWizard"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.xquery.core.wizard.project"
             name="XQuery Project"
             project="true">
@@ -80,14 +80,14 @@
       <wizard
             category="org.exist.eclipse.xquery.ui.category"
             class="org.exist.eclipse.xquery.ui.internal.wizards.NewXQueryFileWizard"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.xquery.ui.internal.wizards.XQueryNewWizard"
             name="XQuery File">
       </wizard>
       <wizard
             category="org.exist.eclipse.xquery.ui.category"
             class="org.exist.eclipse.xquery.ui.internal.wizards.SelectContextWizard"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.xquery.ui.internal.wizards.SelectContextWizard"
             name="Select XQuery Context">
       </wizard>      
@@ -129,7 +129,7 @@
       <view
             category="org.exist.eclipse.xquery.ui"
             class="org.exist.eclipse.xquery.ui.internal.result.ResultView"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.xquery.ui.internal.result.ResultView"
             name="XQuery Results">
       </view>

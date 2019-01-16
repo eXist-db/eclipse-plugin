@@ -40,7 +40,7 @@ public class BackupTargetWizardPage extends WizardPage {
 		setTitle("Create a backup");
 		setDescription("Enter a location for the backup.");
 		setImageDescriptor(UtilPlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 	}
 
 	@Override

@@ -76,7 +76,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 	public LocalConnectionWizardPage() {
 		super("localconnectionwizardpage");
 		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 		_copy = true;
 	}
 

@@ -46,7 +46,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 		setTitle("Choose Collection");
 		setDescription("Choose a collection for the query");
 		setImageDescriptor(QueryPlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**

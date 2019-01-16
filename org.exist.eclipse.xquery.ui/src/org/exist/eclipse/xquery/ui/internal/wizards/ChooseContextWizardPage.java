@@ -53,7 +53,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		setTitle(SelectContextWizard.WIZARD_TITLE);
 		setDescription("Select a connection.");
 		setImageDescriptor(XQueryUI
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**

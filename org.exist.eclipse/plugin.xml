@@ -9,7 +9,7 @@
             category="org.exist.eclipse"
             class="org.exist.eclipse.internal.wizards.NewConnectionWizard"
             hasPages="true"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.internal.wizards.NewConnectionWizard"
             name="New eXist connection">
       </wizard>
@@ -18,7 +18,7 @@
             category="org.exist.eclipse"
             class="org.exist.eclipse.internal.wizards.LocalConnectionWizard"
             hasPages="true"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.internal.wizards.LocalConnectionWizard"
             name="New eXist local connection">
       </wizard>
@@ -27,7 +27,7 @@
             category="org.exist.eclipse"
             class="org.exist.eclipse.internal.wizards.RemoteConnectionWizard"
             hasPages="true"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.internal.wizards.RemoteConnectionWizard"
             name="New eXist remote connection">
       </wizard>
@@ -55,7 +55,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.exist.eclipse.internal.perspectives.ExistPerspective"
-            icon="icons/exist_icon.gif"
+            icon="icons/existdb-icon.png"
             id="org.exist.eclipse.ExistPerspective"
             name="eXist">
       </perspective>

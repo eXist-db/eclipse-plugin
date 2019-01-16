@@ -1,0 +1,32 @@
+plugins {
+  id 'java'
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+  maven {
+    url 'http://repo.evolvedbinary.com/content/repositories/exist-db'
+  }
+  maven {
+    url 'http://repo.evolvedbinary.com/content/repositories/exist-db-snapshots'
+  }
+}
+
+task updateLogos {
+  doLast {
+    [ 'org.exist.eclipse',
+      'org.exist.eclipse.auto',
+      'org.exist.eclipse.browse',
+      'org.exist.eclipse.query',
+      'org.exist.eclipse.util',
+      'org.exist.eclipse.xquery.ui' ].each {
+        def target = "$it/icons"
+        copy {
+          from 'logos'
+          into target
+          include '*.png'
+        }
+    }
+  }
+}

@@ -33,7 +33,7 @@ public class MoveCollectionWizardPage extends WizardPage {
 		setTitle("Rename/Move a collection");
 		setDescription("Enter a new collection name");
 		setImageDescriptor(BrowsePlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 		_selection = selection;
 	}
 

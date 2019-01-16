@@ -29,7 +29,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 		setTitle("Rename a document");
 		setDescription("Enter a new document name");
 		setImageDescriptor(BrowsePlugin
-				.getImageDescriptor("icons/hslu_exist_eclipse_logo.jpg"));
+				.getImageDescriptor("icons/existdb.png"));
 		_selection = selection;
 	}
 

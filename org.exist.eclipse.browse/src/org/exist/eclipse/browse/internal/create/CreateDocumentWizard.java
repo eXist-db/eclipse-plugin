@@ -23,7 +23,7 @@ import org.exist.eclipse.browse.internal.views.document.ActionOpenDocument;
  * @author Pascal Schmidiger
  */
 public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
-	private static final String IMG = "icons/hslu_exist_eclipse_logo.jpg";
+	private static final String IMG = "icons/existdb.png";
 	private static final String TITLE = "Create a document";
 	private EnterDocumentWizardPage _enterDocumentPage;
 	private final IBrowseItem _item;
