@@ -14,8 +14,9 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.wizard.IWizardNode;
+import org.eclipse.jface.wizard.WizardSelectionPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
@@ -121,7 +122,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 				return ((IContextSwitcher) element).getName();
 			}
 		});
-		_viewer.setSorter(new ViewerSorter());
+		_viewer.setComparator(new ViewerComparator());
 
 		_viewer.addDoubleClickListener(new IDoubleClickListener() {
 			@Override

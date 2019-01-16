@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.Objects;
 
 import org.exist.eclipse.IConnection;
-import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.xmldb.DatabaseInstanceManager;
 import org.xmldb.api.DatabaseManager;
@@ -268,8 +267,8 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (IManagementService.class.equals(adapter)) {
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(ManagementService.class)) {
 			return adapter.cast(new ManagementService(this));
 		}
 		return null;

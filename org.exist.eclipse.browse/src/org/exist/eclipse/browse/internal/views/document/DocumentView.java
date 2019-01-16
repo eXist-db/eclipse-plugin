@@ -166,7 +166,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
 		_viewer.setUseHashlookup(true);
-		_viewer.setSorter(new NameSorter());
+		_viewer.setComparator(new NameSorter());
 
 		// SWT.FULL_SELECTION does not have an effect. create effect with
 		// TableColumn that fill's horizontally

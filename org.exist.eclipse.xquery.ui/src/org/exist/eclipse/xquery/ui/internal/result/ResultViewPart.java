@@ -95,7 +95,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		_viewer.setContentProvider(new ResultViewContentProvider());
 		_viewer.setLabelProvider(new ResultViewLabelProvider());
 		_viewer.setUseHashlookup(true);
-		_viewer.setSorter(new NameSorter());
+		_viewer.setComparator(new NameSorter());
 
 		_columnNr = new TableColumn(_viewer.getTable(), SWT.NONE);
 		_columnNr.setWidth(50);

@@ -80,7 +80,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 		_drillDownAdapter = new DrillDownAdapter(_viewer);
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
-		_viewer.setSorter(new NameSorter());
+		_viewer.setComparator(new NameSorter());
 		_viewer.setInput(getInitInput());
 		_viewer.getControl().addKeyListener(new BrowseKeyAdapter(this));
 		makeActions();

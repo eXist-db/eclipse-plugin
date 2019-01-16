@@ -103,9 +103,9 @@ public class DocumentItem implements IDocumentItem {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter.getName().equals(IDocumentService.class.getName())) {
-			return new DocumentService(this);
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(IDocumentService.class)) {
+			return adapter.cast(new DocumentService(this));
 		}
 		return null;
 	}

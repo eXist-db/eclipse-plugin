@@ -6,7 +6,6 @@ package org.exist.eclipse.internal;
 import java.util.Objects;
 
 import org.exist.eclipse.IConnection;
-import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.exception.ConnectionException;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -247,9 +246,9 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (IManagementService.class.equals(adapter)) {
-			return new ManagementService(this);
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(ManagementService.class)) {
+			return adapter.cast(new ManagementService(this));
 		}
 		return null;
 	}
