@@ -353,7 +353,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 			fRequestWriter.flush();
 			try {
 				// wait for "ok"
-				String response = fRequestReader.readLine();
+				fRequestReader.readLine();
 			} catch (IOException e) {
 				abort("Request failed: "+request, e);
 			}

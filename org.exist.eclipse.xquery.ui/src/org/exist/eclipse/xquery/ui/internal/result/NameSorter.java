@@ -3,13 +3,13 @@
  */
 package org.exist.eclipse.xquery.ui.internal.result;
 
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 
 /**
  * NameSorter of the table from {@link ResultViewPart}.
  * 
  * @author Pascal Schmidiger
  */
-public class NameSorter extends ViewerSorter {
+public class NameSorter extends ViewerComparator {
 
 }

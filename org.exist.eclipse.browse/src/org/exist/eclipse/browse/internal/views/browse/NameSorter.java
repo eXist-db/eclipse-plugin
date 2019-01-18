@@ -3,7 +3,7 @@
  */
 package org.exist.eclipse.browse.internal.views.browse;
 
-import org.eclipse.jface.viewers.ViewerSorter;
+import org.eclipse.jface.viewers.ViewerComparator;
 
 /**
  * Sort the tree in the {@link BrowseView}.
@@ -11,6 +11,6 @@ import org.eclipse.jface.viewers.ViewerSorter;
  * @author Pascal Schmidiger
  * 
  */
-public class NameSorter extends ViewerSorter {
+public class NameSorter extends ViewerComparator {
 
 }

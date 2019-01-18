@@ -62,9 +62,9 @@ public abstract class XQueryDebugElement extends PlatformObject implements
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter == IDebugElement.class) {
-			return this;
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(getClass())) {
+			return adapter.cast(this);
 		}
 		return super.getAdapter(adapter);
 	}

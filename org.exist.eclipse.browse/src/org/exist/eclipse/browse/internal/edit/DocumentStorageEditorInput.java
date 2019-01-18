@@ -54,9 +54,9 @@ public class DocumentStorageEditorInput implements IStorageEditorInput {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter.getName().equals(IInputSave.class.getName())) {
-			return _storage;
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(_storage.getClass())) {
+			return adapter.cast(_storage);
 		}
 		return null;
 	}

@@ -172,9 +172,9 @@ public class BrowseItem implements IBrowseItem {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter.getName().equals(IBrowseService.class.getName())) {
-			return new BrowseService(this);
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(IBrowseService.class)) {
+			return adapter.cast(new BrowseService(this));
 		}
 		return null;
 	}
