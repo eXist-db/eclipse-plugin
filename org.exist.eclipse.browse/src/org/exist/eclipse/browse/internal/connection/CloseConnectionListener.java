@@ -23,10 +23,8 @@ public class CloseConnectionListener implements IConnectionListener {
 			connection.close();
 		} catch (ConnectionException e) {
 			String message = "Error while closing connection";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 	}
 

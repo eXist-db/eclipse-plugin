@@ -32,8 +32,7 @@ public class ParameterVisitor implements XPathVisitor {
 		if (QNAME.equals(node.toString())) {
 			_name = "$" + node.getValue();
 			if (node.getToken() != null) {
-				int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node
-						.getToken());
+				int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node.getToken());
 				_startPos = startEnd[0];
 				_endPos = startEnd[1];
 			}
@@ -46,8 +45,7 @@ public class ParameterVisitor implements XPathVisitor {
 	 * @return the created {@link Argument}
 	 */
 	public Argument getArgument() {
-		Argument arg = new Argument(new SimpleReference(_startPos, _endPos,
-				_name), _startPos, null, 0);
+		Argument arg = new Argument(new SimpleReference(_startPos, _endPos, _name), _startPos, null, 0);
 		arg.getRef().setStart(_startPos);
 		arg.getRef().setEnd(_startPos + _name.length() - 1);
 		return arg;

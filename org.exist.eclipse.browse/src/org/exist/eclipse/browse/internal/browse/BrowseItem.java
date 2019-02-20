@@ -30,10 +30,8 @@ public class BrowseItem implements IBrowseItem {
 	/**
 	 * Create a new item.
 	 * 
-	 * @param connection
-	 *            the connection object
-	 * @param path
-	 *            the actual collection path
+	 * @param connection the connection object
+	 * @param path       the actual collection path
 	 */
 	public BrowseItem(IConnection connection, String path) {
 		_connection = connection;
@@ -118,8 +116,7 @@ public class BrowseItem implements IBrowseItem {
 
 	@Override
 	public boolean isRoot() {
-		return getParent() == null
-				|| (getParent() instanceof BrowseItemInvisible);
+		return getParent() == null || (getParent() instanceof BrowseItemInvisible);
 
 	}
 
@@ -160,8 +157,7 @@ public class BrowseItem implements IBrowseItem {
 			return false;
 		}
 		BrowseItem item = (BrowseItem) obj;
-		return getPath().equals(item.getPath())
-				&& getConnection().equals(item.getConnection());
+		return getPath().equals(item.getPath()) && getConnection().equals(item.getConnection());
 	}
 
 	@Override

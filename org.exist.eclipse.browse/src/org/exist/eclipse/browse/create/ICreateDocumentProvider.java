@@ -15,14 +15,10 @@ public interface ICreateDocumentProvider {
 	/**
 	 * Implement the creation of document in the xmldb.
 	 * 
-	 * @param item
-	 *            which should be created.
-	 * @param content
-	 *            initial content for the document or null to use default
-	 *            content
-	 * @throws CreateDocumentException
-	 *             if the document could not created.
+	 * @param item    which should be created.
+	 * @param content initial content for the document or null to use default
+	 *                content
+	 * @throws CreateDocumentException if the document could not created.
 	 */
-	public void create(IDocumentItem item, String content)
-			throws CreateDocumentException;
+	public void create(IDocumentItem item, String content) throws CreateDocumentException;
 }

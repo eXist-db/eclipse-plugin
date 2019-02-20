@@ -10,12 +10,10 @@ import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IDatabaseInstance;
 
 /**
- * TD2:rep Auto-generated comment for class
- *
- * @author rep
+ * @author Patrick Reinhart
  */
 public class ExistConnectionProvider implements IDatabaseInstance {
-	static final String VERSION = "1.4.2";
+	static final String VERSION = "1.4.1";
 
 	@Override
 	public String version() {
@@ -24,12 +22,12 @@ public class ExistConnectionProvider implements IDatabaseInstance {
 
 	@Override
 	public IConnection createLocalConnection(String name, String username, String password, String path) {
-		return null;
+		return new LocalConnection(name, username, password, path);
 	}
 
 	@Override
 	public IConnection createRemoteConnection(String name, String username, String password, String path) {
-		return null;
+		return new RemoteConnection(name, username, password, path);
 	}
 
 }

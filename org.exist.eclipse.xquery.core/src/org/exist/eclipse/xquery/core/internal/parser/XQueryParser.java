@@ -21,10 +21,10 @@ import org.w3c.xqparser.Token;
 import org.w3c.xqparser.XPath;
 
 /**
- * This class parsed the xquery with a parser from <a
- * href="http://www.w3.org/">W3.org</a> and checked the syntax. The parser could
- * only highlight one syntax error. The parser has two problems which this class
- * have to solve:
+ * This class parsed the xquery with a parser from
+ * <a href="http://www.w3.org/">W3.org</a> and checked the syntax. The parser
+ * could only highlight one syntax error. The parser has two problems which this
+ * class have to solve:
  * <ul>
  * <li>Could not parse comments, therefore the class have to remove comments
  * from xquery before parsing it</li>
@@ -42,8 +42,8 @@ public class XQueryParser {
 	private final char[] _fileName;
 	private final ModuleDeclaration _moduleDeclaration;
 
-	public XQueryParser(ModuleDeclaration moduleDeclaration, char[] fileName,
-			char[] content, IProblemReporter problemReporter) {
+	public XQueryParser(ModuleDeclaration moduleDeclaration, char[] fileName, char[] content,
+			IProblemReporter problemReporter) {
 		_moduleDeclaration = moduleDeclaration;
 		_fileName = fileName;
 		_content = content;
@@ -66,14 +66,12 @@ public class XQueryParser {
 	}
 
 	/**
-	 * Get the absolut startposition in the document at the beginning of the
-	 * given <code>lineCount</code>. With the given <code>start</code>
-	 * parameter, you could start between the document.
+	 * Get the absolut startposition in the document at the beginning of the given
+	 * <code>lineCount</code>. With the given <code>start</code> parameter, you
+	 * could start between the document.
 	 * 
-	 * @param start
-	 *            Absolut position in document, where you want to start.
-	 * @param lineCount
-	 *            Count of lines, where you want to add the start.
+	 * @param start     Absolut position in document, where you want to start.
+	 * @param lineCount Count of lines, where you want to add the start.
 	 * @return Absolute position in the document: start + signs for lineCount.
 	 */
 	public int getStartPosition(int start, int lineCount) {
@@ -119,8 +117,7 @@ public class XQueryParser {
 
 			Token token = e.currentToken.next;
 			int startPos = getStartPosition(0, token.beginLine);
-			int endPos = getStartPosition(startPos, token.endLine
-					- token.beginLine);
+			int endPos = getStartPosition(startPos, token.endLine - token.beginLine);
 			startPos += (token.beginColumn - 1);
 			endPos += (token.endColumn);
 
@@ -131,19 +128,14 @@ public class XQueryParser {
 				startPos = 0;
 			}
 
-			DefaultProblem defaultProblem = new DefaultProblem(
-					String.valueOf(_fileName), messages[0],
-					DefaultProblemIdentifier.decode(IProblem.Syntax),
-					new String[0], ProblemSeverities.Error, startPos, endPos,
-					token.beginLine - 1, token.beginColumn);
+			DefaultProblem defaultProblem = new DefaultProblem(String.valueOf(_fileName), messages[0],
+					DefaultProblemIdentifier.decode(IProblem.Syntax), new String[0], ProblemSeverities.Error, startPos,
+					endPos, token.beginLine - 1, token.beginColumn);
 
 			_problemReporter.reportProblem(defaultProblem);
 		} catch (Exception ignore) {
-			XQueryCorePlugin
-					.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, XQueryCorePlugin.getId(),
-							"Unable to report problem", ignore));
+			XQueryCorePlugin.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, XQueryCorePlugin.getId(), "Unable to report problem", ignore));
 		}
 	}
 

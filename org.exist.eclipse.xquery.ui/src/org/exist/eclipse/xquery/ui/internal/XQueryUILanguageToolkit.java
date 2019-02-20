@@ -18,8 +18,7 @@ import org.exist.eclipse.xquery.ui.internal.text.XQuerySourceViewerConfiguration
 public class XQueryUILanguageToolkit extends AbstractDLTKUILanguageToolkit {
 	private static class XQueryScriptElementLabels extends ScriptElementLabels {
 		@Override
-		public void getElementLabel(IModelElement element, long flags,
-				StringBuffer buf) {
+		public void getElementLabel(IModelElement element, long flags, StringBuffer buf) {
 			buf.append(element.getElementName());
 		}
 	}
@@ -36,8 +35,7 @@ public class XQueryUILanguageToolkit extends AbstractDLTKUILanguageToolkit {
 
 	@Override
 	public ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
-		return new XQuerySourceViewerConfiguration(getTextTools()
-				.getColorManager(), getPreferenceStore(), null,
+		return new XQuerySourceViewerConfiguration(getTextTools().getColorManager(), getPreferenceStore(), null,
 				getPartitioningId());
 	}
 

@@ -29,8 +29,8 @@ import org.jdom.output.XMLOutputter;
 public class AutoModelConverter implements AutoTags {
 
 	/**
-	 * Based on the IAutoModel as input, the xml representation of the model is
-	 * put together in this method.
+	 * Based on the IAutoModel as input, the xml representation of the model is put
+	 * together in this method.
 	 * 
 	 * @param autoModel
 	 * @return The xml representation of the auto model
@@ -84,8 +84,7 @@ public class AutoModelConverter implements AutoTags {
 	 * @return The auto model for a specific xml representation
 	 * @throws AutoException
 	 */
-	public static IAutoModel getAutoModel(String autoModelXml)
-			throws AutoException {
+	public static IAutoModel getAutoModel(String autoModelXml) throws AutoException {
 
 		AutoModel model = new AutoModel();
 		Document doc = getValidatedDocument(autoModelXml);
@@ -95,8 +94,7 @@ public class AutoModelConverter implements AutoTags {
 		model.setThreadCount(Integer.parseInt(threadCount.getText()));
 		Element queryOrderType = automation.getChild(QUERYORDERTYPE);
 		if (queryOrderType != null && !queryOrderType.getText().isEmpty()) {
-			model.setQueryOrderType(QueryOrderType.valueOf(queryOrderType
-					.getText().toUpperCase()));
+			model.setQueryOrderType(QueryOrderType.valueOf(queryOrderType.getText().toUpperCase()));
 		} else {
 			model.setQueryOrderType(QueryOrderType.SEQUENTIAL);
 		}
@@ -110,9 +108,7 @@ public class AutoModelConverter implements AutoTags {
 			Element quantity = query.getChild(QUANTITY);
 			Element content = query.getChild(CONTENT);
 
-			QueryEntity queryEntity = new QueryEntity(
-					query.getAttributeValue(NAME),
-					note != null ? note.getText() : "",
+			QueryEntity queryEntity = new QueryEntity(query.getAttributeValue(NAME), note != null ? note.getText() : "",
 					Integer.parseInt(quantity.getText()), content.getText());
 
 			model.addQuery(queryEntity);
@@ -127,45 +123,36 @@ public class AutoModelConverter implements AutoTags {
 	// --------------------------------------------------------------------------
 
 	/**
-	 * This method converts a String into an Xml-Document. The document is
-	 * verified for its validity.
+	 * This method converts a String into an Xml-Document. The document is verified
+	 * for its validity.
 	 * 
 	 * @param autoModelXml
 	 * @return
 	 * @throws AutoException
 	 */
-	private static Document getValidatedDocument(String autoModelXml)
-			throws AutoException {
+	private static Document getValidatedDocument(String autoModelXml) throws AutoException {
 
 		Document doc = new Document();
 
-		SAXBuilder saxBuilder = new SAXBuilder(
-				"org.apache.xerces.parsers.SAXParser", true);
+		SAXBuilder saxBuilder = new SAXBuilder("org.apache.xerces.parsers.SAXParser", true);
 		StringReader stringReader = new StringReader(autoModelXml);
 
-		URL url = FileLocator.find(AutoUI.getDefault().getBundle(), new Path(
-				"resources/automation.xsd"), null);
+		URL url = FileLocator.find(AutoUI.getDefault().getBundle(), new Path("resources/automation.xsd"), null);
 		try {
-			saxBuilder.setFeature(
-					"http://apache.org/xml/features/validation/schema", true);
-			saxBuilder.setProperty("http://apache.org/xml/properties/schema"
-					+ "/external-noNamespaceSchemaLocation", FileLocator
-					.toFileURL(url).toString());
+			saxBuilder.setFeature("http://apache.org/xml/features/validation/schema", true);
+			saxBuilder.setProperty("http://apache.org/xml/properties/schema" + "/external-noNamespaceSchemaLocation",
+					FileLocator.toFileURL(url).toString());
 		} catch (IOException e) {
-			throw new AutoException("Problem while loading schema: "
-					+ e.getMessage(), e);
+			throw new AutoException("Problem while loading schema: " + e.getMessage(), e);
 		}
 
 		// run schema validation while building the document
 		try {
 			doc = saxBuilder.build(stringReader);
 		} catch (JDOMException e) {
-			throw new AutoException("Invalid Automation Configuration File: "
-					+ e.getMessage(), e);
+			throw new AutoException("Invalid Automation Configuration File: " + e.getMessage(), e);
 		} catch (IOException e) {
-			throw new AutoException(
-					"Problem while Loading Automation Configuration File: "
-							+ e.getMessage(), e);
+			throw new AutoException("Problem while Loading Automation Configuration File: " + e.getMessage(), e);
 		}
 
 		return doc;

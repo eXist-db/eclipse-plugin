@@ -20,8 +20,7 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 
 	private static String _lastSelectedConnection;
 
-	protected static void setLastSelectedConnection(
-			String lastSelectedConnection) {
+	protected static void setLastSelectedConnection(String lastSelectedConnection) {
 		_lastSelectedConnection = lastSelectedConnection;
 	}
 
@@ -56,8 +55,8 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the NewConnectionWizardPage.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the NewConnectionWizardPage.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -92,8 +91,7 @@ public class SelectContextWizard extends Wizard implements IWorkbenchWizard {
 			context = page.getConnectionContext();
 		}
 		if (context != null) {
-			IXQueryEditor editor = XQueryUI.getDefault()
-					.getActiveXQueryEditor();
+			IXQueryEditor editor = XQueryUI.getDefault().getActiveXQueryEditor();
 			if (editor != null) {
 				editor.setConnectionContext(context);
 			}

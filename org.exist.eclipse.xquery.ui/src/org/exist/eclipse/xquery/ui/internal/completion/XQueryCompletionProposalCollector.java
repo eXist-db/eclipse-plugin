@@ -15,11 +15,9 @@ import org.exist.eclipse.xquery.core.XQueryNature;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryCompletionProposalCollector extends
-		ScriptCompletionProposalCollector {
+public class XQueryCompletionProposalCollector extends ScriptCompletionProposalCollector {
 
-	protected final static char[] VAR_TRIGGER = new char[] { '\t', ' ', '=',
-			';', '.' };
+	protected final static char[] VAR_TRIGGER = new char[] { '\t', ' ', '=', ';', '.' };
 
 	@Override
 	protected char[] getVarTrigger() {
@@ -31,8 +29,7 @@ public class XQueryCompletionProposalCollector extends
 	}
 
 	@Override
-	protected IScriptCompletionProposal createScriptCompletionProposal(
-			CompletionProposal proposal) {
+	protected IScriptCompletionProposal createScriptCompletionProposal(CompletionProposal proposal) {
 
 		switch (proposal.getKind()) {
 		case CompletionProposal.METHOD_REF:
@@ -44,39 +41,32 @@ public class XQueryCompletionProposalCollector extends
 
 		return super.createScriptCompletionProposal(proposal);
 	}
-	
+
 	@Override
-	protected IScriptCompletionProposal createMethodReferenceProposal(
-			CompletionProposal methodProposal) {
-		LazyScriptCompletionProposal proposal = new XQueryScriptMethodCompletionProposal(
-				methodProposal, getInvocationContext());
+	protected IScriptCompletionProposal createMethodReferenceProposal(CompletionProposal methodProposal) {
+		LazyScriptCompletionProposal proposal = new XQueryScriptMethodCompletionProposal(methodProposal,
+				getInvocationContext());
 		// adaptLength(proposal, methodProposal);
 		return proposal;
 	}
 
 	@Override
-	protected ScriptCompletionProposal createScriptCompletionProposal(
-			String completion, int replaceStart, int length, Image image,
-			String displayString, int i) {
-		return new XQueryCompletionProposal(completion, replaceStart, length,
-				image, displayString, i);
+	protected ScriptCompletionProposal createScriptCompletionProposal(String completion, int replaceStart, int length,
+			Image image, String displayString, int i) {
+		return new XQueryCompletionProposal(completion, replaceStart, length, image, displayString, i);
 	}
 
 	@Override
-	protected ScriptCompletionProposal createScriptCompletionProposal(
-			String completion, int replaceStart, int length, Image image,
-			String displayString, int i, boolean isInDoc) {
-		return new XQueryCompletionProposal(completion, replaceStart, length,
-				image, displayString, i, isInDoc);
+	protected ScriptCompletionProposal createScriptCompletionProposal(String completion, int replaceStart, int length,
+			Image image, String displayString, int i, boolean isInDoc) {
+		return new XQueryCompletionProposal(completion, replaceStart, length, image, displayString, i, isInDoc);
 	}
 
 	@Override
-	protected ScriptCompletionProposal createOverrideCompletionProposal(
-			IScriptProject scriptProject, ISourceModule compilationUnit,
-			String name, String[] paramTypes, int start, int length,
-			String displayName, String completionProposal) {
-		return new XQueryCompletionProposal(completionProposal, start, length,
-				null, displayName, 0);
+	protected ScriptCompletionProposal createOverrideCompletionProposal(IScriptProject scriptProject,
+			ISourceModule compilationUnit, String name, String[] paramTypes, int start, int length, String displayName,
+			String completionProposal) {
+		return new XQueryCompletionProposal(completionProposal, start, length, null, displayName, 0);
 	}
 
 	@Override

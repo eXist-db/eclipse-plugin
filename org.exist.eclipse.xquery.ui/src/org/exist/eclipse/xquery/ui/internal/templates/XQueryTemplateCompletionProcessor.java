@@ -9,13 +9,11 @@ import org.eclipse.dltk.ui.text.completion.ScriptContentAssistInvocationContext;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryTemplateCompletionProcessor extends
-		ScriptTemplateCompletionProcessor {
+public class XQueryTemplateCompletionProcessor extends ScriptTemplateCompletionProcessor {
 
 	private static char[] IGNORE = new char[] { '.' };
 
-	public XQueryTemplateCompletionProcessor(
-			ScriptContentAssistInvocationContext context) {
+	public XQueryTemplateCompletionProcessor(ScriptContentAssistInvocationContext context) {
 		super(context);
 	}
 

@@ -15,8 +15,7 @@ import org.exist.eclipse.xquery.ui.internal.text.XQueryPartitionScanner;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryFoldingStructureProvider extends
-		AbstractASTFoldingStructureProvider {
+public class XQueryFoldingStructureProvider extends AbstractASTFoldingStructureProvider {
 
 	private boolean _initCollapseComments = true;
 
@@ -61,19 +60,16 @@ public class XQueryFoldingStructureProvider extends
 	}
 
 	@Override
-	protected boolean initiallyCollapse(ASTNode s,
-			FoldingStructureComputationContext ctx) {
+	protected boolean initiallyCollapse(ASTNode s, FoldingStructureComputationContext ctx) {
 		return false;
 	}
 
-	protected boolean initiallyCollapseComments(
-			FoldingStructureComputationContext ctx) {
+	protected boolean initiallyCollapseComments(FoldingStructureComputationContext ctx) {
 		return ctx.allowCollapsing() && _initCollapseComments;
 	}
 
 	@Override
-	protected boolean mayCollapse(ASTNode s,
-			FoldingStructureComputationContext ctx) {
+	protected boolean mayCollapse(ASTNode s, FoldingStructureComputationContext ctx) {
 		return true;
 	}
 

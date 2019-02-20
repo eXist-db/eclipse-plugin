@@ -38,8 +38,12 @@ import org.eclipse.ui.part.FileEditorInput;
  */
 public class XQueryModelPresentation extends LabelProvider implements IDebugModelPresentation {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.IDebugModelPresentation#computeDetail(org.eclipse.debug.core.model.IValue, org.eclipse.debug.ui.IValueDetailListener)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.IDebugModelPresentation#computeDetail(org.eclipse.debug.
+	 * core.model.IValue, org.eclipse.debug.ui.IValueDetailListener)
 	 */
 	@Override
 	public void computeDetail(IValue value, IValueDetailListener listener) {
@@ -51,15 +55,22 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 		listener.detailComputed(value, detail);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.IDebugModelPresentation#setAttribute(java.lang.String, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.IDebugModelPresentation#setAttribute(java.lang.String,
+	 * java.lang.Object)
 	 */
 	@Override
 	public void setAttribute(String attribute, Object value) {
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorId(org.eclipse.ui.IEditorInput, java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorId(org.eclipse.ui.
+	 * IEditorInput, java.lang.Object)
 	 */
 	@Override
 	public String getEditorId(IEditorInput input, Object element) {
@@ -69,15 +80,18 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ISourcePresentation#getEditorInput(java.lang.Object)
 	 */
 	@Override
 	public IEditorInput getEditorInput(Object element) {
 		if (element instanceof IFile) {
 			return new FileEditorInput((IFile) element);
 		} else if (element instanceof ILineBreakpoint) {
-			return new FileEditorInput((IFile)((ILineBreakpoint)element).getMarker().getResource());
+			return new FileEditorInput((IFile) ((ILineBreakpoint) element).getMarker().getResource());
 		}
 		return null;
 	}
@@ -86,7 +100,7 @@ public class XQueryModelPresentation extends LabelProvider implements IDebugMode
 	public Image getImage(Object element) {
 		return null;
 	}
-	
+
 	@Override
 	public String getText(Object element) {
 		return null;

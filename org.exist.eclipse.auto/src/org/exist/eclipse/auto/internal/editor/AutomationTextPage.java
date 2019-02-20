@@ -54,9 +54,9 @@ public class AutomationTextPage extends TextEditor implements IFormPage {
 		return getDocumentProvider().getDocument(getEditorInput()).get();
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Standard implementation of IFormPage methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	@Override
 	public boolean canLeaveThePage() {

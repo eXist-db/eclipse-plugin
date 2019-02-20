@@ -11,8 +11,7 @@ import org.eclipse.swt.graphics.Image;
  * 
  * @author Christian Oetterli
  */
-public class XQueryProposalContextInformation implements IContextInformation,
-		IContextInformationExtension {
+public class XQueryProposalContextInformation implements IContextInformation, IContextInformationExtension {
 
 	private final String _contextDisplayString;
 	private final String _informationDisplayString;
@@ -46,8 +45,7 @@ public class XQueryProposalContextInformation implements IContextInformation,
 		String[] pTypes;
 		Object extraInfo = proposal.getExtraInfo();
 		if (extraInfo instanceof MethodCompletionExtraInfo) {
-			pTypes = ((MethodCompletionExtraInfo) extraInfo)
-					.getParameterTypes();
+			pTypes = ((MethodCompletionExtraInfo) extraInfo).getParameterTypes();
 		} else {
 			pTypes = null;
 		}
@@ -71,20 +69,18 @@ public class XQueryProposalContextInformation implements IContextInformation,
 
 	@Override
 	public int hashCode() {
-		return String.valueOf(getContextDisplayString()).toLowerCase()
-				.hashCode();
+		return String.valueOf(getContextDisplayString()).toLowerCase().hashCode();
 	}
 
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof IContextInformation) {
 			IContextInformation contextInformation = (IContextInformation) object;
-			boolean equals = getInformationDisplayString().equalsIgnoreCase(
-					contextInformation.getInformationDisplayString());
+			boolean equals = getInformationDisplayString()
+					.equalsIgnoreCase(contextInformation.getInformationDisplayString());
 			if (getContextDisplayString() != null) {
 				equals = equals
-						&& getContextDisplayString().equalsIgnoreCase(
-								contextInformation.getContextDisplayString());
+						&& getContextDisplayString().equalsIgnoreCase(contextInformation.getContextDisplayString());
 			}
 			return equals;
 		}

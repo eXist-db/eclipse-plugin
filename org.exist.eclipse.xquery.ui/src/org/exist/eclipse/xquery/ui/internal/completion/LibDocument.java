@@ -45,8 +45,7 @@ public class LibDocument {
 	private List<IXQueryMethod> _methods;
 
 	/**
-	 * From method key (name + parameter size) to line number in generated
-	 * content.
+	 * From method key (name + parameter size) to line number in generated content.
 	 */
 	private Map<String, Integer> _index;
 	private final String _namespaceUri;
@@ -74,8 +73,7 @@ public class LibDocument {
 			Map<String, Integer> index = getIndex();
 			index.clear();
 
-			String s = "module namespace " + getPrefix() + "='"
-					+ getNamespaceUri() + "';\n\n";
+			String s = "module namespace " + getPrefix() + "='" + getNamespaceUri() + "';\n\n";
 			int line = 2;
 			IXQueryMethod last = all.get(all.size() - 1);
 			for (IXQueryMethod it : all) {
@@ -83,8 +81,7 @@ public class LibDocument {
 				if (!comment.isEmpty()) {
 					s += "(:\n";
 					line++;
-					BufferedReader reader = new BufferedReader(
-							new StringReader(comment));
+					BufferedReader reader = new BufferedReader(new StringReader(comment));
 					String l;
 					while ((l = reader.readLine()) != null) {
 						s += " : " + l + "\n";
@@ -95,8 +92,7 @@ public class LibDocument {
 				}
 
 				s += it.getSignature();
-				index.put(getKey(it.getName(), it.getParameterNames().length),
-						Integer.valueOf(line));
+				index.put(getKey(it.getName(), it.getParameterNames().length), Integer.valueOf(line));
 
 				if (!it.equals(last)) {
 					s += "\n\n";
@@ -133,12 +129,9 @@ public class LibDocument {
 
 			List<IXQueryMethod> methods = getMethods();
 			methods.clear();
-			for (Element fun : getElements(getElement(doc.getDocumentElement(),
-					"functions"), "function")) {
-				methods.add(new XQueryMethod(getPrefix() + ':'
-						+ getElement(fun, "name").getTextContent(), getElement(
-						fun, "signature").getTextContent(),
-						getComment(getElement(fun, "comment"))));
+			for (Element fun : getElements(getElement(doc.getDocumentElement(), "functions"), "function")) {
+				methods.add(new XQueryMethod(getPrefix() + ':' + getElement(fun, "name").getTextContent(),
+						getElement(fun, "signature").getTextContent(), getComment(getElement(fun, "comment"))));
 			}
 
 		} catch (Exception e) {
@@ -199,8 +192,7 @@ public class LibDocument {
 		NodeList kids = parent.getChildNodes();
 		for (int i = 0, n = kids.getLength(); i < n; i++) {
 			Node item = kids.item(i);
-			if (item instanceof Element
-					&& (name == null || name.equals(item.getNodeName()))) {
+			if (item instanceof Element && (name == null || name.equals(item.getNodeName()))) {
 				result.add((Element) item);
 			}
 		}

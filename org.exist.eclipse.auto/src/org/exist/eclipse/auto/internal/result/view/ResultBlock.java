@@ -42,16 +42,14 @@ public class ResultBlock extends MasterDetailsBlock {
 	 * @param contentProvider
 	 * @param resultModel
 	 */
-	public ResultBlock(ResultFormPage page,
-			ResultContentProvider contentProvider, IResultModel resultModel) {
+	public ResultBlock(ResultFormPage page, ResultContentProvider contentProvider, IResultModel resultModel) {
 		_page = page;
 		_contentProvider = contentProvider;
 		_resultModel = resultModel;
 	}
 
 	@Override
-	protected void createMasterPart(final IManagedForm managedForm,
-			Composite parent) {
+	protected void createMasterPart(final IManagedForm managedForm, Composite parent) {
 
 		FormToolkit toolkit = managedForm.getToolkit();
 		GridData gd = new GridData(GridData.FILL_BOTH);
@@ -66,8 +64,7 @@ public class ResultBlock extends MasterDetailsBlock {
 		navigation.setLayoutData(gd);
 
 		// Queries Section
-		ResultSelectionSection resultSelectionSection = new ResultSelectionSection(
-				navigation, toolkit);
+		ResultSelectionSection resultSelectionSection = new ResultSelectionSection(navigation, toolkit);
 		Section querySection = resultSelectionSection.init();
 
 		final SectionPart spart = new SectionPart(querySection);

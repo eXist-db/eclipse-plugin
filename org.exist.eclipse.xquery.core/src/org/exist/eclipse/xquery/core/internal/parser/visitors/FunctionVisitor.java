@@ -32,8 +32,7 @@ public class FunctionVisitor implements XPathVisitor, NodeTypes {
 	@Override
 	public Object visit(SimpleNode node, Object data) {
 		if (QNAME.equals(node.toString()) && _name == null) {
-			int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node
-					.getToken());
+			int[] startEnd = ParserVisitor.getNodeStartEnd(_parser, node.getToken());
 			_startPos = startEnd[0];
 			_endPos = startEnd[1];
 			_name = node.getValue();
@@ -60,13 +59,10 @@ public class FunctionVisitor implements XPathVisitor, NodeTypes {
 	 * @return a {@link MethodDeclaration} contains the specific parameter.
 	 */
 	public MethodDeclaration getMethod() {
-		MethodDeclaration methodDeclaration = new MethodDeclaration(_name,
-				_startPos, _endPos, _declStart, _declEnd);
+		MethodDeclaration methodDeclaration = new MethodDeclaration(_name, _startPos, _endPos, _declStart, _declEnd);
 
-		if (_parameterListVisitor != null
-				&& _parameterListVisitor.hasArguments()) {
-			methodDeclaration.acceptArguments(_parameterListVisitor
-					.getArguments());
+		if (_parameterListVisitor != null && _parameterListVisitor.hasArguments()) {
+			methodDeclaration.acceptArguments(_parameterListVisitor.getArguments());
 		}
 		return methodDeclaration;
 	}

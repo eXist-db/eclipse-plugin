@@ -10,8 +10,7 @@ package org.exist.eclipse.xquery.ui.internal.text;
  */
 public class XQuerySyntaxUtils {
 	public static boolean isXQueryIdentifierPart(char character) {
-		return Character.isJavaIdentifierPart(character) || character == ':'
-				|| character == '-';
+		return Character.isJavaIdentifierPart(character) || character == ':' || character == '-';
 	}
 
 	public static boolean isXQueryIdentifierStart(char character) {

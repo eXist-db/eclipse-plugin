@@ -39,22 +39,26 @@ import org.eclipse.debug.core.sourcelookup.containers.WorkspaceSourceContainer;
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  *
  */
-public class XQuerySourcePathComputerDelegate implements
-		ISourcePathComputerDelegate {
+public class XQuerySourcePathComputerDelegate implements ISourcePathComputerDelegate {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.sourcelookup.ISourcePathComputerDelegate#computeSourceContainers(org.eclipse.debug.core.ILaunchConfiguration, org.eclipse.core.runtime.IProgressMonitor)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.debug.core.sourcelookup.ISourcePathComputerDelegate#
+	 * computeSourceContainers(org.eclipse.debug.core.ILaunchConfiguration,
+	 * org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public ISourceContainer[] computeSourceContainers(ILaunchConfiguration configuration, IProgressMonitor monitor) throws CoreException {
-		String path = configuration.getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String)null);
+	public ISourceContainer[] computeSourceContainers(ILaunchConfiguration configuration, IProgressMonitor monitor)
+			throws CoreException {
+		String path = configuration.getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String) null);
 		ISourceContainer sourceContainer = null;
 		if (path != null) {
 			IResource resource = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(path));
 			if (resource != null) {
 				IContainer container = resource.getParent();
 				if (container.getType() == IResource.PROJECT) {
-					sourceContainer = new ProjectSourceContainer((IProject)container, false);
+					sourceContainer = new ProjectSourceContainer((IProject) container, false);
 				} else if (container.getType() == IResource.FOLDER) {
 					sourceContainer = new FolderSourceContainer(container, false);
 				}
@@ -62,8 +66,8 @@ public class XQuerySourcePathComputerDelegate implements
 		}
 		if (sourceContainer == null)
 			sourceContainer = new WorkspaceSourceContainer();
-		
-		return new ISourceContainer[]{sourceContainer};
+
+		return new ISourceContainer[] { sourceContainer };
 	}
 
 }

@@ -35,12 +35,11 @@ public class ResultEditor extends FormEditor {
 	}
 
 	/**
-	 * The <code>MultiPageEditorExample</code> implementation of this method
-	 * checks that the input is an instance of <code>IFileEditorInput</code>.
+	 * The <code>MultiPageEditorExample</code> implementation of this method checks
+	 * that the input is an instance of <code>IFileEditorInput</code>.
 	 */
 	@Override
-	public void init(IEditorSite site, IEditorInput editorInput)
-			throws PartInitException {
+	public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
 		super.init(site, editorInput);
 		super.setPartName(editorInput.getName());
 	}
@@ -57,19 +56,13 @@ public class ResultEditor extends FormEditor {
 			_formPage = new ResultFormPage(this, _textPage);
 			addPage(0, _formPage);
 		} catch (AutoException ae) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae
-					.getMessage(), ae);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae.getMessage(), ae);
 			AutoUI.getDefault().getLog().log(status);
-			ErrorDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"Loading Automation Result failed",
-							"Correct the file in the text editor. Re-open it afterwards.",
-							status);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Loading Automation Result failed",
+					"Correct the file in the text editor. Re-open it afterwards.", status);
 
 		} catch (PartInitException e) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
-					.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 
 		}

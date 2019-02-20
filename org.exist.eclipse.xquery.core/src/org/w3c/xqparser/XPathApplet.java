@@ -38,21 +38,18 @@ public class XPathApplet extends Applet {
 
 	Button button2 = new Button();
 
-	TextArea textArea1 = new TextArea("", 100, 30,
-			TextArea.SCROLLBARS_VERTICAL_ONLY);
+	TextArea textArea1 = new TextArea("", 100, 30, TextArea.SCROLLBARS_VERTICAL_ONLY);
 
 	BorderLayout borderLayout1 = new BorderLayout();
 	BorderLayout borderLayout2 = new BorderLayout();
 
 	Panel buttonPanel = new Panel();
 
-	TextArea textArea2 = new TextArea("", 100, 30,
-			TextArea.SCROLLBARS_VERTICAL_ONLY);
+	TextArea textArea2 = new TextArea("", 100, 30, TextArea.SCROLLBARS_VERTICAL_ONLY);
 
 	/** Get a parameter value */
 	public String getParameter(String key, String def) {
-		return isStandalone ? System.getProperty(key, def)
-				: (getParameter(key) != null ? getParameter(key) : def);
+		return isStandalone ? System.getProperty(key, def) : (getParameter(key) != null ? getParameter(key) : def);
 	}
 
 	/** Construct the applet */
@@ -127,8 +124,7 @@ public class XPathApplet extends Applet {
 			if (null == tree)
 				textArea2.setText("Error!");
 			else {
-				ByteArrayOutputStream baos = new ByteArrayOutputStream(
-						62 * 1024);
+				ByteArrayOutputStream baos = new ByteArrayOutputStream(62 * 1024);
 				PrintStream ps = new PrintStream(baos);
 				tree.dump("|", ps);
 				String s = new String(baos.toByteArray());
@@ -154,8 +150,7 @@ public class XPathApplet extends Applet {
 			if (null == tree)
 				textArea2.setText("Error!");
 			else {
-				ByteArrayOutputStream baos = new ByteArrayOutputStream(
-						62 * 1024);
+				ByteArrayOutputStream baos = new ByteArrayOutputStream(62 * 1024);
 				PrintStream ps = new PrintStream(baos);
 				XQueryToXQueryX trans = new XQueryToXQueryX();
 				trans.transformNoEncodingException(tree, null, ps);

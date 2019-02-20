@@ -17,14 +17,10 @@ public class ResultItem {
 	/**
 	 * Construct a new unique item.
 	 * 
-	 * @param uniqueNr
-	 *            number of query running, which is set by {@link ResultView}.
-	 * @param group
-	 *            the filename of the xquery.
-	 * @param index
-	 *            the position in the table.
-	 * @param content
-	 *            the content of the result.
+	 * @param uniqueNr number of query running, which is set by {@link ResultView}.
+	 * @param group    the filename of the xquery.
+	 * @param index    the position in the table.
+	 * @param content  the content of the result.
 	 */
 	public ResultItem(int uniqueNr, String group, int index, String content) {
 		_uniqueNr = uniqueNr;
@@ -63,8 +59,7 @@ public class ResultItem {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((_content == null) ? 0 : _content.hashCode());
+		result = prime * result + ((_content == null) ? 0 : _content.hashCode());
 		result = prime * result + ((_group == null) ? 0 : _group.hashCode());
 		result = prime * result + _index;
 		result = prime * result + _uniqueNr;

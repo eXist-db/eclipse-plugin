@@ -7,7 +7,6 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.IWorkbench;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.internal.ConnectionBox;
-import org.exist.eclipse.internal.ConnectionEnum;
 import org.exist.eclipse.internal.wizards.LocalConnectionWizard;
 import org.exist.eclipse.internal.wizards.NewConnectionWizard;
 import org.exist.eclipse.internal.wizards.RemoteConnectionWizard;
@@ -35,7 +34,7 @@ public class ConnectionFactory {
 
 	public static void changeConnection(IWorkbench workbench, IConnection connection, boolean copy)
 			throws ConnectionException {
-		if (connection.getType().equals(ConnectionEnum.remote)) {
+		if (connection.getType().isRemote()) {
 			RemoteConnectionWizard wizard = new RemoteConnectionWizard();
 			wizard.setConnection(connection, copy);
 			wizard.init(workbench, null);

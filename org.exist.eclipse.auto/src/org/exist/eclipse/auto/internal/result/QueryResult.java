@@ -38,7 +38,7 @@ public class QueryResult implements IQueryResult {
 	public long getExecutionTime() {
 		return _exectime;
 	}
-	
+
 	@Override
 	public IQuery getQuery() {
 		return _query;
@@ -53,7 +53,7 @@ public class QueryResult implements IQueryResult {
 	public long getResultCount() {
 		return _resultCount;
 	}
-	
+
 	@Override
 	public void setCompileTime(long time) {
 		_compileTime = time;
@@ -70,8 +70,8 @@ public class QueryResult implements IQueryResult {
 	}
 
 	@Override
-	public void setResultCount(long resultCount){
-		_resultCount = resultCount;		
+	public void setResultCount(long resultCount) {
+		_resultCount = resultCount;
 	}
 
 }

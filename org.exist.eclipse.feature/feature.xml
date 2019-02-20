@@ -296,7 +296,6 @@ version(s), and exceptions or additional permissions here}.&quot;
 
    <url>
       <update label="eXist Plugin Update Site" url="http://exist.sourceforge.net/plugin-update-site/"/>
-      <discovery label="eXist Native Database" url="http://www.exist-db.org/"/>
    </url>
 
    <requires>

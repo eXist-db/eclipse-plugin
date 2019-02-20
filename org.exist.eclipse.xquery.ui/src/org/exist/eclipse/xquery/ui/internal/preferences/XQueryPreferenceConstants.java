@@ -15,11 +15,10 @@ import org.exist.eclipse.xquery.ui.internal.text.IXQueryColorConstants;
  */
 public class XQueryPreferenceConstants extends PreferenceConstants {
 	/**
-	 * A named preference that holds the color used to render single line
-	 * comments.
+	 * A named preference that holds the color used to render single line comments.
 	 * <p>
-	 * Value is of type <code>String</code>. A RGB color value encoded as a
-	 * string using class <code>PreferenceConverter</code>
+	 * Value is of type <code>String</code>. A RGB color value encoded as a string
+	 * using class <code>PreferenceConverter</code>
 	 * </p>
 	 * 
 	 * @see org.eclipse.jface.resource.StringConverter
@@ -28,32 +27,30 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	public final static String EDITOR_COMMENT_COLOR = IXQueryColorConstants.XQUERY_COMMENT;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in bold.
+	 * A named preference that controls whether single line comments are rendered in
+	 * bold.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in bold. If <code>false</code> the are rendered
-	 * using no font style attribute.
+	 * comments are rendered in bold. If <code>false</code> the are rendered using
+	 * no font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_COMMENT_BOLD = IXQueryColorConstants.XQUERY_COMMENT
-			+ EDITOR_BOLD_SUFFIX;
+	public final static String EDITOR_COMMENT_BOLD = IXQueryColorConstants.XQUERY_COMMENT + EDITOR_BOLD_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in italic.
+	 * A named preference that controls whether single line comments are rendered in
+	 * italic.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in italic. If <code>false</code> the are rendered
-	 * using no italic font style attribute.
+	 * comments are rendered in italic. If <code>false</code> the are rendered using
+	 * no italic font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_COMMENT_ITALIC = IXQueryColorConstants.XQUERY_COMMENT
-			+ EDITOR_ITALIC_SUFFIX;
+	public final static String EDITOR_COMMENT_ITALIC = IXQueryColorConstants.XQUERY_COMMENT + EDITOR_ITALIC_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in strikethrough.
+	 * A named preference that controls whether single line comments are rendered in
+	 * strikethrough.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
 	 * comments are rendered in strikethrough. If <code>false</code> the are
@@ -64,12 +61,12 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 			+ EDITOR_STRIKETHROUGH_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in underline.
+	 * A named preference that controls whether single line comments are rendered in
+	 * underline.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in underline. If <code>false</code> the are
-	 * rendered using no italic font style attribute.
+	 * comments are rendered in underline. If <code>false</code> the are rendered
+	 * using no italic font style attribute.
 	 * </p>
 	 * 
 	 * 
@@ -83,8 +80,8 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	/**
 	 * A named preference that holds the color used to render keyword.
 	 * <p>
-	 * Value is of type <code>String</code>. A RGB color value encoded as a
-	 * string using class <code>PreferenceConverter</code>
+	 * Value is of type <code>String</code>. A RGB color value encoded as a string
+	 * using class <code>PreferenceConverter</code>
 	 * </p>
 	 * 
 	 * @see org.eclipse.jface.resource.StringConverter
@@ -96,27 +93,25 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	 * A named preference that controls whether kwyword are rendered in bold.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in bold. If <code>false</code> the are rendered
-	 * using no font style attribute.
+	 * comments are rendered in bold. If <code>false</code> the are rendered using
+	 * no font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_KEYWORD_BOLD = IXQueryColorConstants.XQUERY_KEYWORD
-			+ EDITOR_BOLD_SUFFIX;
+	public final static String EDITOR_KEYWORD_BOLD = IXQueryColorConstants.XQUERY_KEYWORD + EDITOR_BOLD_SUFFIX;
 
 	/**
 	 * A named preference that controls whether keyword are rendered in italic.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in italic. If <code>false</code> the are rendered
-	 * using no italic font style attribute.
+	 * comments are rendered in italic. If <code>false</code> the are rendered using
+	 * no italic font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_KEYWORD_ITALIC = IXQueryColorConstants.XQUERY_KEYWORD
-			+ EDITOR_ITALIC_SUFFIX;
+	public final static String EDITOR_KEYWORD_ITALIC = IXQueryColorConstants.XQUERY_KEYWORD + EDITOR_ITALIC_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in strikethrough.
+	 * A named preference that controls whether single line comments are rendered in
+	 * strikethrough.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
 	 * comments are rendered in strikethrough. If <code>false</code> the are
@@ -127,12 +122,11 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 			+ EDITOR_STRIKETHROUGH_SUFFIX;
 
 	/**
-	 * A named preference that controls whether keyword are rendered in
-	 * underline.
+	 * A named preference that controls whether keyword are rendered in underline.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in underline. If <code>false</code> the are
-	 * rendered using no italic font style attribute.
+	 * comments are rendered in underline. If <code>false</code> the are rendered
+	 * using no italic font style attribute.
 	 * </p>
 	 * 
 	 * 
@@ -145,8 +139,8 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	/**
 	 * A named preference that holds the color used to render keyword.
 	 * <p>
-	 * Value is of type <code>String</code>. A RGB color value encoded as a
-	 * string using class <code>PreferenceConverter</code>
+	 * Value is of type <code>String</code>. A RGB color value encoded as a string
+	 * using class <code>PreferenceConverter</code>
 	 * </p>
 	 * 
 	 * @see org.eclipse.jface.resource.StringConverter
@@ -158,8 +152,8 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	 * A named preference that controls whether kwyword are rendered in bold.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in bold. If <code>false</code> the are rendered
-	 * using no font style attribute.
+	 * comments are rendered in bold. If <code>false</code> the are rendered using
+	 * no font style attribute.
 	 * </p>
 	 */
 	public final static String EDITOR_KEYWORD_RETURN_BOLD = IXQueryColorConstants.XQUERY_KEYWORD_RETURN
@@ -169,16 +163,16 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	 * A named preference that controls whether keyword are rendered in italic.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in italic. If <code>false</code> the are rendered
-	 * using no italic font style attribute.
+	 * comments are rendered in italic. If <code>false</code> the are rendered using
+	 * no italic font style attribute.
 	 * </p>
 	 */
 	public final static String EDITOR_KEYWORD_RETURN_ITALIC = IXQueryColorConstants.XQUERY_KEYWORD_RETURN
 			+ EDITOR_ITALIC_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in strikethrough.
+	 * A named preference that controls whether single line comments are rendered in
+	 * strikethrough.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
 	 * comments are rendered in strikethrough. If <code>false</code> the are
@@ -189,12 +183,11 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 			+ EDITOR_STRIKETHROUGH_SUFFIX;
 
 	/**
-	 * A named preference that controls whether keyword are rendered in
-	 * underline.
+	 * A named preference that controls whether keyword are rendered in underline.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in underline. If <code>false</code> the are
-	 * rendered using no italic font style attribute.
+	 * comments are rendered in underline. If <code>false</code> the are rendered
+	 * using no italic font style attribute.
 	 * </p>
 	 * 
 	 * 
@@ -208,8 +201,8 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	/**
 	 * A named preference that holds the color used to render NUMBER.
 	 * <p>
-	 * Value is of type <code>String</code>. A RGB color value encoded as a
-	 * string using class <code>PreferenceConverter</code>
+	 * Value is of type <code>String</code>. A RGB color value encoded as a string
+	 * using class <code>PreferenceConverter</code>
 	 * </p>
 	 * 
 	 * @see org.eclipse.jface.resource.StringConverter
@@ -221,27 +214,25 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	 * A named preference that controls whether number are rendered in bold.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in bold. If <code>false</code> the are rendered
-	 * using no font style attribute.
+	 * comments are rendered in bold. If <code>false</code> the are rendered using
+	 * no font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_NUMBER_BOLD = IXQueryColorConstants.XQUERY_NUMBER
-			+ EDITOR_BOLD_SUFFIX;
+	public final static String EDITOR_NUMBER_BOLD = IXQueryColorConstants.XQUERY_NUMBER + EDITOR_BOLD_SUFFIX;
 
 	/**
 	 * A named preference that controls whether NUMBER are rendered in italic.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in italic. If <code>false</code> the are rendered
-	 * using no italic font style attribute.
+	 * comments are rendered in italic. If <code>false</code> the are rendered using
+	 * no italic font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_NUMBER_ITALIC = IXQueryColorConstants.XQUERY_NUMBER
-			+ EDITOR_ITALIC_SUFFIX;
+	public final static String EDITOR_NUMBER_ITALIC = IXQueryColorConstants.XQUERY_NUMBER + EDITOR_ITALIC_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in strikethrough.
+	 * A named preference that controls whether single line comments are rendered in
+	 * strikethrough.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
 	 * comments are rendered in strikethrough. If <code>false</code> the are
@@ -252,19 +243,17 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 			+ EDITOR_STRIKETHROUGH_SUFFIX;
 
 	/**
-	 * A named preference that controls whether NUMBER are rendered in
-	 * underline.
+	 * A named preference that controls whether NUMBER are rendered in underline.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in underline. If <code>false</code> the are
-	 * rendered using no italic font style attribute.
+	 * comments are rendered in underline. If <code>false</code> the are rendered
+	 * using no italic font style attribute.
 	 * </p>
 	 * 
 	 * 
 	 */
 
-	public final static String EDITOR_NUMBER_UNDERLINE = IXQueryColorConstants.XQUERY_NUMBER
-			+ EDITOR_UNDERLINE_SUFFIX;
+	public final static String EDITOR_NUMBER_UNDERLINE = IXQueryColorConstants.XQUERY_NUMBER + EDITOR_UNDERLINE_SUFFIX;
 
 	/*
 	 * Strings
@@ -272,8 +261,8 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	/**
 	 * A named preference that holds the color used to render STRING.
 	 * <p>
-	 * Value is of type <code>String</code>. A RGB color value encoded as a
-	 * string using class <code>PreferenceConverter</code>
+	 * Value is of type <code>String</code>. A RGB color value encoded as a string
+	 * using class <code>PreferenceConverter</code>
 	 * </p>
 	 * 
 	 * @see org.eclipse.jface.resource.StringConverter
@@ -285,27 +274,25 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	 * A named preference that controls whether STRING are rendered in bold.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in bold. If <code>false</code> the are rendered
-	 * using no font style attribute.
+	 * comments are rendered in bold. If <code>false</code> the are rendered using
+	 * no font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_STRING_BOLD = IXQueryColorConstants.XQUERY_STRING
-			+ EDITOR_BOLD_SUFFIX;
+	public final static String EDITOR_STRING_BOLD = IXQueryColorConstants.XQUERY_STRING + EDITOR_BOLD_SUFFIX;
 
 	/**
 	 * A named preference that controls whether STRING are rendered in italic.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in italic. If <code>false</code> the are rendered
-	 * using no italic font style attribute.
+	 * comments are rendered in italic. If <code>false</code> the are rendered using
+	 * no italic font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_STRING_ITALIC = IXQueryColorConstants.XQUERY_STRING
-			+ EDITOR_ITALIC_SUFFIX;
+	public final static String EDITOR_STRING_ITALIC = IXQueryColorConstants.XQUERY_STRING + EDITOR_ITALIC_SUFFIX;
 
 	/**
-	 * A named preference that controls whether single line comments are
-	 * rendered in strikethrough.
+	 * A named preference that controls whether single line comments are rendered in
+	 * strikethrough.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
 	 * comments are rendered in strikethrough. If <code>false</code> the are
@@ -316,16 +303,14 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 			+ EDITOR_STRIKETHROUGH_SUFFIX;
 
 	/**
-	 * A named preference that controls whether STRING are rendered in
-	 * underline.
+	 * A named preference that controls whether STRING are rendered in underline.
 	 * <p>
 	 * Value is of type <code>Boolean</code>. If <code>true</code> single line
-	 * comments are rendered in underline. If <code>false</code> the are
-	 * rendered using no italic font style attribute.
+	 * comments are rendered in underline. If <code>false</code> the are rendered
+	 * using no italic font style attribute.
 	 * </p>
 	 */
-	public final static String EDITOR_STRING_UNDERLINE = IXQueryColorConstants.XQUERY_STRING
-			+ EDITOR_UNDERLINE_SUFFIX;
+	public final static String EDITOR_STRING_UNDERLINE = IXQueryColorConstants.XQUERY_STRING + EDITOR_UNDERLINE_SUFFIX;
 
 	public final static String EDITOR_ARGUMENT_COLOR = IXQueryColorConstants.XQUERY_ARGUMENT;
 
@@ -334,41 +319,23 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 	public static void initializeDefaultValues(IPreferenceStore store) {
 		PreferenceConstants.initializeDefaultValues(store);
 
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_COMMENT_COLOR, new RGB(63,
-						127, 95));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_KEYWORD_COLOR, new RGB(127, 0,
-						85));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_COLOR, new RGB(
-						127, 0, 85));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_STRING_COLOR, new RGB(42, 0,
-						255));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_NUMBER_COLOR, new RGB(128, 0,
-						0));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_ARGUMENT_COLOR, new RGB(0, 0,
-						0));
-		PreferenceConverter.setDefault(store,
-				XQueryPreferenceConstants.EDITOR_FUNCTION_DEFINITON_COLOR,
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_COMMENT_COLOR, new RGB(63, 127, 95));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_KEYWORD_COLOR, new RGB(127, 0, 85));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_COLOR,
+				new RGB(127, 0, 85));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_STRING_COLOR, new RGB(42, 0, 255));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_NUMBER_COLOR, new RGB(128, 0, 0));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_ARGUMENT_COLOR, new RGB(0, 0, 0));
+		PreferenceConverter.setDefault(store, XQueryPreferenceConstants.EDITOR_FUNCTION_DEFINITON_COLOR,
 				new RGB(0, 0, 0));
 
 		store.setDefault(XQueryPreferenceConstants.EDITOR_COMMENT_BOLD, false);
-		store
-				.setDefault(XQueryPreferenceConstants.EDITOR_COMMENT_ITALIC,
-						false);
+		store.setDefault(XQueryPreferenceConstants.EDITOR_COMMENT_ITALIC, false);
 
 		store.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_BOLD, true);
-		store
-				.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_ITALIC,
-						false);
-		store.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_BOLD,
-				true);
-		store.setDefault(
-				XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_ITALIC, false);
+		store.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_ITALIC, false);
+		store.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_BOLD, true);
+		store.setDefault(XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_ITALIC, false);
 
 		store.setDefault(PreferenceConstants.EDITOR_SMART_INDENT, true);
 		store.setDefault(PreferenceConstants.EDITOR_CLOSE_STRINGS, true);
@@ -379,8 +346,7 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 		store.setDefault(PreferenceConstants.EDITOR_SMART_HOME_END, true);
 		store.setDefault(PreferenceConstants.EDITOR_SUB_WORD_NAVIGATION, true);
 		store.setDefault(PreferenceConstants.EDITOR_TAB_WIDTH, 8);
-		store.setDefault(
-				PreferenceConstants.EDITOR_SYNC_OUTLINE_ON_CURSOR_MOVE, true);
+		store.setDefault(PreferenceConstants.EDITOR_SYNC_OUTLINE_ON_CURSOR_MOVE, true);
 
 		// folding
 		store.setDefault(PreferenceConstants.EDITOR_FOLDING_ENABLED, true);
@@ -389,28 +355,19 @@ public class XQueryPreferenceConstants extends PreferenceConstants {
 		// store.setDefault(PreferenceConstants.EDITOR_FOLDING_METHODS, false);
 		// store.setDefault(PreferenceConstants.EDITOR_FOLDING_IMPORTS, true);
 
-		store.setDefault(CodeFormatterConstants.FORMATTER_TAB_CHAR,
-				CodeFormatterConstants.TAB);
+		store.setDefault(CodeFormatterConstants.FORMATTER_TAB_CHAR, CodeFormatterConstants.TAB);
 		store.setDefault(CodeFormatterConstants.FORMATTER_TAB_SIZE, "4");
-		store
-				.setDefault(CodeFormatterConstants.FORMATTER_INDENTATION_SIZE,
-						"4");
+		store.setDefault(CodeFormatterConstants.FORMATTER_INDENTATION_SIZE, "4");
 
 		NewScriptProjectPreferencePage.initDefaults(store);
 
-		store.setDefault(PreferenceConstants.APPEARANCE_COMPRESS_PACKAGE_NAMES,
-				false);
-		store.setDefault(PreferenceConstants.APPEARANCE_METHOD_RETURNTYPE,
-				false);
-		store.setDefault(PreferenceConstants.APPEARANCE_METHOD_TYPEPARAMETERS,
-				true);
-		store.setDefault(
-				PreferenceConstants.APPEARANCE_PKG_NAME_PATTERN_FOR_PKG_VIEW,
-				""); //$NON-NLS-1$
+		store.setDefault(PreferenceConstants.APPEARANCE_COMPRESS_PACKAGE_NAMES, false);
+		store.setDefault(PreferenceConstants.APPEARANCE_METHOD_RETURNTYPE, false);
+		store.setDefault(PreferenceConstants.APPEARANCE_METHOD_TYPEPARAMETERS, true);
+		store.setDefault(PreferenceConstants.APPEARANCE_PKG_NAME_PATTERN_FOR_PKG_VIEW, ""); //$NON-NLS-1$
 
 		store.setDefault(PreferenceConstants.SHOW_SOURCE_MODULE_CHILDREN, true);
 
-		store.setDefault(
-				PreferenceConstants.CODEASSIST_AUTOACTIVATION_TRIGGERS, ".");
+		store.setDefault(PreferenceConstants.CODEASSIST_AUTOACTIVATION_TRIGGERS, ".");
 	}
 }

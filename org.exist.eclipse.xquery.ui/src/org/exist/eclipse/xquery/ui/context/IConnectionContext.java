@@ -18,8 +18,7 @@ import org.exist.eclipse.xquery.ui.result.IQueryFrame;
 public interface IConnectionContext {
 
 	/**
-	 * Register the listener, if you want information about changes on the
-	 * context.
+	 * Register the listener, if you want information about changes on the context.
 	 * 
 	 * @param listener
 	 */
@@ -39,17 +38,17 @@ public interface IConnectionContext {
 	public String getName();
 
 	/**
-	 * This method will call, when a query should run in this context.
-	 * Attention: This method should not blocking. Therefore implement the
-	 * running in a separate job.
+	 * This method will call, when a query should run in this context. Attention:
+	 * This method should not blocking. Therefore implement the running in a
+	 * separate job.
 	 * 
 	 * @param frame
 	 */
 	public void run(IQueryFrame frame);
 
 	/**
-	 * @return the {@link ICompletionExtension}, which is used to extend the
-	 *         code assistant with this context.
+	 * @return the {@link ICompletionExtension}, which is used to extend the code
+	 *         assistant with this context.
 	 */
 	public ICompletionExtension getCompletionExtension();
 }

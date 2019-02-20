@@ -31,27 +31,23 @@ import org.exist.eclipse.xquery.ui.internal.completion.XQueryContentAssistPrefer
  * 
  * @author Pascal Schmidiger
  */
-public class XQuerySourceViewerConfiguration extends
-		ScriptSourceViewerConfiguration {
+public class XQuerySourceViewerConfiguration extends ScriptSourceViewerConfiguration {
 	private AbstractScriptScanner _codeScanner;
 	private AbstractScriptScanner _stringScanner;
 	private AbstractScriptScanner _commentScanner;
 
-	public XQuerySourceViewerConfiguration(IColorManager colorManager,
-			IPreferenceStore preferenceStore, ITextEditor editor,
-			String partitioning) {
+	public XQuerySourceViewerConfiguration(IColorManager colorManager, IPreferenceStore preferenceStore,
+			ITextEditor editor, String partitioning) {
 		super(colorManager, preferenceStore, editor, partitioning);
 	}
 
 	@Override
-	public IAutoEditStrategy[] getAutoEditStrategies(
-			ISourceViewer sourceViewer, String contentType) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
 		return new IAutoEditStrategy[] { new DefaultIndentLineAutoEditStrategy() };
 	}
 
 	@Override
-	public String[] getIndentPrefixes(ISourceViewer sourceViewer,
-			String contentType) {
+	public String[] getIndentPrefixes(ISourceViewer sourceViewer, String contentType) {
 		return new String[] { "\t", "        " };
 	}
 
@@ -61,15 +57,14 @@ public class XQuerySourceViewerConfiguration extends
 	}
 
 	@Override
-	protected IInformationControlCreator getOutlinePresenterControlCreator(
-			ISourceViewer sourceViewer, final String commandId) {
+	protected IInformationControlCreator getOutlinePresenterControlCreator(ISourceViewer sourceViewer,
+			final String commandId) {
 		return new IInformationControlCreator() {
 			@Override
 			public IInformationControl createInformationControl(Shell parent) {
 				int shellStyle = SWT.RESIZE;
 				int treeStyle = SWT.V_SCROLL | SWT.H_SCROLL;
-				return new XQueryOutlineInformationControl(parent, shellStyle,
-						treeStyle, commandId);
+				return new XQueryOutlineInformationControl(parent, shellStyle, treeStyle, commandId);
 			}
 		};
 	}
@@ -81,24 +76,18 @@ public class XQuerySourceViewerConfiguration extends
 
 	@Override
 	protected void initializeScanners() {
-		this._codeScanner = new XQueryCodeScanner(this.getColorManager(),
-				this.fPreferenceStore);
-		this._stringScanner = new SingleTokenScriptScanner(this
-				.getColorManager(), this.fPreferenceStore,
+		this._codeScanner = new XQueryCodeScanner(this.getColorManager(), this.fPreferenceStore);
+		this._stringScanner = new SingleTokenScriptScanner(this.getColorManager(), this.fPreferenceStore,
 				IXQueryColorConstants.XQUERY_STRING);
-		this._commentScanner = new XQueryCommentScanner(this.getColorManager(),
-				this.fPreferenceStore);
+		this._commentScanner = new XQueryCommentScanner(this.getColorManager(), this.fPreferenceStore);
 	}
 
 	@Override
-	public IPresentationReconciler getPresentationReconciler(
-			ISourceViewer sourceViewer) {
+	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new ScriptPresentationReconciler();
-		reconciler.setDocumentPartitioning(this
-				.getConfiguredDocumentPartitioning(sourceViewer));
+		reconciler.setDocumentPartitioning(this.getConfiguredDocumentPartitioning(sourceViewer));
 
-		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(
-				this._codeScanner);
+		DefaultDamagerRepairer dr = new DefaultDamagerRepairer(this._codeScanner);
 		reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
 		reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
 
@@ -125,8 +114,7 @@ public class XQuerySourceViewerConfiguration extends
 
 	@Override
 	public boolean affectsTextPresentation(PropertyChangeEvent event) {
-		return _codeScanner.affectsBehavior(event)
-				|| _stringScanner.affectsBehavior(event);
+		return _codeScanner.affectsBehavior(event) || _stringScanner.affectsBehavior(event);
 	}
 
 	@Override
@@ -137,8 +125,8 @@ public class XQuerySourceViewerConfiguration extends
 		// new char[] { '$' }, new XQueryCompletionProcessor(getEditor(),
 		// assistant, IDocument.DEFAULT_CONTENT_TYPE),
 		// new HippieProposalProcessor());
-		assistant.setContentAssistProcessor(new XQueryCompletionProcessor(
-				getEditor(), assistant, IDocument.DEFAULT_CONTENT_TYPE),
+		assistant.setContentAssistProcessor(
+				new XQueryCompletionProcessor(getEditor(), assistant, IDocument.DEFAULT_CONTENT_TYPE),
 				IDocument.DEFAULT_CONTENT_TYPE);
 	}
 }

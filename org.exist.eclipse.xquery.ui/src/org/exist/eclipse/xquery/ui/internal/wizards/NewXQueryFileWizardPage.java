@@ -25,7 +25,8 @@ public class NewXQueryFileWizardPage extends WizardNewFileCreationPage {
 	 */
 	public NewXQueryFileWizardPage(IStructuredSelection selection) {
 		super("xquerynewwizardPage", selection);
-		setDescription("This wizard creates a new file with *.*.xquery extension that can be opened by a XQuery editor.");
+		setDescription(
+				"This wizard creates a new file with *.*.xquery extension that can be opened by a XQuery editor.");
 		setFileName("new_file.xq");
 	}
 

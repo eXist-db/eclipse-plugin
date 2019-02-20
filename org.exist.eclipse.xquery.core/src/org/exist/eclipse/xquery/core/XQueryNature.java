@@ -12,6 +12,5 @@ public class XQueryNature extends ScriptNature {
 	/**
 	 * The natureid of the xquery project.
 	 */
-	public static final String NATURE_ID = XQueryCorePlugin.PLUGIN_ID
-			+ ".nature";
+	public static final String NATURE_ID = XQueryCorePlugin.PLUGIN_ID + ".nature";
 }

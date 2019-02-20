@@ -61,8 +61,7 @@ public class ExtractMethodAction extends ARefactorAction {
 			int nOffs = offsets.size();
 
 			boolean[] replaceAll = { _lastReplaceAllButtonSelection };
-			String text = openMethodNameInputDialog(editor.getEditorSite()
-					.getShell(), nOffs, replaceAll);
+			String text = openMethodNameInputDialog(editor.getEditorSite().getShell(), nOffs, replaceAll);
 
 			if (text == null) {
 				return;
@@ -94,19 +93,15 @@ public class ExtractMethodAction extends ARefactorAction {
 			applyEdits(document, mte);
 
 		} catch (Exception e) {
-			XQueryUI.getDefault().getLog()
-					.log(
-							new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-									"An error occured while extracting method: "
-											+ e, e));
+			XQueryUI.getDefault().getLog().log(
+					new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, "An error occured while extracting method: " + e, e));
 		}
 	}
 
 	/**
 	 * @return nullable if canceled
 	 */
-	private String openMethodNameInputDialog(Shell shell,
-			final int nOccurences, final boolean[] replaceAll) {
+	private String openMethodNameInputDialog(Shell shell, final int nOccurences, final boolean[] replaceAll) {
 		final String defaultMethodName = "foo";
 
 		// for the developer
@@ -115,8 +110,8 @@ public class ExtractMethodAction extends ARefactorAction {
 
 		final String defaultName = "local:" + defaultMethodName + testSyntax;
 
-		InputDialog dialog = new InputDialog(shell, "Extract Method",
-				"&Name or Signature", defaultName, new IInputValidator() {
+		InputDialog dialog = new InputDialog(shell, "Extract Method", "&Name or Signature", defaultName,
+				new IInputValidator() {
 					@Override
 					public String isValid(String newText) {
 						// not displayed; just disable ok button
@@ -127,14 +122,11 @@ public class ExtractMethodAction extends ARefactorAction {
 			protected Control createContents(Composite container) {
 				Control contents = super.createContents(container);
 
-				Composite parent = (Composite) ((Composite) contents)
-						.getChildren()[0];
+				Composite parent = (Composite) ((Composite) contents).getChildren()[0];
 
 				final Label previewLabel = new Label(parent, SWT.NONE);
-				previewLabel.setForeground(JFaceColors
-						.getHyperlinkText(previewLabel.getDisplay()));
-				previewLabel.setLayoutData(new GridData(
-						GridData.FILL_HORIZONTAL));
+				previewLabel.setForeground(JFaceColors.getHyperlinkText(previewLabel.getDisplay()));
+				previewLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 				final Text text = (Text) parent.getChildren()[1];
 
@@ -153,8 +145,7 @@ public class ExtractMethodAction extends ARefactorAction {
 				};
 				text.addModifyListener(modifyListener);
 
-				final Button replaceButton = createReplaceAllButton(parent,
-						nOccurences, replaceAll);
+				final Button replaceButton = createReplaceAllButton(parent, nOccurences, replaceAll);
 
 				GridData gd = new GridData(0);
 				gd.verticalIndent = 10;
@@ -165,9 +156,7 @@ public class ExtractMethodAction extends ARefactorAction {
 				text.getDisplay().asyncExec(new Runnable() {
 					@Override
 					public void run() {
-						text.setSelection(defaultName.length()
-								- defaultMethodName.length(), defaultName
-								.length());
+						text.setSelection(defaultName.length() - defaultMethodName.length(), defaultName.length());
 						modifyListener.modifyText(null);
 					}
 				});

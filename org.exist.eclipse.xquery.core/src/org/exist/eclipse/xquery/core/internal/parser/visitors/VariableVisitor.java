@@ -58,12 +58,9 @@ public class VariableVisitor implements XPathVisitor, NodeTypes {
 	/**
 	 * @return the declaration for the parsed element.
 	 */
-	public XQueryFieldDeclaration getField(MethodDeclaration parent,
-			boolean publicc) {
-		XQueryFieldDeclaration fieldDeclaration = new XQueryFieldDeclaration(
-				parent, _name, _startPos, _endPos);
-		fieldDeclaration.setModifiers((parent != null) ? Modifier.PRIVATE
-				: Modifier.PUBLIC);
+	public XQueryFieldDeclaration getField(MethodDeclaration parent, boolean publicc) {
+		XQueryFieldDeclaration fieldDeclaration = new XQueryFieldDeclaration(parent, _name, _startPos, _endPos);
+		fieldDeclaration.setModifiers((parent != null) ? Modifier.PRIVATE : Modifier.PUBLIC);
 		return fieldDeclaration;
 	}
 
@@ -71,15 +68,13 @@ public class VariableVisitor implements XPathVisitor, NodeTypes {
 	 * @return the declaration for the parsed element.
 	 */
 	public VariableReference getFieldReference(MethodDeclaration parent) {
-		XQueryVariableReference ref = new XQueryVariableReference(parent,
-				_startPos, _endPos, _name);
+		XQueryVariableReference ref = new XQueryVariableReference(parent, _startPos, _endPos, _name);
 		return ref;
 	}
 
 	public MethodCallExpression getFunctionCall() {
 		CallArgumentsList args = new CallArgumentsList();
-		MethodCallExpression call = new MethodCallExpression(_startPos,
-				_endPos, null, _name, args);
+		MethodCallExpression call = new MethodCallExpression(_startPos, _endPos, null, _name, args);
 		return call;
 	}
 }

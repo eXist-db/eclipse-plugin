@@ -46,8 +46,8 @@ public class QueriesSection implements SelectionListener {
 	private TableViewer _viewer;
 	private IAutoModificationNotifier _notifier;
 
-	public QueriesSection(Composite navigation, IAutoModel model,
-			FormToolkit toolkit, IAutoModificationNotifier notifier) {
+	public QueriesSection(Composite navigation, IAutoModel model, FormToolkit toolkit,
+			IAutoModificationNotifier notifier) {
 		_navigation = navigation;
 		_toolkit = toolkit;
 		_autoModel = model;
@@ -61,8 +61,7 @@ public class QueriesSection implements SelectionListener {
 	 * @return Section
 	 */
 	public Section init() {
-		Section querySection = _toolkit.createSection(_navigation,
-				ExpandableComposite.TITLE_BAR);
+		Section querySection = _toolkit.createSection(_navigation, ExpandableComposite.TITLE_BAR);
 		querySection.setText("Queries");
 		querySection.marginWidth = 10;
 		querySection.marginHeight = 5;
@@ -70,8 +69,7 @@ public class QueriesSection implements SelectionListener {
 		querySection.setLayoutData(gd);
 
 		// table viewer
-		Composite queryClient = _toolkit
-				.createComposite(querySection, SWT.WRAP);
+		Composite queryClient = _toolkit.createComposite(querySection, SWT.WRAP);
 		GridLayout glayout = new GridLayout();
 		glayout.numColumns = 2;
 		glayout.marginWidth = 2;
@@ -99,8 +97,7 @@ public class QueriesSection implements SelectionListener {
 		addButton.setLayoutData(gd);
 		addButton.addSelectionListener(this);
 
-		Button removeButton = _toolkit
-				.createButton(buttons, "Remove", SWT.PUSH);
+		Button removeButton = _toolkit.createButton(buttons, "Remove", SWT.PUSH);
 		removeButton.setLayoutData(gd);
 		removeButton.addSelectionListener(this);
 
@@ -131,31 +128,25 @@ public class QueriesSection implements SelectionListener {
 
 			if (eventButton.getText().compareTo("Add...") == 0) {
 				// add a query
-				QueryEntity newQueryEntity = new QueryEntity(
-						"Automation - Query", "Note", 1, "//query");
+				QueryEntity newQueryEntity = new QueryEntity("Automation - Query", "Note", 1, "//query");
 				newQueryEntity.setModel(_autoModel);
 				_autoModel.addQuery(newQueryEntity);
 				_viewer.refresh();
 				_notifier.automationModified(new AutoModEvent("Query added."));
 				// remove a query
 			} else if (eventButton.getText().compareTo("Remove") == 0) {
-				IStructuredSelection structuredSelection = (IStructuredSelection) _viewer
-						.getSelection();
+				IStructuredSelection structuredSelection = (IStructuredSelection) _viewer.getSelection();
 				QueryEntity toDelete;
 				if (structuredSelection.size() == 1) {
-					toDelete = (QueryEntity) structuredSelection
-							.getFirstElement();
+					toDelete = (QueryEntity) structuredSelection.getFirstElement();
 
-					boolean confirmed = MessageDialog.openConfirm(_navigation
-							.getShell(), "Delete", "Delete the query '"
-							+ toDelete.getName() + "' ?");
+					boolean confirmed = MessageDialog.openConfirm(_navigation.getShell(), "Delete",
+							"Delete the query '" + toDelete.getName() + "' ?");
 					if (confirmed) {
 						_autoModel.removeQuery(toDelete);
-						_viewer.setSelection(new StructuredSelection(_viewer
-								.getElementAt(0)));
+						_viewer.setSelection(new StructuredSelection(_viewer.getElementAt(0)));
 						_viewer.refresh();
-						_notifier.automationModified(new AutoModEvent(
-								"Query removed."));
+						_notifier.automationModified(new AutoModEvent("Query removed."));
 					}
 				}
 			}
@@ -190,16 +181,13 @@ public class QueriesSection implements SelectionListener {
 				if (fileTransfer.isSupportedType(event.currentDataType)) {
 					String[] filenames = (String[]) event.data;
 					for (String filename : filenames) {
-						String input = AutoUI.getDefault().getFileInput(
-								filename);
+						String input = AutoUI.getDefault().getFileInput(filename);
 						if (input != null) {
 							File file = new File(filename);
-							QueryEntity entity = new QueryEntity(
-									file.getName(), file.getName(), 1, input);
+							QueryEntity entity = new QueryEntity(file.getName(), file.getName(), 1, input);
 							_autoModel.addQuery(entity);
 							_viewer.refresh();
-							_notifier.automationModified(new AutoModEvent(
-									"Query added."));
+							_notifier.automationModified(new AutoModEvent("Query added."));
 						}
 					}
 				}

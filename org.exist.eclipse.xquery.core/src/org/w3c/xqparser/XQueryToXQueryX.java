@@ -49,36 +49,27 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	public XQueryToXQueryX() throws UnsupportedEncodingException {
 
 		try {
-			_xqout1 = new PrintWriter(new OutputStreamWriter(System.out,
-					"utf-8"));
+			_xqout1 = new PrintWriter(new OutputStreamWriter(System.out, "utf-8"));
 		} catch (UnsupportedEncodingException e) {
 			try {
-				_xqout1 = new PrintWriter(new OutputStreamWriter(System.out,
-						"UTF8"));
+				_xqout1 = new PrintWriter(new OutputStreamWriter(System.out, "UTF8"));
 			} catch (UnsupportedEncodingException e1) {
-				_xqout1 = new PrintWriter(new OutputStreamWriter(System.out,
-						System.getProperty("file.encoding")));
+				_xqout1 = new PrintWriter(new OutputStreamWriter(System.out, System.getProperty("file.encoding")));
 			}
 		}
 	}
 
-	public XQueryToXQueryX(PrintWriter xqout)
-			throws UnsupportedEncodingException {
+	public XQueryToXQueryX(PrintWriter xqout) throws UnsupportedEncodingException {
 		_xqout1 = xqout;
 	}
 
-	public XQueryToXQueryX(PrintStream xqout)
-			throws UnsupportedEncodingException {
-		_xqout1 = (xqout != null) ? new PrintWriter(new OutputStreamWriter(
-				xqout, "utf-8")) : null;
+	public XQueryToXQueryX(PrintStream xqout) throws UnsupportedEncodingException {
+		_xqout1 = (xqout != null) ? new PrintWriter(new OutputStreamWriter(xqout, "utf-8")) : null;
 	}
 
-	public XQueryToXQueryX(PrintStream xqout, PrintStream xqout2)
-			throws UnsupportedEncodingException {
-		_xqout1 = (xqout != null) ? new PrintWriter(new OutputStreamWriter(
-				xqout, "utf-8")) : null;
-		_xqout2 = (xqout2 != null) ? new PrintWriter(new OutputStreamWriter(
-				xqout2, "utf-8")) : null;
+	public XQueryToXQueryX(PrintStream xqout, PrintStream xqout2) throws UnsupportedEncodingException {
+		_xqout1 = (xqout != null) ? new PrintWriter(new OutputStreamWriter(xqout, "utf-8")) : null;
+		_xqout2 = (xqout2 != null) ? new PrintWriter(new OutputStreamWriter(xqout2, "utf-8")) : null;
 	}
 
 	private void xqprintln() {
@@ -111,8 +102,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 
 	private static int MAXCHAR = 0xFFFF;
 
-	private static void writeUTF16Surrogate(PrintWriter ps, char c, char ch[],
-			int i, int end) {
+	private static void writeUTF16Surrogate(PrintWriter ps, char c, char ch[], int i, int end) {
 
 		int surrogateValue = getURF16SurrogateValue(c, ch, i, end);
 
@@ -127,15 +117,12 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		int next;
 
 		if (i + 1 >= end) {
-			throw new RuntimeException("Invalid UTF-16 surrogate detected: "
-					+ Integer.toHexString(c));
+			throw new RuntimeException("Invalid UTF-16 surrogate detected: " + Integer.toHexString(c));
 		} else {
 			next = ch[++i];
 
 			if (!(0xdc00 <= next && next < 0xe000))
-				throw new RuntimeException(
-						"Invalid UTF-16 surrogate detected: "
-								+ Integer.toHexString(c));
+				throw new RuntimeException("Invalid UTF-16 surrogate detected: " + Integer.toHexString(c));
 
 			next = ((c - 0xd800) << 10) + next - 0xdc00 + 0x00010000;
 		}
@@ -151,13 +138,10 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * Tell if this character can be written without escaping. Needs more work.
 	 */
 	private static boolean canConvert(char ch) {
-		boolean isLegal = ch == 0x9 || ch == 0xA || ch == 0xD
-				|| (ch >= 0x20 && ch <= 0xD7FF)
-				|| (ch >= 0xE000 && ch <= 0xFFFD)
-				|| (ch >= 0x10000 && ch <= 0x10FFFF);
+		boolean isLegal = ch == 0x9 || ch == 0xA || ch == 0xD || (ch >= 0x20 && ch <= 0xD7FF)
+				|| (ch >= 0xE000 && ch <= 0xFFFD) || (ch >= 0x10000 && ch <= 0x10FFFF);
 		if (!isLegal)
-			throw new RuntimeException(
-					"Characters MUST match the production for Char.");
+			throw new RuntimeException("Characters MUST match the production for Char.");
 
 		return (ch <= MAXCHAR); // noop
 	}
@@ -181,12 +165,10 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				xqprint("&lt;");
 			else if (c == '>')
 				xqprint("&gt;");
-			else if (c == '\'' && (i + 1) < s.length()
-					&& s.charAt(i + 1) == '\'') {
+			else if (c == '\'' && (i + 1) < s.length() && s.charAt(i + 1) == '\'') {
 				xqprint("\'");
 				i++;
-			} else if (c == '\"' && (i + 1) < s.length()
-					&& s.charAt(i + 1) == '\"') {
+			} else if (c == '\"' && (i + 1) < s.length() && s.charAt(i + 1) == '\"') {
 				xqprint("\"");
 				i++;
 			} else if (isUTF16Surrogate(c)) {
@@ -200,8 +182,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				xqprint("&#");
 				xqprint(Integer.toString(c));
 				xqprint(";");
-			} else if (c == 0x0D && (i + 1) < s.length()
-					&& s.charAt(i + 1) == 0x0A) {
+			} else if (c == 0x0D && (i + 1) < s.length() && s.charAt(i + 1) == 0x0A) {
 				xqprint("\n");
 				i++;
 			} else if (_isAttribute && (c == 0x09 || c == 0x0A)) {
@@ -253,8 +234,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		indent();
 		_outputStack.push("<");
 		String nodeName = jjtNodeName[id];
-		String s = "xqx:" + nodeName.substring(0, 1).toLowerCase()
-				+ nodeName.substring(1);
+		String s = "xqx:" + nodeName.substring(0, 1).toLowerCase() + nodeName.substring(1);
 		_outputStack.push(s);
 		_openElemStack.push(s);
 		_openElemStack.push(node);
@@ -339,8 +319,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			return true;
 		} else if (node.id == JJTCDATASECTION)
 			return false;
-		else if (node.id == JJTELEMENTCONTENTCHAR
-				|| node.id == JJTQUOTATTRCONTENTCHAR
+		else if (node.id == JJTELEMENTCONTENTCHAR || node.id == JJTQUOTATTRCONTENTCHAR
 				|| node.id == JJTAPOSATTRCONTENTCHAR) {
 			if (node.m_value.trim().length() == 0)
 				return true;
@@ -359,8 +338,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			node = sn(node.jjtGetChild(0));
 		if (node.id == JJTCDATASECTION)
 			return false;
-		else if (node.id == JJTELEMENTCONTENTCHAR
-				|| node.id == JJTQUOTATTRCONTENTCHAR
+		else if (node.id == JJTELEMENTCONTENTCHAR || node.id == JJTQUOTATTRCONTENTCHAR
 				|| node.id == JJTAPOSATTRCONTENTCHAR) {
 			if (node.m_value.trim().length() == 0) {
 				return isPreviousSiblingBoundaryWhitespaceChar(node);
@@ -368,8 +346,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		} else {
 			if (node.id == JJTCOMMONCONTENT) {
 				node = sn(node.jjtGetChild(0));
-				if (node.id == JJTLCURLYBRACEESCAPE || node.id == JJTCHARREF
-						|| node.id == JJTPREDEFINEDENTITYREF)
+				if (node.id == JJTLCURLYBRACEESCAPE || node.id == JJTCHARREF || node.id == JJTPREDEFINEDENTITYREF)
 					return false;
 			}
 			return true;
@@ -385,8 +362,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			node = sn(node.jjtGetChild(0));
 		if (node.id == JJTCDATASECTION)
 			return false;
-		else if (node.id == JJTELEMENTCONTENTCHAR
-				|| node.id == JJTQUOTATTRCONTENTCHAR
+		else if (node.id == JJTELEMENTCONTENTCHAR || node.id == JJTQUOTATTRCONTENTCHAR
 				|| node.id == JJTAPOSATTRCONTENTCHAR) {
 			if (node.m_value.trim().length() == 0) {
 				return isNextSiblingBoundaryWhitespaceChar(node);
@@ -394,8 +370,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		} else {
 			if (node.id == JJTCOMMONCONTENT) {
 				node = sn(node.jjtGetChild(0));
-				if (node.id == JJTLCURLYBRACEESCAPE || node.id == JJTCHARREF
-						|| node.id == JJTPREDEFINEDENTITYREF)
+				if (node.id == JJTLCURLYBRACEESCAPE || node.id == JJTCHARREF || node.id == JJTPREDEFINEDENTITYREF)
 					return false;
 			}
 			return true;
@@ -406,12 +381,10 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	private boolean isBoundaryWhitespaceChar(SimpleNode node) {
 		if (node.id == JJTCDATASECTION)
 			return false;
-		if (node.id == JJTELEMENTCONTENTCHAR
-				|| node.id == JJTQUOTATTRCONTENTCHAR
+		if (node.id == JJTELEMENTCONTENTCHAR || node.id == JJTQUOTATTRCONTENTCHAR
 				|| node.id == JJTAPOSATTRCONTENTCHAR) {
 			if (node.m_value.trim().length() == 0) {
-				if (isPreviousSiblingBoundaryWhitespaceChar(node)
-						&& isNextSiblingBoundaryWhitespaceChar(node)) {
+				if (isPreviousSiblingBoundaryWhitespaceChar(node) && isNextSiblingBoundaryWhitespaceChar(node)) {
 					return true;
 				}
 			}
@@ -420,8 +393,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	}
 
 	private boolean shouldStripChar(SimpleNode node) {
-		if ((_boundarySpacePolicy == BSP_STRIP)
-				&& isBoundaryWhitespaceChar(node))
+		if ((_boundarySpacePolicy == BSP_STRIP) && isBoundaryWhitespaceChar(node))
 			return true;
 		else
 			return false;
@@ -448,8 +420,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		int markSize = ((Integer) _stackChecks.pop()).intValue();
 		int currentSize = _openElemStack.size();
 		if (markSize != currentSize)
-			System.err.println("Stack not flushed properly!!! "
-					+ jjtNodeName[node.id]);
+			System.err.println("Stack not flushed properly!!! " + jjtNodeName[node.id]);
 		return (markSize == currentSize);
 	}
 
@@ -460,33 +431,25 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			_xqout2.flush();
 	}
 
-	public boolean transform(SimpleNode node, PrintStream ps1)
-			throws UnsupportedEncodingException {
-		_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(ps1,
-				"utf-8")) : null;
+	public boolean transform(SimpleNode node, PrintStream ps1) throws UnsupportedEncodingException {
+		_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(ps1, "utf-8")) : null;
 		boolean ret = transform(node);
 		xqflush();
 		return ret;
 	}
 
-	public boolean transform(SimpleNode node, PrintStream ps1, PrintStream ps2)
-			throws UnsupportedEncodingException {
-		_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(ps1,
-				"utf-8")) : null;
-		_xqout2 = (ps2 != null) ? new PrintWriter(new OutputStreamWriter(ps2,
-				"utf-8")) : null;
+	public boolean transform(SimpleNode node, PrintStream ps1, PrintStream ps2) throws UnsupportedEncodingException {
+		_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(ps1, "utf-8")) : null;
+		_xqout2 = (ps2 != null) ? new PrintWriter(new OutputStreamWriter(ps2, "utf-8")) : null;
 		boolean ret = transform(node);
 		xqflush();
 		return ret;
 	}
 
-	public boolean transformNoEncodingException(SimpleNode node,
-			PrintStream ps1, PrintStream ps2) {
+	public boolean transformNoEncodingException(SimpleNode node, PrintStream ps1, PrintStream ps2) {
 		try {
-			_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(
-					ps1, "utf-8")) : null;
-			_xqout2 = (ps2 != null) ? new PrintWriter(new OutputStreamWriter(
-					ps2, "utf-8")) : null;
+			_xqout1 = (ps1 != null) ? new PrintWriter(new OutputStreamWriter(ps1, "utf-8")) : null;
+			_xqout2 = (ps2 != null) ? new PrintWriter(new OutputStreamWriter(ps2, "utf-8")) : null;
 		} catch (UnsupportedEncodingException e) {
 			_xqout1 = (ps1 != null) ? new PrintWriter(ps1) : null;
 			_xqout2 = (ps2 != null) ? new PrintWriter(ps2) : null;
@@ -520,10 +483,8 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			// pushAttr("xsi:noNamespaceSchemaLocation", "xqueryx.xsd");
 			// pushAttr("xsi:noNamespaceSchemaLocation",
 			// "file:///c:/proj/xqed2/grammar/parser/xqueryx.xsd");
-			pushAttr(
-					"xsi:schemaLocation",
-					"http://www.w3.org/2005/XQueryX"
-							+ "\n                                http://www.w3.org/2005/XQueryX/xqueryx.xsd");
+			pushAttr("xsi:schemaLocation", "http://www.w3.org/2005/XQueryX"
+					+ "\n                                http://www.w3.org/2005/XQueryX/xqueryx.xsd");
 			// pd(JJTMODULE);
 		}
 			break;
@@ -537,8 +498,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				if (i == 0) {
 					pushElem("xqx:version", child);
 					flushOpen(child, false);
-					xqprint(child.m_value.substring(1,
-							child.m_value.length() - 1));
+					xqprint(child.m_value.substring(1, child.m_value.length() - 1));
 					flushClose(child, false);
 				} else if (i == 1) {
 					pd("encoding: " + child.m_value);
@@ -605,11 +565,9 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			else if (getParentID(node) == JJTDEFAULTCOLLATIONDECL)
 				pushElem("xqx:defaultCollationDecl", node);
 			else if (getParentID(node) == JJTMODULEIMPORT) {
-				SimpleNode firstChild = (SimpleNode) node.jjtGetParent()
-						.jjtGetChild(0);
+				SimpleNode firstChild = (SimpleNode) node.jjtGetParent().jjtGetChild(0);
 				if ((firstChild == node)
-						|| (firstChild.id == JJTNCNAME && (((SimpleNode) node
-								.jjtGetParent().jjtGetChild(1)) == node)))
+						|| (firstChild.id == JJTNCNAME && (((SimpleNode) node.jjtGetParent().jjtGetChild(1)) == node)))
 					pushElem("xqx:targetNamespace", node);
 				else
 					pushElem("xqx:targetLocation", node);
@@ -687,8 +645,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		case JJTATTRIBNAMEORWILDCARD:
 		case JJTELEMENTNAMEORWILDCARD:
 			if (node.m_value != null && node.m_value.equals("*")) {
-				pushElem(id == JJTATTRIBNAMEORWILDCARD ? JJTATTRIBUTENAME
-						: JJTELEMENTNAME, node);
+				pushElem(id == JJTATTRIBNAMEORWILDCARD ? JJTATTRIBUTENAME : JJTELEMENTNAME, node);
 				flushOpen(node);
 				pushElem("xqx:star", node);
 				flushEmpty(node);
@@ -746,8 +703,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			return check(node);
 
 		case JJTTAGQNAME: {
-			if (getParentID(node) == JJTDIRATTRIBUTELIST
-					&& isNamespaceDecl(node)) {
+			if (getParentID(node) == JJTDIRATTRIBUTELIST && isNamespaceDecl(node)) {
 				if (!node.m_value.equals("xmlns")) {
 					pushElem("xqx:prefix", node);
 					flushOpen(node, false);
@@ -1018,8 +974,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 					start++;
 				} else if (childID == JJTABBREVFORWARDSTEP) {
 					String optionalAttribIndicator = sn(node.jjtGetChild(0)).m_value;
-					if (optionalAttribIndicator != null
-							&& optionalAttribIndicator.equals("@")) {
+					if (optionalAttribIndicator != null && optionalAttribIndicator.equals("@")) {
 						pushElem("xqx:xpathAxis", node);
 						flushOpen(node, false);
 						xqprint("attribute");
@@ -1056,7 +1011,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			}
 			return check(node);
 		}
-			// return check(node);
+		// return check(node);
 
 		case JJTQUANTIFIEDEXPR: {
 			pushElem(id, node);
@@ -1078,8 +1033,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				flushOpen(node, true);
 
 				pushElem(typedVariableBinding.id, typedVariableBinding);
-				String qname = ((SimpleNode) typedVariableBinding
-						.jjtGetChild(0)).m_value;
+				String qname = ((SimpleNode) typedVariableBinding.jjtGetChild(0)).m_value;
 				if (null != qname)
 					qname = processPrefix(qname);
 				flushOpen(typedVariableBinding, false);
@@ -1198,7 +1152,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		}
 			return check(node);
 
-			// setOp??
+		// setOp??
 		case JJTADDITIVEEXPR:
 		case JJTMULTIPLICATIVEEXPR:
 		case JJTUNIONEXPR:
@@ -1364,8 +1318,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				// Gets a little funky here, trying to break up into
 				// forClauseItems
 				if (child.id == JJTVARNAME) {
-					pushElem((id == JJTFORCLAUSE) ? "xqx:forClauseItem"
-							: "xqx:letClauseItem", node);
+					pushElem((id == JJTFORCLAUSE) ? "xqx:forClauseItem" : "xqx:letClauseItem", node);
 					flushOpen(node, true);
 
 					pushElem("xqx:typedVariableBinding", node);
@@ -1396,8 +1349,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 						nextChild = (SimpleNode) node.jjtGetChild(i);
 					}
 
-					pushElem((id == JJTFORCLAUSE) ? "xqx:forExpr"
-							: "xqx:letExpr", node);
+					pushElem((id == JJTFORCLAUSE) ? "xqx:forExpr" : "xqx:letExpr", node);
 					flushOpen(node, true);
 
 					transform(nextChild);
@@ -2026,10 +1978,9 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		case JJTCOMPPICONSTRUCTOR:
 		case JJTCOMPATTRCONSTRUCTOR:
 		case JJTCOMPELEMCONSTRUCTOR: {
-			pushElem(
-					id == JJTCOMPATTRCONSTRUCTOR ? "xqx:computedAttributeConstructor"
-							: id == JJTCOMPPICONSTRUCTOR ? "xqx:computedPIConstructor"
-									: "xqx:computedElementConstructor", node);
+			pushElem(id == JJTCOMPATTRCONSTRUCTOR ? "xqx:computedAttributeConstructor"
+					: id == JJTCOMPPICONSTRUCTOR ? "xqx:computedPIConstructor" : "xqx:computedElementConstructor",
+					node);
 			flushOpen(node);
 			int start = 0;
 			if (getChildID(node, 0) == JJTLBRACEEXPRENCLOSURE) {
@@ -2046,8 +1997,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				start++;
 			}
 			if (id == JJTCOMPATTRCONSTRUCTOR || id == JJTCOMPPICONSTRUCTOR) {
-				pushElem(id == JJTCOMPATTRCONSTRUCTOR ? "xqx:valueExpr"
-						: "xqx:piValueExpr", node);
+				pushElem(id == JJTCOMPATTRCONSTRUCTOR ? "xqx:valueExpr" : "xqx:piValueExpr", node);
 				flushOpen(node);
 				if (getNumExprChildren(node, start) == 0) {
 					pushElem("xqx:sequenceExpr", node);
@@ -2129,14 +2079,12 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 								flushClose(node, !isElemContentChar(openChild));
 								flushClose(node);
 							}
-							openChild = sn(sn(child.jjtGetChild(0))
-									.jjtGetChild(0));
+							openChild = sn(sn(child.jjtGetChild(0)).jjtGetChild(0));
 							child = sn(sn(child.jjtGetChild(0)).jjtGetChild(0));
 							nPush = 0;
 
 						} else if (isElemContentChar(child)) {
-							if (child.id == JJTDIRELEMCONTENT
-									&& shouldStripChar(sn(child.jjtGetChild(0))))
+							if (child.id == JJTDIRELEMCONTENT && shouldStripChar(sn(child.jjtGetChild(0))))
 								continue;
 							if (!isElemContentChar(openChild)) {
 								pushElem("xqx:stringConstantExpr", node);
@@ -2223,9 +2171,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 							nPush = 2;
 						}
 						isOpenMode = child.id;
-					} else if (child.id == JJTOPENQUOT
-							|| child.id == JJTCLOSEQUOT
-							|| child.id == JJTOPENAPOS
+					} else if (child.id == JJTOPENQUOT || child.id == JJTCLOSEQUOT || child.id == JJTOPENAPOS
 							|| child.id == JJTCLOSEAPOS) {
 						continue;
 					} else {
@@ -2259,8 +2205,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				flushOpen(node, false);
 				for (int i = 0; i < n; i++) {
 					SimpleNode child = sn(node.jjtGetChild(i));
-					if (child.id == JJTOPENQUOT || child.id == JJTCLOSEQUOT
-							|| child.id == JJTOPENAPOS
+					if (child.id == JJTOPENQUOT || child.id == JJTCLOSEQUOT || child.id == JJTOPENAPOS
 							|| child.id == JJTCLOSEAPOS) {
 						continue;
 					}
@@ -2292,8 +2237,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 				SimpleNode charParent = (SimpleNode) node.jjtGetParent();
 				SimpleNode nextSibling = getNextSibling(charParent);
 				if (null != nextSibling && nextSibling.jjtGetNumChildren() == 1) {
-					SimpleNode nextCharNode = (SimpleNode) nextSibling
-							.jjtGetChild(0);
+					SimpleNode nextCharNode = (SimpleNode) nextSibling.jjtGetChild(0);
 					if (null != nextCharNode) {
 						if (node.m_value.equals("\r")) {
 							if (nextCharNode.equals("\n"))
@@ -2315,8 +2259,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			return check(node);
 
 		default:
-			System.err.println("Unknown ID: "
-					+ XPathTreeConstants.jjtNodeName[id]);
+			System.err.println("Unknown ID: " + XPathTreeConstants.jjtNodeName[id]);
 			break;
 		}
 		int n = node.jjtGetNumChildren();
@@ -2336,8 +2279,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		int nChildrenAdded = 0;
 		for (int i = 0; i < nChildren; i++) {
 			SimpleNode child = sn(prolog.jjtGetChild(i));
-			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0))
-					: child;
+			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0)) : child;
 			switch (decl.id) {
 			case JJTDEFAULTCOLLATIONDECL:
 			case JJTBASEURIDECL:
@@ -2355,8 +2297,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		}
 		for (int i = 0; i < nChildren; i++) {
 			SimpleNode child = sn(prolog.jjtGetChild(i));
-			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0))
-					: child;
+			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0)) : child;
 			switch (decl.id) {
 			case JJTDEFAULTNAMESPACEDECL:
 			case JJTNAMESPACEDECL:
@@ -2372,8 +2313,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		}
 		for (int i = 0; i < nChildren; i++) {
 			SimpleNode child = sn(prolog.jjtGetChild(i));
-			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0))
-					: child;
+			SimpleNode decl = (child.id == JJTSETTER) ? sn(child.jjtGetChild(0)) : child;
 			switch (decl.id) {
 			case JJTVARDECL:
 			case JJTFUNCTIONDECL:
@@ -2386,8 +2326,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 			}
 		}
 		if (nChildrenAdded != nChildren) {
-			throw new RuntimeException(
-					"Something failed in the prolog reorder!!!");
+			throw new RuntimeException("Something failed in the prolog reorder!!!");
 		}
 		prolog.jjtSetChildren(reorderedChildren);
 	}
@@ -2399,8 +2338,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		int numParentChildren = parent.jjtGetNumChildren();
 		for (int j = 0; j < numParentChildren; j++) {
 			SimpleNode setterCandidate = (SimpleNode) parent.jjtGetChild(j);
-			if (setterCandidate != setter
-					&& setterCandidate.id == XPathTreeConstants.JJTSETTER
+			if (setterCandidate != setter && setterCandidate.id == XPathTreeConstants.JJTSETTER
 					&& ((SimpleNode) setterCandidate.jjtGetChild(0)).id == childID) {
 				String errorCode;
 				String errorMsg;
@@ -2429,8 +2367,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 					errorCode = "err:???";
 					errorMsg = "Unknown setter found!";
 				}
-				throw new PostParseException(errorCode + " Static Error: "
-						+ errorMsg);
+				throw new PostParseException(errorCode + " Static Error: " + errorMsg);
 			}
 		}
 	}
@@ -2453,8 +2390,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * @return
 	 */
 	private boolean isNamespaceDecl(SimpleNode child) {
-		return child.m_value.startsWith("xmlns:")
-				|| child.m_value.equals("xmlns");
+		return child.m_value.startsWith("xmlns:") || child.m_value.equals("xmlns");
 	}
 
 	/**
@@ -2519,8 +2455,7 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 		int n = node.jjtGetNumChildren();
 		for (int i = start; i < n; i++) {
 			SimpleNode child = sn(node.jjtGetChild(i));
-			if (child.id != JJTS && child.id != JJTLBRACEEXPRENCLOSURE
-					&& child.id != JJTRBRACE)
+			if (child.id != JJTS && child.id != JJTLBRACEEXPRENCLOSURE && child.id != JJTRBRACE)
 				count++;
 		}
 		return count;
@@ -2542,9 +2477,8 @@ public class XQueryToXQueryX implements XPathTreeConstants {
 	 * @return
 	 */
 	private boolean isEncloseExpr(SimpleNode child) {
-		return (child.id == JJTQUOTATTRVALUECONTENT
-				|| child.id == JJTAPOSATTRVALUECONTENT || child.id == JJTDIRELEMCONTENT)
-				&& sn(child.jjtGetChild(0)).id == JJTCOMMONCONTENT
+		return (child.id == JJTQUOTATTRVALUECONTENT || child.id == JJTAPOSATTRVALUECONTENT
+				|| child.id == JJTDIRELEMCONTENT) && sn(child.jjtGetChild(0)).id == JJTCOMMONCONTENT
 				&& sn(sn(child.jjtGetChild(0)).jjtGetChild(0)).id == JJTENCLOSEDEXPR;
 	}
 

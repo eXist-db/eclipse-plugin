@@ -35,8 +35,7 @@ import org.exist.eclipse.auto.internal.model.QueryEntity;
  * 
  * @author Markus Tanner
  */
-public class AutomationBlock extends MasterDetailsBlock implements
-		IAutoModificationNotifier {
+public class AutomationBlock extends MasterDetailsBlock implements IAutoModificationNotifier {
 	private AutomationFormPage _page;
 	private AutoContentProvider _contentProvider;
 	private IAutoModel _autoModel;
@@ -50,8 +49,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	 * @param contentProvider
 	 * @param autoModel
 	 */
-	public AutomationBlock(AutomationFormPage page,
-			AutoContentProvider contentProvider, IAutoModel autoModel) {
+	public AutomationBlock(AutomationFormPage page, AutoContentProvider contentProvider, IAutoModel autoModel) {
 		_modListeners = new ArrayList<>();
 		_page = page;
 		_contentProvider = contentProvider;
@@ -59,8 +57,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	}
 
 	@Override
-	protected void createMasterPart(final IManagedForm managedForm,
-			Composite parent) {
+	protected void createMasterPart(final IManagedForm managedForm, Composite parent) {
 
 		FormToolkit toolkit = managedForm.getToolkit();
 		GridData gd;
@@ -73,14 +70,12 @@ public class AutomationBlock extends MasterDetailsBlock implements
 		navigation.setLayoutData(gd);
 
 		// Automation Section
-		AutomationSection autoSection = new AutomationSection(navigation,
-				_autoModel, toolkit, this);
+		AutomationSection autoSection = new AutomationSection(navigation, _autoModel, toolkit, this);
 		autoSection.init();
 		createSpacer(toolkit, navigation, 1);
 
 		// Queries Section
-		QueriesSection queriesSection = new QueriesSection(navigation,
-				_autoModel, toolkit, this);
+		QueriesSection queriesSection = new QueriesSection(navigation, _autoModel, toolkit, this);
 		Section querySection = queriesSection.init();
 
 		final SectionPart spart = new SectionPart(querySection);
@@ -145,8 +140,7 @@ public class AutomationBlock extends MasterDetailsBlock implements
 	@Override
 	protected void createToolBarActions(IManagedForm managedForm) {
 
-		ToolBarActions toolBarActions = new ToolBarActions(managedForm,
-				sashForm, _autoModel);
+		ToolBarActions toolBarActions = new ToolBarActions(managedForm, sashForm, _autoModel);
 		toolBarActions.create();
 	}
 

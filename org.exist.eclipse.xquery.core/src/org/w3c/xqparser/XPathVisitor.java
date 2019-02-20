@@ -2,7 +2,6 @@
 
 package org.w3c.xqparser;
 
-public interface XPathVisitor
-{
-  public Object visit(SimpleNode node, Object data);
+public interface XPathVisitor {
+	public Object visit(SimpleNode node, Object data);
 }

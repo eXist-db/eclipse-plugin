@@ -29,14 +29,12 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#exists()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#exists()
 	 */
 	@Override
 	public boolean exists() {
 		boolean exist = false;
-		if (IBrowseService.class.cast(_parent.getAdapter(IBrowseService.class))
-				.check()) {
+		if (IBrowseService.class.cast(_parent.getAdapter(IBrowseService.class)).check()) {
 			try {
 				return _parent.getCollection().getResource(_name) != null;
 			} catch (Exception e) {
@@ -49,8 +47,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getName()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getName()
 	 */
 	@Override
 	public final String getName() {
@@ -61,8 +58,7 @@ public class DocumentItem implements IDocumentItem {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getResource
-	 * ()
+	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getResource ()
 	 */
 	@Override
 	public Resource getResource() throws ConnectionException {
@@ -76,8 +72,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getParent
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getParent
 	 * ()
 	 */
 	@Override
@@ -88,8 +83,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getPath()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getPath()
 	 */
 	@Override
 	public String getPath() {
@@ -122,7 +116,6 @@ public class DocumentItem implements IDocumentItem {
 			return false;
 		}
 		DocumentItem other = DocumentItem.class.cast(obj);
-		return getPath().equals(other.getPath())
-				&& getParent().equals(other.getParent());
+		return getPath().equals(other.getPath()) && getParent().equals(other.getParent());
 	}
 }

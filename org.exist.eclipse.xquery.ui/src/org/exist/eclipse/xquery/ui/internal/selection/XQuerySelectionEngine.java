@@ -63,8 +63,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 	}
 
 	protected static boolean isWordPart(char c) {
-		return Character.isLetterOrDigit(c) || c == '-' || c == '_' || c == '$'
-				|| c == ':';
+		return Character.isLetterOrDigit(c) || c == '-' || c == '_' || c == '$' || c == ':';
 	}
 
 	public XQuerySelectionEngine() {
@@ -90,8 +89,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 
 			if (isFunction) {
 				argCount = parseArgCount(source, right[0]);
-				IModelElement fe = openLibraryFunction(mod, word, caret,
-						argCount);
+				IModelElement fe = openLibraryFunction(mod, word, caret, argCount);
 				if (fe != null) {
 					return new IModelElement[] { fe };
 				}
@@ -107,8 +105,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 					@Override
 					public boolean visit(IModelElement element) {
 						try {
-							if ((element instanceof IMethod)
-									&& element.getElementName().equals(word)) {
+							if ((element instanceof IMethod) && element.getElementName().equals(word)) {
 								IMethod m = (IMethod) element;
 								if (m.getParameters().length == argCount) {
 									result[0] = element; // found
@@ -127,8 +124,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 				mod.accept(new IModelElementVisitor() {
 					@Override
 					public boolean visit(IModelElement element) {
-						if (element instanceof IField
-								&& element.getElementName().equals(word)) {
+						if (element instanceof IField && element.getElementName().equals(word)) {
 							field[0] = (IField) element;
 						} else if (element instanceof IMethod) {
 							if (isCoveringFunction((IMethod) element, caret)) {
@@ -144,8 +140,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 					result[0] = field[0];
 				} else {
 					for (IModelElement it : coveringFun[0].getChildren()) {
-						if (it instanceof IField
-								&& it.getElementName().equals(word)) {
+						if (it instanceof IField && it.getElementName().equals(word)) {
 							result[0] = it;
 							break;
 						}
@@ -160,20 +155,18 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 	}
 
 	/**
-	 * Used to open a library function. The foreign element is returned from
-	 * select (prevent not-found 'ping' sound) but does not change caret
-	 * location.
+	 * Used to open a library function. The foreign element is returned from select
+	 * (prevent not-found 'ping' sound) but does not change caret location.
 	 */
-	private static abstract class ForeignElement extends LocalVariable
-			implements IOpenDelegate{
+	private static abstract class ForeignElement extends LocalVariable implements IOpenDelegate {
 
 		public ForeignElement(IModelElement parent, String name, int start) {
 			super(parent, name, start, 0, start, 0, "");
 		}
 	}
 
-	private IModelElement openLibraryFunction(IModelElement parent,
-			String fqMethodName, final int caret, final int argCount) {
+	private IModelElement openLibraryFunction(IModelElement parent, String fqMethodName, final int caret,
+			final int argCount) {
 		int prefixPos = fqMethodName.indexOf(':');
 		String prefix;
 		final String methodName;
@@ -188,8 +181,7 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 
 		try {
 
-			final LibDocument doc = XQueryMixinModel.getInstance()
-					.getLibDocument(prefix);
+			final LibDocument doc = XQueryMixinModel.getInstance().getLibDocument(prefix);
 
 			if (doc != null) {
 
@@ -197,26 +189,21 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 				if (line != -1) {
 
 					final ExternalStorageEditorInput editorInput = new ExternalStorageEditorInput(
-							new StringStorage(prefix + " (built-in)", doc
-									.getPath(), doc.getContent().toString()));
+							new StringStorage(prefix + " (built-in)", doc.getPath(), doc.getContent().toString()));
 
 					return new ForeignElement(parent, fqMethodName, caret) {
 						public void codeSelect() {
-							//TODO: check for replacement
+							// TODO: check for replacement
 							Display.getDefault().asyncExec(new Runnable() {
 								@Override
 								public void run() {
 
 									try {
-										ITextEditor editor = (ITextEditor) PlatformUI
-												.getWorkbench()
-												.getActiveWorkbenchWindow()
-												.getActivePage().openEditor(
-														editorInput,
-														XQueryEditor.EDITOR_ID);
+										ITextEditor editor = (ITextEditor) PlatformUI.getWorkbench()
+												.getActiveWorkbenchWindow().getActivePage()
+												.openEditor(editorInput, XQueryEditor.EDITOR_ID);
 
-										selectLibraryFunction(doc, line,
-												methodName, editor);
+										selectLibraryFunction(doc, line, methodName, editor);
 
 									} catch (PartInitException e) {
 										throw new RuntimeException(e);
@@ -233,9 +220,8 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 						}
 
 						@Override
-						public IEditorPart openInEditor(Object arg0,
-								boolean arg1) throws PartInitException,
-								CoreException {
+						public IEditorPart openInEditor(Object arg0, boolean arg1)
+								throws PartInitException, CoreException {
 							// TODO Auto-generated method stub
 							return null;
 						}
@@ -299,12 +285,10 @@ public class XQuerySelectionEngine extends ScriptSelectionEngine {
 		}
 	}
 
-	private boolean selectLibraryFunction(LibDocument doc, int line,
-			final String method, ITextEditor editor) {
+	private boolean selectLibraryFunction(LibDocument doc, int line, final String method, ITextEditor editor) {
 
 		try {
-			IDocument document = editor.getDocumentProvider().getDocument(
-					editor.getEditorInput());
+			IDocument document = editor.getDocumentProvider().getDocument(editor.getEditorInput());
 
 			int off = document.getLineOffset(line);
 

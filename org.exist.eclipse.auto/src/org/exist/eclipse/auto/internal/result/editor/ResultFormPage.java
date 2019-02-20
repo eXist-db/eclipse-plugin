@@ -37,8 +37,7 @@ public class ResultFormPage extends FormPage {
 	 * @param textPage
 	 * @throws AutoException
 	 */
-	public ResultFormPage(ResultEditor editor, ResultTextPage textPage)
-			throws AutoException {
+	public ResultFormPage(ResultEditor editor, ResultTextPage textPage) throws AutoException {
 		super(editor, "result", "Result");
 		_textPage = textPage;
 		_contentProvider = new ResultContentProvider(_textPage.getContent());
@@ -54,19 +53,13 @@ public class ResultFormPage extends FormPage {
 		toolkit.decorateFormHeading(managedForm.getForm().getForm());
 
 		try {
-			AutoResultSection autoResultSection = new AutoResultSection(form
-					.getBody(), getResultDataModel(), toolkit);
+			AutoResultSection autoResultSection = new AutoResultSection(form.getBody(), getResultDataModel(), toolkit);
 			autoResultSection.init();
 		} catch (AutoException e) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
-					.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
-			ErrorDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"Loading Automation Result failed",
-							"Correct the file in the text editor. Re-open it afterwards.",
-							status);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Loading Automation Result failed",
+					"Correct the file in the text editor. Re-open it afterwards.", status);
 		}
 
 		_block.createContent(managedForm);

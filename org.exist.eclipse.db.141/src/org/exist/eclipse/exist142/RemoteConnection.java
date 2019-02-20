@@ -5,11 +5,10 @@ package org.exist.eclipse.exist142;
 
 import java.util.Objects;
 
+import org.exist.eclipse.ConnectionEnum;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.exception.ConnectionException;
-import org.exist.eclipse.internal.ConnectionBox;
-import org.exist.eclipse.internal.ConnectionEnum;
-import org.exist.eclipse.internal.ManagementService;
+import org.exist.eclipse.spi.AbstractConnection;
 import org.exist.xmldb.DatabaseImpl;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -38,6 +37,7 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 	 * @param path     the uri to the remote database, mandatory field.
 	 */
 	public RemoteConnection(String name, String username, String password, String path) {
+		super(ExistConnectionProvider.VERSION);
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("name must be set.");
 		}
@@ -70,7 +70,7 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 
 	@Override
 	public ConnectionEnum getType() {
-		return ConnectionEnum.remote;
+		return ConnectionEnum.REMOTE;
 	}
 
 	@Override
@@ -83,29 +83,6 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 		openDb();
 		openRoot();
 		registerConnection();
-	}
-
-	/**
-	 * 
-	 */
-	protected void registerConnection() {
-		// open it from the box
-		ConnectionBox.getInstance().openConnection(this);
-	}
-
-	/**
-	 * @throws ConnectionException
-	 */
-	protected void openDb() throws ConnectionException {
-		if (_db == null) {
-			try {
-				_db = new DatabaseImpl();
-				DatabaseManager.registerDatabase(_db);
-			} catch (Exception e) {
-				_db = null;
-				throw new ConnectionException("Failure while setting up db: " + e.getMessage(), e);
-			}
-		}
 	}
 
 	/**
@@ -122,6 +99,21 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 				close();
 				throw new ConnectionException("Failure while getting db collection: " + e.getMessage(), e);
 
+			}
+		}
+	}
+
+	/**
+	 * @throws ConnectionException
+	 */
+	protected void openDb() throws ConnectionException {
+		if (_db == null) {
+			try {
+				_db = new DatabaseImpl();
+				DatabaseManager.registerDatabase(_db);
+			} catch (Exception e) {
+				_db = null;
+				throw new ConnectionException("Failure while setting up db: " + e.getMessage(), e);
 			}
 		}
 	}
@@ -164,13 +156,6 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 				}
 			}
 		}
-	}
-
-	/**
-	 * De-registers the connections instance from the connection box
-	 */
-	protected void deregisterConnection() {
-		ConnectionBox.getInstance().closeConnection(this);
 	}
 
 	protected void setDb(Database db) {
@@ -231,14 +216,6 @@ public class RemoteConnection extends AbstractConnection implements Cloneable {
 		}
 		final RemoteConnection other = (RemoteConnection) obj;
 		return Objects.equals(_name, other._name);
-	}
-
-	@Override
-	public <A> A getAdapter(Class<A> adapter) {
-		if (adapter.isAssignableFrom(ManagementService.class)) {
-			return adapter.cast(new ManagementService(this));
-		}
-		return null;
 	}
 
 	// //////////////////////////////////////////////////////////////////////////

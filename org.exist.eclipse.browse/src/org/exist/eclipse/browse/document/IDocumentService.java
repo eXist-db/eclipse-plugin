@@ -24,24 +24,20 @@ public interface IDocumentService {
 	 * <li>call {@link DocumentCoordinator#removed(IDocumentItem)}</li>
 	 * </ul>
 	 * 
-	 * @return <code>true</code> if the item exists, elsewhere
-	 *         <code>false</code>.
+	 * @return <code>true</code> if the item exists, elsewhere <code>false</code>.
 	 */
 	public boolean check();
 
 	/**
 	 * Create this item on xmldb if does not exist.
 	 * 
-	 * @param providerElement
-	 *            the configuration of the provider which is from extension
-	 *            "org.exist.eclipse.browse.createdocument".
-	 * @param content
-	 *            initial content for the document or null to use default
-	 *            content
+	 * @param providerElement the configuration of the provider which is from
+	 *                        extension "org.exist.eclipse.browse.createdocument".
+	 * @param content         initial content for the document or null to use
+	 *                        default content
 	 * @throws CreateDocumentException
 	 */
-	public void create(IConfigurationElement providerElement, String content)
-			throws CreateDocumentException;
+	public void create(IConfigurationElement providerElement, String content) throws CreateDocumentException;
 
 	/**
 	 * Delete this item on the xmldb.

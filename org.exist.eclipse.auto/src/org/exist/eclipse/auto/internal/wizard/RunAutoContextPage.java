@@ -39,8 +39,7 @@ public class RunAutoContextPage extends WizardPage {
 		super("contextwizardpage");
 		setTitle("Run an Automation");
 		setDescription("Select a context for the automation.");
-		setImageDescriptor(AutoUI.getDefault().getImageRegistry()
-				.getDescriptor(AutoUI.IMG_EXIST_ECLIPSE_LOGO));
+		setImageDescriptor(AutoUI.getDefault().getImageRegistry().getDescriptor(AutoUI.IMG_EXIST_ECLIPSE_LOGO));
 	}
 
 	@Override
@@ -60,8 +59,7 @@ public class RunAutoContextPage extends WizardPage {
 		// combo
 		_contextSelection = new Combo(container, SWT.DROP_DOWN | SWT.READ_ONLY);
 
-		for (IAutoContext context : AutoContextRegistration.getInstance()
-				.getAll()) {
+		for (IAutoContext context : AutoContextRegistration.getInstance().getAll()) {
 			_contextSelection.add(context.getName());
 		}
 		_contextSelection.setText("Select");
@@ -130,8 +128,7 @@ public class RunAutoContextPage extends WizardPage {
 	 */
 	public IAutoContext getAutoContext() {
 		IAutoContext selectedContext = null;
-		for (IAutoContext autoContext : AutoContextRegistration.getInstance()
-				.getAll()) {
+		for (IAutoContext autoContext : AutoContextRegistration.getInstance().getAll()) {
 			if (autoContext.getName().compareTo(_contextSelection.getText()) == 0) {
 				selectedContext = autoContext;
 				break;
@@ -160,8 +157,7 @@ public class RunAutoContextPage extends WizardPage {
 	private void dialogChanged() {
 		if (_contextSelection.getText().length() < 1) {
 			if (AutoContextRegistration.getInstance().getAll().isEmpty()) {
-				setErrorState("No context available. Make sure there's"
-						+ " at least one open connection!");
+				setErrorState("No context available. Make sure there's" + " at least one open connection!");
 			} else {
 				setErrorState("Context needs to be selected.");
 			}
@@ -186,8 +182,7 @@ public class RunAutoContextPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);

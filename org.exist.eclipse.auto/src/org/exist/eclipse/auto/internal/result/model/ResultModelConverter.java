@@ -31,13 +31,11 @@ public class ResultModelConverter implements AutoTags {
 	 * @return IAutoModel
 	 * @throws AutoException
 	 */
-	public static IResultModel getResultModel(String resultXml)
-			throws AutoException {
+	public static IResultModel getResultModel(String resultXml) throws AutoException {
 
 		InputStream input = null;
 		try {
-			input = new ByteArrayInputStream(resultXml.getBytes(Charset
-					.forName("UTF-8").name()));
+			input = new ByteArrayInputStream(resultXml.getBytes(Charset.forName("UTF-8").name()));
 		} catch (UnsupportedEncodingException e1) {
 			// ignore
 			e1.printStackTrace();

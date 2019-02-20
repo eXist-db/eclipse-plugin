@@ -27,10 +27,8 @@ public class NewXQueryProjectWizard extends BasicNewProjectResourceWizard {
 				description.setNatureIds(EXIST_NATURE);
 				newProject.setDescription(description, new NullProgressMonitor());
 			} catch (CoreException e) {
-				XQueryUI.getDefault()
-						.getLog()
-						.log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-								"Unable to add nature", e));
+				XQueryUI.getDefault().getLog()
+						.log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, "Unable to add nature", e));
 				return false;
 			}
 		}

@@ -33,8 +33,7 @@ public class ToolBarActions {
 	 * @param managedForm
 	 * @param sashForm
 	 */
-	public ToolBarActions(IManagedForm managedForm, SashForm sashForm,
-			IAutoModel autoModel) {
+	public ToolBarActions(IManagedForm managedForm, SashForm sashForm, IAutoModel autoModel) {
 		_managedForm = managedForm;
 		_sashForm = sashForm;
 		_autoModel = autoModel;
@@ -51,25 +50,21 @@ public class ToolBarActions {
 			@Override
 			public void run() {
 				if (_autoModel.getQueries().size() == 0) {
-					MessageDialog.openInformation(form.getShell(),
-							"No Query available",
-							"An automation can only be executed if there's "
-									+ "at least one query configured.\nAdd"
+					MessageDialog.openInformation(form.getShell(), "No Query available",
+							"An automation can only be executed if there's " + "at least one query configured.\nAdd"
 									+ " a query to the automation.");
 				} else {
 					RunAutoWizard wizard = new RunAutoWizard(_autoModel);
 					wizard.init(AutoUI.getDefault().getWorkbench(), null);
 					wizard.setForcePreviousAndNextButtons(true);
-					WizardDialog dialog = new WizardDialog(AutoUI.getDefault()
-							.getWorkbench().getDisplay().getActiveShell(),
-							wizard);
+					WizardDialog dialog = new WizardDialog(
+							AutoUI.getDefault().getWorkbench().getDisplay().getActiveShell(), wizard);
 					dialog.open();
 				}
 			}
 		};
 		runAction.setToolTipText("Run automation");
-		runAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry()
-				.getDescriptor(AutoUI.IMG_RUN));
+		runAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry().getDescriptor(AutoUI.IMG_RUN));
 
 		// horizontal perspecitve
 		Action hAction = new Action("hor", IAction.AS_RADIO_BUTTON) {
@@ -81,8 +76,7 @@ public class ToolBarActions {
 		};
 		hAction.setChecked(true);
 		hAction.setToolTipText("Horizontal orientation");
-		hAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry()
-				.getDescriptor(AutoUI.IMG_HORIZONTAL));
+		hAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry().getDescriptor(AutoUI.IMG_HORIZONTAL));
 
 		// vertical perspective
 		Action vAction = new Action("ver", IAction.AS_RADIO_BUTTON) {
@@ -94,8 +88,7 @@ public class ToolBarActions {
 		};
 		vAction.setChecked(false);
 		vAction.setToolTipText("Vertical orientation");
-		vAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry()
-				.getDescriptor(AutoUI.IMG_VERTICAL));
+		vAction.setImageDescriptor(AutoUI.getDefault().getImageRegistry().getDescriptor(AutoUI.IMG_VERTICAL));
 
 		// add the actions to the toolbar
 		form.getToolBarManager().add(runAction);

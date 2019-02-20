@@ -4,8 +4,7 @@
 package org.exist.eclipse;
 
 import org.exist.eclipse.exception.ConnectionException;
-import org.exist.eclipse.internal.ConnectionEnum;
-import org.exist.eclipse.internal.ManagementService;
+import org.exist.eclipse.spi.ManagementService;
 import org.xmldb.api.base.Collection;
 
 /**
@@ -15,6 +14,12 @@ import org.xmldb.api.base.Collection;
  */
 public interface IConnection extends AutoCloseable {
 
+	/**
+	 * Returns the given {@code adapter} instance if available or {@code null} if not.
+	 * 
+	 * @param adapter the adapter type
+	 * @return the adapter implementation if available
+	 */
 	public default <A> A getAdapter(Class<A> adapter) {
 		if (adapter.isAssignableFrom(ManagementService.class)) {
 			return adapter.cast(new ManagementService(this));

@@ -37,8 +37,7 @@ import org.exist.eclipse.xquery.debug.core.launching.IXQueryConstants;
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  * 
  */
-public abstract class XQueryDebugElement extends PlatformObject implements
-		IDebugElement {
+public abstract class XQueryDebugElement extends PlatformObject implements IDebugElement {
 
 	protected XQueryDebugTarget fTarget;
 
@@ -62,17 +61,16 @@ public abstract class XQueryDebugElement extends PlatformObject implements
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter == IDebugElement.class) {
-			return this;
+	public <T> T getAdapter(Class<T> adapter) {
+		if (adapter.isAssignableFrom(getClass())) {
+			return adapter.cast(this);
 		}
 		return super.getAdapter(adapter);
 	}
 
 	protected void abort(String message, Throwable e) throws DebugException {
-		throw new DebugException(new Status(IStatus.ERROR,
-				DebugXQueryPlugin.getId(), DebugPlugin.INTERNAL_ERROR, message,
-				e));
+		throw new DebugException(
+				new Status(IStatus.ERROR, DebugXQueryPlugin.getId(), DebugPlugin.INTERNAL_ERROR, message, e));
 	}
 
 	protected void fireEvent(DebugEvent event) {

@@ -16,8 +16,7 @@ import org.eclipse.ui.progress.IDeferredWorkbenchAdapter;
  */
 public class BrowseDeferredTree extends DeferredTreeContentManager {
 
-	public BrowseDeferredTree(ITreeContentProvider provider,
-			AbstractTreeViewer viewer) {
+	public BrowseDeferredTree(ITreeContentProvider provider, AbstractTreeViewer viewer) {
 		super(provider, viewer);
 	}
 

@@ -12,18 +12,14 @@ import org.exist.eclipse.xquery.core.XQueryCorePlugin;
  * @author Pascal Schmidiger
  */
 public class XQueryCompletionProposal extends ScriptCompletionProposal {
-	public XQueryCompletionProposal(String replacementString,
-			int replacementOffset, int replacementLength, Image image,
+	public XQueryCompletionProposal(String replacementString, int replacementOffset, int replacementLength, Image image,
 			String displayString, int relevance) {
-		super(replacementString, replacementOffset, replacementLength, image,
-				displayString, relevance);
+		super(replacementString, replacementOffset, replacementLength, image, displayString, relevance);
 	}
 
-	public XQueryCompletionProposal(String replacementString,
-			int replacementOffset, int replacementLength, Image image,
+	public XQueryCompletionProposal(String replacementString, int replacementOffset, int replacementLength, Image image,
 			String displayString, int relevance, boolean isInDoc) {
-		super(replacementString, replacementOffset, replacementLength, image,
-				displayString, relevance, isInDoc);
+		super(replacementString, replacementOffset, replacementLength, image, displayString, relevance, isInDoc);
 	}
 
 	@Override
@@ -36,9 +32,7 @@ public class XQueryCompletionProposal extends ScriptCompletionProposal {
 
 	@Override
 	protected boolean insertCompletion() {
-		IPreferenceStore preference = XQueryCorePlugin.getDefault()
-				.getPreferenceStore();
-		return preference
-				.getBoolean(PreferenceConstants.CODEASSIST_INSERT_COMPLETION);
+		IPreferenceStore preference = XQueryCorePlugin.getDefault().getPreferenceStore();
+		return preference.getBoolean(PreferenceConstants.CODEASSIST_INSERT_COMPLETION);
 	}
 }

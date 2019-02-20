@@ -35,11 +35,13 @@ public class XQueryValue extends XQueryDebugElement implements IValue {
 
 	public XQueryValue(XQueryDebugTarget target, String value) {
 		super(target);
-		
+
 		fValue = value;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IValue#getReferenceTypeName()
 	 */
 	@Override
@@ -52,7 +54,9 @@ public class XQueryValue extends XQueryDebugElement implements IValue {
 		return "integer";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IValue#getValueString()
 	 */
 	@Override
@@ -60,7 +64,9 @@ public class XQueryValue extends XQueryDebugElement implements IValue {
 		return fValue;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IValue#getVariables()
 	 */
 	@Override
@@ -68,7 +74,9 @@ public class XQueryValue extends XQueryDebugElement implements IValue {
 		return new IVariable[0];
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IValue#hasVariables()
 	 */
 	@Override
@@ -76,7 +84,9 @@ public class XQueryValue extends XQueryDebugElement implements IValue {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IValue#isAllocated()
 	 */
 	@Override

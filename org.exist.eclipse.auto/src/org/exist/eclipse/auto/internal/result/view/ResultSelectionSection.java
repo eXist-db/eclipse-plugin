@@ -43,8 +43,7 @@ public class ResultSelectionSection {
 	 */
 	public Section init() {
 		Section resultSelectionSection = _toolkit.createSection(_navigation,
-				ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE
-						| ExpandableComposite.COMPACT);
+				ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.COMPACT);
 		resultSelectionSection.setText("Query Results");
 		resultSelectionSection.marginWidth = 10;
 		resultSelectionSection.marginHeight = 5;
@@ -52,16 +51,14 @@ public class ResultSelectionSection {
 		resultSelectionSection.setLayoutData(gd);
 
 		// table viewer
-		Composite client = _toolkit.createComposite(resultSelectionSection,
-				SWT.WRAP);
+		Composite client = _toolkit.createComposite(resultSelectionSection, SWT.WRAP);
 		GridLayout glayout = new GridLayout();
 		glayout.numColumns = 2;
 		glayout.marginWidth = 2;
 		glayout.marginHeight = 2;
 		client.setLayout(glayout);
 
-		_viewer = new TableViewer(client, SWT.VIRTUAL | SWT.FILL
-				| SWT.FULL_SELECTION);
+		_viewer = new TableViewer(client, SWT.VIRTUAL | SWT.FILL | SWT.FULL_SELECTION);
 		_viewer.setContentProvider(new RunsContentProvider());
 		_viewer.setLabelProvider(new RunsLabelProvider());
 		_viewer.setUseHashlookup(true);

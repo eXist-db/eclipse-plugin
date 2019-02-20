@@ -18,8 +18,7 @@ public class NoActiveEditorWizardPage extends WizardPage {
 		super("noactiveeditorwizardpage");
 		setTitle(SelectContextWizard.WIZARD_TITLE);
 		setErrorMessage("No active XQuery Editor available");
-		setImageDescriptor(XQueryUI
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(XQueryUI.getImageDescriptor("icons/existdb.png"));
 		setPageComplete(true);
 	}
 

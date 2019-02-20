@@ -73,8 +73,7 @@ public interface IAutoModel {
 	/**
 	 * Sets the automation note
 	 * 
-	 * @param note
-	 *            the new automation note
+	 * @param note the new automation note
 	 */
 	public void setAutoNote(String note);
 

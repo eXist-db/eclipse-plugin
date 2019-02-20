@@ -29,11 +29,14 @@ import org.exist.eclipse.xquery.debug.core.model.XQueryStackFrame;
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  *
  */
-public class XQuerySourceLookupParticipant extends
-		AbstractSourceLookupParticipant {
+public class XQuerySourceLookupParticipant extends AbstractSourceLookupParticipant {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.sourcelookup.ISourceLookupParticipant#getSourceName(java.lang.Object)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.sourcelookup.ISourceLookupParticipant#getSourceName(
+	 * java.lang.Object)
 	 */
 	@Override
 	public String getSourceName(Object object) throws CoreException {

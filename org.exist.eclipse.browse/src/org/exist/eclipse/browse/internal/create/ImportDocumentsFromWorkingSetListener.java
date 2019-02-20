@@ -50,14 +50,12 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
-		IBrowseService service = browseItem
-				.getAdapter(IBrowseService.class);
+		IBrowseService service = browseItem.getAdapter(IBrowseService.class);
 		if (service.check()) {
 
 			IWorkingSetManager workingSetManager = getWorkingSetManager();
-			IWorkingSetSelectionDialog dialog = workingSetManager
-					.createWorkingSetSelectionDialog(PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell(), true);
+			IWorkingSetSelectionDialog dialog = workingSetManager.createWorkingSetSelectionDialog(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), true);
 
 			List<String> lastSelectedWorkingSets = getLastSelectedWorkingSets();
 			if (!lastSelectedWorkingSets.isEmpty()) {
@@ -88,34 +86,28 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 			return;
 		}
 
-		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getShell();
+		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
 		List<IFile> files = collectFiles(sets);
 		if (files.isEmpty()) {
 			MessageDialog.openInformation(shell, "Import from WorkingSet",
 					"No files found in the selected working sets.");
 		} else {
-			IConfigurationElement xmlCfg = ImportDocumentsListener
-					.getXMLConfigurationElement();
+			IConfigurationElement xmlCfg = ImportDocumentsListener.getXMLConfigurationElement();
 			boolean hadErrors = false;
 			for (IFile file : files) {
 				try {
-					ImportDocumentsListener.saveDoc(browseItem, xmlCfg, file
-							.getName(), file.getContents());
+					ImportDocumentsListener.saveDoc(browseItem, xmlCfg, file.getName(), file.getContents());
 				} catch (Exception e) {
 					hadErrors = true;
-					BrowsePlugin.getDefault().getLog().log(
-							new Status(IStatus.ERROR, BrowsePlugin.getId(),
-									"An error occured while importing '" + file
-											+ "': " + e, e));
+					BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
+							"An error occured while importing '" + file + "': " + e, e));
 				}
 			}
 
 			if (hadErrors) {
-				MessageDialog
-						.openError(shell, "Import Documents",
-								"Errors occured while importing. See the Eclipse Error Log for details.");
+				MessageDialog.openError(shell, "Import Documents",
+						"Errors occured while importing. See the Eclipse Error Log for details.");
 			}
 		}
 	}
@@ -129,8 +121,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 					if (file != null) {
 						result.add(file);
 					} else {
-						IFolder folder = elem
-								.getAdapter(IFolder.class);
+						IFolder folder = elem.getAdapter(IFolder.class);
 						if (folder != null) {
 							for (IResource m : folder.members()) {
 								file = m.getAdapter(IFile.class);

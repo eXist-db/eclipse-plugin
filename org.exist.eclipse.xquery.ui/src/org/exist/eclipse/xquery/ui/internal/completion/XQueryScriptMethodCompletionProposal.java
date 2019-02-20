@@ -30,8 +30,7 @@ import org.eclipse.swt.graphics.Point;
  * @author Christian Oetterli
  * @version $Id: $
  */
-public class XQueryScriptMethodCompletionProposal extends
-		LazyScriptCompletionProposal {
+public class XQueryScriptMethodCompletionProposal extends LazyScriptCompletionProposal {
 
 	// for inserted parameters, we want an additional space after the comma
 	private static final char XQUERY_SPECIFIC = ' ';
@@ -40,14 +39,12 @@ public class XQueryScriptMethodCompletionProposal extends
 	/**
 	 * Triggers for method proposals without parameters. Do not modify.
 	 */
-	protected final static char[] METHOD_TRIGGERS = new char[] { ';', ',', '.',
-			'\t', '[' };
+	protected final static char[] METHOD_TRIGGERS = new char[] { ';', ',', '.', '\t', '[' };
 
 	/**
 	 * Triggers for method proposals. Do not modify.
 	 */
-	protected final static char[] METHOD_WITH_ARGUMENTS_TRIGGERS = new char[] {
-			'(', '-', ' ' };
+	protected final static char[] METHOD_WITH_ARGUMENTS_TRIGGERS = new char[] { '(', '-', ' ' };
 
 	/** Triggers for method name proposals (static imports). Do not modify. */
 	protected final static char[] METHOD_NAME_TRIGGERS = new char[] { ';' };
@@ -83,8 +80,7 @@ public class XQueryScriptMethodCompletionProposal extends
 			for (int i = 0; i < findParameterNames.length; i++) {
 				fArgumentLengths[i] = findParameterNames[i].length();
 				fArgumentOffsets[i] = argumentOffset;
-				argumentOffset += findParameterNames[i].length()
-						+ XQUERY_SPECIFIC_2;
+				argumentOffset += findParameterNames[i].length() + XQUERY_SPECIFIC_2;
 				// name and COMMA
 			}
 		}
@@ -94,9 +90,8 @@ public class XQueryScriptMethodCompletionProposal extends
 				LinkedModeModel model = new LinkedModeModel();
 				for (int i = 0; i != fArgumentOffsets.length; i++) {
 					LinkedPositionGroup group = new LinkedPositionGroup();
-					group.addPosition(new LinkedPosition(document, baseOffset
-							+ fArgumentOffsets[i], fArgumentLengths[i],
-							LinkedPositionGroup.NO_STOP));
+					group.addPosition(new LinkedPosition(document, baseOffset + fArgumentOffsets[i],
+							fArgumentLengths[i], LinkedPositionGroup.NO_STOP));
 					model.addGroup(group);
 				}
 
@@ -129,13 +124,11 @@ public class XQueryScriptMethodCompletionProposal extends
 		if (fSelectedRegion == null)
 			return new Point(getReplacementOffset(), 0);
 
-		return new Point(fSelectedRegion.getOffset(), fSelectedRegion
-				.getLength());
+		return new Point(fSelectedRegion.getOffset(), fSelectedRegion.getLength());
 	}
 
 	@Override
-	public CharSequence getPrefixCompletionText(IDocument document,
-			int completionOffset) {
+	public CharSequence getPrefixCompletionText(IDocument document, int completionOffset) {
 		if (hasArgumentList()) {
 			String completion = String.valueOf(fProposal.getName());
 			if (isCamelCaseMatching()) {
@@ -153,16 +146,11 @@ public class XQueryScriptMethodCompletionProposal extends
 		// no context information for METHOD_NAME_REF proposals (e.g. for static
 		// imports)
 		// https://bugs.eclipse.org/bugs/show_bug.cgi?id=94654
-		if (fProposal.getKind() == CompletionProposal.METHOD_REF
-				&& hasParameters()
-				&& (getReplacementString().endsWith(RPAREN) || getReplacementString()
-						.length() == 0)) {
-			XQueryProposalContextInformation contextInformation = new XQueryProposalContextInformation(
-					fProposal);
-			if (fContextInformationPosition != 0
-					&& fProposal.getCompletion().length() == 0)
-				contextInformation
-						.setContextInformationPosition(fContextInformationPosition);
+		if (fProposal.getKind() == CompletionProposal.METHOD_REF && hasParameters()
+				&& (getReplacementString().endsWith(RPAREN) || getReplacementString().length() == 0)) {
+			XQueryProposalContextInformation contextInformation = new XQueryProposalContextInformation(fProposal);
+			if (fContextInformationPosition != 0 && fProposal.getCompletion().length() == 0)
+				contextInformation.setContextInformationPosition(fContextInformationPosition);
 			return contextInformation;
 		}
 		return super.computeContextInformation();
@@ -181,9 +169,9 @@ public class XQueryScriptMethodCompletionProposal extends
 
 	/**
 	 * Returns <code>true</code> if the method being inserted has at least one
-	 * parameter. Note that this does not say anything about whether the
-	 * argument list should be inserted. This depends on the position in the
-	 * document and the kind of proposal; see {@link #hasArgumentList() }.
+	 * parameter. Note that this does not say anything about whether the argument
+	 * list should be inserted. This depends on the position in the document and the
+	 * kind of proposal; see {@link #hasArgumentList() }.
 	 * 
 	 * @return <code>true</code> if the method has any parameters,
 	 *         <code>false</code> if it has no parameters
@@ -192,8 +180,7 @@ public class XQueryScriptMethodCompletionProposal extends
 		if (!fHasParametersComputed) {
 			fHasParametersComputed = true;
 			String[] findParameterNames = fProposal.findParameterNames(null);
-			fHasParameters = findParameterNames != null
-					&& findParameterNames.length > 0;
+			fHasParameters = findParameterNames != null && findParameterNames.length > 0;
 		}
 		return fHasParameters;
 	}
@@ -206,20 +193,17 @@ public class XQueryScriptMethodCompletionProposal extends
 	 * Returns <code>true</code> if the argument list should be inserted by the
 	 * proposal, <code>false</code> if not.
 	 * 
-	 * @return <code>true</code> when the proposal is not in javadoc nor within
-	 *         an import and comprises the parameter list
+	 * @return <code>true</code> when the proposal is not in javadoc nor within an
+	 *         import and comprises the parameter list
 	 */
 	protected boolean hasArgumentList() {
 		if (CompletionProposal.METHOD_NAME_REFERENCE == fProposal.getKind())
 			return false;
-		IPreferenceStore preferenceStore = DLTKUIPlugin.getDefault()
-				.getPreferenceStore();
-		boolean noOverwrite = preferenceStore
-				.getBoolean(PreferenceConstants.CODEASSIST_INSERT_COMPLETION)
+		IPreferenceStore preferenceStore = DLTKUIPlugin.getDefault().getPreferenceStore();
+		boolean noOverwrite = preferenceStore.getBoolean(PreferenceConstants.CODEASSIST_INSERT_COMPLETION)
 				^ isToggleEating();
 		String completion = fProposal.getCompletion();
-		return !isInScriptdoc()
-				&& completion.length() > 0
+		return !isInScriptdoc() && completion.length() > 0
 				&& (noOverwrite || completion.charAt(completion.length() - 1) == ')');
 	}
 
@@ -278,11 +262,9 @@ public class XQueryScriptMethodCompletionProposal extends
 	}
 
 	/**
-	 * Overrides the default context information position. Ignored if set to
-	 * zero.
+	 * Overrides the default context information position. Ignored if set to zero.
 	 * 
-	 * @param contextInformationPosition
-	 *            the replaced position.
+	 * @param contextInformationPosition the replaced position.
 	 */
 	public void setContextInformationPosition(int contextInformationPosition) {
 		fContextInformationPosition = contextInformationPosition;
@@ -309,8 +291,8 @@ public class XQueryScriptMethodCompletionProposal extends
 	}
 
 	@Override
-	protected void handleSmartTrigger(IDocument document, char trigger,
-			int referenceOffset) throws BadLocationException {
+	protected void handleSmartTrigger(IDocument document, char trigger, int referenceOffset)
+			throws BadLocationException {
 		// TODO Auto-generated method stub
 
 	}

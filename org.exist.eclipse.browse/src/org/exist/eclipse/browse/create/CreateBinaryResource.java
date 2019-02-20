@@ -20,26 +20,21 @@ import org.xmldb.api.modules.BinaryResource;
 public class CreateBinaryResource implements ICreateDocumentProvider {
 
 	@Override
-	public void create(IDocumentItem item, String content)
-			throws CreateDocumentException {
+	public void create(IDocumentItem item, String content) throws CreateDocumentException {
 		try {
 			checkFileName(item);
 			Collection collection = item.getParent().getCollection();
-			BinaryResource result = (BinaryResource) collection.createResource(
-					URIUtils.urlEncodeUtf8(item.getName()),
+			BinaryResource result = (BinaryResource) collection.createResource(URIUtils.urlEncodeUtf8(item.getName()),
 					BinaryResource.RESOURCE_TYPE);
 			if (content == null) {
 				content = "";
 			}
-			result.setContent(content.getBytes(ExistPreferences.getEncoding()
-					.name()));
+			result.setContent(content.getBytes(ExistPreferences.getEncoding().name()));
 			collection.storeResource(result);
 			collection.close();
 		} catch (Exception e) {
-			CreateDocumentException createDocumentException = new CreateDocumentException(
-					item, e);
-			IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					"Failure while create binary resource.",
+			CreateDocumentException createDocumentException = new CreateDocumentException(item, e);
+			IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(), "Failure while create binary resource.",
 					createDocumentException);
 			BrowsePlugin.getDefault().getLog().log(status);
 			throw createDocumentException;

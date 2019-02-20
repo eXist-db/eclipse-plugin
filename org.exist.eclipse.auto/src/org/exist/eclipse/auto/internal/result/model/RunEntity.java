@@ -59,11 +59,11 @@ public class RunEntity {
 	public int getIndex() {
 		return _index;
 	}
-	
+
 	/**
 	 * @return the count of query result.
 	 */
-	public long getResultCount(){
+	public long getResultCount() {
 		return _resultCount;
 	}
 

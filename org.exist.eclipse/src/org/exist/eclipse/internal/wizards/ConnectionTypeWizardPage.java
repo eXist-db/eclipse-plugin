@@ -16,8 +16,8 @@ import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.dialogs.WorkbenchWizardNode;
 import org.eclipse.ui.internal.dialogs.WorkbenchWizardSelectionPage;
 import org.eclipse.ui.wizards.IWizardDescriptor;
+import org.exist.eclipse.ConnectionEnum;
 import org.exist.eclipse.internal.BasePlugin;
-import org.exist.eclipse.internal.ConnectionEnum;
 
 /**
  * Select the type of the connection. This page will start the
@@ -94,10 +94,10 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	private void updateSelectedNode() {
 		setErrorMessage(null);
 		IWizardDescriptor element = null;
-		if (ConnectionEnum.remote.equals(getType())) {
+		if (ConnectionEnum.REMOTE.equals(getType())) {
 			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 					.findWizard(RemoteConnectionWizard.class.getCanonicalName());
-		} else if (ConnectionEnum.local.equals(getType())) {
+		} else if (ConnectionEnum.LOCAL.equals(getType())) {
 			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 					.findWizard(LocalConnectionWizard.class.getCanonicalName());
 			setSelectedNode(createWizardNode(element));

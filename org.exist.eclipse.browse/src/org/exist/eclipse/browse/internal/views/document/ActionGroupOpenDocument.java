@@ -45,8 +45,7 @@ public class ActionGroupOpenDocument extends ActionGroup {
 			public void run() {
 				ImportDocumentsFromWorkingSetListener createDoc = new ImportDocumentsFromWorkingSetListener();
 				createDoc.init(_view.getSite().getPage());
-				createDoc
-						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+				createDoc.actionPerformed(new IBrowseItem[] { _view.getItem() });
 			}
 		};
 	}
@@ -60,13 +59,11 @@ public class ActionGroupOpenDocument extends ActionGroup {
 	public void fillContextMenu(IMenuManager manager) {
 		ISelection selection = _view.getViewer().getSelection();
 		// Add editors to the menu
-		Object element = IStructuredSelection.class.cast(selection)
-				.getFirstElement();
+		Object element = IStructuredSelection.class.cast(selection).getFirstElement();
 		if (element instanceof IDocumentItem) {
 
 			IDocumentItem item = DocumentItem.class.cast(element);
-			IEditorRegistry registry = PlatformUI.getWorkbench()
-					.getEditorRegistry();
+			IEditorRegistry registry = PlatformUI.getWorkbench().getEditorRegistry();
 			IEditorDescriptor[] editors = registry.getEditors(getName(item));
 			IEditorDescriptor[] editorsXml = null;
 			if (isXmlResource(item)) {
@@ -77,16 +74,13 @@ public class ActionGroupOpenDocument extends ActionGroup {
 
 			if (editors.length > 0) {
 
-				manager.add(new ActionOpenDocument(editors[0].getId(), _view
-						.getViewer()));
+				manager.add(new ActionOpenDocument(editors[0].getId(), _view.getViewer()));
 
 				MenuManager submenu = new MenuManager("Open With");
 				for (IEditorDescriptor editorDescriptor : editors) {
-					ActionOpenDocument actionOpen = new ActionOpenDocument(
-							editorDescriptor.getId(), _view.getViewer());
+					ActionOpenDocument actionOpen = new ActionOpenDocument(editorDescriptor.getId(), _view.getViewer());
 					actionOpen.setText(editorDescriptor.getLabel());
-					actionOpen.setImageDescriptor(editorDescriptor
-							.getImageDescriptor());
+					actionOpen.setImageDescriptor(editorDescriptor.getImageDescriptor());
 					submenu.add(actionOpen);
 					usedEditors.add(editorDescriptor);
 				}
@@ -94,11 +88,10 @@ public class ActionGroupOpenDocument extends ActionGroup {
 				if (editorsXml != null) {
 					for (IEditorDescriptor editorDescriptor : editorsXml) {
 						if (!usedEditors.contains(editorDescriptor)) {
-							ActionOpenDocument actionOpen = new ActionOpenDocument(
-									editorDescriptor.getId(), _view.getViewer());
+							ActionOpenDocument actionOpen = new ActionOpenDocument(editorDescriptor.getId(),
+									_view.getViewer());
 							actionOpen.setText(editorDescriptor.getLabel());
-							actionOpen.setImageDescriptor(editorDescriptor
-									.getImageDescriptor());
+							actionOpen.setImageDescriptor(editorDescriptor.getImageDescriptor());
 							submenu.add(actionOpen);
 						}
 					}
@@ -114,20 +107,16 @@ public class ActionGroupOpenDocument extends ActionGroup {
 			public void run() {
 				CreateDocumentListener createDoc = new CreateDocumentListener();
 				createDoc.init(_view.getSite().getPage());
-				createDoc
-						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+				createDoc.actionPerformed(new IBrowseItem[] { _view.getItem() });
 			}
 		};
-		ExportDocumentsAction exportAction = new ExportDocumentsAction(_view
-				.getViewer());
-		Action importAction = new Action("Import...", BrowsePlugin
-				.getImageDescriptor("icons/import.png")) {
+		ExportDocumentsAction exportAction = new ExportDocumentsAction(_view.getViewer());
+		Action importAction = new Action("Import...", BrowsePlugin.getImageDescriptor("icons/import.png")) {
 			@Override
 			public void run() {
 				ImportDocumentsListener createDoc = new ImportDocumentsListener();
 				createDoc.init(_view.getSite().getPage());
-				createDoc
-						.actionPerformed(new IBrowseItem[] { _view.getItem() });
+				createDoc.actionPerformed(new IBrowseItem[] { _view.getItem() });
 			}
 		};
 
@@ -155,14 +144,11 @@ public class ActionGroupOpenDocument extends ActionGroup {
 	 * @return nullable if none
 	 */
 	public static IEditorDescriptor getDefaultEditor(IDocumentItem item) {
-		IEditorRegistry registry = PlatformUI.getWorkbench()
-				.getEditorRegistry();
-		IEditorDescriptor defaultEditor = registry
-				.getDefaultEditor(getName(item));
+		IEditorRegistry registry = PlatformUI.getWorkbench().getEditorRegistry();
+		IEditorDescriptor defaultEditor = registry.getDefaultEditor(getName(item));
 
 		if (defaultEditor == null) {
-			defaultEditor = registry
-					.findEditor("org.eclipse.ui.DefaultTextEditor");
+			defaultEditor = registry.findEditor("org.eclipse.ui.DefaultTextEditor");
 		}
 		return defaultEditor;
 	}
@@ -178,8 +164,7 @@ public class ActionGroupOpenDocument extends ActionGroup {
 	private static boolean isXmlResource(IDocumentItem item) {
 		boolean result = false;
 		try {
-			if (item.getResource().getResourceType().equals(
-					XMLResource.RESOURCE_TYPE)) {
+			if (item.getResource().getResourceType().equals(XMLResource.RESOURCE_TYPE)) {
 				result = true;
 			}
 		} catch (Exception e) {

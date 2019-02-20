@@ -47,4 +47,5 @@ public class XQueryCorePlugin extends AbstractUIPlugin {
 	 */
 	public static String getId() {
 		return getDefault().getBundle().getSymbolicName();
-	}}
+	}
+}

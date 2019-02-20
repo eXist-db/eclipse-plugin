@@ -67,15 +67,13 @@ public class EnterDocumentWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Change the document provider, with which the document will save at the
-	 * end.
+	 * Change the document provider, with which the document will save at the end.
 	 * 
 	 * @param element
 	 */
 	protected void setDocumentProvider(IConfigurationElement element) {
 		_element = element;
-		IConfigurationElement[] description = element
-				.getChildren("description");
+		IConfigurationElement[] description = element.getChildren("description");
 		if (description.length > 0) {
 			setDescription(description[0].getValue());
 		} else {
@@ -129,8 +127,7 @@ public class EnterDocumentWizardPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);

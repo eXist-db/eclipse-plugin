@@ -40,32 +40,48 @@ import org.exist.eclipse.xquery.debug.core.model.XQueryLineBreakpoint;
  */
 public class XQueryLineBreakpointAdapter implements IToggleBreakpointsTarget {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#canToggleLineBreakpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#
+	 * canToggleLineBreakpoints(org.eclipse.ui.IWorkbenchPart,
+	 * org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public boolean canToggleLineBreakpoints(IWorkbenchPart part, ISelection selection) {
 		return getEditor(part) != null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#canToggleMethodBreakpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#
+	 * canToggleMethodBreakpoints(org.eclipse.ui.IWorkbenchPart,
+	 * org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public boolean canToggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#canToggleWatchpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#canToggleWatchpoints(
+	 * org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public boolean canToggleWatchpoints(IWorkbenchPart part, ISelection selection) {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleLineBreakpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleLineBreakpoints(
+	 * org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public void toggleLineBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
@@ -74,37 +90,46 @@ public class XQueryLineBreakpointAdapter implements IToggleBreakpointsTarget {
 			IResource resource = (IResource) textEditor.getEditorInput().getAdapter(IResource.class);
 			ITextSelection textSelection = (ITextSelection) selection;
 			int lineNumber = textSelection.getStartLine();
-			IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
+			IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
+					.getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
 			for (int i = 0; i < breakpoints.length; i++) {
 				IBreakpoint breakpoint = breakpoints[i];
 				if (resource.equals(breakpoint.getMarker().getResource())) {
-					if (((ILineBreakpoint)breakpoint).getLineNumber() == (lineNumber + 1)) {
+					if (((ILineBreakpoint) breakpoint).getLineNumber() == (lineNumber + 1)) {
 						// remove
 						breakpoint.delete();
 						return;
 					}
 				}
 			}
-			//create line breakpoint
+			// create line breakpoint
 			XQueryLineBreakpoint lineBreakpoint = new XQueryLineBreakpoint(resource, lineNumber + 1);
 			DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(lineBreakpoint);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleMethodBreakpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleMethodBreakpoints
+	 * (org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public void toggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleWatchpoints(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.actions.IToggleBreakpointsTarget#toggleWatchpoints(org.
+	 * eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
 	 */
 	@Override
 	public void toggleWatchpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 	}
-	
+
 	private ITextEditor getEditor(IWorkbenchPart part) {
 		if (part instanceof ITextEditor) {
 			ITextEditor editorPart = (ITextEditor) part;

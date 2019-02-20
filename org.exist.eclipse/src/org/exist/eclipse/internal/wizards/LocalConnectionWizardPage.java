@@ -64,7 +64,6 @@ public class LocalConnectionWizardPage extends WizardPage {
 	private static final String DEFAULT_USER = "admin";
 	private static final String DEFAULT_PASSWORD = "";
 
-
 	private boolean _copy;
 	private Combo _version;
 	private Text _name;

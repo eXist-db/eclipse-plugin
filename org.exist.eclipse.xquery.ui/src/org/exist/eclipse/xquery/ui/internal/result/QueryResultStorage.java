@@ -32,13 +32,10 @@ public class QueryResultStorage implements IEncodedStorage {
 	public InputStream getContents() throws CoreException {
 		InputStream is = null;
 		try {
-			is = new ByteArrayInputStream(_item.getContent().getBytes(
-					_encoding.displayName()));
+			is = new ByteArrayInputStream(_item.getContent().getBytes(_encoding.displayName()));
 		} catch (UnsupportedEncodingException e) {
-			StringBuilder message = new StringBuilder(50)
-					.append("Error while loading text'");
-			throw new CoreException(new Status(IStatus.ERROR,
-					XQueryUI.PLUGIN_ID, message.toString(), e));
+			StringBuilder message = new StringBuilder(50).append("Error while loading text'");
+			throw new CoreException(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, message.toString(), e));
 		}
 		return is;
 
@@ -57,8 +54,8 @@ public class QueryResultStorage implements IEncodedStorage {
 	@Override
 	public String getName() {
 		StringBuilder name = new StringBuilder();
-		name.append(_item.getGroup()).append("_").append(_item.getUniqueNr())
-				.append(" (").append((_item.getIndex() + 1)).append(")");
+		name.append(_item.getGroup()).append("_").append(_item.getUniqueNr()).append(" (")
+				.append((_item.getIndex() + 1)).append(")");
 		return name.toString();
 	}
 
@@ -68,7 +65,7 @@ public class QueryResultStorage implements IEncodedStorage {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
+	public <T> T getAdapter(Class<T> adapter) {
 		return null;
 	}
 

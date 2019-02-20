@@ -33,18 +33,14 @@ public final class KeyWordContainer {
 		if (!_loaded) {
 			Path path = new Path("resources/keywords.csv");
 			XQueryUI plugin = XQueryUI.getDefault();
-			try (InputStream inputStream = FileLocator.openStream(
-					plugin.getBundle(), path, false);
-					BufferedReader reader = new BufferedReader(
-							new InputStreamReader(inputStream))) {
+			try (InputStream inputStream = FileLocator.openStream(plugin.getBundle(), path, false);
+					BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 				String keyword;
 				while ((keyword = reader.readLine()) != null) {
 					_keywords.add(keyword);
 				}
 			} catch (IOException e) {
-				plugin.getLog().log(
-						new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-								"Unable to load " + path, e));
+				plugin.getLog().log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, "Unable to load " + path, e));
 			}
 			_loaded = true;
 		}

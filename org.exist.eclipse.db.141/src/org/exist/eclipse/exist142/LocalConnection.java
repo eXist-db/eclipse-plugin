@@ -6,10 +6,10 @@ package org.exist.eclipse.exist142;
 import java.io.File;
 import java.util.Objects;
 
+import org.exist.eclipse.ConnectionEnum;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.exception.ConnectionException;
-import org.exist.eclipse.internal.ConnectionBox;
-import org.exist.eclipse.internal.ConnectionEnum;
+import org.exist.eclipse.spi.AbstractConnection;
 import org.exist.xmldb.DatabaseImpl;
 import org.exist.xmldb.DatabaseInstanceManager;
 import org.xmldb.api.DatabaseManager;
@@ -47,6 +47,7 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	public LocalConnection(String name, String username, String password, String path, String uri) {
+		super(ExistConnectionProvider.VERSION);
 		if (name == null || name.length() < 1) {
 			throw new IllegalArgumentException("name must be set.");
 		}
@@ -61,6 +62,10 @@ public class LocalConnection extends AbstractConnection {
 		_password = password;
 		_path = new File(path).getAbsolutePath();
 		_uriName = uri;
+	}
+
+	private String getUriName() {
+		return _uriName;
 	}
 
 	private static synchronized String getNextUri() {
@@ -84,7 +89,7 @@ public class LocalConnection extends AbstractConnection {
 
 	@Override
 	public ConnectionEnum getType() {
-		return ConnectionEnum.local;
+		return ConnectionEnum.LOCAL;
 	}
 
 	@Override
@@ -97,13 +102,6 @@ public class LocalConnection extends AbstractConnection {
 		openDb();
 		openRoot();
 		registerConnection();
-	}
-
-	/**
-	 * Registers the connection in the connection box
-	 */
-	protected void registerConnection() {
-		ConnectionBox.getInstance().openConnection(this);
 	}
 
 	/**
@@ -148,18 +146,10 @@ public class LocalConnection extends AbstractConnection {
 		closeDb();
 		// close it from the box
 		deregisterConnection();
-
 	}
 
 	/**
-	 * De-registers the connections instance from the connection box
-	 */
-	protected void deregisterConnection() {
-		ConnectionBox.getInstance().closeConnection(this);
-	}
-
-	/**
-	 * @throws XMLDBException
+	 * @throws ConnectionException
 	 */
 	protected void closeDb() throws ConnectionException {
 		if (_db != null) {
@@ -174,8 +164,7 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	/**
-	 * @throws XMLDBException
-	 * @throws XMLDBException
+	 * @throws ConnectionException
 	 */
 	protected void closeRoot() throws ConnectionException {
 		if (isOpen()) {
@@ -192,6 +181,10 @@ public class LocalConnection extends AbstractConnection {
 				_root = null;
 			}
 		}
+	}
+
+	protected void setDb(Database db) {
+		_db = db;
 	}
 
 	@Override
@@ -250,18 +243,10 @@ public class LocalConnection extends AbstractConnection {
 		return Objects.equals(_name, other._name);
 	}
 
-	protected void setDb(Database db) {
-		_db = db;
-	}
-
 	// //////////////////////////////////////////////////////////////////////////
 	// private methods
 	// //////////////////////////////////////////////////////////////////////////
 	private String getRootUri() {
 		return getUri() + "/db";
-	}
-
-	private String getUriName() {
-		return _uriName;
 	}
 }

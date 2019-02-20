@@ -28,8 +28,7 @@ public interface IConnectionListener {
 	/**
 	 * You gets a {@link IConnection}, which was selected.
 	 * 
-	 * @param connection
-	 *            on which you will perform your action.
+	 * @param connection on which you will perform your action.
 	 */
 	public void actionPerformed(IConnection connection);
 }

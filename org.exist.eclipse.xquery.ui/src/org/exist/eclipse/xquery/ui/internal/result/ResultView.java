@@ -46,16 +46,14 @@ public class ResultView extends ViewPart {
 		CTabItem tabItem = createTabItem();
 		setTabItemText(tabItem, "Result", -1);
 
-		getViewSite().getActionBars().setGlobalActionHandler(
-				ActionFactory.COPY.getId(), new Action() {
-					@Override
-					public void run() {
-						CTabItem sel = _tabFolder.getSelection();
-						PartFrame partFrame = (PartFrame) sel.getControl();
-						new CopyResultItemsAction(partFrame.getPart()
-								.getViewer()).run();
-					}
-				});
+		getViewSite().getActionBars().setGlobalActionHandler(ActionFactory.COPY.getId(), new Action() {
+			@Override
+			public void run() {
+				CTabItem sel = _tabFolder.getSelection();
+				PartFrame partFrame = (PartFrame) sel.getControl();
+				new CopyResultItemsAction(partFrame.getPart().getViewer()).run();
+			}
+		});
 		_tabFolder.setSelection(0);
 	}
 
@@ -80,14 +78,12 @@ public class ResultView extends ViewPart {
 	}
 
 	/**
-	 * @param creation
-	 *            information for the {@link IQueryFrame}.
+	 * @param creation information for the {@link IQueryFrame}.
 	 * @return a new {@link IQueryFrame} in which you can run the xquery.
 	 */
 	public IQueryFrame createQueryFrame(IQueryFrameInfo creation) {
 		int uniqueNr = nextUniqueNr();
-		ResultViewPart part = getResultViewPart(uniqueNr, creation
-				.getFilename(), creation.isCreatedNewTab());
+		ResultViewPart part = getResultViewPart(uniqueNr, creation.getFilename(), creation.isCreatedNewTab());
 		part.initCreation(creation, uniqueNr);
 
 		return part;
@@ -100,8 +96,7 @@ public class ResultView extends ViewPart {
 		return _uniqueNr.getAndIncrement();
 	}
 
-	private ResultViewPart getResultViewPart(int uniqueNr, String fileName,
-			boolean withTabs) {
+	private ResultViewPart getResultViewPart(int uniqueNr, String fileName, boolean withTabs) {
 		CTabItem item;
 		if (withTabs) {
 			item = createTabItem();

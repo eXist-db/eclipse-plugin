@@ -36,8 +36,7 @@ public class ContextSwitcherRegistration {
 	/**
 	 * Add the given <code>switcher</code> to the list.
 	 * 
-	 * @param switcher
-	 *            {@link IContextSwitcher} to be registered; not null
+	 * @param switcher {@link IContextSwitcher} to be registered; not null
 	 */
 	public void addContextSwitcher(IContextSwitcher switcher) {
 		Assert.isNotNull(switcher);
@@ -47,8 +46,7 @@ public class ContextSwitcherRegistration {
 	/**
 	 * Remove the given <code>switcher</code> from the list.
 	 * 
-	 * @param switcher
-	 *            the registered {@link IContextSwitcher}; not null
+	 * @param switcher the registered {@link IContextSwitcher}; not null
 	 */
 	public void removeContextSwitcher(IContextSwitcher switcher) {
 		Assert.isNotNull(switcher);
@@ -61,12 +59,10 @@ public class ContextSwitcherRegistration {
 
 	/**
 	 * @return all {@link IContextSwitcher} as key=
-	 *         {@link IContextSwitcher#getName()}; value=
-	 *         {@link IContextSwitcher}
+	 *         {@link IContextSwitcher#getName()}; value= {@link IContextSwitcher}
 	 */
 	public final Map<String, IContextSwitcher> getContextSwitchersAsMap() {
-		Map<String, IContextSwitcher> result = new HashMap<>(
-				_switchers.size());
+		Map<String, IContextSwitcher> result = new HashMap<>(_switchers.size());
 		synchronized (_switchers) {
 			for (IContextSwitcher contextSwitcher : _switchers) {
 				result.put(contextSwitcher.getName(), contextSwitcher);

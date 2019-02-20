@@ -14,7 +14,6 @@ public interface IXQueryPartitions {
 	public final static String XQUERY_COMMENT = "__xquery_comment";
 	public final static String XQUERY_STRING = "__xquery_string";
 
-	public final static String[] XQUERY_PARITION_TYPES = new String[] {
-			IXQueryPartitions.XQUERY_STRING, IXQueryPartitions.XQUERY_COMMENT,
-			IDocument.DEFAULT_CONTENT_TYPE };
+	public final static String[] XQUERY_PARITION_TYPES = new String[] { IXQueryPartitions.XQUERY_STRING,
+			IXQueryPartitions.XQUERY_COMMENT, IDocument.DEFAULT_CONTENT_TYPE };
 }

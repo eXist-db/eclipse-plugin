@@ -16,14 +16,13 @@ import org.xmldb.api.modules.XMLResource;
 public class CreateXmlResource implements ICreateDocumentProvider {
 
 	@Override
-	public void create(IDocumentItem item, String content)
-			throws CreateDocumentException {
+	public void create(IDocumentItem item, String content) throws CreateDocumentException {
 		XMLResource result = null;
 		try {
 			checkFileName(item);
 			Collection collection = item.getParent().getCollection();
-			result = (XMLResource) collection.createResource(URIUtils
-					.urlEncodeUtf8(item.getName()), XMLResource.RESOURCE_TYPE);
+			result = (XMLResource) collection.createResource(URIUtils.urlEncodeUtf8(item.getName()),
+					XMLResource.RESOURCE_TYPE);
 			if (content == null || content.isEmpty()) {
 				content = "<template></template>";
 			}

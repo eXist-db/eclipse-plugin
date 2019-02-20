@@ -37,13 +37,11 @@ public class AutomationFormPage extends FormPage {
 	 * @param textPage
 	 * @throws AutoException
 	 */
-	public AutomationFormPage(AutomationEditor editor,
-			AutomationTextPage textPage) throws AutoException {
+	public AutomationFormPage(AutomationEditor editor, AutomationTextPage textPage) throws AutoException {
 		super(editor, "auto", "Automation");
 		_textPage = textPage;
 		_contentProvider = new AutoContentProvider(_textPage.getContent());
-		_block = new AutomationBlock(this, _contentProvider,
-				getAutomationDataModel());
+		_block = new AutomationBlock(this, _contentProvider, getAutomationDataModel());
 		_block.addModificationListener(editor);
 	}
 
@@ -89,11 +87,9 @@ public class AutomationFormPage extends FormPage {
 		try {
 			_textPage.setContent(getAutomationData());
 		} catch (AutoException e) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
-					.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
-			ErrorDialog.openError(Display.getCurrent().getActiveShell(),
-					"Changing the page failed.",
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Changing the page failed.",
 					"Close the automation and open it again.", status);
 		}
 		return true;

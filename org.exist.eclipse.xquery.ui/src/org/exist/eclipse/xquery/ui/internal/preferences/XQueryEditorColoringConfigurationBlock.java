@@ -25,31 +25,24 @@ import org.exist.eclipse.xquery.ui.internal.text.XQueryDocumentSetupParticipant;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryEditorColoringConfigurationBlock extends
-		AbstractScriptEditorColoringConfigurationBlock implements
-		IPreferenceConfigurationBlock {
+public class XQueryEditorColoringConfigurationBlock extends AbstractScriptEditorColoringConfigurationBlock
+		implements IPreferenceConfigurationBlock {
 
 	private static final String PREVIEW_FILE_NAME = "PreviewFile.txt";
 
 	private static final String[][] _syntaxColorListModel = new String[][] {
-			{ "Comment", XQueryPreferenceConstants.EDITOR_COMMENT_COLOR,
-					sCommentsCategory },
-			{ PreferencesMessages.DLTKEditorPreferencePage_keywords,
-					XQueryPreferenceConstants.EDITOR_KEYWORD_COLOR,
+			{ "Comment", XQueryPreferenceConstants.EDITOR_COMMENT_COLOR, sCommentsCategory },
+			{ PreferencesMessages.DLTKEditorPreferencePage_keywords, XQueryPreferenceConstants.EDITOR_KEYWORD_COLOR,
 					sCoreCategory },
 
 			{ PreferencesMessages.DLTKEditorPreferencePage_returnKeyword,
-					XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_COLOR,
-					sCoreCategory },
+					XQueryPreferenceConstants.EDITOR_KEYWORD_RETURN_COLOR, sCoreCategory },
 
-			{ PreferencesMessages.DLTKEditorPreferencePage_strings,
-					XQueryPreferenceConstants.EDITOR_STRING_COLOR,
+			{ PreferencesMessages.DLTKEditorPreferencePage_strings, XQueryPreferenceConstants.EDITOR_STRING_COLOR,
 					sCoreCategory },
-			{ "Arguments", XQueryPreferenceConstants.EDITOR_ARGUMENT_COLOR,
-					sCoreCategory },
+			{ "Arguments", XQueryPreferenceConstants.EDITOR_ARGUMENT_COLOR, sCoreCategory },
 			{ PreferencesMessages.DLTKEditorPreferencePage_function_colors,
-					XQueryPreferenceConstants.EDITOR_FUNCTION_DEFINITON_COLOR,
-					sCoreCategory } };
+					XQueryPreferenceConstants.EDITOR_FUNCTION_DEFINITON_COLOR, sCoreCategory } };
 
 	public XQueryEditorColoringConfigurationBlock(OverlayPreferenceStore store) {
 		super(store);
@@ -61,20 +54,16 @@ public class XQueryEditorColoringConfigurationBlock extends
 	}
 
 	@Override
-	protected ProjectionViewer createPreviewViewer(Composite parent,
-			IVerticalRuler verticalRuler, IOverviewRuler overviewRuler,
-			boolean showAnnotationsOverview, int styles, IPreferenceStore store) {
-		return new ScriptSourceViewer(parent, verticalRuler, overviewRuler,
-				showAnnotationsOverview, styles, store);
+	protected ProjectionViewer createPreviewViewer(Composite parent, IVerticalRuler verticalRuler,
+			IOverviewRuler overviewRuler, boolean showAnnotationsOverview, int styles, IPreferenceStore store) {
+		return new ScriptSourceViewer(parent, verticalRuler, overviewRuler, showAnnotationsOverview, styles, store);
 	}
 
 	@Override
-	protected ScriptSourceViewerConfiguration createSimpleSourceViewerConfiguration(
-			IColorManager colorManager, IPreferenceStore preferenceStore,
-			ITextEditor editor, boolean configureFormatter) {
-		return new SimpleXQuerySourceViewerConfiguration(colorManager,
-				preferenceStore, editor, IXQueryPartitions.XQUERY_PARTITIONING,
-				configureFormatter);
+	protected ScriptSourceViewerConfiguration createSimpleSourceViewerConfiguration(IColorManager colorManager,
+			IPreferenceStore preferenceStore, ITextEditor editor, boolean configureFormatter) {
+		return new SimpleXQuerySourceViewerConfiguration(colorManager, preferenceStore, editor,
+				IXQueryPartitions.XQUERY_PARTITIONING, configureFormatter);
 	}
 
 	@Override

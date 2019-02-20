@@ -38,8 +38,7 @@ public interface IBrowseService {
 	 * <li>call {@link BrowseCoordinator#removed(IBrowseItem[])}</li>
 	 * </ul>
 	 * 
-	 * @return <code>true</code> if the item exists, elsewhere
-	 *         <code>false</code>.
+	 * @return <code>true</code> if the item exists, elsewhere <code>false</code>.
 	 */
 	public boolean check();
 
@@ -51,16 +50,14 @@ public interface IBrowseService {
 	public void refresh();
 
 	/**
-	 * @param recursive
-	 *            <code>true</code> then return also the children of the
-	 *            children, <code>false</code> return also the directly children
-	 * @param self
-	 *            <code>true</code>then add itself to the result
+	 * @param recursive <code>true</code> then return also the children of the
+	 *                  children, <code>false</code> return also the directly
+	 *                  children
+	 * @param self      <code>true</code>then add itself to the result
 	 * @return all collections from the xmldb as {@link IBrowseItem}.
 	 * @throws ConnectionException
 	 */
-	public Set<IBrowseItem> getChildren(boolean self, boolean recursive)
-			throws ConnectionException;
+	public Set<IBrowseItem> getChildren(boolean self, boolean recursive) throws ConnectionException;
 
 	/**
 	 * Move the {@link IBrowseItem} to the given <code>item</code>.

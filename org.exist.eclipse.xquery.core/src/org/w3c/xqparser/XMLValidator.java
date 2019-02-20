@@ -76,12 +76,9 @@ public class XMLValidator {
 			spf.setValidating(true);
 
 			SAXParser saxParser = spf.newSAXParser();
-			saxParser.setProperty(
-					"http://java.sun.com/xml/jaxp/properties/schemaLanguage",
+			saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaLanguage",
 					"http://www.w3.org/2001/XMLSchema");
-			saxParser.setProperty(
-					"http://java.sun.com/xml/jaxp/properties/schemaSource",
-					"xqueryx.xsd");
+			saxParser.setProperty("http://java.sun.com/xml/jaxp/properties/schemaSource", "xqueryx.xsd");
 
 			DefaultHandler handler = new DefaultHandler() {
 
@@ -89,19 +86,16 @@ public class XMLValidator {
 				public void error(SAXParseException arg0) throws SAXException {
 					_isValid = false;
 					if (errors != null)
-						errors.add("  Line #" + arg0.getLineNumber() + "; "
-								+ arg0.getMessage());
+						errors.add("  Line #" + arg0.getLineNumber() + "; " + arg0.getMessage());
 				}
 			};
 			try {
 				saxParser.parse(inputFileName, handler);
 			} catch (SAXParseException e) {
-				System.err.println("error: SAXParseException occurred - "
-						+ e.getMessage());
+				System.err.println("error: SAXParseException occurred - " + e.getMessage());
 				_isValid = false;
 			} catch (Exception e) {
-				System.err.println("error: Parse error occurred - "
-						+ e.getMessage());
+				System.err.println("error: Parse error occurred - " + e.getMessage());
 				Exception se = e;
 				_isValid = false;
 				if (e instanceof SAXException) {

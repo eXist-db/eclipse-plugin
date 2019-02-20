@@ -45,16 +45,14 @@ public class ViewLabelProvider extends LabelProvider {
 	// /////////////////////////////////////////////////////////////////////////////////////////////
 	private Image getDocumentImage() {
 		if (_imgDocument == null) {
-			_imgDocument = BrowsePlugin.getImageDescriptor(
-					"icons/document_icon.png").createImage();
+			_imgDocument = BrowsePlugin.getImageDescriptor("icons/document_icon.png").createImage();
 		}
 		return _imgDocument;
 	}
 
 	private Image getFolderImage() {
 		if (_imgFolder == null) {
-			_imgFolder = BrowsePlugin.getImageDescriptor(
-					"icons/folder_icon.png").createImage();
+			_imgFolder = BrowsePlugin.getImageDescriptor("icons/folder_icon.png").createImage();
 		}
 		return _imgFolder;
 	}

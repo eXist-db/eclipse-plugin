@@ -41,31 +41,25 @@ public class ActionGroupDocumentExtension extends ActionGroup {
 	public void fillContextMenu(IMenuManager manager) {
 		ISelection selection = _view.getViewer().getSelection();
 		// Add editors to the menu
-		Object obj = IStructuredSelection.class.cast(selection)
-				.getFirstElement();
+		Object obj = IStructuredSelection.class.cast(selection).getFirstElement();
 		if (obj instanceof IDocumentItem) {
 			try {
 				IExtensionRegistry reg = Platform.getExtensionRegistry();
-				IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin
-						.getId(), "document");
+				IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(), "document");
 				IExtension[] documents = exPoint.getExtensions();
 				for (IExtension extension : documents) {
-					IConfigurationElement[] configurations = extension
-							.getConfigurationElements();
+					IConfigurationElement[] configurations = extension.getConfigurationElements();
 					_seperatorAdded = false;
 					for (IConfigurationElement element : configurations) {
-						IDocumentListener listener = (IDocumentListener) element
-								.createExecutableExtension("class");
-						Action action = new ActionDocumentListener(_view,
-								listener);
+						IDocumentListener listener = (IDocumentListener) element.createExecutableExtension("class");
+						Action action = new ActionDocumentListener(_view, listener);
 						action.setText(element.getAttribute("name"));
 						action.setToolTipText(element.getAttribute("name"));
 						String icon = element.getAttribute("icon");
 						String id = extension.getNamespaceIdentifier();
 
 						if (icon != null) {
-							action.setImageDescriptor(AbstractUIPlugin
-									.imageDescriptorFromPlugin(id, icon));
+							action.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(id, icon));
 						}
 						addSeperator(manager);
 						manager.add(action);
@@ -73,10 +67,8 @@ public class ActionGroupDocumentExtension extends ActionGroup {
 				}
 			} catch (Exception e) {
 				String message = "Error while fill context menu";
-				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message, e);
-				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 			}
 		}
 	}

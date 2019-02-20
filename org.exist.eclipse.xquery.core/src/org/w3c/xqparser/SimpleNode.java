@@ -64,18 +64,15 @@ public class SimpleNode implements Node {
 
 	@Override
 	public void jjtAddChild(Node n, int i) {
-		if (id == XPathTreeConstants.JJTNCNAME
-				&& ((SimpleNode) n).id == XPathTreeConstants.JJTQNAME) {
+		if (id == XPathTreeConstants.JJTNCNAME && ((SimpleNode) n).id == XPathTreeConstants.JJTQNAME) {
 			m_value = ((SimpleNode) n).m_value;
 			_token = ((SimpleNode) n)._token;
 			if (m_value.indexOf(':') >= 0)
-				throw new PostParseException(
-						"Parse Error: NCName can not contain ':'!");
+				throw new PostParseException("Parse Error: NCName can not contain ':'!");
 			return;
 		}
 		// Don't expose the functionQName as a child of a QName!
-		else if (id == XPathTreeConstants.JJTQNAME
-				&& ((SimpleNode) n).id == XPathTreeConstants.JJTFUNCTIONQNAME) {
+		else if (id == XPathTreeConstants.JJTQNAME && ((SimpleNode) n).id == XPathTreeConstants.JJTFUNCTIONQNAME) {
 			m_value = ((SimpleNode) n).m_value;
 			_token = ((SimpleNode) n)._token;
 			return;
@@ -117,10 +114,10 @@ public class SimpleNode implements Node {
 	}
 
 	/*
-	 * You can override these two methods in subclasses of SimpleNode to
-	 * customize the way the node appears when the tree is dumped. If your
-	 * output uses more than one line you should override toString(String),
-	 * otherwise overriding toString() is probably all you need to do.
+	 * You can override these two methods in subclasses of SimpleNode to customize
+	 * the way the node appears when the tree is dumped. If your output uses more
+	 * than one line you should override toString(String), otherwise overriding
+	 * toString() is probably all you need to do.
 	 */
 
 	@Override

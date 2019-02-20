@@ -37,8 +37,7 @@ public interface IQueryFrame {
 	 * Call this method after the query was running and you have add all of your
 	 * results to the {@link IResultFrame} from the method {@link #start()}.
 	 * 
-	 * @param state
-	 *            information about the query running.
+	 * @param state information about the query running.
 	 */
 	public void end(IQueryEndState state);
 }

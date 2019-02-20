@@ -28,8 +28,7 @@ public class ActionGroupMain extends ActionGroup {
 		_actionRefresh = new ActionRefresh(_view);
 		_actionRefresh.setText("Refresh");
 		_actionRefresh.setToolTipText("Refresh");
-		_actionRefresh.setImageDescriptor(BrowsePlugin
-				.getImageDescriptor("icons/refresh_icon.png"));
+		_actionRefresh.setImageDescriptor(BrowsePlugin.getImageDescriptor("icons/refresh_icon.png"));
 	}
 
 	@Override

@@ -45,7 +45,7 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
+	public <T> T getAdapter(Class<T> adapter) {
 		return null;
 	}
 
@@ -58,8 +58,7 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((_storage == null) ? 0 : _storage.hashCode());
+		result = prime * result + ((_storage == null) ? 0 : _storage.hashCode());
 		return result;
 	}
 

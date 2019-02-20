@@ -11,8 +11,7 @@ import org.exist.eclipse.xquery.core.XQueryNature;
  * @author Pascal Schmidiger
  */
 public class XQueryCompletionProcessor extends ScriptCompletionProcessor {
-	public XQueryCompletionProcessor(IEditorPart editor,
-			ContentAssistant assistant, String partition) {
+	public XQueryCompletionProcessor(IEditorPart editor, ContentAssistant assistant, String partition) {
 		super(editor, assistant, partition);
 	}
 

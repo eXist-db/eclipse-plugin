@@ -158,8 +158,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		final boolean[] labelEnter = new boolean[1];
 
 		_selectContextLabel = new Label(parent, SWT.NONE);
-		_selectContextLabel.setCursor(_selectContextLabel.getDisplay()
-				.getSystemCursor(SWT.CURSOR_HAND));
+		_selectContextLabel.setCursor(_selectContextLabel.getDisplay().getSystemCursor(SWT.CURSOR_HAND));
 		_selectContextLabel.addPaintListener(new PaintListener() {
 			@Override
 			public void paintControl(PaintEvent e) {
@@ -175,8 +174,8 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		_selectContextLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				Rectangle q = e.display.map(_selectContextLabel.getParent(),
-						_selectContextLabel, _selectContextLabel.getBounds());
+				Rectangle q = e.display.map(_selectContextLabel.getParent(), _selectContextLabel,
+						_selectContextLabel.getBounds());
 				if (q.contains(e.x, e.y)) {
 					onSelectContext();
 				}
@@ -200,8 +199,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 				_selectContextLabel.update();
 			}
 		});
-		_selectContextLabel.setForeground(JFaceColors
-				.getHyperlinkText(_selectContextLabel.getDisplay()));
+		_selectContextLabel.setForeground(JFaceColors.getHyperlinkText(_selectContextLabel.getDisplay()));
 		gd = new GridData(0);
 		_selectContextLabel.setLayoutData(gd);
 		_selectContextLabel.setToolTipText("Select Context");
@@ -212,14 +210,12 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		_tabCheck = new Button(parent, SWT.CHECK);
 		_tabCheck.setText("Create Tab");
 		_tabCheck.setToolTipText("For each run, create a new tab in "
-				+ PlatformUI.getWorkbench().getViewRegistry().find(
-						ResultView.ID).getLabel() + " view");
+				+ PlatformUI.getWorkbench().getViewRegistry().find(ResultView.ID).getLabel() + " view");
 		GridData gd = new GridData();
 		gd.horizontalIndent = 5;
 		_tabCheck.setLayoutData(gd);
 
-		final IPreferenceStore store = XQueryUI.getDefault()
-				.getPreferenceStore();
+		final IPreferenceStore store = XQueryUI.getDefault().getPreferenceStore();
 		_tabCheck.setSelection(store.getBoolean(TAB_CHECK_PREFERENCES));
 		_tabCheck.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -273,8 +269,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 
 	@Override
 	public String getQuery() {
-		return _editor.getDocumentProvider().getDocument(
-				_editor.getEditorInput()).get();
+		return _editor.getDocumentProvider().getDocument(_editor.getEditorInput()).get();
 	}
 
 	@Override
@@ -287,8 +282,7 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 	// ////////////////////////////////////////////////////////////////////////////////////////////
 	private Image getRunImage() {
 		if (_imgRun == null) {
-			_imgRun = XQueryUI.getImageDescriptor("icons/run.gif")
-					.createImage();
+			_imgRun = XQueryUI.getImageDescriptor("icons/run.gif").createImage();
 		}
 		return _imgRun;
 	}
@@ -300,18 +294,14 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		}
 
 		if (_context != null) {
-			IWorkbenchPage activePage = XQueryUI.getDefault().getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
+			IWorkbenchPage activePage = XQueryUI.getDefault().getWorkbench().getActiveWorkbenchWindow().getActivePage();
 			try {
-				ResultView view = (ResultView) activePage.showView(
-						ResultView.ID, null, IWorkbenchPage.VIEW_VISIBLE);
+				ResultView view = (ResultView) activePage.showView(ResultView.ID, null, IWorkbenchPage.VIEW_VISIBLE);
 				IQueryFrame frame = view.createQueryFrame(this);
 				_context.run(frame);
 			} catch (PartInitException e1) {
-				Status status = new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-						e1.getMessage(), e1);
-				XQueryUI.getDefault().errorDialog("Run XQuery",
-						e1.getMessage(), status);
+				Status status = new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, e1.getMessage(), e1);
+				XQueryUI.getDefault().errorDialog("Run XQuery", e1.getMessage(), status);
 				e1.printStackTrace();
 			}
 		}
@@ -321,8 +311,8 @@ public class XQueryContextPart implements IContextListener, IQueryFrameInfo {
 		SelectContextWizard wizard = new SelectContextWizard();
 		wizard.init(XQueryUI.getDefault().getWorkbench(), null);
 		wizard.setForcePreviousAndNextButtons(true);
-		WizardDialog dialog = new WizardDialog(XQueryUI.getDefault()
-				.getWorkbench().getDisplay().getActiveShell(), wizard);
+		WizardDialog dialog = new WizardDialog(XQueryUI.getDefault().getWorkbench().getDisplay().getActiveShell(),
+				wizard);
 		dialog.open();
 	}
 

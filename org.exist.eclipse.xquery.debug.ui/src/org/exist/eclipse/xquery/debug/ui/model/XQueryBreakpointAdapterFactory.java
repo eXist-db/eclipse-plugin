@@ -32,31 +32,29 @@ import org.eclipse.ui.texteditor.ITextEditor;
  */
 public class XQueryBreakpointAdapterFactory implements IAdapterFactory {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapter(java.lang.Object, java.lang.Class)
-	 */
 	@Override
-	public Object getAdapter(Object adaptableObject, Class adapterType) {
-		if (adaptableObject instanceof ITextEditor) {
+	public <T> T getAdapter(Object adaptableObject, Class<T> adapterType) {
+		if (adaptableObject instanceof ITextEditor && adapterType.isAssignableFrom(IToggleBreakpointsTarget.class)) {
 			ITextEditor editorPart = (ITextEditor) adaptableObject;
 			IResource resource = (IResource) editorPart.getEditorInput().getAdapter(IResource.class);
 			if (resource != null) {
 				String extension = resource.getFileExtension();
 				if (extension != null && extension.equals("xq")) {
-					return new XQueryLineBreakpointAdapter();
+					return adapterType.cast(new XQueryLineBreakpointAdapter());
 				}
 			}
-			
 		}
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.core.runtime.IAdapterFactory#getAdapterList()
 	 */
 	@Override
-	public Class[] getAdapterList() {
-		return new Class[]{IToggleBreakpointsTarget.class};
+	public Class<?>[] getAdapterList() {
+		return new Class[] { IToggleBreakpointsTarget.class };
 	}
 
 }

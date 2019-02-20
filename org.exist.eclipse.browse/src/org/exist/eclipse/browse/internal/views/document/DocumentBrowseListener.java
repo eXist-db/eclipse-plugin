@@ -26,8 +26,7 @@ public class DocumentBrowseListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		if (_view != null) {
-			IBrowseService service = items[0]
-					.getAdapter(IBrowseService.class);
+			IBrowseService service = items[0].getAdapter(IBrowseService.class);
 			if (service.check()) {
 				_view.setItem(items[0]);
 			}
@@ -41,10 +40,8 @@ public class DocumentBrowseListener implements IBrowseListener {
 				_view = (DocumentView) page.showView(DocumentView.ID);
 			} catch (PartInitException e) {
 				String message = "Error while open document view";
-				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message, e);
-				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 			}
 		}
 	}

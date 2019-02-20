@@ -12,6 +12,7 @@ Export-Package: org.exist.eclipse,
  org.exist.eclipse.exception,
  org.exist.eclipse.listener,
  org.exist.eclipse.preferences,
+ org.exist.eclipse.spi,
  org.xmldb.api,
  org.xmldb.api.base,
  org.xmldb.api.modules

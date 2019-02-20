@@ -29,8 +29,7 @@ public class QueryExecution implements Runnable {
 	 * @param connectionPool
 	 * @param automationResult
 	 */
-	public QueryExecution(IQuery query, IConnectionPool connectionPool,
-			AutomationResult automationResult) {
+	public QueryExecution(IQuery query, IConnectionPool connectionPool, AutomationResult automationResult) {
 		_query = query;
 		_connectionPool = connectionPool;
 		_automationResult = automationResult;

@@ -46,18 +46,13 @@ public class Xq2xml {
 	/**
 	 * Convert a SimpleNode tree to an XML Serialization.
 	 * 
-	 * @param prefix
-	 *            String used for indent.
-	 * @param outWriter
-	 *            output destination for XML.
-	 * @param tree
-	 *            input tree root.
+	 * @param prefix    String used for indent.
+	 * @param outWriter output destination for XML.
+	 * @param tree      input tree root.
 	 */
-	public static void convert(String prefix, PrintWriter outWriter,
-			SimpleNode tree) {
+	public static void convert(String prefix, PrintWriter outWriter, SimpleNode tree) {
 		outWriter.println();
-		outWriter.print(prefix + "<" + XPathTreeConstants.jjtNodeName[tree.id]
-				+ ">");
+		outWriter.print(prefix + "<" + XPathTreeConstants.jjtNodeName[tree.id] + ">");
 		if (tree.m_value != null) {
 			outWriter.print("<data>");
 			printEscaped(outWriter, tree.m_value);
@@ -80,13 +75,11 @@ public class Xq2xml {
 	/**
 	 * Convert an XPath/XQuery string to an XML Serialization.
 	 * 
-	 * @param expr
-	 *            input expression.
+	 * @param expr input expression.
 	 * @return XML serialization in the form of a string.
 	 * @throws UnsupportedEncodingException
 	 */
-	public static String convert(String expr)
-			throws UnsupportedEncodingException {
+	public static String convert(String expr) throws UnsupportedEncodingException {
 
 		Reader ir = new StringReader(expr);
 		StringWriter w = new StringWriter();
@@ -99,15 +92,13 @@ public class Xq2xml {
 	/**
 	 * Convert an XPath/XQuery file to an XML Serialization.
 	 * 
-	 * @param file
-	 *            input file that contains the XPath/XQuery expression, assumes
-	 *            utf-8.
+	 * @param file input file that contains the XPath/XQuery expression, assumes
+	 *             utf-8.
 	 * @return XML serialization in the form of a string.
 	 * @throws IOException
 	 * @throws UnsupportedEncodingException
 	 */
-	public static String convert(File file) throws IOException,
-			UnsupportedEncodingException {
+	public static String convert(File file) throws IOException, UnsupportedEncodingException {
 
 		InputStream is = new FileInputStream(file);
 		Reader ir = new InputStreamReader(is, "utf-8");
@@ -129,10 +120,8 @@ public class Xq2xml {
 	/**
 	 * Convert an XPath/XQuery stream to an XML Serialization.
 	 * 
-	 * @param reader
-	 *            input reader, handles encoding issues.
-	 * @param writer
-	 *            output writer, handles encoding issues.
+	 * @param reader input reader, handles encoding issues.
+	 * @param writer output writer, handles encoding issues.
 	 */
 	public static void convert(Reader reader, Writer writer) {
 		try {
@@ -156,21 +145,17 @@ public class Xq2xml {
 	/**
 	 * Convert an XPath/XQuery stream to an XML Serialization.
 	 * 
-	 * @param is
-	 *            input stream, assumed to be utf-8.
-	 * @param os
-	 *            output stream, assumed to be utf-8.
+	 * @param is input stream, assumed to be utf-8.
+	 * @param os output stream, assumed to be utf-8.
 	 * @throws UnsupportedEncodingException
 	 */
-	public static void convert(InputStream is, OutputStream os)
-			throws UnsupportedEncodingException {
+	public static void convert(InputStream is, OutputStream os) throws UnsupportedEncodingException {
 		InputStreamReader ir = new InputStreamReader(is, "utf-8");
 		OutputStreamWriter ow = new OutputStreamWriter(os, "utf-8");
 		convert(ir, ow);
 	}
 
-	private static void writeUTF16Surrogate(PrintWriter ps, char c, char ch[],
-			int i, int end) {
+	private static void writeUTF16Surrogate(PrintWriter ps, char c, char ch[], int i, int end) {
 
 		int surrogateValue = getURF16SurrogateValue(c, ch, i, end);
 
@@ -185,15 +170,12 @@ public class Xq2xml {
 		int next;
 
 		if (i + 1 >= end) {
-			throw new RuntimeException("Invalid UTF-16 surrogate detected: "
-					+ Integer.toHexString(c));
+			throw new RuntimeException("Invalid UTF-16 surrogate detected: " + Integer.toHexString(c));
 		} else {
 			next = ch[++i];
 
 			if (!(0xdc00 <= next && next < 0xe000))
-				throw new RuntimeException(
-						"Invalid UTF-16 surrogate detected: "
-								+ Integer.toHexString(c));
+				throw new RuntimeException("Invalid UTF-16 surrogate detected: " + Integer.toHexString(c));
 
 			next = ((c - 0xd800) << 10) + next - 0xdc00 + 0x00010000;
 		}
@@ -209,13 +191,10 @@ public class Xq2xml {
 	 * Tell if this character can be written without escaping. Needs more work.
 	 */
 	private static boolean canConvert(char ch) {
-		boolean isLegal = ch == 0x9 || ch == 0xA || ch == 0xD
-				|| (ch >= 0x20 && ch <= 0xD7FF)
-				|| (ch >= 0xE000 && ch <= 0xFFFD)
-				|| (ch >= 0x10000 && ch <= 0x10FFFF);
+		boolean isLegal = ch == 0x9 || ch == 0xA || ch == 0xD || (ch >= 0x20 && ch <= 0xD7FF)
+				|| (ch >= 0xE000 && ch <= 0xFFFD) || (ch >= 0x10000 && ch <= 0x10FFFF);
 		if (!isLegal)
-			throw new RuntimeException(
-					"Characters MUST match the production for Char.");
+			throw new RuntimeException("Characters MUST match the production for Char.");
 
 		return (ch <= MAXCHAR); // noop
 	}

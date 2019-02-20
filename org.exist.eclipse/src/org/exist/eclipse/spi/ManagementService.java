@@ -1,7 +1,7 @@
 /**
  * ManagementService.java
  */
-package org.exist.eclipse.internal;
+package org.exist.eclipse.spi;
 
 import java.util.StringTokenizer;
 
@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Display;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.exception.ConnectionException;
+import org.exist.eclipse.internal.BasePlugin;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.XMLDBException;
