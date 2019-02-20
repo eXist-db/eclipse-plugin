@@ -1,5 +1,6 @@
+.settings/
 /.gradle/
 /.metadata/
-build/
+/.recommenders/
 /RemoteSystemsTempFiles/
-.settings/
+build/
