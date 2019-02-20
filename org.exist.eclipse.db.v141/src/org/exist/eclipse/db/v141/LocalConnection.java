@@ -1,12 +1,11 @@
 /**
  * LocalConnection.java
  */
-package org.exist.eclipse.exist142;
+package org.exist.eclipse.db.v141;
 
-import java.io.File;
-import java.util.Objects;
+import java.nio.file.Paths;
 
-import org.exist.eclipse.ConnectionEnum;
+import org.exist.eclipse.ConnectionType;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.spi.AbstractConnection;
@@ -26,13 +25,9 @@ import org.xmldb.api.base.XMLDBException;
 public class LocalConnection extends AbstractConnection {
 	private static int _counter = 0;
 
-	private final String _name;
-	private final String _username;
-	private final String _password;
-	private final String _path;
-	private final String _uriName;
-	private Database _db;
-	private Collection _root;
+	private final String uriName;
+	private Database db;
+	private Collection root;
 
 	/**
 	 * Create a new connection. Post you have to call {@link #open()}.
@@ -47,54 +42,16 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	public LocalConnection(String name, String username, String password, String path, String uri) {
-		super(ExistConnectionProvider.VERSION);
-		if (name == null || name.length() < 1) {
-			throw new IllegalArgumentException("name must be set.");
-		}
-		if (username == null || username.length() < 1) {
-			throw new IllegalArgumentException("username must be set.");
-		}
-		if (path == null || path.length() < 1) {
-			throw new IllegalArgumentException("path must be set.");
-		}
-		_name = name;
-		_username = username;
-		_password = password;
-		_path = new File(path).getAbsolutePath();
-		_uriName = uri;
+		super(ExistConnectionProvider.VERSION, ConnectionType.LOCAL, name, username, password, Paths.get(path).toAbsolutePath().toString());
+		uriName = uri;
 	}
 
 	private String getUriName() {
-		return _uriName;
+		return uriName;
 	}
 
 	private static synchronized String getNextUri() {
 		return "local" + _counter++;
-	}
-
-	@Override
-	public final String getName() {
-		return _name;
-	}
-
-	@Override
-	public String getPassword() {
-		return _password;
-	}
-
-	@Override
-	public String getPath() {
-		return _path;
-	}
-
-	@Override
-	public ConnectionEnum getType() {
-		return ConnectionEnum.LOCAL;
-	}
-
-	@Override
-	public String getUsername() {
-		return _username;
 	}
 
 	@Override
@@ -108,13 +65,13 @@ public class LocalConnection extends AbstractConnection {
 	 * @throws ConnectionException
 	 */
 	protected void openRoot() throws ConnectionException {
-		if (_root == null) {
+		if (root == null) {
 			try {
-				_root = DatabaseManager.getCollection(getRootUri(), _username, _password);
+				root = DatabaseManager.getCollection(getRootUri(), getUsername(), getPassword());
 				// check whether a connection was established successfully.
-				_root.getChildCollectionCount();
+				root.getChildCollectionCount();
 			} catch (Exception e) {
-				_root = null;
+				root = null;
 				close();
 				throw new ConnectionException("Failure while getting db collection: " + e.getMessage(), e);
 
@@ -126,15 +83,15 @@ public class LocalConnection extends AbstractConnection {
 	 * @throws ConnectionException
 	 */
 	protected void openDb() throws ConnectionException {
-		if (_db == null) {
+		if (db == null) {
 			try {
-				_db = new DatabaseImpl();
-				_db.setProperty("create-database", "true");
-				_db.setProperty("configuration", getPath());
-				_db.setProperty("database-id", getUriName());
-				DatabaseManager.registerDatabase(_db);
+				db = new DatabaseImpl();
+				db.setProperty("create-database", "true");
+				db.setProperty("configuration", getPath());
+				db.setProperty("database-id", getUriName());
+				DatabaseManager.registerDatabase(db);
 			} catch (Exception e) {
-				_db = null;
+				db = null;
 				throw new ConnectionException("Failure while setting up db: " + e.getMessage(), e);
 			}
 		}
@@ -152,13 +109,13 @@ public class LocalConnection extends AbstractConnection {
 	 * @throws ConnectionException
 	 */
 	protected void closeDb() throws ConnectionException {
-		if (_db != null) {
+		if (db != null) {
 			try {
-				DatabaseManager.deregisterDatabase(_db);
+				DatabaseManager.deregisterDatabase(db);
 			} catch (XMLDBException e) {
 				throw new ConnectionException("Failure while shutting down db: " + e.getMessage(), e);
 			} finally {
-				_db = null;
+				db = null;
 			}
 		}
 	}
@@ -168,28 +125,27 @@ public class LocalConnection extends AbstractConnection {
 	 */
 	protected void closeRoot() throws ConnectionException {
 		if (isOpen()) {
-			DatabaseInstanceManager manager;
 			try {
-				manager = (DatabaseInstanceManager) _root.getService("DatabaseInstanceManager", "1.0");
-				if (_root != null) {
-					_root.close();
+				DatabaseInstanceManager manager = (DatabaseInstanceManager) root.getService("DatabaseInstanceManager", "1.0");
+				if (root != null) {
+					root.close();
 				}
 				manager.shutdown();
 			} catch (XMLDBException e1) {
 				throw new ConnectionException("Failure while shutting down db: " + e1.getMessage(), e1);
 			} finally {
-				_root = null;
+				root = null;
 			}
 		}
 	}
 
 	protected void setDb(Database db) {
-		_db = db;
+		this.db = db;
 	}
 
 	@Override
 	public Collection getRoot() {
-		return _root;
+		return root;
 	}
 
 	@Override
@@ -199,11 +155,11 @@ public class LocalConnection extends AbstractConnection {
 
 	@Override
 	public boolean isOpen() {
-		if (_db == null && _root == null) {
+		if (db == null && root == null) {
 			return false;
 		} else {
 			try {
-				_root.getChildCollectionCount();
+				root.getChildCollectionCount();
 				return true;
 			} catch (Exception e) {
 				// ignored
@@ -214,33 +170,9 @@ public class LocalConnection extends AbstractConnection {
 
 	@Override
 	public IConnection duplicate() throws ConnectionException {
-		LocalConnectionWrapper wrapper = new LocalConnectionWrapper(_name, _username, _password, _path, _uriName, _db);
+		LocalConnectionWrapper wrapper = new LocalConnectionWrapper(getName(), getUsername(),getPassword(),getPath(), uriName, db);
 		wrapper.open();
 		return wrapper;
-	}
-
-	@Override
-	public String toString() {
-		return getName() + " (" + getPath() + ")";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((_name == null) ? 0 : _name.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		} else if (!(obj instanceof LocalConnection)) {
-			return false;
-		}
-		final LocalConnection other = (LocalConnection) obj;
-		return Objects.equals(_name, other._name);
 	}
 
 	// //////////////////////////////////////////////////////////////////////////

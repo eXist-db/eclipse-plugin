@@ -4,7 +4,7 @@
  * Copyright (c) 2019 BISON Schweiz AG, All Rights Reserved.
  */
 
-package org.exist.eclipse.exist142;
+package org.exist.eclipse.db.v141;
 
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IDatabaseInstance;

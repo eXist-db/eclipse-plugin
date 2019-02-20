@@ -16,7 +16,7 @@ import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.dialogs.WorkbenchWizardNode;
 import org.eclipse.ui.internal.dialogs.WorkbenchWizardSelectionPage;
 import org.eclipse.ui.wizards.IWizardDescriptor;
-import org.exist.eclipse.ConnectionEnum;
+import org.exist.eclipse.ConnectionType;
 import org.exist.eclipse.internal.BasePlugin;
 
 /**
@@ -26,7 +26,7 @@ import org.exist.eclipse.internal.BasePlugin;
  * @author Pascal Schmidiger
  */
 public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
-	private ConnectionEnum _type;
+	private ConnectionType _type;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
@@ -54,7 +54,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		layout.numColumns = 1;
 
 		Button button = null;
-		for (ConnectionEnum type : ConnectionEnum.values()) {
+		for (ConnectionType type : ConnectionType.values()) {
 			button = new Button(container, SWT.RADIO);
 			String typeName = type.name();
 
@@ -62,7 +62,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 			typeName = Character.toUpperCase(typeName.charAt(0)) + typeName.substring(1);
 
 			button.setText(typeName);
-			button.setData(ConnectionEnum.class.toString(), type);
+			button.setData(ConnectionType.class.toString(), type);
 
 			button.addSelectionListener(new SelectionListener() {
 				@Override
@@ -71,7 +71,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					_type = (ConnectionEnum) e.widget.getData(ConnectionEnum.class.toString());
+					_type = (ConnectionType) e.widget.getData(ConnectionType.class.toString());
 					setErrorMessage(null);
 					setPageComplete(true);
 					updateSelectedNode();
@@ -87,17 +87,17 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	// //////////////////////////////////////////////////////////////////////////
 	// private methods
 	// //////////////////////////////////////////////////////////////////////////
-	private ConnectionEnum getType() {
+	private ConnectionType getType() {
 		return _type;
 	}
 
 	private void updateSelectedNode() {
 		setErrorMessage(null);
 		IWizardDescriptor element = null;
-		if (ConnectionEnum.REMOTE.equals(getType())) {
+		if (ConnectionType.REMOTE.equals(getType())) {
 			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 					.findWizard(RemoteConnectionWizard.class.getCanonicalName());
-		} else if (ConnectionEnum.LOCAL.equals(getType())) {
+		} else if (ConnectionType.LOCAL.equals(getType())) {
 			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 					.findWizard(LocalConnectionWizard.class.getCanonicalName());
 			setSelectedNode(createWizardNode(element));

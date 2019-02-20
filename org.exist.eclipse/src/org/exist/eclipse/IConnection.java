@@ -4,7 +4,6 @@
 package org.exist.eclipse;
 
 import org.exist.eclipse.exception.ConnectionException;
-import org.exist.eclipse.spi.ManagementService;
 import org.xmldb.api.base.Collection;
 
 /**
@@ -20,12 +19,7 @@ public interface IConnection extends AutoCloseable {
 	 * @param adapter the adapter type
 	 * @return the adapter implementation if available
 	 */
-	public default <A> A getAdapter(Class<A> adapter) {
-		if (adapter.isAssignableFrom(ManagementService.class)) {
-			return adapter.cast(new ManagementService(this));
-		}
-		return null;
-	}
+	public <A> A getAdapter(Class<A> adapter);
 
 	/**
 	 * @return the name of the current connection.
@@ -45,7 +39,7 @@ public interface IConnection extends AutoCloseable {
 	/**
 	 * @return the type of the connection.
 	 */
-	public ConnectionEnum getType();
+	public ConnectionType getType();
 
 	/**
 	 * @return the path of the connection.

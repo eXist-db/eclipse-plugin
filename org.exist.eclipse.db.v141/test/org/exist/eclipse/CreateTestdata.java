@@ -3,7 +3,7 @@
  */
 package org.exist.eclipse;
 
-import org.exist.eclipse.exist142.RemoteConnection;
+import org.exist.eclipse.db.v141.RemoteConnection;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.XMLDBException;

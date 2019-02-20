@@ -9,14 +9,14 @@ package org.exist.eclipse;
  * @author Pascal Schmidiger
  * 
  */
-public enum ConnectionEnum {
+public enum ConnectionType {
 	REMOTE, LOCAL;
 	
 	public boolean isRemote() {
 		return REMOTE == this;
 	}
 	
-	public static ConnectionEnum valueOfName(String name) {
+	public static ConnectionType valueOfName(String name) {
 		return valueOf(name.toUpperCase());
 	}
 }

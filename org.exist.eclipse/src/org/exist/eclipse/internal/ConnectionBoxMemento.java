@@ -18,7 +18,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.exist.eclipse.ConnectionEnum;
+import org.exist.eclipse.ConnectionType;
 import org.exist.eclipse.IConnection;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -69,7 +69,7 @@ public class ConnectionBoxMemento implements Serializable {
 					version = "1.4.1";
 				}
 				if (type != null && name != null && username != null && password != null && uri != null) {
-					switch (ConnectionEnum.valueOfName(type)) {
+					switch (ConnectionType.valueOfName(type)) {
 					case REMOTE:
 						_connections.add(createRemote(version, name, username, password, uri));
 						break;
