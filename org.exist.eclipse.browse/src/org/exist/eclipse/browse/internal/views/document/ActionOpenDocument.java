@@ -52,26 +52,18 @@ public class ActionOpenDocument extends Action {
 		for (Object it : _selection.toArray()) {
 			IDocumentItem _item = (IDocumentItem) it;
 
-			IBrowseService bService = (IBrowseService) _item.getParent()
-					.getAdapter(IBrowseService.class);
-			IDocumentService service = (IDocumentService) _item
-					.getAdapter(IDocumentService.class);
+			IBrowseService bService = _item.getParent().getAdapter(IBrowseService.class);
+			IDocumentService service = _item.getAdapter(IDocumentService.class);
 
-			if (IManagementService.class.cast(
-					_item.getParent().getConnection().getAdapter(
-							IManagementService.class)).check()
-					&& bService.check() && service.check()) {
-				IStorageEditorInput input = new DocumentStorageEditorInput(
-						new DocumentStorage(_item));
+			if (_item.getParent().getConnection().getAdapter(IManagementService.class).check() && bService.check()
+					&& service.check()) {
+				IStorageEditorInput input = new DocumentStorageEditorInput(new DocumentStorage(_item));
 				try {
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-							.getActivePage().openEditor(input, _editorId);
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(input, _editorId);
 				} catch (PartInitException e) {
 					String message = "Error while open document";
-					Status status = new Status(IStatus.ERROR, BrowsePlugin
-							.getId(), message, e);
-					BrowsePlugin.getDefault().errorDialog(message,
-							e.getMessage(), status);
+					Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+					BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 				}
 			}
 		}

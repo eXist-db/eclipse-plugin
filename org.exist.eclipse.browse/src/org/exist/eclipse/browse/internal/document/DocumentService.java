@@ -47,8 +47,7 @@ public class DocumentService implements IDocumentService {
 	}
 
 	@Override
-	public void create(IConfigurationElement providerElement, String content)
-			throws CreateDocumentException {
+	public void create(IConfigurationElement providerElement, String content) throws CreateDocumentException {
 		Assert.isNotNull(providerElement);
 		try {
 			ICreateDocumentProvider provider = (ICreateDocumentProvider) providerElement
@@ -61,11 +60,8 @@ public class DocumentService implements IDocumentService {
 
 	@Override
 	public void delete() throws ConnectionException {
-		IManagementService service = IManagementService.class.cast(_item
-				.getParent().getConnection().getAdapter(
-						IManagementService.class));
-		service.removeDocument(_item.getParent().getCollection(), _item
-				.getName());
+		IManagementService service = _item.getParent().getConnection().getAdapter(IManagementService.class);
+		service.removeDocument(_item.getParent().getCollection(), _item.getName());
 		DocumentCoordinator.getInstance().removed(_item);
 	}
 
@@ -73,16 +69,14 @@ public class DocumentService implements IDocumentService {
 	public boolean move(IDocumentItem item) throws ConnectionException {
 		boolean value = false;
 		if (_item.exists() && !item.exists()) {
-			IManagementService service = (IManagementService) _item.getParent()
-					.getConnection().getAdapter(IManagementService.class);
+			IManagementService service = _item.getParent().getConnection().getAdapter(IManagementService.class);
 
 			IDocumentItem renamedItem = _item;
 
 			// firstly, rename the document if necessary
 			if (!_item.getName().equals(item.getName())) {
 				renamedItem = _item.getParent().getDocument(item.getName());
-				service.renameResource(_item.getParent().getCollection(), _item
-						.getName(), renamedItem.getName());
+				service.renameResource(_item.getParent().getCollection(), _item.getName(), renamedItem.getName());
 			}
 
 			// secondary, move the document if necessary

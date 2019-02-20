@@ -36,23 +36,14 @@ public class RestoreJob extends Job {
 	protected IStatus run(IProgressMonitor monitor) {
 		try {
 			monitor.beginTask("Restore", 1);
-			Restore restore = new Restore(_item.getConnection().getUsername(),
-					_item.getConnection().getPassword(), null, new File(
-							_location), _item.getConnection().getUri());
+			Restore restore = new Restore(_item.getConnection().getUsername(), _item.getConnection().getPassword(),
+					null, new File(_location), _item.getConnection().getUri());
 			restore.restore(false, null);
-			Display.getDefault().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					MessageDialog.openInformation(new Shell(),
-							"Restore completed", "Restore from '" + _location
-									+ "' completed");
-				}
-			});
-			IBrowseService.class.cast(_item.getAdapter(IBrowseService.class))
-					.refresh();
+			Display.getDefault().asyncExec(() -> MessageDialog.openInformation(new Shell(), "Restore completed",
+					"Restore from '" + _location + "' completed"));
+			IBrowseService.class.cast(_item.getAdapter(IBrowseService.class)).refresh();
 		} catch (Exception e) {
-			return new Status(IStatus.ERROR, UtilPlugin.getId(),
-					"Failure while restoring from backup", e);
+			return new Status(IStatus.ERROR, UtilPlugin.getId(), "Failure while restoring from backup", e);
 		} finally {
 			monitor.done();
 		}

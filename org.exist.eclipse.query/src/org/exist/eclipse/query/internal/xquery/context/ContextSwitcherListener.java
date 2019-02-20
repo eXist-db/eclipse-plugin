@@ -20,8 +20,7 @@ public class ContextSwitcherListener implements IConnectionListener {
 	@Override
 	public void added(IConnection connection) {
 		ContextSwitcher contextSwitcher = new ContextSwitcher(connection);
-		ContextSwitcherRegistration.getInstance().addContextSwitcher(
-				contextSwitcher);
+		ContextSwitcherRegistration.getInstance().addContextSwitcher(contextSwitcher);
 		ContextSwitcherContainer.getInstance().put(connection, contextSwitcher);
 	}
 
@@ -35,11 +34,9 @@ public class ContextSwitcherListener implements IConnectionListener {
 
 	@Override
 	public void removed(IConnection connection) {
-		ContextSwitcher contextSwitcher = ContextSwitcherContainer
-				.getInstance().getContextSwitcher(connection);
+		ContextSwitcher contextSwitcher = ContextSwitcherContainer.getInstance().getContextSwitcher(connection);
 		if (contextSwitcher != null) {
-			ContextSwitcherRegistration.getInstance().removeContextSwitcher(
-					contextSwitcher);
+			ContextSwitcherRegistration.getInstance().removeContextSwitcher(contextSwitcher);
 			ContextSwitcherContainer.getInstance().remove(connection);
 		}
 	}

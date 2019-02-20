@@ -27,8 +27,7 @@ public class BasePlugin extends AbstractUIPlugin {
 		super.start(context);
 		plugin = this;
 		IPath connectionPath = getStateLocation().append(CONNECTIONS_XML);
-		ConnectionBoxMemento memento = new ConnectionBoxMemento(connectionPath
-				.toFile().getAbsolutePath());
+		ConnectionBoxMemento memento = new ConnectionBoxMemento(connectionPath.toFile().getAbsolutePath());
 		ConnectionBox.getInstance().setMemento(memento);
 	}
 
@@ -39,8 +38,7 @@ public class BasePlugin extends AbstractUIPlugin {
 			connection.close();
 		}
 		IPath connectionPath = getStateLocation().append(CONNECTIONS_XML);
-		box.getMemento().writeStateAsXml(
-				connectionPath.toFile().getAbsolutePath());
+		box.getMemento().writeStateAsXml(connectionPath.toFile().getAbsolutePath());
 		plugin = null;
 		super.stop(context);
 	}
@@ -55,11 +53,10 @@ public class BasePlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns an image descriptor for the image file at the given plug-in
-	 * relative path
+	 * Returns an image descriptor for the image file at the given plug-in relative
+	 * path
 	 * 
-	 * @param path
-	 *            the path
+	 * @param path the path
 	 * @return the image descriptor
 	 */
 	public static ImageDescriptor getImageDescriptor(String path) {
@@ -77,7 +74,6 @@ public class BasePlugin extends AbstractUIPlugin {
 		if (s != null && message.equals(s.getMessage())) {
 			message = null;
 		}
-		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow()
-				.getShell(), title, message, s);
+		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow().getShell(), title, message, s);
 	}
 }

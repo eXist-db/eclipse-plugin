@@ -1,18 +1,21 @@
 package org.exist.eclipse.internal.wizards;
 
+import static org.exist.eclipse.internal.ConnectionLookup.availableVersions;
+import static org.exist.eclipse.internal.ConnectionLookup.createRemote;
+
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.internal.BasePlugin;
 import org.exist.eclipse.internal.ConnectionBox;
-import org.exist.eclipse.internal.RemoteConnection;
 
 /**
  * With this wizard you can add a new or change an existing remote connection.
@@ -27,20 +30,20 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	private static final String DEFAULT_URL = "xmldb:exist://localhost:8080/exist/xmlrpc";
 	private static final String DEFAULT_NAME = "localhost";
 
+	private boolean _copy;
+	private Combo _version;
 	private Text _name;
 	private Text _username;
 	private Text _password;
 	private Text _uri;
 	private IConnection _connection;
-	private boolean _copy;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
 	 */
 	public RemoteConnectionWizardPage() {
 		super("remoteconnectionwizardPage");
-		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(BasePlugin.getImageDescriptor("icons/existdb.png"));
 		_copy = true;
 	}
 
@@ -50,6 +53,17 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);
 		layout.numColumns = 3;
+
+		// version
+		Label versionLabel = new Label(container, SWT.NULL);
+		versionLabel.setText("&Version:");
+		_version = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		availableVersions().forEach(_version::add);
+		if (_connection != null) {
+			_version.setText(_connection.getVersion());
+		} else {
+//			_version.setText(DEFAULT_NAME);
+		}
 
 		// name
 		Label nameLabel = new Label(container, SWT.NULL);
@@ -93,6 +107,16 @@ public class RemoteConnectionWizardPage extends WizardPage {
 		}
 
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 2;
+		_version.setLayoutData(gd);
+		_version.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				dialogChanged();
+			}
+		});
+
+		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
@@ -138,8 +162,7 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	}
 
 	protected IConnection getConnection() {
-		return new RemoteConnection(getConnectionName(), getUserName(),
-				getPassword(), getUri());
+		return createRemote(getVersion(), getConnectionName(), getUserName(), getPassword(), getUri());
 	}
 
 	protected void setConnection(IConnection connection, boolean copy) {
@@ -150,6 +173,11 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	// //////////////////////////////////////////////////////////////////////////
 	// private methods
 	// //////////////////////////////////////////////////////////////////////////
+
+	private String getVersion() {
+		return _version.getText();
+	}
+
 	private String getConnectionName() {
 		return _name.getText().trim();
 	}
@@ -167,15 +195,14 @@ public class RemoteConnectionWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Ensures that all text fields are set. Enable and disable fields according
-	 * to the selection of the database type.
+	 * Ensures that all text fields are set. Enable and disable fields according to
+	 * the selection of the database type.
 	 */
 	private void dialogChanged() {
 		if (getConnectionName().length() == 0) {
 			setErrorState("Name must be specified");
 		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
-			if (!(!_copy && _connection != null && getConnectionName().equals(
-					_connection.getName()))) {
+			if (!(!_copy && _connection != null && getConnectionName().equals(_connection.getName()))) {
 				setErrorState("There exists a connection with the same name.");
 			} else {
 				setErrorState(null);

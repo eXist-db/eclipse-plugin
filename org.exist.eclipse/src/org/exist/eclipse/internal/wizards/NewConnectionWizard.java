@@ -28,8 +28,8 @@ public class NewConnectionWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the NewConnectionWizardPage.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the NewConnectionWizardPage.
 	 */
 	@Override
 	public boolean canFinish() {

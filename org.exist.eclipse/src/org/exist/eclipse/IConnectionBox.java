@@ -16,16 +16,14 @@ import org.exist.eclipse.listener.IConnectionListener;
 public interface IConnectionBox {
 	/**
 	 * Add a new listener. <br />
-	 * If there exists some connections in the box, then it will call the
-	 * methods
+	 * If there exists some connections in the box, then it will call the methods
 	 * <ul>
 	 * <li>{@link IConnectionListener#added(IConnection)}</li>
 	 * <li>{@link IConnectionListener#opened(IConnection)}</li>
 	 * </ul>
 	 * for all connections.
 	 * 
-	 * @param listener
-	 *            the new listener
+	 * @param listener the new listener
 	 */
 	public void addListener(IConnectionListener listener);
 

@@ -20,7 +20,7 @@ public class CreateDocumentListener implements IBrowseListener {
 
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
-		IBrowseService service = (IBrowseService) items[0]
+		IBrowseService service = items[0]
 				.getAdapter(IBrowseService.class);
 		if (service.check()) {
 			CreateDocumentWizard wizard = new CreateDocumentWizard(items[0]);

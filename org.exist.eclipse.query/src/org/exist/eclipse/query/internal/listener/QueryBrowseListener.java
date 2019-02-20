@@ -24,8 +24,7 @@ public class QueryBrowseListener implements IBrowseListener {
 
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
-		IBrowseService service = (IBrowseService) items[0]
-				.getAdapter(IBrowseService.class);
+		IBrowseService service = items[0].getAdapter(IBrowseService.class);
 		if (service.check()) {
 			ChangeItemNotifier.getInstance().change(items[0]);
 		}
@@ -38,10 +37,8 @@ public class QueryBrowseListener implements IBrowseListener {
 				page.showView(QueryView.ID);
 			} catch (PartInitException e) {
 				String message = "Error while show query view";
-				Status status = new Status(IStatus.ERROR, QueryPlugin.getId(),
-						message, e);
-				QueryPlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+				Status status = new Status(IStatus.ERROR, QueryPlugin.getId(), message, e);
+				QueryPlugin.getDefault().errorDialog(message, e.getMessage(), status);
 			}
 		}
 	}

@@ -25,9 +25,7 @@ public class DeleteCollectionListener implements IBrowseListener {
 
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
-		if (IManagementService.class.cast(
-				items[0].getConnection().getAdapter(IManagementService.class))
-				.check()) {
+		if (items[0].getConnection().getAdapter(IManagementService.class).check()) {
 			String msg;
 			if (items.length == 1) {
 				msg = "Delete collection '" + items[0].getPath() + "'?";
@@ -35,13 +33,11 @@ public class DeleteCollectionListener implements IBrowseListener {
 				msg = "Delete " + items.length + " collections?";
 			}
 			Shell shell = _page.getWorkbenchWindow().getShell();
-			boolean confirm = UiUtil
-					.openConfirm(shell, "Delete", msg, "Delete");
+			boolean confirm = UiUtil.openConfirm(shell, "Delete", msg, "Delete");
 			if (confirm) {
 				Collection<IBrowseItem> deleteItems = new ArrayList<>();
 				for (IBrowseItem item : items) {
-					IBrowseService service = IBrowseService.class.cast(item
-							.getAdapter(IBrowseService.class));
+					IBrowseService service = item.getAdapter(IBrowseService.class);
 					if (service.check()) {
 						deleteItems.add(item);
 					}
@@ -49,8 +45,7 @@ public class DeleteCollectionListener implements IBrowseListener {
 
 				if (deleteItems.size() > 0) {
 					DeleteCollectionJob job = new DeleteCollectionJob(
-							deleteItems.toArray(new IBrowseItem[deleteItems
-									.size()]));
+							deleteItems.toArray(new IBrowseItem[deleteItems.size()]));
 					job.setUser(true);
 					job.schedule();
 				}

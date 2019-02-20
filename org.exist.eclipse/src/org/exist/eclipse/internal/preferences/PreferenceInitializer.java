@@ -35,13 +35,11 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	/**
 	 * public configuration data
 	 * 
-	 * @param store -
-	 *            die PreferenceStore-instance
+	 * @param store - die PreferenceStore-instance
 	 */
 	protected void initializePublicPreferences(IPreferenceStore store) {
 		// encoding
-		store.setDefault(IExistPreferenceConstants.PREFS_ENCODING,
-				IExistPreferenceConstants.PREFS_ENCODING_DEFAULT);
+		store.setDefault(IExistPreferenceConstants.PREFS_ENCODING, IExistPreferenceConstants.PREFS_ENCODING_DEFAULT);
 
 	}
 

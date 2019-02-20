@@ -34,24 +34,14 @@ public class BackupJob extends Job {
 	protected IStatus run(IProgressMonitor monitor) {
 		monitor.beginTask("Backup", 1);
 		try {
-			Backup backup = new Backup(_item.getConnection().getUsername(),
-					_item.getConnection().getPassword(), _target, XmldbURI
-							.xmldbUriFor(_item.getConnection().getUri()
-									+ _item.getPath()));
-
+			Backup backup = new Backup(_item.getConnection().getUsername(), _item.getConnection().getPassword(),
+					_target, XmldbURI.xmldbUriFor(_item.getConnection().getUri() + _item.getPath()));
 			backup.backup(false, null);
-			Display.getDefault().asyncExec(new Runnable() {
-				@Override
-				public void run() {
-					MessageDialog.openInformation(new Shell(),
-							"Backup completed", "Backup for '"
-									+ _item.getPath() + "' to '" + _target
-									+ "' created");
-				}
-			});
+
+			Display.getDefault().asyncExec(() -> MessageDialog.openInformation(new Shell(), "Backup completed",
+					"Backup for '" + _item.getPath() + "' to '" + _target + "' created"));
 		} catch (Exception e) {
-			return new Status(IStatus.ERROR, UtilPlugin.getId(),
-					"Failure while creating backup", e);
+			return new Status(IStatus.ERROR, UtilPlugin.getId(), "Failure while creating backup", e);
 		} finally {
 			monitor.done();
 		}

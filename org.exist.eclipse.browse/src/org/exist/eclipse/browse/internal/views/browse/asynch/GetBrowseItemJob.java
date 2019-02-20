@@ -8,8 +8,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.progress.IElementCollector;
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.browse.IBrowseItem;
-import org.exist.xquery.util.URIUtils;
 
 /**
  * Job for getting child collections.

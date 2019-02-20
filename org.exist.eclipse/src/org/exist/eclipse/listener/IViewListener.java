@@ -17,8 +17,7 @@ public interface IViewListener {
 	/**
 	 * The method is called, if a connection is established.
 	 * 
-	 * @param page
-	 *            open your view with this page
+	 * @param page open your view with this page
 	 */
 	public void openView(IWorkbenchPage page);
 }

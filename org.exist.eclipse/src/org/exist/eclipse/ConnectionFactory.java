@@ -25,31 +25,27 @@ public class ConnectionFactory {
 	 * 
 	 * @param workbench
 	 */
-	public static void createConnection(IWorkbench workbench)
-			throws ConnectionException {
+	public static void createConnection(IWorkbench workbench) throws ConnectionException {
 		NewConnectionWizard wizard = new NewConnectionWizard();
 		wizard.init(workbench, null);
 		wizard.setForcePreviousAndNextButtons(true);
-		WizardDialog dialog = new WizardDialog(workbench.getDisplay()
-				.getActiveShell(), wizard);
+		WizardDialog dialog = new WizardDialog(workbench.getDisplay().getActiveShell(), wizard);
 		dialog.open();
 	}
 
-	public static void changeConnection(IWorkbench workbench,
-			IConnection connection, boolean copy) throws ConnectionException {
+	public static void changeConnection(IWorkbench workbench, IConnection connection, boolean copy)
+			throws ConnectionException {
 		if (connection.getType().equals(ConnectionEnum.remote)) {
 			RemoteConnectionWizard wizard = new RemoteConnectionWizard();
 			wizard.setConnection(connection, copy);
 			wizard.init(workbench, null);
-			WizardDialog dialog = new WizardDialog(workbench.getDisplay()
-					.getActiveShell(), wizard);
+			WizardDialog dialog = new WizardDialog(workbench.getDisplay().getActiveShell(), wizard);
 			dialog.open();
 		} else {
 			LocalConnectionWizard wizard = new LocalConnectionWizard();
 			wizard.setConnection(connection, copy);
 			wizard.init(workbench, null);
-			WizardDialog dialog = new WizardDialog(workbench.getDisplay()
-					.getActiveShell(), wizard);
+			WizardDialog dialog = new WizardDialog(workbench.getDisplay().getActiveShell(), wizard);
 			dialog.open();
 		}
 	}

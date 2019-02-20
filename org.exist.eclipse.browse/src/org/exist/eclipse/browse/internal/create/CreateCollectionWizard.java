@@ -46,9 +46,8 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the
-	 * {@link EnterCollectionWizardPage}.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the {@link EnterCollectionWizardPage}.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -56,31 +55,23 @@ public class CreateCollectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
-		if (IManagementService.class.cast(
-				_item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
+		if (_item.getConnection().getAdapter(IManagementService.class).check()) {
 			if (_itemService.check()) {
-				IBrowseItem child = _item.getChild(_enterCollectionPage
-						.getName());
+				IBrowseItem child = _item.getChild(_enterCollectionPage.getName());
 				try {
-					IBrowseService childService = (IBrowseService) child
-							.getAdapter(IBrowseService.class);
+					IBrowseService childService = child.getAdapter(IBrowseService.class);
 					childService.create();
 					// _itemService.refresh();
 				} catch (ConnectionException e) {
 					isFinished = false;
 					String message = "Failure while create collection.";
-					BrowsePlugin
-							.getDefault()
-							.getLog()
-							.log(new Status(IStatus.ERROR,
-									BrowsePlugin.getId(), message, e));
+					BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e));
 					_enterCollectionPage.setErrorMessage(message);
 				}
 			}

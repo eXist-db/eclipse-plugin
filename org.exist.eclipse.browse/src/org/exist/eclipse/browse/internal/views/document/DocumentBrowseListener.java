@@ -26,7 +26,7 @@ public class DocumentBrowseListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		if (_view != null) {
-			IBrowseService service = (IBrowseService) items[0]
+			IBrowseService service = items[0]
 					.getAdapter(IBrowseService.class);
 			if (service.check()) {
 				_view.setItem(items[0]);

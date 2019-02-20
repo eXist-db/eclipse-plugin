@@ -26,8 +26,7 @@ import org.exist.eclipse.query.internal.item.IChangeItemListener;
  * @author Markus Tanner
  * @uml.dependency supplier="org.exist.eclipse.query.internal.control.IQueryInit"
  */
-public class TopContainer extends Composite implements IChangeItemListener,
-		IConnectionListener, IBrowseItemListener {
+public class TopContainer extends Composite implements IChangeItemListener, IConnectionListener, IBrowseItemListener {
 
 	private Text _contextSelection;
 	private Button _execQueryButton;
@@ -141,8 +140,8 @@ public class TopContainer extends Composite implements IChangeItemListener,
 	// /////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * This method puts together the context composite of the view. The
-	 * mentioned composite consists of a Combo, a Button and a Label.
+	 * This method puts together the context composite of the view. The mentioned
+	 * composite consists of a Combo, a Button and a Label.
 	 * 
 	 * @param contextContainer
 	 */
@@ -154,8 +153,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		_contextSelection.setEditable(false);
 		_contextSelection.setEnabled(false);
 		if (_item != null) {
-			_contextSelection.setText(_item.getPath() + " ("
-					+ _item.getConnection().getName() + ")");
+			_contextSelection.setText(_item.getPath() + " (" + _item.getConnection().getName() + ")");
 		} else {
 			_contextSelection.setText(_noContextSelected);
 		}
@@ -177,8 +175,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		_querySpinner.setSelection(100);
 
 		// button control - query execution
-		_execQueryButton = new Button(contextContainer, SWT.Activate
-				| SWT.CENTER);
+		_execQueryButton = new Button(contextContainer, SWT.Activate | SWT.CENTER);
 		_execQueryButton.setText("Submit Query");
 		gd = new GridData();
 		gd.horizontalSpan = 1;
@@ -200,8 +197,7 @@ public class TopContainer extends Composite implements IChangeItemListener,
 		_querySpinnerLabel.setEnabled(_item != null);
 
 		if (_item != null) {
-			_contextSelection.setText(_item.getPath() + " ("
-					+ _item.getConnection().getName() + ")");
+			_contextSelection.setText(_item.getPath() + " (" + _item.getConnection().getName() + ")");
 		} else {
 			_contextSelection.setText(_noContextSelected);
 		}

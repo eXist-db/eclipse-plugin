@@ -20,15 +20,13 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * preferences can be accessed directly via the preference store.
  */
 
-public class ExistPluginPreferencePage extends FieldEditorPreferencePage
-		implements IWorkbenchPreferencePage {
+public class ExistPluginPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	/**
 	 * Subclass of StringFieldEditor, which checks whether the input is valid.
 	 */
 	public class UserSuffixFieldEditor extends StringFieldEditor {
-		public UserSuffixFieldEditor(String name, String labelText,
-				Composite parent) {
+		public UserSuffixFieldEditor(String name, String labelText, Composite parent) {
 			super(name, labelText, 15, parent);
 		}
 
@@ -73,8 +71,7 @@ public class ExistPluginPreferencePage extends FieldEditorPreferencePage
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		workbench.getHelpSystem().setHelp(getControl(),
-				getPreferenceHelpContextID());
+		workbench.getHelpSystem().setHelp(getControl(), getPreferenceHelpContextID());
 	}
 
 	/**
@@ -99,10 +96,8 @@ public class ExistPluginPreferencePage extends FieldEditorPreferencePage
 			encoding[1] = charsetName;
 			counter++;
 		}
-		ComboFieldEditor comboFieldEditor = new ComboFieldEditor(
-				IExistPreferenceConstants.PREFS_ENCODING,
-				IExistPreferenceConstants.PREFS_ENCODING_LABEL, encodings,
-				composite);
+		ComboFieldEditor comboFieldEditor = new ComboFieldEditor(IExistPreferenceConstants.PREFS_ENCODING,
+				IExistPreferenceConstants.PREFS_ENCODING_LABEL, encodings, composite);
 		addField(comboFieldEditor);
 		comboFieldEditor.loadDefault();
 

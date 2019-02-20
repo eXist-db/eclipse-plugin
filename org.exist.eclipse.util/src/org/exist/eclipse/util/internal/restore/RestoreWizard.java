@@ -1,3 +1,4 @@
+
 package org.exist.eclipse.util.internal.restore;
 
 import org.eclipse.jface.viewers.ISelection;
@@ -27,7 +28,7 @@ public class RestoreWizard extends Wizard implements IWorkbenchWizard {
 	public RestoreWizard(IBrowseItem item) {
 		super();
 		_item = item;
-		_itemService = (IBrowseService) _item.getAdapter(IBrowseService.class);
+		_itemService = _item.getAdapter(IBrowseService.class);
 		this.setWindowTitle("Restore from backup");
 		setNeedsProgressMonitor(true);
 	}
@@ -47,8 +48,8 @@ public class RestoreWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link BackupTargetWizardPage}.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the {@link BackupTargetWizardPage}.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -56,20 +57,16 @@ public class RestoreWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 
-		if (IManagementService.class.cast(
-				_item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
-			if (IBrowseService.class.cast(
-					_item.getAdapter(IBrowseService.class)).check()) {
-				_job = new RestoreJob(_item, _backupLocationPage
-						.getBackupLocation());
+		if (_item.getConnection().getAdapter(IManagementService.class).check()) {
+			if (IBrowseService.class.cast(_item.getAdapter(IBrowseService.class)).check()) {
+				_job = new RestoreJob(_item, _backupLocationPage.getBackupLocation());
 				_job.setUser(true);
 				_job.schedule();
 			}

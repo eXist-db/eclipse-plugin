@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package org.exist.eclipse.query.internal.xquery.context;
 
 import org.eclipse.swt.widgets.Display;
@@ -46,19 +47,12 @@ public class ContextSwitcher implements IContextSwitcher {
 	}
 
 	public IConnectionContext getConnectionContext(final IBrowseItem item) {
-		Display.getDefault().asyncExec(new Runnable() {
-			@Override
-			public void run() {
-				if (item != null) {
-					_functionJob = new GetFunctionJob(BrowseHelper
-							.getRootBrowseItem(_connection));
-					_functionJob.schedule();
-					IManagementService.class.cast(
-							item.getConnection().getAdapter(
-									IManagementService.class)).check();
-					IBrowseService.class.cast(
-							item.getAdapter(IBrowseService.class)).check();
-				}
+		Display.getDefault().asyncExec(() -> {
+			if (item != null) {
+				_functionJob = new GetFunctionJob(BrowseHelper.getRootBrowseItem(_connection));
+				_functionJob.schedule();
+				item.getConnection().getAdapter(IManagementService.class).check();
+				item.getAdapter(IBrowseService.class).check();
 			}
 		});
 		return new ConnectionContext(item, _functionJob);
@@ -68,8 +62,7 @@ public class ContextSwitcher implements IContextSwitcher {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((_connection == null) ? 0 : _connection.hashCode());
+		result = prime * result + ((_connection == null) ? 0 : _connection.hashCode());
 		return result;
 	}
 

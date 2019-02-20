@@ -37,8 +37,7 @@ public class BackupLocationWizardPage extends WizardPage {
 		super("backuplocationwizardpage");
 		setTitle("Restore from backup");
 		setDescription("Enter the location of the backup you want to restore from. (__contents__.xml)");
-		setImageDescriptor(UtilPlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(UtilPlugin.getImageDescriptor("icons/existdb.png"));
 		_selection = selection;
 	}
 
@@ -108,8 +107,7 @@ public class BackupLocationWizardPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);
@@ -138,8 +136,7 @@ public class BackupLocationWizardPage extends WizardPage {
 	 * Tests if the current workbench selection is a suitable container to use.
 	 */
 	private void initialize() {
-		if (_selection != null && _selection.isEmpty() == false
-				&& _selection instanceof IStructuredSelection) {
+		if (_selection != null && _selection.isEmpty() == false && _selection instanceof IStructuredSelection) {
 			IStructuredSelection ssel = (IStructuredSelection) _selection;
 			if (ssel.size() > 1)
 				return;
@@ -147,9 +144,9 @@ public class BackupLocationWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Opens a FileDialog so that the backup location can be defined. Returns
-	 * the path of the backup location. The return-value is empty in case the
-	 * selection is not valid.
+	 * Opens a FileDialog so that the backup location can be defined. Returns the
+	 * path of the backup location. The return-value is empty in case the selection
+	 * is not valid.
 	 * 
 	 * The returned value either needs to point to a __contents__.xml file.
 	 * 

@@ -34,28 +34,22 @@ public class ActionDocumentListener extends Action {
 	@Override
 	public void run() {
 
-		Object[] sel = ((IStructuredSelection) _view.getViewer().getSelection())
-				.toArray();
+		Object[] sel = ((IStructuredSelection) _view.getViewer().getSelection()).toArray();
 		if (sel.length > 0) {
 			IDocumentItem first = (IDocumentItem) sel[0];
 
 			// assume that others are also valid if first check succeed
-			IBrowseService browseService = (IBrowseService) first.getParent()
-					.getAdapter(IBrowseService.class);
-			IDocumentService documentService = (IDocumentService) first
-					.getAdapter(IDocumentService.class);
-			if (IManagementService.class.cast(
-					first.getParent().getConnection().getAdapter(
-							IManagementService.class)).check()
-					&& browseService.check() && documentService.check()) {
+			IBrowseService browseService = first.getParent().getAdapter(IBrowseService.class);
+			IDocumentService documentService = first.getAdapter(IDocumentService.class);
+			if (first.getParent().getConnection().getAdapter(IManagementService.class).check() && browseService.check()
+					&& documentService.check()) {
 				_listener.init(_view.getSite().getPage());
 
 				List<IDocumentItem> all = new ArrayList<>();
 				for (Object it : sel) {
 					all.add((IDocumentItem) it);
 				}
-				_listener.actionPerformed(all.toArray(new IDocumentItem[all
-						.size()]));
+				_listener.actionPerformed(all.toArray(new IDocumentItem[all.size()]));
 			}
 		}
 	}

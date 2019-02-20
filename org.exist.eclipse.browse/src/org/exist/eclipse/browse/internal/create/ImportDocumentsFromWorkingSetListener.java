@@ -50,7 +50,7 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
-		IBrowseService service = (IBrowseService) browseItem
+		IBrowseService service = browseItem
 				.getAdapter(IBrowseService.class);
 		if (service.check()) {
 
@@ -125,15 +125,15 @@ public class ImportDocumentsFromWorkingSetListener implements IBrowseListener {
 			List<IFile> result = new ArrayList<>();
 			for (IWorkingSet set : sets) {
 				for (IAdaptable elem : set.getElements()) {
-					IFile file = (IFile) elem.getAdapter(IFile.class);
+					IFile file = elem.getAdapter(IFile.class);
 					if (file != null) {
 						result.add(file);
 					} else {
-						IFolder folder = (IFolder) elem
+						IFolder folder = elem
 								.getAdapter(IFolder.class);
 						if (folder != null) {
 							for (IResource m : folder.members()) {
-								file = (IFile) m.getAdapter(IFile.class);
+								file = m.getAdapter(IFile.class);
 								if (file != null) {
 									result.add(file);
 								}

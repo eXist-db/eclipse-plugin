@@ -31,19 +31,14 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 	/**
 	 * Constructor for SampleNewWizardPage.
 	 * 
-	 * @param aWorkbench
-	 *            the workbench instance
-	 * @param currentSelection
-	 *            the current selection
+	 * @param aWorkbench       the workbench instance
+	 * @param currentSelection the current selection
 	 */
-	public ConnectionTypeWizardPage(IWorkbench aWorkbench,
-			IStructuredSelection currentSelection) {
-		super("connectiontypewizardpage", aWorkbench, currentSelection, null,
-				null);
+	public ConnectionTypeWizardPage(IWorkbench aWorkbench, IStructuredSelection currentSelection) {
+		super("connectiontypewizardpage", aWorkbench, currentSelection, null, null);
 		setTitle(NewConnectionWizard.WIZARD_TITLE);
 		setDescription("Select the type of the connection");
-		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(BasePlugin.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**
@@ -64,8 +59,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 			String typeName = type.name();
 
 			// ui elements should start with an uppercase letter
-			typeName = Character.toUpperCase(typeName.charAt(0))
-					+ typeName.substring(1);
+			typeName = Character.toUpperCase(typeName.charAt(0)) + typeName.substring(1);
 
 			button.setText(typeName);
 			button.setData(ConnectionEnum.class.toString(), type);
@@ -77,8 +71,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					_type = (ConnectionEnum) e.widget
-							.getData(ConnectionEnum.class.toString());
+					_type = (ConnectionEnum) e.widget.getData(ConnectionEnum.class.toString());
 					setErrorMessage(null);
 					setPageComplete(true);
 					updateSelectedNode();
@@ -102,9 +95,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		setErrorMessage(null);
 		IWizardDescriptor element = null;
 		if (ConnectionEnum.remote.equals(getType())) {
-			element = WorkbenchPlugin
-					.getDefault()
-					.getNewWizardRegistry()
+			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 					.findWizard(RemoteConnectionWizard.class.getCanonicalName());
 		} else if (ConnectionEnum.local.equals(getType())) {
 			element = WorkbenchPlugin.getDefault().getNewWizardRegistry()

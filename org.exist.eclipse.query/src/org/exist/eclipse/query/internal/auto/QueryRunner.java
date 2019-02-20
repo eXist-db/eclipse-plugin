@@ -52,17 +52,14 @@ public class QueryRunner implements IQueryRunner {
 		XQueryService service;
 		ResourceSet resourceSet = null;
 		try {
-			IBrowseItem item = BrowseHelper.getBrowseItem(_connection, result
-					.getQuery().getCollection());
+			IBrowseItem item = BrowseHelper.getBrowseItem(_connection, result.getQuery().getCollection());
 
 			long tCompiled = 0;
-			service = (XQueryService) item.getCollection().getService(
-					"XQueryService", "1.0");
+			service = (XQueryService) item.getCollection().getService("XQueryService", "1.0");
 			service.setProperty(OutputKeys.INDENT, "yes");
 
 			long t0 = System.nanoTime();
-			CompiledExpression compiled = service.compile(result.getQuery()
-					.getQuery());
+			CompiledExpression compiled = service.compile(result.getQuery().getQuery());
 			long t1 = System.nanoTime();
 			tCompiled = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
 			resourceSet = service.execute(compiled);
@@ -74,8 +71,7 @@ public class QueryRunner implements IQueryRunner {
 
 		} catch (Exception e) {
 			String message = "Error while run query";
-			Status status = new Status(IStatus.ERROR, QueryPlugin.getId(),
-					message, e);
+			Status status = new Status(IStatus.ERROR, QueryPlugin.getId(), message, e);
 			QueryPlugin.getDefault().getLog().log(status);
 			// QueryPlugin.getDefault().errorDialog(message, e.getMessage(),
 			// status);

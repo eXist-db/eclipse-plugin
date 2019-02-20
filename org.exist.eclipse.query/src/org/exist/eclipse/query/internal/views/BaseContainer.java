@@ -21,10 +21,8 @@ import org.exist.eclipse.query.internal.proc.QueryProcessor;
  * This class puts the query view together.
  * 
  * @author Markus Tanner
- * @uml.dependency 
- *                 supplier="org.exist.eclipse.query.internal.views.TopContainer"
- * @uml.dependency 
- *                 supplier="org.exist.eclipse.query.internal.views.BodyContainer"
+ * @uml.dependency supplier="org.exist.eclipse.query.internal.views.TopContainer"
+ * @uml.dependency supplier="org.exist.eclipse.query.internal.views.BodyContainer"
  */
 public class BaseContainer implements IQueryInit {
 
@@ -56,8 +54,8 @@ public class BaseContainer implements IQueryInit {
 	}
 
 	/**
-	 * This method puts the assembles the query view. There are 4 composite
-	 * parts that represent the query view:
+	 * This method puts the assembles the query view. There are 4 composite parts
+	 * that represent the query view:
 	 * 
 	 * base composite top composite body composite bottom composite
 	 * 
@@ -76,8 +74,7 @@ public class BaseContainer implements IQueryInit {
 		_topContainer.init();
 
 		// body composite
-		_bodyContainer = new BodyContainer(baseContainer, SWT.NULL, _queryView,
-				this);
+		_bodyContainer = new BodyContainer(baseContainer, SWT.NULL, _queryView, this);
 		_bodyContainer.init();
 
 		// bottom composite
@@ -100,19 +97,15 @@ public class BaseContainer implements IQueryInit {
 		int maxDisplay = _topContainer.getMaxDisplay();
 		String query = _bodyContainer.getQueryInput();
 		if (query.length() < 1) {
-			QueryPlugin.getDefault().infoDialog("eXist",
-					"Don't forget to enter a query!");
+			QueryPlugin.getDefault().infoDialog("eXist", "Don't forget to enter a query!");
 		} else {
-			IQueryProcessor queryProcessor = new QueryProcessor(item, query,
-					maxDisplay);
+			IQueryProcessor queryProcessor = new QueryProcessor(item, query, maxDisplay);
 			try {
 				queryProcessor.runQuery();
 			} catch (ConnectionException e) {
 				String message = "Error while running query";
-				Status status = new Status(IStatus.ERROR, QueryPlugin.getId(),
-						message, e);
-				QueryPlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+				Status status = new Status(IStatus.ERROR, QueryPlugin.getId(), message, e);
+				QueryPlugin.getDefault().errorDialog(message, e.getMessage(), status);
 			}
 		}
 	}

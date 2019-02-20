@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="4.10"?>
 <plugin>
+   <extension-point id="org.exist.eclipse" name="ConnectionProvider" schema="schema/org.exist.eclipse.exsd"/>
    <extension
          name="New Connection Wizard"
          point="org.eclipse.ui.newWizards">

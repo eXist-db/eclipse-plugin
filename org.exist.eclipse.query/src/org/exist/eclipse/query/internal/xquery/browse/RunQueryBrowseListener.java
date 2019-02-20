@@ -24,8 +24,7 @@ public class RunQueryBrowseListener implements IBrowseListener {
 		IXQueryEditor editor = XQueryUI.getDefault().getActiveXQueryEditor();
 		if (editor != null) {
 			IBrowseItem item = items[0];
-			ContextSwitcher switcher = ContextSwitcherContainer
-					.getInstance().getContextSwitcher(item.getConnection());
+			ContextSwitcher switcher = ContextSwitcherContainer.getInstance().getContextSwitcher(item.getConnection());
 			editor.setConnectionContext(switcher.getConnectionContext(item));
 		}
 	}

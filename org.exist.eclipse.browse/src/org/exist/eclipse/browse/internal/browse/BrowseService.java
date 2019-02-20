@@ -8,12 +8,12 @@ import java.util.TreeSet;
 
 import org.eclipse.swt.widgets.Display;
 import org.exist.eclipse.IManagementService;
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.browse.BrowseCoordinator;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.exception.ConnectionException;
-import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.XMLDBException;
 
 /**
@@ -33,10 +33,8 @@ public class BrowseService implements IBrowseService {
 	public boolean check() {
 		boolean isOk = _item.exists();
 		if (!isOk) {
-			if (IBrowseService.class.cast(
-					_item.getParent().getAdapter(IBrowseService.class)).check()) {
-				String message = "The collection '" + _item.getPath()
-						+ "' does not exist.";
+			if (IBrowseService.class.cast(_item.getParent().getAdapter(IBrowseService.class)).check()) {
+				String message = "The collection '" + _item.getPath() + "' does not exist.";
 				BrowsePlugin.getDefault().infoDialog("eXist", message);
 				fireRemoved();
 			}
@@ -47,15 +45,12 @@ public class BrowseService implements IBrowseService {
 	@Override
 	public void create() throws ConnectionException {
 		if (!_item.getParent().exists()) {
-			IBrowseService service = (IBrowseService) _item.getParent()
-					.getAdapter(IBrowseService.class);
+			IBrowseService service = _item.getParent().getAdapter(IBrowseService.class);
 			service.create();
 		}
 		// create this collection
-		IManagementService service = IManagementService.class.cast(_item
-				.getConnection().getAdapter(IManagementService.class));
-		service.createCollection(_item.getParent().getCollection(), _item
-				.getName());
+		IManagementService service = _item.getConnection().getAdapter(IManagementService.class);
+		service.createCollection(_item.getParent().getCollection(), _item.getName());
 
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
@@ -67,8 +62,7 @@ public class BrowseService implements IBrowseService {
 
 	@Override
 	public void delete() throws ConnectionException {
-		IManagementService service = IManagementService.class.cast(_item
-				.getConnection().getAdapter(IManagementService.class));
+		IManagementService service = _item.getConnection().getAdapter(IManagementService.class);
 		service.removeCollection(_item.getCollection());
 		fireRemoved();
 	}
@@ -84,21 +78,19 @@ public class BrowseService implements IBrowseService {
 	}
 
 	@Override
-	public Set<IBrowseItem> getChildren(boolean self, boolean recursive)
-			throws ConnectionException {
+	public Set<IBrowseItem> getChildren(boolean self, boolean recursive) throws ConnectionException {
 		Set<IBrowseItem> result = new TreeSet<>();
 		if (self) {
 			result.add(_item);
 		}
 		String[] children;
-		try {			
+		try {
 			children = _item.getCollection().listChildCollections();
 			for (String child : children) {
 				IBrowseItem childItem = _item.getChild(URIUtils.urlDecodeUtf8(child));
 				result.add(childItem);
 				if (recursive) {
-					Set<IBrowseItem> childResult = IBrowseService.class.cast(
-							childItem.getAdapter(IBrowseService.class))
+					Set<IBrowseItem> childResult = IBrowseService.class.cast(childItem.getAdapter(IBrowseService.class))
 							.getChildren(false, recursive);
 					result.addAll(childResult);
 				}
@@ -113,22 +105,17 @@ public class BrowseService implements IBrowseService {
 	public boolean move(IBrowseItem item) throws ConnectionException {
 		boolean value = false;
 		if (_item.exists() && !item.exists()) {
-			IManagementService service = (IManagementService) _item
-					.getConnection().getAdapter(IManagementService.class);
-
+			IManagementService service = _item.getConnection().getAdapter(IManagementService.class);
 			IBrowseItem renamedItem = _item;
-
 			// firstly, rename the collection if necessary
 			if (!_item.getName().equals(item.getName())) {
 				renamedItem = _item.getParent().getChild(item.getName());
 				service.rename(_item.getPath(), renamedItem.getName());
 			}
-
 			// secondary, move the collection if necessary
 			if (!renamedItem.getParent().equals(item.getParent())) {
 				service.move(renamedItem.getPath(), item.getParent().getPath());
 			}
-
 			// Inform listener about the move
 			BrowseCoordinator.getInstance().moved(_item, item);
 		}
@@ -143,8 +130,7 @@ public class BrowseService implements IBrowseService {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				BrowseCoordinator.getInstance().removed(
-						new IBrowseItem[] { _item });
+				BrowseCoordinator.getInstance().removed(new IBrowseItem[] { _item });
 			}
 		});
 	}

@@ -39,22 +39,18 @@ public class DeleteCollectionJob extends Job {
 		try {
 			for (IBrowseItem item : _items) {
 				setName("Delete '" + item + "'");
-				IManagementService service = IManagementService.class.cast(item
-						.getConnection().getAdapter(IManagementService.class));
+				IManagementService service = item.getConnection().getAdapter(IManagementService.class);
 				service.removeCollection(item.getCollection());
 				removedItems.add(item);
 				monitor.worked(1);
 			}
 		} catch (ConnectionException e) {
-			return new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					"Error while deleting collections", e);
+			return new Status(IStatus.ERROR, BrowsePlugin.getId(), "Error while deleting collections", e);
 		} finally {
 			Display.getDefault().asyncExec(new Runnable() {
 				@Override
 				public void run() {
-					BrowseCoordinator.getInstance().removed(
-							removedItems.toArray(new IBrowseItem[removedItems
-									.size()]));
+					BrowseCoordinator.getInstance().removed(removedItems.toArray(new IBrowseItem[removedItems.size()]));
 				}
 			});
 		}

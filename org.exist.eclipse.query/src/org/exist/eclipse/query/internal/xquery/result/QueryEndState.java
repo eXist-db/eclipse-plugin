@@ -18,8 +18,7 @@ public class QueryEndState implements IQueryEndState {
 	private final Exception _exception;
 	private final State _state;
 
-	public QueryEndState(long foundedItems, long compiledTime,
-			long executionTime) {
+	public QueryEndState(long foundedItems, long compiledTime, long executionTime) {
 		this(State.OK, foundedItems, compiledTime, executionTime, null);
 	}
 
@@ -27,8 +26,7 @@ public class QueryEndState implements IQueryEndState {
 		this(State.ERROR, 0, compiledTime, 0, exception);
 	}
 
-	private QueryEndState(State state, long foundedItems,
-			long compiledTime, long executionTime, Exception exception) {
+	private QueryEndState(State state, long foundedItems, long compiledTime, long executionTime, Exception exception) {
 		_state = state;
 		_foundedItems = foundedItems;
 		_compiledTime = compiledTime;

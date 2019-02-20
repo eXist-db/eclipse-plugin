@@ -6,7 +6,6 @@ package org.exist.eclipse.browse.internal.browse;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
-import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.internal.document.DocumentItem;
 import org.exist.eclipse.exception.ConnectionException;
@@ -74,8 +73,7 @@ public class BrowseItem implements IBrowseItem {
 	@Override
 	public final Collection getCollection() throws ConnectionException {
 		if (_collection == null) {
-			IManagementService service = IManagementService.class
-					.cast(_connection.getAdapter(IManagementService.class));
+			IManagementService service = _connection.getAdapter(IManagementService.class);
 			_collection = service.getCollection(getPath());
 		}
 		return _collection;
@@ -172,9 +170,9 @@ public class BrowseItem implements IBrowseItem {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter.getName().equals(IBrowseService.class.getName())) {
-			return new BrowseService(this);
+	public <A> A getAdapter(Class<A> adapter) {
+		if (adapter.isAssignableFrom(BrowseService.class)) {
+			return adapter.cast(new BrowseService(this));
 		}
 		return null;
 	}

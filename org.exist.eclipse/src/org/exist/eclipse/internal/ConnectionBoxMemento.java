@@ -3,17 +3,25 @@
  */
 package org.exist.eclipse.internal;
 
+import static org.exist.eclipse.internal.ConnectionLookup.createLocal;
+import static org.exist.eclipse.internal.ConnectionLookup.createRemote;
+
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
+
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.exist.eclipse.IConnection;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.XMLOutputter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  * Memento implementation for {@link ConnectionBox}.
@@ -28,6 +36,7 @@ public class ConnectionBoxMemento implements Serializable {
 	private static final String USERNAME = "username";
 	private static final String NAME = "name";
 	private static final String TYPE = "type";
+	private static final String VERSION = "version";
 	private static final long serialVersionUID = 7451211731519576573L;
 	private final Collection<IConnection> _connections;
 
@@ -36,43 +45,34 @@ public class ConnectionBoxMemento implements Serializable {
 	}
 
 	/**
-	 * Create a memento with the given <code>filepath</code>. The file must be
-	 * the connection xml.
+	 * Create a memento with the given <code>filepath</code>. The file must be the
+	 * connection xml.
 	 * 
 	 * @param filepath
 	 */
 	public ConnectionBoxMemento(String filepath) {
 		_connections = new ArrayList<>();
-		Document doc;
 		try {
-			doc = new SAXBuilder().build(filepath);
-			Element connections = doc.getRootElement();
-			Iterator<?> it = connections.getChildren(CONNECTION).iterator();
-			while (it.hasNext()) {
-				Element connection = (Element) it.next();
-				try {
-					String type = connection.getAttributeValue(TYPE);
-					String name = connection.getAttributeValue(NAME);
-					String username = connection.getAttributeValue(USERNAME);
-					String password = connection.getAttributeValue(PASSWORD);
-					String uri = connection.getAttributeValue(URI);
-					if (type != null && name != null && username != null
-							&& password != null && uri != null) {
-						if (ConnectionEnum.valueOf(type).equals(
-								ConnectionEnum.local)) {
-							_connections.add(new LocalConnection(name,
-									username, password, uri));
-						} else if (ConnectionEnum.valueOf(type).equals(
-								ConnectionEnum.remote)) {
-							_connections.add(new RemoteConnection(name,
-									username, password, uri));
-						}
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filepath);
+			Element connections = (Element) doc.getDocumentElement().getFirstChild();
+			NodeList childNodes = connections.getElementsByTagName(CONNECTION);
+			for (int index = 0, total = childNodes.getLength(); index < total; index++) {
+				Element connection = (Element) childNodes.item(index);
+				String type = connection.getAttribute(TYPE);
+				String name = connection.getAttribute(NAME);
+				String username = connection.getAttribute(USERNAME);
+				String password = connection.getAttribute(PASSWORD);
+				String uri = connection.getAttribute(URI);
+				String version = connection.getAttribute(VERSION);
+				if (type != null && name != null && username != null && password != null && uri != null) {
+					if (ConnectionEnum.valueOf(type).equals(ConnectionEnum.local)) {
+						_connections.add(createLocal(version, name, username, password, uri));
+					} else if (ConnectionEnum.valueOf(type).equals(ConnectionEnum.remote)) {
+						_connections.add(createRemote(version, name, username, password, uri));
 					}
-				} catch (Exception e) {
-					// do nothing, try the next element
 				}
 			}
-		} catch (Exception e1) {
+		} catch (Exception e) {
 			// do nothing
 		}
 	}
@@ -87,23 +87,26 @@ public class ConnectionBoxMemento implements Serializable {
 	 * @param filepath
 	 */
 	public void writeStateAsXml(String filepath) {
-		Element connections = new Element(CONNECTIONS);
-		connections.removeChildren(CONNECTION);
-		for (IConnection connection : _connections) {
-			Element element = new Element(CONNECTION);
-			element.setAttribute(TYPE, connection.getType().name());
-			element.setAttribute(NAME, connection.getName());
-			element.setAttribute(USERNAME, connection.getUsername());
-			element.setAttribute(PASSWORD, connection.getPassword());
-			element.setAttribute(URI, connection.getPath());
-			connections.addContent(element);
-		}
-		Document document = new Document(connections);
-		XMLOutputter outp = new XMLOutputter();
-		try (FileOutputStream out = new FileOutputStream(filepath)) {
-			outp.output(document, out);
-		} catch (Exception e1) {
-			// do nothing
+		try {
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+			Element connections = (Element) doc.getDocumentElement().appendChild(doc.createElement(CONNECTIONS));
+			for (IConnection connection : _connections) {
+				Element connectionElement = doc.createElement(CONNECTION);
+				connectionElement.setAttribute(TYPE, connection.getType().name());
+				connectionElement.setAttribute(NAME, connection.getName());
+				connectionElement.setAttribute(USERNAME, connection.getUsername());
+				connectionElement.setAttribute(PASSWORD, connection.getPassword());
+				connectionElement.setAttribute(URI, connection.getPath());
+				connectionElement.setAttribute(VERSION, connection.getVersion());
+				connections.appendChild(connectionElement);
+			}
+			try (FileOutputStream out = new FileOutputStream(filepath)) {
+				TransformerFactory factory = TransformerFactory.newInstance();
+				factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+				Transformer transformer = factory.newTransformer();
+				transformer.transform(new DOMSource(doc), new StreamResult(out));
+			}
+		} catch (Exception e) {
 		}
 	}
 }

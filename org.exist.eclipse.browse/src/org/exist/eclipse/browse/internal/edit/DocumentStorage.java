@@ -50,34 +50,25 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 			InputStream is = null;
 			try {
 				Resource resource = _item.getResource();
-				if (resource.getResourceType()
-						.equals(XMLResource.RESOURCE_TYPE)) {
+				if (resource.getResourceType().equals(XMLResource.RESOURCE_TYPE)) {
 					String content = String.class.cast(resource.getContent());
-					is = new ByteArrayInputStream(content.getBytes(_encoding
-							.name()));
+					is = new ByteArrayInputStream(content.getBytes(_encoding.name()));
 				} else {
-					String content = new String(byte[].class.cast(resource
-							.getContent()), _encoding.name());
-					is = new ByteArrayInputStream(content.getBytes(_encoding
-							.name()));
+					String content = new String(byte[].class.cast(resource.getContent()), _encoding.name());
+					is = new ByteArrayInputStream(content.getBytes(_encoding.name()));
 				}
 			} catch (UnsupportedEncodingException e) {
-				StringBuilder message = new StringBuilder(50)
-						.append("Error while encode resource '").append(_item)
+				StringBuilder message = new StringBuilder(50).append("Error while encode resource '").append(_item)
 						.append("' with '").append(_encoding).append('\'');
-				throw new CoreException(new Status(IStatus.ERROR,
-						BrowsePlugin.getId(), message.toString(), e));
+				throw new CoreException(new Status(IStatus.ERROR, BrowsePlugin.getId(), message.toString(), e));
 			} catch (Exception e) {
-				StringBuilder message = new StringBuilder(50)
-						.append("Error while loading resource '")
+				StringBuilder message = new StringBuilder(50).append("Error while loading resource '")
 						.append(_item.getName()).append('\'');
-				throw new CoreException(new Status(IStatus.ERROR,
-						BrowsePlugin.getId(), message.toString(), e));
+				throw new CoreException(new Status(IStatus.ERROR, BrowsePlugin.getId(), message.toString(), e));
 			}
 			return is;
 		} else {
-			throw new CoreException(new Status(IStatus.ERROR,
-					BrowsePlugin.getId(), " Error while getting contents."));
+			throw new CoreException(new Status(IStatus.ERROR, BrowsePlugin.getId(), " Error while getting contents."));
 		}
 	}
 
@@ -91,13 +82,12 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 
 	@Override
 	public String getName() {
-		return _item.getName() + " ("
-				+ _item.getParent().getConnection().getName() + ")";
+		return _item.getName() + " (" + _item.getParent().getConnection().getName() + ")";
 	}
 
 	public String getToolTipText() {
-		return _item.getParent().getPath() + "/" + _item.getName() + " ("
-				+ _item.getParent().getConnection().getName() + ")";
+		return _item.getParent().getPath() + "/" + _item.getName() + " (" + _item.getParent().getConnection().getName()
+				+ ")";
 	}
 
 	@Override
@@ -111,34 +101,28 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 	}
 
 	@Override
-	public void setContents(IProgressMonitor monitor, IDocument document)
-			throws CoreException {
+	public void setContents(IProgressMonitor monitor, IDocument document) throws CoreException {
 		monitor.beginTask("save document '" + _item.getName() + "'", 1);
 		try {
 			if (check()) {
 				try {
-					Resource resource = _item.getParent().getCollection()
-							.getResource(_item.getName());
-					if (resource.getResourceType().equals(
-							XMLResource.RESOURCE_TYPE)) {
+					Resource resource = _item.getParent().getCollection().getResource(_item.getName());
+					if (resource.getResourceType().equals(XMLResource.RESOURCE_TYPE)) {
 						resource.setContent(document.get());
 					} else {
-						resource.setContent(document.get().getBytes(
-								_encoding.name()));
+						resource.setContent(document.get().getBytes(_encoding.name()));
 					}
 					_item.getParent().getCollection().storeResource(resource);
 				} catch (UnsupportedEncodingException e) {
-					throw new CoreException(new Status(IStatus.ERROR,
-							BrowsePlugin.getId(), "Problem with encoding"));
+					throw new CoreException(new Status(IStatus.ERROR, BrowsePlugin.getId(), "Problem with encoding"));
 				} catch (Exception e) {
-					throw new CoreException(new Status(IStatus.ERROR,
-							BrowsePlugin.getId(),
-							"Could not store the document"));
+					throw new CoreException(
+							new Status(IStatus.ERROR, BrowsePlugin.getId(), "Could not store the document"));
 				}
 			} else {
 				_corrupt = true;
-				throw new CoreException(new Status(IStatus.ERROR,
-						BrowsePlugin.getId(), "Could not store the document"));
+				throw new CoreException(
+						new Status(IStatus.ERROR, BrowsePlugin.getId(), "Could not store the document"));
 			}
 		} finally {
 			monitor.done();
@@ -177,14 +161,10 @@ public class DocumentStorage implements IEncodedStorage, IInputSave {
 	// //////////////////
 	private boolean check() {
 		if (!_corrupt) {
-			IBrowseService bService = (IBrowseService) _item.getParent()
-					.getAdapter(IBrowseService.class);
-			IDocumentService dService = (IDocumentService) _item
-					.getAdapter(IDocumentService.class);
-			return IManagementService.class.cast(
-					_item.getParent().getConnection()
-							.getAdapter(IManagementService.class)).check()
-					&& bService.check() && dService.check();
+			IBrowseService bService = _item.getParent().getAdapter(IBrowseService.class);
+			IDocumentService dService = _item.getAdapter(IDocumentService.class);
+			return _item.getParent().getConnection().getAdapter(IManagementService.class).check() && bService.check()
+					&& dService.check();
 		} else {
 			return false;
 		}

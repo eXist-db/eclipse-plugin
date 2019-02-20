@@ -1,3 +1,4 @@
+
 package org.exist.eclipse.query.internal.xquery.context;
 
 import java.util.ArrayList;
@@ -30,8 +31,7 @@ import org.exist.eclipse.xquery.ui.result.IQueryFrame;
  * 
  * @author Pascal Schmidiger
  */
-public class ConnectionContext implements IConnectionContext,
-		IConnectionListener, IBrowseItemListener {
+public class ConnectionContext implements IConnectionContext, IConnectionListener, IBrowseItemListener {
 
 	private Collection<IContextListener> _listeners;
 	private IBrowseItem _item;
@@ -70,12 +70,8 @@ public class ConnectionContext implements IConnectionContext,
 
 	@Override
 	public void run(IQueryFrame frame) {
-		if (_item != null
-				&& IManagementService.class.cast(
-						_item.getConnection().getAdapter(
-								IManagementService.class)).check()) {
-			if (IBrowseService.class.cast(
-					_item.getAdapter(IBrowseService.class)).check()) {
+		if (_item != null && _item.getConnection().getAdapter(IManagementService.class).check()) {
+			if (_item.getAdapter(IBrowseService.class).check()) {
 				QueryJob job = new QueryJob(frame, _item);
 				job.setUser(true);
 				job.schedule();
@@ -85,12 +81,8 @@ public class ConnectionContext implements IConnectionContext,
 
 	@Override
 	public ICompletionExtension getCompletionExtension() {
-		if (_item != null
-				&& IManagementService.class.cast(
-						_item.getConnection().getAdapter(
-								IManagementService.class)).check()) {
-			if (IBrowseService.class.cast(
-					_item.getAdapter(IBrowseService.class)).check()) {
+		if (_item != null && _item.getConnection().getAdapter(IManagementService.class).check()) {
+			if (_item.getAdapter(IBrowseService.class).check()) {
 				return new CompletionExtension(_functionJob);
 			}
 		}
@@ -151,8 +143,7 @@ public class ConnectionContext implements IConnectionContext,
 
 	private void fireDisposed() {
 		final ConnectionContextEvent event = new ConnectionContextEvent(this);
-		final IContextListener[] listeners = _listeners
-				.toArray(new IContextListener[_listeners.size()]);
+		final IContextListener[] listeners = _listeners.toArray(new IContextListener[_listeners.size()]);
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
@@ -165,8 +156,7 @@ public class ConnectionContext implements IConnectionContext,
 
 	private void fireRefresh() {
 		final ConnectionContextEvent event = new ConnectionContextEvent(this);
-		final IContextListener[] listeners = _listeners
-				.toArray(new IContextListener[_listeners.size()]);
+		final IContextListener[] listeners = _listeners.toArray(new IContextListener[_listeners.size()]);
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {

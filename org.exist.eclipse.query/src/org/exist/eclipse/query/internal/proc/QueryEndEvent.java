@@ -16,36 +16,27 @@ public class QueryEndEvent {
 	/**
 	 * Create a new event, if the query was successful
 	 * 
-	 * @param id
-	 *            of the query.
-	 * @param count
-	 *            of founded results
-	 * @param compiledTime
-	 *            of the query.
-	 * @param executionTime
-	 *            of the query.
+	 * @param id            of the query.
+	 * @param count         of founded results
+	 * @param compiledTime  of the query.
+	 * @param executionTime of the query.
 	 */
-	public QueryEndEvent(int id, long count, long compiledTime,
-			long executionTime) {
+	public QueryEndEvent(int id, long count, long compiledTime, long executionTime) {
 		this(id, count, compiledTime, executionTime, null);
 	}
 
 	/**
 	 * Create a new event, if the query was performed with failures.
 	 * 
-	 * @param id
-	 *            of the query.
-	 * @param compiledTime
-	 *            of the query
-	 * @param exception
-	 *            which throws while query running.
+	 * @param id           of the query.
+	 * @param compiledTime of the query
+	 * @param exception    which throws while query running.
 	 */
 	public QueryEndEvent(int id, long compiledTime, Exception exception) {
 		this(id, 0, compiledTime, 0, exception);
 	}
 
-	private QueryEndEvent(int id, long count, long compiledTime,
-			long executionTime, Exception exception) {
+	private QueryEndEvent(int id, long count, long compiledTime, long executionTime, Exception exception) {
 		_id = id;
 		_count = count;
 		_compiledTime = compiledTime;

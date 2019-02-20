@@ -67,8 +67,7 @@ public class QueryResultStorageEditorInput implements IStorageEditorInput {
 		} else if (!(obj instanceof QueryResultStorageEditorInput)) {
 			return false;
 		}
-		return QueryResultStorageEditorInput.class.cast(obj)._storage
-				.equals(_storage);
+		return QueryResultStorageEditorInput.class.cast(obj)._storage.equals(_storage);
 	}
 
 }

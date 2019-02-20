@@ -5,10 +5,10 @@ package org.exist.eclipse.browse.create;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
 import org.exist.eclipse.preferences.ExistPreferences;
-import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.modules.BinaryResource;
 

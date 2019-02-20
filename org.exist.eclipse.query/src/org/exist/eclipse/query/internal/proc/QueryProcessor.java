@@ -1,3 +1,4 @@
+
 package org.exist.eclipse.query.internal.proc;
 
 import org.exist.eclipse.IManagementService;
@@ -22,10 +23,8 @@ public class QueryProcessor implements IQueryProcessor {
 	/**
 	 * Create e new processor.
 	 * 
-	 * @param item
-	 *            on which the query will run.
-	 * @param query
-	 *            the query which will run.
+	 * @param item  on which the query will run.
+	 * @param query the query which will run.
 	 */
 	public QueryProcessor(IBrowseItem item, String query, int maxDisplay) {
 		_item = item;
@@ -35,12 +34,8 @@ public class QueryProcessor implements IQueryProcessor {
 
 	@Override
 	public void runQuery() throws ConnectionException {
-		if (_item != null
-				&& IManagementService.class.cast(
-						_item.getConnection().getAdapter(
-								IManagementService.class)).check()) {
-			if (IBrowseService.class.cast(
-					_item.getAdapter(IBrowseService.class)).check()) {
+		if (_item != null && _item.getConnection().getAdapter(IManagementService.class).check()) {
+			if (IBrowseService.class.cast(_item.getAdapter(IBrowseService.class)).check()) {
 				_job = new QueryJob(getNextId(), _item, _query, _maxDisplay);
 				_job.setUser(true);
 				_job.schedule();

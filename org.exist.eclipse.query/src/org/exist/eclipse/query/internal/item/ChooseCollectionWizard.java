@@ -1,3 +1,4 @@
+
 package org.exist.eclipse.query.internal.item;
 
 import org.eclipse.jface.viewers.ISelection;
@@ -38,14 +39,13 @@ public class ChooseCollectionWizard extends Wizard implements IWorkbenchWizard {
 	 */
 	@Override
 	public void addPages() {
-		_chooseCollectionPage = new ChooseCollectionWizardPage(_selection,
-				_connection, _item);
+		_chooseCollectionPage = new ChooseCollectionWizardPage(_selection, _connection, _item);
 		addPage(_chooseCollectionPage);
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the NewConnectionWizardPage.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the NewConnectionWizardPage.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -53,17 +53,15 @@ public class ChooseCollectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
-		if (IManagementService.class.cast(
-				_connection.getAdapter(IManagementService.class)).check()) {
+		if (_connection.getAdapter(IManagementService.class).check()) {
 			IBrowseItem item = _chooseCollectionPage.getSelection();
-			if (IBrowseService.class
-					.cast(item.getAdapter(IBrowseService.class)).check()) {
+			if (IBrowseService.class.cast(item.getAdapter(IBrowseService.class)).check()) {
 				ChangeItemNotifier.getInstance().change(item);
 			} else {
 				isFinished = false;

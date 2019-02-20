@@ -20,8 +20,7 @@ public interface IChangeItemListener {
 	 * Notify if the {@link IBrowseItem} is changed and give the new item as
 	 * parameter.
 	 * 
-	 * @param item
-	 *            the new {@link IBrowseItem}.
+	 * @param item the new {@link IBrowseItem}.
 	 */
 	public void change(IBrowseItem item);
 }

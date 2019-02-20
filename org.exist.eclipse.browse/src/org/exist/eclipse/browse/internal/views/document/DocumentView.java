@@ -14,6 +14,7 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
 import org.eclipse.swt.events.ControlAdapter;
@@ -37,6 +38,7 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.part.ViewPart;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.browse.BrowseCoordinator;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseItemListener;
@@ -50,7 +52,6 @@ import org.exist.eclipse.browse.internal.views.browse.BrowseView;
 import org.exist.eclipse.exception.ConnectionException;
 import org.exist.eclipse.listener.ConnectionRegistration;
 import org.exist.eclipse.listener.IConnectionListener;
-import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.XMLDBException;
 
 /**
@@ -58,8 +59,7 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class DocumentView extends ViewPart implements IConnectionListener,
-		IBrowseItemListener, IDocumentItemListener {
+public class DocumentView extends ViewPart implements IConnectionListener, IBrowseItemListener, IDocumentItemListener {
 	public static final String ID = "org.exist.eclipse.browse.internal.views.document.DocumentView";
 
 	private TableViewer _viewer;
@@ -92,8 +92,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	}
 
 	/**
-	 * This is a callback that will allow us to create the viewer and initialize
-	 * it.
+	 * This is a callback that will allow us to create the viewer and initialize it.
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
@@ -110,10 +109,8 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		stack.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		Link infoLink = new Link(stack, SWT.NONE);
-		String explorerName = PlatformUI.getWorkbench().getViewRegistry().find(
-				BrowseView.ID).getLabel();
-		infoLink.setText("To display documents here, open a collection in <a>"
-				+ explorerName + "</a>.");
+		String explorerName = PlatformUI.getWorkbench().getViewRegistry().find(BrowseView.ID).getLabel();
+		infoLink.setText("To display documents here, open a collection in <a>" + explorerName + "</a>.");
 		infoLink.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -166,17 +163,15 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
 		_viewer.setUseHashlookup(true);
-		_viewer.setSorter(new NameSorter());
+		_viewer.setComparator(new ViewerComparator());
 
 		// SWT.FULL_SELECTION does not have an effect. create effect with
 		// TableColumn that fill's horizontally
 		_viewer.getTable().addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(ControlEvent e) {
-				_viewer.getTable().getColumns()[0]
-						.setWidth(_viewer.getTable().getSize().x
-								- (_viewer.getTable().getVerticalBar()
-										.getSize().x + 5));
+				_viewer.getTable().getColumns()[0].setWidth(
+						_viewer.getTable().getSize().x - (_viewer.getTable().getVerticalBar().getSize().x + 5));
 			}
 		});
 		new TableColumn(_viewer.getTable(), SWT.NONE);
@@ -184,11 +179,9 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		_viewer.addDoubleClickListener(new IDoubleClickListener() {
 			@Override
 			public void doubleClick(DoubleClickEvent event) {
-				IDocumentItem first = (IDocumentItem) ((IStructuredSelection) _viewer
-						.getSelection()).getFirstElement();
+				IDocumentItem first = (IDocumentItem) ((IStructuredSelection) _viewer.getSelection()).getFirstElement();
 				if (first != null) {
-					new ActionOpenDocument(ActionGroupOpenDocument
-							.getDefaultEditor(first).getId(), _viewer).run();
+					new ActionOpenDocument(ActionGroupOpenDocument.getDefaultEditor(first).getId(), _viewer).run();
 				}
 			}
 		});
@@ -217,8 +210,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 
 	protected void onOpenEXistExplorer() {
 		try {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage().showView(BrowseView.ID);
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(BrowseView.ID);
 		} catch (PartInitException e) {
 			throw new RuntimeException(e);
 		}
@@ -348,19 +340,14 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 		if (_item == null) {
 			setPartName(_origPartname);
 		} else {
-			setPartName(_item.getPath() + " ("
-					+ _item.getConnection().getName() + ")");
+			setPartName(_item.getPath() + " (" + _item.getConnection().getName() + ")");
 		}
 		_agOpenDocument.updateActionBars();
 	}
 
 	private void createInput() {
-		if (getItem() != null
-				&& IManagementService.class.cast(
-						getItem().getConnection().getAdapter(
-								IManagementService.class)).check()
-				&& IBrowseService.class.cast(
-						getItem().getAdapter(IBrowseService.class)).check()) {
+		if (getItem() != null && getItem().getConnection().getAdapter(IManagementService.class).check()
+				&& getItem().getAdapter(IBrowseService.class).check()) {
 			String[] elements;
 			TreeSet<String> sorted = new TreeSet<>();
 			try {
@@ -378,29 +365,21 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 					}
 				}
 			} catch (XMLDBException e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while fetching documents for collection '")
+				StringBuilder message = new StringBuilder(50).append("Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message.toString(), e);
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
-				BrowsePlugin.getDefault().errorDialog(message.toString(),
-						e.getMessage(), status);
+				BrowsePlugin.getDefault().errorDialog(message.toString(), e.getMessage(), status);
 			} catch (ConnectionException e) {
-				StringBuilder message = new StringBuilder(50).append(
-						"Error while fetching documents for collection '")
+				StringBuilder message = new StringBuilder(50).append("Error while fetching documents for collection '")
 						.append(getItem()).append("'");
-				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message.toString(), e);
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
-				BrowsePlugin.getDefault().errorDialog(message.toString(),
-						e.getMessage(), status);
+				BrowsePlugin.getDefault().errorDialog(message.toString(), e.getMessage(), status);
 			} catch (PatternSyntaxException e) {
 				String message = "Error in regex expression";
-				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-						message, e);
-				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-						status);
+				Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+				BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 			}
 			_viewer.setItemCount(sorted.size());
 			_viewer.setInput(sorted.toArray(new String[sorted.size()]));
@@ -432,14 +411,13 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 
 		_agOpenDocument.fillActionBars(bars);
 
-		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(),
-				new ActionRefresh(this));
+		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(), new ActionRefresh(this));
 
 		bars.setGlobalActionHandler(ActionFactory.DELETE.getId(), new Action() {
 			@Override
 			public void run() {
-				ActionDocumentListener listener = new ActionDocumentListener(
-						DocumentView.this, new DeleteDocumentListener());
+				ActionDocumentListener listener = new ActionDocumentListener(DocumentView.this,
+						new DeleteDocumentListener());
 				listener.run();
 			}
 		});
@@ -460,8 +438,7 @@ public class DocumentView extends ViewPart implements IConnectionListener,
 	}
 
 	private void updateStackLayout() {
-		((StackLayout) _stack.getLayout()).topControl = (hasItem()) ? _content
-				: _infoLink;
+		((StackLayout) _stack.getLayout()).topControl = (hasItem()) ? _content : _infoLink;
 		_stack.layout();
 	}
 }

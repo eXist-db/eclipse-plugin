@@ -3,8 +3,8 @@
  */
 package org.exist.eclipse.browse.create;
 
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.document.IDocumentItem;
-import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.modules.XMLResource;
 

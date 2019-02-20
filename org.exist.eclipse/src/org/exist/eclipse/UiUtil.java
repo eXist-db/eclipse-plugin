@@ -12,14 +12,12 @@ import org.eclipse.swt.widgets.Shell;
  */
 public class UiUtil {
 	/**
-	 * See {@link MessageDialog#openConfirm(Shell, String, String)}, but with
-	 * the 'modern' OK button named with action being taken.
+	 * See {@link MessageDialog#openConfirm(Shell, String, String)}, but with the
+	 * 'modern' OK button named with action being taken.
 	 */
-	public static boolean openConfirm(Shell parent, String title,
-			String message, String okButtonLabel) {
-		MessageDialog dialog = new MessageDialog(parent, title, null, message,
-				MessageDialog.QUESTION, new String[] { okButtonLabel,
-						IDialogConstants.CANCEL_LABEL }, 0);
+	public static boolean openConfirm(Shell parent, String title, String message, String okButtonLabel) {
+		MessageDialog dialog = new MessageDialog(parent, title, null, message, MessageDialog.QUESTION,
+				new String[] { okButtonLabel, IDialogConstants.CANCEL_LABEL }, 0);
 		return dialog.open() == 0;
 	}
 }

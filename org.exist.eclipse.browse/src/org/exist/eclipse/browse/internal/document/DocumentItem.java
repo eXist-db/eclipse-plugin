@@ -6,7 +6,6 @@ package org.exist.eclipse.browse.internal.document;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
-import org.exist.eclipse.browse.document.IDocumentService;
 import org.exist.eclipse.exception.ConnectionException;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.XMLDBException;
@@ -103,9 +102,9 @@ public class DocumentItem implements IDocumentItem {
 	}
 
 	@Override
-	public Object getAdapter(Class adapter) {
-		if (adapter.getName().equals(IDocumentService.class.getName())) {
-			return new DocumentService(this);
+	public <A> A getAdapter(Class<A> adapter) {
+		if (adapter.isAssignableFrom(DocumentService.class)) {
+			return adapter.cast(new DocumentService(this));
 		}
 		return null;
 	}
