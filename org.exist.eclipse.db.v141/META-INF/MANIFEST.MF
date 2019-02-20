@@ -1,9 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Exist142
-Bundle-SymbolicName: org.exist.eclipse.exist142;singleton:=true
-Bundle-Version: 1.4.2
-Bundle-Vendor: Bison Schweiz AG
+Bundle-Name: eXist
+Bundle-SymbolicName: org.exist.eclipse.db.v141;singleton:=true
+Bundle-Version: 1.4.1
 Automatic-Module-Name: org.exist.eclipse.exist142
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.exist.eclipse;bundle-version="4.10.0"

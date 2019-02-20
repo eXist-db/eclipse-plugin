@@ -56,14 +56,8 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 		Button button = null;
 		for (ConnectionType type : ConnectionType.values()) {
 			button = new Button(container, SWT.RADIO);
-			String typeName = type.name();
-
-			// ui elements should start with an uppercase letter
-			typeName = Character.toUpperCase(typeName.charAt(0)) + typeName.substring(1);
-
-			button.setText(typeName);
-			button.setData(ConnectionType.class.toString(), type);
-
+			button.setText(type.description());
+			button.setData(ConnectionType.class.getName(), type);
 			button.addSelectionListener(new SelectionListener() {
 				@Override
 				public void widgetDefaultSelected(SelectionEvent e) {
@@ -71,7 +65,7 @@ public class ConnectionTypeWizardPage extends WorkbenchWizardSelectionPage {
 
 				@Override
 				public void widgetSelected(SelectionEvent e) {
-					_type = (ConnectionType) e.widget.getData(ConnectionType.class.toString());
+					_type = (ConnectionType) e.widget.getData(ConnectionType.class.getName());
 					setErrorMessage(null);
 					setPageComplete(true);
 					updateSelectedNode();

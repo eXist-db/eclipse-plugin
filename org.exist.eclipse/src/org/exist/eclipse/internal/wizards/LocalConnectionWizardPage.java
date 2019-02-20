@@ -2,6 +2,7 @@ package org.exist.eclipse.internal.wizards;
 
 import static org.exist.eclipse.DatabaseInstanceLookup.availableVersions;
 import static org.exist.eclipse.DatabaseInstanceLookup.createLocal;
+import static org.exist.eclipse.DatabaseInstanceLookup.defaultVersion;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -93,12 +94,12 @@ public class LocalConnectionWizardPage extends WizardPage {
 		// version
 		Label versionLabel = new Label(container, SWT.NULL);
 		versionLabel.setText("&Version:");
-		_version = new Combo(container, SWT.DROP_DOWN | SWT.BORDER);
+		_version = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
 		availableVersions().forEach(_version::add);
 		if (_connection != null) {
 			_version.setText(_connection.getVersion());
 		} else {
-//			_version.setText(DEFAULT_VERSION);
+			_version.setText(defaultVersion());
 		}
 
 		// username

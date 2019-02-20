@@ -3,10 +3,10 @@
 <schema targetNamespace="org.exist.eclipse" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.exist.eclipse" id="org.exist.eclipse" name="ConnectionProvider"/>
+         <meta.schema plugin="org.exist.eclipse" id="database" name="Database"/>
       </appinfo>
       <documentation>
-         [Enter description of this extension point.]
+         Represents a database instance implementing the XML:DB specification
       </documentation>
    </annotation>
 
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="provider"/>
+            <element ref="database-instance"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,9 +47,9 @@
       </complexType>
    </element>
 
-   <element name="provider">
+   <element name="database-instance">
       <complexType>
-         <attribute name="class" type="string">
+         <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   

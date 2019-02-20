@@ -1,5 +1,5 @@
 /**
- * DbTypeEnum.java
+ * ConnectionType.java
  */
 package org.exist.eclipse;
 
@@ -10,13 +10,23 @@ package org.exist.eclipse;
  * 
  */
 public enum ConnectionType {
-	REMOTE, LOCAL;
-	
+	REMOTE("Remote"), LOCAL("Local");
+
+	private final String description;
+
+	private ConnectionType(String description) {
+		this.description = description;
+	}
+
 	public boolean isRemote() {
 		return REMOTE == this;
 	}
-	
+
 	public static ConnectionType valueOfName(String name) {
 		return valueOf(name.toUpperCase());
+	}
+
+	public String description() {
+		return description;
 	}
 }

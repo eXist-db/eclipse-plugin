@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.internal.BasePlugin;
@@ -16,27 +17,26 @@ import org.exist.eclipse.internal.BasePlugin;
  */
 public final class DatabaseInstanceLookup {
 
-	private static final Map<String, IDatabaseInstance> providers;
-
-	static {
-		providers = new TreeMap<>();
-		for (IConfigurationElement element : Platform.getExtensionRegistry()
-				.getExtensionPoint(BasePlugin.getId(), "provider").getExtension("class").getConfigurationElements()) {
+	static Map<String, IDatabaseInstance> providers() {
+		TreeMap<String, IDatabaseInstance> providers = new TreeMap<>();
+		String id = BasePlugin.getId();
+		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+		for (IConfigurationElement element : extensionRegistry.getConfigurationElementsFor(id, "database")) {
 			try {
-				IDatabaseInstance provider = (IDatabaseInstance) element.createExecutableExtension("provider");
+				IDatabaseInstance provider = (IDatabaseInstance) element.createExecutableExtension("class");
 				providers.putIfAbsent(provider.version(), provider);
 			} catch (CoreException e) {
-				BasePlugin.getDefault().getLog()
-						.log(new Status(Status.ERROR, BasePlugin.getId(), "Unable to get provider", e));
+				BasePlugin.getDefault().getLog().log(new Status(Status.ERROR, id, "Unable to get provider", e));
 			}
 		}
+		return providers;
 	}
 
 	private DatabaseInstanceLookup() {
 	}
 
 	public static IDatabaseInstance getInstance(String existVersion) {
-		IDatabaseInstance instance = providers.get(existVersion);
+		IDatabaseInstance instance = providers().get(existVersion);
 		if (instance == null) {
 			throw new IllegalArgumentException("No database instance found for version: " + existVersion);
 		}
@@ -53,6 +53,10 @@ public final class DatabaseInstanceLookup {
 	}
 
 	public static Set<String> availableVersions() {
-		return Collections.unmodifiableSet(providers.keySet());
+		return Collections.unmodifiableSet(providers().keySet());
+	}
+
+	public static String defaultVersion() {
+		return availableVersions().stream().findFirst().orElse("unkown");
 	}
 }
