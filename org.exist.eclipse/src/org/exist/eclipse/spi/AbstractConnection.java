@@ -1,9 +1,3 @@
-/**
- * File Name: AbstractConnection.java
- * 
- * Copyright (c) 2014 BISON Schweiz AG, All Rights Reserved.
- */
-
 package org.exist.eclipse.spi;
 
 import java.util.Objects;

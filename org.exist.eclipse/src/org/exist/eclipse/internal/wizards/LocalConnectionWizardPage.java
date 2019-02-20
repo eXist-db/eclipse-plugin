@@ -1,7 +1,7 @@
 package org.exist.eclipse.internal.wizards;
 
-import static org.exist.eclipse.internal.ConnectionLookup.availableVersions;
-import static org.exist.eclipse.internal.ConnectionLookup.createLocal;
+import static org.exist.eclipse.DatabaseInstanceLookup.availableVersions;
+import static org.exist.eclipse.DatabaseInstanceLookup.createLocal;
 
 import java.io.File;
 import java.io.FileOutputStream;

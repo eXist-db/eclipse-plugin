@@ -1,10 +1,4 @@
-/**
- * File Name: ConnectionLookup.java
- * 
- * Copyright (c) 2019 BISON Schweiz AG, All Rights Reserved.
- */
-
-package org.exist.eclipse.internal;
+package org.exist.eclipse;
 
 import java.util.Collections;
 import java.util.Map;
@@ -15,13 +9,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.exist.eclipse.IConnection;
-import org.exist.eclipse.IDatabaseInstance;
+import org.exist.eclipse.internal.BasePlugin;
 
 /**
  * @author Patrick Reinhart
  */
-public final class ConnectionLookup {
+public final class DatabaseInstanceLookup {
 
 	private static final Map<String, IDatabaseInstance> providers;
 
@@ -39,18 +32,24 @@ public final class ConnectionLookup {
 		}
 	}
 
-	private ConnectionLookup() {
+	private DatabaseInstanceLookup() {
+	}
+
+	public static IDatabaseInstance getInstance(String existVersion) {
+		IDatabaseInstance instance = providers.get(existVersion);
+		if (instance == null) {
+			throw new IllegalArgumentException("No database instance found for version: " + existVersion);
+		}
+		return instance;
 	}
 
 	public static IConnection createLocal(String existVersion, String name, String user, String password, String path) {
-		return providers.getOrDefault(existVersion, DefaultProvider.INSTANCE).createLocalConnection(name, user,
-				password, path);
+		return getInstance(existVersion).createLocalConnection(name, user, password, path);
 	}
 
 	public static IConnection createRemote(String existVersion, String name, String user, String password,
 			String path) {
-		return providers.getOrDefault(existVersion, DefaultProvider.INSTANCE).createRemoteConnection(name, user,
-				password, path);
+		return getInstance(existVersion).createRemoteConnection(name, user, password, path);
 	}
 
 	public static Set<String> availableVersions() {

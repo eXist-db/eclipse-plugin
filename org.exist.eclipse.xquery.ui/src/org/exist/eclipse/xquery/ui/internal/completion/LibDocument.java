@@ -1,10 +1,3 @@
-/**
- * File Name: LibDocument.java
- * 
- * Copyright (c) 2011 BISON Schweiz AG, All Rights Reserved.
- *
- * Version: $Id: $
- */
 package org.exist.eclipse.xquery.ui.internal.completion;
 
 import java.io.BufferedReader;

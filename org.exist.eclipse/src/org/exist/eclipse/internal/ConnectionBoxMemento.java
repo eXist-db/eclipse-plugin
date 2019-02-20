@@ -3,8 +3,8 @@
  */
 package org.exist.eclipse.internal;
 
-import static org.exist.eclipse.internal.ConnectionLookup.createLocal;
-import static org.exist.eclipse.internal.ConnectionLookup.createRemote;
+import static org.exist.eclipse.DatabaseInstanceLookup.createLocal;
+import static org.exist.eclipse.DatabaseInstanceLookup.createRemote;
 
 import java.io.FileOutputStream;
 import java.io.Serializable;

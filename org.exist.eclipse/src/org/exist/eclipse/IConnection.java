@@ -11,7 +11,7 @@ import org.xmldb.api.base.Collection;
  * 
  * @author Pascal Schmidiger
  */
-public interface IConnection extends AutoCloseable {
+public interface IConnection extends AutoCloseable, ICredentials {
 
 	/**
 	 * Returns the given {@code adapter} instance if available or {@code null} if not.
@@ -25,16 +25,6 @@ public interface IConnection extends AutoCloseable {
 	 * @return the name of the current connection.
 	 */
 	public String getName();
-
-	/**
-	 * @returns the username of the current connection.
-	 */
-	public String getUsername();
-
-	/**
-	 * @returns the password of the current connection.
-	 */
-	public String getPassword();
 
 	/**
 	 * @return the type of the connection.

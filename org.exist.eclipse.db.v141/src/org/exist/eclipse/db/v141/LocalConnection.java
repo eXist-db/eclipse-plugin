@@ -42,7 +42,7 @@ public class LocalConnection extends AbstractConnection {
 	}
 
 	public LocalConnection(String name, String username, String password, String path, String uri) {
-		super(ExistConnectionProvider.VERSION, ConnectionType.LOCAL, name, username, password, Paths.get(path).toAbsolutePath().toString());
+		super(ExistConnectionProvider.versionId(), ConnectionType.LOCAL, name, username, password, Paths.get(path).toAbsolutePath().toString());
 		uriName = uri;
 	}
 

@@ -31,7 +31,7 @@ public class RemoteConnection extends AbstractConnection {
 	 * @param path     the uri to the remote database, mandatory field.
 	 */
 	public RemoteConnection(String name, String username, String password, String path) {
-		super(ExistConnectionProvider.VERSION, ConnectionType.REMOTE, name, username, password, path);
+		super(ExistConnectionProvider.versionId(), ConnectionType.REMOTE, name, username, password, path);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package org.exist.eclipse.internal.wizards;
 
-import static org.exist.eclipse.internal.ConnectionLookup.availableVersions;
-import static org.exist.eclipse.internal.ConnectionLookup.createRemote;
+import static org.exist.eclipse.DatabaseInstanceLookup.availableVersions;
+import static org.exist.eclipse.DatabaseInstanceLookup.createRemote;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
