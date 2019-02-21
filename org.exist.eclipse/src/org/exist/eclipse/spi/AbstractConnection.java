@@ -21,11 +21,11 @@ public abstract class AbstractConnection implements IConnection {
 
 	protected AbstractConnection(String version, ConnectionType type, String name, String username, String password,
 			String path) {
-		this.version = version;
-		this.type = type;
+		this.version = checkValue("version", version);
+		this.type = Objects.requireNonNull(type, "type must not be null");
+		this.password = password;
 		this.name = checkValue("name", name);
 		this.username = checkValue("username", username);
-		this.password = checkValue("password", password);
 		this.path = checkValue("path", path);
 	}
 
@@ -105,7 +105,7 @@ public abstract class AbstractConnection implements IConnection {
 		} else if (!(obj instanceof AbstractConnection)) {
 			return false;
 		}
-		AbstractConnection other = (AbstractConnection)obj;
+		AbstractConnection other = (AbstractConnection) obj;
 		return type.equals(other.type) && name.equals(other.name);
 	}
 }
