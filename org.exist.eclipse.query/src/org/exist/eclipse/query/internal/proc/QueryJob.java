@@ -47,28 +47,24 @@ public class QueryJob extends Job {
 
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
-		XQueryService service;
-
 		// notify listener about query start
 		QueryNotifier.getInstance().start(new QueryStartEvent(_id));
 		long tCompiled = 0;
-
 		try {
-			ResourceSet result;
-			service = (XQueryService) _item.getCollection().getService("XQueryService", "1.0");
+			XQueryService service = (XQueryService) _item.getCollection().getService("XQueryService", "1.0");
 			service.setProperty(OutputKeys.INDENT, "yes");
 
 			long t0 = System.currentTimeMillis();
 			CompiledExpression compiled = service.compile(_query);
 			long t1 = System.currentTimeMillis();
 			tCompiled = t1 - t0;
-			result = service.execute(compiled);
+			ResourceSet result = service.execute(compiled);
 			long tResult = System.currentTimeMillis() - t1;
 
 			ResourceIterator i = result.getIterator();
 			QueryResultEvent queryResultEvent = null;
 
-			monitor.beginTask("Retrieving results...", new Long(result.getSize()).intValue());
+			monitor.beginTask("Retrieving results...", Long.valueOf(result.getSize()).intValue());
 			while (i.hasMoreResources() && !monitor.isCanceled() && count < _maxDisplay) {
 				Resource r = i.nextResource();
 				queryResultEvent = new QueryResultEvent(_id, (String) r.getContent());

@@ -3,6 +3,7 @@
  */
 package org.exist.eclipse.auto.connection;
 
+import org.exist.eclipse.auto.query.IQuery;
 import org.exist.eclipse.auto.query.IQueryResult;
 
 /**
@@ -16,7 +17,7 @@ public interface IQueryRunner {
 	/**
 	 * Runs the Query
 	 */
-	public IQueryResult runQuery(IQueryResult result);
+	public IQueryResult runQuery(IQuery query);
 
 	/**
 	 * Closes the connection

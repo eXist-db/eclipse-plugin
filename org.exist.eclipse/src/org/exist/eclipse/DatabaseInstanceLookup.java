@@ -7,7 +7,6 @@ import java.util.TreeMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.internal.BasePlugin;
@@ -19,14 +18,13 @@ public final class DatabaseInstanceLookup {
 
 	static Map<String, IDatabaseInstance> providers() {
 		TreeMap<String, IDatabaseInstance> providers = new TreeMap<>();
-		String id = BasePlugin.getId();
-		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		for (IConfigurationElement element : extensionRegistry.getConfigurationElementsFor(id, "database")) {
+		for (IConfigurationElement element : Platform.getExtensionRegistry().getConfigurationElementsFor(BasePlugin.getId(),
+				"database")) {
 			try {
 				IDatabaseInstance provider = (IDatabaseInstance) element.createExecutableExtension("class");
 				providers.putIfAbsent(provider.version(), provider);
 			} catch (CoreException e) {
-				BasePlugin.getDefault().getLog().log(new Status(Status.ERROR, id, "Unable to get provider", e));
+				BasePlugin.log(Status.ERROR, "Unable to get provider", e);
 			}
 		}
 		return providers;

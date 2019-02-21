@@ -67,7 +67,11 @@ public class LocalConnection extends AbstractConnection {
 	protected void openRoot() throws ConnectionException {
 		if (root == null) {
 			try {
-				root = DatabaseManager.getCollection(getRootUri(), getUsername(), getPassword());
+				String rootUri = getRootUri();
+				root = DatabaseManager.getCollection(rootUri, getUsername(), getPassword());
+				if (root == null) {
+					throw new ConnectionException("Failure while getting root collection for: " + rootUri);
+				}
 				// check whether a connection was established successfully.
 				root.getChildCollectionCount();
 			} catch (Exception e) {
@@ -131,8 +135,8 @@ public class LocalConnection extends AbstractConnection {
 					root.close();
 				}
 				manager.shutdown();
-			} catch (XMLDBException e1) {
-				throw new ConnectionException("Failure while shutting down db: " + e1.getMessage(), e1);
+			} catch (XMLDBException e) {
+				throw new ConnectionException("Failure while shutting down db: " + e.getMessage(), e);
 			} finally {
 				root = null;
 			}
@@ -181,4 +185,5 @@ public class LocalConnection extends AbstractConnection {
 	private String getRootUri() {
 		return getUri() + "/db";
 	}
+
 }

@@ -2,6 +2,7 @@ package org.exist.eclipse.internal;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -63,17 +64,50 @@ public class BasePlugin extends AbstractUIPlugin {
 		return imageDescriptorFromPlugin(getId(), path);
 	}
 
+	/**
+	 * Returns the current plugin id.
+	 * 
+	 * @return the symbolic bundle name of the plugin
+	 */
 	public static String getId() {
 		return getDefault().getBundle().getSymbolicName();
 	}
 
-	public void errorDialog(String title, String message, IStatus s) {
+	/**
+	 * Logs the given {@code message} for the given {@code severity}.
+	 * 
+	 * @param severity the message severity
+	 * @param message the log message
+	 */
+	public static void log(int severity, String message) {
+		log(severity, message, null);
+	}
+
+	/**
+	 * Logs the given {@code message} for the given {@code severity} and {@code exception}.
+	 * 
+	 * @param severity the message severity
+	 * @param message the log message
+	 * @param exception the exception
+	 */
+	public static void log(int severity, String message, Throwable exception) {
+		plugin.getLog().log(new Status(severity, getId(), message, exception));
+	}
+
+	/**
+	 * Shows the error dialog with given {@code title}, {@code message} and {@code status}.
+	 * 
+	 * @param title the message title
+	 * @param message the message
+	 * @param status the status
+	 */
+	public void errorDialog(String title, String message, IStatus status) {
 		// if the 'message' resource string and the IStatus' message are the
 		// same,
 		// don't show both in the dialog
-		if (s != null && message.equals(s.getMessage())) {
+		if (status != null && message.equals(status.getMessage())) {
 			message = null;
 		}
-		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow().getShell(), title, message, s);
+		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow().getShell(), title, message, status);
 	}
 }

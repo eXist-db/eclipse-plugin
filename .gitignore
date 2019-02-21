@@ -4,3 +4,4 @@
 /.recommenders/
 /RemoteSystemsTempFiles/
 build/
+rebel.xml

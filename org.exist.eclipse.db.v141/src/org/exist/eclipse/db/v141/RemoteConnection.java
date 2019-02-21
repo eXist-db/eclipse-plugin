@@ -47,14 +47,17 @@ public class RemoteConnection extends AbstractConnection {
 	protected void openRoot() throws ConnectionException {
 		if (root == null) {
 			try {
-				root = DatabaseManager.getCollection(getRootUri(), getUsername(), getPassword());
+				String rootUri = getRootUri();
+				root = DatabaseManager.getCollection(rootUri, getUsername(), getPassword());
+				if (root == null) {
+					throw new ConnectionException("Failure while getting root collection for: " + rootUri);
+				}
 				// check whether a connection was established successfully.
 				root.getChildCollectionCount();
 			} catch (Exception e) {
 				root = null;
 				close();
 				throw new ConnectionException("Failure while getting db collection: " + e.getMessage(), e);
-
 			}
 		}
 	}

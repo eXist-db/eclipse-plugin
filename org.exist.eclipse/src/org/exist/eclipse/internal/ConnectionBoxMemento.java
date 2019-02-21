@@ -7,7 +7,6 @@ import static org.exist.eclipse.DatabaseInstanceLookup.createLocal;
 import static org.exist.eclipse.DatabaseInstanceLookup.createRemote;
 
 import java.io.FileOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -18,6 +17,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.eclipse.core.runtime.Status;
 import org.exist.eclipse.ConnectionType;
 import org.exist.eclipse.IConnection;
 import org.w3c.dom.Document;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
  * 
  * @author Pascal Schmidiger
  */
-public class ConnectionBoxMemento implements Serializable {
+public class ConnectionBoxMemento {
 	private static final String URI = "uri";
 	private static final String CONNECTIONS = "connections";
 	private static final String CONNECTION = "connection";
@@ -38,7 +38,7 @@ public class ConnectionBoxMemento implements Serializable {
 	private static final String NAME = "name";
 	private static final String TYPE = "type";
 	private static final String VERSION = "version";
-	private static final long serialVersionUID = 7451211731519576573L;
+
 	private final Collection<IConnection> _connections;
 
 	ConnectionBoxMemento(Collection<IConnection> connections) {
@@ -55,32 +55,50 @@ public class ConnectionBoxMemento implements Serializable {
 		_connections = new ArrayList<>();
 		try {
 			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(filepath);
-			Element connections = (Element) doc.getDocumentElement().getFirstChild();
-			NodeList childNodes = connections.getElementsByTagName(CONNECTION);
+			NodeList childNodes = doc.getDocumentElement().getElementsByTagName(CONNECTION);
 			for (int index = 0, total = childNodes.getLength(); index < total; index++) {
 				Element connection = (Element) childNodes.item(index);
-				String type = connection.getAttribute(TYPE);
-				String name = connection.getAttribute(NAME);
-				String username = connection.getAttribute(USERNAME);
-				String password = connection.getAttribute(PASSWORD);
-				String uri = connection.getAttribute(URI);
-				String version = connection.getAttribute(VERSION);
-				if (version == null) {
-					version = "1.4.1";
-				}
-				if (type != null && name != null && username != null && password != null && uri != null) {
-					switch (ConnectionType.valueOfName(type)) {
-					case REMOTE:
-						_connections.add(createRemote(version, name, username, password, uri));
-						break;
-					case LOCAL:
-						_connections.add(createLocal(version, name, username, password, uri));
-						break;
-					}
-				}
+				initConnection(connection.getAttribute(TYPE), connection.getAttribute(NAME),
+						connection.getAttribute(USERNAME), connection.getAttribute(PASSWORD),
+						connection.getAttribute(URI), connection.getAttribute(VERSION));
 			}
 		} catch (Exception e) {
-			// do nothing
+			BasePlugin.log(Status.ERROR, "Unable to load configured connections", e);
+		}
+	}
+
+	private void initConnection(String type, String name, String username, String password, String uri,
+			String version) {
+		boolean complete = true;
+		if (version == null) {
+			BasePlugin.log(Status.ERROR, "Version missing");
+			complete = false;
+		}
+		if (type == null) {
+			BasePlugin.log(Status.ERROR, "Type missing");
+			complete = false;
+		}
+		if (name == null) {
+			BasePlugin.log(Status.ERROR, "Name missing");
+			complete = false;
+		}
+		if (username == null) {
+			BasePlugin.log(Status.ERROR, "Username missing");
+			complete = false;
+		}
+		if (password == null) {
+			BasePlugin.log(Status.ERROR, "Password missing");
+			complete = false;
+		}
+		if (complete) {
+			switch (ConnectionType.valueOfName(type)) {
+			case REMOTE:
+				_connections.add(createRemote(version, name, username, password, uri));
+				break;
+			case LOCAL:
+				_connections.add(createLocal(version, name, username, password, uri));
+				break;
+			}
 		}
 	}
 
@@ -96,7 +114,7 @@ public class ConnectionBoxMemento implements Serializable {
 	public void writeStateAsXml(String filepath) {
 		try {
 			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-			Element connections = (Element) doc.getDocumentElement().appendChild(doc.createElement(CONNECTIONS));
+			Element connections = (Element) doc.appendChild(doc.createElement(CONNECTIONS));
 			for (IConnection connection : _connections) {
 				Element connectionElement = doc.createElement(CONNECTION);
 				connectionElement.setAttribute(TYPE, connection.getType().name());
@@ -114,6 +132,7 @@ public class ConnectionBoxMemento implements Serializable {
 				transformer.transform(new DOMSource(doc), new StreamResult(out));
 			}
 		} catch (Exception e) {
+			BasePlugin.log(Status.ERROR, "Unable to store configured connections", e);
 		}
 	}
 }

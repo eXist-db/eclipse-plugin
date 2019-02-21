@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/antlr-2.7.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/commons-collections-3.2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/commons-logging-1.1.1.jar"/>
@@ -15,7 +19,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/core/stax-api-1.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/sunxacml-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/ws-commons-util-1.0.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/core/xmldb.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/xmlrpc-client-3.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/xmlrpc-common-3.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/core/xmlrpc-server-3.1.2.jar"/>
@@ -23,11 +26,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/endorsed/serializer-2.9.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/endorsed/xalan-2.7.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/endorsed/xercesImpl-2.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/endorsed/xml-apis.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/exist.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

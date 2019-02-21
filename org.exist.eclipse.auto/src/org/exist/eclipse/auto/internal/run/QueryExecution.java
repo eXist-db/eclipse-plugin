@@ -6,7 +6,6 @@ package org.exist.eclipse.auto.internal.run;
 import org.exist.eclipse.auto.connection.IConnectionPool;
 import org.exist.eclipse.auto.connection.IQueryRunner;
 import org.exist.eclipse.auto.internal.result.AutomationResult;
-import org.exist.eclipse.auto.internal.result.QueryResult;
 import org.exist.eclipse.auto.query.IQuery;
 import org.exist.eclipse.auto.query.IQueryResult;
 
@@ -40,20 +39,14 @@ public class QueryExecution implements Runnable {
 
 		// fetch a query runner
 		IQueryRunner queryRunner = _connectionPool.getQueryRunner();
-
 		// run the query
-		IQueryResult result = new QueryResult(_query);
-
 		try {
-			result = queryRunner.runQuery(result);
-
+			IQueryResult result = queryRunner.runQuery(_query);
+			// add the result
+			_automationResult.addQueryResult(result);
 		} finally {
 			// put the QueryRunner back into the pool
 			_connectionPool.putQueryRunner(queryRunner);
-
-			// add the result
-			_automationResult.addQueryResult(result);
 		}
-
 	}
 }

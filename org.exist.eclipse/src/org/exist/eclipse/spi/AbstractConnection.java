@@ -24,9 +24,9 @@ public abstract class AbstractConnection implements IConnection {
 		this.version = version;
 		this.type = type;
 		this.name = checkValue("name", name);
-		this.username = checkValue("username", name);
-		this.password = checkValue("password", name);
-		this.path = checkValue("path", name);
+		this.username = checkValue("username", username);
+		this.password = checkValue("password", password);
+		this.path = checkValue("path", path);
 	}
 
 	private String checkValue(String attribute, String value) {
