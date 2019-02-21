@@ -1,5 +1,21 @@
-/**
- * LocalConnection.java
+/*
+ *  eXist Open Source Native XML Database
+ *  Copyright (C) 2019 The eXist Project
+ *  http://exist-db.org
+ *
+ *  This program is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation; either version 2
+ *  of the License, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 package org.exist.eclipse.db.v141;
 
@@ -17,12 +33,9 @@ import org.xmldb.api.base.Database;
 import org.xmldb.api.base.XMLDBException;
 
 /**
- * With this class you can connect to a local database and start it in the same
- * JVM.
- * 
  * @author Pascal Schmidiger
  */
-public class LocalConnection extends AbstractConnection {
+class LocalConnection extends AbstractConnection {
 	private static int _counter = 0;
 
 	private final String uriName;
@@ -37,12 +50,13 @@ public class LocalConnection extends AbstractConnection {
 	 * @param password of the username, optional field.
 	 * @param path     the uri to the configuration field
 	 */
-	public LocalConnection(String name, String username, String password, String path) {
+	LocalConnection(String name, String username, String password, String path) {
 		this(name, username, password, path, getNextUri());
 	}
 
-	public LocalConnection(String name, String username, String password, String path, String uri) {
-		super(ExistConnectionProvider.versionId(), ConnectionType.LOCAL, name, username, password, Paths.get(path).toAbsolutePath().toString());
+	LocalConnection(String name, String username, String password, String path, String uri) {
+		super(ExistConnectionProvider.versionId(), ConnectionType.LOCAL, name, username, password,
+				Paths.get(path).toAbsolutePath().toString());
 		uriName = uri;
 	}
 
@@ -130,7 +144,8 @@ public class LocalConnection extends AbstractConnection {
 	protected void closeRoot() throws ConnectionException {
 		if (isOpen()) {
 			try {
-				DatabaseInstanceManager manager = (DatabaseInstanceManager) root.getService("DatabaseInstanceManager", "1.0");
+				DatabaseInstanceManager manager = (DatabaseInstanceManager) root.getService("DatabaseInstanceManager",
+						"1.0");
 				if (root != null) {
 					root.close();
 				}
@@ -174,7 +189,8 @@ public class LocalConnection extends AbstractConnection {
 
 	@Override
 	public IConnection duplicate() throws ConnectionException {
-		LocalConnectionWrapper wrapper = new LocalConnectionWrapper(getName(), getUsername(),getPassword(),getPath(), uriName, db);
+		LocalConnectionWrapper wrapper = new LocalConnectionWrapper(getName(), getUsername(), getPassword(), getPath(),
+				uriName, db);
 		wrapper.open();
 		return wrapper;
 	}

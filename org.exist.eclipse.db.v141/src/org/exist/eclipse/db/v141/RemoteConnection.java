@@ -1,5 +1,21 @@
-/**
- * RemoteConnection.java
+/*
+ *  eXist Open Source Native XML Database
+ *  Copyright (C) 2019 The eXist Project
+ *  http://exist-db.org
+ *
+ *  This program is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation; either version 2
+ *  of the License, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 package org.exist.eclipse.db.v141;
 
@@ -18,7 +34,7 @@ import org.xmldb.api.base.XMLDBException;
  * 
  * @author Pascal Schmidiger
  */
-public class RemoteConnection extends AbstractConnection {
+class RemoteConnection extends AbstractConnection {
 	private Database db;
 	private Collection root;
 
@@ -30,7 +46,7 @@ public class RemoteConnection extends AbstractConnection {
 	 * @param password of the username, optional field.
 	 * @param path     the uri to the remote database, mandatory field.
 	 */
-	public RemoteConnection(String name, String username, String password, String path) {
+	RemoteConnection(String name, String username, String password, String path) {
 		super(ExistConnectionProvider.versionId(), ConnectionType.REMOTE, name, username, password, path);
 	}
 
@@ -148,7 +164,8 @@ public class RemoteConnection extends AbstractConnection {
 
 	@Override
 	public IConnection duplicate() throws ConnectionException {
-		RemoteConnectionWrapper wrapper = new RemoteConnectionWrapper(getName(), getUsername(),getPassword(),getPath(), db);
+		RemoteConnectionWrapper wrapper = new RemoteConnectionWrapper(getName(), getUsername(), getPassword(),
+				getPath(), db);
 		wrapper.open();
 		return wrapper;
 	}
