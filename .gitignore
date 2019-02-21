@@ -5,4 +5,4 @@
 /RemoteSystemsTempFiles/
 build/
 rebel.xml
-/org.exist.eclipse.db.**/
+org.exist.eclipse.db.**
