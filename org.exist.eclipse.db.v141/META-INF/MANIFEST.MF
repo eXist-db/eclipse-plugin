@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: eXist
+Bundle-Name: eXist 1.4.1 database implementation
 Bundle-SymbolicName: org.exist.eclipse.db.v141;singleton:=true
-Bundle-Version: 1.4.1
+Bundle-Version: 1.0.0
 Automatic-Module-Name: org.exist.eclipse.exist142
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.exist.eclipse;bundle-version="4.10.0"

@@ -1,9 +1,6 @@
-/**
- * CreateTestdata.java
- */
-package org.exist.eclipse;
+package org.exist.eclipse.db.v141;
 
-import org.exist.eclipse.db.v141.RemoteConnection;
+import org.exist.eclipse.IConnection;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.XMLDBException;
