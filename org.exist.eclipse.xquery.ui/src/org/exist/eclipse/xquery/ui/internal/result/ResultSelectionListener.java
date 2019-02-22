@@ -29,15 +29,13 @@ public class ResultSelectionListener implements IDoubleClickListener {
 
 	public void openEditor(IStructuredSelection selection) {
 		for (Object it : selection.toArray()) {
-			IStorageEditorInput input = new QueryResultStorageEditorInput(
-					new QueryResultStorage((ResultItem) it));
+			IStorageEditorInput input = new QueryResultStorageEditorInput(new QueryResultStorage((ResultItem) it));
 			openEditor(input);
 		}
 	}
 
 	private void openEditor(IStorageEditorInput input) {
-		IEditorRegistry registry = PlatformUI.getWorkbench()
-				.getEditorRegistry();
+		IEditorRegistry registry = PlatformUI.getWorkbench().getEditorRegistry();
 
 		// take the default text editor
 		IEditorDescriptor defaultEditor;
@@ -45,16 +43,13 @@ public class ResultSelectionListener implements IDoubleClickListener {
 		if (editors.length > 0) {
 			defaultEditor = editors[0];
 		} else {
-			defaultEditor = registry
-					.findEditor("org.eclipse.ui.DefaultTextEditor");
+			defaultEditor = registry.findEditor("org.eclipse.ui.DefaultTextEditor");
 		}
 
 		if (defaultEditor != null) {
 			try {
-				IWorkbenchWindow workbenchWindow = XQueryUI.getDefault()
-						.getWorkbench().getActiveWorkbenchWindow();
-				workbenchWindow.getActivePage().openEditor(input,
-						defaultEditor.getId().toString());
+				IWorkbenchWindow workbenchWindow = XQueryUI.getDefault().getWorkbench().getActiveWorkbenchWindow();
+				workbenchWindow.getActivePage().openEditor(input, defaultEditor.getId().toString());
 			} catch (PartInitException ex) {
 				ex.printStackTrace();
 			}

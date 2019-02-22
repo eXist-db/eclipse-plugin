@@ -24,39 +24,32 @@ import org.eclipse.ui.texteditor.ITextEditor;
  * 
  * @author Pascal Schmidiger
  */
-public class SimpleXQuerySourceViewerConfiguration extends
-		XQuerySourceViewerConfiguration {
+public class SimpleXQuerySourceViewerConfiguration extends XQuerySourceViewerConfiguration {
 
 	private boolean _configureFormatter;
 
 	/**
 	 * Creates a new XQuery source viewer configuration for viewers in the given
-	 * editor using the given preference store, the color manager and the
-	 * specified document partitioning.
+	 * editor using the given preference store, the color manager and the specified
+	 * document partitioning.
 	 * 
-	 * @param colorManager
-	 *            the color manager
-	 * @param preferenceStore
-	 *            the preference store, can be read-only
-	 * @param editor
-	 *            the editor in which the configured viewer(s) will reside, or
-	 *            <code>null</code> if none
-	 * @param partitioning
-	 *            the document partitioning for this configuration, or
-	 *            <code>null</code> for the default partitioning
-	 * @param configureFormatter
-	 *            <code>true</code> if a content formatter should be configured
+	 * @param colorManager       the color manager
+	 * @param preferenceStore    the preference store, can be read-only
+	 * @param editor             the editor in which the configured viewer(s) will
+	 *                           reside, or <code>null</code> if none
+	 * @param partitioning       the document partitioning for this configuration,
+	 *                           or <code>null</code> for the default partitioning
+	 * @param configureFormatter <code>true</code> if a content formatter should be
+	 *                           configured
 	 */
-	public SimpleXQuerySourceViewerConfiguration(IColorManager colorManager,
-			IPreferenceStore preferenceStore, ITextEditor editor,
-			String partitioning, boolean configureFormatter) {
+	public SimpleXQuerySourceViewerConfiguration(IColorManager colorManager, IPreferenceStore preferenceStore,
+			ITextEditor editor, String partitioning, boolean configureFormatter) {
 		super(colorManager, preferenceStore, editor, partitioning);
 		_configureFormatter = configureFormatter;
 	}
 
 	@Override
-	public IAutoEditStrategy[] getAutoEditStrategies(
-			ISourceViewer sourceViewer, String contentType) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
@@ -66,26 +59,22 @@ public class SimpleXQuerySourceViewerConfiguration extends
 	}
 
 	@Override
-	public IAnnotationHover getOverviewRulerAnnotationHover(
-			ISourceViewer sourceViewer) {
+	public IAnnotationHover getOverviewRulerAnnotationHover(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public int[] getConfiguredTextHoverStateMasks(ISourceViewer sourceViewer,
-			String contentType) {
+	public int[] getConfiguredTextHoverStateMasks(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
 	@Override
-	public ITextHover getTextHover(ISourceViewer sourceViewer,
-			String contentType, int stateMask) {
+	public ITextHover getTextHover(ISourceViewer sourceViewer, String contentType, int stateMask) {
 		return null;
 	}
 
 	@Override
-	public ITextHover getTextHover(ISourceViewer sourceViewer,
-			String contentType) {
+	public ITextHover getTextHover(ISourceViewer sourceViewer, String contentType) {
 		return null;
 	}
 
@@ -98,25 +87,21 @@ public class SimpleXQuerySourceViewerConfiguration extends
 	}
 
 	@Override
-	public IInformationControlCreator getInformationControlCreator(
-			ISourceViewer sourceViewer) {
+	public IInformationControlCreator getInformationControlCreator(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public IInformationPresenter getInformationPresenter(
-			ISourceViewer sourceViewer) {
+	public IInformationPresenter getInformationPresenter(ISourceViewer sourceViewer) {
 		return null;
 	}
 
 	@Override
-	public IInformationPresenter getOutlinePresenter(
-			ISourceViewer sourceViewer, boolean doCodeResolve) {
+	public IInformationPresenter getOutlinePresenter(ISourceViewer sourceViewer, boolean doCodeResolve) {
 		return null;
 	}
 
-	public IInformationPresenter getHierarchyPresenter(
-			ISourceViewer sourceViewer, boolean doCodeResolve) {
+	public IInformationPresenter getHierarchyPresenter(ISourceViewer sourceViewer, boolean doCodeResolve) {
 		return null;
 	}
 

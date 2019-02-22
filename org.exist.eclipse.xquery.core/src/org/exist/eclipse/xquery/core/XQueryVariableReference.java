@@ -13,11 +13,9 @@ public class XQueryVariableReference extends VariableReference {
 	private final MethodDeclaration _parent;
 
 	/**
-	 * @param parent
-	 *            nullable if in module scope
+	 * @param parent nullable if in module scope
 	 */
-	public XQueryVariableReference(MethodDeclaration parent, int nameStart,
-			int nameEnd, String name) {
+	public XQueryVariableReference(MethodDeclaration parent, int nameStart, int nameEnd, String name) {
 		super(nameStart, nameEnd, name);
 		_parent = parent;
 	}

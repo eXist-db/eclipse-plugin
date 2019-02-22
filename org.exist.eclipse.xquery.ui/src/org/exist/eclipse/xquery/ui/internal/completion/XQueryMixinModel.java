@@ -45,8 +45,7 @@ public class XQueryMixinModel {
 	}
 
 	/**
-	 * @param prefix
-	 *            selection attribute
+	 * @param prefix selection attribute
 	 * @return all methods for the prefix
 	 */
 	public List<IXQueryMethod> getMethods(String prefix) {
@@ -65,15 +64,12 @@ public class XQueryMixinModel {
 			Path path = getFilePath(prefix);
 			doc = new LibDocument(prefix, namespaceUri, path);
 			XQueryUI plugin = XQueryUI.getDefault();
-			try (InputStream in = FileLocator.openStream(plugin.getBundle(),
-					path, false)) {
+			try (InputStream in = FileLocator.openStream(plugin.getBundle(), path, false)) {
 				doc.parseMethods(in);
 				cache.put(prefix, doc);
 			} catch (Exception e) {
-				plugin.getLog().log(
-						new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, String
-								.format("Unable to lobrary %s:%s", prefix,
-										namespaceUri), e));
+				plugin.getLog().log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+						String.format("Unable to lobrary %s:%s", prefix, namespaceUri), e));
 			}
 		}
 		return doc;

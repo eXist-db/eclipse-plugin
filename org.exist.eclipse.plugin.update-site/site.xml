@@ -3,10 +3,10 @@
    <description url="http://exist.sourceforge.net/plugin-update-site/">
       eXist Plugin Update Site
    </description>
-   <feature url="features/org.exist.eclipse.feature_0.6.2.jar" id="org.exist.eclipse.feature" version="0.6.2">
+   <feature url="features/org.exist.eclipse.feature_4.60.0.jar" id="org.exist.eclipse.feature" version="4.60">
       <category name="eXist"/>
    </feature>
-   <feature url="features/org.exist.eclipse.query.feature_0.6.2.jar" id="org.exist.eclipse.query.feature" version="0.6.2">
+   <feature url="features/org.exist.eclipse.query.feature_4.60.0.jar" id="org.exist.eclipse.query.feature" version="4.60">
       <category name="eXist"/>
    </feature>
    <archive path="DLTK" url="http://download.eclipse.org/technology/dltk/updates/"/>

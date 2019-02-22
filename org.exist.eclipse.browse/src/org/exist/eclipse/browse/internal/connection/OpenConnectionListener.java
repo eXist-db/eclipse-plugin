@@ -23,10 +23,8 @@ public class OpenConnectionListener implements IConnectionListener {
 			connection.open();
 		} catch (ConnectionException e) {
 			String message = "Error while open connection";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 	}
 

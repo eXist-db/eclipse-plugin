@@ -40,8 +40,7 @@ import org.exist.eclipse.auto.internal.model.QueryEntity;
  * 
  * @author Markus Tanner
  */
-public class QueryDetailsSection implements IDetailsPage, ModifyListener,
-		FocusListener {
+public class QueryDetailsSection implements IDetailsPage, ModifyListener, FocusListener {
 	private IManagedForm _mform;
 	private QueryEntity _queryEntity;
 	private Text _name;
@@ -74,8 +73,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 
 		// header
 		FormToolkit toolkit = _mform.getToolkit();
-		Section queryDetailsSection = toolkit.createSection(_parent,
-				ExpandableComposite.TITLE_BAR);
+		Section queryDetailsSection = toolkit.createSection(_parent, ExpandableComposite.TITLE_BAR);
 		queryDetailsSection.marginWidth = 10;
 		queryDetailsSection.marginHeight = 5;
 		queryDetailsSection.setText("Query Details");
@@ -180,13 +178,11 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	// --------------------------------------------------------------------------
 
 	/**
-	 * Creates a notification if the new input is not the same as the existing
-	 * one.
+	 * Creates a notification if the new input is not the same as the existing one.
 	 */
 	private void createNotification(String newInput, String input) {
 		if (input.compareTo(newInput) != 0) {
-			_notifier.automationModified(new AutoModEvent(
-					"Query Details changed"));
+			_notifier.automationModified(new AutoModEvent("Query Details changed"));
 		}
 	}
 
@@ -204,11 +200,9 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	 * update the entities
 	 */
 	private void update() {
-		_name.setText(_queryEntity != null && _queryEntity.getName() != null ? _queryEntity
-				.getName() : "");
+		_name.setText(_queryEntity != null && _queryEntity.getName() != null ? _queryEntity.getName() : "");
 		_quantity.setText(Integer.toString(_queryEntity.getQuantity()));
-		_query.setText(_queryEntity != null && _queryEntity.getQuery() != null ? _queryEntity
-				.getQuery() : "");
+		_query.setText(_queryEntity != null && _queryEntity.getQuery() != null ? _queryEntity.getQuery() : "");
 	}
 
 	/**
@@ -218,8 +212,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	 * @param client
 	 */
 	private void createControls(FormToolkit toolkit, Composite client) {
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL
-				| GridData.VERTICAL_ALIGN_BEGINNING);
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_BEGINNING);
 		gd.widthHint = 10;
 
 		// name
@@ -246,8 +239,7 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
 		queryLabel.setLayoutData(gd);
 
-		_query = toolkit.createText(client, "", SWT.MULTI | SWT.WRAP
-				| SWT.V_SCROLL);
+		_query = toolkit.createText(client, "", SWT.MULTI | SWT.WRAP | SWT.V_SCROLL);
 		_query.setToolTipText("Query");
 		_query.addModifyListener(this);
 		addDropSupport(_query);
@@ -278,14 +270,13 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 	}
 
 	/**
-	 * Handles the input concerning the quantity field. Make sure that only
-	 * numbers can be added.
+	 * Handles the input concerning the quantity field. Make sure that only numbers
+	 * can be added.
 	 */
 	private void handleQuantityInput() {
 		boolean sendNotification = false;
 		if (_queryEntity != null) {
-			if (isValidInt(_quantity.getText())
-					&& _quantity.getText().compareTo("") != 0) {
+			if (isValidInt(_quantity.getText()) && _quantity.getText().compareTo("") != 0) {
 				// if string represents valid number or is empty
 				int previousValue = _queryEntity.getQuantity();
 				long newValue = Long.parseLong(_quantity.getText());
@@ -295,10 +286,8 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 						sendNotification = true;
 					}
 				} else {
-					MessageDialog.openInformation(_parent.getShell(),
-							"Invalid thread count",
-							"The quantity needs to be a value "
-									+ "between 1 and 100'000.");
+					MessageDialog.openInformation(_parent.getShell(), "Invalid thread count",
+							"The quantity needs to be a value " + "between 1 and 100'000.");
 					_quantity.setText("100000");
 					sendNotification = true;
 				}
@@ -310,16 +299,14 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 				// if the current input contains only one character and is not a
 				// number, the field should be cleared
 				if (_quantity.getText().length() != 1) {
-					_quantity.setText(Integer.toString(_queryEntity
-							.getQuantity()));
+					_quantity.setText(Integer.toString(_queryEntity.getQuantity()));
 				} else {
 					_quantity.setText("");
 				}
 			}
 		}
 		if (sendNotification) {
-			_notifier
-					.automationModified(new AutoModEvent("Quantity modified."));
+			_notifier.automationModified(new AutoModEvent("Quantity modified."));
 		}
 	}
 
@@ -346,13 +333,11 @@ public class QueryDetailsSection implements IDetailsPage, ModifyListener,
 				if (fileTransfer.isSupportedType(event.currentDataType)) {
 					String[] filenames = (String[]) event.data;
 					if (filenames.length > 0) {
-						String input = AutoUI.getDefault().getFileInput(
-								filenames[0]);
+						String input = AutoUI.getDefault().getFileInput(filenames[0]);
 						if (input != null) {
 							String previousText = _queryEntity.getQuery();
 							_queryEntity.setQuery(input);
-							createNotification(_queryEntity.getQuery(),
-									previousText);
+							createNotification(_queryEntity.getQuery(), previousText);
 							_query.setText(input);
 						}
 					}

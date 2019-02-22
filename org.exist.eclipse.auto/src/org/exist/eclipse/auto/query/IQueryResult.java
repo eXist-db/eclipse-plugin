@@ -44,14 +44,14 @@ public interface IQueryResult {
 	 * @return execution time
 	 */
 	public long getExecutionTime();
-	
+
 	/**
 	 * Returns the result count of the query.
 	 * 
 	 * @return the result count
 	 */
 	public long getResultCount();
-	
+
 	/**
 	 * Set the result count.
 	 * 

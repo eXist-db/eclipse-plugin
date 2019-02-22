@@ -16,8 +16,7 @@ import org.exist.eclipse.browse.document.IDocumentItem;
 public class CreateAutoXmlResource extends CreateXmlResource {
 
 	@Override
-	public void create(IDocumentItem item, String content)
-			throws CreateDocumentException {
+	public void create(IDocumentItem item, String content) throws CreateDocumentException {
 		super.create(item, Automation.createEmptyAutomationXml());
 	}
 

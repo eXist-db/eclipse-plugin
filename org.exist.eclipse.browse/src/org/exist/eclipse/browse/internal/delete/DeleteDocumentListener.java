@@ -48,29 +48,23 @@ public class DeleteDocumentListener implements IDocumentListener {
 			for (IDocumentItem item : items) {
 				try {
 					IBrowseItem coll = item.getParent();
-					IBrowseService browseService = IBrowseService.class
-							.cast(coll.getAdapter(IBrowseService.class));
-					IDocumentService documentService = IDocumentService.class
-							.cast(item.getAdapter(IDocumentService.class));
-					if (IManagementService.class.cast(
-							coll.getConnection().getAdapter(
-									IManagementService.class)).check()
-							&& browseService.check() && documentService.check()) {
+					IBrowseService browseService = coll.getAdapter(IBrowseService.class);
+					IDocumentService documentService = item.getAdapter(IDocumentService.class);
+					if (coll.getConnection().getAdapter(IManagementService.class).check() && browseService.check()
+							&& documentService.check()) {
 						documentService.delete();
 					}
 				} catch (Exception e) {
 					hadErrors = true;
-					Status status = new Status(IStatus.ERROR, BrowsePlugin
-							.getId(), "Error while deleting document '"
-							+ item.getName() + "': " + e, e);
+					Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
+							"Error while deleting document '" + item.getName() + "': " + e, e);
 					BrowsePlugin.getDefault().getLog().log(status);
 				}
 			}
 
 			if (hadErrors) {
-				MessageDialog
-						.openError(shell, "Delete",
-								"Errors occured while deleting. See the Eclipse Error Log for details.");
+				MessageDialog.openError(shell, "Delete",
+						"Errors occured while deleting. See the Eclipse Error Log for details.");
 			}
 		}
 	}

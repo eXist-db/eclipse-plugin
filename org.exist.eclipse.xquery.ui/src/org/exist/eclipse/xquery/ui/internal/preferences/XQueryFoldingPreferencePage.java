@@ -13,8 +13,7 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public final class XQueryFoldingPreferencePage extends
-		AbstractConfigurationBlockPreferencePage {
+public final class XQueryFoldingPreferencePage extends AbstractConfigurationBlockPreferencePage {
 
 	@Override
 	protected String getHelpId() {
@@ -38,8 +37,7 @@ public final class XQueryFoldingPreferencePage extends
 	}
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
 		return new XQueryFoldingConfigurationBlock(overlayPreferenceStore, this);
 	}
 }

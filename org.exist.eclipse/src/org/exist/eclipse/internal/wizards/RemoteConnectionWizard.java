@@ -42,18 +42,18 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	public void addPages() {
 		_page = new RemoteConnectionWizardPage();
 		_page.setTitle(WIZARD_TITLE);
-		if(!_copy && _connection!=null){
+		if (!_copy && _connection != null) {
 			_page.setDescription(WIZARD_EDIT_DESCRIPTION);
-		}else{
-			_page.setDescription(WIZARD_DESCRIPTION);			
+		} else {
+			_page.setDescription(WIZARD_DESCRIPTION);
 		}
 		_page.setConnection(_connection, _copy);
 		addPage(_page);
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the NewConnectionWizardPage.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the NewConnectionWizardPage.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -61,8 +61,8 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
@@ -73,10 +73,8 @@ public class RemoteConnectionWizard extends Wizard implements IWorkbenchWizard {
 			box.removeConnection(_connection);
 		}
 		box.addConnection(connection);
-		IWorkbenchPage activePage = _workbench.getActiveWorkbenchWindow()
-				.getActivePage();
-		Iterator<IViewListener> listeners = ViewRegistration.getInstance()
-				.getListeners();
+		IWorkbenchPage activePage = _workbench.getActiveWorkbenchWindow().getActivePage();
+		Iterator<IViewListener> listeners = ViewRegistration.getInstance().getListeners();
 		while (listeners.hasNext()) {
 			listeners.next().openView(activePage);
 		}

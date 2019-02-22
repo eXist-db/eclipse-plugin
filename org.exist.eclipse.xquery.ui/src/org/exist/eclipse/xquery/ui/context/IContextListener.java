@@ -13,8 +13,7 @@ package org.exist.eclipse.xquery.ui.context;
  */
 public interface IContextListener {
 	/**
-	 * Call if you have to refresh the context. For e.g. the context was
-	 * renamed.
+	 * Call if you have to refresh the context. For e.g. the context was renamed.
 	 * 
 	 * @param event
 	 */

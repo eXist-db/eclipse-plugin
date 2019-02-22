@@ -33,16 +33,16 @@ import org.eclipse.debug.ui.sourcelookup.SourceLookupTab;
  */
 public class XQueryTabGroup extends AbstractLaunchConfigurationTabGroup {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ILaunchConfigurationTabGroup#createTabs(org.eclipse.debug.ui.ILaunchConfigurationDialog, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ILaunchConfigurationTabGroup#createTabs(org.eclipse.
+	 * debug.ui.ILaunchConfigurationDialog, java.lang.String)
 	 */
 	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
-		setTabs(new ILaunchConfigurationTab[] {
-				new XQueryMainTab(),
-				new SourceLookupTab(),
-				new CommonTab()
-		});
+		setTabs(new ILaunchConfigurationTab[] { new XQueryMainTab(), new SourceLookupTab(), new CommonTab() });
 	}
 
 }

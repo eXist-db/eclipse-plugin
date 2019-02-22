@@ -27,33 +27,24 @@ public class BrowseDeferredAdapter implements IDeferredWorkbenchAdapter {
 	}
 
 	@Override
-	public void fetchDeferredChildren(Object object,
-			IElementCollector collector, IProgressMonitor monitor) {
+	public void fetchDeferredChildren(Object object, IElementCollector collector, IProgressMonitor monitor) {
 		if (object instanceof IBrowseItem) {
 			IBrowseItem item = IBrowseItem.class.cast(object);
 			try {
-				monitor.beginTask("Loading", item.getCollection()
-						.getChildCollectionCount());
-				String[] collections = item.getCollection()
-						.listChildCollections();
+				monitor.beginTask("Loading", item.getCollection().getChildCollectionCount());
+				String[] collections = item.getCollection().listChildCollections();
 				Arrays.sort(collections);
-				GetBrowseItemJob job = new GetBrowseItemJob("Get " + item,
-						collector, item, collections);
+				GetBrowseItemJob job = new GetBrowseItemJob("Get " + item, collector, item, collections);
 				job.schedule();
 				job.join();
 			} catch (InterruptedException e) {
-				BrowsePlugin
-						.getDefault()
-						.getLog()
-						.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
-								"Fetching deferred children interrupted.", e));
+				BrowsePlugin.getDefault().getLog().log(
+						new Status(IStatus.ERROR, BrowsePlugin.getId(), "Fetching deferred children interrupted.", e));
 				Thread.currentThread().interrupt();
 			} catch (Exception e) {
-				StringBuilder message = new StringBuilder(50)
-						.append("Error while fetching children for collection '")
+				StringBuilder message = new StringBuilder(50).append("Error while fetching children for collection '")
 						.append(item).append("'");
-				IStatus status = new Status(IStatus.ERROR,
-						BrowsePlugin.getId(), message.toString(), e);
+				IStatus status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message.toString(), e);
 				BrowsePlugin.getDefault().getLog().log(status);
 			} finally {
 				monitor.done();

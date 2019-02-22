@@ -14,11 +14,9 @@ public class XQueryFieldDeclaration extends FieldDeclaration {
 	private MethodDeclaration _parent;
 
 	/**
-	 * @param parent
-	 *            nullable if in module scope
+	 * @param parent nullable if in module scope
 	 */
-	public XQueryFieldDeclaration(MethodDeclaration parent, String name,
-			int nameStart, int nameEnd) {
+	public XQueryFieldDeclaration(MethodDeclaration parent, String name, int nameStart, int nameEnd) {
 		super(name, nameStart, nameEnd, nameStart, nameEnd);
 	}
 

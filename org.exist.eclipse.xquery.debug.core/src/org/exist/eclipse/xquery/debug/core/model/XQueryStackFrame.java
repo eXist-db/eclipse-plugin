@@ -43,13 +43,13 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 
 	public XQueryStackFrame(XQueryThread thread, String data, int id) {
 		super((XQueryDebugTarget) thread.getDebugTarget());
-		
+
 		fId = id;
 		fThread = thread;
 		init(data);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	private void init(String data) {
 		String[] strings = data.split("\\|");
 		String fileName = strings[0];
@@ -63,8 +63,10 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 			fVariables[i] = new XQueryVariable(this, strings[i + 3]);
 		}
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getCharEnd()
 	 */
 	@Override
@@ -72,7 +74,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return -1;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getCharStart()
 	 */
 	@Override
@@ -80,7 +84,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return -1;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getLineNumber()
 	 */
 	@Override
@@ -88,7 +94,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fPC;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getName()
 	 */
 	@Override
@@ -96,7 +104,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getRegisterGroups()
 	 */
 	@Override
@@ -104,7 +114,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getThread()
 	 */
 	@Override
@@ -112,7 +124,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fThread;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#getVariables()
 	 */
 	@Override
@@ -120,7 +134,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fVariables;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#hasRegisterGroups()
 	 */
 	@Override
@@ -128,7 +144,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStackFrame#hasVariables()
 	 */
 	@Override
@@ -136,7 +154,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return fVariables.length > 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#canStepInto()
 	 */
 	@Override
@@ -144,7 +164,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canStepInto();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#canStepOver()
 	 */
 	@Override
@@ -152,7 +174,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canStepOver();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#canStepReturn()
 	 */
 	@Override
@@ -160,7 +184,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canStepReturn();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#isStepping()
 	 */
 	@Override
@@ -168,7 +194,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().isStepping();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#stepInto()
 	 */
 	@Override
@@ -176,7 +204,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		getThread().stepInto();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#stepOver()
 	 */
 	@Override
@@ -184,7 +214,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		getThread().stepOver();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IStep#stepReturn()
 	 */
 	@Override
@@ -192,7 +224,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		getThread().stepReturn();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canResume()
 	 */
 	@Override
@@ -200,7 +234,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canResume();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ISuspendResume#canSuspend()
 	 */
 	@Override
@@ -208,7 +244,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canSuspend();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ISuspendResume#isSuspended()
 	 */
 	@Override
@@ -216,7 +254,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().isSuspended();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ISuspendResume#resume()
 	 */
 	@Override
@@ -224,7 +264,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		getThread().resume();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ISuspendResume#suspend()
 	 */
 	@Override
@@ -232,7 +274,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		getThread().resume();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ITerminate#canTerminate()
 	 */
 	@Override
@@ -240,7 +284,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().canTerminate();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ITerminate#isTerminated()
 	 */
 	@Override
@@ -248,7 +294,9 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 		return getThread().isTerminated();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.ITerminate#terminate()
 	 */
 	@Override
@@ -259,26 +307,25 @@ public class XQueryStackFrame extends XQueryDebugElement implements IStackFrame 
 	public String getSourceName() {
 		return fFileName;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof XQueryStackFrame) {
 			XQueryStackFrame sf = (XQueryStackFrame) obj;
 			try {
-				return sf.getSourceName().equals(getSourceName()) &&
-					sf.getLineNumber() == getLineNumber() &&
-					sf.fId == fId;
+				return sf.getSourceName().equals(getSourceName()) && sf.getLineNumber() == getLineNumber()
+						&& sf.fId == fId;
 			} catch (DebugException e) {
 			}
 		}
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return getSourceName().hashCode() + fId;
 	}
-	
+
 	protected int getIdentifier() {
 		return fId;
 	}

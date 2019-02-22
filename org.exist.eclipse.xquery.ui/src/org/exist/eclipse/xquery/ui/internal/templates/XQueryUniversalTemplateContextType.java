@@ -10,8 +10,7 @@ import org.eclipse.jface.text.IDocument;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryUniversalTemplateContextType extends
-		ScriptTemplateContextType {
+public class XQueryUniversalTemplateContextType extends ScriptTemplateContextType {
 
 	public static final String CONTEXT_TYPE_ID = "xqueryUniversalTemplateContextType";
 
@@ -28,10 +27,9 @@ public class XQueryUniversalTemplateContextType extends
 	}
 
 	@Override
-	public ScriptTemplateContext createContext(IDocument document,
-			int completionPosition, int length, ISourceModule sourceModule) {
-		return new XQueryTemplateContext(this, document, completionPosition,
-				length, sourceModule);
+	public ScriptTemplateContext createContext(IDocument document, int completionPosition, int length,
+			ISourceModule sourceModule) {
+		return new XQueryTemplateContext(this, document, completionPosition, length, sourceModule);
 	}
 
 }

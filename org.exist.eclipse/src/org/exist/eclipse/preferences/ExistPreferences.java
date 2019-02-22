@@ -18,8 +18,7 @@ public class ExistPreferences {
 	 */
 	public static Charset getEncoding() {
 		IPreferenceStore prefs = BasePlugin.getDefault().getPreferenceStore();
-		String encodingString = prefs
-				.getString(IExistPreferenceConstants.PREFS_ENCODING);
+		String encodingString = prefs.getString(IExistPreferenceConstants.PREFS_ENCODING);
 
 		return Charset.forName(encodingString);
 	}

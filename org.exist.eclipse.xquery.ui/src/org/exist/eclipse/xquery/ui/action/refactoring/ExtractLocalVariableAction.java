@@ -59,8 +59,7 @@ public class ExtractLocalVariableAction extends ARefactorAction {
 			int nOffs = offsets.size();
 
 			boolean[] replaceAll = { _lastReplaceAllButtonSelection };
-			String varName = openVariableNameInputDialog(editor
-					.getEditorSite().getShell(), nOffs, replaceAll);
+			String varName = openVariableNameInputDialog(editor.getEditorSite().getShell(), nOffs, replaceAll);
 			if (varName == null) {
 				return;
 			}
@@ -77,8 +76,7 @@ public class ExtractLocalVariableAction extends ARefactorAction {
 
 			MultiTextEdit mte = new MultiTextEdit();
 
-			mte.addChild(new InsertEdit(lineOff, "let " + varName + " := "
-					+ sel + "\n"));
+			mte.addChild(new InsertEdit(lineOff, "let " + varName + " := " + sel + "\n"));
 
 			for (Integer o : offsets) {
 				mte.addChild(new ReplaceEdit(o.intValue(), len, varName));
@@ -90,34 +88,28 @@ public class ExtractLocalVariableAction extends ARefactorAction {
 			applyEdits(document, mte);
 
 		} catch (Exception e) {
-			XQueryUI.getDefault().getLog().log(
-					new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-							"An error occured while extracting local variable: "
-									+ e, e));
+			XQueryUI.getDefault().getLog().log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+					"An error occured while extracting local variable: " + e, e));
 		}
 	}
 
 	/**
 	 * @return nullable if canceled
 	 */
-	private String openVariableNameInputDialog(Shell shell,
-			final int nOccurences, final boolean[] replaceAll) {
-		InputDialog dialog = new InputDialog(shell, "Extract Local Variable",
-				"&Name", "foo", new IInputValidator() {
-					@Override
-					public String isValid(String newText) {
-						// not displayed; just disable ok button
-						return newText.isEmpty() ? "" : null;
-					}
-				}) {
+	private String openVariableNameInputDialog(Shell shell, final int nOccurences, final boolean[] replaceAll) {
+		InputDialog dialog = new InputDialog(shell, "Extract Local Variable", "&Name", "foo", new IInputValidator() {
+			@Override
+			public String isValid(String newText) {
+				// not displayed; just disable ok button
+				return newText.isEmpty() ? "" : null;
+			}
+		}) {
 			@Override
 			protected Control createContents(Composite container) {
 				Control contents = super.createContents(container);
 
-				Composite parent = (Composite) ((Composite) contents)
-						.getChildren()[0];
-				final Button replaceButton = createReplaceAllButton(parent,
-						nOccurences, replaceAll);
+				Composite parent = (Composite) ((Composite) contents).getChildren()[0];
+				final Button replaceButton = createReplaceAllButton(parent, nOccurences, replaceAll);
 				final Text text = (Text) parent.getChildren()[1];
 
 				text.addModifyListener(new ModifyListener() {

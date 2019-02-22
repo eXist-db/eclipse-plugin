@@ -37,8 +37,8 @@ public class ResultProcessor implements AutoTags {
 	 * @param autoNote
 	 * @param queryCount
 	 */
-	public ResultProcessor(Map<Integer, QueryGroup> results, int threadCount,
-			QueryOrderType type, String autoNote, int queryCount) {
+	public ResultProcessor(Map<Integer, QueryGroup> results, int threadCount, QueryOrderType type, String autoNote,
+			int queryCount) {
 		_results = results;
 		_threadCount = threadCount;
 		_queryCount = queryCount;
@@ -49,14 +49,12 @@ public class ResultProcessor implements AutoTags {
 	/**
 	 * Returns the result as XML representation.
 	 * 
-	 * @param outputFile
-	 *            Automation Result target file
+	 * @param outputFile Automation Result target file
 	 * @throws Exception
 	 */
 	public void writeResultXml(File outputFile) throws Exception {
 		XMLOutputter outputter = new XMLOutputter();
-		try (Writer out = new FileWriter(outputFile);
-				PrintWriter writer = new PrintWriter(out)) {
+		try (Writer out = new FileWriter(outputFile); PrintWriter writer = new PrintWriter(out)) {
 			writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			writer.println("<" + AUTOMATIONRESULT + ">");
 
@@ -101,8 +99,8 @@ public class ResultProcessor implements AutoTags {
 	private void analyzeQueryResults(QueryGroup group, PrintWriter writer) {
 
 		StringBuilder query = new StringBuilder();
-		query.append('<').append(QUERY).append(' ').append(NAME).append("=\"")
-				.append(group.getQuery().getName()).append("\">");
+		query.append('<').append(QUERY).append(' ').append(NAME).append("=\"").append(group.getQuery().getName())
+				.append("\">");
 		writer.println(query.toString());
 
 		XMLOutputter outputter = new XMLOutputter();

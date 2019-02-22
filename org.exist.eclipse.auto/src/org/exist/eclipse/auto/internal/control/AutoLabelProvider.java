@@ -16,8 +16,7 @@ import org.exist.eclipse.auto.internal.model.QueryEntity;
  * 
  * @author Markus Tanner
  */
-public class AutoLabelProvider extends LabelProvider implements
-		ITableLabelProvider {
+public class AutoLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 	@Override
 	public String getColumnText(Object obj, int index) {
@@ -31,8 +30,7 @@ public class AutoLabelProvider extends LabelProvider implements
 	@Override
 	public Image getColumnImage(Object obj, int index) {
 		if (obj instanceof QueryEntity) {
-			return PlatformUI.getWorkbench().getSharedImages().getImage(
-					ISharedImages.IMG_OBJ_FILE);
+			return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
 		}
 		return null;
 	}

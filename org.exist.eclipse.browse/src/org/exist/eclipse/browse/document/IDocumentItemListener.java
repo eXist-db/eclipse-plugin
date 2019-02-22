@@ -15,8 +15,7 @@ public interface IDocumentItemListener {
 	/**
 	 * The given <code>item</code> does not exist.
 	 * 
-	 * @param item
-	 *            the removed item.
+	 * @param item the removed item.
 	 */
 	public void removed(IDocumentItem item);
 

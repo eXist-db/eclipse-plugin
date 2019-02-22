@@ -48,7 +48,7 @@ import org.exist.eclipse.xquery.debug.core.model.*;
  *
  */
 public class DataStackView extends AbstractDebugView implements ISelectionListener {
-	
+
 	class StackViewContentProvider implements ITreeContentProvider {
 
 		@Override
@@ -68,7 +68,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 			if (element instanceof IDebugTarget) {
 				return null;
 			} else {
-				return ((IDebugElement)element).getDebugTarget();
+				return ((IDebugElement) element).getDebugTarget();
 			}
 		}
 
@@ -92,7 +92,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 		@Override
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
-		
+
 	}
 
 	@Override
@@ -108,7 +108,8 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 		TreeViewer viewer = new TreeViewer(parent);
 		viewer.setLabelProvider(DebugUITools.newDebugModelPresentation());
 		viewer.setContentProvider(new StackViewContentProvider());
-		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(IDebugUIConstants.ID_DEBUG_VIEW, this);
+		getSite().getWorkbenchWindow().getSelectionService().addSelectionListener(IDebugUIConstants.ID_DEBUG_VIEW,
+				this);
 		return viewer;
 	}
 
@@ -126,7 +127,7 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		IAdaptable adaptable = DebugUITools.getDebugContext();
 		Object input = null;
-		if(adaptable != null) {
+		if (adaptable != null) {
 			IDebugElement element = (IDebugElement) adaptable.getAdapter(IDebugElement.class);
 			if (element != null) {
 				if (element.getModelIdentifier().equals(IXQueryConstants.ID_XQUERY_DEBUG_MODEL)) {
@@ -136,10 +137,11 @@ public class DataStackView extends AbstractDebugView implements ISelectionListen
 		}
 		getViewer().setInput(input);
 	}
-	
+
 	@Override
 	public void dispose() {
-		getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(IDebugUIConstants.ID_DEBUG_VIEW, this);
+		getSite().getWorkbenchWindow().getSelectionService().removeSelectionListener(IDebugUIConstants.ID_DEBUG_VIEW,
+				this);
 		super.dispose();
 	}
 

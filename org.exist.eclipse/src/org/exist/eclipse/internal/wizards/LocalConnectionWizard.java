@@ -18,8 +18,7 @@ import org.exist.eclipse.listener.ViewRegistration;
  * 
  * @author Pascal Schmidiger
  */
-public class LocalConnectionWizard extends Wizard implements INewWizard,
-		IWorkbenchWizard {
+public class LocalConnectionWizard extends Wizard implements INewWizard, IWorkbenchWizard {
 	static final String WIZARD_TITLE = "New eXist local connection";
 	static final String WIZARD_DESCRIPTION = "This wizard creates a new eXist local connection.";
 	static final String WIZARD_EDIT_DESCRIPTION = "This wizard edits an eXist local connection.";
@@ -44,18 +43,18 @@ public class LocalConnectionWizard extends Wizard implements INewWizard,
 	public void addPages() {
 		_page = new LocalConnectionWizardPage();
 		_page.setTitle(WIZARD_TITLE);
-		if(!_copy && _connection!=null){
+		if (!_copy && _connection != null) {
 			_page.setDescription(WIZARD_EDIT_DESCRIPTION);
-		}else{
-			_page.setDescription(WIZARD_DESCRIPTION);			
+		} else {
+			_page.setDescription(WIZARD_DESCRIPTION);
 		}
 		_page.setConnection(_connection, _copy);
 		addPage(_page);
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the NewConnectionWizardPage.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the NewConnectionWizardPage.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -63,8 +62,8 @@ public class LocalConnectionWizard extends Wizard implements INewWizard,
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
@@ -75,10 +74,8 @@ public class LocalConnectionWizard extends Wizard implements INewWizard,
 			box.removeConnection(_connection);
 		}
 		box.addConnection(connection);
-		IWorkbenchPage activePage = _workbench.getActiveWorkbenchWindow()
-				.getActivePage();
-		Iterator<IViewListener> listeners = ViewRegistration.getInstance()
-				.getListeners();
+		IWorkbenchPage activePage = _workbench.getActiveWorkbenchWindow().getActivePage();
+		Iterator<IViewListener> listeners = ViewRegistration.getInstance().getListeners();
 		while (listeners.hasNext()) {
 			listeners.next().openView(activePage);
 		}

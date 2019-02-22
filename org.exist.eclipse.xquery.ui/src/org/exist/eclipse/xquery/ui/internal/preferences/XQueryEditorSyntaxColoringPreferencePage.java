@@ -13,8 +13,7 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryEditorSyntaxColoringPreferencePage extends
-		AbstractConfigurationBlockPreferencePage {
+public class XQueryEditorSyntaxColoringPreferencePage extends AbstractConfigurationBlockPreferencePage {
 
 	@Override
 	protected String getHelpId() {
@@ -38,9 +37,7 @@ public class XQueryEditorSyntaxColoringPreferencePage extends
 	}
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
-		return new XQueryEditorColoringConfigurationBlock(
-				overlayPreferenceStore);
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
+		return new XQueryEditorColoringConfigurationBlock(overlayPreferenceStore);
 	}
 }

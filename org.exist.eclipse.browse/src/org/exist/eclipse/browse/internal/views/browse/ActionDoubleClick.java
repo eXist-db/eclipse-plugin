@@ -24,17 +24,14 @@ public class ActionDoubleClick extends Action {
 
 	@Override
 	public void run() {
-		Object[] selection = ((IStructuredSelection) _view.getViewer()
-				.getSelection()).toArray();
+		Object[] selection = ((IStructuredSelection) _view.getViewer().getSelection()).toArray();
 		if (selection.length > 0) {
 			Object data = selection[0];
 			if (data instanceof IConnection) {
-				new ActionConnectionListener(_view,
-						new OpenConnectionListener()).run();
+				new ActionConnectionListener(_view, new OpenConnectionListener()).run();
 				_view.getViewer().expandToLevel(data, 1);
 			} else if (data instanceof IBrowseItem) {
-				new ActionBrowseListener(_view, new DocumentBrowseListener())
-						.run();
+				new ActionBrowseListener(_view, new DocumentBrowseListener()).run();
 			}
 		}
 	}

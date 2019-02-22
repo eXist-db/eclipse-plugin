@@ -72,8 +72,7 @@ public class XQueryMethod implements IXQueryMethod {
 							pType = "";
 						} else {
 							pName = param.substring(0, pAs).trim();
-							pType = param.substring(pAs + "as".length() + 1)
-									.trim();
+							pType = param.substring(pAs + "as".length() + 1).trim();
 						}
 					}
 					_parameterNames.add(pName);

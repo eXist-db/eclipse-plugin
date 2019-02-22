@@ -30,30 +30,25 @@ public class MyFieldLocator extends FieldLocator {
 			return nodeSet.addMatch(node, POSSIBLE_MATCH);
 		}
 
-		if (matchesName(this.pattern.name, ((SimpleReference) node).getName()
-				.toCharArray())) {
+		if (matchesName(this.pattern.name, ((SimpleReference) node).getName().toCharArray())) {
 
 			boolean doAdd = true;
 
 			IModelElement focusParent = pattern.focus.getParent();
-			if (focusParent instanceof IMethod
-					&& node instanceof XQueryVariableReference) {
+			if (focusParent instanceof IMethod && node instanceof XQueryVariableReference) {
 				XQueryVariableReference varRef = (XQueryVariableReference) node;
 				MethodDeclaration refParent = varRef.getParent();
 				if (refParent == null) {
 					doAdd = false;
 				} else {
 					try {
-						doAdd = refParent.getName().equals(
-								focusParent.getElementName())
-								&& refParent.getArguments().size() == ((IMethod) focusParent)
-										.getParameters().length;
+						doAdd = refParent.getName().equals(focusParent.getElementName())
+								&& refParent.getArguments().size() == ((IMethod) focusParent).getParameters().length;
 
 						if (doAdd) {
 							for (Object it : refParent.getArguments()) {
 								Argument arg = (Argument) it;
-								if (matchesName(this.pattern.name, arg
-										.getName().toCharArray())) {
+								if (matchesName(this.pattern.name, arg.getName().toCharArray())) {
 									// doAdd = false;
 									break;
 								}

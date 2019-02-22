@@ -17,12 +17,9 @@ public interface IInputSave {
 	/**
 	 * Save the given <code>document</code>.
 	 * 
-	 * @param monitor
-	 *            progress monitor.
-	 * @param document
-	 *            contains the content of the document.
+	 * @param monitor  progress monitor.
+	 * @param document contains the content of the document.
 	 * @throws CoreException
 	 */
-	public void setContents(IProgressMonitor monitor, IDocument document)
-			throws CoreException;
+	public void setContents(IProgressMonitor monitor, IDocument document) throws CoreException;
 }

@@ -25,8 +25,7 @@ public class ExecutionPreparerTest {
 		queryEntities.add(ent4);
 
 		// act
-		ExecutionPreparer prep = new ExecutionPreparer(queryEntities,
-				QueryOrderType.SEQUENTIAL, "collection");
+		ExecutionPreparer prep = new ExecutionPreparer(queryEntities, QueryOrderType.SEQUENTIAL, "collection");
 		ArrayList<Query> queries = prep.getQueriesInConfiguredOrder();
 
 		// assert
@@ -60,8 +59,7 @@ public class ExecutionPreparerTest {
 		queryEntities.add(ent4);
 
 		// act
-		ExecutionPreparer prep = new ExecutionPreparer(queryEntities,
-				QueryOrderType.ITERATING, "collection");
+		ExecutionPreparer prep = new ExecutionPreparer(queryEntities, QueryOrderType.ITERATING, "collection");
 		ArrayList<Query> queries = prep.getQueriesInConfiguredOrder();
 
 		// assert
@@ -98,8 +96,7 @@ public class ExecutionPreparerTest {
 		queryEntities.add(ent4);
 
 		// act
-		ExecutionPreparer prep = new ExecutionPreparer(queryEntities,
-				QueryOrderType.RANDOM, "collection");
+		ExecutionPreparer prep = new ExecutionPreparer(queryEntities, QueryOrderType.RANDOM, "collection");
 		ArrayList<Query> queries1 = prep.getQueriesInConfiguredOrder();
 		ArrayList<Query> queries2 = prep.getQueriesInConfiguredOrder();
 
@@ -107,8 +104,7 @@ public class ExecutionPreparerTest {
 		assertEquals(100, queries1.size());
 		int unequal = 0;
 		for (int i = 0; i < 100; i++) {
-			unequal += queries1.get(i).getName()
-					.compareTo(queries2.get(2).getName()) == 0 ? 0 : 1;
+			unequal += queries1.get(i).getName().compareTo(queries2.get(2).getName()) == 0 ? 0 : 1;
 		}
 		assertTrue(unequal > 50);
 

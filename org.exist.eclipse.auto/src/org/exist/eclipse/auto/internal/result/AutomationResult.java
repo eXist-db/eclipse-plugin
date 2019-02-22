@@ -51,9 +51,8 @@ public class AutomationResult {
 	 * @param monitor
 	 * @param target
 	 */
-	public AutomationResult(int expectedCount, int threadCount,
-			QueryOrderType type, String autoNote, IProgressMonitor monitor,
-			String target) {
+	public AutomationResult(int expectedCount, int threadCount, QueryOrderType type, String autoNote,
+			IProgressMonitor monitor, String target) {
 		_expectedCount = expectedCount;
 		_threadCount = threadCount;
 		_queryOrderType = type;
@@ -85,8 +84,8 @@ public class AutomationResult {
 	}
 
 	/**
-	 * Waits until the expected amount of results is received or the automation
-	 * is cancelled.
+	 * Waits until the expected amount of results is received or the automation is
+	 * cancelled.
 	 */
 	public synchronized void join() {
 		try {
@@ -111,8 +110,8 @@ public class AutomationResult {
 	 * Displays the result
 	 */
 	private void displayResult() {
-		ResultProcessor result = new ResultProcessor(_results, _threadCount,
-				_queryOrderType, _autoNote, _expectedCount);
+		ResultProcessor result = new ResultProcessor(_results, _threadCount, _queryOrderType, _autoNote,
+				_expectedCount);
 
 		final File file = new File(_target);
 		try {
@@ -138,22 +137,18 @@ public class AutomationResult {
 	private void openEditor(File fileToOpen) {
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
 
-			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(
-					fileToOpen.toURI());
+			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
 
-			IWorkbenchPage page = AutoUI.getDefault().getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
+			IWorkbenchPage page = AutoUI.getDefault().getWorkbench().getActiveWorkbenchWindow().getActivePage();
 			if (page != null) {
 				try {
 					IDE.openEditorOnFileStore(page, fileStore);
 				} catch (PartInitException e) {
-					Status status = new Status(IStatus.ERROR, AutoUI.getId(),
-							e.getMessage(), e);
+					Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 					AutoUI.getDefault().getLog().log(status);
-					ErrorDialog.openError(
-							Display.getCurrent().getActiveShell(),
-							"Open the automation result editor failed.",
-							"Close the automation and open it again.", status);
+					ErrorDialog.openError(Display.getCurrent().getActiveShell(),
+							"Open the automation result editor failed.", "Close the automation and open it again.",
+							status);
 				}
 			}
 		}

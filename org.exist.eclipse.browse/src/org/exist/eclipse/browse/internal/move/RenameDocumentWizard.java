@@ -30,8 +30,7 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	public RenameDocumentWizard(IDocumentItem item) {
 		super();
 		_item = item;
-		_itemService = (IDocumentService) _item
-				.getAdapter(IDocumentService.class);
+		_itemService = (IDocumentService) _item.getAdapter(IDocumentService.class);
 		this.setWindowTitle("Rename a document");
 		setNeedsProgressMonitor(true);
 	}
@@ -46,9 +45,8 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link MoveCollectionWizardPage}
-	 * .
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the {@link MoveCollectionWizardPage} .
 	 */
 	@Override
 	public boolean canFinish() {
@@ -56,19 +54,14 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
-		if (IManagementService.class.cast(
-				_item.getParent().getConnection()
-						.getAdapter(IManagementService.class)).check()) {
-
-			if (IBrowseService.class.cast(
-					_item.getParent().getAdapter(IBrowseService.class)).check()) {
-
+		if (_item.getParent().getConnection().getAdapter(IManagementService.class).check()) {
+			if (_item.getParent().getAdapter(IBrowseService.class).check()) {
 				if (_itemService.check()) {
 					IDocumentItem newItem = _renameDocumentPage.getNewItem();
 					try {
@@ -76,11 +69,8 @@ public class RenameDocumentWizard extends Wizard implements IWorkbenchWizard {
 					} catch (ConnectionException e) {
 						isFinished = false;
 						String message = "Failure while move document.";
-						BrowsePlugin
-								.getDefault()
-								.getLog()
-								.log(new Status(IStatus.ERROR, BrowsePlugin
-										.getId(), message, e));
+						BrowsePlugin.getDefault().getLog()
+								.log(new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e));
 						_renameDocumentPage.setErrorMessage(message);
 					}
 				}

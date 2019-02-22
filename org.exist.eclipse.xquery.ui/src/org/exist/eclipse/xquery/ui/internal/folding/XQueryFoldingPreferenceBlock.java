@@ -36,8 +36,7 @@ public class XQueryFoldingPreferenceBlock implements IFoldingPreferenceBlock {
 	private OverlayKey[] createKeys() {
 		ArrayList<OverlayPreferenceStore.OverlayKey> overlayKeys = new ArrayList<>();
 
-		OverlayPreferenceStore.OverlayKey[] keys = new OverlayPreferenceStore.OverlayKey[overlayKeys
-				.size()];
+		OverlayPreferenceStore.OverlayKey[] keys = new OverlayPreferenceStore.OverlayKey[overlayKeys.size()];
 		overlayKeys.toArray(keys);
 		return keys;
 	}

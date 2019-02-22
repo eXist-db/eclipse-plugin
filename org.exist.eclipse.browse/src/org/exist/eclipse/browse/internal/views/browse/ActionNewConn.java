@@ -27,14 +27,11 @@ public class ActionNewConn extends Action {
 	@Override
 	public void run() {
 		try {
-			ConnectionFactory.createConnection(_site.getWorkbenchWindow()
-					.getWorkbench());
+			ConnectionFactory.createConnection(_site.getWorkbenchWindow().getWorkbench());
 		} catch (ConnectionException e) {
 			String message = "Error while create connection";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 	}
 }

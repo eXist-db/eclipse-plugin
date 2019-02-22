@@ -17,11 +17,10 @@ import org.eclipse.ui.editors.text.StorageDocumentProvider;
  */
 public class StorageProvider extends StorageDocumentProvider {
 	@Override
-	protected void doSaveDocument(IProgressMonitor monitor, Object element,
-			IDocument document, boolean overwrite) throws CoreException {
+	protected void doSaveDocument(IProgressMonitor monitor, Object element, IDocument document, boolean overwrite)
+			throws CoreException {
 		if (element instanceof IStorageEditorInput) {
-			Object obj = IStorageEditorInput.class.cast(element).getAdapter(
-					IInputSave.class);
+			Object obj = IStorageEditorInput.class.cast(element).getAdapter(IInputSave.class);
 			if (obj != null) {
 				IInputSave.class.cast(obj).setContents(monitor, document);
 			}
@@ -31,8 +30,7 @@ public class StorageProvider extends StorageDocumentProvider {
 	}
 
 	@Override
-	protected IAnnotationModel createAnnotationModel(Object element)
-			throws CoreException {
+	protected IAnnotationModel createAnnotationModel(Object element) throws CoreException {
 		return new AnnotationModel();
 	}
 }

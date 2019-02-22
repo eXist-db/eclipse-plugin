@@ -44,9 +44,8 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link MoveCollectionWizardPage}
-	 * .
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the {@link MoveCollectionWizardPage} .
 	 */
 	@Override
 	public boolean canFinish() {
@@ -54,15 +53,13 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
-		if (IManagementService.class.cast(
-				_item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
+		if (_item.getConnection().getAdapter(IManagementService.class).check()) {
 			if (_itemService.check()) {
 				IBrowseItem newItem = _moveCollectionPage.getNewItem();
 				try {
@@ -70,11 +67,7 @@ public class MoveCollectionWizard extends Wizard implements IWorkbenchWizard {
 				} catch (ConnectionException e) {
 					isFinished = false;
 					String message = "Failure while move collection.";
-					BrowsePlugin
-							.getDefault()
-							.getLog()
-							.log(new Status(IStatus.ERROR,
-									BrowsePlugin.getId(), message, e));
+					BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e));
 					_moveCollectionPage.setErrorMessage(message);
 				}
 			}

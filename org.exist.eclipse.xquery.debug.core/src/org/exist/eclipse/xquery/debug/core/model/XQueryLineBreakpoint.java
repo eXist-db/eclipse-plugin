@@ -35,7 +35,7 @@ import org.exist.eclipse.xquery.debug.core.launching.IXQueryConstants;
  *
  */
 public class XQueryLineBreakpoint extends LineBreakpoint {
-	
+
 	public XQueryLineBreakpoint() {
 	}
 
@@ -48,20 +48,21 @@ public class XQueryLineBreakpoint extends LineBreakpoint {
 				marker.setAttribute(IBreakpoint.ENABLED, Boolean.TRUE);
 				marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
 				marker.setAttribute(IBreakpoint.ID, getModelIdentifier());
-				marker.setAttribute(IMarker.MESSAGE, "Line Breakpoint: " + resource.getName() + " [line: " + lineNumber + "]");
+				marker.setAttribute(IMarker.MESSAGE,
+						"Line Breakpoint: " + resource.getName() + " [line: " + lineNumber + "]");
 			}
 		};
 		run(getMarkerRule(resource), runnable);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IBreakpoint#getModelIdentifier()
 	 */
 	@Override
 	public String getModelIdentifier() {
 		return IXQueryConstants.ID_XQUERY_DEBUG_MODEL;
 	}
-	
-	
 
 }

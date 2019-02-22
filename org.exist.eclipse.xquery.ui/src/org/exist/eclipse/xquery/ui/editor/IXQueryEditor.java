@@ -14,8 +14,7 @@ public interface IXQueryEditor {
 	/**
 	 * Set the given <code>context</code> on this editor.
 	 * 
-	 * @param context
-	 *            in which the xquery will run.
+	 * @param context in which the xquery will run.
 	 */
 	public void setConnectionContext(IConnectionContext context);
 

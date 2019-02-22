@@ -9,8 +9,7 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryDocumentSetupParticipant implements
-		IDocumentSetupParticipant {
+public class XQueryDocumentSetupParticipant implements IDocumentSetupParticipant {
 
 	public XQueryDocumentSetupParticipant() {
 	}
@@ -18,7 +17,6 @@ public class XQueryDocumentSetupParticipant implements
 	@Override
 	public void setup(IDocument document) {
 		XQueryTextTools tools = XQueryUI.getDefault().getTextTools();
-		tools.setupDocumentPartitioner(document,
-				IXQueryPartitions.XQUERY_PARTITIONING);
+		tools.setupDocumentPartitioner(document, IXQueryPartitions.XQUERY_PARTITIONING);
 	}
 }

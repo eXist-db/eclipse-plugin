@@ -42,36 +42,25 @@ public class ActionGroupConnectionExtension extends ActionGroup {
 			if (selection.length > 0) {
 				try {
 					IExtensionRegistry reg = Platform.getExtensionRegistry();
-					IExtensionPoint exPoint = reg.getExtensionPoint(
-							BrowsePlugin.getId(), "connection");
+					IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(), "connection");
 					IExtension[] connections = exPoint.getExtensions();
 					for (IExtension extension : connections) {
-						IConfigurationElement[] configurations = extension
-								.getConfigurationElements();
+						IConfigurationElement[] configurations = extension.getConfigurationElements();
 						_seperatorAdded = false;
 						for (IConfigurationElement element : configurations) {
-							StateEnum stateEnum = StateEnum.valueOf(element
-									.getAttribute("state"));
+							StateEnum stateEnum = StateEnum.valueOf(element.getAttribute("state"));
 							if (stateEnum.eval(selection)) {
-								boolean isMultiSelect = Boolean
-										.parseBoolean(element
-												.getAttribute("isMultiselect"));
+								boolean isMultiSelect = Boolean.parseBoolean(element.getAttribute("isMultiselect"));
 								if (selection.length < 2 || isMultiSelect) {
 									IConnectionListener listener = (IConnectionListener) element
 											.createExecutableExtension("class");
-									Action action = new ActionConnectionListener(
-											_view, listener);
-									action
-											.setText(element
-													.getAttribute("name"));
+									Action action = new ActionConnectionListener(_view, listener);
+									action.setText(element.getAttribute("name"));
 									String icon = element.getAttribute("icon");
-									String id = extension
-											.getNamespaceIdentifier();
+									String id = extension.getNamespaceIdentifier();
 
 									if (icon != null) {
-										action.setImageDescriptor(AbstractUIPlugin
-												.imageDescriptorFromPlugin(id,
-														icon));
+										action.setImageDescriptor(AbstractUIPlugin.imageDescriptorFromPlugin(id, icon));
 									}
 
 									addSeperator(manager);
@@ -83,10 +72,8 @@ public class ActionGroupConnectionExtension extends ActionGroup {
 					}
 				} catch (Exception e) {
 					String message = "Error while fill context menu";
-					Status status = new Status(IStatus.ERROR, BrowsePlugin
-							.getId(), message, e);
-					BrowsePlugin.getDefault().errorDialog(message,
-							e.getMessage(), status);
+					Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+					BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 				}
 			}
 		}

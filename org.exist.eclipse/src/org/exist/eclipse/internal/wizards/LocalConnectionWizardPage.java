@@ -1,5 +1,9 @@
 package org.exist.eclipse.internal.wizards;
 
+import static org.exist.eclipse.DatabaseInstanceLookup.availableVersions;
+import static org.exist.eclipse.DatabaseInstanceLookup.createLocal;
+import static org.exist.eclipse.DatabaseInstanceLookup.defaultVersion;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +20,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
@@ -24,7 +29,6 @@ import org.eclipse.swt.widgets.Text;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.internal.BasePlugin;
 import org.exist.eclipse.internal.ConnectionBox;
-import org.exist.eclipse.internal.LocalConnection;
 
 /**
  * With this wizard you can add a new or change an existing local connection.
@@ -61,22 +65,22 @@ public class LocalConnectionWizardPage extends WizardPage {
 	private static final String DEFAULT_USER = "admin";
 	private static final String DEFAULT_PASSWORD = "";
 
+	private boolean _copy;
+	private Combo _version;
 	private Text _name;
 	private Text _username;
 	private Text _password;
 	private Text _config;
 	private Button _browseBtn;
-	private IConnection _connection;
-	private boolean _copy;
 	private Link _createDefaultConfigLink;
+	private IConnection _connection;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
 	 */
 	public LocalConnectionWizardPage() {
 		super("localconnectionwizardpage");
-		setImageDescriptor(BasePlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(BasePlugin.getImageDescriptor("icons/existdb.png"));
 		_copy = true;
 	}
 
@@ -86,6 +90,17 @@ public class LocalConnectionWizardPage extends WizardPage {
 		GridLayout layout = new GridLayout();
 		container.setLayout(layout);
 		layout.numColumns = 3;
+
+		// version
+		Label versionLabel = new Label(container, SWT.NULL);
+		versionLabel.setText("&Version:");
+		_version = new Combo(container, SWT.DROP_DOWN | SWT.BORDER | SWT.READ_ONLY);
+		availableVersions().forEach(_version::add);
+		if (_connection != null) {
+			_version.setText(_connection.getVersion());
+		} else {
+			_version.setText(defaultVersion());
+		}
 
 		// username
 		Label nameLabel = new Label(container, SWT.NULL);
@@ -127,6 +142,16 @@ public class LocalConnectionWizardPage extends WizardPage {
 		_browseBtn.setText("Browse...");
 
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 2;
+		_version.setLayoutData(gd);
+		_version.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e) {
+				dialogChanged();
+			}
+		});
+
+		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = 2;
 		_name.setLayoutData(gd);
 		_name.addModifyListener(new ModifyListener() {
@@ -199,36 +224,29 @@ public class LocalConnectionWizardPage extends WizardPage {
 	}
 
 	protected void onCreateDefaultConfiguration(SelectionEvent e) {
-		File file = (File) _createDefaultConfigLink.getData(File.class
-				.getName());
+		File file = (File) _createDefaultConfigLink.getData(File.class.getName());
 		if (file != null) {
 			boolean ok = file.exists();
 			if (!ok) {
 				try {
 					File parent = file.getParentFile();
 					if (!parent.exists() && !parent.mkdirs()) {
-						throw new RuntimeException("Folder '" + parent
-								+ "' cannot be created.");
+						throw new RuntimeException("Folder '" + parent + "' cannot be created.");
 					}
 
 					// needs 'data' folder
 					File data = new File(parent, "data");
 					if (!data.exists() && !data.mkdirs()) {
-						throw new RuntimeException("Folder '" + data
-								+ "' cannot be created.");
+						throw new RuntimeException("Folder '" + data + "' cannot be created.");
 					}
 
 					try (FileOutputStream out = new FileOutputStream(file)) {
-						copy(LocalConnectionWizardPage.class
-								.getResourceAsStream("conf.xml.dat"),
-								out);
+						copy(LocalConnectionWizardPage.class.getResourceAsStream("conf.xml.dat"), out);
 					}
 					ok = true;
 				} catch (Exception ex) {
-					MessageDialog.openError(getShell(),
-							"Create Default Configuration",
-							"An error occured while creating the default configuration: "
-									+ ex);
+					MessageDialog.openError(getShell(), "Create Default Configuration",
+							"An error occured while creating the default configuration: " + ex);
 				}
 			}
 
@@ -239,8 +257,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 	}
 
 	protected IConnection getConnection() {
-		return new LocalConnection(getConnectionName(), getUserName(),
-				getPassword(), getUri());
+		return createLocal(getVersion(), getConnectionName(), getUserName(), getPassword(), getUri());
 	}
 
 	protected void setConnection(IConnection connection, boolean copy) {
@@ -251,6 +268,11 @@ public class LocalConnectionWizardPage extends WizardPage {
 	// //////////////////////////////////////////////////////////////////////////
 	// private methods
 	// //////////////////////////////////////////////////////////////////////////
+
+	private String getVersion() {
+		return _version.getText();
+	}
+
 	private String getConnectionName() {
 		return _name.getText();
 	}
@@ -268,9 +290,9 @@ public class LocalConnectionWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Opens a FileDialog so that the configuration file can be selected.
-	 * Returns the path of the selected file. The return-value is empty in case
-	 * the selection is not valid.
+	 * Opens a FileDialog so that the configuration file can be selected. Returns
+	 * the path of the selected file. The return-value is empty in case the
+	 * selection is not valid.
 	 * 
 	 * @return path of the selected file
 	 */
@@ -285,8 +307,8 @@ public class LocalConnectionWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Ensures that all text fields are set. Enable and disable fields according
-	 * to the selection of the database type.
+	 * Ensures that all text fields are set. Enable and disable fields according to
+	 * the selection of the database type.
 	 */
 	private void dialogChanged() {
 		String err = null;
@@ -294,8 +316,7 @@ public class LocalConnectionWizardPage extends WizardPage {
 		if (getConnectionName().length() < 1) {
 			err = "Name must be specified.";
 		} else if (!ConnectionBox.getInstance().isUnique(getConnectionName())) {
-			if (!(!_copy && _connection != null && _connection.getName()
-					.equals(getConnectionName()))) {
+			if (!(!_copy && _connection != null && _connection.getName().equals(getConnectionName()))) {
 				err = "There exists already a connection with the same name.";
 			}
 		} else if (getUserName().length() < 1) {
@@ -317,13 +338,10 @@ public class LocalConnectionWizardPage extends WizardPage {
 		setErrorState(err);
 		_createDefaultConfigLink.setVisible(createConfig != null);
 		if (createConfig != null) {
-			String action = (createConfig.exists()) ? "Use"
-					: "Create default configuration";
-			_createDefaultConfigLink.setText("<a>" + action + " '"
-					+ createConfig + "'</a>");
+			String action = (createConfig.exists()) ? "Use" : "Create default configuration";
+			_createDefaultConfigLink.setText("<a>" + action + " '" + createConfig + "'</a>");
 			_createDefaultConfigLink.getParent().layout();
-			_createDefaultConfigLink
-					.setData(File.class.getName(), createConfig);
+			_createDefaultConfigLink.setData(File.class.getName(), createConfig);
 		}
 	}
 

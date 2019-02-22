@@ -47,14 +47,11 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 	private IContextSwitcher _selected;
 	private TableViewer _viewer;
 
-	public ChooseContextWizardPage(IWorkbench aWorkbench,
-			IStructuredSelection currentSelection) {
-		super("choosecontextwizardpage", aWorkbench, currentSelection, null,
-				null);
+	public ChooseContextWizardPage(IWorkbench aWorkbench, IStructuredSelection currentSelection) {
+		super("choosecontextwizardpage", aWorkbench, currentSelection, null, null);
 		setTitle(SelectContextWizard.WIZARD_TITLE);
 		setDescription("Select a connection.");
-		setImageDescriptor(XQueryUI
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(XQueryUI.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**
@@ -70,16 +67,14 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		layout.marginWidth = 0;
 		container.setLayout(layout);
 
-		_switcher = ContextSwitcherRegistration.getInstance()
-				.getContextSwitchersAsMap();
+		_switcher = ContextSwitcherRegistration.getInstance().getContextSwitchersAsMap();
 
 		_viewer = new TableViewer(container, SWT.FULL_SELECTION | SWT.BORDER);
 		_viewer.getTable().setLayoutData(new GridData(GridData.FILL_BOTH));
 		_viewer.setContentProvider(new IStructuredContentProvider() {
 
 			@Override
-			public void inputChanged(Viewer viewer, Object oldInput,
-					Object newInput) {
+			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 			}
 
 			@Override
@@ -111,8 +106,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 
 			private Image getConnectionImage() {
 				if (_connectionImage == null) {
-					_connectionImage = XQueryUI.getImageDescriptor(
-							"icons/connection_open.png").createImage();
+					_connectionImage = XQueryUI.getImageDescriptor("icons/connection_open.png").createImage();
 				}
 				return _connectionImage;
 			}
@@ -135,8 +129,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		_viewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				_selected = (IContextSwitcher) ((IStructuredSelection) event
-						.getSelection()).getFirstElement();
+				_selected = (IContextSwitcher) ((IStructuredSelection) event.getSelection()).getFirstElement();
 				setErrorMessage(null);
 				setPageComplete(true);
 				updateSelectedNode();
@@ -148,10 +141,8 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		_viewer.getTable().addControlListener(new ControlAdapter() {
 			@Override
 			public void controlResized(ControlEvent e) {
-				_viewer.getTable().getColumns()[0]
-						.setWidth(_viewer.getTable().getSize().x
-								- (_viewer.getTable().getVerticalBar()
-										.getSize().x + 5));
+				_viewer.getTable().getColumns()[0].setWidth(
+						_viewer.getTable().getSize().x - (_viewer.getTable().getVerticalBar().getSize().x + 5));
 			}
 		});
 		new TableColumn(_viewer.getTable(), SWT.NONE);
@@ -176,8 +167,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 			}
 
 			if (newSel == null) {
-				newSel = (IContextSwitcher) _viewer.getTable().getItem(0)
-						.getData();
+				newSel = (IContextSwitcher) _viewer.getTable().getItem(0).getData();
 			}
 			_viewer.setSelection(new StructuredSelection(newSel));
 		}
@@ -193,8 +183,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 
 	private void updateSelectedNode() {
 		setErrorMessage(null);
-		IWizardDescriptor element = WorkbenchPlugin.getDefault()
-				.getNewWizardRegistry()
+		IWizardDescriptor element = WorkbenchPlugin.getDefault().getNewWizardRegistry()
 				.findWizard(SelectContextWizard.class.getCanonicalName());
 		setSelectedNode(createWizardNode(element));
 		setMessage(element.getDescription());
@@ -207,8 +196,7 @@ public class ChooseContextWizardPage extends WorkbenchWizardSelectionPage {
 		return new WorkbenchWizardNode(this, element) {
 			@Override
 			public IWorkbenchWizard createWizard() throws CoreException {
-				SelectContextWizard selectContextWizard = (SelectContextWizard) wizardElement
-						.createWizard();
+				SelectContextWizard selectContextWizard = (SelectContextWizard) wizardElement.createWizard();
 				return selectContextWizard;
 			}
 		};

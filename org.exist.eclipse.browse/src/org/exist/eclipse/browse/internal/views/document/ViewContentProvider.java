@@ -32,8 +32,7 @@ public class ViewContentProvider implements ILazyContentProvider {
 	@Override
 	public void updateElement(int index) {
 		if (_view.getItem() != null) {
-			_view.getViewer().replace(
-					new DocumentItem(_elements[index], _view.getItem()), index);
+			_view.getViewer().replace(new DocumentItem(_elements[index], _view.getItem()), index);
 		}
 	}
 

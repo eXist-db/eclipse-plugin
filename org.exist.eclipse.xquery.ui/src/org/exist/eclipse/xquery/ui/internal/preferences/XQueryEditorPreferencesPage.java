@@ -13,8 +13,7 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryEditorPreferencesPage extends
-		AbstractConfigurationBlockPreferencePage {
+public class XQueryEditorPreferencesPage extends AbstractConfigurationBlockPreferencePage {
 
 	@Override
 	protected String getHelpId() {
@@ -37,8 +36,7 @@ public class XQueryEditorPreferencesPage extends
 	}
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
 		return new EditorConfigurationBlock(this, overlayPreferenceStore);
 	}
 }

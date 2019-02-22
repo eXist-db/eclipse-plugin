@@ -76,12 +76,10 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 	}
 
 	@Override
-	protected void connectPartitioningToElement(IEditorInput input,
-			IDocument document) {
+	protected void connectPartitioningToElement(IEditorInput input, IDocument document) {
 		if (document instanceof IDocumentExtension3) {
 			IDocumentExtension3 extension = (IDocumentExtension3) document;
-			if (extension
-					.getDocumentPartitioner(IXQueryPartitions.XQUERY_PARTITIONING) == null) {
+			if (extension.getDocumentPartitioner(IXQueryPartitions.XQUERY_PARTITIONING) == null) {
 				XQueryDocumentSetupParticipant participant = new XQueryDocumentSetupParticipant();
 				participant.setup(document);
 			}
@@ -90,8 +88,7 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 			// disable folding
 			IPreferenceStore store = XQueryUI.getDefault().getPreferenceStore();
 			store.setDefault(PreferenceConstants.EDITOR_FOLDING_ENABLED, false);
-			store.setDefault(
-					PreferenceConstants.EDITOR_COMMENTS_FOLDING_ENABLED, false);
+			store.setDefault(PreferenceConstants.EDITOR_COMMENTS_FOLDING_ENABLED, false);
 		}
 	}
 
@@ -128,8 +125,7 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 		separatorGd.heightHint = 1;
 		Label separator = new Label(parent, SWT.NONE);
 		separator.setLayoutData(separatorGd);
-		separator.setBackground(separator.getDisplay().getSystemColor(
-				SWT.COLOR_WIDGET_LIGHT_SHADOW));
+		separator.setBackground(separator.getDisplay().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
 
 		Composite editorContainer = new Composite(parent, SWT.NONE);
 
@@ -145,21 +141,16 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
 	private void setGlobalActionHandlers() {
 		IActionBars actionBars = getEditorSite().getActionBars();
-		actionBars.setGlobalActionHandler(RunXQueryAction.ID,
-				new RunXQueryAction());
-		actionBars.setGlobalActionHandler(ToggleCommentAction.ID,
-				new ToggleCommentAction());
-		actionBars.setGlobalActionHandler(ExtractLocalVariableAction.ID,
-				new ExtractLocalVariableAction());
-		actionBars.setGlobalActionHandler(ExtractMethodAction.ID,
-				new ExtractMethodAction());
+		actionBars.setGlobalActionHandler(RunXQueryAction.ID, new RunXQueryAction());
+		actionBars.setGlobalActionHandler(ToggleCommentAction.ID, new ToggleCommentAction());
+		actionBars.setGlobalActionHandler(ExtractLocalVariableAction.ID, new ExtractLocalVariableAction());
+		actionBars.setGlobalActionHandler(ExtractMethodAction.ID, new ExtractMethodAction());
 
 		actionBars.updateActionBars();
 	}
 
 	private void activateContext() {
-		IContextService service = (IContextService) getSite().getService(
-				IContextService.class);
+		IContextService service = (IContextService) getSite().getService(IContextService.class);
 		if (service != null) {
 			service.activateContext("org.eclipse.dltk.ui.scriptEditorScope");
 			service.activateContext(EDITING_XQUERY_SOURCE_CONTEXT);
@@ -195,18 +186,16 @@ public class XQueryEditor extends ScriptEditor implements IXQueryEditor {
 
 	/**
 	 * Ensure that the correct IDocumentProvider is used. For direct models, a
-	 * special provider is used. For StorageEditorInputs, use a custom provider
-	 * that creates a usable ResourceAnnotationModel. For everything else, use
-	 * the base support.
+	 * special provider is used. For StorageEditorInputs, use a custom provider that
+	 * creates a usable ResourceAnnotationModel. For everything else, use the base
+	 * support.
 	 * 
 	 * @see org.eclipse.ui.texteditor.AbstractDecoratedTextEditor#setDocumentProvider(org.eclipse.ui.IEditorInput)
 	 */
 	@Override
 	protected void setDocumentProvider(IEditorInput input) {
-		IDocumentProvider provider = DocumentProviderRegistry.getDefault()
-				.getDocumentProvider(input);
-		if (input instanceof IStorageEditorInput
-				&& !(input instanceof IFileEditorInput)) {
+		IDocumentProvider provider = DocumentProviderRegistry.getDefault().getDocumentProvider(input);
+		if (input instanceof IStorageEditorInput && !(input instanceof IFileEditorInput)) {
 			if (provider != null) {
 				setDocumentProvider(provider);
 			} else {

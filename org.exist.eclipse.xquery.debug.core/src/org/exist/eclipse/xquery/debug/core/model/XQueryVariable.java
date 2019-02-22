@@ -36,12 +36,14 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 
 	public XQueryVariable(XQueryStackFrame frame, String name) {
 		super((XQueryDebugTarget) frame.getDebugTarget());
-		
+
 		fFrame = frame;
 		fName = name;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IVariable#getName()
 	 */
 	@Override
@@ -49,7 +51,9 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 		return fName;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IVariable#getReferenceTypeName()
 	 */
 	@Override
@@ -58,15 +62,19 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IVariable#getValue()
 	 */
 	@Override
 	public IValue getValue() throws DebugException {
-		return ((XQueryDebugTarget)getDebugTarget()).getVariableValue(this);
+		return ((XQueryDebugTarget) getDebugTarget()).getVariableValue(this);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.core.model.IVariable#hasValueChanged()
 	 */
 	@Override
@@ -75,8 +83,11 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.IValueModification#setValue(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.IValueModification#setValue(java.lang.String)
 	 */
 	@Override
 	public void setValue(String arg0) throws DebugException {
@@ -84,8 +95,12 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.IValueModification#setValue(org.eclipse.debug.core.model.IValue)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.IValueModification#setValue(org.eclipse.debug.
+	 * core.model.IValue)
 	 */
 	@Override
 	public void setValue(IValue arg0) throws DebugException {
@@ -93,16 +108,22 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.IValueModification#supportsValueModification()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.IValueModification#supportsValueModification()
 	 */
 	@Override
 	public boolean supportsValueModification() {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.IValueModification#verifyValue(java.lang.String)
 	 */
 	@Override
 	public boolean verifyValue(String arg0) throws DebugException {
@@ -110,15 +131,19 @@ public class XQueryVariable extends XQueryDebugElement implements IVariable {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.IValueModification#verifyValue(org.eclipse.debug.core.model.IValue)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.IValueModification#verifyValue(org.eclipse.debug
+	 * .core.model.IValue)
 	 */
 	@Override
 	public boolean verifyValue(IValue arg0) throws DebugException {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	protected XQueryStackFrame getStackFrame() {
 		return fFrame;
 	}

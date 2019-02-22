@@ -16,10 +16,8 @@ public class QueryResultEvent {
 	/**
 	 * Create a new result.
 	 * 
-	 * @param id
-	 *            of the query.
-	 * @param content
-	 *            of the result.
+	 * @param id      of the query.
+	 * @param content of the result.
 	 */
 	public QueryResultEvent(int id, String content) {
 		_id = id;

@@ -32,8 +32,7 @@ public class CopyResultItemsAction extends Action {
 		boolean ok = false;
 		try {
 			cb = new Clipboard(Display.getDefault());
-			cb.setContents(new Object[] { text },
-					new TextTransfer[] { TextTransfer.getInstance() });
+			cb.setContents(new Object[] { text }, new TextTransfer[] { TextTransfer.getInstance() });
 			ok = true;
 		} finally {
 			if (cb != null) {
@@ -46,8 +45,7 @@ public class CopyResultItemsAction extends Action {
 	private final TableViewer _viewer;
 
 	public CopyResultItemsAction(TableViewer viewer) {
-		super("Copy", PlatformUI.getWorkbench().getSharedImages()
-				.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
+		super("Copy", PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
 		_viewer = viewer;
 	}
 
@@ -58,8 +56,7 @@ public class CopyResultItemsAction extends Action {
 
 	public String getCopyContent() {
 		StringWriter out = new StringWriter();
-		Object[] all = ((IStructuredSelection) _viewer.getSelection())
-				.toArray();
+		Object[] all = ((IStructuredSelection) _viewer.getSelection()).toArray();
 
 		PrintWriter pw = new PrintWriter(out);
 		boolean printed = false;

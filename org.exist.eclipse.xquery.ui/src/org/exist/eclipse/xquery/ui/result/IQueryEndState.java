@@ -17,8 +17,8 @@ public interface IQueryEndState {
 	public State getState();
 
 	/**
-	 * This value represents the whole count of founded items and not how much
-	 * you have to notified over {@link IResultFrame#addResult(String)}.
+	 * This value represents the whole count of founded items and not how much you
+	 * have to notified over {@link IResultFrame#addResult(String)}.
 	 * 
 	 * @return the count of founded items.
 	 */

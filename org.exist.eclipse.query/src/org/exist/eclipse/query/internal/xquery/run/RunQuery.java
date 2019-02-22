@@ -23,8 +23,7 @@ public class RunQuery {
 	}
 
 	public void init() throws Exception {
-		_service = (XQueryService) _item.getCollection().getService(
-				"XQueryService", "1.0");
+		_service = (XQueryService) _item.getCollection().getService("XQueryService", "1.0");
 		_service.setProperty(OutputKeys.INDENT, "yes");
 	}
 

@@ -24,8 +24,7 @@ public class XPathTokenManager implements XPathConstants {
 	/**
 	 * Push the given state onto the state stack.
 	 * 
-	 * @param state
-	 *            Must be a valid state.
+	 * @param state Must be a valid state.
 	 */
 	private void pushState(int state) {
 
@@ -50,8 +49,7 @@ public class XPathTokenManager implements XPathConstants {
 	/**
 	 * Push the given state onto the state stack.
 	 * 
-	 * @param state
-	 *            Must be a valid state.
+	 * @param state Must be a valid state.
 	 */
 	private boolean isState(int state) {
 		for (int i = 0; i < stateStack.size(); i++) {
@@ -64,8 +62,8 @@ public class XPathTokenManager implements XPathConstants {
 
 	/**
 	 * Push a parenthesis state. This pushes, in addition to the lexical state
-	 * value, a special marker that lets resetParenStateOrSwitch(int state) know
-	 * if it should pop and switch. Used for the comma operator.
+	 * value, a special marker that lets resetParenStateOrSwitch(int state) know if
+	 * it should pop and switch. Used for the comma operator.
 	 */
 	private void pushParenState(int commaState, int rparState) {
 		stateStack.push(new Integer(rparState));
@@ -87,18 +85,15 @@ public class XPathTokenManager implements XPathConstants {
 		debugStream = ds;
 	}
 
-	private final int jjStopStringLiteralDfa_29(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_29(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		default:
 			return -1;
 		}
 	}
 
-	private final int jjStartNfa_29(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_29(jjStopStringLiteralDfa_29(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_29(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_29(jjStopStringLiteralDfa_29(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStopAtPos(int pos, int kind) {
@@ -174,79 +169,54 @@ public class XPathTokenManager implements XPathConstants {
 		jjCheckNAdd(jjnextStates[start + 1]);
 	}
 
-	static final long[] jjbitVec0 = { 0x0L, 0xffffffffffffc000L,
-			0xfffff0007fffffffL, 0x7fffffL };
+	static final long[] jjbitVec0 = { 0x0L, 0xffffffffffffc000L, 0xfffff0007fffffffL, 0x7fffffL };
 	static final long[] jjbitVec2 = { 0x0L, 0x0L, 0x0L, 0xff7fffffff7fffffL };
-	static final long[] jjbitVec3 = { 0x7ff3ffffffffffffL, 0x7ffffffffffffdfeL,
-			0xffffffffffffffffL, 0xfc31ffffffffe00fL };
-	static final long[] jjbitVec4 = { 0xffffffL, 0xffffffffffff0000L,
-			0xf80001ffffffffffL, 0x3L };
-	static final long[] jjbitVec5 = { 0x0L, 0x0L, 0xfffffffbffffd740L,
-			0xffffd547f7fffL };
-	static final long[] jjbitVec6 = { 0xffffffffffffdffeL, 0xffffffffdffeffffL,
-			0xffffffffffff0003L, 0x33fcfffffff199fL };
-	static final long[] jjbitVec7 = { 0xfffe000000000000L, 0xfffffffe027fffffL,
-			0x7fL, 0x707ffffff0000L };
-	static final long[] jjbitVec8 = { 0x7fffffe00000000L, 0xfffe0000000007feL,
-			0x7cffffffffffffffL, 0x60002f7fffL };
-	static final long[] jjbitVec9 = { 0x23ffffffffffffe0L, 0x3ff000000L,
-			0x3c5fdfffff99fe0L, 0x30003b0000000L };
-	static final long[] jjbitVec10 = { 0x36dfdfffff987e0L, 0x1c00005e000000L,
-			0x23edfdfffffbafe0L, 0x100000000L };
-	static final long[] jjbitVec11 = { 0x23cdfdfffff99fe0L, 0x3b0000000L,
-			0x3bfc718d63dc7e0L, 0x0L };
-	static final long[] jjbitVec12 = { 0x3effdfffffddfe0L, 0x300000000L,
-			0x3effdfffffddfe0L, 0x340000000L };
-	static final long[] jjbitVec13 = { 0x3fffdfffffddfe0L, 0x300000000L, 0x0L,
-			0x0L };
-	static final long[] jjbitVec14 = { 0xd7ffffffffffeL, 0x3fL,
-			0x200d6caefef02596L, 0x1fL };
+	static final long[] jjbitVec3 = { 0x7ff3ffffffffffffL, 0x7ffffffffffffdfeL, 0xffffffffffffffffL,
+			0xfc31ffffffffe00fL };
+	static final long[] jjbitVec4 = { 0xffffffL, 0xffffffffffff0000L, 0xf80001ffffffffffL, 0x3L };
+	static final long[] jjbitVec5 = { 0x0L, 0x0L, 0xfffffffbffffd740L, 0xffffd547f7fffL };
+	static final long[] jjbitVec6 = { 0xffffffffffffdffeL, 0xffffffffdffeffffL, 0xffffffffffff0003L,
+			0x33fcfffffff199fL };
+	static final long[] jjbitVec7 = { 0xfffe000000000000L, 0xfffffffe027fffffL, 0x7fL, 0x707ffffff0000L };
+	static final long[] jjbitVec8 = { 0x7fffffe00000000L, 0xfffe0000000007feL, 0x7cffffffffffffffL, 0x60002f7fffL };
+	static final long[] jjbitVec9 = { 0x23ffffffffffffe0L, 0x3ff000000L, 0x3c5fdfffff99fe0L, 0x30003b0000000L };
+	static final long[] jjbitVec10 = { 0x36dfdfffff987e0L, 0x1c00005e000000L, 0x23edfdfffffbafe0L, 0x100000000L };
+	static final long[] jjbitVec11 = { 0x23cdfdfffff99fe0L, 0x3b0000000L, 0x3bfc718d63dc7e0L, 0x0L };
+	static final long[] jjbitVec12 = { 0x3effdfffffddfe0L, 0x300000000L, 0x3effdfffffddfe0L, 0x340000000L };
+	static final long[] jjbitVec13 = { 0x3fffdfffffddfe0L, 0x300000000L, 0x0L, 0x0L };
+	static final long[] jjbitVec14 = { 0xd7ffffffffffeL, 0x3fL, 0x200d6caefef02596L, 0x1fL };
 	static final long[] jjbitVec15 = { 0x0L, 0x3fffffffeffL, 0x0L, 0x0L };
-	static final long[] jjbitVec16 = { 0x0L, 0x0L, 0xffffffff00000000L,
-			0x7fffffffff003fL };
-	static final long[] jjbitVec17 = { 0x500000000007daedL, 0x2c62ab82315001L,
-			0xf580c90040000000L, 0x201080000000007L };
-	static final long[] jjbitVec18 = { 0xffffffffffffffffL,
-			0xffffffffffffffffL, 0xffffffff0fffffffL, 0x3ffffffffffffffL };
-	static final long[] jjbitVec19 = { 0xffffffff3f3fffffL,
-			0x3fffffffaaff3f3fL, 0x5fdfffffffffffffL, 0x1fdc1fff0fcf1fdcL };
+	static final long[] jjbitVec16 = { 0x0L, 0x0L, 0xffffffff00000000L, 0x7fffffffff003fL };
+	static final long[] jjbitVec17 = { 0x500000000007daedL, 0x2c62ab82315001L, 0xf580c90040000000L,
+			0x201080000000007L };
+	static final long[] jjbitVec18 = { 0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffff0fffffffL,
+			0x3ffffffffffffffL };
+	static final long[] jjbitVec19 = { 0xffffffff3f3fffffL, 0x3fffffffaaff3f3fL, 0x5fdfffffffffffffL,
+			0x1fdc1fff0fcf1fdcL };
 	static final long[] jjbitVec20 = { 0x4c4000000000L, 0x0L, 0x7L, 0x0L };
-	static final long[] jjbitVec21 = { 0x3fe00000080L, 0xfffffffffffffffeL,
-			0xfffffffe001fffffL, 0x7ffffffffffffffL };
+	static final long[] jjbitVec21 = { 0x3fe00000080L, 0xfffffffffffffffeL, 0xfffffffe001fffffL, 0x7ffffffffffffffL };
 	static final long[] jjbitVec22 = { 0x1fffffffffe0L, 0x0L, 0x0L, 0x0L };
-	static final long[] jjbitVec23 = { 0xffffffffffffffffL,
-			0xffffffffffffffffL, 0x3fffffffffL, 0x0L };
-	static final long[] jjbitVec24 = { 0xffffffffffffffffL,
-			0xffffffffffffffffL, 0xfffffffffL, 0x0L };
-	static final long[] jjbitVec25 = { 0x0L, 0x0L, 0x80000000000000L,
-			0xff7fffffff7fffffL };
-	static final long[] jjbitVec26 = { 0xffffffL, 0xffffffffffff0000L,
-			0xf80001ffffffffffL, 0x30003L };
-	static final long[] jjbitVec27 = { 0xffffffffffffffffL, 0x30000003fL,
-			0xfffffffbffffd7c0L, 0xffffd547f7fffL };
-	static final long[] jjbitVec28 = { 0xffffffffffffdffeL,
-			0xffffffffdffeffffL, 0xffffffffffff007bL, 0x33fcfffffff199fL };
-	static final long[] jjbitVec29 = { 0xfffe000000000000L,
-			0xfffffffe027fffffL, 0xbbfffffbfffe007fL, 0x707ffffff0016L };
-	static final long[] jjbitVec30 = { 0x7fffffe00000000L, 0xffff03ff0007ffffL,
-			0x7cffffffffffffffL, 0x3ff3dffffef7fffL };
-	static final long[] jjbitVec31 = { 0xf3ffffffffffffeeL, 0xffcfff1e3fffL,
-			0xd3c5fdfffff99feeL, 0x3ffcfb080399fL };
-	static final long[] jjbitVec32 = { 0xd36dfdfffff987e4L, 0x1fffc05e003987L,
-			0xf3edfdfffffbafeeL, 0xffc100003bbfL };
-	static final long[] jjbitVec33 = { 0xf3cdfdfffff99feeL, 0xffc3b0c0398fL,
-			0xc3bfc718d63dc7ecL, 0xff8000803dc7L };
-	static final long[] jjbitVec34 = { 0xc3effdfffffddfeeL, 0xffc300603ddfL,
-			0xc3effdfffffddfecL, 0xffc340603ddfL };
-	static final long[] jjbitVec35 = { 0xc3fffdfffffddfecL, 0xffc300803dcfL,
-			0x0L, 0x0L };
-	static final long[] jjbitVec36 = { 0x7ff7ffffffffffeL, 0x3ff7fffL,
-			0x3bff6caefef02596L, 0x3ff3f5fL };
-	static final long[] jjbitVec37 = { 0xc2a003ff03000000L,
-			0xfffe03fffffffeffL, 0x2fe3ffffebf0fdfL, 0x0L };
+	static final long[] jjbitVec23 = { 0xffffffffffffffffL, 0xffffffffffffffffL, 0x3fffffffffL, 0x0L };
+	static final long[] jjbitVec24 = { 0xffffffffffffffffL, 0xffffffffffffffffL, 0xfffffffffL, 0x0L };
+	static final long[] jjbitVec25 = { 0x0L, 0x0L, 0x80000000000000L, 0xff7fffffff7fffffL };
+	static final long[] jjbitVec26 = { 0xffffffL, 0xffffffffffff0000L, 0xf80001ffffffffffL, 0x30003L };
+	static final long[] jjbitVec27 = { 0xffffffffffffffffL, 0x30000003fL, 0xfffffffbffffd7c0L, 0xffffd547f7fffL };
+	static final long[] jjbitVec28 = { 0xffffffffffffdffeL, 0xffffffffdffeffffL, 0xffffffffffff007bL,
+			0x33fcfffffff199fL };
+	static final long[] jjbitVec29 = { 0xfffe000000000000L, 0xfffffffe027fffffL, 0xbbfffffbfffe007fL,
+			0x707ffffff0016L };
+	static final long[] jjbitVec30 = { 0x7fffffe00000000L, 0xffff03ff0007ffffL, 0x7cffffffffffffffL,
+			0x3ff3dffffef7fffL };
+	static final long[] jjbitVec31 = { 0xf3ffffffffffffeeL, 0xffcfff1e3fffL, 0xd3c5fdfffff99feeL, 0x3ffcfb080399fL };
+	static final long[] jjbitVec32 = { 0xd36dfdfffff987e4L, 0x1fffc05e003987L, 0xf3edfdfffffbafeeL, 0xffc100003bbfL };
+	static final long[] jjbitVec33 = { 0xf3cdfdfffff99feeL, 0xffc3b0c0398fL, 0xc3bfc718d63dc7ecL, 0xff8000803dc7L };
+	static final long[] jjbitVec34 = { 0xc3effdfffffddfeeL, 0xffc300603ddfL, 0xc3effdfffffddfecL, 0xffc340603ddfL };
+	static final long[] jjbitVec35 = { 0xc3fffdfffffddfecL, 0xffc300803dcfL, 0x0L, 0x0L };
+	static final long[] jjbitVec36 = { 0x7ff7ffffffffffeL, 0x3ff7fffL, 0x3bff6caefef02596L, 0x3ff3f5fL };
+	static final long[] jjbitVec37 = { 0xc2a003ff03000000L, 0xfffe03fffffffeffL, 0x2fe3ffffebf0fdfL, 0x0L };
 	static final long[] jjbitVec38 = { 0x0L, 0x0L, 0x0L, 0x21fff0000L };
-	static final long[] jjbitVec39 = { 0x3efffe000000a0L, 0xfffffffffffffffeL,
-			0xfffffffe661fffffL, 0x77ffffffffffffffL };
+	static final long[] jjbitVec39 = { 0x3efffe000000a0L, 0xfffffffffffffffeL, 0xfffffffe661fffffL,
+			0x77ffffffffffffffL };
 
 	private final int jjMoveNfa_29(int startState, int curPos) {
 		int[] nextStates;
@@ -640,8 +610,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_30(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_30(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x8000000000L) != 0L) {
@@ -654,10 +623,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_30(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_30(jjStopStringLiteralDfa_30(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_30(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_30(jjStopStringLiteralDfa_30(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_30(int pos, int kind, int state) {
@@ -698,12 +665,11 @@ public class XPathTokenManager implements XPathConstants {
 		return jjStartNfa_30(0, 0L, 0L, active2);
 	}
 
-	static final long[] jjbitVec40 = { 0xfffffffffffffffeL,
-			0xffffffffffffffffL, 0xffffffffffffffffL, 0x7fffffffffffffffL };
-	static final long[] jjbitVec41 = { 0x0L, 0x0L, 0xffffffffffffffffL,
-			0xffffffffffffffffL };
-	static final long[] jjbitVec42 = { 0xffffffffffffffffL,
-			0xffffffffffffffffL, 0xffffffffffffffffL, 0x3fffffffffffffffL };
+	static final long[] jjbitVec40 = { 0xfffffffffffffffeL, 0xffffffffffffffffL, 0xffffffffffffffffL,
+			0x7fffffffffffffffL };
+	static final long[] jjbitVec41 = { 0x0L, 0x0L, 0xffffffffffffffffL, 0xffffffffffffffffL };
+	static final long[] jjbitVec42 = { 0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffffffffffffL,
+			0x3fffffffffffffffL };
 
 	private final int jjMoveNfa_30(int startState, int curPos) {
 		int[] nextStates;
@@ -771,18 +737,15 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_27(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_27(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		default:
 			return -1;
 		}
 	}
 
-	private final int jjStartNfa_27(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_27(jjStopStringLiteralDfa_27(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_27(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_27(jjStopStringLiteralDfa_27(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_27(int pos, int kind, int state) {
@@ -926,8 +889,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_25(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_25(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x400000000L) != 0L) {
@@ -940,10 +902,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_25(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_25(jjStopStringLiteralDfa_25(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_25(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_25(jjStopStringLiteralDfa_25(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_25(int pos, int kind, int state) {
@@ -1050,8 +1010,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_26(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_26(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x800000000000L) != 0L) {
@@ -1071,10 +1030,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_26(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_26(jjStopStringLiteralDfa_26(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_26(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_26(jjStopStringLiteralDfa_26(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_26(int pos, int kind, int state) {
@@ -1360,8 +1317,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_32(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_32(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0xa000000000000L) != 0L) {
@@ -1374,10 +1330,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_32(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_32(jjStopStringLiteralDfa_32(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_32(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_32(jjStopStringLiteralDfa_32(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_32(int pos, int kind, int state) {
@@ -1620,8 +1574,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_21(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_21(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x8000L) != 0L)
@@ -1632,10 +1585,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_21(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_21(jjStopStringLiteralDfa_21(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_21(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_21(jjStopStringLiteralDfa_21(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_21(int pos, int kind, int state) {
@@ -2276,18 +2227,15 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_28(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_28(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		default:
 			return -1;
 		}
 	}
 
-	private final int jjStartNfa_28(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_28(jjStopStringLiteralDfa_28(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_28(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_28(jjStopStringLiteralDfa_28(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_28(int pos, int kind, int state) {
@@ -2519,18 +2467,15 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_24(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_24(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		default:
 			return -1;
 		}
 	}
 
-	private final int jjStartNfa_24(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_24(jjStopStringLiteralDfa_24(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_24(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_24(jjStopStringLiteralDfa_24(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_24(int pos, int kind, int state) {
@@ -2960,14 +2905,12 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_0(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active1 & 0x9000000000L) != 0L)
 				return 107;
-			if ((active0 & 0xbdffffc9ff7ffe7cL) != 0L
-					|| (active1 & 0xf00fef0fbf79fc3fL) != 0L
+			if ((active0 & 0xbdffffc9ff7ffe7cL) != 0L || (active1 & 0xf00fef0fbf79fc3fL) != 0L
 					|| (active2 & 0x1L) != 0L) {
 				jjmatchedKind = 185;
 				return 108;
@@ -2980,16 +2923,14 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 1:
-			if ((active0 & 0x3cb7e9897d69fe7cL) != 0L
-					|| (active1 & 0xd00fef0fbd780039L) != 0L) {
+			if ((active0 & 0x3cb7e9897d69fe7cL) != 0L || (active1 & 0xd00fef0fbd780039L) != 0L) {
 				if (jjmatchedPos != 1) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 1;
 				}
 				return 108;
 			}
-			if ((active0 & 0x8148164082160000L) != 0L
-					|| (active1 & 0x200000000201fc06L) != 0L
+			if ((active0 & 0x8148164082160000L) != 0L || (active1 & 0x200000000201fc06L) != 0L
 					|| (active2 & 0x1L) != 0L)
 				return 108;
 			if ((active0 & 0x400000002L) != 0L || (active1 & 0x800040L) != 0L) {
@@ -3001,8 +2942,7 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 2:
-			if ((active0 & 0x1480050000000020L) != 0L
-					|| (active1 & 0x100000L) != 0L)
+			if ((active0 & 0x1480050000000020L) != 0L || (active1 & 0x100000L) != 0L)
 				return 108;
 			if ((active0 & 0x2L) != 0L) {
 				if (jjmatchedPos == 0) {
@@ -3011,8 +2951,7 @@ public class XPathTokenManager implements XPathConstants {
 				}
 				return -1;
 			}
-			if ((active0 & 0xa837e8897f7ffe5cL) != 0L
-					|| (active1 & 0xf00fef0fbf68003bL) != 0L
+			if ((active0 & 0xa837e8897f7ffe5cL) != 0L || (active1 & 0xf00fef0fbf68003bL) != 0L
 					|| (active2 & 0x1L) != 0L) {
 				if (jjmatchedPos != 2) {
 					jjmatchedKind = 185;
@@ -3022,8 +2961,7 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 3:
-			if ((active0 & 0xa001a8897f7ffe7cL) != 0L
-					|| (active1 & 0xf0072d0fbb68000bL) != 0L
+			if ((active0 & 0xa001a8897f7ffe7cL) != 0L || (active1 & 0xf0072d0fbb68000bL) != 0L
 					|| (active2 & 0x1L) != 0L) {
 				if (jjmatchedPos != 3) {
 					jjmatchedKind = 185;
@@ -3031,17 +2969,13 @@ public class XPathTokenManager implements XPathConstants {
 				}
 				return 108;
 			}
-			if ((active0 & 0x836400000000000L) != 0L
-					|| (active1 & 0x8c20004000030L) != 0L)
+			if ((active0 & 0x836400000000000L) != 0L || (active1 & 0x8c20004000030L) != 0L)
 				return 108;
 			return -1;
 		case 4:
-			if ((active0 & 0x2000880000361000L) != 0L
-					|| (active1 & 0x200000400008L) != 0L
-					|| (active2 & 0x1L) != 0L)
+			if ((active0 & 0x2000880000361000L) != 0L || (active1 & 0x200000400008L) != 0L || (active2 & 0x1L) != 0L)
 				return 108;
-			if ((active0 & 0x800320897f49ee7cL) != 0L
-					|| (active1 & 0xf0070d0fbb280013L) != 0L) {
+			if ((active0 & 0x800320897f49ee7cL) != 0L || (active1 & 0xf0070d0fbb280013L) != 0L) {
 				if (jjmatchedPos != 4) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 4;
@@ -3050,11 +2984,9 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 5:
-			if ((active0 & 0x208060010024L) != 0L
-					|| (active1 & 0x6000080200001L) != 0L)
+			if ((active0 & 0x208060010024L) != 0L || (active1 & 0x6000080200001L) != 0L)
 				return 108;
-			if ((active0 & 0x800300091f4eee58L) != 0L
-					|| (active1 & 0xf0012d0f3b080012L) != 0L) {
+			if ((active0 & 0x800300091f4eee58L) != 0L || (active1 & 0xf0012d0f3b080012L) != 0L) {
 				if (jjmatchedPos != 5) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 5;
@@ -3063,22 +2995,18 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 6:
-			if ((active0 & 0x800300091d4a8c50L) != 0L
-					|| (active1 & 0xf007290f3b080012L) != 0L) {
+			if ((active0 & 0x800300091d4a8c50L) != 0L || (active1 & 0xf007290f3b080012L) != 0L) {
 				jjmatchedKind = 185;
 				jjmatchedPos = 6;
 				return 108;
 			}
-			if ((active0 & 0x2046208L) != 0L
-					|| (active1 & 0x40000000000L) != 0L)
+			if ((active0 & 0x2046208L) != 0L || (active1 & 0x40000000000L) != 0L)
 				return 108;
 			return -1;
 		case 7:
-			if ((active0 & 0x110028810L) != 0L
-					|| (active1 & 0x9001010900080012L) != 0L)
+			if ((active0 & 0x110028810L) != 0L || (active1 & 0x9001010900080012L) != 0L)
 				return 108;
-			if ((active0 & 0x800300080d480440L) != 0L
-					|| (active1 & 0x600628063b000000L) != 0L) {
+			if ((active0 & 0x800300080d480440L) != 0L || (active1 & 0x600628063b000000L) != 0L) {
 				if (jjmatchedPos != 7) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 7;
@@ -3087,44 +3015,38 @@ public class XPathTokenManager implements XPathConstants {
 			}
 			return -1;
 		case 8:
-			if ((active0 & 0x2000805400400L) != 0L
-					|| (active1 & 0x4007280809000000L) != 0L) {
+			if ((active0 & 0x2000805400400L) != 0L || (active1 & 0x4007280809000000L) != 0L) {
 				if (jjmatchedPos != 8) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 8;
 				}
 				return 108;
 			}
-			if ((active0 & 0x8001000008080040L) != 0L
-					|| (active1 & 0x2000000632000000L) != 0L)
+			if ((active0 & 0x8001000008080040L) != 0L || (active1 & 0x2000000632000000L) != 0L)
 				return 108;
 			return -1;
 		case 9:
-			if ((active0 & 0x801400400L) != 0L
-					|| (active1 & 0x7280a10000000L) != 0L) {
+			if ((active0 & 0x801400400L) != 0L || (active1 & 0x7280a10000000L) != 0L) {
 				if (jjmatchedPos != 9) {
 					jjmatchedKind = 185;
 					jjmatchedPos = 9;
 				}
 				return 108;
 			}
-			if ((active0 & 0x2000004000000L) != 0L
-					|| (active1 & 0x4000000009000000L) != 0L)
+			if ((active0 & 0x2000004000000L) != 0L || (active1 & 0x4000000009000000L) != 0L)
 				return 108;
 			return -1;
 		case 10:
 			if ((active0 & 0x1000000L) != 0L)
 				return 108;
-			if ((active0 & 0x800400400L) != 0L
-					|| (active1 & 0x7280a18000000L) != 0L) {
+			if ((active0 & 0x800400400L) != 0L || (active1 & 0x7280a18000000L) != 0L) {
 				jjmatchedKind = 185;
 				jjmatchedPos = 10;
 				return 108;
 			}
 			return -1;
 		case 11:
-			if ((active0 & 0x400400L) != 0L
-					|| (active1 & 0x7280a18000000L) != 0L) {
+			if ((active0 & 0x400400L) != 0L || (active1 & 0x7280a18000000L) != 0L) {
 				jjmatchedKind = 185;
 				jjmatchedPos = 11;
 				return 108;
@@ -3135,8 +3057,7 @@ public class XPathTokenManager implements XPathConstants {
 		case 12:
 			if ((active1 & 0x1000000000000L) != 0L)
 				return 108;
-			if ((active0 & 0x400400L) != 0L
-					|| (active1 & 0x6280a18000000L) != 0L) {
+			if ((active0 & 0x400400L) != 0L || (active1 & 0x6280a18000000L) != 0L) {
 				jjmatchedKind = 185;
 				jjmatchedPos = 12;
 				return 108;
@@ -3145,8 +3066,7 @@ public class XPathTokenManager implements XPathConstants {
 		case 13:
 			if ((active0 & 0x400L) != 0L || (active1 & 0x4200000000000L) != 0L)
 				return 108;
-			if ((active0 & 0x400000L) != 0L
-					|| (active1 & 0x2080a18000000L) != 0L) {
+			if ((active0 & 0x400000L) != 0L || (active1 & 0x2080a18000000L) != 0L) {
 				jjmatchedKind = 185;
 				jjmatchedPos = 13;
 				return 108;
@@ -3214,10 +3134,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_0(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_0(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_0(int pos, int kind, int state) {
@@ -3279,26 +3197,21 @@ public class XPathTokenManager implements XPathConstants {
 		case 93:
 			return jjStopAtPos(0, 102);
 		case 97:
-			return jjMoveStringLiteralDfa1_0(0x80004080000000L,
-					0x2000000902000000L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x80004080000000L, 0x2000000902000000L, 0x0L);
 		case 98:
 			return jjMoveStringLiteralDfa1_0(0x100010000400L, 0x0L, 0x0L);
 		case 99:
-			return jjMoveStringLiteralDfa1_0(0x4000808400000L, 0x40000400030L,
-					0x0L);
+			return jjMoveStringLiteralDfa1_0(0x4000808400000L, 0x40000400030L, 0x0L);
 		case 100:
-			return jjMoveStringLiteralDfa1_0(0x400000000002200L,
-					0x4001010009000000L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x400000000002200L, 0x4001010009000000L, 0x0L);
 		case 101:
-			return jjMoveStringLiteralDfa1_0(0x20800000204010L,
-					0x1000200000000401L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x20800000204010L, 0x1000200000000401L, 0x0L);
 		case 102:
 			return jjMoveStringLiteralDfa1_0(0x10000008000L, 0x30000000L, 0x0L);
 		case 103:
 			return jjMoveStringLiteralDfa1_0(0x0L, 0x800000000000c000L, 0x0L);
 		case 105:
-			return jjMoveStringLiteralDfa1_0(0x8808020022000000L,
-					0x400000010002L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x8808020022000000L, 0x400000010002L, 0x0L);
 		case 108:
 			return jjMoveStringLiteralDfa1_0(0x40000000000L, 0x103000L, 0x1L);
 		case 109:
@@ -3312,11 +3225,9 @@ public class XPathTokenManager implements XPathConstants {
 		case 114:
 			return jjMoveStringLiteralDfa1_0(0x8000000000L, 0x0L, 0x0L);
 		case 115:
-			return jjMoveStringLiteralDfa1_0(0x1600040001000L,
-					0x6000004200000L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x1600040001000L, 0x6000004200000L, 0x0L);
 		case 116:
-			return jjMoveStringLiteralDfa1_0(0x112000000000000L,
-					0x8020000000008L, 0x0L);
+			return jjMoveStringLiteralDfa1_0(0x112000000000000L, 0x8020000000008L, 0x0L);
 		case 117:
 			return jjMoveStringLiteralDfa1_0(0x2000000000080000L, 0x0L, 0x0L);
 		case 118:
@@ -3336,8 +3247,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjMoveStringLiteralDfa1_0(long active0, long active1,
-			long active2) {
+	private final int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2) {
 		try {
 			curChar = input_stream.readChar();
 		} catch (java.io.IOException e) {
@@ -3346,15 +3256,13 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 33:
-			return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0L, active2,
-					0x240000000000L);
+			return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0L, active2, 0x240000000000L);
 		case 35:
 			if ((active2 & 0x200000000L) != 0L)
 				return jjStopAtPos(1, 161);
 			break;
 		case 37:
-			return jjMoveStringLiteralDfa2_0(active0, 0x2L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x2L, active1, 0L, active2, 0L);
 		case 46:
 			if ((active1 & 0x1000000000L) != 0L)
 				return jjStopAtPos(1, 100);
@@ -3392,14 +3300,11 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStopAtPos(1, 165);
 			break;
 		case 97:
-			return jjMoveStringLiteralDfa2_0(active0, 0x5000110000040L,
-					active1, 0x80180030L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x5000110000040L, active1, 0x80180030L, active2, 0L);
 		case 99:
-			return jjMoveStringLiteralDfa2_0(active0, 0x40000000L, active1,
-					0x6000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x40000000L, active1, 0x6000000000000L, active2, 0L);
 		case 100:
-			return jjMoveStringLiteralDfa2_0(active0, 0x800000000000000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x800000000000000L, active1, 0L, active2, 0L);
 		case 101:
 			if ((active1 & 0x800L) != 0L)
 				return jjStartNfaWithStates_0(1, 75, 108);
@@ -3408,8 +3313,7 @@ public class XPathTokenManager implements XPathConstants {
 				jjmatchedPos = 1;
 			} else if ((active1 & 0x8000L) != 0L)
 				return jjStartNfaWithStates_0(1, 79, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0x48000002208L, active1,
-					0x400002000d000000L, active2, 0x1L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x48000002208L, active1, 0x400002000d000000L, active2, 0x1L);
 		case 102:
 			if ((active0 & 0x8000000000000L) != 0L)
 				return jjStartNfaWithStates_0(1, 51, 108);
@@ -3417,52 +3321,42 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(1, 66, 108);
 			break;
 		case 104:
-			return jjMoveStringLiteralDfa2_0(active0, 0x10080000000000L,
-					active1, 0x400000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x10080000000000L, active1, 0x400000L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa2_0(active0, 0x400000000000000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x400000000000000L, active1, 0L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa2_0(active0, 0x20000000004000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x20000000004000L, active1, 0L, active2, 0L);
 		case 109:
-			return jjMoveStringLiteralDfa2_0(active0, 0x20200000L, active1,
-					0x200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x20200000L, active1, 0x200000000000L, active2, 0L);
 		case 110:
 			if ((active0 & 0x20000000000L) != 0L) {
 				jjmatchedKind = 41;
 				jjmatchedPos = 1;
 			}
-			return jjMoveStringLiteralDfa2_0(active0, 0xa080000002080010L,
-					active1, 0x900000002L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0xa080000002080010L, active1, 0x900000002L, active2, 0L);
 		case 111:
 			if ((active0 & 0x100000000000000L) != 0L)
 				return jjStartNfaWithStates_0(1, 56, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0x100041080d400420L,
-					active1, 0x1850030000000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x100041080d400420L, active1, 0x1850030000000L, active2, 0L);
 		case 112:
-			return jjMoveStringLiteralDfa2_0(active0, 0x10000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x10000L, active1, 0L, active2, 0L);
 		case 113:
 			if ((active1 & 0x400L) != 0L)
 				return jjStartNfaWithStates_0(1, 74, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0x4L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x4L, active1, 0L, active2, 0L);
 		case 114:
 			if ((active0 & 0x40000000000000L) != 0L) {
 				jjmatchedKind = 54;
 				jjmatchedPos = 1;
 			}
-			return jjMoveStringLiteralDfa2_0(active0, 0x160800L, active1,
-					0x8000080600000008L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x160800L, active1, 0x8000080600000008L, active2, 0L);
 		case 115:
 			if ((active0 & 0x4000000000L) != 0L) {
 				jjmatchedKind = 38;
 				jjmatchedPos = 1;
 			} else if ((active1 & 0x10000L) != 0L)
 				return jjStartNfaWithStates_0(1, 80, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0L, active1,
-					0x2000000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x2000000000000000L, active2, 0L);
 		case 116:
 			if ((active0 & 0x80000000L) != 0L) {
 				jjmatchedKind = 31;
@@ -3471,30 +3365,25 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(1, 76, 108);
 			else if ((active1 & 0x4000L) != 0L)
 				return jjStartNfaWithStates_0(1, 78, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0x200000001000L, active1,
-					0x400002200000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x200000001000L, active1, 0x400002200000L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa2_0(active0, 0x8000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x8000L, active1, 0L, active2, 0L);
 		case 118:
-			return jjMoveStringLiteralDfa2_0(active0, 0x800000000000L, active1,
-					0L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x800000000000L, active1, 0L, active2, 0L);
 		case 120:
-			return jjMoveStringLiteralDfa2_0(active0, 0L, active1,
-					0x1000000000000001L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x1000000000000001L, active2, 0L);
 		case 121:
 			if ((active0 & 0x100000000000L) != 0L)
 				return jjStartNfaWithStates_0(1, 44, 108);
-			return jjMoveStringLiteralDfa2_0(active0, 0x2000000000000L,
-					active1, 0x8000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa2_0(active0, 0x2000000000000L, active1, 0x8000000000000L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(0, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa2_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(0, old0, old1, old2);
 		try {
@@ -3509,17 +3398,13 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStopAtPos(2, 1);
 			break;
 		case 45:
-			return jjMoveStringLiteralDfa3_0(active0, 0x5000000L, active1, 0L,
-					active2, 0x200000000000L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x5000000L, active1, 0L, active2, 0x200000000000L);
 		case 91:
-			return jjMoveStringLiteralDfa3_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa3_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
-			return jjMoveStringLiteralDfa3_0(active0, 0x200000000000L, active1,
-					0L, active2, 0x1L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x200000000000L, active1, 0L, active2, 0x1L);
 		case 99:
-			return jjMoveStringLiteralDfa3_0(active0, 0x210L, active1,
-					0x2001010900000001L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x210L, active1, 0x2001010900000001L, active2, 0L);
 		case 100:
 			if ((active0 & 0x80000000000000L) != 0L)
 				return jjStartNfaWithStates_0(2, 55, 108);
@@ -3527,51 +3412,37 @@ public class XPathTokenManager implements XPathConstants {
 				jjmatchedKind = 60;
 				jjmatchedPos = 2;
 			}
-			return jjMoveStringLiteralDfa3_0(active0, 0x160020L, active1,
-					0x800000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x160020L, active1, 0x800000000000L, active2, 0L);
 		case 101:
-			return jjMoveStringLiteralDfa3_0(active0, 0x10880000004800L,
-					active1, 0x8000400600000008L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x10880000004800L, active1, 0x8000400600000008L, active2, 0L);
 		case 102:
-			return jjMoveStringLiteralDfa3_0(active0, 0x2000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x2000L, active1, 0L, active2, 0L);
 		case 104:
-			return jjMoveStringLiteralDfa3_0(active0, 0x42000000L, active1,
-					0x6000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x42000000L, active1, 0x6000000000000L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa3_0(active0, 0x2800000000000000L,
-					active1, 0x400000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x2800000000000000L, active1, 0x400000L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa3_0(active0, 0x8000000L, active1,
-					0x34080000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x8000000L, active1, 0x34080000L, active2, 0L);
 		case 109:
-			return jjMoveStringLiteralDfa3_0(active0, 0x400000000040L, active1,
-					0x40000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x400000000040L, active1, 0x40000000000L, active2, 0L);
 		case 110:
-			return jjMoveStringLiteralDfa3_0(active0, 0x800008000L, active1,
-					0L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x800008000L, active1, 0L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa3_0(active0, 0x80000L, active1,
-					0x80000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x80000L, active1, 0x80000000000L, active2, 0L);
 		case 112:
-			return jjMoveStringLiteralDfa3_0(active0, 0x2000020600000L,
-					active1, 0x8200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x2000020600000L, active1, 0x8200000000000L, active2, 0L);
 		case 114:
 			if ((active0 & 0x10000000000L) != 0L)
 				return jjStartNfaWithStates_0(2, 40, 108);
-			return jjMoveStringLiteralDfa3_0(active0, 0x100001008L, active1,
-					0x80200000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x100001008L, active1, 0x80200000L, active2, 0L);
 		case 115:
-			return jjMoveStringLiteralDfa3_0(active0, 0x24000010000000L,
-					active1, 0x4000000009000032L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x24000010000000L, active1, 0x4000000009000032L, active2, 0L);
 		case 116:
 			if ((active0 & 0x40000000000L) != 0L)
 				return jjStartNfaWithStates_0(2, 42, 108);
-			return jjMoveStringLiteralDfa3_0(active0, 0x8001008000010000L,
-					active1, 0x1000000002000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x8001008000010000L, active1, 0x1000000002000000L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa3_0(active0, 0x404L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0x404L, active1, 0L, active2, 0L);
 		case 118:
 			if ((active0 & 0x400000000000000L) != 0L)
 				return jjStartNfaWithStates_0(2, 58, 108);
@@ -3579,16 +3450,15 @@ public class XPathTokenManager implements XPathConstants {
 		case 120:
 			if ((active1 & 0x100000L) != 0L)
 				return jjStartNfaWithStates_0(2, 84, 108);
-			return jjMoveStringLiteralDfa3_0(active0, 0L, active1,
-					0x20000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa3_0(active0, 0L, active1, 0x20000000000L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(1, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa3_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(1, old0, old1, old2);
 		try {
@@ -3603,17 +3473,13 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStopAtPos(3, 173);
 			break;
 		case 67:
-			return jjMoveStringLiteralDfa4_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa4_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
-			return jjMoveStringLiteralDfa4_0(active0, 0x2000L, active1,
-					0x8000000000000008L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x2000L, active1, 0x8000000000000008L, active2, 0L);
 		case 98:
-			return jjMoveStringLiteralDfa4_0(active0, 0x200000000000L, active1,
-					0L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x200000000000L, active1, 0L, active2, 0L);
 		case 99:
-			return jjMoveStringLiteralDfa4_0(active0, 0x8000L, active1,
-					0x4000080609000000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x8000L, active1, 0x4000080609000000L, active2, 0L);
 		case 101:
 			if ((active0 & 0x400000000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 46, 108);
@@ -3627,66 +3493,54 @@ public class XPathTokenManager implements XPathConstants {
 				jjmatchedKind = 115;
 				jjmatchedPos = 3;
 			}
-			return jjMoveStringLiteralDfa4_0(active0, 0x8002000052160044L,
-					active1, 0x3006000980000001L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x8002000052160044L, active1, 0x3006000980000001L, active2, 0L);
 		case 102:
 			if ((active1 & 0x4000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 90, 108);
 			break;
 		case 105:
-			return jjMoveStringLiteralDfa4_0(active0, 0x1000104011000L,
-					active1, 0x280000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x1000104011000L, active1, 0x280000L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa4_0(active0, 0x8000200L, active1,
-					0x30400000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x8000200L, active1, 0x30400000L, active2, 0L);
 		case 109:
 			if ((active1 & 0x400000000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 110, 108);
-			return jjMoveStringLiteralDfa4_0(active0, 0x4000L, active1,
-					0x40000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x4000L, active1, 0x40000000000L, active2, 0L);
 		case 110:
 			if ((active0 & 0x10000000000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 52, 108);
-			return jjMoveStringLiteralDfa4_0(active0, 0x400L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x400L, active1, 0L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa4_0(active0, 0x2000000020000010L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x2000000020000010L, active1, 0L, active2, 0L);
 		case 112:
-			return jjMoveStringLiteralDfa4_0(active0, 0x1000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x1000000L, active1, 0L, active2, 0L);
 		case 114:
-			return jjMoveStringLiteralDfa4_0(active0, 0x880000080000L, active1,
-					0x2000000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x880000080000L, active1, 0x2000000L, active2, 0L);
 		case 115:
-			return jjMoveStringLiteralDfa4_0(active0, 0x800000808L, active1,
-					0L, active2, 0x1L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x800000808L, active1, 0L, active2, 0x1L);
 		case 116:
 			if ((active1 & 0x20L) != 0L) {
 				jjmatchedKind = 69;
 				jjmatchedPos = 3;
 			} else if ((active1 & 0x20000000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 105, 108);
-			return jjMoveStringLiteralDfa4_0(active0, 0x200000L, active1,
-					0x200000000012L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x200000L, active1, 0x200000000012L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa4_0(active0, 0x8000000020L, active1,
-					0x1010000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x8000000020L, active1, 0x1010000000000L, active2, 0L);
 		case 118:
 			if ((active0 & 0x800000000000000L) != 0L)
 				return jjStartNfaWithStates_0(3, 59, 108);
 			break;
 		case 121:
-			return jjMoveStringLiteralDfa4_0(active0, 0x400000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa4_0(active0, 0x400000L, active1, 0L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(2, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa4_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(2, old0, old1, old2);
 		try {
@@ -3697,85 +3551,68 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa5_0(active0, 0x10400000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x10400000L, active1, 0L, active2, 0L);
 		case 68:
-			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
-			return jjMoveStringLiteralDfa5_0(active0, 0x108000200L, active1,
-					0x12L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x108000200L, active1, 0x12L, active2, 0L);
 		case 99:
-			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0x200000L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0x200000L, active2, 0L);
 		case 100:
 			if ((active1 & 0x400000L) != 0L)
 				return jjStartNfaWithStates_0(4, 86, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0x80410L, active1,
-					0x80000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x80410L, active1, 0x80000L, active2, 0L);
 		case 101:
 			if ((active0 & 0x80000000000L) != 0L)
 				return jjStartNfaWithStates_0(4, 43, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0x4800L, active1,
-					0x40000c0609000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x4800L, active1, 0x40000c0609000000L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa5_0(active0, 0x8L, active1,
-					0x2000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x8L, active1, 0x2000000L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa5_0(active0, 0x200000000020L, active1,
-					0L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x200000000020L, active1, 0L, active2, 0L);
 		case 109:
-			return jjMoveStringLiteralDfa5_0(active0, 0x40000000L, active1,
-					0x7010000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x40000000L, active1, 0x7010000000000L, active2, 0L);
 		case 110:
 			if ((active0 & 0x2000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(4, 61, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0x4000000L, active1,
-					0x2000000080000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x4000000L, active1, 0x2000000080000000L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa5_0(active0, 0x10000L, active1,
-					0x30000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x10000L, active1, 0x30000000L, active2, 0L);
 		case 112:
 			if ((active0 & 0x1000L) != 0L)
 				return jjStartNfaWithStates_0(4, 12, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0x1L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0x1L, active2, 0L);
 		case 114:
 			if ((active0 & 0x100000L) != 0L) {
 				jjmatchedKind = 20;
 				jjmatchedPos = 4;
 			}
-			return jjMoveStringLiteralDfa5_0(active0, 0x8000008023060004L,
-					active1, 0x1000000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x8000008023060004L, active1, 0x1000000000000000L, active2, 0L);
 		case 115:
-			return jjMoveStringLiteralDfa5_0(active0, 0x3000000000040L,
-					active1, 0x900000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x3000000000040L, active1, 0x900000000L, active2, 0L);
 		case 116:
 			if ((active1 & 0x8L) != 0L)
 				return jjStartNfaWithStates_0(4, 67, 108);
 			else if ((active2 & 0x1L) != 0L)
 				return jjStartNfaWithStates_0(4, 128, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0x800008000L, active1,
-					0x8000000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x800008000L, active1, 0x8000000000000000L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa5_0(active0, 0x2000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0x2000L, active1, 0L, active2, 0L);
 		case 121:
 			if ((active0 & 0x200000L) != 0L) {
 				jjmatchedKind = 21;
 				jjmatchedPos = 4;
 			} else if ((active0 & 0x800000000000L) != 0L)
 				return jjStartNfaWithStates_0(4, 47, 108);
-			return jjMoveStringLiteralDfa5_0(active0, 0L, active1,
-					0x200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa5_0(active0, 0L, active1, 0x200000000000L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(3, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa5_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(3, old0, old1, old2);
 		try {
@@ -3786,62 +3623,47 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa6_0(active0, 0L, active1,
-					0x200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0L, active1, 0x200000000000L, active2, 0L);
 		case 65:
-			return jjMoveStringLiteralDfa6_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa6_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
 			if ((active0 & 0x40000000L) != 0L) {
 				jjmatchedKind = 30;
 				jjmatchedPos = 5;
 			}
-			return jjMoveStringLiteralDfa6_0(active0, 0x400L, active1,
-					0x6000000080000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x400L, active1, 0x6000000080000L, active2, 0L);
 		case 98:
-			return jjMoveStringLiteralDfa6_0(active0, 0x100000000L, active1,
-					0x2000010L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x100000000L, active1, 0x2000010L, active2, 0L);
 		case 100:
-			return jjMoveStringLiteralDfa6_0(active0, 0L, active1,
-					0x2000000600000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0L, active1, 0x2000000600000000L, active2, 0L);
 		case 101:
 			if ((active0 & 0x20L) != 0L)
 				return jjStartNfaWithStates_0(5, 5, 108);
 			else if ((active0 & 0x200000000000L) != 0L)
 				return jjStartNfaWithStates_0(5, 45, 108);
-			return jjMoveStringLiteralDfa6_0(active0, 0x10c0000L, active1,
-					0x8001010000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x10c0000L, active1, 0x8001010000000000L, active2, 0L);
 		case 102:
-			return jjMoveStringLiteralDfa6_0(active0, 0x1000000000000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x1000000000000L, active1, 0L, active2, 0L);
 		case 104:
-			return jjMoveStringLiteralDfa6_0(active0, 0x4000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x4000000L, active1, 0L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa6_0(active0, 0x2028010L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x2028010L, active1, 0L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa6_0(active0, 0x2000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x2000L, active1, 0L, active2, 0L);
 		case 110:
 			if ((active0 & 0x10000L) != 0L)
 				return jjStartNfaWithStates_0(5, 16, 108);
 			else if ((active0 & 0x8000000000L) != 0L)
 				return jjStartNfaWithStates_0(5, 39, 108);
-			return jjMoveStringLiteralDfa6_0(active0, 0x404000L, active1,
-					0x5000040009000002L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x404000L, active1, 0x5000040009000002L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa6_0(active0, 0x8L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x8L, active1, 0L, active2, 0L);
 		case 112:
-			return jjMoveStringLiteralDfa6_0(active0, 0x40L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x40L, active1, 0L, active2, 0L);
 		case 114:
-			return jjMoveStringLiteralDfa6_0(active0, 0x800000a00L, active1,
-					0L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x800000a00L, active1, 0L, active2, 0L);
 		case 115:
-			return jjMoveStringLiteralDfa6_0(active0, 0x8000000000000000L,
-					active1, 0x80000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x8000000000000000L, active1, 0x80000000000L, active2, 0L);
 		case 116:
 			if ((active0 & 0x20000000L) != 0L)
 				return jjStartNfaWithStates_0(5, 29, 108);
@@ -3851,14 +3673,11 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(5, 85, 108);
 			else if ((active1 & 0x80000000L) != 0L)
 				return jjStartNfaWithStates_0(5, 95, 108);
-			return jjMoveStringLiteralDfa6_0(active0, 0x8000000L, active1,
-					0x900000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x8000000L, active1, 0x900000000L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa6_0(active0, 0x10000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x10000000L, active1, 0L, active2, 0L);
 		case 119:
-			return jjMoveStringLiteralDfa6_0(active0, 0x2000000000000L,
-					active1, 0x30000000L, active2, 0L);
+			return jjMoveStringLiteralDfa6_0(active0, 0x2000000000000L, active1, 0x30000000L, active2, 0L);
 		case 121:
 			if ((active0 & 0x4L) != 0L)
 				return jjStartNfaWithStates_0(5, 2, 108);
@@ -3869,8 +3688,8 @@ public class XPathTokenManager implements XPathConstants {
 		return jjStartNfa_0(4, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa6_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa6_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(4, old0, old1, old2);
 		try {
@@ -3881,47 +3700,35 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa7_0(active0, 0L, active1,
-					0x6000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x6000000000000L, active2, 0L);
 		case 84:
-			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
-			return jjMoveStringLiteralDfa7_0(active0, 0x400040L, active1,
-					0x1000000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x400040L, active1, 0x1000000000000000L, active2, 0L);
 		case 99:
-			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x2L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x2L, active2, 0L);
 		case 100:
 			if ((active0 & 0x40000L) != 0L)
 				return jjStartNfaWithStates_0(6, 18, 108);
-			return jjMoveStringLiteralDfa7_0(active0, 0L, active1,
-					0x4000000009000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x4000000009000000L, active2, 0L);
 		case 101:
 			if ((active0 & 0x200L) != 0L)
 				return jjStartNfaWithStates_0(6, 9, 108);
-			return jjMoveStringLiteralDfa7_0(active0, 0x8000000004000000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x8000000004000000L, active1, 0L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa7_0(active0, 0x3000008000000L,
-					active1, 0x2000000630000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x3000008000000L, active1, 0x2000000630000000L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa7_0(active0, 0x100000000L, active1,
-					0x10L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x100000000L, active1, 0x10L, active2, 0L);
 		case 110:
 			if ((active0 & 0x8L) != 0L)
 				return jjStartNfaWithStates_0(6, 3, 108);
-			return jjMoveStringLiteralDfa7_0(active0, 0x20010L, active1,
-					0x1010000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x20010L, active1, 0x1010000000000L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa7_0(active0, 0x8000L, active1,
-					0x900000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x8000L, active1, 0x900000000L, active2, 0L);
 		case 114:
-			return jjMoveStringLiteralDfa7_0(active0, 0x10080400L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x10080400L, active1, 0L, active2, 0L);
 		case 115:
-			return jjMoveStringLiteralDfa7_0(active0, 0x1000000L, active1,
-					0x8000280000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x1000000L, active1, 0x8000280000000000L, active2, 0L);
 		case 116:
 			if ((active0 & 0x2000L) != 0L)
 				return jjStartNfaWithStates_0(6, 13, 108);
@@ -3931,22 +3738,19 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(6, 25, 108);
 			else if ((active1 & 0x40000000000L) != 0L)
 				return jjStartNfaWithStates_0(6, 106, 108);
-			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x80000L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0L, active1, 0x80000L, active2, 0L);
 		case 117:
-			return jjMoveStringLiteralDfa7_0(active0, 0x800000000L, active1,
-					0x2000000L, active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x800000000L, active1, 0x2000000L, active2, 0L);
 		case 118:
-			return jjMoveStringLiteralDfa7_0(active0, 0x800L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa7_0(active0, 0x800L, active1, 0L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(5, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa7_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa7_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(5, old0, old1, old2);
 		try {
@@ -3957,14 +3761,11 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 65:
-			return jjMoveStringLiteralDfa8_0(active0, 0L, active1, 0L, active2,
-					0x40000000000L);
+			return jjMoveStringLiteralDfa8_0(active0, 0L, active1, 0L, active2, 0x40000000000L);
 		case 97:
-			return jjMoveStringLiteralDfa8_0(active0, 0L, active1,
-					0x2000009000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0L, active1, 0x2000009000000L, active2, 0L);
 		case 99:
-			return jjMoveStringLiteralDfa8_0(active0, 0x8000000800000040L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x8000000800000040L, active1, 0L, active2, 0L);
 		case 101:
 			if ((active0 & 0x800L) != 0L)
 				return jjStartNfaWithStates_0(7, 11, 108);
@@ -3976,8 +3777,7 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(7, 68, 108);
 			else if ((active1 & 0x80000L) != 0L)
 				return jjStartNfaWithStates_0(7, 83, 108);
-			return jjMoveStringLiteralDfa8_0(active0, 0x1000001080000L,
-					active1, 0x4200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x1000001080000L, active1, 0x4200000000000L, active2, 0L);
 		case 103:
 			if ((active0 & 0x10L) != 0L)
 				return jjStartNfaWithStates_0(7, 4, 108);
@@ -3987,49 +3787,42 @@ public class XPathTokenManager implements XPathConstants {
 		case 105:
 			if ((active0 & 0x10000000L) != 0L)
 				return jjStartNfaWithStates_0(7, 28, 108);
-			return jjMoveStringLiteralDfa8_0(active0, 0L, active1,
-					0x4000080000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0L, active1, 0x4000080000000000L, active2, 0L);
 		case 108:
 			if ((active1 & 0x1000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(7, 124, 108);
 			break;
 		case 109:
-			return jjMoveStringLiteralDfa8_0(active0, 0x400000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x400000L, active1, 0L, active2, 0L);
 		case 110:
 			if ((active0 & 0x8000L) != 0L)
 				return jjStartNfaWithStates_0(7, 15, 108);
-			return jjMoveStringLiteralDfa8_0(active0, 0L, active1,
-					0x2000000630000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0L, active1, 0x2000000630000000L, active2, 0L);
 		case 111:
-			return jjMoveStringLiteralDfa8_0(active0, 0x8000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x8000000L, active1, 0L, active2, 0L);
 		case 114:
 			if ((active1 & 0x100000000L) != 0L) {
 				jjmatchedKind = 96;
 				jjmatchedPos = 7;
 			}
-			return jjMoveStringLiteralDfa8_0(active0, 0x4000000L, active1,
-					0x800000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x4000000L, active1, 0x800000000L, active2, 0L);
 		case 116:
 			if ((active1 & 0x10000000000L) != 0L) {
 				jjmatchedKind = 104;
 				jjmatchedPos = 7;
 			} else if ((active1 & 0x8000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(7, 127, 108);
-			return jjMoveStringLiteralDfa8_0(active0, 0x2000000000000L,
-					active1, 0x1000002000000L, active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x2000000000000L, active1, 0x1000002000000L, active2, 0L);
 		case 121:
-			return jjMoveStringLiteralDfa8_0(active0, 0x400L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa8_0(active0, 0x400L, active1, 0L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(6, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa8_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa8_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(6, old0, old1, old2);
 		try {
@@ -4040,15 +3833,13 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa9_0(active0, 0x400L, active1,
-					0x1000800000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x400L, active1, 0x1000800000000L, active2, 0L);
 		case 91:
 			if ((active2 & 0x40000000000L) != 0L)
 				return jjStopAtPos(8, 170);
 			break;
 		case 99:
-			return jjMoveStringLiteralDfa9_0(active0, 0x2000000000000L,
-					active1, 0L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x2000000000000L, active1, 0L, active2, 0L);
 		case 100:
 			if ((active0 & 0x80000L) != 0L)
 				return jjStartNfaWithStates_0(8, 19, 108);
@@ -4058,8 +3849,7 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(8, 6, 108);
 			else if ((active1 & 0x2000000L) != 0L)
 				return jjStartNfaWithStates_0(8, 89, 108);
-			return jjMoveStringLiteralDfa9_0(active0, 0x400000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x400000L, active1, 0L, active2, 0L);
 		case 103:
 			if ((active1 & 0x20000000L) != 0L) {
 				jjmatchedKind = 93;
@@ -4069,25 +3859,19 @@ public class XPathTokenManager implements XPathConstants {
 				jjmatchedPos = 8;
 			} else if ((active1 & 0x2000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(8, 125, 108);
-			return jjMoveStringLiteralDfa9_0(active0, 0L, active1,
-					0x210000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0L, active1, 0x210000000L, active2, 0L);
 		case 105:
-			return jjMoveStringLiteralDfa9_0(active0, 0x4000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x4000000L, active1, 0L, active2, 0L);
 		case 108:
-			return jjMoveStringLiteralDfa9_0(active0, 0L, active1,
-					0x4000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0L, active1, 0x4000000000000L, active2, 0L);
 		case 110:
 			if ((active0 & 0x8000000L) != 0L)
 				return jjStartNfaWithStates_0(8, 27, 108);
-			return jjMoveStringLiteralDfa9_0(active0, 0L, active1,
-					0x4000080009000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0L, active1, 0x4000080009000000L, active2, 0L);
 		case 113:
-			return jjMoveStringLiteralDfa9_0(active0, 0L, active1,
-					0x200000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0L, active1, 0x200000000000L, active2, 0L);
 		case 114:
-			return jjMoveStringLiteralDfa9_0(active0, 0x1000000L, active1, 0L,
-					active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x1000000L, active1, 0L, active2, 0L);
 		case 115:
 			if ((active0 & 0x1000000000000L) != 0L)
 				return jjStartNfaWithStates_0(8, 48, 108);
@@ -4095,16 +3879,15 @@ public class XPathTokenManager implements XPathConstants {
 		case 116:
 			if ((active0 & 0x8000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(8, 63, 108);
-			return jjMoveStringLiteralDfa9_0(active0, 0x800000000L, active1,
-					0x2000000000000L, active2, 0L);
+			return jjMoveStringLiteralDfa9_0(active0, 0x800000000L, active1, 0x2000000000000L, active2, 0L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(7, active0, active1, active2);
 	}
 
-	private final int jjMoveStringLiteralDfa9_0(long old0, long active0,
-			long old1, long active1, long old2, long active2) {
+	private final int jjMoveStringLiteralDfa9_0(long old0, long active0, long old1, long active1, long old2,
+			long active2) {
 		if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
 			return jjStartNfa_0(7, old0, old1, old2);
 		try {
@@ -4115,29 +3898,23 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x210000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x210000000L);
 		case 101:
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x4000000000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x4000000000000L);
 		case 103:
 			if ((active1 & 0x4000000000000000L) != 0L)
 				return jjStartNfaWithStates_0(9, 126, 108);
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x80000000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x80000000000L);
 		case 104:
 			if ((active0 & 0x2000000000000L) != 0L)
 				return jjStartNfaWithStates_0(9, 49, 108);
 			break;
 		case 105:
-			return jjMoveStringLiteralDfa10_0(active0, 0x800000000L, active1,
-					0L);
+			return jjMoveStringLiteralDfa10_0(active0, 0x800000000L, active1, 0L);
 		case 110:
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x1000000000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x1000000000000L);
 		case 111:
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x800000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x800000000L);
 		case 115:
 			return jjMoveStringLiteralDfa10_0(active0, 0x400400L, active1, 0L);
 		case 116:
@@ -4147,11 +3924,9 @@ public class XPathTokenManager implements XPathConstants {
 				jjmatchedKind = 88;
 				jjmatchedPos = 9;
 			}
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x2000008000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x2000008000000L);
 		case 117:
-			return jjMoveStringLiteralDfa10_0(active0, 0L, active1,
-					0x200000000000L);
+			return jjMoveStringLiteralDfa10_0(active0, 0L, active1, 0x200000000000L);
 		case 118:
 			return jjMoveStringLiteralDfa10_0(active0, 0x1000000L, active1, 0L);
 		default:
@@ -4160,8 +3935,7 @@ public class XPathTokenManager implements XPathConstants {
 		return jjStartNfa_0(8, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa10_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa10_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(8, old0, old1, 0L);
 		try {
@@ -4172,35 +3946,28 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa11_0(active0, 0L, active1,
-					0x80008000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0L, active1, 0x80008000000L);
 		case 101:
 			if ((active0 & 0x1000000L) != 0L)
 				return jjStartNfaWithStates_0(10, 24, 108);
-			return jjMoveStringLiteralDfa11_0(active0, 0L, active1,
-					0x200000000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0L, active1, 0x200000000000L);
 		case 109:
-			return jjMoveStringLiteralDfa11_0(active0, 0L, active1,
-					0x4000000000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0L, active1, 0x4000000000000L);
 		case 111:
-			return jjMoveStringLiteralDfa11_0(active0, 0x800000000L, active1,
-					0x1000000000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0x800000000L, active1, 0x1000000000000L);
 		case 112:
 			return jjMoveStringLiteralDfa11_0(active0, 0x400400L, active1, 0L);
 		case 114:
-			return jjMoveStringLiteralDfa11_0(active0, 0L, active1,
-					0x2000800000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0L, active1, 0x2000800000000L);
 		case 115:
-			return jjMoveStringLiteralDfa11_0(active0, 0L, active1,
-					0x210000000L);
+			return jjMoveStringLiteralDfa11_0(active0, 0L, active1, 0x210000000L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(9, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa11_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa11_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(9, old0, old1, 0L);
 		try {
@@ -4211,24 +3978,19 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 45:
-			return jjMoveStringLiteralDfa12_0(active0, 0L, active1,
-					0x800000000L);
+			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x800000000L);
 		case 97:
 			return jjMoveStringLiteralDfa12_0(active0, 0x400400L, active1, 0L);
 		case 100:
-			return jjMoveStringLiteralDfa12_0(active0, 0L, active1,
-					0x1000000000000L);
+			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x1000000000000L);
 		case 101:
-			return jjMoveStringLiteralDfa12_0(active0, 0L, active1,
-					0x4000000000000L);
+			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x4000000000000L);
 		case 105:
-			return jjMoveStringLiteralDfa12_0(active0, 0L, active1,
-					0x2080210000000L);
+			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x2080210000000L);
 		case 110:
 			if ((active0 & 0x800000000L) != 0L)
 				return jjStartNfaWithStates_0(11, 35, 108);
-			return jjMoveStringLiteralDfa12_0(active0, 0L, active1,
-					0x200000000000L);
+			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x200000000000L);
 		case 111:
 			return jjMoveStringLiteralDfa12_0(active0, 0L, active1, 0x8000000L);
 		default:
@@ -4237,8 +3999,7 @@ public class XPathTokenManager implements XPathConstants {
 		return jjStartNfa_0(10, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa12_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa12_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(10, old0, old1, 0L);
 		try {
@@ -4249,31 +4010,26 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 98:
-			return jjMoveStringLiteralDfa13_0(active0, 0L, active1,
-					0x2000210000000L);
+			return jjMoveStringLiteralDfa13_0(active0, 0L, active1, 0x2000210000000L);
 		case 99:
-			return jjMoveStringLiteralDfa13_0(active0, 0x400400L, active1,
-					0x200000000000L);
+			return jjMoveStringLiteralDfa13_0(active0, 0x400400L, active1, 0x200000000000L);
 		case 101:
 			if ((active1 & 0x1000000000000L) != 0L)
 				return jjStartNfaWithStates_0(12, 112, 108);
 			break;
 		case 110:
-			return jjMoveStringLiteralDfa13_0(active0, 0L, active1,
-					0x4080000000000L);
+			return jjMoveStringLiteralDfa13_0(active0, 0L, active1, 0x4080000000000L);
 		case 114:
 			return jjMoveStringLiteralDfa13_0(active0, 0L, active1, 0x8000000L);
 		case 115:
-			return jjMoveStringLiteralDfa13_0(active0, 0L, active1,
-					0x800000000L);
+			return jjMoveStringLiteralDfa13_0(active0, 0L, active1, 0x800000000L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(11, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa13_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa13_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(11, old0, old1, 0L);
 		try {
@@ -4290,29 +4046,24 @@ public class XPathTokenManager implements XPathConstants {
 				return jjStartNfaWithStates_0(13, 10, 108);
 			else if ((active1 & 0x200000000000L) != 0L)
 				return jjStartNfaWithStates_0(13, 109, 108);
-			return jjMoveStringLiteralDfa14_0(active0, 0x400000L, active1,
-					0x800000000L);
+			return jjMoveStringLiteralDfa14_0(active0, 0x400000L, active1, 0x800000000L);
 		case 108:
-			return jjMoveStringLiteralDfa14_0(active0, 0L, active1,
-					0x210000000L);
+			return jjMoveStringLiteralDfa14_0(active0, 0L, active1, 0x210000000L);
 		case 115:
-			return jjMoveStringLiteralDfa14_0(active0, 0L, active1,
-					0x80000000000L);
+			return jjMoveStringLiteralDfa14_0(active0, 0L, active1, 0x80000000000L);
 		case 116:
 			if ((active1 & 0x4000000000000L) != 0L)
 				return jjStartNfaWithStates_0(13, 114, 108);
 			break;
 		case 117:
-			return jjMoveStringLiteralDfa14_0(active0, 0L, active1,
-					0x2000000000000L);
+			return jjMoveStringLiteralDfa14_0(active0, 0L, active1, 0x2000000000000L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(12, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa14_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa14_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(12, old0, old1, 0L);
 		try {
@@ -4323,26 +4074,22 @@ public class XPathTokenManager implements XPathConstants {
 		}
 		switch (curChar) {
 		case 105:
-			return jjMoveStringLiteralDfa15_0(active0, 0L, active1,
-					0x210000000L);
+			return jjMoveStringLiteralDfa15_0(active0, 0L, active1, 0x210000000L);
 		case 108:
-			return jjMoveStringLiteralDfa15_0(active0, 0L, active1,
-					0x800000000L);
+			return jjMoveStringLiteralDfa15_0(active0, 0L, active1, 0x800000000L);
 		case 115:
 			if ((active0 & 0x400000L) != 0L)
 				return jjStartNfaWithStates_0(14, 22, 108);
 			return jjMoveStringLiteralDfa15_0(active0, 0L, active1, 0x8000000L);
 		case 116:
-			return jjMoveStringLiteralDfa15_0(active0, 0L, active1,
-					0x2080000000000L);
+			return jjMoveStringLiteralDfa15_0(active0, 0L, active1, 0x2080000000000L);
 		default:
 			break;
 		}
 		return jjStartNfa_0(13, active0, active1, 0L);
 	}
 
-	private final int jjMoveStringLiteralDfa15_0(long old0, long active0,
-			long old1, long active1) {
+	private final int jjMoveStringLiteralDfa15_0(long old0, long active0, long old1, long active1) {
 		if (((active0 &= old0) | (active1 &= old1)) == 0L)
 			return jjStartNfa_0(13, old0, old1, 0L);
 		try {
@@ -4492,8 +4239,8 @@ public class XPathTokenManager implements XPathConstants {
 		return jjStartNfa_0(20, 0L, active1, 0L);
 	}
 
-	static final long[] jjbitVec43 = { 0xfffffffffffffffeL,
-			0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffffffffffffL };
+	static final long[] jjbitVec43 = { 0xfffffffffffffffeL, 0xffffffffffffffffL, 0xffffffffffffffffL,
+			0xffffffffffffffffL };
 
 	private final int jjMoveNfa_0(int startState, int curPos) {
 		int[] nextStates;
@@ -5206,8 +4953,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_23(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_23(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x8000L) != 0L)
@@ -5218,10 +4964,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_23(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_23(jjStopStringLiteralDfa_23(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_23(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_23(jjStopStringLiteralDfa_23(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_23(int pos, int kind, int state) {
@@ -5509,8 +5253,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStopStringLiteralDfa_22(int pos, long active0,
-			long active1, long active2) {
+	private final int jjStopStringLiteralDfa_22(int pos, long active0, long active1, long active2) {
 		switch (pos) {
 		case 0:
 			if ((active2 & 0x8000L) != 0L)
@@ -5521,10 +5264,8 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private final int jjStartNfa_22(int pos, long active0, long active1,
-			long active2) {
-		return jjMoveNfa_22(jjStopStringLiteralDfa_22(pos, active0, active1,
-				active2), pos + 1);
+	private final int jjStartNfa_22(int pos, long active0, long active1, long active2) {
+		return jjMoveNfa_22(jjStopStringLiteralDfa_22(pos, active0, active1, active2), pos + 1);
 	}
 
 	private final int jjStartNfaWithStates_22(int pos, int kind, int state) {
@@ -5942,15 +5683,12 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	static final int[] jjnextStates = { 12, 13, 14, 15, 5, 6, 8, 9, 10, 2, 3,
-			2, 3, 5, 3, 4, 7, 8, 10, 13, 95, 87, 90, 74, 75, 76, 78, 79, 81,
-			84, 85, 87, 90, 93, 94, 95, 25, 32, 34, 35, 36, 1, 8, 10, 11, 12,
-			51, 52, 55, 56, 13, 14, 17, 18, 37, 38, 41, 42, 78, 79, 81, 84, 85,
-			87, 90, 86, 87, 90, 100, 101, 103, 104, 105, 20, 23, 44, 47, 58,
-			61, 82, 83, 88, 89, };
+	static final int[] jjnextStates = { 12, 13, 14, 15, 5, 6, 8, 9, 10, 2, 3, 2, 3, 5, 3, 4, 7, 8, 10, 13, 95, 87, 90,
+			74, 75, 76, 78, 79, 81, 84, 85, 87, 90, 93, 94, 95, 25, 32, 34, 35, 36, 1, 8, 10, 11, 12, 51, 52, 55, 56,
+			13, 14, 17, 18, 37, 38, 41, 42, 78, 79, 81, 84, 85, 87, 90, 86, 87, 90, 100, 101, 103, 104, 105, 20, 23, 44,
+			47, 58, 61, 82, 83, 88, 89, };
 
-	private static final boolean jjCanMove_0(int hiByte, int i1, int i2,
-			long l1, long l2) {
+	private static final boolean jjCanMove_0(int hiByte, int i1, int i2, long l1, long l2) {
 		switch (hiByte) {
 		case 0:
 			return ((jjbitVec2[i2] & l2) != 0L);
@@ -6005,8 +5743,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private static final boolean jjCanMove_1(int hiByte, int i1, int i2,
-			long l1, long l2) {
+	private static final boolean jjCanMove_1(int hiByte, int i1, int i2, long l1, long l2) {
 		switch (hiByte) {
 		case 0:
 			return ((jjbitVec25[i2] & l2) != 0L);
@@ -6063,8 +5800,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private static final boolean jjCanMove_2(int hiByte, int i1, int i2,
-			long l1, long l2) {
+	private static final boolean jjCanMove_2(int hiByte, int i1, int i2, long l1, long l2) {
 		switch (hiByte) {
 		case 0:
 			return ((jjbitVec41[i2] & l2) != 0L);
@@ -6077,8 +5813,7 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	private static final boolean jjCanMove_3(int hiByte, int i1, int i2,
-			long l1, long l2) {
+	private static final boolean jjCanMove_3(int hiByte, int i1, int i2, long l1, long l2) {
 		switch (hiByte) {
 		case 0:
 			return ((jjbitVec41[i2] & l2) != 0L);
@@ -6089,163 +5824,67 @@ public class XPathTokenManager implements XPathConstants {
 		}
 	}
 
-	public static final String[] jjstrLiteralImages = {
-			"",
-			"\45\45\45",
-			"\170\161\165\145\162\171",
-			"\166\145\162\163\151\157\156",
-			"\145\156\143\157\144\151\156\147",
-			"\155\157\144\165\154\145",
-			"\156\141\155\145\163\160\141\143\145",
-			"\75",
-			"\73",
-			"\144\145\143\154\141\162\145",
-			"\142\157\165\156\144\141\162\171\55\163\160\141\143\145",
-			"\160\162\145\163\145\162\166\145",
-			"\163\164\162\151\160",
-			"\144\145\146\141\165\154\164",
-			"\145\154\145\155\145\156\164",
-			"\146\165\156\143\164\151\157\156",
-			"\157\160\164\151\157\156",
-			"\157\162\144\145\162\151\156\147",
-			"\157\162\144\145\162\145\144",
-			"\165\156\157\162\144\145\162\145\144",
-			"\157\162\144\145\162",
-			"\145\155\160\164\171",
-			"\143\157\160\171\55\156\141\155\145\163\160\141\143\145\163",
-			"\54",
-			"\156\157\55\160\162\145\163\145\162\166\145",
-			"\151\156\150\145\162\151\164",
-			"\156\157\55\151\156\150\145\162\151\164",
-			"\143\157\154\154\141\164\151\157\156",
-			"\142\141\163\145\55\165\162\151",
-			"\151\155\160\157\162\164",
-			"\163\143\150\145\155\141",
-			"\141\164",
-			"\166\141\162\151\141\142\154\145",
-			"\44",
-			"\72\75",
-			"\143\157\156\163\164\162\165\143\164\151\157\156",
-			"\50",
-			"\51",
-			"\141\163",
-			"\162\145\164\165\162\156",
-			"\146\157\162",
-			"\151\156",
-			"\154\145\164",
-			"\167\150\145\162\145",
-			"\142\171",
-			"\163\164\141\142\154\145",
-			"\163\157\155\145",
-			"\145\166\145\162\171",
-			"\163\141\164\151\163\146\151\145\163",
-			"\164\171\160\145\163\167\151\164\143\150",
-			"\143\141\163\145",
-			"\151\146",
-			"\164\150\145\156",
-			"\145\154\163\145",
-			"\157\162",
-			"\141\156\144",
-			"\164\157",
-			"\52",
-			"\144\151\166",
-			"\151\144\151\166",
-			"\155\157\144",
-			"\165\156\151\157\156",
-			"\174",
-			"\151\156\164\145\162\163\145\143\164",
-			"\145\170\143\145\160\164",
-			"\151\156\163\164\141\156\143\145",
-			"\157\146",
-			"\164\162\145\141\164",
-			"\143\141\163\164\141\142\154\145",
-			"\143\141\163\164",
-			"\41\75",
-			"\74\75",
-			"\76",
-			"\76\75",
-			"\145\161",
-			"\156\145",
-			"\154\164",
-			"\154\145",
-			"\147\164",
-			"\147\145",
-			"\151\163",
-			"\74\74",
-			"\76\76",
-			"\166\141\154\151\144\141\164\145",
-			"\154\141\170",
-			"\163\164\162\151\143\164",
-			"\143\150\151\154\144",
-			"\72\72",
-			"\144\145\163\143\145\156\144\141\156\164",
-			"\141\164\164\162\151\142\165\164\145",
-			"\163\145\154\146",
+	public static final String[] jjstrLiteralImages = { "", "\45\45\45", "\170\161\165\145\162\171",
+			"\166\145\162\163\151\157\156", "\145\156\143\157\144\151\156\147", "\155\157\144\165\154\145",
+			"\156\141\155\145\163\160\141\143\145", "\75", "\73", "\144\145\143\154\141\162\145",
+			"\142\157\165\156\144\141\162\171\55\163\160\141\143\145", "\160\162\145\163\145\162\166\145",
+			"\163\164\162\151\160", "\144\145\146\141\165\154\164", "\145\154\145\155\145\156\164",
+			"\146\165\156\143\164\151\157\156", "\157\160\164\151\157\156", "\157\162\144\145\162\151\156\147",
+			"\157\162\144\145\162\145\144", "\165\156\157\162\144\145\162\145\144", "\157\162\144\145\162",
+			"\145\155\160\164\171", "\143\157\160\171\55\156\141\155\145\163\160\141\143\145\163", "\54",
+			"\156\157\55\160\162\145\163\145\162\166\145", "\151\156\150\145\162\151\164",
+			"\156\157\55\151\156\150\145\162\151\164", "\143\157\154\154\141\164\151\157\156",
+			"\142\141\163\145\55\165\162\151", "\151\155\160\157\162\164", "\163\143\150\145\155\141", "\141\164",
+			"\166\141\162\151\141\142\154\145", "\44", "\72\75", "\143\157\156\163\164\162\165\143\164\151\157\156",
+			"\50", "\51", "\141\163", "\162\145\164\165\162\156", "\146\157\162", "\151\156", "\154\145\164",
+			"\167\150\145\162\145", "\142\171", "\163\164\141\142\154\145", "\163\157\155\145", "\145\166\145\162\171",
+			"\163\141\164\151\163\146\151\145\163", "\164\171\160\145\163\167\151\164\143\150", "\143\141\163\145",
+			"\151\146", "\164\150\145\156", "\145\154\163\145", "\157\162", "\141\156\144", "\164\157", "\52",
+			"\144\151\166", "\151\144\151\166", "\155\157\144", "\165\156\151\157\156", "\174",
+			"\151\156\164\145\162\163\145\143\164", "\145\170\143\145\160\164", "\151\156\163\164\141\156\143\145",
+			"\157\146", "\164\162\145\141\164", "\143\141\163\164\141\142\154\145", "\143\141\163\164", "\41\75",
+			"\74\75", "\76", "\76\75", "\145\161", "\156\145", "\154\164", "\154\145", "\147\164", "\147\145",
+			"\151\163", "\74\74", "\76\76", "\166\141\154\151\144\141\164\145", "\154\141\170",
+			"\163\164\162\151\143\164", "\143\150\151\154\144", "\72\72", "\144\145\163\143\145\156\144\141\156\164",
+			"\141\164\164\162\151\142\165\164\145", "\163\145\154\146",
 			"\144\145\163\143\145\156\144\141\156\164\55\157\162\55\163\145\154\146",
 			"\146\157\154\154\157\167\151\156\147\55\163\151\142\154\151\156\147",
-			"\146\157\154\154\157\167\151\156\147",
-			"\100",
-			"\160\141\162\145\156\164",
-			"\141\156\143\145\163\164\157\162",
-			"\160\162\145\143\145\144\151\156\147\55\163\151\142\154\151\156\147",
-			"\160\162\145\143\145\144\151\156\147",
-			"\141\156\143\145\163\164\157\162\55\157\162\55\163\145\154\146",
-			"\56\56",
-			"\133",
-			"\135",
-			"\56",
-			"\144\157\143\165\155\145\156\164",
-			"\164\145\170\164",
+			"\146\157\154\154\157\167\151\156\147", "\100", "\160\141\162\145\156\164",
+			"\141\156\143\145\163\164\157\162", "\160\162\145\143\145\144\151\156\147\55\163\151\142\154\151\156\147",
+			"\160\162\145\143\145\144\151\156\147", "\141\156\143\145\163\164\157\162\55\157\162\55\163\145\154\146",
+			"\56\56", "\133", "\135", "\56", "\144\157\143\165\155\145\156\164", "\164\145\170\164",
 			"\143\157\155\155\145\156\164",
-			"\160\162\157\143\145\163\163\151\156\147\55\151\156\163\164\162\165\143\164\151\157\156",
-			"\77", "\145\155\160\164\171\55\163\145\161\165\145\156\143\145",
-			"\151\164\145\155", "\156\157\144\145",
+			"\160\162\157\143\145\163\163\151\156\147\55\151\156\163\164\162\165\143\164\151\157\156", "\77",
+			"\145\155\160\164\171\55\163\145\161\165\145\156\143\145", "\151\164\145\155", "\156\157\144\145",
 			"\144\157\143\165\155\145\156\164\55\156\157\144\145",
 			"\163\143\150\145\155\141\55\141\164\164\162\151\142\165\164\145",
-			"\163\143\150\145\155\141\55\145\154\145\155\145\156\164",
-			"\164\171\160\145", null, null, null, null, null, null, "\55",
-			"\53", "\145\170\164\145\162\156\141\154",
-			"\141\163\143\145\156\144\151\156\147",
-			"\144\145\163\143\145\156\144\151\156\147",
-			"\147\162\145\141\164\145\163\164", "\154\145\141\163\164", null,
-			null, null, null, null, "\42\42", "\47\47", null, "\173", "\173",
-			"\175", "\175", "\173\173", "\175\175", "\46", "\74", "\74", "\74",
-			"\76", "\42", "\42", "\47", "\47", null, null, null, null, null,
-			"\57\76", "\74\57", "\76", "\75", "\50\43", "\43\51", null, null,
-			"\74\77", "\74\77", "\77\76", null, null,
-			"\74\41\133\103\104\101\124\101\133",
-			"\74\41\133\103\104\101\124\101\133", null, "\74\41\55\55",
-			"\74\41\55\55", "\55\55\76", null, null, null, null, "\57",
-			"\57\57", null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, };
-	public static final String[] lexStateNames = { "DEFAULT", "FTPOSFILTER",
-			"FTMATCHOPTION", "PROLOG_SPECIAL", "PROLOG_NCNAME",
-			"DECLAREORDERING", "PROLOG", "OPERAND", "OPERATOR", "KINDTEST",
-			"NAMESPACEDECL", "SINGLETYPE", "ITEMTYPE", "NAMESPACEKEYWORD",
-			"VARNAME", "OCCURRENCEINDICATOR", "CLOSEKINDTEST", "XQUERYVERSION",
-			"PRAGMA", "OPTION", "URITOOPERATOR", "ELEMENT_CONTENT",
-			"QUOT_ATTRIBUTE_CONTENT", "APOS_ATTRIBUTE_CONTENT", "START_TAG",
-			"PRAGMACONTENTS", "XML_COMMENT", "END_TAG",
-			"PRAGMACONTENTSSPACEDIVIDER", "PROCESSING_INSTRUCTION",
-			"PROCESSING_INSTRUCTION_CONTENT", "CDATA_SECTION", "EXPR_COMMENT", };
-	public static final int[] jjnewLexState = { -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, 0, -1, -1, -1,
-			24, 24, 0, 21, 22, 24, 23, 24, -1, -1, -1, -1, -1, -1, 27, -1, -1,
-			18, 0, -1, -1, 29, 29, -1, -1, -1, 31, 31, -1, 26, 26, -1, -1, 32,
-			-1, -1, -1, -1, -1, -1, -1, -1, 28, -1, -1, -1, -1, -1, -1, 25, 30,
-			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, };
-	static final long[] jjtoToken = { 0xffffffffffffffffL, 0xfcffffffffffffffL,
-			0xdff0fffffffffee1L, 0x200fL, };
-	static final long[] jjtoSkip = { 0x0L, 0x100000000000000L,
-			0xe000000000000L, 0x0L, };
+			"\163\143\150\145\155\141\55\145\154\145\155\145\156\164", "\164\171\160\145", null, null, null, null, null,
+			null, "\55", "\53", "\145\170\164\145\162\156\141\154", "\141\163\143\145\156\144\151\156\147",
+			"\144\145\163\143\145\156\144\151\156\147", "\147\162\145\141\164\145\163\164", "\154\145\141\163\164",
+			null, null, null, null, null, "\42\42", "\47\47", null, "\173", "\173", "\175", "\175", "\173\173",
+			"\175\175", "\46", "\74", "\74", "\74", "\76", "\42", "\42", "\47", "\47", null, null, null, null, null,
+			"\57\76", "\74\57", "\76", "\75", "\50\43", "\43\51", null, null, "\74\77", "\74\77", "\77\76", null, null,
+			"\74\41\133\103\104\101\124\101\133", "\74\41\133\103\104\101\124\101\133", null, "\74\41\55\55",
+			"\74\41\55\55", "\55\55\76", null, null, null, null, "\57", "\57\57", null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
+			null, };
+	public static final String[] lexStateNames = { "DEFAULT", "FTPOSFILTER", "FTMATCHOPTION", "PROLOG_SPECIAL",
+			"PROLOG_NCNAME", "DECLAREORDERING", "PROLOG", "OPERAND", "OPERATOR", "KINDTEST", "NAMESPACEDECL",
+			"SINGLETYPE", "ITEMTYPE", "NAMESPACEKEYWORD", "VARNAME", "OCCURRENCEINDICATOR", "CLOSEKINDTEST",
+			"XQUERYVERSION", "PRAGMA", "OPTION", "URITOOPERATOR", "ELEMENT_CONTENT", "QUOT_ATTRIBUTE_CONTENT",
+			"APOS_ATTRIBUTE_CONTENT", "START_TAG", "PRAGMACONTENTS", "XML_COMMENT", "END_TAG",
+			"PRAGMACONTENTSSPACEDIVIDER", "PROCESSING_INSTRUCTION", "PROCESSING_INSTRUCTION_CONTENT", "CDATA_SECTION",
+			"EXPR_COMMENT", };
+	public static final int[] jjnewLexState = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, -1, -1, 0, -1, -1, -1, 24, 24, 0, 21, 22, 24, 23, 24, -1, -1,
+			-1, -1, -1, -1, 27, -1, -1, 18, 0, -1, -1, 29, 29, -1, -1, -1, 31, 31, -1, 26, 26, -1, -1, 32, -1, -1, -1,
+			-1, -1, -1, -1, -1, 28, -1, -1, -1, -1, -1, -1, 25, 30, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, };
+	static final long[] jjtoToken = { 0xffffffffffffffffL, 0xfcffffffffffffffL, 0xdff0fffffffffee1L, 0x200fL, };
+	static final long[] jjtoSkip = { 0x0L, 0x100000000000000L, 0xe000000000000L, 0x0L, };
 	static final long[] jjtoSpecial = { 0x0L, 0x0L, 0xe000000000000L, 0x0L, };
 	protected JavaCharStream input_stream;
 	private final int[] jjrounds = new int[107];
@@ -6257,8 +5896,7 @@ public class XPathTokenManager implements XPathConstants {
 
 	public XPathTokenManager(JavaCharStream stream) {
 		if (JavaCharStream.staticFlag)
-			throw new Error(
-					"ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");
+			throw new Error("ERROR: Cannot use a static CharStream class with a non-static lexical analyzer.");
 		input_stream = stream;
 	}
 
@@ -6288,8 +5926,7 @@ public class XPathTokenManager implements XPathConstants {
 
 	public void SwitchTo(int lexState) {
 		if (lexState >= 33 || lexState < 0)
-			throw new TokenMgrError("Error: Ignoring invalid lexical state : "
-					+ lexState + ". State unchanged.",
+			throw new TokenMgrError("Error: Ignoring invalid lexical state : " + lexState + ". State unchanged.",
 					TokenMgrError.INVALID_LEXICAL_STATE);
 		else
 			curLexState = lexState;
@@ -6546,8 +6183,7 @@ public class XPathTokenManager implements XPathConstants {
 				input_stream.backup(1);
 				error_after = curPos <= 1 ? "" : input_stream.GetImage();
 			}
-			throw new TokenMgrError(EOFSeen, curLexState, error_line,
-					error_column, error_after, curChar,
+			throw new TokenMgrError(EOFSeen, curLexState, error_line, error_column, error_after, curChar,
 					TokenMgrError.LEXICAL_ERROR);
 		}
 	}
@@ -6556,22 +6192,18 @@ public class XPathTokenManager implements XPathConstants {
 		switch (jjmatchedKind) {
 		case 177:
 			if (image == null)
-				image = new StringBuffer(new String(input_stream
-						.GetSuffix(jjimageLen
-								+ (lengthOfMatch = jjmatchedPos + 1))));
+				image = new StringBuffer(
+						new String(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1))));
 			else
-				image.append(input_stream.GetSuffix(jjimageLen
-						+ (lengthOfMatch = jjmatchedPos + 1)));
+				image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
 			pushState();
 			break;
 		case 179:
 			if (image == null)
-				image = new StringBuffer(new String(input_stream
-						.GetSuffix(jjimageLen
-								+ (lengthOfMatch = jjmatchedPos + 1))));
+				image = new StringBuffer(
+						new String(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1))));
 			else
-				image.append(input_stream.GetSuffix(jjimageLen
-						+ (lengthOfMatch = jjmatchedPos + 1)));
+				image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
 			popState();
 			break;
 		default:
@@ -6681,12 +6313,10 @@ public class XPathTokenManager implements XPathConstants {
 			break;
 		case 172:
 			if (image == null)
-				image = new StringBuffer(new String(input_stream
-						.GetSuffix(jjimageLen
-								+ (lengthOfMatch = jjmatchedPos + 1))));
+				image = new StringBuffer(
+						new String(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1))));
 			else
-				image.append(input_stream.GetSuffix(jjimageLen
-						+ (lengthOfMatch = jjmatchedPos + 1)));
+				image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
 			popState();
 			break;
 		case 173:

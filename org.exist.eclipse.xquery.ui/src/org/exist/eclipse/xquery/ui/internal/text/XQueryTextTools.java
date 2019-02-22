@@ -14,23 +14,20 @@ import org.eclipse.ui.texteditor.ITextEditor;
  */
 public class XQueryTextTools extends ScriptTextTools {
 
-	private final static String[] LEGAL_CONTENT_TYPES = new String[] {
-			IXQueryPartitions.XQUERY_STRING, IXQueryPartitions.XQUERY_COMMENT };
+	private final static String[] LEGAL_CONTENT_TYPES = new String[] { IXQueryPartitions.XQUERY_STRING,
+			IXQueryPartitions.XQUERY_COMMENT };
 
 	private IPartitionTokenScanner _partitionScanner;
 
 	public XQueryTextTools(boolean autoDisposeOnDisplayDispose) {
-		super(IXQueryPartitions.XQUERY_PARTITIONING, LEGAL_CONTENT_TYPES,
-				autoDisposeOnDisplayDispose);
+		super(IXQueryPartitions.XQUERY_PARTITIONING, LEGAL_CONTENT_TYPES, autoDisposeOnDisplayDispose);
 		_partitionScanner = new XQueryPartitionScanner();
 	}
 
 	@Override
-	public ScriptSourceViewerConfiguration createSourceViewerConfiguraton(
-			IPreferenceStore preferenceStore, ITextEditor editor,
-			String partitioning) {
-		return new XQuerySourceViewerConfiguration(getColorManager(),
-				preferenceStore, editor, partitioning);
+	public ScriptSourceViewerConfiguration createSourceViewerConfiguraton(IPreferenceStore preferenceStore,
+			ITextEditor editor, String partitioning) {
+		return new XQuerySourceViewerConfiguration(getColorManager(), preferenceStore, editor, partitioning);
 	}
 
 	@Override

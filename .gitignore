@@ -1,5 +1,8 @@
+.settings/
 /.gradle/
 /.metadata/
 /.recommenders/
-/build/
 /RemoteSystemsTempFiles/
+build/
+rebel.xml
+org.exist.eclipse.db.**

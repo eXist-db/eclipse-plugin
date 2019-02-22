@@ -2,7 +2,7 @@
 <feature
       id="org.exist.eclipse.feature"
       label="eXist Core Feature"
-      version="4.10"
+      version="4.60"
       provider-name="eXist"
       plugin="org.exist.eclipse">
 
@@ -310,19 +310,35 @@ version(s), and exceptions or additional permissions here}.&quot;
 
    <plugin
          id="org.exist.eclipse"
-         download-size="11856"
+         download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.exist.eclipse.browse"
-         download-size="154"
+         download-size="0"
          install-size="0"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.exist.eclipse.util"
-         download-size="31"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.exist.eclipse.db.v141"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.exist.eclipse.db.v460"
+         download-size="0"
          install-size="0"
          version="0.0.0"/>
 

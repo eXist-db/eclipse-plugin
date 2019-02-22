@@ -38,9 +38,8 @@ public class AutomationJob extends Job {
 	 * @param collection
 	 * @param target
 	 */
-	public AutomationJob(int id, ConnectionPool connPool,
-			ExecutorService executor, IAutoModel autoModel, String collection,
-			String target) {
+	public AutomationJob(int id, ConnectionPool connPool, ExecutorService executor, IAutoModel autoModel,
+			String collection, String target) {
 		super("Automation_" + id);
 		_connPool = connPool;
 		_executor = executor;
@@ -53,20 +52,16 @@ public class AutomationJob extends Job {
 	protected IStatus run(IProgressMonitor monitor) {
 		try {
 
-			ExecutionPreparer queryBase = new ExecutionPreparer(
-					_autoModel.getQueries(), _autoModel.getQueryOrderType(),
+			ExecutionPreparer queryBase = new ExecutionPreparer(_autoModel.getQueries(), _autoModel.getQueryOrderType(),
 					_collection);
 			ArrayList<Query> queries = queryBase.getQueriesInConfiguredOrder();
 
 			monitor.beginTask("Running Query Automation", queries.size());
-			AutomationResult autoResult = new AutomationResult(queries.size(),
-					_autoModel.getThreadCount(),
-					_autoModel.getQueryOrderType(), _autoModel.getAutoNote(),
-					monitor, _target);
+			AutomationResult autoResult = new AutomationResult(queries.size(), _autoModel.getThreadCount(),
+					_autoModel.getQueryOrderType(), _autoModel.getAutoNote(), monitor, _target);
 
 			for (Query query : queries) {
-				QueryExecution execution = new QueryExecution(query, _connPool,
-						autoResult);
+				QueryExecution execution = new QueryExecution(query, _connPool, autoResult);
 
 				if (monitor.isCanceled()) {
 					break;
@@ -77,8 +72,7 @@ public class AutomationJob extends Job {
 			autoResult.join();
 
 		} catch (Exception e) {
-			return new Status(IStatus.ERROR, AutoUI.getId(),
-					"Failure while running query", e);
+			return new Status(IStatus.ERROR, AutoUI.getId(), "Failure while running query", e);
 		} finally {
 			monitor.done();
 		}

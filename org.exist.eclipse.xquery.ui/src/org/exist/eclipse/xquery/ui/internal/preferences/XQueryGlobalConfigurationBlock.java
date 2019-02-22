@@ -16,8 +16,7 @@ import org.eclipse.swt.widgets.Control;
  */
 public class XQueryGlobalConfigurationBlock extends AbstractConfigurationBlock {
 
-	public XQueryGlobalConfigurationBlock(OverlayPreferenceStore store,
-			PreferencePage mainPreferencePage) {
+	public XQueryGlobalConfigurationBlock(OverlayPreferenceStore store, PreferencePage mainPreferencePage) {
 		super(store, mainPreferencePage);
 	}
 

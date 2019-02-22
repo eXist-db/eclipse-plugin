@@ -25,10 +25,8 @@ public class BrowseViewListener implements IViewListener {
 			page.showView(BrowseView.ID);
 		} catch (PartInitException e) {
 			String message = "Error while open browse view";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 
 	}

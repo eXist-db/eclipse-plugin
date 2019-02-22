@@ -15,20 +15,17 @@ import org.exist.eclipse.xquery.ui.internal.text.XQueryTextTools;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryCodeTemplatesPreferencePage extends
-		ScriptTemplatePreferencePage {
+public class XQueryCodeTemplatesPreferencePage extends ScriptTemplatePreferencePage {
 
 	@Override
 	protected ScriptSourceViewerConfiguration createSourceViewerConfiguration() {
-		return new SimpleXQuerySourceViewerConfiguration(getTextTools()
-				.getColorManager(), getPreferenceStore(), null,
+		return new SimpleXQuerySourceViewerConfiguration(getTextTools().getColorManager(), getPreferenceStore(), null,
 				IXQueryPartitions.XQUERY_PARTITIONING, false);
 	}
 
 	@Override
 	protected void setDocumentParticioner(IDocument document) {
-		getTextTools().setupDocumentPartitioner(document,
-				IXQueryPartitions.XQUERY_PARTITIONING);
+		getTextTools().setupDocumentPartitioner(document, IXQueryPartitions.XQUERY_PARTITIONING);
 	}
 
 	@Override

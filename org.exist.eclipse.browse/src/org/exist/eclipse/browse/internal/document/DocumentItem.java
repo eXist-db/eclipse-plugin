@@ -6,7 +6,6 @@ package org.exist.eclipse.browse.internal.document;
 import org.exist.eclipse.browse.browse.IBrowseItem;
 import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
-import org.exist.eclipse.browse.document.IDocumentService;
 import org.exist.eclipse.exception.ConnectionException;
 import org.xmldb.api.base.Resource;
 import org.xmldb.api.base.XMLDBException;
@@ -30,14 +29,12 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#exists()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#exists()
 	 */
 	@Override
 	public boolean exists() {
 		boolean exist = false;
-		if (IBrowseService.class.cast(_parent.getAdapter(IBrowseService.class))
-				.check()) {
+		if (IBrowseService.class.cast(_parent.getAdapter(IBrowseService.class)).check()) {
 			try {
 				return _parent.getCollection().getResource(_name) != null;
 			} catch (Exception e) {
@@ -50,8 +47,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getName()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getName()
 	 */
 	@Override
 	public final String getName() {
@@ -62,8 +58,7 @@ public class DocumentItem implements IDocumentItem {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getResource
-	 * ()
+	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getResource ()
 	 */
 	@Override
 	public Resource getResource() throws ConnectionException {
@@ -77,8 +72,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getParent
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getParent
 	 * ()
 	 */
 	@Override
@@ -89,8 +83,7 @@ public class DocumentItem implements IDocumentItem {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getPath()
+	 * @see org.exist.eclipse.browse.internal.views.listener.IDocumentItem#getPath()
 	 */
 	@Override
 	public String getPath() {
@@ -103,8 +96,8 @@ public class DocumentItem implements IDocumentItem {
 	}
 
 	@Override
-	public <T> T getAdapter(Class<T> adapter) {
-		if (adapter.isAssignableFrom(IDocumentService.class)) {
+	public <A> A getAdapter(Class<A> adapter) {
+		if (adapter.isAssignableFrom(DocumentService.class)) {
 			return adapter.cast(new DocumentService(this));
 		}
 		return null;
@@ -123,7 +116,6 @@ public class DocumentItem implements IDocumentItem {
 			return false;
 		}
 		DocumentItem other = DocumentItem.class.cast(obj);
-		return getPath().equals(other.getPath())
-				&& getParent().equals(other.getParent());
+		return getPath().equals(other.getPath()) && getParent().equals(other.getParent());
 	}
 }

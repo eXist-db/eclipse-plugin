@@ -36,13 +36,10 @@ public class QueryResultStorage implements IEncodedStorage {
 	public InputStream getContents() throws CoreException {
 		InputStream is = null;
 		try {
-			is = new ByteArrayInputStream(_content.getBytes(_encoding
-					.displayName()));
+			is = new ByteArrayInputStream(_content.getBytes(_encoding.displayName()));
 		} catch (UnsupportedEncodingException e) {
-			StringBuilder message = new StringBuilder(50)
-					.append("Error while loading text'");
-			throw new CoreException(new Status(IStatus.ERROR,
-					QueryPlugin.getId(), message.toString(), e));
+			StringBuilder message = new StringBuilder(50).append("Error while loading text'");
+			throw new CoreException(new Status(IStatus.ERROR, QueryPlugin.getId(), message.toString(), e));
 		}
 		return is;
 

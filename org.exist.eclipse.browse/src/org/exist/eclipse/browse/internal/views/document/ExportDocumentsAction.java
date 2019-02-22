@@ -61,10 +61,8 @@ public class ExportDocumentsAction extends Action {
 
 	@Override
 	public void run() {
-		Object[] sel = ((IStructuredSelection) _viewer.getSelection())
-				.toArray();
-		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getShell();
+		Object[] sel = ((IStructuredSelection) _viewer.getSelection()).toArray();
+		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
 		Map<IDocumentItem, File> files = new HashMap<>();
 
@@ -107,27 +105,19 @@ public class ExportDocumentsAction extends Action {
 				String content = (String) document.getResource().getContent();
 				try (Reader reader = new StringReader(content);
 						OutputStream out = new FileOutputStream(file);
-						Writer writer = new OutputStreamWriter(out,
-								DEFAULT_ENCODING)) {
+						Writer writer = new OutputStreamWriter(out, DEFAULT_ENCODING)) {
 					copy(reader, writer);
 				}
 			} catch (Exception e) {
 				hadErrors = true;
-				BrowsePlugin
-						.getDefault()
-						.getLog()
-						.log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
-								"An error occured while exporting the document '"
-										+ document.getName() + "': " + e));
+				BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
+						"An error occured while exporting the document '" + document.getName() + "': " + e));
 			}
 		}
 
 		if (hadErrors) {
-			MessageDialog
-					.openError(PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell(),
-							"Export Result",
-							"Errors occured while exporting documents. See Eclipse Error Log for details.");
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Export Result",
+					"Errors occured while exporting documents. See Eclipse Error Log for details.");
 		}
 	}
 }

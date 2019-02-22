@@ -3,8 +3,8 @@
  */
 package org.exist.eclipse.browse.create;
 
+import org.exist.eclipse.URIUtils;
 import org.exist.eclipse.browse.document.IDocumentItem;
-import org.exist.xquery.util.URIUtils;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.modules.XMLResource;
 
@@ -16,14 +16,13 @@ import org.xmldb.api.modules.XMLResource;
 public class CreateXmlResource implements ICreateDocumentProvider {
 
 	@Override
-	public void create(IDocumentItem item, String content)
-			throws CreateDocumentException {
+	public void create(IDocumentItem item, String content) throws CreateDocumentException {
 		XMLResource result = null;
 		try {
 			checkFileName(item);
 			Collection collection = item.getParent().getCollection();
-			result = (XMLResource) collection.createResource(URIUtils
-					.urlEncodeUtf8(item.getName()), XMLResource.RESOURCE_TYPE);
+			result = (XMLResource) collection.createResource(URIUtils.urlEncodeUtf8(item.getName()),
+					XMLResource.RESOURCE_TYPE);
 			if (content == null || content.isEmpty()) {
 				content = "<template></template>";
 			}

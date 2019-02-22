@@ -20,36 +20,32 @@ import org.exist.eclipse.IConnection;
  */
 public interface IConnectionListener {
 	/**
-	 * The method will call if the given <code>connection</code> was added. If
-	 * this method call, the connection must not be opened. If the connection is
-	 * opened, then the method {@link #opened(IConnection)} will call.
+	 * The method will call if the given <code>connection</code> was added. If this
+	 * method call, the connection must not be opened. If the connection is opened,
+	 * then the method {@link #opened(IConnection)} will call.
 	 * 
-	 * @param connection
-	 *            the added connection.
+	 * @param connection the added connection.
 	 */
 	public void added(IConnection connection);
 
 	/**
 	 * The method will call if the given <code>connection </code> was removed.
 	 * 
-	 * @param connection
-	 *            the removed invalid connection.
+	 * @param connection the removed invalid connection.
 	 */
 	public void removed(IConnection connection);
 
 	/**
 	 * The method will call if the given <code>connection </code> was opened.
 	 * 
-	 * @param connection
-	 *            the opened valid connection.
+	 * @param connection the opened valid connection.
 	 */
 	public void opened(IConnection connection);
 
 	/**
 	 * The method will call if the given <code>connection </code> was closed.
 	 * 
-	 * @param connection
-	 *            the closed valid connection.
+	 * @param connection the closed valid connection.
 	 */
 	public void closed(IConnection connection);
 }

@@ -13,8 +13,7 @@ import org.exist.eclipse.auto.internal.result.model.RunEntity;
  * 
  * @author Markus Tanner
  */
-public class RunsLabelProvider extends LabelProvider implements
-		ITableLabelProvider {
+public class RunsLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 	@Override
 	public Image getColumnImage(Object element, int columnIndex) {

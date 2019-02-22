@@ -43,10 +43,8 @@ public class NewXQueryFileWizard extends Wizard implements INewWizard {
 				@Override
 				public void run() {
 					try {
-						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getActivePage().openEditor(
-										new FileEditorInput(newFile),
-										XQueryEditor.EDITOR_ID);
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+								.openEditor(new FileEditorInput(newFile), XQueryEditor.EDITOR_ID);
 					} catch (PartInitException e) {
 						throw new RuntimeException(e);
 					}

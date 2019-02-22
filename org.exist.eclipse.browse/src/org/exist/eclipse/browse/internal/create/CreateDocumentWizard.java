@@ -46,8 +46,7 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 
 		_enterDocumentPage = new EnterDocumentWizardPage(_item);
 		_enterDocumentPage.setTitle(TITLE);
-		_enterDocumentPage.setImageDescriptor(BrowsePlugin
-				.getImageDescriptor(IMG));
+		_enterDocumentPage.setImageDescriptor(BrowsePlugin.getImageDescriptor(IMG));
 		addPage(_enterDocumentPage);
 	}
 
@@ -63,36 +62,25 @@ public class CreateDocumentWizard extends Wizard implements IWorkbenchWizard {
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
-		if (IManagementService.class.cast(
-				_item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
+		if (_item.getConnection().getAdapter(IManagementService.class).check()) {
 			if (_itemService.check()) {
-				IDocumentItem documentItem = _enterDocumentPage
-						.getDocumentItem();
+				IDocumentItem documentItem = _enterDocumentPage.getDocumentItem();
 				try {
-					IDocumentService documentService = (IDocumentService) documentItem
-							.getAdapter(IDocumentService.class);
-					documentService.create(
-							_enterDocumentPage.getDocumentProvider(), null);
+					IDocumentService documentService = documentItem.getAdapter(IDocumentService.class);
+					documentService.create(_enterDocumentPage.getDocumentProvider(), null);
 					_itemService.refresh();
 
-					IEditorDescriptor defaultEditor = ActionGroupOpenDocument
-							.getDefaultEditor(documentItem);
+					IEditorDescriptor defaultEditor = ActionGroupOpenDocument.getDefaultEditor(documentItem);
 					if (defaultEditor != null) {
 						// open in editor
-						ActionOpenDocument openAction = new ActionOpenDocument(
-								defaultEditor.getId(), documentItem);
+						ActionOpenDocument openAction = new ActionOpenDocument(defaultEditor.getId(), documentItem);
 						openAction.run();
 					}
 
 				} catch (CreateDocumentException e) {
 					isFinished = false;
 					String message = "Failure while create document.";
-					BrowsePlugin
-							.getDefault()
-							.getLog()
-							.log(new Status(IStatus.ERROR,
-									BrowsePlugin.getId(), message, e));
+					BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e));
 					_enterDocumentPage.setErrorMessage(message);
 				}
 			}

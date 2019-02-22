@@ -26,8 +26,7 @@ import org.xmldb.api.base.XMLDBException;
  * @author Pascal Schmidiger
  * 
  */
-public class ViewContentProvider implements IStructuredContentProvider,
-		ITreeContentProvider {
+public class ViewContentProvider implements IStructuredContentProvider, ITreeContentProvider {
 	private final BrowseView _view;
 
 	public ViewContentProvider(BrowseView view) {
@@ -70,11 +69,9 @@ public class ViewContentProvider implements IStructuredContentProvider,
 			IConnection connection = IConnection.class.cast(parent);
 			if (connection.isOpen()) {
 				try {
-					return asChildrenArray(new BrowseItem(connection,
-							connection.getRoot().getName()));
+					return asChildrenArray(new BrowseItem(connection, connection.getRoot().getName()));
 				} catch (XMLDBException e) {
-					Status status = new Status(IStatus.ERROR,
-							BrowsePlugin.getId(),
+					Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
 							"Error while getting root collection", e);
 					BrowsePlugin.getDefault().getLog().log(status);
 					return asChildrenArray();
@@ -84,8 +81,7 @@ public class ViewContentProvider implements IStructuredContentProvider,
 			if (parent instanceof BrowseItemInvisible) {
 				return BrowseItemInvisible.class.cast(parent).getChildren();
 			} else if (parent instanceof BrowseItem) {
-				DeferredTreeContentManager deferredTree = new BrowseDeferredTree(
-						this, _view.getViewer());
+				DeferredTreeContentManager deferredTree = new BrowseDeferredTree(this, _view.getViewer());
 				return asChildrenArray(deferredTree.getChildren(parent));
 			}
 		}

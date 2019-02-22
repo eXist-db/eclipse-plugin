@@ -29,8 +29,7 @@ public interface IBrowseListener {
 	 * You gets an array of {@link IBrowseItem}, which was selected. If your
 	 * extension is not multi selected, then you will become only one element.
 	 * 
-	 * @param items
-	 *            on which you will perform your action.
+	 * @param items on which you will perform your action.
 	 */
 	public void actionPerformed(IBrowseItem[] items);
 }

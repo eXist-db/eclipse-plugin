@@ -67,10 +67,8 @@ public class ExportResultItemsAction extends Action {
 
 	@Override
 	public void run() {
-		Object[] sel = ((IStructuredSelection) _viewer.getSelection())
-				.toArray();
-		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getShell();
+		Object[] sel = ((IStructuredSelection) _viewer.getSelection()).toArray();
+		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
 		Map<ResultItem, File> files = new HashMap<>();
 
@@ -93,9 +91,8 @@ public class ExportResultItemsAction extends Action {
 				File folderr = new File(folder);
 				for (Object it : sel) {
 					ResultItem resultItem = (ResultItem) it;
-					files.put(resultItem, new File(folderr,
-							getSafeFileName(resultItem.getGroup()) + "_result_"
-									+ (resultItem.getIndex() + 1) + ".txt"));
+					files.put(resultItem, new File(folderr, getSafeFileName(resultItem.getGroup()) + "_result_"
+							+ (resultItem.getIndex() + 1) + ".txt"));
 				}
 			}
 		}
@@ -109,23 +106,18 @@ public class ExportResultItemsAction extends Action {
 				String content = resultItem.getContent();
 				try (Reader reader = new StringReader(content);
 						OutputStream out = new FileOutputStream(file);
-						Writer writer = new OutputStreamWriter(out,
-								DEFAULT_ENCODING)) {
+						Writer writer = new OutputStreamWriter(out, DEFAULT_ENCODING)) {
 					copy(reader, writer);
 				} catch (Exception e) {
 					hadErrors = true;
-					XQueryUI.getDefault()
-							.getLog()
-							.log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-									"An error occured while exporting result to '"
-											+ file + "': " + e));
+					XQueryUI.getDefault().getLog().log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+							"An error occured while exporting result to '" + file + "': " + e));
 				}
 			}
 
 			if (hadErrors) {
-				MessageDialog
-						.openError(shell, "Export Results",
-								"Errors occured while exporting results. See Eclipse Error Log for details.");
+				MessageDialog.openError(shell, "Export Results",
+						"Errors occured while exporting results. See Eclipse Error Log for details.");
 			}
 		}
 	}

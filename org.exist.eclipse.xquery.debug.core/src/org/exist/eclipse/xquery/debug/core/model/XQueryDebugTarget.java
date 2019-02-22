@@ -69,18 +69,18 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	private EventDispatchJob fEventDispatch;
 	private String fName;
 	private boolean fSuspended;
-	
+
 	public XQueryDebugTarget(ILaunch launch, int requestPort, int eventPort) throws CoreException {
 		super(null);
-		
+
 		fLaunch = launch;
 		fTarget = this;
-		fProcess = null; //TODO: any replacement
+		fProcess = null; // TODO: any replacement
 		try {
 			fRequestSocket = new Socket("localhost", requestPort);
 			fRequestWriter = new PrintWriter(fRequestSocket.getOutputStream());
 			fRequestReader = new BufferedReader(new InputStreamReader(fRequestSocket.getInputStream()));
-			
+
 			fEventSocket = new Socket("localhost", eventPort);
 			fEventReader = new BufferedReader(new InputStreamReader(fEventSocket.getInputStream()));
 		} catch (UnknownHostException e) {
@@ -88,13 +88,13 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		} catch (IOException e) {
 			abort("Unable to connect to eXist-db", e);
 		}
-		
+
 		fThread = new XQueryThread(this);
-		fThreads = new IThread[] {fThread};
+		fThreads = new IThread[] { fThread };
 		fEventDispatch = new EventDispatchJob();
 		fEventDispatch.schedule();
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(this);
-		
+
 	}
 
 	@Override
@@ -102,7 +102,8 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		if (fName == null) {
 			fName = "XQuery script";
 			try {
-				fName = getLaunch().getLaunchConfiguration().getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, "XQuery");
+				fName = getLaunch().getLaunchConfiguration().getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT,
+						"XQuery");
 			} catch (CoreException e) {
 			}
 		}
@@ -128,7 +129,8 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
 		if (breakpoint.getModelIdentifier().equals(IXQueryConstants.ID_XQUERY_DEBUG_MODEL)) {
 			try {
-				String script = getLaunch().getLaunchConfiguration().getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String)null);
+				String script = getLaunch().getLaunchConfiguration().getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT,
+						(String) null);
 				if (script != null) {
 					IMarker marker = breakpoint.getMarker();
 					if (marker != null) {
@@ -141,12 +143,12 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		}
 		return false;
 	}
-	
+
 	@Override
 	public IDebugTarget getDebugTarget() {
 		return this;
 	}
-	
+
 	@Override
 	public ILaunch getLaunch() {
 		return fLaunch;
@@ -189,7 +191,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	public void resume() throws DebugException {
 		sendRequest("resume");
 	}
-	
+
 	private void resumed(int detail) {
 		fSuspended = false;
 		fThread.fireResumeEvent(detail);
@@ -210,14 +212,14 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 			try {
 				if (breakpoint.isEnabled()) {
 					try {
-						sendRequest("set "+((ILineBreakpoint) breakpoint).getLineNumber());
+						sendRequest("set " + ((ILineBreakpoint) breakpoint).getLineNumber());
 					} catch (CoreException e) {
 					}
 				}
 			} catch (CoreException e) {
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -237,7 +239,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	@Override
 	public void breakpointRemoved(IBreakpoint arg0, IMarkerDelta arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -263,7 +265,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 	public boolean supportsStorageRetrieval() {
 		return false;
 	}
-	
+
 	private void started() {
 		fireCreationEvent();
 		installDeferredBreakpoints();
@@ -272,20 +274,21 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		} catch (DebugException e) {
 		}
 	}
-	
+
 	private void installDeferredBreakpoints() {
-		IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
+		IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
+				.getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
 		for (int i = 0; i < breakpoints.length; i++) {
 			breakpointAdded(breakpoints[i]);
 		}
 	}
-	
+
 	private void terminated() {
 		fSuspended = false;
 		DebugPlugin.getDefault().getBreakpointManager().removeBreakpointListener(this);
 		fireTermonateEvent();
 	}
-	
+
 	protected IStackFrame[] getStackFrames() throws DebugException {
 		synchronized (fRequestSocket) {
 			fRequestWriter.println("stack");
@@ -307,25 +310,25 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		}
 		return new IStackFrame[0];
 	}
-	
+
 	protected void step() throws DebugException {
 		sendRequest("step");
 	}
-	
+
 	protected IValue getVariableValue(XQueryVariable variable) throws DebugException {
 		synchronized (fRequestSocket) {
-			fRequestWriter.println("var "+variable.getIdentifier() + " " + variable.getName());
+			fRequestWriter.println("var " + variable.getIdentifier() + " " + variable.getName());
 			fRequestWriter.flush();
 			try {
 				String value = fRequestReader.readLine();
 				return new XQueryValue(this, value);
 			} catch (IOException e) {
-				abort("Unable to retrieve value for variable "+variable.getName(), e);
+				abort("Unable to retrieve value for variable " + variable.getName(), e);
 			}
 		}
 		return null;
 	}
-	
+
 	public IValue[] getDataStack() throws DebugException {
 		synchronized (fRequestSocket) {
 			fRequestWriter.println("data");
@@ -346,7 +349,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 		}
 		return new IValue[0];
 	}
-	
+
 	private void sendRequest(String request) throws DebugException {
 		synchronized (fRequestSocket) {
 			fRequestWriter.println(request);
@@ -355,18 +358,19 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 				// wait for "ok"
 				fRequestReader.readLine();
 			} catch (IOException e) {
-				abort("Request failed: "+request, e);
+				abort("Request failed: " + request, e);
 			}
 		}
 	}
-	
+
 	private void breakpointHit(String event) {
-		//determine which breakpoint was hit, and set the thread's breakpoint
+		// determine which breakpoint was hit, and set the thread's breakpoint
 		int lastSpace = event.lastIndexOf(" ");
 		if (lastSpace > 0) {
 			String line = event.substring(lastSpace + 1);
 			int lineNumber = Integer.parseInt(line);
-			IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager().getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
+			IBreakpoint[] breakpoints = DebugPlugin.getDefault().getBreakpointManager()
+					.getBreakpoints(IXQueryConstants.ID_XQUERY_DEBUG_MODEL);
 			for (int i = 0; i < breakpoints.length; i++) {
 				IBreakpoint breakpoint = breakpoints[i];
 				if (supportsBreakpoint(breakpoint)) {
@@ -374,7 +378,7 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 						ILineBreakpoint lineBreakpoint = (ILineBreakpoint) breakpoint;
 						try {
 							if (lineBreakpoint.getLineNumber() == lineNumber) {
-								fThread.setBreakpoints(new IBreakpoint[]{breakpoint});
+								fThread.setBreakpoints(new IBreakpoint[] { breakpoint });
 							}
 						} catch (CoreException e) {
 						}
@@ -428,6 +432,6 @@ public class XQueryDebugTarget extends XQueryDebugElement implements IDebugTarge
 			}
 			return Status.OK_STATUS;
 		}
-		
+
 	}
 }

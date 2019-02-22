@@ -71,10 +71,8 @@ public class BottomContainer extends Composite implements IQueryListener {
 			public void run() {
 				StringBuilder text = new StringBuilder(100);
 				text.append(event.getCount()).append(" items found | ");
-				text.append("Compilation: ").append(event.getCompiledTime())
-						.append(" ms | ");
-				text.append("Execution: ").append(event.getExectionTime())
-						.append(" ms");
+				text.append("Compilation: ").append(event.getCompiledTime()).append(" ms | ");
+				text.append("Execution: ").append(event.getExectionTime()).append(" ms");
 				_itemsFound.setText(text.toString());
 				_itemsFound.pack();
 			}

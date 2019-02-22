@@ -12,21 +12,18 @@ import org.exist.eclipse.xquery.ui.internal.templates.XQueryTemplateCompletionPr
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryCompletionProposalComputer extends
-		ScriptCompletionProposalComputer {
+public class XQueryCompletionProposalComputer extends ScriptCompletionProposalComputer {
 
 	public XQueryCompletionProposalComputer() {
 	}
 
 	@Override
-	protected ScriptCompletionProposalCollector createCollector(
-			ScriptContentAssistInvocationContext context) {
+	protected ScriptCompletionProposalCollector createCollector(ScriptContentAssistInvocationContext context) {
 		return new XQueryCompletionProposalCollector(context.getSourceModule());
 	}
 
 	@Override
-	protected TemplateCompletionProcessor createTemplateProposalComputer(
-			ScriptContentAssistInvocationContext context) {
+	protected TemplateCompletionProcessor createTemplateProposalComputer(ScriptContentAssistInvocationContext context) {
 		return new XQueryTemplateCompletionProcessor(context);
 	}
 }

@@ -38,8 +38,7 @@ public class MyMethodLocator extends MethodLocator {
 	private int getFocusMethodArgsCount() {
 		int nArgs = -1;
 		try {
-			Field declArgsField = MethodPattern.class
-					.getDeclaredField("methodArguments");
+			Field declArgsField = MethodPattern.class.getDeclaredField("methodArguments");
 			declArgsField.setAccessible(true);
 			char[][] arr = (char[][]) declArgsField.get(this.pattern);
 			nArgs = (arr == null) ? 0 : arr.length;

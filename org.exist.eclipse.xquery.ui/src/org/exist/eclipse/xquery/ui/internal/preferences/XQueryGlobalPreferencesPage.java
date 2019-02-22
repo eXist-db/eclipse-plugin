@@ -10,12 +10,10 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryGlobalPreferencesPage extends
-		AbstractConfigurationBlockPreferencePage {
+public class XQueryGlobalPreferencesPage extends AbstractConfigurationBlockPreferencePage {
 
 	@Override
-	protected IPreferenceConfigurationBlock createConfigurationBlock(
-			OverlayPreferenceStore overlayPreferenceStore) {
+	protected IPreferenceConfigurationBlock createConfigurationBlock(OverlayPreferenceStore overlayPreferenceStore) {
 		return new XQueryGlobalConfigurationBlock(overlayPreferenceStore, this);
 	}
 

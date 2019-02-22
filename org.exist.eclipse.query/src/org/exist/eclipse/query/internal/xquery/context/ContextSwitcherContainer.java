@@ -6,8 +6,8 @@ import java.util.Map;
 import org.exist.eclipse.IConnection;
 
 /**
- * Container which hold all {@link ConnectionContext} to the
- * {@link IConnection} objects.
+ * Container which hold all {@link ConnectionContext} to the {@link IConnection}
+ * objects.
  * 
  * @author Pascal Schmidiger
  */
@@ -29,8 +29,7 @@ public class ContextSwitcherContainer {
 	}
 
 	/**
-	 * Store the given <code>switcher</code> for given key=
-	 * <code>connection</code>.
+	 * Store the given <code>switcher</code> for given key= <code>connection</code>.
 	 * 
 	 * @param connection
 	 * @param switcher
@@ -40,8 +39,7 @@ public class ContextSwitcherContainer {
 	}
 
 	/**
-	 * Remove the {@link ConnectionContext} for the given
-	 * <code>connection</code>.
+	 * Remove the {@link ConnectionContext} for the given <code>connection</code>.
 	 * 
 	 * @param connection
 	 */
@@ -51,8 +49,7 @@ public class ContextSwitcherContainer {
 
 	/**
 	 * @param connection
-	 * @return the {@link ConnectionContext} for the given
-	 *         <code>connection</code>.
+	 * @return the {@link ConnectionContext} for the given <code>connection</code>.
 	 */
 	public ContextSwitcher getContextSwitcher(IConnection connection) {
 		return _switchers.get(connection);

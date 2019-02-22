@@ -33,8 +33,7 @@ public class DocumentDnD {
 		private final DocumentView _view;
 		private final DragSourceListener _dragSource;
 
-		private DropTargetListener(DocumentView view,
-				DragSourceListener dragSource) {
+		private DropTargetListener(DocumentView view, DragSourceListener dragSource) {
 			_view = view;
 			_dragSource = dragSource;
 		}
@@ -65,8 +64,7 @@ public class DocumentDnD {
 			if (sourceIsSelf) {
 				event.detail = DND.DROP_NONE;
 			} else {
-				new ImportDocumentsListener().importFiles(_view.getItem(),
-						files);
+				new ImportDocumentsListener().importFiles(_view.getItem(), files);
 				event.detail = DND.DROP_COPY;
 			}
 		}
@@ -107,15 +105,12 @@ public class DocumentDnD {
 					StringWriter out = new StringWriter();
 					PrintWriter pw = new PrintWriter(out);
 
-					for (Object it : ((IStructuredSelection) _viewer
-							.getSelection()).toArray()) {
-						pw.println(((IDocumentItem) it).getResource()
-								.getContent());
+					for (Object it : ((IStructuredSelection) _viewer.getSelection()).toArray()) {
+						pw.println(((IDocumentItem) it).getResource().getContent());
 					}
 
 					event.data = out.toString();
-				} else if (FileTransfer.getInstance().isSupportedType(
-						event.dataType)) {
+				} else if (FileTransfer.getInstance().isSupportedType(event.dataType)) {
 					if (_tmpFiles == null) {
 						_tmpFiles = createTempFiles();
 					}
@@ -154,11 +149,9 @@ public class DocumentDnD {
 		private String[] createTempFiles() {
 			List<File> files = new ArrayList<>();
 
-			for (Object it : ((IStructuredSelection) _viewer.getSelection())
-					.toArray()) {
+			for (Object it : ((IStructuredSelection) _viewer.getSelection()).toArray()) {
 				IDocumentItem di = (IDocumentItem) it;
-				File tmpDir = new File(_tmpSessionDir, di.getParent().getPath()
-						.replace('/', '_'));
+				File tmpDir = new File(_tmpSessionDir, di.getParent().getPath().replace('/', '_'));
 
 				tmpDir.mkdirs();
 
@@ -169,9 +162,8 @@ public class DocumentDnD {
 					try {
 						tmpFile.deleteOnExit();
 
-						ExportDocumentsAction.copy(new StringReader((String) di
-								.getResource().getContent()), new FileWriter(
-								tmpFile));
+						ExportDocumentsAction.copy(new StringReader((String) di.getResource().getContent()),
+								new FileWriter(tmpFile));
 					} catch (Exception e) {
 						throw new RuntimeException(e);
 					}
@@ -209,13 +201,10 @@ public class DocumentDnD {
 		target.setTransfer(new Transfer[] { FileTransfer.getInstance() });
 
 		DragSource source = new DragSource(viewer.getTable(), operations);
-		source.setTransfer(new Transfer[] { TextTransfer.getInstance(),
-				FileTransfer.getInstance() });
+		source.setTransfer(new Transfer[] { TextTransfer.getInstance(), FileTransfer.getInstance() });
 
 		DragSourceListener dragSourceListener = new DragSourceListener(viewer);
 		source.addDragListener(dragSourceListener);
-		target
-				.addDropListener(new DropTargetListener(view,
-						dragSourceListener));
+		target.addDropListener(new DropTargetListener(view, dragSourceListener));
 	}
 }

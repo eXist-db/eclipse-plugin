@@ -66,9 +66,9 @@ public class ResultModel implements IResultModel {
 	public QueryOrderType getQueryOrderType() {
 		return _queryOrderType == null ? QueryOrderType.SEQUENTIAL : _queryOrderType;
 	}
-	
+
 	@Override
-	public void setQueryOrderType(QueryOrderType type){
+	public void setQueryOrderType(QueryOrderType type) {
 		_queryOrderType = type;
 	}
 
@@ -80,8 +80,8 @@ public class ResultModel implements IResultModel {
 	@Override
 	public void setAutoNote(String note) {
 		_autoNote = note;
-	}	
-	
+	}
+
 	@Override
 	public int getAvgCompTime() {
 		int totCompTime = 0;

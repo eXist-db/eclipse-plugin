@@ -29,10 +29,8 @@ public class QueryJob extends Job {
 	/**
 	 * Create a new job.
 	 * 
-	 * @param frame
-	 *            of the job.
-	 * @param item
-	 *            on which the query will run.
+	 * @param frame of the job.
+	 * @param item  on which the query will run.
 	 */
 	public QueryJob(IQueryFrame frame, IBrowseItem item) {
 		super("Running Query '" + frame.getName() + "'");
@@ -56,13 +54,11 @@ public class QueryJob extends Job {
 			long t1 = System.nanoTime();
 			tCompiled = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
 			result = existQuery.execute(compiled);
-			long tResult = TimeUnit.NANOSECONDS
-					.toMillis(System.nanoTime() - t1);
+			long tResult = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - t1);
 
 			ResourceIterator i = result.getIterator();
 
-			monitor.beginTask("Retrieving results...",
-					Long.valueOf(result.getSize()).intValue());
+			monitor.beginTask("Retrieving results...", Long.valueOf(result.getSize()).intValue());
 
 			while (i.hasMoreResources() && !monitor.isCanceled()) {
 				Resource r = i.nextResource();
@@ -72,8 +68,7 @@ public class QueryJob extends Job {
 				monitor.worked(1);
 			}
 
-			QueryEndState endState = new QueryEndState(result.getSize(),
-					tCompiled, tResult);
+			QueryEndState endState = new QueryEndState(result.getSize(), tCompiled, tResult);
 			_frame.end(endState);
 		} catch (Exception e) {
 			QueryEndState endState = new QueryEndState(e, tCompiled);
@@ -83,7 +78,7 @@ public class QueryJob extends Job {
 				try {
 					result.clear();
 				} catch (XMLDBException e) {
-					//  ignore
+					// ignore
 				}
 			}
 			monitor.done();

@@ -41,8 +41,8 @@ public class GetFunctionJob extends Job {
 	}
 
 	/**
-	 * @return <code>true</code>, if the function was fetched from eXist,
-	 *         elsewhere <code>false</code>.
+	 * @return <code>true</code>, if the function was fetched from eXist, elsewhere
+	 *         <code>false</code>.
 	 */
 	public boolean hasFetched() {
 		return _fetched;
@@ -52,8 +52,7 @@ public class GetFunctionJob extends Job {
 	 * Return the methods, which are fetched from eXist, by the given
 	 * <code>prefix</code>.
 	 * 
-	 * @param prefix
-	 *            start of the method; could be <code>null</code>.
+	 * @param prefix start of the method; could be <code>null</code>.
 	 * @return the methods which matched with the given <code>prefix</code>.
 	 */
 	public IXQueryMethod[] getMethods(String prefix) {
@@ -73,14 +72,12 @@ public class GetFunctionJob extends Job {
 
 	private Collection<IXQueryMethod> fillMethods() {
 		Collection<String> fromExist = getMethodsFromExist();
-		Collection<IXQueryMethod> methods = new ArrayList<>(
-				fromExist.size());
+		Collection<IXQueryMethod> methods = new ArrayList<>(fromExist.size());
 		for (String methodString : fromExist) {
 			String name = null;
 			name = methodString.substring(0, methodString.indexOf("("));
 			ExistXQueryMethod method = new ExistXQueryMethod(name.trim());
-			String paramString = methodString.substring(methodString
-					.indexOf("("), methodString.indexOf(")"));
+			String paramString = methodString.substring(methodString.indexOf("("), methodString.indexOf(")"));
 			if (paramString.length() > 1) {
 				StringTokenizer token = new StringTokenizer(paramString, ",");
 				while (token.hasMoreTokens()) {
@@ -129,8 +126,7 @@ public class GetFunctionJob extends Job {
 		query.append("declare function local:getFunctions(){\n");
 		query.append("let $functions := util:registered-functions()\n");
 		query.append("for $function in $functions\n");
-		query
-				.append("return util:describe-function($function)//signature/string()\n");
+		query.append("return util:describe-function($function)//signature/string()\n");
 		query.append("};\n");
 		query.append("local:getFunctions()");
 		return query.toString();

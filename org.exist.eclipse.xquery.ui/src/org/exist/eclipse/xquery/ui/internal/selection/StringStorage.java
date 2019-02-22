@@ -28,8 +28,8 @@ public class StringStorage implements IStorage {
 
 	@Override
 	public boolean equals(Object that) {
-		return that == this || that instanceof StringStorage
-				&& ((StringStorage) that).getFullPath().equals(getFullPath());
+		return that == this
+				|| that instanceof StringStorage && ((StringStorage) that).getFullPath().equals(getFullPath());
 	}
 
 	@Override

@@ -32,8 +32,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 	}
 
 	@Override
-	public void characters(char[] ch, int start, int length)
-			throws SAXException {
+	public void characters(char[] ch, int start, int length) throws SAXException {
 
 		if (_delegate != null) {
 			_delegate.characters(ch, start, length);
@@ -47,8 +46,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 	}
 
 	@Override
-	public void endElement(String uri, String localName, String name)
-			throws SAXException {
+	public void endElement(String uri, String localName, String name) throws SAXException {
 		if (RUNS.equals(name)) {
 			_delegate = null;
 		}
@@ -58,16 +56,13 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 			if (NOTE.equals(name)) {
 				_queryResultEntity.setNotes(_value.toString().trim());
 			} else if (QUANTITY.equals(name)) {
-				_queryResultEntity.setQuantity(Integer.parseInt(_value
-						.toString().trim()));
+				_queryResultEntity.setQuantity(Integer.parseInt(_value.toString().trim()));
 			} else if (CONTENT.equals(name)) {
 				_queryResultEntity.setQuery(_value.toString().trim());
 			} else if (AVGCOMPILATION.equals(name)) {
-				_queryResultEntity.setAvgCompTime(Integer.parseInt(_value
-						.toString().trim()));
+				_queryResultEntity.setAvgCompTime(Integer.parseInt(_value.toString().trim()));
 			} else if (AVGEXECUTION.equals(name)) {
-				_queryResultEntity.setAvgExecTime(Integer.parseInt(_value
-						.toString().trim()));
+				_queryResultEntity.setAvgExecTime(Integer.parseInt(_value.toString().trim()));
 			}
 			_value = new StringBuilder(50);
 		}
@@ -78,13 +73,11 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 	}
 
 	@Override
-	public void ignorableWhitespace(char[] ch, int start, int length)
-			throws SAXException {
+	public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
 	}
 
 	@Override
-	public void processingInstruction(String target, String data)
-			throws SAXException {
+	public void processingInstruction(String target, String data) throws SAXException {
 		if (_delegate != null) {
 			_delegate.processingInstruction(target, data);
 		}
@@ -103,8 +96,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 	}
 
 	@Override
-	public void startElement(String uri, String localName, String name,
-			Attributes atts) throws SAXException {
+	public void startElement(String uri, String localName, String name, Attributes atts) throws SAXException {
 		if (_delegate != null) {
 			_delegate.startElement(uri, localName, name, atts);
 		} else {
@@ -120,8 +112,7 @@ public class QueryResultParser implements AutoTags, ContentHandler {
 	}
 
 	@Override
-	public void startPrefixMapping(String prefix, String uri)
-			throws SAXException {
+	public void startPrefixMapping(String prefix, String uri) throws SAXException {
 	}
 
 }

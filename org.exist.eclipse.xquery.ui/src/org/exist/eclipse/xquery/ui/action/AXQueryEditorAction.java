@@ -10,8 +10,7 @@ abstract public class AXQueryEditorAction extends Action {
 
 	@Override
 	public void run() {
-		IEditorPart editor = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		if (editor instanceof XQueryEditor) {
 			XQueryEditor xQueryEditor = (XQueryEditor) editor;
 			doRun(xQueryEditor);
@@ -21,8 +20,7 @@ abstract public class AXQueryEditorAction extends Action {
 	protected abstract void doRun(XQueryEditor editor);
 
 	protected IDocument getDocument(XQueryEditor xQueryEditor) {
-		IDocument document = xQueryEditor.getDocumentProvider().getDocument(
-				xQueryEditor.getEditorInput());
+		IDocument document = xQueryEditor.getDocumentProvider().getDocument(xQueryEditor.getEditorInput());
 		return document;
 	}
 

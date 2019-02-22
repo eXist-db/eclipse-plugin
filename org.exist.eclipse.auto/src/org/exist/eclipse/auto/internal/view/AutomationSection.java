@@ -38,8 +38,8 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	private Text _autoNote;
 	private IAutoModificationNotifier _notifier;
 
-	public AutomationSection(Composite navigation, IAutoModel model,
-			FormToolkit toolkit, IAutoModificationNotifier notifier) {
+	public AutomationSection(Composite navigation, IAutoModel model, FormToolkit toolkit,
+			IAutoModificationNotifier notifier) {
 		_navigation = navigation;
 		_autoModel = model;
 		_toolkit = toolkit;
@@ -50,11 +50,9 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	 * Initializes the Automation configuration section.
 	 */
 	public void init() {
-		Section autoSection = _toolkit.createSection(_navigation,
-				ExpandableComposite.TITLE_BAR);
+		Section autoSection = _toolkit.createSection(_navigation, ExpandableComposite.TITLE_BAR);
 		autoSection.setText("Automation Details");
-		autoSection
-				.setDescription("Automation specific values can be edited here.");
+		autoSection.setDescription("Automation specific values can be edited here.");
 
 		autoSection.marginWidth = 10;
 		autoSection.marginHeight = 5;
@@ -71,8 +69,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		// thread count
 		_toolkit.createLabel(autoClient, "Thread Count:");
 		_threadCount = _toolkit.createText(autoClient, "", SWT.SINGLE);
-		gd = new GridData(GridData.FILL_HORIZONTAL
-				| GridData.VERTICAL_ALIGN_BEGINNING);
+		gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_BEGINNING);
 		gd.widthHint = 10;
 		_threadCount.addModifyListener(this);
 		_threadCount.addFocusListener(this);
@@ -82,8 +79,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		_threadCount.setText(Integer.toString(_autoModel.getThreadCount()));
 
 		// query order type
-		Label queryOrderTypeLbl = _toolkit.createLabel(autoClient,
-				"Query Order Type:");
+		Label queryOrderTypeLbl = _toolkit.createLabel(autoClient, "Query Order Type:");
 		String queryOrderTypeToolTip = "SEQUENTIAL: Running queries sequentially\n"
 				+ "RANDOM: Running queries in a random order\n"
 				+ "ITERATING: Looping over queries - a query is run once per iteration";
@@ -91,8 +87,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		_queryOrderTypeCombo = new Combo(autoClient, SWT.NONE);
 		_queryOrderTypeCombo.setToolTipText(queryOrderTypeToolTip);
 		_toolkit.paintBordersFor(autoClient);
-		gd = new GridData(GridData.FILL_HORIZONTAL
-				| GridData.VERTICAL_ALIGN_BEGINNING);
+		gd = new GridData(GridData.FILL_HORIZONTAL | GridData.VERTICAL_ALIGN_BEGINNING);
 		gd.widthHint = 10;
 		_queryOrderTypeCombo.setLayoutData(gd);
 		for (QueryOrderType type : QueryOrderType.values()) {
@@ -105,8 +100,7 @@ public class AutomationSection implements ModifyListener, FocusListener {
 		Label noteLabel = _toolkit.createLabel(autoClient, "Note:");
 		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
 		noteLabel.setLayoutData(gd);
-		_autoNote = _toolkit.createText(autoClient, "", SWT.MULTI | SWT.WRAP
-				| SWT.V_SCROLL);
+		_autoNote = _toolkit.createText(autoClient, "", SWT.MULTI | SWT.WRAP | SWT.V_SCROLL);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.heightHint = 30;
 		gd.widthHint = 10;
@@ -155,54 +149,45 @@ public class AutomationSection implements ModifyListener, FocusListener {
 	}
 
 	/**
-	 * Handles the input concerning a number field. Make sure that only numbers
-	 * can be added.
+	 * Handles the input concerning a number field. Make sure that only numbers can
+	 * be added.
 	 */
 	private void handleThreadCountInput() {
 		boolean sendNotification = false;
 		if (_autoModel != null) {
-			if (isValidInt(_threadCount.getText())
-					&& _threadCount.getText().compareTo("") != 0) {
+			if (isValidInt(_threadCount.getText()) && _threadCount.getText().compareTo("") != 0) {
 				// if string represents valid number
 				int value = Integer.parseInt(_threadCount.getText());
 				if (value >= 1 && value <= 20) {
-					_autoModel.setThreadCount(Integer.parseInt(_threadCount
-							.getText()));
+					_autoModel.setThreadCount(Integer.parseInt(_threadCount.getText()));
 				} else {
-					MessageDialog
-							.openInformation(_navigation.getShell(),
-									"Invalid thread count",
-									"The thread count needs to be a value between 1 and 20.");
+					MessageDialog.openInformation(_navigation.getShell(), "Invalid thread count",
+							"The thread count needs to be a value between 1 and 20.");
 					_threadCount.setText("1");
 				}
 				sendNotification = true;
 				// if it's empty
 			} else if (_threadCount.getText().compareTo("") == 0) {
-				_autoModel.setThreadCount(Integer.parseInt(_threadCount
-						.getText()));
+				_autoModel.setThreadCount(Integer.parseInt(_threadCount.getText()));
 				sendNotification = true;
 			} else {
 				// if the current input contains only one character and is not a
 				// number, the field should be cleared
 				if (_threadCount.getText().length() != 1) {
-					_threadCount.setText(Integer.toString(_autoModel
-							.getThreadCount()));
+					_threadCount.setText(Integer.toString(_autoModel.getThreadCount()));
 				} else {
 					_threadCount.setText("");
 				}
 			}
 		}
 		if (sendNotification) {
-			_notifier.automationModified(new AutoModEvent(
-					"Thread Count modified."));
+			_notifier.automationModified(new AutoModEvent("Thread Count modified."));
 		}
 	}
 
 	private void handleQueryOrderTypeInput() {
 		if (_autoModel != null && _queryOrderTypeCombo != null) {
-			_autoModel
-					.setQueryOrderType(QueryOrderType.values()[_queryOrderTypeCombo
-							.getSelectionIndex()]);
+			_autoModel.setQueryOrderType(QueryOrderType.values()[_queryOrderTypeCombo.getSelectionIndex()]);
 		}
 
 	}

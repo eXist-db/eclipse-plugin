@@ -63,8 +63,7 @@ public class ToggleCommentAction extends ARefactorAction {
 				// remove damn EOL
 				int q = sel.length();
 				try {
-					BufferedReader reader = new BufferedReader(
-							new StringReader(sel));
+					BufferedReader reader = new BufferedReader(new StringReader(sel));
 					sel = reader.readLine();
 					q -= sel.length();
 				} catch (Exception e) {
@@ -76,8 +75,7 @@ public class ToggleCommentAction extends ARefactorAction {
 				String newText = null;
 				if (ps == -1 && pe == -1) {
 					newText = startTag + sel + endTag;
-					edit = new ReplaceEdit(lineOff, newText.length() - (q * 2),
-							newText);
+					edit = new ReplaceEdit(lineOff, newText.length() - (q * 2), newText);
 					caretFix = 2;
 				} else if (ps != -1 && pe != -1 && ps < pe) {
 					newText = sel.replace(startTag, "").replace(endTag, "");
@@ -94,8 +92,7 @@ public class ToggleCommentAction extends ARefactorAction {
 
 		} catch (Exception e) {
 			XQueryUI.getDefault().getLog().log(
-					new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-							"An error occured while toggle comments: " + e, e));
+					new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID, "An error occured while toggle comments: " + e, e));
 		}
 	}
 }

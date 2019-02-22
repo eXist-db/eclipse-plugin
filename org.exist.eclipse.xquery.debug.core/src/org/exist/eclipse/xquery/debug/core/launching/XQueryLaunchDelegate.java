@@ -41,16 +41,22 @@ import org.exist.eclipse.xquery.debug.core.model.XQueryDebugTarget;
  */
 public class XQueryLaunchDelegate extends LaunchConfigurationDelegate {
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String, org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.
+	 * debug.core.ILaunchConfiguration, java.lang.String,
+	 * org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
+	public void launch(ILaunchConfiguration configuration, String mode, ILaunch launch, IProgressMonitor monitor)
+			throws CoreException {
 		int requestPort = 9008;
 		int eventPort = 9007;
 
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-			IDebugTarget target = new XQueryDebugTarget(launch,requestPort,eventPort );
+			IDebugTarget target = new XQueryDebugTarget(launch, requestPort, eventPort);
 			launch.addDebugTarget(target);
 		}
 	}
@@ -60,7 +66,7 @@ public class XQueryLaunchDelegate extends LaunchConfigurationDelegate {
 	}
 
 	private int findFreePort() {
-		try (ServerSocket 	socket = new ServerSocket(0)){
+		try (ServerSocket socket = new ServerSocket(0)) {
 			return socket.getLocalPort();
 		} catch (IOException ioe) {
 		}

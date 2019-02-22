@@ -14,8 +14,7 @@ public class QueryStartEvent {
 	/**
 	 * Create a new start event.
 	 * 
-	 * @param id
-	 *            of the query.
+	 * @param id of the query.
 	 */
 	public QueryStartEvent(int id) {
 		_id = id;

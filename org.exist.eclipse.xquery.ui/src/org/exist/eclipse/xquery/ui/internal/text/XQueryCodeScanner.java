@@ -19,12 +19,9 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
 public class XQueryCodeScanner extends AbstractScriptScanner {
 	private static String _returnKeyword = "return";
 
-	private static String _tokenProperties[] = new String[] {
-			IXQueryColorConstants.XQUERY_DEFAULT,
-			IXQueryColorConstants.XQUERY_KEYWORD,
-			IXQueryColorConstants.XQUERY_KEYWORD_RETURN,
-			IXQueryColorConstants.XQUERY_FUNCTION_DEFINITION,
-			IXQueryColorConstants.XQUERY_ARGUMENT };
+	private static String _tokenProperties[] = new String[] { IXQueryColorConstants.XQUERY_DEFAULT,
+			IXQueryColorConstants.XQUERY_KEYWORD, IXQueryColorConstants.XQUERY_KEYWORD_RETURN,
+			IXQueryColorConstants.XQUERY_FUNCTION_DEFINITION, IXQueryColorConstants.XQUERY_ARGUMENT };
 
 	public XQueryCodeScanner(IColorManager manager, IPreferenceStore store) {
 		super(manager, store);
@@ -42,18 +39,15 @@ public class XQueryCodeScanner extends AbstractScriptScanner {
 		IToken keyword = this.getToken(IXQueryColorConstants.XQUERY_KEYWORD);
 		IToken keywordReturn = getToken(IXQueryColorConstants.XQUERY_KEYWORD_RETURN);
 		IToken other = this.getToken(IXQueryColorConstants.XQUERY_DEFAULT);
-		IToken func = this
-				.getToken(IXQueryColorConstants.XQUERY_FUNCTION_DEFINITION);
+		IToken func = this.getToken(IXQueryColorConstants.XQUERY_FUNCTION_DEFINITION);
 		IToken argument = this.getToken(IXQueryColorConstants.XQUERY_ARGUMENT);
 
 		// Add generic whitespace rule.
 		rules.add(new WhitespaceRule(new XQueryWhitespaceDetector()));
 
 		// Add word rule for keywords.
-		XQueryWordRule wordRule = new XQueryWordRule(new XQueryWordDetector(),
-				other, func, argument);
-		KeyWordContainer wordContainer = XQueryUI.getDefault()
-				.getKeyWordContainer();
+		XQueryWordRule wordRule = new XQueryWordRule(new XQueryWordDetector(), other, func, argument);
+		KeyWordContainer wordContainer = XQueryUI.getDefault().getKeyWordContainer();
 		for (String word : wordContainer.getKeyWords()) {
 			wordRule.addWord(word, keyword);
 		}

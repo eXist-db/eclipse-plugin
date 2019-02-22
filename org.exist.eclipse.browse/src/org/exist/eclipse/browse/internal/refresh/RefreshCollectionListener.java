@@ -17,8 +17,7 @@ public class RefreshCollectionListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		for (IBrowseItem item : items) {
-			IBrowseService.class.cast(item.getAdapter(IBrowseService.class))
-					.refresh();
+			IBrowseService.class.cast(item.getAdapter(IBrowseService.class)).refresh();
 		}
 	}
 

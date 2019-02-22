@@ -57,10 +57,8 @@ public final class ConnectionBox implements IConnectionBox {
 				try {
 					connection.close();
 				} catch (ConnectionException e) {
-					StringBuilder message = new StringBuilder(50)
-							.append("Error while close connection.");
-					IStatus status = new Status(IStatus.ERROR,
-							BasePlugin.getId(), message.toString(), e);
+					StringBuilder message = new StringBuilder(50).append("Error while close connection.");
+					IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(), message.toString(), e);
 					BasePlugin.getDefault().getLog().log(status);
 				}
 			}
@@ -132,10 +130,8 @@ public final class ConnectionBox implements IConnectionBox {
 				try {
 					listener.added(connection);
 				} catch (Exception e) {
-					StringBuilder message = new StringBuilder(50)
-							.append("Error while added event.");
-					IStatus status = new Status(IStatus.ERROR,
-							BasePlugin.getId(), message.toString(), e);
+					StringBuilder message = new StringBuilder(50).append("Error while added event.");
+					IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(), message.toString(), e);
 					BasePlugin.getDefault().getLog().log(status);
 				}
 			}
@@ -148,10 +144,8 @@ public final class ConnectionBox implements IConnectionBox {
 				try {
 					listener.removed(connection);
 				} catch (Exception e) {
-					StringBuilder message = new StringBuilder(50)
-							.append("Error while removed event.");
-					IStatus status = new Status(IStatus.ERROR,
-							BasePlugin.getId(), message.toString(), e);
+					StringBuilder message = new StringBuilder(50).append("Error while removed event.");
+					IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(), message.toString(), e);
 					BasePlugin.getDefault().getLog().log(status);
 				}
 			}
@@ -164,10 +158,8 @@ public final class ConnectionBox implements IConnectionBox {
 				try {
 					listener.opened(connection);
 				} catch (Exception e) {
-					StringBuilder message = new StringBuilder(50)
-							.append("Error while opened event.");
-					IStatus status = new Status(IStatus.ERROR,
-							BasePlugin.getId(), message.toString(), e);
+					StringBuilder message = new StringBuilder(50).append("Error while opened event.");
+					IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(), message.toString(), e);
 					BasePlugin.getDefault().getLog().log(status);
 				}
 			}
@@ -180,10 +172,8 @@ public final class ConnectionBox implements IConnectionBox {
 				try {
 					listener.closed(connection);
 				} catch (Exception e) {
-					StringBuilder message = new StringBuilder(50)
-							.append("Error while closed event.");
-					IStatus status = new Status(IStatus.ERROR,
-							BasePlugin.getId(), message.toString(), e);
+					StringBuilder message = new StringBuilder(50).append("Error while closed event.");
+					IStatus status = new Status(IStatus.ERROR, BasePlugin.getId(), message.toString(), e);
 					BasePlugin.getDefault().getLog().log(status);
 				}
 			}

@@ -19,8 +19,7 @@ public class ActionConnectionListener extends Action {
 	private final IConnectionListener _listener;
 	private final BrowseView _view;
 
-	public ActionConnectionListener(BrowseView view,
-			IConnectionListener listener) {
+	public ActionConnectionListener(BrowseView view, IConnectionListener listener) {
 		_view = view;
 		_listener = listener;
 	}

@@ -53,8 +53,7 @@ public interface IResultModel {
 	/**
 	 * Sets the query results
 	 * 
-	 * @param result
-	 *            the query result
+	 * @param result the query result
 	 */
 	public void addQueryResultEntity(QueryResultEntity result);
 
@@ -117,8 +116,7 @@ public interface IResultModel {
 	/**
 	 * Sets the note concerning the automation
 	 * 
-	 * @param note
-	 *            the new automation note
+	 * @param note the new automation note
 	 */
 	public void setAutoNote(String note);
 

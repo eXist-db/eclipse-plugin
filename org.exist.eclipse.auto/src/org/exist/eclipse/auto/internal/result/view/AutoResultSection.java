@@ -33,8 +33,7 @@ public class AutoResultSection {
 	IResultModel _model;
 	FormToolkit _toolkit;
 
-	public AutoResultSection(Composite navigation, IResultModel model,
-			FormToolkit toolkit) {
+	public AutoResultSection(Composite navigation, IResultModel model, FormToolkit toolkit) {
 		_navigation = navigation;
 		_model = model;
 		_toolkit = toolkit;
@@ -46,11 +45,9 @@ public class AutoResultSection {
 	public void init() {
 
 		Section autoSection = _toolkit.createSection(_navigation,
-				ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE
-						| ExpandableComposite.EXPANDED);
+				ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
 		autoSection.setText("Automation Details");
-		autoSection
-				.setDescription("Automation specific values can be edited here.");
+		autoSection.setDescription("Automation specific values can be edited here.");
 		autoSection.marginWidth = 10;
 		autoSection.marginHeight = 5;
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
@@ -65,10 +62,8 @@ public class AutoResultSection {
 
 		// query count
 		_toolkit.createLabel(autoClient, "Query Count: ");
-		_queryCount = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_queryCount = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_queryCount.setLayoutData(gd);
 
@@ -77,19 +72,15 @@ public class AutoResultSection {
 
 		// average compilation time
 		_toolkit.createLabel(autoClient, "Average Compilation Time: ");
-		_avgCompTime = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_avgCompTime = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_avgCompTime.setLayoutData(gd);
 
 		// thread count
 		_toolkit.createLabel(autoClient, "Thread Count: ");
-		_threadCount = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_threadCount = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_threadCount.setLayoutData(gd);
 
@@ -98,19 +89,15 @@ public class AutoResultSection {
 
 		// average execution time
 		_toolkit.createLabel(autoClient, "Average Execution Time: ");
-		_avgExecTime = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_avgExecTime = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_avgExecTime.setLayoutData(gd);
 
 		// successful
 		_toolkit.createLabel(autoClient, "State: ");
-		_state = _toolkit
-				.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_state = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_state.setLayoutData(gd);
 
@@ -119,10 +106,8 @@ public class AutoResultSection {
 
 		// resultCount
 		_toolkit.createLabel(autoClient, "Total Result Count: ");
-		_resultCount = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_resultCount = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_resultCount.setLayoutData(gd);
 
@@ -130,10 +115,8 @@ public class AutoResultSection {
 		Label qotLabel = _toolkit.createLabel(autoClient, "Query OrderType: ");
 		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
 		qotLabel.setLayoutData(gd);
-		_queryOrderType = _toolkit.createText(autoClient, "", SWT.SINGLE
-				| SWT.READ_ONLY);
-		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-				| GridData.FILL_HORIZONTAL);
+		_queryOrderType = _toolkit.createText(autoClient, "", SWT.SINGLE | SWT.READ_ONLY);
+		gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 		gd.widthHint = 10;
 		_queryOrderType.setLayoutData(gd);
 
@@ -145,10 +128,8 @@ public class AutoResultSection {
 			Label noteLabel = _toolkit.createLabel(autoClient, "Note: ");
 			gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING);
 			noteLabel.setLayoutData(gd);
-			_autoNote = _toolkit.createText(autoClient, "", SWT.MULTI
-					| SWT.WRAP | SWT.V_SCROLL | SWT.READ_ONLY);
-			gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING
-					| GridData.FILL_HORIZONTAL);
+			_autoNote = _toolkit.createText(autoClient, "", SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.READ_ONLY);
+			gd = new GridData(GridData.VERTICAL_ALIGN_BEGINNING | GridData.FILL_HORIZONTAL);
 			gd.heightHint = 30;
 			gd.widthHint = 10;
 			_autoNote.setLayoutData(gd);

@@ -22,13 +22,11 @@ public class RestoreBrowseListener implements IBrowseListener {
 
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
-		IBrowseService service = (IBrowseService) items[0]
-				.getAdapter(IBrowseService.class);
+		IBrowseService service = (IBrowseService) items[0].getAdapter(IBrowseService.class);
 		if (service.check()) {
 			RestoreWizard wizard = new RestoreWizard(items[0]);
 			wizard.init(_page.getWorkbenchWindow().getWorkbench(), null);
-			WizardDialog dialog = new WizardDialog(_page.getWorkbenchWindow()
-					.getShell(), wizard);
+			WizardDialog dialog = new WizardDialog(_page.getWorkbenchWindow().getShell(), wizard);
 			dialog.open();
 		}
 	}

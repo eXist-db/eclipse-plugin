@@ -6,9 +6,8 @@ import java.util.Collections;
 import org.exist.eclipse.auto.internal.model.QueryOrderType;
 import org.exist.eclipse.auto.internal.model.QueryEntity;
 
-
 /**
- * Prepares the Execution of the automation depending on the given 
+ * Prepares the Execution of the automation depending on the given
  * 
  * @author Markus Tanner
  */
@@ -17,22 +16,19 @@ public class ExecutionPreparer {
 	private ArrayList<Query> _queryBase;
 	private QueryOrderType _type;
 
-	public ExecutionPreparer(ArrayList<QueryEntity> queryEntities,
-			QueryOrderType type, String collection) {
+	public ExecutionPreparer(ArrayList<QueryEntity> queryEntities, QueryOrderType type, String collection) {
 		_type = type;
 		initialize(queryEntities, collection);
 	}
 
-	private void initialize(ArrayList<QueryEntity> queryEntities,
-			String collection) {
+	private void initialize(ArrayList<QueryEntity> queryEntities, String collection) {
 
 		_queryBase = new ArrayList<>();
-		
+
 		int queryEntityCount = 0;
 		for (QueryEntity queryEntity : queryEntities) {
 			if (queryEntity.getQuantity() > 0) {
-				_queryBase.add(new Query(queryEntity, collection,
-						++queryEntityCount));
+				_queryBase.add(new Query(queryEntity, collection, ++queryEntityCount));
 			}
 		}
 

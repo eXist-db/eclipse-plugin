@@ -38,11 +38,8 @@ public class AutoContext implements IAutoContext {
 		try {
 			return new QueryRunner(_connection.duplicate());
 		} catch (ConnectionException e) {
-			QueryPlugin
-					.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, QueryPlugin.getId(),
-							"Failure while duplicating the connection.", e));
+			QueryPlugin.getDefault().getLog().log(
+					new Status(IStatus.ERROR, QueryPlugin.getId(), "Failure while duplicating the connection.", e));
 			return null;
 		}
 	}

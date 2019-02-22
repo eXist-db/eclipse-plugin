@@ -10,11 +10,9 @@ import org.exist.eclipse.xquery.ui.XQueryUI;
  * 
  * @author Pascal Schmidiger
  */
-public class XQueryOutlineInformationControl extends
-		ScriptOutlineInformationControl {
+public class XQueryOutlineInformationControl extends ScriptOutlineInformationControl {
 
-	public XQueryOutlineInformationControl(Shell parent, int shellStyle,
-			int treeStyle, String commandId) {
+	public XQueryOutlineInformationControl(Shell parent, int shellStyle, int treeStyle, String commandId) {
 		super(parent, shellStyle, treeStyle, commandId);
 	}
 

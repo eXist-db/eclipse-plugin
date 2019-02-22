@@ -17,8 +17,8 @@ abstract public class ARefactorAction extends AXQueryEditorAction {
 
 	protected static boolean _lastReplaceAllButtonSelection = true;
 
-	protected static Button createReplaceAllButton(Composite parent,
-			final int nOccurences, final boolean[] replaceAll) {
+	protected static Button createReplaceAllButton(Composite parent, final int nOccurences,
+			final boolean[] replaceAll) {
 		final Button replaceButton = new Button(parent, SWT.CHECK);
 		replaceButton.setText("&Replace all occurences (" + nOccurences + ")");
 		replaceButton.addSelectionListener(new SelectionAdapter() {
@@ -36,8 +36,7 @@ abstract public class ARefactorAction extends AXQueryEditorAction {
 			// RewriteSessionEditProcessor undo all at once
 			// see
 			// http://www.eclipse.org/forums/index.php/m/319909/?srch=MultiTextEdit#msg_319909
-			new RewriteSessionEditProcessor(document, edits,
-					TextEdit.CREATE_UNDO | TextEdit.UPDATE_REGIONS)
+			new RewriteSessionEditProcessor(document, edits, TextEdit.CREATE_UNDO | TextEdit.UPDATE_REGIONS)
 					.performEdits();
 		} catch (Exception e) {
 			throw new RuntimeException(e);

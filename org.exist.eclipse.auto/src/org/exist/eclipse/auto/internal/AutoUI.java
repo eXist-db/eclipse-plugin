@@ -60,8 +60,7 @@ public class AutoUI extends AbstractUIPlugin {
 		registerImage(registry, IMG_VERTICAL, "th_vertical.gif");
 		registerImage(registry, IMG_SAMPLE, "sample.gif");
 		registerImage(registry, IMG_RUN, "run.gif");
-		registerImage(registry, IMG_EXIST_ECLIPSE_LOGO,
-				"hslu_exist_eclipse_logo.jpg");
+		registerImage(registry, IMG_EXIST_ECLIPSE_LOGO, "hslu_exist_eclipse_logo.jpg");
 	}
 
 	/**
@@ -71,8 +70,7 @@ public class AutoUI extends AbstractUIPlugin {
 	 * @param key
 	 * @param fileName
 	 */
-	private void registerImage(ImageRegistry registry, String key,
-			String fileName) {
+	private void registerImage(ImageRegistry registry, String key, String fileName) {
 		IPath path = new Path("icons/".concat(fileName));
 		try {
 			URL url = FileLocator.find(getBundle(), path, null);
@@ -81,11 +79,8 @@ public class AutoUI extends AbstractUIPlugin {
 				registry.put(key, desc);
 			}
 		} catch (Exception e) {
-			AutoUI.getDefault()
-					.getLog()
-					.log(new Status(IStatus.ERROR, PLUGIN_ID,
-							"Unable to register image: " + fileName + " key: "
-									+ key, e));
+			AutoUI.getDefault().getLog().log(
+					new Status(IStatus.ERROR, PLUGIN_ID, "Unable to register image: " + fileName + " key: " + key, e));
 		}
 	}
 
@@ -119,8 +114,7 @@ public class AutoUI extends AbstractUIPlugin {
 	/**
 	 * Gets the image.
 	 * 
-	 * @param key
-	 *            the image key
+	 * @param key the image key
 	 * @return the image for the given key
 	 */
 	public Image getImage(String key) {
@@ -130,8 +124,7 @@ public class AutoUI extends AbstractUIPlugin {
 	/**
 	 * Gets the image descriptor
 	 * 
-	 * @param key
-	 *            the image key
+	 * @param key the image key
 	 * @return the image descriptor for the given key
 	 */
 	public ImageDescriptor getImageDescriptor(String key) {
@@ -141,8 +134,7 @@ public class AutoUI extends AbstractUIPlugin {
 	/**
 	 * Gets the Form Colors
 	 * 
-	 * @param display
-	 *            the display instance
+	 * @param display the display instance
 	 * @return the from colors for the specified display
 	 */
 	public FormColors getFormColors(Display display) {
@@ -167,17 +159,14 @@ public class AutoUI extends AbstractUIPlugin {
 		StringBuilder result = new StringBuilder();
 		if (fileToOpen.exists() && fileToOpen.isFile()) {
 
-			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(
-					fileToOpen.toURI());
-			try (InputStream inputStream = fileStore.openInputStream(EFS.NONE,
-					null);
+			final IFileStore fileStore = EFS.getLocalFileSystem().getStore(fileToOpen.toURI());
+			try (InputStream inputStream = fileStore.openInputStream(EFS.NONE, null);
 					ByteArrayOutputStream out = new ByteArrayOutputStream();) {
 
 				byte[] buffer = new byte[4096];
 				for (int len; (len = inputStream.read(buffer)) != -1;) {
 					out.write(buffer, 0, len);
-					result.append(new String(out.toByteArray(), Charset
-							.forName("UTF-8").name()).trim());
+					result.append(new String(out.toByteArray(), Charset.forName("UTF-8").name()).trim());
 				}
 			} catch (CoreException | IOException e) {
 				// ignore
@@ -193,8 +182,7 @@ public class AutoUI extends AbstractUIPlugin {
 		if (s != null && message.equals(s.getMessage())) {
 			message = null;
 		}
-		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow()
-				.getShell(), title, message, s);
+		ErrorDialog.openError(getWorkbench().getActiveWorkbenchWindow().getShell(), title, message, s);
 	}
 
 	public void infoDialog(String title, String message) {

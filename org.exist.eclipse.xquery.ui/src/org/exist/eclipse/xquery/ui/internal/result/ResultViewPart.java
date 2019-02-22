@@ -18,6 +18,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DragSource;
@@ -90,12 +91,11 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		GridData gd = new GridData();
 
 		// Table Viewer
-		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.MULTI
-				| SWT.FULL_SELECTION);
+		_viewer = new TableViewer(parent, SWT.VIRTUAL | SWT.MULTI | SWT.FULL_SELECTION);
 		_viewer.setContentProvider(new ResultViewContentProvider());
 		_viewer.setLabelProvider(new ResultViewLabelProvider());
 		_viewer.setUseHashlookup(true);
-		_viewer.setComparator(new NameSorter());
+		_viewer.setComparator(new ViewerComparator());
 
 		_columnNr = new TableColumn(_viewer.getTable(), SWT.NONE);
 		_columnNr.setWidth(50);
@@ -130,10 +130,8 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 			@Override
 			public void dragSetData(DragSourceEvent event) {
 				try {
-					if (TextTransfer.getInstance().isSupportedType(
-							event.dataType)) {
-						event.data = new CopyResultItemsAction(_viewer)
-								.getCopyContent();
+					if (TextTransfer.getInstance().isSupportedType(event.dataType)) {
+						event.data = new CopyResultItemsAction(_viewer).getCopyContent();
 					}
 				} catch (Exception e) {
 					throw new RuntimeException(e);
@@ -159,9 +157,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		Action openInEditorAction = new Action("Open in Editor") {
 			@Override
 			public void run() {
-				new ResultSelectionListener()
-						.openEditor((IStructuredSelection) _viewer
-								.getSelection());
+				new ResultSelectionListener().openEditor((IStructuredSelection) _viewer.getSelection());
 			}
 		};
 
@@ -192,21 +188,16 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 				if (state.getState().equals(IQueryEndState.State.OK)) {
 					StringBuilder msg = new StringBuilder();
 					msg.append(state.getFoundedItems()).append(" items found.");
-					msg.append(" Compilation: ")
-							.append(state.getCompiledTime()).append(" ms.");
-					msg.append(" Execution: ").append(state.getExecutionTime())
-							.append(" ms.");
+					msg.append(" Compilation: ").append(state.getCompiledTime()).append(" ms.");
+					msg.append(" Execution: ").append(state.getExecutionTime()).append(" ms.");
 					_status.setText(msg.toString());
 				} else {
 					_status.setText(state.getException().getMessage());
-					XQueryUI.getDefault().getLog().log(
-							new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
-									"Failure while running queries", state
-											.getException()));
+					XQueryUI.getDefault().getLog().log(new Status(IStatus.ERROR, XQueryUI.PLUGIN_ID,
+							"Failure while running queries", state.getException()));
 				}
 				_viewer.setItemCount(_results.size());
-				_viewer.setInput(_results.toArray(new ResultItem[_results
-						.size()]));
+				_viewer.setInput(_results.toArray(new ResultItem[_results.size()]));
 				_columnResult.pack();
 				_status.pack();
 			}
@@ -225,10 +216,8 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 		Display.getDefault().asyncExec(new Runnable() {
 			@Override
 			public void run() {
-				_status
-						.setText("Query Processing... (start at "
-								+ DateFormat.getTimeInstance().format(
-										new Date()) + ")");
+				_status.setText(
+						"Query Processing... (start at " + DateFormat.getTimeInstance().format(new Date()) + ")");
 				_status.pack();
 			}
 		});
@@ -238,8 +227,7 @@ public class ResultViewPart implements IQueryFrame, IResultFrame {
 	@Override
 	public boolean addResult(String content) {
 		if (_actualCount < _maxCount) {
-			_results.add(new ResultItem(_uniqueNr, _filename, _actualCount,
-					content));
+			_results.add(new ResultItem(_uniqueNr, _filename, _actualCount, content));
 			_actualCount++;
 			return true;
 		} else {

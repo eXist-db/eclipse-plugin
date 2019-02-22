@@ -28,8 +28,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 		_item = item;
 		setTitle("Rename a document");
 		setDescription("Enter a new document name");
-		setImageDescriptor(BrowsePlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(BrowsePlugin.getImageDescriptor("icons/existdb.png"));
 		_selection = selection;
 	}
 
@@ -91,8 +90,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 	 * Tests if the current workbench selection is a suitable container to use.
 	 */
 	private void initialize() {
-		if (_selection != null && _selection.isEmpty() == false
-				&& _selection instanceof IStructuredSelection) {
+		if (_selection != null && _selection.isEmpty() == false && _selection instanceof IStructuredSelection) {
 			IStructuredSelection ssel = (IStructuredSelection) _selection;
 			if (ssel.size() > 1)
 				return;
@@ -120,8 +118,7 @@ public class RenameDocumentWizardPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);

@@ -27,8 +27,7 @@ public class ActionBrowseListener extends Action {
 
 	@Override
 	public void run() {
-		Object[] selection = ((IStructuredSelection) _view.getViewer()
-				.getSelection()).toArray();
+		Object[] selection = ((IStructuredSelection) _view.getViewer().getSelection()).toArray();
 		if (selection.length > 0) {
 			IBrowseItem[] items = new IBrowseItem[selection.length];
 			for (int i = 0; i < selection.length; i++) {
@@ -41,9 +40,7 @@ public class ActionBrowseListener extends Action {
 				}
 			}
 			if (items.length > 0) {
-				if (IManagementService.class.cast(
-						items[0].getConnection().getAdapter(
-								IManagementService.class)).check()) {
+				if (items[0].getConnection().getAdapter(IManagementService.class).check()) {
 					_listener.init(_view.getSite().getPage());
 					_listener.actionPerformed(items);
 				}

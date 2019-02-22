@@ -39,8 +39,7 @@ public class BackupTargetWizardPage extends WizardPage {
 		_item = item;
 		setTitle("Create a backup");
 		setDescription("Enter a location for the backup.");
-		setImageDescriptor(UtilPlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(UtilPlugin.getImageDescriptor("icons/existdb.png"));
 	}
 
 	@Override
@@ -123,8 +122,7 @@ public class BackupTargetWizardPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);
@@ -151,9 +149,9 @@ public class BackupTargetWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Opens a FileDialog so that the backup location can be defined. Returns
-	 * the path of the backup location. The return-value is empty in case the
-	 * selection is not valid.
+	 * Opens a FileDialog so that the backup location can be defined. Returns the
+	 * path of the backup location. The return-value is empty in case the selection
+	 * is not valid.
 	 * 
 	 * The returned value either needs to be a directory or a zip-file.
 	 */

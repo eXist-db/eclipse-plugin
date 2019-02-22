@@ -41,23 +41,19 @@ public class ResultSelectionListener extends MouseAdapter {
 		String id = _id + "_" + tableItem.getText(0);
 		String resultItem = tableItem.getText(1);
 
-		IStorageEditorInput input = new QueryResultStorageEditorInput(
-				new QueryResultStorage(id, resultItem));
+		IStorageEditorInput input = new QueryResultStorageEditorInput(new QueryResultStorage(id, resultItem));
 
-		IEditorRegistry registry = PlatformUI.getWorkbench()
-				.getEditorRegistry();
+		IEditorRegistry registry = PlatformUI.getWorkbench().getEditorRegistry();
 		// for the query result there's no file available
 		IEditorDescriptor defaultEditor = registry.getDefaultEditor("");
 
 		if (defaultEditor == null) {
-			defaultEditor = registry
-					.findEditor("org.eclipse.ui.DefaultTextEditor");
+			defaultEditor = registry.findEditor("org.eclipse.ui.DefaultTextEditor");
 		}
 
 		if (defaultEditor != null) {
 			try {
-				_workbenchWindow.getActivePage().openEditor(input,
-						defaultEditor.getId().toString());
+				_workbenchWindow.getActivePage().openEditor(input, defaultEditor.getId().toString());
 			} catch (PartInitException ex) {
 				// ignore
 				ex.printStackTrace();

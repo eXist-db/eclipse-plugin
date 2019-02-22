@@ -27,8 +27,8 @@ class JJTXPathState {
 	}
 
 	/*
-	 * Call this to reinitialize the node stack. It is called automatically by
-	 * the parser's ReInit() method.
+	 * Call this to reinitialize the node stack. It is called automatically by the
+	 * parser's ReInit() method.
 	 */
 	void reset() {
 		nodes.removeAllElements();
@@ -38,8 +38,8 @@ class JJTXPathState {
 	}
 
 	/*
-	 * Returns the root node of the AST. It only makes sense to call this after
-	 * a successful parse.
+	 * Returns the root node of the AST. It only makes sense to call this after a
+	 * successful parse.
 	 */
 	Node rootNode() {
 		return (Node) nodes.elementAt(0);
@@ -105,10 +105,9 @@ class JJTXPathState {
 
 	/*
 	 * A conditional node is constructed if its condition is true. All the nodes
-	 * that have been pushed since the node was opened are made children of the
-	 * the conditional node, which is then pushed on to the stack. If the
-	 * condition is false the node is not constructed and they are left on the
-	 * stack.
+	 * that have been pushed since the node was opened are made children of the the
+	 * conditional node, which is then pushed on to the stack. If the condition is
+	 * false the node is not constructed and they are left on the stack.
 	 */
 	void closeNodeScope(Node n, boolean condition) {
 		if (condition) {

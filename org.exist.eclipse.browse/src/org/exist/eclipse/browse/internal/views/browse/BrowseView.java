@@ -12,6 +12,7 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -46,8 +47,7 @@ import org.exist.eclipse.listener.IConnectionListener;
  * @see NameSorter
  * @see BrowseKeyAdapter
  */
-public class BrowseView extends ViewPart implements IConnectionListener,
-		IBrowseItemListener {
+public class BrowseView extends ViewPart implements IConnectionListener, IBrowseItemListener {
 	public static final String ID = "org.exist.eclipse.browse.internal.views.browse.BrowseView";
 	private TreeViewer _viewer;
 	private DrillDownAdapter _drillDownAdapter;
@@ -70,17 +70,15 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 	}
 
 	/**
-	 * This is a callback that will allow us to create the viewer and initialize
-	 * it.
+	 * This is a callback that will allow us to create the viewer and initialize it.
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
-		_viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL
-				| SWT.V_SCROLL);
+		_viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
 		_drillDownAdapter = new DrillDownAdapter(_viewer);
 		_viewer.setContentProvider(new ViewContentProvider(this));
 		_viewer.setLabelProvider(new ViewLabelProvider());
-		_viewer.setComparator(new NameSorter());
+		_viewer.setComparator(new ViewerComparator());
 		_viewer.setInput(getInitInput());
 		_viewer.getControl().addKeyListener(new BrowseKeyAdapter(this));
 		makeActions();
@@ -94,21 +92,19 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 
 		IActionBars bars = getViewSite().getActionBars();
 
-		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(),
-				new Action() {
-					@Override
-					public void run() {
-						ActionBrowseListener listener = new ActionBrowseListener(
-								BrowseView.this,
-								new RefreshCollectionListener());
-						listener.run();
-					}
-				});
+		bars.setGlobalActionHandler(ActionFactory.REFRESH.getId(), new Action() {
+			@Override
+			public void run() {
+				ActionBrowseListener listener = new ActionBrowseListener(BrowseView.this,
+						new RefreshCollectionListener());
+				listener.run();
+			}
+		});
 		bars.setGlobalActionHandler(ActionFactory.DELETE.getId(), new Action() {
 			@Override
 			public void run() {
-				ActionBrowseListener listener = new ActionBrowseListener(
-						BrowseView.this, new DeleteCollectionListener());
+				ActionBrowseListener listener = new ActionBrowseListener(BrowseView.this,
+						new DeleteCollectionListener());
 				listener.run();
 			}
 		});
@@ -253,8 +249,7 @@ public class BrowseView extends ViewPart implements IConnectionListener,
 					files.add(new File(it));
 				}
 
-				new ImportDocumentsListener().importFiles((IBrowseItem) item,
-						files);
+				new ImportDocumentsListener().importFiles((IBrowseItem) item, files);
 			}
 		});
 

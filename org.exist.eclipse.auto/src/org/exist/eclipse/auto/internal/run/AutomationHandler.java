@@ -45,30 +45,27 @@ public final class AutomationHandler {
 	 * @param autoContext
 	 * @param target
 	 */
-	public void run(IAutoModel autoModel, IAutoContext autoContext,
-			String collection, String target) {
+	public void run(IAutoModel autoModel, IAutoContext autoContext, String collection, String target) {
 
 		_executor = Executors.newFixedThreadPool(autoModel.getThreadCount());
 		_connPool = new ConnectionPool(autoModel.getThreadCount(), autoContext);
 
-		_job = new AutomationJob(getNextId(), _connPool, _executor, autoModel,
-				collection, target);
+		_job = new AutomationJob(getNextId(), _connPool, _executor, autoModel, collection, target);
 		_job.setUser(true);
 		_job.schedule();
 	}
 
 	/**
-	 * Shuts down the executor and closes the connections in the connection
-	 * pool.
+	 * Shuts down the executor and closes the connections in the connection pool.
 	 */
 	public void cleanup() {
 		_executor.shutdown();
 		_connPool.closeConnections();
 	}
 
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 	// Private Methods
-	//--------------------------------------------------------------------------
+	// --------------------------------------------------------------------------
 
 	/**
 	 * Gets the next higher integer

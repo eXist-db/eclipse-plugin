@@ -27,8 +27,7 @@ public interface IBrowseItem extends IAdaptable, Comparable<IBrowseItem> {
 	/**
 	 * Get a child item with the given <code>name</code>.
 	 * 
-	 * @param name
-	 *            the name of the new item.
+	 * @param name the name of the new item.
 	 * @return the child item.
 	 */
 	public IBrowseItem getChild(String name);
@@ -50,8 +49,7 @@ public interface IBrowseItem extends IAdaptable, Comparable<IBrowseItem> {
 	 * Get a new {@link IDocumentItem} for given <code>name</code>.<br />
 	 * Attention: If the document does not exist, it will not created.
 	 * 
-	 * @param name
-	 *            the name of the document.
+	 * @param name the name of the document.
 	 * @return the document
 	 */
 	public IDocumentItem getDocument(String name);

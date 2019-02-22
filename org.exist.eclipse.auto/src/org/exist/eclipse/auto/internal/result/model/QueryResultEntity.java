@@ -26,8 +26,7 @@ public class QueryResultEntity {
 	/**
 	 * QueryResultEntity Constructor
 	 * 
-	 * @param model
-	 *            the result model
+	 * @param model the result model
 	 */
 	public QueryResultEntity(IResultModel model) {
 		_model = model;

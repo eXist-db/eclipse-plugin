@@ -55,13 +55,17 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 	private Text fScriptText;
 	private Button fScriptButton;
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.widgets.Composite)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ILaunchConfigurationTab#createControl(org.eclipse.swt.
+	 * widgets.Composite)
 	 */
 	@Override
 	public void createControl(Composite parent) {
 		Font font = parent.getFont();
-		
+
 		Composite comp = new Composite(parent, SWT.NONE);
 		setControl(comp);
 		GridLayout topLayout = new GridLayout();
@@ -69,15 +73,15 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		topLayout.numColumns = 3;
 		comp.setLayout(topLayout);
 		comp.setFont(font);
-		
+
 		createVerticalSpacer(comp, 3);
-		
+
 		Label scriptLabel = new Label(comp, SWT.NONE);
 		scriptLabel.setText("&XQuery script:");
 		GridData gd = new GridData(GridData.BEGINNING);
 		scriptLabel.setLayoutData(gd);
 		scriptLabel.setFont(font);
-		
+
 		fScriptText = new Text(comp, SWT.SINGLE | SWT.BORDER);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		fScriptText.setLayoutData(gd);
@@ -88,7 +92,7 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 				updateLaunchConfigurationDialog();
 			}
 		});
-		
+
 		fScriptButton = createPushButton(comp, "&Browse...", null);
 		fScriptButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -97,9 +101,10 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 	}
-	
+
 	protected void browseXQueryFiles() {
-		ResourceListSelectionDialog dialog = new ResourceListSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
+		ResourceListSelectionDialog dialog = new ResourceListSelectionDialog(getShell(),
+				ResourcesPlugin.getWorkspace().getRoot(), IResource.FILE);
 		dialog.setTitle("XQuery script");
 		dialog.setMessage("Select XQuery script");
 		if (dialog.open() == Window.OK) {
@@ -109,7 +114,9 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#getName()
 	 */
 	@Override
@@ -117,13 +124,17 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		return "Main";
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug.core.ILaunchConfiguration)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ILaunchConfigurationTab#initializeFrom(org.eclipse.debug
+	 * .core.ILaunchConfiguration)
 	 */
 	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			String script = configuration.getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String)null);
+			String script = configuration.getAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, (String) null);
 			if (script != null)
 				fScriptText.setText(script);
 		} catch (CoreException e) {
@@ -131,8 +142,12 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ILaunchConfigurationTab#performApply(org.eclipse.debug.
+	 * core.ILaunchConfigurationWorkingCopy)
 	 */
 	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
@@ -143,8 +158,12 @@ public class XQueryMainTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(IXQueryConstants.ATTR_XQUERY_SCRIPT, script);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.debug.ui.ILaunchConfigurationTab#setDefaults(org.eclipse.debug.
+	 * core.ILaunchConfigurationWorkingCopy)
 	 */
 	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {

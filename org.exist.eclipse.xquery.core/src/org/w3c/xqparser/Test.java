@@ -104,8 +104,7 @@ public class Test {
 			String text = br.readLine();
 			int index = text.indexOf("encoding") + 8; //$NON-NLS-1$
 			if (index > 7) {
-				StringBuffer sub = new StringBuffer(text.substring(index)
-						.trim());
+				StringBuffer sub = new StringBuffer(text.substring(index).trim());
 				if (sub.charAt(0) == '=') {
 					sub.deleteCharAt(0); // remove = from working string
 					String st = sub.toString().trim(); // remove whitespaces
@@ -172,8 +171,7 @@ public class Test {
 						numberArgsLeft--;
 						dumpFormat = DUMP_XQUERYX;
 						XQueryXOutputFilename = args[argsStart];
-						xqout2 = new PrintStream(new FileOutputStream(
-								XQueryXOutputFilename));
+						xqout2 = new PrintStream(new FileOutputStream(XQueryXOutputFilename));
 						argsStart++;
 						numberArgsLeft--;
 					} else if (args[argsStart].equals("-match")) {
@@ -185,41 +183,35 @@ public class Test {
 						argsStart++;
 						numberArgsLeft--;
 						if (dumpFormat != DUMP_XQUERYX)
-							System.out.println("Running test for: "
-									+ args[argsStart]);
+							System.out.println("Running test for: " + args[argsStart]);
 						File file = new File(args[argsStart]);
 						argsStart++;
 						numberArgsLeft--;
 						String encoding = parseEncoding(file.getAbsolutePath());
 						FileInputStream fis = new FileInputStream(file);
-						if (encoding != null
-								&& (encoding.equals(UTF_16_BE) || encoding
-										.equals(UTF_16_LE))) {
+						if (encoding != null && (encoding.equals(UTF_16_BE) || encoding.equals(UTF_16_LE))) {
 							fis.read();
 							fis.read();
 						}
-						InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-								fis) : new InputStreamReader(fis, encoding);
+						InputStreamReader isr = (null == encoding) ? new InputStreamReader(fis)
+								: new InputStreamReader(fis, encoding);
 						XPath parser = new XPath(isr);
 						SimpleNode tree = parser.XPath2();
 						dump(tree, dumpFormat);
 					} else if (args[argsStart].endsWith(".xquery")) {
 						if (dumpFormat != DUMP_XQUERYX)
-							System.out.println("Running test for: "
-									+ args[argsStart]);
+							System.out.println("Running test for: " + args[argsStart]);
 						File file = new File(args[argsStart]);
 						argsStart++;
 						numberArgsLeft--;
 						String encoding = parseEncoding(file.getAbsolutePath());
 						FileInputStream fis = new FileInputStream(file);
-						if (encoding != null
-								&& (encoding.equals(UTF_16_BE) || encoding
-										.equals(UTF_16_LE))) {
+						if (encoding != null && (encoding.equals(UTF_16_BE) || encoding.equals(UTF_16_LE))) {
 							fis.read();
 							fis.read();
 						}
-						InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-								fis) : new InputStreamReader(fis, encoding);
+						InputStreamReader isr = (null == encoding) ? new InputStreamReader(fis)
+								: new InputStreamReader(fis, encoding);
 						XPath parser = new XPath(isr);
 						SimpleNode tree = parser.XPath2();
 						dump(tree, dumpFormat);
@@ -233,8 +225,7 @@ public class Test {
 
 					} else if ("-expr".equalsIgnoreCase(args[argsStart])) {
 						if (dumpFormat != DUMP_XQUERYX)
-							System.out.println("Running test for: "
-									+ args[argsStart]);
+							System.out.println("Running test for: " + args[argsStart]);
 						argsStart++;
 						numberArgsLeft--;
 						Reader reader = new StringReader(args[argsStart]);
@@ -243,8 +234,7 @@ public class Test {
 						dump(tree, dumpFormat);
 						break;
 					} else {
-						DocumentBuilderFactory dbf = DocumentBuilderFactory
-								.newInstance();
+						DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 						DocumentBuilder db = dbf.newDocumentBuilder();
 						Document doc = db.parse(args[argsStart]);
 						argsStart++;
@@ -255,14 +245,11 @@ public class Test {
 						int testid = 0;
 						for (int i = 0; i < nChildren; i++) {
 							org.w3c.dom.Node node = testElems.item(i);
-							if (org.w3c.dom.Node.ELEMENT_NODE == node
-									.getNodeType()) {
+							if (org.w3c.dom.Node.ELEMENT_NODE == node.getNodeType()) {
 								testid++;
-								String xpathString = ((Element) node)
-										.getAttribute("value");
+								String xpathString = ((Element) node).getAttribute("value");
 								if (dumpFormat != DUMP_NONE)
-									System.out.println("  Test[" + testid
-											+ "]: " + xpathString);
+									System.out.println("  Test[" + testid + "]: " + xpathString);
 								else {
 									System.out.print("[" + testid + "]");
 									System.out.flush();
@@ -281,8 +268,7 @@ public class Test {
 									} else if ((testid % 10) == 0)
 										System.out.println();
 								}
-								XPath parser = new XPath(new StringReader(
-										xpathString));
+								XPath parser = new XPath(new StringReader(xpathString));
 								SimpleNode tree = parser.XPath2();
 								dump(tree, dumpFormat);
 							}
@@ -320,30 +306,26 @@ public class Test {
 	private void processW3CTestCatalog(int dumpFormat, String catalogFileName)
 			throws ParserConfigurationException, SAXException, IOException {
 		System.out.println("Running catalog for: " + catalogFileName);
-		System.out
-				.println("'i' means test parsed but XQueryX is invalid (test failed).");
-		System.out
-				.println("'x' means a parse error should have taken place (test failed).");
-		System.out
-				.println("'e' means a parse error took place but shouldn't have (test failed).");
-		System.out
-				.println("'v' means parse succeeded and XQueryX output was validated (test succeeds).");
-		System.out
-				.println("'g' or 'h' means parse error properly took place (test succeeds).");
+		System.out.println("'i' means test parsed but XQueryX is invalid (test failed).");
+		System.out.println("'x' means a parse error should have taken place (test failed).");
+		System.out.println("'e' means a parse error took place but shouldn't have (test failed).");
+		System.out.println("'v' means parse succeeded and XQueryX output was validated (test succeeds).");
+		System.out.println("'g' or 'h' means parse error properly took place (test succeeds).");
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document doc = db.parse(catalogFileName);
 
-		NodeIterator testCases = ((DocumentTraversal) doc).createNodeIterator(
-				doc, NodeFilter.SHOW_ELEMENT, new NodeFilter() {
+		NodeIterator testCases = ((DocumentTraversal) doc).createNodeIterator(doc, NodeFilter.SHOW_ELEMENT,
+				new NodeFilter() {
 					@Override
 					public short acceptNode(org.w3c.dom.Node node) {
 						String nm = node.getLocalName();
 						String namespace = node.getNamespaceURI();
-						return (nm.equals("test-case") && namespace != null && namespace
-								.equals("http://www.w3.org/2005/02/query-test-XQTSCatalog")) ? NodeFilter.FILTER_ACCEPT
-								: NodeFilter.FILTER_SKIP;
+						return (nm.equals("test-case") && namespace != null
+								&& namespace.equals("http://www.w3.org/2005/02/query-test-XQTSCatalog"))
+										? NodeFilter.FILTER_ACCEPT
+										: NodeFilter.FILTER_SKIP;
 					}
 				}, true);
 		org.w3c.dom.Element testCase;
@@ -355,33 +337,28 @@ public class Test {
 		boolean hadEnough = false;
 		int wobblycount = 0;
 
-		while (((testCase = (org.w3c.dom.Element) testCases.nextNode()) != null)
-				&& !hadEnough) {
-			NodeIterator queryies = ((DocumentTraversal) doc)
-					.createNodeIterator(testCase, NodeFilter.SHOW_ELEMENT,
-							new NodeFilter() {
-								@Override
-								public short acceptNode(org.w3c.dom.Node node) {
-									String nm = node.getLocalName();
-									String namespace = node.getNamespaceURI();
-									return (nm.equals("query")
-											&& namespace != null && namespace
-											.equals("http://www.w3.org/2005/02/query-test-XQTSCatalog")) ? NodeFilter.FILTER_ACCEPT
+		while (((testCase = (org.w3c.dom.Element) testCases.nextNode()) != null) && !hadEnough) {
+			NodeIterator queryies = ((DocumentTraversal) doc).createNodeIterator(testCase, NodeFilter.SHOW_ELEMENT,
+					new NodeFilter() {
+						@Override
+						public short acceptNode(org.w3c.dom.Node node) {
+							String nm = node.getLocalName();
+							String namespace = node.getNamespaceURI();
+							return (nm.equals("query") && namespace != null
+									&& namespace.equals("http://www.w3.org/2005/02/query-test-XQTSCatalog"))
+											? NodeFilter.FILTER_ACCEPT
 											: NodeFilter.FILTER_SKIP;
-								}
-							}, true);
+						}
+					}, true);
 
 			org.w3c.dom.Element query;
-			while (((query = (org.w3c.dom.Element) queryies.nextNode()) != null)
-					&& !hadEnough) {
+			while (((query = (org.w3c.dom.Element) queryies.nextNode()) != null) && !hadEnough) {
 				String fileString = query.getAttribute("name");
-				String locString = testCase.getAttribute("FilePath").replace(
-						'/', File.separatorChar);
+				String locString = testCase.getAttribute("FilePath").replace('/', File.separatorChar);
 				File catFile = new File(catalogFileName);
 				String locCatFile = catFile.getParent();
-				String absFileName = locCatFile + File.separator + "Queries"
-						+ File.separator + "XQuery" + File.separator
-						+ locString + fileString + ".xq";
+				String absFileName = locCatFile + File.separator + "Queries" + File.separator + "XQuery"
+						+ File.separator + locString + fileString + ".xq";
 
 				if (dumpFormat != DUMP_NONE && (dumpFormat != DUMP_XQUERYX)) {
 					System.out.print("== ");
@@ -403,14 +380,12 @@ public class Test {
 					File file = new File(absFileName);
 					String encoding = parseEncoding(file.getAbsolutePath());
 					FileInputStream fis = new FileInputStream(file);
-					if (encoding != null
-							&& (encoding.equals(UTF_16_BE) || encoding
-									.equals(UTF_16_LE))) {
+					if (encoding != null && (encoding.equals(UTF_16_BE) || encoding.equals(UTF_16_LE))) {
 						fis.read();
 						fis.read();
 					}
-					InputStreamReader isr = (null == encoding) ? new InputStreamReader(
-							fis) : new InputStreamReader(fis, encoding);
+					InputStreamReader isr = (null == encoding) ? new InputStreamReader(fis)
+							: new InputStreamReader(fis, encoding);
 
 					XPath parser = new XPath(isr);
 					SimpleNode tree = parser.XPath2();
@@ -422,15 +397,12 @@ public class Test {
 						System.out.print(".");
 						System.out.flush();
 						XQueryXOutputFilename = "t.xqueryx";
-						xqout2 = new PrintStream(new FileOutputStream(
-								XQueryXOutputFilename));
+						xqout2 = new PrintStream(new FileOutputStream(XQueryXOutputFilename));
 						xqout1 = null;
-						boolean isValid = processToXQueryXAndValidate(tree,
-								null);
+						boolean isValid = processToXQueryXAndValidate(tree, null);
 						System.out.print(isValid ? "v" : "i");
 						if (!isValid) {
-							filesNotXQueryXValid.addElement(file
-									.getCanonicalPath());
+							filesNotXQueryXValid.addElement(file.getCanonicalPath());
 							if (filesNotXQueryXValid.size() > 5) {
 								hadEnough = true;
 								break; // from loop!
@@ -517,10 +489,7 @@ public class Test {
 				System.out.println();
 			}
 
-			System.out
-					.print("Failed "
-							+ (failedList.size() + failedErrorList.size())
-							+ " out of ");
+			System.out.print("Failed " + (failedList.size() + failedErrorList.size()) + " out of ");
 		} else {
 			System.out.print("Total Success!! ");
 		}
@@ -545,10 +514,8 @@ public class Test {
 		if (format == DUMP_AST_XML) {
 			try {
 				if (null != XQueryXOutputFilename)
-					xqout1 = new PrintStream(new FileOutputStream(
-							XQueryXOutputFilename));
-				PrintWriter systemOutWriter = new PrintWriter(
-						new OutputStreamWriter(xqout1, "UTF-8"));
+					xqout1 = new PrintStream(new FileOutputStream(XQueryXOutputFilename));
+				PrintWriter systemOutWriter = new PrintWriter(new OutputStreamWriter(xqout1, "UTF-8"));
 				Xq2xml.convert(" ", systemOutWriter, tree);
 				systemOutWriter.close();
 			} catch (FileNotFoundException e) {
@@ -577,13 +544,10 @@ public class Test {
 		boolean isValidDoc = false;
 		try {
 			{
-				Class transformerClass = Class
-						.forName("org.w3c.xqparser.XQueryToXQueryX");
+				Class transformerClass = Class.forName("org.w3c.xqparser.XQueryToXQueryX");
 				Object transformer = transformerClass.newInstance();
-				Class[] argTypes = { SimpleNode.class, PrintStream.class,
-						PrintStream.class };
-				Method transformMethod = transformerClass.getMethod(
-						"transform", argTypes);
+				Class[] argTypes = { SimpleNode.class, PrintStream.class, PrintStream.class };
+				Method transformMethod = transformerClass.getMethod("transform", argTypes);
 				Object[] args = { tree, xqout1, xqout2 };
 				transformMethod.invoke(transformer, args);
 			}
@@ -625,15 +589,12 @@ public class Test {
 			if (null != xqout2) {
 				xqout2.close();
 				xqout2 = null;
-				Class validatorClass = Class
-						.forName("org.w3c.xqparser.XMLValidator");
+				Class validatorClass = Class.forName("org.w3c.xqparser.XMLValidator");
 				Object validator = validatorClass.newInstance();
 				Class[] argTypes = { String.class, Vector.class };
-				Method validateXMLFile = validatorClass.getMethod(
-						"validateXMLFile", argTypes);
+				Method validateXMLFile = validatorClass.getMethod("validateXMLFile", argTypes);
 				Object[] args = { XQueryXOutputFilename, errors };
-				Boolean isValid = (Boolean) validateXMLFile.invoke(validator,
-						args);
+				Boolean isValid = (Boolean) validateXMLFile.invoke(validator, args);
 				isValidDoc = isValid.booleanValue();
 			}
 		} catch (ClassNotFoundException e) {

@@ -18,25 +18,25 @@ package org.w3c.xqparser;
 import java.awt.event.ActionEvent;
 
 public class ParseBAL implements java.awt.event.ActionListener {
-    XPathApplet _myApplet;
+	XPathApplet _myApplet;
 
-    int whichButton = 0;
+	int whichButton = 0;
 
-    public ParseBAL(XPathApplet applet) {
-        _myApplet = applet;
-        whichButton = 0;
-    }
+	public ParseBAL(XPathApplet applet) {
+		_myApplet = applet;
+		whichButton = 0;
+	}
 
-    public ParseBAL(XPathApplet applet, int which) {
-        _myApplet = applet;
-        whichButton = which;
-    }
+	public ParseBAL(XPathApplet applet, int which) {
+		_myApplet = applet;
+		whichButton = which;
+	}
 
-    @Override
+	@Override
 	public void actionPerformed(ActionEvent e) {
-        if (whichButton == 0)
-            _myApplet.button1_action(e);
-        else
-            _myApplet.button2_action(e);
-    }
+		if (whichButton == 0)
+			_myApplet.button1_action(e);
+		else
+			_myApplet.button2_action(e);
+	}
 }

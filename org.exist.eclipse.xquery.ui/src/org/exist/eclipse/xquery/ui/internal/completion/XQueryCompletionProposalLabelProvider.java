@@ -4,15 +4,13 @@ import org.eclipse.dltk.core.CompletionProposal;
 import org.eclipse.dltk.ui.text.completion.CompletionProposalLabelProvider;
 import org.exist.eclipse.xquery.ui.completion.IXQueryMethod;
 
-public class XQueryCompletionProposalLabelProvider extends
-		CompletionProposalLabelProvider {
+public class XQueryCompletionProposalLabelProvider extends CompletionProposalLabelProvider {
 
 	public XQueryCompletionProposalLabelProvider() {
 	}
 
 	@Override
-	protected StringBuffer appendParameterList(StringBuffer buffer,
-			CompletionProposal methodProposal) {
+	protected StringBuffer appendParameterList(StringBuffer buffer, CompletionProposal methodProposal) {
 		String[] parameterNames = methodProposal.findParameterNames(null);
 		Object info = methodProposal.getExtraInfo();
 		String[] parameterTypes;
@@ -26,8 +24,8 @@ public class XQueryCompletionProposalLabelProvider extends
 	}
 
 	@Override
-	protected StringBuffer appendParameterSignature(StringBuffer buffer,
-			String[] parameterTypes, String[] parameterNames) {
+	protected StringBuffer appendParameterSignature(StringBuffer buffer, String[] parameterTypes,
+			String[] parameterNames) {
 
 		if (parameterNames != null) {
 			for (int i = 0; i < parameterNames.length; i++) {

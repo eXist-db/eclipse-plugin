@@ -23,14 +23,11 @@ public class CopyConnectionListener implements IConnectionListener {
 	@Override
 	public void actionPerformed(IConnection connection) {
 		try {
-			ConnectionFactory.changeConnection(_page.getWorkbenchWindow()
-					.getWorkbench(), connection, true);
+			ConnectionFactory.changeConnection(_page.getWorkbenchWindow().getWorkbench(), connection, true);
 		} catch (ConnectionException e) {
 			String message = "Error while copy connection";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 	}
 

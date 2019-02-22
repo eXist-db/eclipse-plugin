@@ -23,14 +23,11 @@ public class ChangeConnectionListener implements IConnectionListener {
 	@Override
 	public void actionPerformed(IConnection connection) {
 		try {
-			ConnectionFactory.changeConnection(_page.getWorkbenchWindow()
-					.getWorkbench(), connection, false);
+			ConnectionFactory.changeConnection(_page.getWorkbenchWindow().getWorkbench(), connection, false);
 		} catch (ConnectionException e) {
 			String message = "Error while change connection";
-			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(),
-					message, e);
-			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(),
-					status);
+			Status status = new Status(IStatus.ERROR, BrowsePlugin.getId(), message, e);
+			BrowsePlugin.getDefault().errorDialog(message, e.getMessage(), status);
 		}
 	}
 

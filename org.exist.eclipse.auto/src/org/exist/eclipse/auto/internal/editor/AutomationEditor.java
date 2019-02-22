@@ -25,8 +25,7 @@ import org.exist.eclipse.auto.internal.mod.IAutoModificationListener;
  * 
  * @author Markus Tanner
  */
-public class AutomationEditor extends FormEditor implements
-		IAutoModificationListener {
+public class AutomationEditor extends FormEditor implements IAutoModificationListener {
 
 	private AutomationFormPage _formPage;
 	private AutomationTextPage _textPage;
@@ -46,12 +45,11 @@ public class AutomationEditor extends FormEditor implements
 	}
 
 	/**
-	 * The <code>MultiPageEditorExample</code> implementation of this method
-	 * checks that the input is an instance of <code>IFileEditorInput</code>.
+	 * The <code>MultiPageEditorExample</code> implementation of this method checks
+	 * that the input is an instance of <code>IFileEditorInput</code>.
 	 */
 	@Override
-	public void init(IEditorSite site, IEditorInput editorInput)
-			throws PartInitException {
+	public void init(IEditorSite site, IEditorInput editorInput) throws PartInitException {
 		super.init(site, editorInput);
 		super.setPartName(editorInput.getName());
 	}
@@ -64,13 +62,10 @@ public class AutomationEditor extends FormEditor implements
 			try {
 				_textPage.setContent(_formPage.getAutomationData());
 			} catch (AutoException e) {
-				Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
-						.getMessage(), e);
+				Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 				AutoUI.getDefault().getLog().log(status);
-				ErrorDialog.openError(Display.getCurrent().getActiveShell(),
-						"Loading Automation failed",
-						"Correct the Automation file in the text editor."
-								+ " Re-open the automation file afterwards.",
+				ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Loading Automation failed",
+						"Correct the Automation file in the text editor." + " Re-open the automation file afterwards.",
 						status);
 			}
 			_formPage.doSave(monitor);
@@ -103,19 +98,13 @@ public class AutomationEditor extends FormEditor implements
 			addPage(0, _formPage);
 
 		} catch (AutoException ae) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae
-					.getMessage(), ae);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), ae.getMessage(), ae);
 			AutoUI.getDefault().getLog().log(status);
-			ErrorDialog
-					.openError(
-							Display.getCurrent().getActiveShell(),
-							"Loading Automation failed",
-							"Correct the Automation file in the text editor. Re-open the automation file afterwards.",
-							status);
+			ErrorDialog.openError(Display.getCurrent().getActiveShell(), "Loading Automation failed",
+					"Correct the Automation file in the text editor. Re-open the automation file afterwards.", status);
 
 		} catch (PartInitException e) {
-			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e
-					.getMessage(), e);
+			Status status = new Status(IStatus.ERROR, AutoUI.getId(), e.getMessage(), e);
 			AutoUI.getDefault().getLog().log(status);
 
 		}
@@ -124,8 +113,7 @@ public class AutomationEditor extends FormEditor implements
 	/**
 	 * Sets the new dirty state of the editor.
 	 * 
-	 * @param dirty
-	 *            Set to true if the editor should be dirty and false otherwise.
+	 * @param dirty Set to true if the editor should be dirty and false otherwise.
 	 */
 	protected void setDirty(boolean dirty) {
 		if (_dirty != dirty) {

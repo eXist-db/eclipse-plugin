@@ -52,24 +52,21 @@ public class ViewLabelProvider extends LabelProvider {
 	//
 	private Image getFolderImage() {
 		if (_imgFolder == null) {
-			_imgFolder = BrowsePlugin.getImageDescriptor(
-					"icons/folder_icon.png").createImage();
+			_imgFolder = BrowsePlugin.getImageDescriptor("icons/folder_icon.png").createImage();
 		}
 		return _imgFolder;
 	}
 
 	private Image getConnectionOpenImage() {
 		if (_imgConnectionOpen == null) {
-			_imgConnectionOpen = BrowsePlugin.getImageDescriptor(
-					"icons/connection_open.png").createImage();
+			_imgConnectionOpen = BrowsePlugin.getImageDescriptor("icons/connection_open.png").createImage();
 		}
 		return _imgConnectionOpen;
 	}
 
 	private Image getConnectionCloseImage() {
 		if (_imgConnectionClose == null) {
-			_imgConnectionClose = BrowsePlugin.getImageDescriptor(
-					"icons/connection_close.png").createImage();
+			_imgConnectionClose = BrowsePlugin.getImageDescriptor("icons/connection_close.png").createImage();
 		}
 		return _imgConnectionClose;
 	}

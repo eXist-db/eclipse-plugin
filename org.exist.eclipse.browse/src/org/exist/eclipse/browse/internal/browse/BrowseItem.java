@@ -6,7 +6,6 @@ package org.exist.eclipse.browse.internal.browse;
 import org.exist.eclipse.IConnection;
 import org.exist.eclipse.IManagementService;
 import org.exist.eclipse.browse.browse.IBrowseItem;
-import org.exist.eclipse.browse.browse.IBrowseService;
 import org.exist.eclipse.browse.document.IDocumentItem;
 import org.exist.eclipse.browse.internal.document.DocumentItem;
 import org.exist.eclipse.exception.ConnectionException;
@@ -31,10 +30,8 @@ public class BrowseItem implements IBrowseItem {
 	/**
 	 * Create a new item.
 	 * 
-	 * @param connection
-	 *            the connection object
-	 * @param path
-	 *            the actual collection path
+	 * @param connection the connection object
+	 * @param path       the actual collection path
 	 */
 	public BrowseItem(IConnection connection, String path) {
 		_connection = connection;
@@ -74,8 +71,7 @@ public class BrowseItem implements IBrowseItem {
 	@Override
 	public final Collection getCollection() throws ConnectionException {
 		if (_collection == null) {
-			IManagementService service = IManagementService.class
-					.cast(_connection.getAdapter(IManagementService.class));
+			IManagementService service = _connection.getAdapter(IManagementService.class);
 			_collection = service.getCollection(getPath());
 		}
 		return _collection;
@@ -120,8 +116,7 @@ public class BrowseItem implements IBrowseItem {
 
 	@Override
 	public boolean isRoot() {
-		return getParent() == null
-				|| (getParent() instanceof BrowseItemInvisible);
+		return getParent() == null || (getParent() instanceof BrowseItemInvisible);
 
 	}
 
@@ -162,8 +157,7 @@ public class BrowseItem implements IBrowseItem {
 			return false;
 		}
 		BrowseItem item = (BrowseItem) obj;
-		return getPath().equals(item.getPath())
-				&& getConnection().equals(item.getConnection());
+		return getPath().equals(item.getPath()) && getConnection().equals(item.getConnection());
 	}
 
 	@Override
@@ -172,8 +166,8 @@ public class BrowseItem implements IBrowseItem {
 	}
 
 	@Override
-	public <T> T getAdapter(Class<T> adapter) {
-		if (adapter.isAssignableFrom(IBrowseService.class)) {
+	public <A> A getAdapter(Class<A> adapter) {
+		if (adapter.isAssignableFrom(BrowseService.class)) {
 			return adapter.cast(new BrowseService(this));
 		}
 		return null;

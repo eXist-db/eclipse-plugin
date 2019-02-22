@@ -40,7 +40,7 @@ public class XQueryBreakpointAdapterFactory implements IAdapterFactory {
 			if (resource != null) {
 				String extension = resource.getFileExtension();
 				if (extension != null && extension.equals("xq")) {
-					return adapterType.cast( new XQueryLineBreakpointAdapter());
+					return adapterType.cast(new XQueryLineBreakpointAdapter());
 				}
 			}
 		}

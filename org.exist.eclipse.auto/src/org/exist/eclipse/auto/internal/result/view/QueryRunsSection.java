@@ -54,8 +54,8 @@ public class QueryRunsSection implements IDetailsPage {
 
 		// header
 		FormToolkit toolkit = _mform.getToolkit();
-		_queryRunsSection = toolkit.createSection(_parent, ExpandableComposite.TITLE_BAR
-				| ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
+		_queryRunsSection = toolkit.createSection(_parent,
+				ExpandableComposite.TITLE_BAR | ExpandableComposite.TWISTIE | ExpandableComposite.EXPANDED);
 		_queryRunsSection.marginWidth = 10;
 		_queryRunsSection.marginHeight = 5;
 		_queryRunsSection.setText("Query Runs Overview");
@@ -136,8 +136,7 @@ public class QueryRunsSection implements IDetailsPage {
 	public void selectionChanged(IFormPart part, ISelection selection) {
 		IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 		if (structuredSelection.size() == 1) {
-			_queryResultEntity = (QueryResultEntity) structuredSelection
-					.getFirstElement();
+			_queryResultEntity = (QueryResultEntity) structuredSelection.getFirstElement();
 			_viewer.refresh();
 		} else {
 			_queryResultEntity = null;

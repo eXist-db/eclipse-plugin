@@ -19,12 +19,12 @@ import org.exist.eclipse.auto.data.Automation;
 public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 
 	/**
-	 * @param selection
-	 *            the selection object
+	 * @param selection the selection object
 	 */
 	public AutomationNewWizardPage(IStructuredSelection selection) {
 		super("xquerynewwizardPage", selection);
-		setDescription("This wizard creates a new file with the ending '.eqa' so that it can be opened in the automation editor.");
+		setDescription(
+				"This wizard creates a new file with the ending '.eqa' so that it can be opened in the automation editor.");
 		setFileName("new_automation.eqa");
 	}
 
@@ -41,8 +41,7 @@ public class AutomationNewWizardPage extends WizardNewFileCreationPage {
 	@Override
 	protected InputStream getInitialContents() {
 		try {
-			return new ByteArrayInputStream(Automation
-					.createEmptyAutomationXml().getBytes("UTF8"));
+			return new ByteArrayInputStream(Automation.createEmptyAutomationXml().getBytes("UTF8"));
 		} catch (UnsupportedEncodingException e) {
 			// ignore
 			return null;

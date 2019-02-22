@@ -8,8 +8,7 @@ import org.eclipse.swt.graphics.Image;
  * @author Pascal Schmidiger
  * 
  */
-public class ContextViewLabelProvider extends LabelProvider implements
-		ITableLabelProvider {
+public class ContextViewLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 	@Override
 	public Image getColumnImage(Object element, int columnIndex) {

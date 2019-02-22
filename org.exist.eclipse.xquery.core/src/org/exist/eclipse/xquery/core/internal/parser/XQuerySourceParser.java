@@ -20,13 +20,10 @@ public class XQuerySourceParser extends AbstractSourceParser {
 	}
 
 	@Override
-	public IModuleDeclaration parse(IModuleSource input,
-			IProblemReporter reporter) {
-		ModuleDeclaration moduleDeclaration = new ModuleDeclaration(input
-				.getSourceContents().length(), true);
-		XQueryParser parser = new XQueryParser(moduleDeclaration, input
-				.getFileName().toCharArray(), input.getContentsAsCharArray(),
-				reporter);
+	public IModuleDeclaration parse(IModuleSource input, IProblemReporter reporter) {
+		ModuleDeclaration moduleDeclaration = new ModuleDeclaration(input.getSourceContents().length(), true);
+		XQueryParser parser = new XQueryParser(moduleDeclaration, input.getFileName().toCharArray(),
+				input.getContentsAsCharArray(), reporter);
 		parser.parse();
 		moduleDeclaration.rebuild();
 		return moduleDeclaration;

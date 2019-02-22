@@ -49,8 +49,8 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method figures out whether the 'Finish' button should be enabled.
-	 * The button should only be enabled on the {@link BackupTargetWizardPage}.
+	 * This method figures out whether the 'Finish' button should be enabled. The
+	 * button should only be enabled on the {@link BackupTargetWizardPage}.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -58,20 +58,16 @@ public class BackupWizard extends Wizard implements IWorkbenchWizard {
 	}
 
 	/**
-	 * This method is called when 'Finish' button is pressed in the wizard. We
-	 * will create an operation and run it using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We will
+	 * create an operation and run it using wizard as execution context.
 	 */
 	@Override
 	public boolean performFinish() {
 		boolean isFinished = true;
 
-		if (IManagementService.class.cast(
-				_item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
-			if (IBrowseService.class.cast(
-					_item.getAdapter(IBrowseService.class)).check()) {
-				_job = new BackupJob(_item, _backupTargetPage
-						.getBackupLocation());
+		if (IManagementService.class.cast(_item.getConnection().getAdapter(IManagementService.class)).check()) {
+			if (IBrowseService.class.cast(_item.getAdapter(IBrowseService.class)).check()) {
+				_job = new BackupJob(_item, _backupTargetPage.getBackupLocation());
 				_job.setUser(true);
 				_job.schedule();
 			}

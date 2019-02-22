@@ -12,9 +12,8 @@ import org.eclipse.jface.text.templates.TemplateContextType;
  */
 public class XQueryTemplateContext extends ScriptTemplateContext {
 
-	protected XQueryTemplateContext(TemplateContextType type,
-			IDocument document, int completionOffset, int completionLength,
-			ISourceModule sourceModule) {
+	protected XQueryTemplateContext(TemplateContextType type, IDocument document, int completionOffset,
+			int completionLength, ISourceModule sourceModule) {
 		super(type, document, completionOffset, completionLength, sourceModule);
 	}
 }

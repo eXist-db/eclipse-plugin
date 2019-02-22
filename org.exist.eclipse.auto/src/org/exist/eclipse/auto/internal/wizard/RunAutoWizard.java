@@ -26,9 +26,8 @@ public class RunAutoWizard extends Wizard implements IWorkbenchWizard {
 	@Override
 	public boolean performFinish() {
 		IAutoContext autoContext = _contextWizardPage.getAutoContext();
-		String target = _contextWizardPage.getTarget();		
-		AutomationHandler.getInstance().run(_autoModel, autoContext,
-				autoContext.getRootCollection(), target);
+		String target = _contextWizardPage.getTarget();
+		AutomationHandler.getInstance().run(_autoModel, autoContext, autoContext.getRootCollection(), target);
 		return true;
 	}
 

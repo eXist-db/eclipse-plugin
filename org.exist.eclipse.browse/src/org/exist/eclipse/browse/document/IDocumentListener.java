@@ -28,8 +28,7 @@ public interface IDocumentListener {
 	/**
 	 * You gets the {@link IDocumentItem}, which was selected.
 	 * 
-	 * @param items
-	 *            on which you will perform your action.
+	 * @param items on which you will perform your action.
 	 */
 	public void actionPerformed(IDocumentItem[] items);
 }

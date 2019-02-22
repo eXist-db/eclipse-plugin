@@ -36,8 +36,7 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 	private boolean _skipNextVarName;
 	private MethodDeclaration _lastMethod;
 
-	public ParserVisitor(XQueryParser parser,
-			ModuleDeclaration moduleDeclaration) {
+	public ParserVisitor(XQueryParser parser, ModuleDeclaration moduleDeclaration) {
 		_parser = parser;
 		_moduleDeclaration = moduleDeclaration;
 	}
@@ -80,9 +79,7 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 			}
 		}
 
-		if (_skipNextVarName
-				&& ("VarName".equals(node.toString()) || "QName".equals(node
-						.toString()))) {
+		if (_skipNextVarName && ("VarName".equals(node.toString()) || "QName".equals(node.toString()))) {
 			if (node.jjtGetNumChildren() == 0) {
 				_skipNextVarName = false;
 			} else if (!"VarName".equals(node.jjtGetChild(0).toString())
@@ -99,9 +96,8 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 
 			for (Object a : _lastMethod.getArguments()) {
 				Argument arg = (Argument) a;
-				XQueryFieldDeclaration fieldDeclaration = new XQueryFieldDeclaration(
-						_lastMethod, arg.getName(), arg.getNameStart(),
-						arg.getNameEnd());
+				XQueryFieldDeclaration fieldDeclaration = new XQueryFieldDeclaration(_lastMethod, arg.getName(),
+						arg.getNameStart(), arg.getNameEnd());
 				fieldDeclaration.setModifiers(Modifier.PRIVATE);
 				_lastMethod.getStatements().add(fieldDeclaration);
 			}
@@ -117,8 +113,7 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 		} else if (VAR_DECL.equals(node.toString())) {
 			VariableVisitor visitor = new VariableVisitor(_parser);
 			node.childrenAccept(visitor, data);
-			_moduleDeclaration
-					.addStatement(visitor.getField(_lastMethod, true));
+			_moduleDeclaration.addStatement(visitor.getField(_lastMethod, true));
 			_skipNextVarName = true;
 		} else if (VAR_NAME.equals(node.toString())) {
 			VariableVisitor visitor = new VariableVisitor(_parser);
@@ -130,9 +125,7 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 			node.jjtAccept(visitor, data);
 			MethodCallExpression methodCall = visitor.getFunctionCall();
 			for (int i = 0, n = node.jjtGetNumChildren() - 1; i < n; i++) {
-				methodCall.getArgs().addNode(
-						new CallExpression(null, "<arg" + i + ">",
-								new CallArgumentsList()));
+				methodCall.getArgs().addNode(new CallExpression(null, "<arg" + i + ">", new CallArgumentsList()));
 			}
 			addStatementToLastMethodOrModule(methodCall);
 		} else if (QNAME.equals(node.toString())) {
@@ -141,9 +134,8 @@ public class ParserVisitor implements XPathVisitor, NodeTypes {
 				Token token = findFirstToken(node);
 				if (token != null) {
 					int[] nodeStartEnd = getNodeStartEnd(_parser, token);
-					addStatementToLastMethodOrModule(new XQueryVariableReference(
-							_lastMethod, nodeStartEnd[0], nodeStartEnd[1], "$"
-									+ token.toString()));
+					addStatementToLastMethodOrModule(new XQueryVariableReference(_lastMethod, nodeStartEnd[0],
+							nodeStartEnd[1], "$" + token.toString()));
 				}
 			}
 		}

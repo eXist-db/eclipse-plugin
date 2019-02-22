@@ -50,8 +50,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
 		if (wordStarting.length() != 0) {
 			setSourceRange(position - wordStarting.length(), position);
-			KeyWordContainer wordContainer = XQueryUI.getDefault()
-					.getKeyWordContainer();
+			KeyWordContainer wordContainer = XQueryUI.getDefault().getKeyWordContainer();
 			List<String> keywords = wordContainer.getKeyWords();
 			for (String keyword : keywords) {
 				createProposal(keyword, null, wordStarting);
@@ -65,8 +64,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 				@Override
 				public boolean visit(IModelElement element) {
 					if (element.getElementType() > IModelElement.SOURCE_MODULE) {
-						createProposal(element.getElementName(), element,
-								wordStarting);
+						createProposal(element.getElementName(), element, wordStarting);
 					}
 					return true;
 				}
@@ -78,8 +76,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		}
 
 		// completion for defined function elements
-		List<IXQueryMethod> methods = XQueryMixinModel.getInstance()
-				.getMethods(wordStarting);
+		List<IXQueryMethod> methods = XQueryMixinModel.getInstance().getMethods(wordStarting);
 		for (IXQueryMethod method : methods) {
 			createProposal(method, wordStarting);
 		}
@@ -89,11 +86,9 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		if (editor != null) {
 			IConnectionContext context = editor.getConnectionContext();
 			if (context != null) {
-				ICompletionExtension extension = context
-						.getCompletionExtension();
+				ICompletionExtension extension = context.getCompletionExtension();
 				if (extension != null) {
-					for (IXQueryMethod method : extension
-							.getMethods(wordStarting)) {
+					for (IXQueryMethod method : extension.getMethods(wordStarting)) {
 						createProposal(method, wordStarting);
 					}
 				}
@@ -124,17 +119,14 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
 		boolean hasPrefix = methodName.startsWith(prefix);
 		if (hasPrefix) {
-			CompletionProposal proposal = createProposal(
-					CompletionProposal.METHOD_REF,
-					this.actualCompletionPosition);
+			CompletionProposal proposal = createProposal(CompletionProposal.METHOD_REF, this.actualCompletionPosition);
 			proposal.setFlags(method.getFlags());
 			String[] params = method.getParameterNames();
 			if (params != null && params.length > 0) {
 				proposal.setParameterNames(params);
 			}
 
-			proposal.setExtraInfo(new MethodCompletionExtraInfo(method
-					.getParameterTypes()));
+			proposal.setExtraInfo(new MethodCompletionExtraInfo(method.getParameterTypes()));
 
 			proposal.setName(methodName);
 			proposal.setCompletion(methodName);
@@ -146,21 +138,17 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 		}
 	}
 
-	private void createProposal(String name, IModelElement element,
-			String prefix) {
+	private void createProposal(String name, IModelElement element, String prefix) {
 		if (name.startsWith(prefix)) {
 			CompletionProposal proposal = null;
 			try {
 				if (element == null) {
-					proposal = this.createProposal(CompletionProposal.KEYWORD,
-							this.actualCompletionPosition);
+					proposal = this.createProposal(CompletionProposal.KEYWORD, this.actualCompletionPosition);
 				} else {
 					switch (element.getElementType()) {
 					case IModelElement.METHOD:
 						IMethod method = (IMethod) element;
-						proposal = this.createProposal(
-								CompletionProposal.METHOD_REF,
-								this.actualCompletionPosition);
+						proposal = this.createProposal(CompletionProposal.METHOD_REF, this.actualCompletionPosition);
 						proposal.setFlags(method.getFlags());
 
 						try {
@@ -178,29 +166,22 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
 						break;
 					case IModelElement.FIELD:
-						proposal = this.createProposal(
-								CompletionProposal.FIELD_REF,
-								this.actualCompletionPosition);
+						proposal = this.createProposal(CompletionProposal.FIELD_REF, this.actualCompletionPosition);
 						proposal.setFlags(((IField) element).getFlags());
 						break;
 					case IModelElement.TYPE:
-						proposal = this.createProposal(
-								CompletionProposal.TYPE_REF,
-								this.actualCompletionPosition);
+						proposal = this.createProposal(CompletionProposal.TYPE_REF, this.actualCompletionPosition);
 						proposal.setFlags(((IType) element).getFlags());
 						break;
 					default:
-						proposal = this.createProposal(
-								CompletionProposal.KEYWORD,
-								this.actualCompletionPosition);
+						proposal = this.createProposal(CompletionProposal.KEYWORD, this.actualCompletionPosition);
 						break;
 					}
 				}
 				proposal.setName(name);
 				proposal.setCompletion(name);
-				proposal.setReplaceRange(actualCompletionPosition - offset
-						- prefix.length(), actualCompletionPosition - offset
-						- prefix.length());
+				proposal.setReplaceRange(actualCompletionPosition - offset - prefix.length(),
+						actualCompletionPosition - offset - prefix.length());
 				proposal.setRelevance(20);
 				proposal.setModelElement(element);
 				this.requestor.accept(proposal);
@@ -226,8 +207,7 @@ public class XQueryCompletionEngine extends ScriptCompletionEngine {
 
 	@Override
 	protected CompletionProposal createProposal(int kind, int completionOffset) {
-		CompletionProposal proposal = CompletionProposal.create(kind,
-				completionOffset - this.offset);
+		CompletionProposal proposal = CompletionProposal.create(kind, completionOffset - this.offset);
 
 		return proposal;
 	}

@@ -28,8 +28,7 @@ import org.exist.eclipse.query.internal.proc.QueryStartEvent;
  * @author Markus Tanner
  * @uml.dependency supplier="org.exist.eclipse.query.internal.control.IQueryInit"
  */
-public class BodyContainer extends Composite implements IQueryListener,
-		IQueryResultListener {
+public class BodyContainer extends Composite implements IQueryListener, IQueryResultListener {
 	private Text _queryInput;
 	private Table _resultTable;
 	private TableColumn _queryResultCol;
@@ -38,8 +37,7 @@ public class BodyContainer extends Composite implements IQueryListener,
 	private IQueryInit _queryInitiator;
 	private ResultSelectionListener _resultMouseListener;
 
-	public BodyContainer(Composite parent, int style, QueryView view,
-			IQueryInit queryInitiator) {
+	public BodyContainer(Composite parent, int style, QueryView view, IQueryInit queryInitiator) {
 		super(parent, style);
 		_view = view;
 		_queryInitiator = queryInitiator;
@@ -99,8 +97,7 @@ public class BodyContainer extends Composite implements IQueryListener,
 			public void run() {
 				int row = _resultTable.getItemCount();
 				TableItem resultItem = new TableItem(_resultTable, row);
-				resultItem.setText(new String[] { Integer.toString(row + 1),
-						event.getContent() });
+				resultItem.setText(new String[] { Integer.toString(row + 1), event.getContent() });
 				_queryResultColNr.pack();
 				_queryResultCol.pack();
 			}
@@ -113,8 +110,8 @@ public class BodyContainer extends Composite implements IQueryListener,
 	// /////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * This method creates a sash-form which contains two text-areas. The
-	 * resulting composite represents the body of the query view.
+	 * This method creates a sash-form which contains two text-areas. The resulting
+	 * composite represents the body of the query view.
 	 * 
 	 * @param sashContainer
 	 */
@@ -126,8 +123,7 @@ public class BodyContainer extends Composite implements IQueryListener,
 		_queryInput = new Text(sashForm, SWT.LEFT | SWT.V_SCROLL | SWT.BORDER);
 		_queryInput.setToolTipText("Query Input");
 		Font font = _queryInput.getFont();
-		_queryInput.setFont(new Font(font.getDevice(), font.getFontData()[0]
-				.getName(), 10, SWT.NORMAL));
+		_queryInput.setFont(new Font(font.getDevice(), font.getFontData()[0].getName(), 10, SWT.NORMAL));
 		_queryInput.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -140,8 +136,8 @@ public class BodyContainer extends Composite implements IQueryListener,
 		});
 
 		// query result area
-		_resultTable = new Table(sashForm, SWT.MULTI | SWT.V_SCROLL
-				| SWT.H_SCROLL | SWT.BORDER | SWT.WRAP | SWT.FULL_SELECTION);
+		_resultTable = new Table(sashForm,
+				SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL | SWT.BORDER | SWT.WRAP | SWT.FULL_SELECTION);
 		_resultTable.setHeaderVisible(true);
 		_resultTable.setLinesVisible(true);
 		_queryResultColNr = new TableColumn(_resultTable, SWT.NONE);
@@ -151,8 +147,7 @@ public class BodyContainer extends Composite implements IQueryListener,
 		_queryResultCol.setText("Query Result");
 		_queryResultCol.pack();
 
-		_resultMouseListener = new ResultSelectionListener(_view.getViewSite()
-				.getWorkbenchWindow());
+		_resultMouseListener = new ResultSelectionListener(_view.getViewSite().getWorkbenchWindow());
 		_resultTable.addMouseListener(_resultMouseListener);
 	}
 }

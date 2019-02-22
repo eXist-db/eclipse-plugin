@@ -43,23 +43,16 @@ public class ImportDocumentsListener implements IBrowseListener {
 
 	private static final String XML_RESOURCE_TYPE = "XML Resource";
 
-	static void saveDoc(IBrowseItem item, IConfigurationElement xmlCfg,
-			String name, InputStream content) {
-		if (IManagementService.class.cast(
-				item.getConnection().getAdapter(IManagementService.class))
-				.check()) {
-
-			IBrowseService itemService = (IBrowseService) item
-					.getAdapter(IBrowseService.class);
-
+	static void saveDoc(IBrowseItem item, IConfigurationElement xmlCfg, String name, InputStream content) {
+		if (item.getConnection().getAdapter(IManagementService.class).check()) {
+			IBrowseService itemService = item.getAdapter(IBrowseService.class);
 			if (itemService.check()) {
 				IDocumentItem documentItem = item.getDocument(name);
 				try {
-					IDocumentService documentService = (IDocumentService) documentItem
-							.getAdapter(IDocumentService.class);
+					IDocumentService documentService = documentItem.getAdapter(IDocumentService.class);
 					StringWriter tmp = new StringWriter();
-					ExportDocumentsAction.copy(new InputStreamReader(content,
-							ExportDocumentsAction.DEFAULT_ENCODING), tmp);
+					ExportDocumentsAction.copy(new InputStreamReader(content, ExportDocumentsAction.DEFAULT_ENCODING),
+							tmp);
 					documentService.create(xmlCfg, tmp.toString());
 					itemService.refresh();
 				} catch (Exception e) {
@@ -71,13 +64,11 @@ public class ImportDocumentsListener implements IBrowseListener {
 
 	protected static IConfigurationElement getXMLConfigurationElement() {
 		IExtensionRegistry reg = Platform.getExtensionRegistry();
-		IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(),
-				"createdocument");
+		IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(), "createdocument");
 		IExtension[] documents = exPoint.getExtensions();
 		IConfigurationElement xmlCfg = null;
 		for (IExtension extension : documents) {
-			IConfigurationElement[] configurations = extension
-					.getConfigurationElements();
+			IConfigurationElement[] configurations = extension.getConfigurationElements();
 			for (IConfigurationElement element : configurations) {
 				String name = element.getAttribute("name");
 				if (name.equals(XML_RESOURCE_TYPE)) {
@@ -89,8 +80,7 @@ public class ImportDocumentsListener implements IBrowseListener {
 
 		if (xmlCfg == null) {
 			throw new RuntimeException(
-					"Missing 'createdocument' extension for resource type '"
-							+ XML_RESOURCE_TYPE + "'.");
+					"Missing 'createdocument' extension for resource type '" + XML_RESOURCE_TYPE + "'.");
 		}
 		return xmlCfg;
 	}
@@ -98,12 +88,10 @@ public class ImportDocumentsListener implements IBrowseListener {
 	@Override
 	public void actionPerformed(IBrowseItem[] items) {
 		IBrowseItem browseItem = items[0];
-		IBrowseService service = (IBrowseService) browseItem
-				.getAdapter(IBrowseService.class);
+		IBrowseService service = browseItem.getAdapter(IBrowseService.class);
 		if (service.check()) {
 
-			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getShell();
+			Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 			FileDialog dialog = new FileDialog(shell, SWT.OPEN | SWT.MULTI);
 			dialog.setText("Select the file(s) to import");
 			String[] filterExtensions = { "*.*", "*.xml" };
@@ -128,23 +116,17 @@ public class ImportDocumentsListener implements IBrowseListener {
 		IConfigurationElement xmlCfg = getXMLConfigurationElement();
 		for (File theFile : allFiles) {
 			try {
-				saveDoc(browseItem, xmlCfg, theFile.getName(),
-						new FileInputStream(theFile));
+				saveDoc(browseItem, xmlCfg, theFile.getName(), new FileInputStream(theFile));
 			} catch (Exception e) {
 				hadErrors = true;
-				BrowsePlugin.getDefault().getLog().log(
-						new Status(IStatus.ERROR, BrowsePlugin.getId(),
-								"An error occured while importing '" + theFile
-										+ "': " + e, e));
+				BrowsePlugin.getDefault().getLog().log(new Status(IStatus.ERROR, BrowsePlugin.getId(),
+						"An error occured while importing '" + theFile + "': " + e, e));
 			}
 		}
 
 		if (hadErrors) {
-			MessageDialog
-					.openError(PlatformUI.getWorkbench()
-							.getActiveWorkbenchWindow().getShell(),
-							"Import Documents",
-							"Errors occured while importing. See the Eclipse Error Log for details.");
+			MessageDialog.openError(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Import Documents",
+					"Errors occured while importing. See the Eclipse Error Log for details.");
 		}
 	}
 

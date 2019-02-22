@@ -37,16 +37,14 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	private final ISelection _selection;
 	private final IBrowseItem _item;
 
-	public ChooseCollectionWizardPage(ISelection selection,
-			IConnection connection, IBrowseItem item) {
+	public ChooseCollectionWizardPage(ISelection selection, IConnection connection, IBrowseItem item) {
 		super("choosecollectionwizardpage");
 		_selection = selection;
 		_connection = connection;
 		_item = item;
 		setTitle("Choose Collection");
 		setDescription("Choose a collection for the query");
-		setImageDescriptor(QueryPlugin
-				.getImageDescriptor("icons/existdb.png"));
+		setImageDescriptor(QueryPlugin.getImageDescriptor("icons/existdb.png"));
 	}
 
 	/**
@@ -61,8 +59,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 		layout.numColumns = 1;
 		container.setLayout(layout);
 
-		_itemList = new List(container, SWT.SINGLE | SWT.H_SCROLL
-				| SWT.V_SCROLL);
+		_itemList = new List(container, SWT.SINGLE | SWT.H_SCROLL | SWT.V_SCROLL);
 		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 		gd.horizontalSpan = 1;
 		_itemList.setLayoutData(gd);
@@ -91,8 +88,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	}
 
 	public IBrowseItem getSelection() {
-		return BrowseHelper.getBrowseItem(_connection,
-				_itemList.getSelection()[0]);
+		return BrowseHelper.getBrowseItem(_connection, _itemList.getSelection()[0]);
 	}
 
 	public void refresh() {
@@ -104,8 +100,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	// private methods
 	// ////////////////////////////////////////////////////////////////////////////////////////////
 	private void initialize() {
-		if (_selection != null && _selection.isEmpty() == false
-				&& _selection instanceof IStructuredSelection) {
+		if (_selection != null && _selection.isEmpty() == false && _selection instanceof IStructuredSelection) {
 			IStructuredSelection ssel = (IStructuredSelection) _selection;
 			if (ssel.size() > 1)
 				return;
@@ -115,10 +110,8 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	private void fillItems() {
 		_itemList.removeAll();
 		try {
-			IBrowseItem rootBrowseItem = BrowseHelper
-					.getRootBrowseItem(_connection);
-			IBrowseService service = (IBrowseService) rootBrowseItem
-					.getAdapter(IBrowseService.class);
+			IBrowseItem rootBrowseItem = BrowseHelper.getRootBrowseItem(_connection);
+			IBrowseService service = (IBrowseService) rootBrowseItem.getAdapter(IBrowseService.class);
 			Set<IBrowseItem> children = service.getChildren(true, true);
 			boolean selected = _item == null;
 			for (IBrowseItem item : children) {
@@ -129,9 +122,8 @@ public class ChooseCollectionWizardPage extends WizardPage {
 				}
 			}
 		} catch (ConnectionException e) {
-			QueryPlugin.getDefault().getLog().log(
-					new Status(IStatus.ERROR, QueryPlugin.getId(),
-							"Failure while fill items.", e));
+			QueryPlugin.getDefault().getLog()
+					.log(new Status(IStatus.ERROR, QueryPlugin.getId(), "Failure while fill items.", e));
 		}
 	}
 
@@ -147,8 +139,7 @@ public class ChooseCollectionWizardPage extends WizardPage {
 	 * Sets the wizard to an error state. In the header an error message gets
 	 * displayed.
 	 * 
-	 * @param message
-	 *            message displayed in the header
+	 * @param message message displayed in the header
 	 */
 	private void setErrorState(String message) {
 		setErrorMessage(message);

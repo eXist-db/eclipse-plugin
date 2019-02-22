@@ -16,8 +16,7 @@ import org.exist.eclipse.xquery.core.internal.parser.ast.XQueryFieldDeclaration;
  * 
  * @author Pascal Schmidiger
  */
-public class XQuerySourceElementRequestVisitor extends
-		SourceElementRequestVisitor {
+public class XQuerySourceElementRequestVisitor extends SourceElementRequestVisitor {
 
 	public XQuerySourceElementRequestVisitor(ISourceElementRequestor requesor) {
 		super(requesor);
@@ -39,8 +38,7 @@ public class XQuerySourceElementRequestVisitor extends
 			MethodCallExpression cae = (MethodCallExpression) expression;
 			String name = cae.getName();
 			int nargs = cae.getArgs().getChilds().size();
-			this.fRequestor.acceptMethodReference(name, nargs, cae
-					.sourceStart(), cae.sourceEnd());
+			this.fRequestor.acceptMethodReference(name, nargs, cae.sourceStart(), cae.sourceEnd());
 		}
 		return true;
 	}
@@ -49,8 +47,7 @@ public class XQuerySourceElementRequestVisitor extends
 	public boolean visit(Statement statement) throws Exception {
 		super.visit(statement);
 		if (statement instanceof XQueryFieldDeclaration) {
-			XQueryFieldDeclaration field = XQueryFieldDeclaration.class
-					.cast(statement);
+			XQueryFieldDeclaration field = XQueryFieldDeclaration.class.cast(statement);
 			FieldInfo info = new ISourceElementRequestor.FieldInfo();
 			info.modifiers = field.getModifiers();
 			info.name = field.getName();

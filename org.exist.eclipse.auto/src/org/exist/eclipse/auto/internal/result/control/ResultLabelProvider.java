@@ -13,8 +13,7 @@ import org.exist.eclipse.auto.internal.result.model.QueryResultEntity;
  * 
  * @author Markus Tanner
  */
-public class ResultLabelProvider extends LabelProvider implements
-		ITableLabelProvider {
+public class ResultLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 	@Override
 	public Image getColumnImage(Object element, int columnIndex) {

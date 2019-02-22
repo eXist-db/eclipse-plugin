@@ -19,9 +19,8 @@ public class RemoveConnectionListener implements IConnectionListener {
 
 	@Override
 	public void actionPerformed(IConnection connection) {
-		boolean confirm = UiUtil.openConfirm(_page.getWorkbenchWindow()
-				.getShell(), "Delete", "Delete the connection '"
-				+ connection.getName() + "'?", "Delete");
+		boolean confirm = UiUtil.openConfirm(_page.getWorkbenchWindow().getShell(), "Delete",
+				"Delete the connection '" + connection.getName() + "'?", "Delete");
 		if (confirm) {
 			ConnectionFactory.getConnectionBox().removeConnection(connection);
 		}

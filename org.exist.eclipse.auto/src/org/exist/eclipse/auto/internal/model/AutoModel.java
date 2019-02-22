@@ -71,9 +71,9 @@ public class AutoModel implements IAutoModel {
 	public QueryOrderType getQueryOrderType() {
 		return _queryOrderType;
 	}
-	
+
 	@Override
-	public void setQueryOrderType(QueryOrderType type){
+	public void setQueryOrderType(QueryOrderType type) {
 		_queryOrderType = type;
 	}
 
@@ -86,6 +86,5 @@ public class AutoModel implements IAutoModel {
 	public void setAutoNote(String note) {
 		_autoNote = note;
 	}
-	
 
 }

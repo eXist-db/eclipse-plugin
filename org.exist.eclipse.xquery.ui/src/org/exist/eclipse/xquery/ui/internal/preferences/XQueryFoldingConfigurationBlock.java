@@ -13,8 +13,7 @@ import org.exist.eclipse.xquery.ui.internal.folding.XQueryFoldingPreferenceBlock
  */
 public class XQueryFoldingConfigurationBlock extends FoldingConfigurationBlock {
 
-	public XQueryFoldingConfigurationBlock(OverlayPreferenceStore store,
-			PreferencePage p) {
+	public XQueryFoldingConfigurationBlock(OverlayPreferenceStore store, PreferencePage p) {
 		super(store, p);
 	}
 

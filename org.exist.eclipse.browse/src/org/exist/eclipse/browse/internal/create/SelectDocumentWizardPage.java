@@ -18,8 +18,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.exist.eclipse.browse.internal.BrowsePlugin;
 
 /**
- * Select the document type, which you want create.<br /> The different type of
- * documents gets from the extension point
+ * Select the document type, which you want create.<br />
+ * The different type of documents gets from the extension point
  * "org.exist.eclipse.browse.createdocument".
  */
 public class SelectDocumentWizardPage extends WizardPage {
@@ -40,12 +40,10 @@ public class SelectDocumentWizardPage extends WizardPage {
 
 		Button button = null;
 		IExtensionRegistry reg = Platform.getExtensionRegistry();
-		IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(),
-				"createdocument");
+		IExtensionPoint exPoint = reg.getExtensionPoint(BrowsePlugin.getId(), "createdocument");
 		IExtension[] documents = exPoint.getExtensions();
 		for (IExtension extension : documents) {
-			IConfigurationElement[] configurations = extension
-					.getConfigurationElements();
+			IConfigurationElement[] configurations = extension.getConfigurationElements();
 			for (IConfigurationElement element : configurations) {
 				String name = element.getAttribute("name");
 				_configurations.put(name, element);
